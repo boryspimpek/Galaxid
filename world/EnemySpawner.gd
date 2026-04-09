@@ -247,7 +247,9 @@ func _create_enemy_node(template: Dictionary, position: Vector2,
 	label.vertical_alignment   = VERTICAL_ALIGNMENT_CENTER
 	label.position = Vector2(-10, -10)
 	label.size     = Vector2(20, 20)
-	label.add_theme_font_size_override("font_size", 10)
+	label.z_index = 200
+	label.add_theme_font_size_override("font_size", 50)
+	label.add_theme_color_override("font_color", Color.BLACK)
 	enemy.add_child(label)
 
 	# Kolizja
