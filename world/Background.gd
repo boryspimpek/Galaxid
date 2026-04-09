@@ -5,7 +5,7 @@ const TYRIAN_FPS = 15.0
 const SCALE_Y    = 720.0 / 200.0   # = 3.6  (przeliczenie Tyrian → Godot dla osi Y)
 
 # Prędkości scrollingu w jednostkach Tyrian (px/klatkę @ 30 FPS)
-# Inicjalizowane wartościami domyślnymi z JE_main() w Tyrianie
+# Oryginalne wartości domyślne z Tyrian
 var back_move:  int = 1   # tło 1 — Ground
 var back_move2: int = 2   # tło 2 — Sky  (główny scroll widoczny dla gracza)
 var back_move3: int = 3   # tło 3 — Top
@@ -13,8 +13,7 @@ var back_move3: int = 3   # tło 3 — Top
 # Prędkość scrollingu w px/s Godot (oś Y)
 # Przeliczenie: back_move2 [px/klatkę Tyrian] * SCALE_Y * TYRIAN_FPS = [px/s Godot]
 # Przykład dla domyślnego back_move2=2: 2 * 3.6 * 30 = 216 px/s
-# Przykład dla back_move2=4:            4 * 3.6 * 30 = 432 px/s
-var scroll_velocity_y: float = 2.0 * SCALE_Y * TYRIAN_FPS
+var scroll_velocity_y: float = float(back_move2) * SCALE_Y * TYRIAN_FPS
 
 var player: CharacterBody2D
 
@@ -41,7 +40,9 @@ func set_scroll_speed(p_back_move: int, p_back_move2: int, p_back_move3: int):
 	# back_move2 [px/klatkę Tyrian] × SCALE_Y × TYRIAN_FPS = [px/s Godot]
 	scroll_velocity_y = float(back_move2) * SCALE_Y * TYRIAN_FPS
 
-	print("Background scroll: back_move=", back_move,
-		  " back_move2=", back_move2,
-		  " back_move3=", back_move3,
-		  " → scroll_velocity_y=", scroll_velocity_y, " px/s")
+	# Dodatkowe przeliczenie dla Ground (dla porównania z przeciwnikami)
+	var ground_scroll_px_s = float(back_move) * SCALE_Y * TYRIAN_FPS
+
+	print("Background scroll: back_move=", back_move, " (", ground_scroll_px_s, " px/s Ground)",
+		  " back_move2=", back_move2, " (", scroll_velocity_y, " px/s Sky)",
+		  " back_move3=", back_move3)

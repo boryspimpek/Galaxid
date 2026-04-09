@@ -10,9 +10,10 @@ const SCALE_Y     = 720.0  / 200.0   # = 3.6
 
 # Aktualne prędkości scrollingu (z eventu type 2)
 # Wartości w jednostkach Tyrian: piksele/klatkę @ 30 FPS
-var back_move:  int = 2   # Tło 1 — Ground (slot 25, 75)
-var back_move2: int = 4   # Tło 2 — Sky    (slot 0)
-var back_move3: int = 0   # Tło 3 — Top    (slot 50)
+# Oryginalne wartości domyślne z Tyrian
+var back_move:  int = 1   # Tło 1 — Ground (slot 25, 75)
+var back_move2: int = 2   # Tło 2 — Sky    (slot 0)
+var back_move3: int = 3   # Tło 3 — Top    (slot 50)
 
 # Referencje
 var background: ParallaxBackground
@@ -213,13 +214,13 @@ func _scroll_for_slot(enemy_slot: int) -> int:
 		50:       return back_move3   # Top
 		_:        return back_move2
 
-func _create_enemy_node(template: Dictionary, position: Vector2,
+func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 		raw_velocity: Vector2, fixed_move_y: int,
 		scroll_for_slot: int, enemy_id: int = 0) -> Node2D:
 	"""Tworzy węzeł przeciwnika z kolorowym placeholderem."""
 	var enemy = Node2D.new()
 	enemy.name = "Enemy_%d" % enemy_id
-	enemy.global_position = position
+	enemy.global_position = spawn_position
 	enemy.z_index = 100
 
 	# Placeholder: kolorowe kółko
@@ -296,7 +297,7 @@ func _generate_enemy_script(template: Dictionary, raw_velocity: Vector2,
 	var src = """extends Node2D
 
 # ---- Stałe przeliczeniowe ----
-const TYRIAN_FPS = 30.0
+const TYRIAN_FPS = 15.0
 const SCALE_X    = 1280.0 / 320.0   # = 4.0
 const SCALE_Y    = 720.0  / 200.0   # = 3.6
 
@@ -337,10 +338,10 @@ var animax:       int = 0
 var aniwhenfire:  int = 0
 
 # ---- Granice usuwania (px Godot) ----
-const BOUNDS_LEFT   = -200
+const BOUNDS_LEFT   = -1400
 const BOUNDS_RIGHT  = 1480
-const BOUNDS_TOP    = -200
-const BOUNDS_BOTTOM = 920
+const BOUNDS_TOP    = -1000
+const BOUNDS_BOTTOM = 1000
 
 func _ready():
 	# Inicjalizacja silnika wahadłowego X
@@ -413,17 +414,12 @@ func _process(delta):
 	position.x += move_x * delta
 	position.y += move_y * delta
 
-	# Debug co sekundę
-	if Engine.get_frames_drawn() % 60 == 0:
-		print("DEBUG: ", name,
-			" | pos=", Vector2i(position),
-			" | vel=(", velocity.x, ",", velocity.y, ")",
-			" | scroll=", scroll_y)
-
 	# --- 4. Usuń poza ekranem ---
 	if position.x < BOUNDS_LEFT or position.x > BOUNDS_RIGHT:
+		#print("DEBUG: ", name, " removed (X bounds): ", position.x)
 		queue_free()
 	if position.y < BOUNDS_TOP  or position.y > BOUNDS_BOTTOM:
+		#print("DEBUG: ", name, " removed (Y bounds): ", position.y)
 		queue_free()
 
 	# --- 5. Animacja ---
@@ -454,12 +450,12 @@ func explode():
 		"vel_y":           raw_velocity.y,
 		"fixed_y":         fixed_move_y,
 		"scroll_for_slot": scroll_for_slot,
-		"xcaccel":         xcaccel,
-		"ycaccel":         ycaccel,
-		"xrev":            xrev,
-		"yrev":            yrev,
-		"xaccel":          xaccel,
-		"yaccel":          yaccel,
+		"xcaccel":         int(xcaccel),
+		"ycaccel":         int(ycaccel),
+		"xrev":            int(xrev),
+		"yrev":            int(yrev),
+		"xaccel":          int(xaccel),
+		"yaccel":          int(yaccel),
 		"animate":         animate,
 		"ani":             ani,
 	})
