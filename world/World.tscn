@@ -3,9 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://c3ik8aourheqx" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
 [ext_resource type="Script" uid="uid://dr7gh8fwvyady" path="res://world/Background.gd" id="3_background"]
 [ext_resource type="Texture2D" uid="uid://0qsrx8836bgl" path="res://assets/background.png" id="4_background_texture"]
-[ext_resource type="Script" path="res://world/EnemySpawner.gd" id="5_enemy_spawner"]
+[ext_resource type="Script" uid="uid://m7pot1avds0x" path="res://world/EnemySpawner.gd" id="5_enemy_spawner"]
 
 [node name="World" type="Node2D" unique_id=1364436952]
+
+[node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=942777578]
+script = ExtResource("5_enemy_spawner")
 
 [node name="Background" type="ParallaxBackground" parent="." unique_id=932312804]
 script = ExtResource("3_background")
@@ -16,8 +21,3 @@ motion_mirroring = Vector2(0, 1440)
 [node name="BackgroundSprite1" type="Sprite2D" parent="Background/BackgroundLayer" unique_id=1628658996]
 texture = ExtResource("4_background_texture")
 centered = false
-
-[node name="EnemySpawner" type="Node2D" parent="." unique_id=942777578]
-script = ExtResource("5_enemy_spawner")
-
-[node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
