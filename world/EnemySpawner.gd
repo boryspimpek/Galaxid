@@ -60,8 +60,8 @@ func load_events_data():
 		var error = json.parse(file.get_as_text())
 		if error == OK:
 			var data = json.get_data()
-			if data.has("level_1") and data["level_1"].has("events"):
-				level_events = data["level_1"]["events"]
+			if data.has("level_3") and data["level_3"].has("events"):
+				level_events = data["level_3"]["events"]
 				level_events.sort_custom(func(a, b): return a["dist"] < b["dist"])
 				print("Załadowano ", level_events.size(), " eventów")
 		else:
