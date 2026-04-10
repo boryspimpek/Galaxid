@@ -3,6 +3,8 @@ extends Node2D
 @export var events_file: String = "res://data/events.json"
 @export var enemies_file: String = "res://data/enemies.json"
 
+@onready var enemy_scene = preload("res://scenes/enemy/Enemy.tscn")
+
 # Stałe z Tyrian
 const TYRIAN_FPS  = 15.0
 const SCALE_X     = 1280.0 / 320.0   # = 4.0
@@ -217,245 +219,29 @@ func _scroll_for_slot(enemy_slot: int) -> int:
 func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 		raw_velocity: Vector2, fixed_move_y: int,
 		scroll_for_slot: int, enemy_id: int = 0) -> Node2D:
-	"""Tworzy węzeł przeciwnika z kolorowym placeholderem."""
-	var enemy = Node2D.new()
+	"""Tworzy węzeł przeciwnika ze sceny Enemy."""
+	var enemy = enemy_scene.instantiate()
 	enemy.name = "Enemy_%d" % enemy_id
 	enemy.global_position = spawn_position
-	enemy.z_index = 100
 
-	# Placeholder: kolorowe kółko
-	var colors = [
-		Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW,
-		Color.CYAN, Color.MAGENTA, Color.ORANGE, Color.PURPLE
-	]
-	var circle   = Polygon2D.new()
-	circle.name  = "Visual"
-	circle.color = colors[enemy_id % colors.size()]
-	var pts      = PackedVector2Array()
-	var radius   = 12.0
-	for i in range(16):
-		var a = i * TAU / 16.0
-		pts.append(Vector2(cos(a), sin(a)) * radius)
-	circle.polygon = pts
-	circle.z_index = 100
-	enemy.add_child(circle)
-
-	# Label debugowy
-	var label = Label.new()
-	label.name = "DebugLabel"
-	label.text = str(enemy_id)
-	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	label.vertical_alignment   = VERTICAL_ALIGNMENT_CENTER
-	label.position = Vector2(-10, -10)
-	label.size     = Vector2(20, 20)
-	label.z_index = 200
-	label.add_theme_font_size_override("font_size", 50)
-	label.add_theme_color_override("font_color", Color.BLACK)
-	enemy.add_child(label)
-
-	# Kolizja
-	var collision      = CollisionShape2D.new()
-	var circle_shape   = CircleShape2D.new()
-	circle_shape.radius = radius
-	collision.shape    = circle_shape
-	enemy.add_child(collision)
-
-	# Skrypt ruchu
-	var enemy_script = GDScript.new()
-	enemy_script.source_code = _generate_enemy_script(
-		template, raw_velocity, fixed_move_y, scroll_for_slot)
-	enemy_script.reload()
-	enemy.set_script(enemy_script)
+	# Ustaw parametry z template
+	enemy.armor = template.get("armor", 1)
+	enemy.esize = template.get("esize", 0)
+	enemy.enemy_id = enemy_id
+	enemy.velocity = raw_velocity
+	enemy.fixed_move_y = fixed_move_y
+	enemy.scroll_y = scroll_for_slot
+	
+	# Silnik wahadłowy
+	enemy.excc = template.get("xcaccel", 0)
+	enemy.eycc = template.get("ycaccel", 0)
+	enemy.xrev = template.get("xrev", 0)
+	enemy.yrev = template.get("yrev", 0)
+	enemy.xaccel = template.get("xaccel", 0)
+	enemy.yaccel = template.get("yaccel", 0)
+	
+	# Animacja
+	enemy.animate_mode = template.get("animate", 0)
+	enemy.ani = template.get("ani", 1)
 
 	return enemy
-
-# ---------------------------------------------------------------------------
-# Generowanie skryptu wroga
-# ---------------------------------------------------------------------------
-
-func _generate_enemy_script(template: Dictionary, raw_velocity: Vector2,
-		fixed_move_y: int, scroll_for_slot: int) -> String:
-
-	var armor   = template.get("armor",   1)
-	var esize   = template.get("esize",   0)
-	var animate = template.get("animate", 0)
-	var ani     = template.get("ani",     1)
-
-	var xcaccel = template.get("xcaccel", 0)
-	var ycaccel = template.get("ycaccel", 0)
-	var xrev    = template.get("xrev",    0)
-	var yrev    = template.get("yrev",    0)
-	var xaccel  = template.get("xaccel",  0)
-	var yaccel  = template.get("yaccel",  0)
-
-	# raw_velocity i scroll_for_slot są w jednostkach Tyrian (px/klatkę @ 30 FPS).
-	# Przeliczenie na px/s Godot odbywa się w _process wroga:
-	#   godot_px_per_s = tyrian_px_per_frame * SCALE * TYRIAN_FPS
-	# Dzięki temu silnik wahadłowy (który operuje na surowych jednostkach Tyrian)
-	# działa poprawnie — modyfikuje velocity przed skalowaniem.
-
-	var src = """extends Node2D
-
-# ---- Stałe przeliczeniowe ----
-const TYRIAN_FPS = 15.0
-const SCALE_X    = 1280.0 / 320.0   # = 4.0
-const SCALE_Y    = 720.0  / 200.0   # = 3.6
-
-# ---- Statystyki ----
-var armor: int = {armor}
-var esize: int = {esize}
-
-# ---- Ruch (surowe jednostki Tyrian: px/klatkę @ 30 FPS) ----
-# velocity odpowiada exc/eyc z silnika Tyrian
-var velocity:      Vector2 = Vector2({vel_x}, {vel_y})
-var fixed_move_y:  int     = {fixed_y}
-# Prędkość scrollingu właściwa dla slotu tego wroga (px/klatkę Tyrian)
-var scroll_y:      int     = {scroll_for_slot}
-
-# ---- Silnik wahadłowy (xcaccel / ycaccel) ----
-var excc:     int = {xcaccel}
-var eycc:     int = {ycaccel}
-var exrev:    int = {xrev}
-var eyrev:    int = {yrev}
-var exccw:    int = 0
-var eyccw:    int = 0
-var exccwmax: int = 0
-var eyccwmax: int = 0
-var exccadd:  int = 1
-var eyccadd:  int = 1
-
-# ---- Losowe przyspieszenie ----
-var xaccel: int = {xaccel}
-var yaccel: int = {yaccel}
-
-# ---- Animacja ----
-var animate_mode: int = {animate}
-var ani:          int = {ani}
-var enemycycle:   int = 0
-var animin:       int = 0
-var aniactive:    int = 0
-var animax:       int = 0
-var aniwhenfire:  int = 0
-
-# ---- Granice usuwania (px Godot) ----
-const BOUNDS_LEFT   = -1400
-const BOUNDS_RIGHT  = 1480
-const BOUNDS_TOP    = -1000
-const BOUNDS_BOTTOM = 1000
-
-func _ready():
-	# Inicjalizacja silnika wahadłowego X
-	if excc != 0:
-		exccw    = abs(excc)
-		exccwmax = exccw
-		exccadd  = 1 if excc > 0 else -1
-		if exrev == 0:
-			exrev = 100
-
-	# Inicjalizacja silnika wahadłowego Y
-	if eycc != 0:
-		eyccw    = abs(eycc)
-		eyccwmax = eyccw
-		eyccadd  = 1 if eycc > 0 else -1
-		if eyrev == 0:
-			eyrev = 100
-
-	# Inicjalizacja animacji
-	match animate_mode:
-		0:  # Brak animacji
-			aniactive  = 0
-			animin     = 0
-			enemycycle = 1
-		1:  # Zawsze aktywna
-			aniactive  = 1
-			animin     = 0
-			enemycycle = 0
-		2:  # Tylko przy strzale
-			aniactive  = 2
-			animin     = 0
-			animax     = ani
-			enemycycle = 1
-			aniwhenfire = 2
-
-func _process(delta):
-	# Kolejność zgodna z JE_drawEnemy w Tyrianie:
-	# 1. fixed_move_y
-	# 2. velocity (eyc) — po ewentualnej aktualizacji silnika wahadłowego
-	# 3. scroll tła (tempBackMove)
-
-	# --- 1. Silnik wahadłowy X ---
-	if excc != 0:
-		exccw -= 1
-		if exccw <= 0:
-			velocity.x += exccadd
-			exccw = exccwmax
-			if velocity.x == exrev:
-				excc    = -excc
-				exrev   = -exrev
-				exccadd = -exccadd
-
-	# --- 2. Silnik wahadłowy Y ---
-	if eycc != 0:
-		eyccw -= 1
-		if eyccw <= 0:
-			velocity.y += eyccadd
-			eyccw = eyccwmax
-			if velocity.y == eyrev:
-				eycc    = -eycc
-				eyrev   = -eyrev
-				eyccadd = -eyccadd
-
-	# --- 3. Przeliczenie na px/s Godot i zastosowanie ruchu ---
-	# Każdy składnik (fixed, velocity, scroll) jest w px/klatkę Tyrian.
-	# Przeliczamy: tyrian_px_per_frame * scale * TYRIAN_FPS = godot_px_per_s
-	var move_x = (velocity.x)                          * SCALE_X * TYRIAN_FPS
-	var move_y = (float(fixed_move_y) + velocity.y + float(scroll_y)) * SCALE_Y * TYRIAN_FPS
-
-	position.x += move_x * delta
-	position.y += move_y * delta
-
-	# --- 4. Usuń poza ekranem ---
-	if position.x < BOUNDS_LEFT or position.x > BOUNDS_RIGHT:
-		#print("DEBUG: ", name, " removed (X bounds): ", position.x)
-		queue_free()
-	if position.y < BOUNDS_TOP  or position.y > BOUNDS_BOTTOM:
-		#print("DEBUG: ", name, " removed (Y bounds): ", position.y)
-		queue_free()
-
-	# --- 5. Animacja ---
-	if aniactive > 0:
-		enemycycle += 1
-		if enemycycle > ani:
-			enemycycle = animin
-		update_animation()
-
-func update_animation():
-	# TODO: aktualizacja klatki na podstawie enemycycle
-	pass
-
-func take_damage(damage: int):
-	armor -= damage
-	if armor <= 0:
-		explode()
-
-func explode():
-	# TODO: efekt eksplozji
-	queue_free()
-"""
-
-	return src.format({
-		"armor":           armor,
-		"esize":           esize,
-		"vel_x":           raw_velocity.x,
-		"vel_y":           raw_velocity.y,
-		"fixed_y":         fixed_move_y,
-		"scroll_for_slot": scroll_for_slot,
-		"xcaccel":         int(xcaccel),
-		"ycaccel":         int(ycaccel),
-		"xrev":            int(xrev),
-		"yrev":            int(yrev),
-		"xaccel":          int(xaccel),
-		"yaccel":          int(yaccel),
-		"animate":         animate,
-		"ani":             ani,
-	})
