@@ -118,6 +118,7 @@ func spawn_enemy(event: Dictionary):
 
 	var enemy_id   = int(enemy_template.get("index", 0))
 	var enemy_slot = event.get("enemy_slot", 0)
+	var event_type = int(event.get("event_type", 0))
 
 	# --- Pozycja ---
 	# screen_x / screen_y z JSON-a to już finalne wartości w pikselach Tyrian
@@ -144,7 +145,7 @@ func spawn_enemy(event: Dictionary):
 
 	var enemy = _create_enemy_node(
 		enemy_template, Vector2(spawn_x, spawn_y),
-		raw_velocity, fixed_move_y, scroll_for_slot, enemy_id)
+		raw_velocity, fixed_move_y, scroll_for_slot, enemy_id, event_type)
 
 	if enemy:
 		get_parent().add_child(enemy)
@@ -157,6 +158,7 @@ func spawn_4x4_enemies(event: Dictionary):
 	"""Spawnuje 4 wrogów w układzie 2×2 (event type 12)."""
 	var enemy_ids  = event.get("enemy_ids", [])
 	var enemy_slot = int(event.get("enemy_slot", 25))
+	var event_type = int(event.get("event_type", 0))
 	var y_vel      = int(event.get("y_vel", 0))
 	var fixed_move_y = int(event.get("fixed_move_y", 0))
 
@@ -193,7 +195,7 @@ func spawn_4x4_enemies(event: Dictionary):
 
 		var enemy = _create_enemy_node(
 			enemy_template, spawn_pos,
-			raw_velocity, fixed_move_y, scroll_for_slot, int(enemy_id_raw))
+			raw_velocity, fixed_move_y, scroll_for_slot, int(enemy_id_raw), event_type)
 
 		if enemy:
 			get_parent().add_child(enemy)
@@ -218,7 +220,7 @@ func _scroll_for_slot(enemy_slot: int) -> int:
 
 func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 		raw_velocity: Vector2, fixed_move_y: int,
-		scroll_for_slot: int, enemy_id: int = 0) -> Node2D:
+		scroll_for_slot: int, enemy_id: int = 0, event_type: int = 0) -> Node2D:
 	"""Tworzy węzeł przeciwnika ze sceny Enemy."""
 	var enemy = enemy_scene.instantiate()
 	enemy.name = "Enemy_%d" % enemy_id
@@ -228,6 +230,7 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 	enemy.armor = template.get("armor", 1)
 	enemy.esize = template.get("esize", 0)
 	enemy.enemy_id = enemy_id
+	enemy.event_type = event_type
 	enemy.velocity = raw_velocity
 	enemy.fixed_move_y = fixed_move_y
 	enemy.scroll_y = scroll_for_slot

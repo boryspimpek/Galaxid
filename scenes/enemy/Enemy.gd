@@ -9,6 +9,7 @@ const SCALE_Y    = 720.0  / 200.0   # = 3.6
 @export var armor: int = 1
 @export var esize: int = 0
 @export var enemy_id: int = 0
+@export var event_type: int = 0
 
 # ---- Ruch (surowe jednostki Tyrian: px/klatkę @ 30 FPS) ----
 # velocity odpowiada exc/eyc z silnika Tyrian
@@ -97,7 +98,7 @@ func _ready():
 		visual.color = colors[enemy_id % colors.size()]
 	
 	if debug_label:
-		debug_label.text = str(enemy_id)
+		debug_label.text = "ID:%d\nET:%d" % [enemy_id, event_type]
 
 func _process(delta):
 	# Kolejność zgodna z JE_drawEnemy w Tyrianie:
