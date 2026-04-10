@@ -18,7 +18,7 @@ var back_move2: int = 2   # Tło 2 — Sky    (slot 0)
 var back_move3: int = 3   # Tło 3 — Top    (slot 50)
 
 # Referencje
-var background: ParallaxBackground
+var background: Node2D
 var enemies_data: Array = []
 var level_events: Array = []
 var current_event_index: int = 0

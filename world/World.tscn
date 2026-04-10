@@ -7,18 +7,22 @@
 
 [node name="World" type="Node2D" unique_id=1364436952]
 
+[node name="Background" type="Node2D" parent="." unique_id=197037970]
+script = ExtResource("3_background")
+
+[node name="BackgroundRect" type="TextureRect" parent="Background" unique_id=1284015493]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("4_background_texture")
+expand_mode = 1
+
+[node name="BackgroundRect2" type="TextureRect" parent="Background" unique_id=1659559419]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("4_background_texture")
+expand_mode = 1
+
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=942777578]
 script = ExtResource("5_enemy_spawner")
-
-[node name="Background" type="ParallaxBackground" parent="." unique_id=932312804]
-script = ExtResource("3_background")
-
-[node name="BackgroundLayer" type="ParallaxLayer" parent="Background" unique_id=942777577]
-motion_mirroring = Vector2(0, 1440)
-motion_scale = Vector2(1, 1)
-
-[node name="BackgroundSprite1" type="Sprite2D" parent="Background/BackgroundLayer" unique_id=1628658996]
-texture = ExtResource("4_background_texture")
-centered = false
