@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var events_file: String = "res://data/events.json"
+@export var events_file: String = "res://data/lvl1.json"
 @export var enemies_file: String = "res://data/enemies.json"
 
 @onready var enemy_scene = preload("res://scenes/enemy/Enemy.tscn")
@@ -60,8 +60,8 @@ func load_events_data():
 		var error = json.parse(file.get_as_text())
 		if error == OK:
 			var data = json.get_data()
-			if data.has("level_3") and data["level_3"].has("events"):
-				level_events = data["level_3"]["events"]
+			if data.has("level_1") and data["level_1"].has("events"):
+				level_events = data["level_1"]["events"]
 				level_events.sort_custom(func(a, b): return a["dist"] < b["dist"])
 				print("Załadowano ", level_events.size(), " eventów")
 		else:
