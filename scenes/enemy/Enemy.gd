@@ -96,6 +96,28 @@ func _ready():
 	]
 	if visual:
 		visual.color = colors[enemy_id % colors.size()]
+		
+		# Ustaw wymiary kwadratu na podstawie esize
+		# esize 0: 14x12px Tyrian -> 56x43.2px Godot
+		# esize 1: 24x28px Tyrian -> 96x100.8px Godot
+		var width: float
+		var height: float
+		if esize == 0:
+			width = 14.0 * SCALE_X
+			height = 12.0 * SCALE_Y
+		else:
+			width = 24.0 * SCALE_X
+			height = 28.0 * SCALE_Y
+		
+		# Utwórz prostokąt wyśrodkowany w (0,0)
+		var half_w = width / 2.0
+		var half_h = height / 2.0
+		visual.polygon = PackedVector2Array([
+			Vector2(-half_w, -half_h),
+			Vector2(half_w, -half_h),
+			Vector2(half_w, half_h),
+			Vector2(-half_w, half_h)
+		])
 	
 	if debug_label:
 		debug_label.text = "ID:%d\nET:%d" % [enemy_id, event_type]
