@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var events_file: String = "res://data/simple_events.json"
-@export var enemies_file: String = "res://data/simple_enemies.json"
+@export var events_file: String = "res://data/events.json"
+@export var enemies_file: String = "res://data/enemies.json"
 
 # Stałe z Tyrian
 const TYRIAN_FPS  = 15.0
