@@ -106,7 +106,7 @@ func spawn_enemy(event: Dictionary):
 	var scroll_for_slot = _scroll_for_slot(event.get("enemy_slot", 0))
 
 	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
-		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, event.get("event_type", 0))
+		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, event.get("event_type", 0), event.get("link_num", 0))
 	if enemy:
 		add_child(enemy)
 
@@ -130,9 +130,36 @@ func spawn_4x4_enemies(event: Dictionary):
 		var raw_velocity = _calc_velocity(enemy_template, event)
 
 		var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
-			fixed_move_y, scroll_for_slot, int(enemy_ids[i]), event_type)
+			fixed_move_y, scroll_for_slot, int(enemy_ids[i]), event_type, event.get("link_num", 0))
 		if enemy:
 			add_child(enemy)
+
+func enemy_global_accel(event: Dictionary):
+	"""Modyfikuje silnik wahadłowy (excc/eycc) grupy wrogów (event type 20)."""
+	var new_excc = event.get("new_excc", -99)
+	var new_eycc = event.get("new_eycc", -99)
+	var link_num = event.get("link_num", 0)
+
+	for child in get_children():
+		if not "enemy_id" in child:  # Check if it's an Enemy node
+			continue
+
+		# Filtruj po link_num (0 = wszyscy)
+		if link_num != 0 and child.link_num != link_num:
+			continue
+
+		# Zmień excc (pełny reset stanu wahadła)
+		if new_excc != -99:
+			child.excc = new_excc
+			child.exccw = abs(new_excc)
+			child.exccwmax = child.exccw
+			child.exccadd = 1 if new_excc > 0 else -1
+			if child.xrev == 0:
+				child.xrev = 100
+
+		# Zmień eycc (bez resetu stanu wahadła)
+		if new_eycc != -99:
+			child.eycc = new_eycc
 
 # Pomocnicze
 
@@ -161,7 +188,7 @@ func _scroll_for_slot(enemy_slot: int) -> int:
 
 func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 		raw_velocity: Vector2, fixed_move_y: int,
-		scroll_for_slot: int, enemy_id: int = 0, event_type: int = 0) -> Node2D:
+		scroll_for_slot: int, enemy_id: int = 0, event_type: int = 0, link_num: int = 0) -> Node2D:
 	var enemy = enemy_scene.instantiate()
 	enemy.name = "Enemy_%d" % enemy_id
 	enemy.global_position = spawn_position
@@ -169,6 +196,7 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 	enemy.esize = template.get("esize", 0)
 	enemy.enemy_id = enemy_id
 	enemy.event_type = event_type
+	enemy.link_num = link_num
 	enemy.velocity = raw_velocity
 	enemy.fixed_move_y = fixed_move_y
 	enemy.scroll_y = scroll_for_slot
