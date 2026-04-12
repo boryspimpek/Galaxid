@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var events_file: String = "res://data/lvl1.json"
+@export var events_file: String = "res://data/lvl17.json"
 @export var enemies_file: String = "res://data/enemies.json"
 
 @onready var enemy_scene = preload("res://scenes/enemy/Enemy.tscn")
@@ -11,7 +11,7 @@ const SCALE_X     = 1280.0 / 320.0   # = 4.0
 const SCALE_Y     = 720.0  / 200.0   # = 3.6
 
 # Aktualne prędkości scrollingu (z eventu type 2)
-# Wartości w jednostkach Tyrian: piksele/klatkę @ 30 FPS
+# Wartości w jednostkach Tyrian: piksele/klatkę np @ 30 FPS
 # Oryginalne wartości domyślne z Tyrian
 var back_move:  int = 1   # Tło 1 — Ground (slot 25, 75)
 var back_move2: int = 2   # Tło 2 — Sky    (slot 0)
@@ -25,7 +25,7 @@ var current_event_index: int = 0
 
 # Śledzenie pozycji levelu.
 # "dist" w eventach pochodzi z mapYPos, który w Tyrianie rośnie o back_move
-# (tło Ground/tło1) na każdą klatkę — NIE back_move2!
+# (tło Ground/tło1) na każdą klatkę — NIE back_move!
 var level_distance: float = 0.0
 
 func _ready():
@@ -34,7 +34,7 @@ func _ready():
 	load_events_data()
 
 func _process(delta):
-	# Symulacja mapYPos z Tyrian: rośnie o back_move (nie back_move2) na klatkę
+	# Symulacja mapYPos z Tyrian
 	level_distance += float(back_move) * TYRIAN_FPS * delta
 
 	process_events_for_distance(int(level_distance))
@@ -60,8 +60,8 @@ func load_events_data():
 		var error = json.parse(file.get_as_text())
 		if error == OK:
 			var data = json.get_data()
-			if data.has("level_1") and data["level_1"].has("events"):
-				level_events = data["level_1"]["events"]
+			if data.has("lvl_17") and data["lvl_17"].has("events"):
+				level_events = data["lvl_17"]["events"]
 				level_events.sort_custom(func(a, b): return a["dist"] < b["dist"])
 				print("Załadowano ", level_events.size(), " eventów")
 		else:
