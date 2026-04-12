@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://ckavqb25bdaul"]
+
+[ext_resource type="PackedScene" uid="uid://c3ik8aourheqx" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
+[ext_resource type="PackedScene" uid="uid://dr7gh8fwvyady" path="res://scenes/background/Background.tscn" id="2_background"]
+[ext_resource type="Script" uid="uid://m7pot1avds0x" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
+
+[node name="World" type="Node2D" unique_id=1364436952]
+script = ExtResource("3_level_manager")
+
+[node name="Background" parent="." instance=ExtResource("2_background")]
+
+[node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]

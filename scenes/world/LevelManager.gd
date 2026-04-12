@@ -25,7 +25,7 @@ var current_event_index: int = 0
 var level_distance: float = 0.0
 
 func _ready():
-	background = get_node_or_null("../Background")
+	background = get_node_or_null("Background")
 	load_enemies_data()
 	load_events_data()
 
@@ -80,6 +80,7 @@ func process_event(event: Dictionary):
 		2:                    set_scroll_speed(event)
 		6, 15, 17, 18:        spawn_enemy(event)
 		12:                   spawn_4x4_enemies(event)
+		20:                   enemy_global_accel(event)
 		_:
 			pass
 
@@ -107,7 +108,7 @@ func spawn_enemy(event: Dictionary):
 	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
 		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, event.get("event_type", 0))
 	if enemy:
-		get_parent().add_child(enemy)
+		add_child(enemy)
 
 func spawn_4x4_enemies(event: Dictionary):
 	var enemy_ids = event.get("enemy_ids", [])
@@ -131,7 +132,7 @@ func spawn_4x4_enemies(event: Dictionary):
 		var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
 			fixed_move_y, scroll_for_slot, int(enemy_ids[i]), event_type)
 		if enemy:
-			get_parent().add_child(enemy)
+			add_child(enemy)
 
 # Pomocnicze
 

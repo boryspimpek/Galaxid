@@ -102,6 +102,12 @@ func _process(delta):
 	# 2. velocity (eyc) — po ewentualnej aktualizacji silnika wahadłowego
 	# 3. scroll tła (tempBackMove)
 
+# --- NOWOŚĆ: Stałe przyspieszenie liniowe (xaccel/yaccel) ---
+	# W Tyrianie te wartości są stosowane co klatkę (15 FPS).
+	# Musimy je przemnożyć przez delta i TYRIAN_FPS, aby działały płynnie.
+	velocity.x += float(xaccel) * TYRIAN_FPS * delta
+	velocity.y += float(yaccel) * TYRIAN_FPS * delta
+
 	# --- 1. Silnik wahadłowy X ---
 	if excc != 0:
 		exccw -= 1
@@ -138,12 +144,3 @@ func _process(delta):
 		queue_free()
 	if position.y < BOUNDS_TOP  or position.y > BOUNDS_BOTTOM:
 		queue_free()
-
-func take_damage(damage: int):
-	armor -= damage
-	if armor <= 0:
-		explode()
-
-func explode():
-	# TODO: efekt eksplozji
-	queue_free()
