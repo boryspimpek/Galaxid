@@ -11,6 +11,7 @@ const SCALE_Y    = 720.0  / 200.0   # = 3.6
 @export var enemy_id: int = 0
 @export var event_type: int = 0
 @export var link_num: int = 0
+@export var enemy_slot: int = 0
 
 # ---- Ruch (surowe jednostki Tyrian: px/klatkę @ 30 FPS) ----
 # velocity odpowiada exc/eyc z silnika Tyrian

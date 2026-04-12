@@ -32,6 +32,8 @@ func _ready():
 func _process(delta):
 	level_distance += float(back_move) * TYRIAN_FPS * delta
 
+	print("Map position: ", int(level_distance), " | Event index: ", current_event_index, "/", level_events.size())
+
 	process_events_for_distance(int(level_distance))
 
 func load_enemies_data():
@@ -80,6 +82,7 @@ func process_event(event: Dictionary):
 		2:                    set_scroll_speed(event)
 		6, 15, 17, 18:        spawn_enemy(event)
 		12:                   spawn_4x4_enemies(event)
+		19:                   enemy_global_move(event)
 		20:                   enemy_global_accel(event)
 		_:
 			pass
@@ -106,7 +109,7 @@ func spawn_enemy(event: Dictionary):
 	var scroll_for_slot = _scroll_for_slot(event.get("enemy_slot", 0))
 
 	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
-		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, event.get("event_type", 0), event.get("link_num", 0))
+		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, event.get("event_type", 0), event.get("link_num", 0), event.get("enemy_slot", 0))
 	if enemy:
 		add_child(enemy)
 
@@ -130,7 +133,7 @@ func spawn_4x4_enemies(event: Dictionary):
 		var raw_velocity = _calc_velocity(enemy_template, event)
 
 		var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
-			fixed_move_y, scroll_for_slot, int(enemy_ids[i]), event_type, event.get("link_num", 0))
+			fixed_move_y, scroll_for_slot, int(enemy_ids[i]), event_type, event.get("link_num", 0), enemy_slot)
 		if enemy:
 			add_child(enemy)
 
@@ -161,6 +164,52 @@ func enemy_global_accel(event: Dictionary):
 		if new_eycc != -99:
 			child.eycc = new_eycc
 
+
+func enemy_global_move(event: Dictionary):
+	"""Modyfikuje prędkość ruchu wrogów (event type 19)."""
+	var new_exc = event.get("new_exc", -99)
+	var new_eyc = event.get("new_eyc", -99)
+	var new_fixed_move_y = event.get("new_fixed_move_y", 0)
+	var scope_selector = event.get("scope_selector", 0)
+	var link_num = event.get("link_num", 0)
+
+	for child in get_children():
+		if not "enemy_id" in child:  # Check if it's an Enemy node
+			continue
+
+		# Sprawdzenie zakresu wrogów (scope_selector)
+		var in_range = false
+		match scope_selector:
+			0:   in_range = true  # wszyscy
+			1:   in_range = (child.enemy_slot >= 25 && child.enemy_slot < 50)  # Ground
+			2:   in_range = (child.enemy_slot < 25)  # Sky
+			3:   in_range = (child.enemy_slot >= 50 && child.enemy_slot < 75)  # Top
+			99:  in_range = true  # wszyscy
+			_:   in_range = true  # domyślnie wszyscy
+
+		if not in_range:
+			continue
+
+		# Filtrowanie po link_num (tylko gdy scope_selector == 0 lub >= 80)
+		if scope_selector == 0 or scope_selector >= 80:
+			if link_num != 0 and child.link_num != link_num:
+				continue
+
+		# Zmień exc (prędkość X)
+		if new_exc != -99:
+			child.velocity.x = float(new_exc)
+
+		# Zmień eyc (prędkość Y)
+		if new_eyc != -99:
+			child.velocity.y = float(new_eyc)
+
+		# Zmień fixed_move_y
+		if new_fixed_move_y == -99:
+			child.fixed_move_y = 0  # reset do 0
+		elif new_fixed_move_y != 0:
+			child.fixed_move_y = new_fixed_move_y  # ustaw nową wartość
+		# wartość 0 pozostawia fixed_movey bez zmian
+
 # Pomocnicze
 
 func _calc_spawn_pos(event: Dictionary) -> Vector2:
@@ -188,7 +237,7 @@ func _scroll_for_slot(enemy_slot: int) -> int:
 
 func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 		raw_velocity: Vector2, fixed_move_y: int,
-		scroll_for_slot: int, enemy_id: int = 0, event_type: int = 0, link_num: int = 0) -> Node2D:
+		scroll_for_slot: int, enemy_id: int = 0, event_type: int = 0, link_num: int = 0, enemy_slot: int = 0) -> Node2D:
 	var enemy = enemy_scene.instantiate()
 	enemy.name = "Enemy_%d" % enemy_id
 	enemy.global_position = spawn_position
@@ -197,6 +246,7 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 	enemy.enemy_id = enemy_id
 	enemy.event_type = event_type
 	enemy.link_num = link_num
+	enemy.enemy_slot = enemy_slot
 	enemy.velocity = raw_velocity
 	enemy.fixed_move_y = fixed_move_y
 	enemy.scroll_y = scroll_for_slot
