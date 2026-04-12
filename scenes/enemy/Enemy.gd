@@ -35,15 +35,6 @@ var eyccadd: int = 1
 @export var xaccel: int = 0
 @export var yaccel: int = 0
 
-# ---- Animacja ----
-@export var animate_mode: int = 0
-@export var ani: int = 1
-
-var enemycycle: int = 0
-var animin: int = 0
-var aniactive: int = 0
-var animax: int = 0
-var aniwhenfire: int = 0
 
 # ---- Granice usuwania (px Godot) ----
 const BOUNDS_LEFT   = -1400
@@ -72,23 +63,6 @@ func _ready():
 		if yrev == 0:
 			yrev = 100
 
-	# Inicjalizacja animacji
-	match animate_mode:
-		0:  # Brak animacji
-			aniactive  = 0
-			animin     = 0
-			enemycycle = 1
-		1:  # Zawsze aktywna
-			aniactive  = 1
-			animin     = 0
-			enemycycle = 0
-		2:  # Tylko przy strzale
-			aniactive  = 2
-			animin     = 0
-			animax     = ani
-			enemycycle = 1
-			aniwhenfire = 2
-	
 	# Ustaw kolor na podstawie enemy_id
 	var colors = [
 		Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW,
@@ -164,17 +138,6 @@ func _process(delta):
 		queue_free()
 	if position.y < BOUNDS_TOP  or position.y > BOUNDS_BOTTOM:
 		queue_free()
-
-	# --- 5. Animacja ---
-	if aniactive > 0:
-		enemycycle += 1
-		if enemycycle > ani:
-			enemycycle = animin
-		update_animation()
-
-func update_animation():
-	# TODO: aktualizacja klatki na podstawie enemycycle
-	pass
 
 func take_damage(damage: int):
 	armor -= damage
