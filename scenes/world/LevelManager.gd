@@ -16,6 +16,15 @@ var back_move:  int = 1   # Ground (slot 25, 75)
 var back_move2: int = 2   # Sky (slot 0)
 var back_move3: int = 3   # Top (slot 50)
 
+# Flagi tła dla eventów typu 7 (Top Enemy)
+var background3x1: bool = false
+var background3x1b: bool = false
+
+# Pozycje mapy z nagłówka poziomu
+var map_x: int = 1
+var map_x2: int = 1
+var map_x3: int = 1
+
 # Referencje
 var background: Node2D
 var enemies_data: Array = []
@@ -70,9 +79,18 @@ func load_events_data():
 					level_events = data[level_name]["events"]
 					level_events.sort_custom(func(a, b): return a["dist"] < b["dist"])
 					print("Załadowano ", level_events.size(), " eventów")
-				if data[level_name].has("header") and data[level_name]["header"].has("level_enemies"):
-					level_enemies = data[level_name]["header"]["level_enemies"]
-					print("Załadowano ", level_enemies.size(), " wrogów do random spawn")
+				if data[level_name].has("header"):
+					var header = data[level_name]["header"]
+					if header.has("level_enemies"):
+						level_enemies = header["level_enemies"]
+						print("Załadowano ", level_enemies.size(), " wrogów do random spawn")
+					if header.has("map_x"):
+						map_x = header["map_x"]
+					if header.has("map_x2"):
+						map_x2 = header["map_x2"]
+					if header.has("map_x3"):
+						map_x3 = header["map_x3"]
+					print("Pozycje mapy: map_x=", map_x, ", map_x2=", map_x2, ", map_x3=", map_x3)
 		else:
 			push_error("Błąd parsowania JSON eventów: " + str(error))
 		file.close()
@@ -146,6 +164,7 @@ func process_event(event: Dictionary):
 	match event_type:
 		2:                    set_scroll_speed(event)
 		6, 15, 17, 18:        spawn_enemy(event)
+		7:                    spawn_top_enemy(event)
 		12:                   spawn_4x4_enemies(event)
 		13:                   disable_random_spawn(event)
 		14:                   enable_random_spawn(event)
@@ -178,6 +197,54 @@ func spawn_enemy(event: Dictionary):
 
 	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
 		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, event.get("event_type", 0), event.get("link_num", 0), event.get("enemy_slot", 0))
+	if enemy:
+		add_child(enemy)
+
+func spawn_top_enemy(event: Dictionary):
+	"""Spawns enemy in the Top slot (enemyOffset=50) - event type 7."""
+	var enemy_id_raw = event.get("enemy_id", 0)
+	var enemy_template = _find_template(enemy_id_raw)
+	if enemy_template == null:
+		print("ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
+		return
+
+	var enemy_id = int(enemy_template.get("index", 0))
+	var enemy_slot = 50  # Top slot
+	var scroll_for_slot = _scroll_for_slot(enemy_slot)
+
+	# Oblicz pozycję X zgodnie z dokumentacją
+	var raw_x = event.get("raw_x", 0)
+	var spawn_x = raw_x
+
+	if background3x1:
+		spawn_x = raw_x - (map_x - 1) * 24 - 12
+	else:
+		spawn_x = raw_x - map_x3 * 24 - 24 * 2 + 6
+
+	if background3x1b:
+		spawn_x -= 6
+
+	# Oblicz pozycję Y zgodnie z dokumentacją
+	var y_offset = event.get("y_offset", 0)
+	var spawn_y = -28 - back_move3
+
+	if background3x1b:
+		spawn_y += 4  # korekta do -24
+
+	spawn_y += y_offset
+
+	# Konwertuj na współrzędne ekranu
+	var spawn_pos = Vector2(float(spawn_x) * SCALE_X, float(spawn_y) * SCALE_Y)
+
+	# Oblicz prędkość
+	var xmove = int(enemy_template.get("xmove", 0))
+	var ymove = int(enemy_template.get("ymove", 0))
+	var y_vel = event.get("y_vel", 0)
+	var raw_velocity = Vector2(float(xmove), float(ymove + y_vel))
+
+	# Utwórz wroga
+	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
+		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, 7, event.get("link_num", 0), enemy_slot)
 	if enemy:
 		add_child(enemy)
 
