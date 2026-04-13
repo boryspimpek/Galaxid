@@ -162,15 +162,20 @@ func _fire_projectile(direction_index: int):
 	var by = pattern.get("by", 0)
 	var sg = pattern.get("sg", 0)
 
-	# Oblicz prędkość w zależności od kierunku
+	print("DEBUG: direction_index=", direction_index, " sx=", sx, " sy=", sy)
+
+	# Oblicz prędkość w zależności od kierunku (zgodnie z kodem Tyrian)
+	# direction_index 0 = down, 1 = right, 2 = left
 	var projectile_velocity = Vector2(float(sx), float(sy))
 	match direction_index:
 		0:  # down
 			projectile_velocity = Vector2(float(sx), float(sy))
-		1:  # right
-			projectile_velocity = Vector2(float(abs(sx)), float(sy))
-		2:  # left
-			projectile_velocity = Vector2(float(-abs(sx)), float(sy))
+		1:  # right: swap sx/sy, negate sy
+			projectile_velocity = Vector2(float(sy), float(-sx))
+		2:  # left: swap sx/sy, negate both
+			projectile_velocity = Vector2(float(-sy), float(-sx))
+
+	print("DEBUG: final velocity=", projectile_velocity)
 
 	# Utwórz pocisk
 	var projectile = projectile_scene.instantiate()
