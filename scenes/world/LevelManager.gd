@@ -165,6 +165,7 @@ func process_event(event: Dictionary):
 		2:                    set_scroll_speed(event)
 		6, 15, 17, 18:        spawn_enemy(event)
 		7:                    spawn_top_enemy(event)
+		10:                   spawn_ground_enemy_2(event)
 		12:                   spawn_4x4_enemies(event)
 		13:                   disable_random_spawn(event)
 		14:                   enable_random_spawn(event)
@@ -245,6 +246,41 @@ func spawn_top_enemy(event: Dictionary):
 	# Utwórz wroga
 	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
 		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, 7, event.get("link_num", 0), enemy_slot)
+	if enemy:
+		add_child(enemy)
+
+func spawn_ground_enemy_2(event: Dictionary):
+	"""Spawns enemy in the Ground2 slot (enemyOffset=75) - event type 10."""
+	var enemy_id_raw = event.get("enemy_id", 0)
+	var enemy_template = _find_template(enemy_id_raw)
+	if enemy_template == null:
+		print("ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
+		return
+
+	var enemy_id = int(enemy_template.get("index", 0))
+	var enemy_slot = 75  # Ground2 slot
+	var scroll_for_slot = _scroll_for_slot(enemy_slot)
+
+	# Oblicz pozycję X zgodnie z dokumentacją (identyczny wzór jak Event 6)
+	var raw_x = event.get("raw_x", 0)
+	var spawn_x = raw_x - (map_x - 1) * 24 - 12
+
+	# Oblicz pozycję Y zgodnie z dokumentacją
+	var y_offset = event.get("y_offset", 0)
+	var spawn_y = -28 - back_move + y_offset
+
+	# Konwertuj na współrzędne ekranu
+	var spawn_pos = Vector2(float(spawn_x) * SCALE_X, float(spawn_y) * SCALE_Y)
+
+	# Oblicz prędkość
+	var xmove = int(enemy_template.get("xmove", 0))
+	var ymove = int(enemy_template.get("ymove", 0))
+	var y_vel = event.get("y_vel", 0)
+	var raw_velocity = Vector2(float(xmove), float(ymove + y_vel))
+
+	# Utwórz wroga
+	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
+		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, 10, event.get("link_num", 0), enemy_slot)
 	if enemy:
 		add_child(enemy)
 
