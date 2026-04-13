@@ -46,6 +46,7 @@ var projectile_scene: PackedScene  # Scena pocisku wroga
 # Runtime zmienne strzelania
 var eshotwait: Array = [0, 0, 0]  # Licznik cooldown dla każdego kierunku
 var eshotwaitmax: Array = [0, 0, 0]  # Maksymalny cooldown z freq
+var eshotmultipos: Array = [1, 1, 1]  # Pozycja w patternach dla każdego kierunku (1-indexed)
 
 
 # ---- Granice usuwania (px Godot) ----
@@ -154,43 +155,57 @@ func _fire_projectile(direction_index: int):
 	if patterns.is_empty():
 		return
 
-	var pattern = patterns[0]  # Użyj pierwszego patternu
-	var attack = pattern.get("attack", 1)
-	var sx = pattern.get("sx", 0)
-	var sy = pattern.get("sy", 0)
-	var bx = pattern.get("bx", 0)
-	var by = pattern.get("by", 0)
-	var sg = pattern.get("sg", 0)
+	var weapon_multi = weapon_data.get("multi", 1)
+	var weapon_max = weapon_data.get("max", 1)
 
-	print("DEBUG: direction_index=", direction_index, " sx=", sx, " sy=", sy)
+	# Strzelaj multi pocisków
+	for temp_count in range(weapon_multi):
+		# Cykl przez patterny
+		eshotmultipos[direction_index] += 1
+		if eshotmultipos[direction_index] > weapon_max:
+			eshotmultipos[direction_index] = 1
+		
+		var temp_pos = eshotmultipos[direction_index] - 1  # 0-indexed
+		if temp_pos >= patterns.size():
+			temp_pos = 0  # Fallback jeśli patterny są za małe
+		
+		var pattern = patterns[temp_pos]
+		var attack = pattern.get("attack", 1)
+		var sx = pattern.get("sx", 0)
+		var sy = pattern.get("sy", 0)
+		var bx = pattern.get("bx", 0)
+		var by = pattern.get("by", 0)
+		var sg = pattern.get("sg", 0)
 
-	# Oblicz prędkość w zależności od kierunku (zgodnie z kodem Tyrian)
-	# direction_index 0 = down, 1 = right, 2 = left
-	var projectile_velocity = Vector2(float(sx), float(sy))
-	match direction_index:
-		0:  # down
-			projectile_velocity = Vector2(float(sx), float(sy))
-		1:  # right: swap sx/sy, negate sy
-			projectile_velocity = Vector2(float(sy), float(-sx))
-		2:  # left: swap sx/sy, negate both
-			projectile_velocity = Vector2(float(-sy), float(-sx))
+		print("DEBUG: direction_index=", direction_index, " temp_pos=", temp_pos, " sx=", sx, " sy=", sy)
 
-	print("DEBUG: final velocity=", projectile_velocity)
+		# Oblicz prędkość w zależności od kierunku (zgodnie z kodem Tyrian)
+		# direction_index 0 = down, 1 = right, 2 = left
+		var projectile_velocity = Vector2(float(sx), float(sy))
+		match direction_index:
+			0:  # down
+				projectile_velocity = Vector2(float(sx), float(sy))
+			1:  # right: swap sx/sy, negate sy
+				projectile_velocity = Vector2(float(sy), float(-sx))
+			2:  # left: swap sx/sy, negate both
+				projectile_velocity = Vector2(float(-sy), float(-sx))
 
-	# Utwórz pocisk
-	var projectile = projectile_scene.instantiate()
-	projectile.velocity = projectile_velocity
-	projectile.damage = attack
-	projectile.sprite_id = sg
+		print("DEBUG: final velocity=", projectile_velocity)
 
-	# Oblicz pozycję startową z offsetem bx/by
-	var offset_x = float(bx) * SCALE_X
-	var offset_y = float(by) * SCALE_Y
-	projectile.global_position = global_position + Vector2(offset_x, offset_y)
+		# Utwórz pocisk
+		var projectile = projectile_scene.instantiate()
+		projectile.velocity = projectile_velocity
+		projectile.damage = attack
+		projectile.sprite_id = sg
 
-	# Dodaj do sceny (jako dziecko LevelManager, nie wroga)
-	get_parent().add_child(projectile)
-	print("Pocisk utworzony na pozycji: ", projectile.global_position, " velocity: ", projectile.velocity)
+		# Oblicz pozycję startową z offsetem bx/by
+		var offset_x = float(bx) * SCALE_X
+		var offset_y = float(by) * SCALE_Y
+		projectile.global_position = global_position + Vector2(offset_x, offset_y)
+
+		# Dodaj do sceny (jako dziecko LevelManager, nie wroga)
+		get_parent().add_child(projectile)
+		print("Pocisk utworzony na pozycji: ", projectile.global_position, " velocity: ", projectile.velocity)
 
 func _process(delta):
 	# Kolejność zgodna z JE_drawEnemy w Tyrianie:
