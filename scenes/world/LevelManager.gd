@@ -3,8 +3,10 @@ extends Node2D
 @export var level_name: String = "lvl17"
 @export var events_file: String = "res://data/%s.json" % level_name
 @export var enemies_file: String = "res://data/enemies.json"
+@export var weapon_file: String = "res://data/weapon.json"
 
 @onready var enemy_scene = preload("res://scenes/enemy/Enemy.tscn")
+@onready var enemy_projectile_scene = preload("res://scenes/enemy_projectile/EnemyProjectile.tscn")
 
 # Stałe
 const TYRIAN_FPS  = 15.0
@@ -28,6 +30,7 @@ var map_x3: int = 1
 # Referencje
 var background: Node2D
 var enemies_data: Array = []
+var weapons_data: Array = []
 var level_events: Array = []
 var current_event_index: int = 0
 
@@ -43,12 +46,13 @@ var level_distance: float = 0.0
 func _ready():
 	background = get_node_or_null("Background")
 	load_enemies_data()
+	load_weapons_data()
 	load_events_data()
 
 func _process(delta):
 	level_distance += float(back_move) * TYRIAN_FPS * delta
 
-	print("Map position: ", int(level_distance), " | Event index: ", current_event_index, "/", level_events.size())
+	# print("Map position: ", int(level_distance), " | Event index: ", current_event_index, "/", level_events.size())
 
 	process_events_for_distance(int(level_distance))
 	process_random_spawn()
@@ -66,6 +70,24 @@ func load_enemies_data():
 		file.close()
 	else:
 		push_error("Nie można otworzyć pliku: " + enemies_file)
+
+func load_weapons_data():
+	var file = FileAccess.open(weapon_file, FileAccess.READ)
+	if file:
+		var json = JSON.new()
+		var error = json.parse(file.get_as_text())
+		if error == OK:
+			var data = json.get_data()
+			if data.has("TyrianHDT"):
+				weapons_data = data["TyrianHDT"]["weapon"]
+				print("Załadowano ", weapons_data.size(), " broni")
+			else:
+				push_error("Brak klucza 'TyrianHDT' w weapon.json")
+		else:
+			push_error("Błąd parsowania JSON broni: " + str(error))
+		file.close()
+	else:
+		push_error("Nie można otworzyć pliku: " + weapon_file)
 
 func load_events_data():
 	var file = FileAccess.open(events_file, FileAccess.READ)
@@ -90,7 +112,7 @@ func load_events_data():
 						map_x2 = header["map_x2"]
 					if header.has("map_x3"):
 						map_x3 = header["map_x3"]
-					print("Pozycje mapy: map_x=", map_x, ", map_x2=", map_x2, ", map_x3=", map_x3)
+					# print("Pozycje mapy: map_x=", map_x, ", map_x2=", map_x2, ", map_x3=", map_x3)
 		else:
 			push_error("Błąd parsowania JSON eventów: " + str(error))
 		file.close()
@@ -308,12 +330,12 @@ func spawn_4x4_enemies(event: Dictionary):
 		if enemy:
 			add_child(enemy)
 
-func disable_random_spawn(event: Dictionary):
+func disable_random_spawn(_event: Dictionary):
 	"""Wyłącza losowy spawn wrogów (event type 13)."""
 	enemies_active = false
 	print("Random spawn wyłączony")
 
-func enable_random_spawn(event: Dictionary):
+func enable_random_spawn(_event: Dictionary):
 	"""Włącza losowy spawn wrogów (event type 14)."""
 	enemies_active = true
 	print("Random spawn włączony")
@@ -459,4 +481,8 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 	enemy.yrev = template.get("yrev", 0)
 	enemy.xaccel = template.get("xaccel", 0)
 	enemy.yaccel = template.get("yaccel", 0)
+	enemy.tur = template.get("tur", [0, 0, 0])
+	enemy.freq = template.get("freq", [0, 0, 0])
+	enemy.weapons_data = weapons_data
+	enemy.projectile_scene = enemy_projectile_scene
 	return enemy

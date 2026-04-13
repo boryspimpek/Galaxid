@@ -37,6 +37,16 @@ var eyccadd: int = 1
 @export var xaccel: int = 0
 @export var yaccel: int = 0
 
+# ---- System strzelania ----
+@export var tur: Array = [0, 0, 0]  # ID broni [down, right, left]
+@export var freq: Array = [0, 0, 0]  # Częstotliwość strzelania [down, right, left]
+var weapons_data: Array = []  # Dane broni z LevelManager
+var projectile_scene: PackedScene  # Scena pocisku wroga
+
+# Runtime zmienne strzelania
+var eshotwait: Array = [0, 0, 0]  # Licznik cooldown dla każdego kierunku
+var eshotwaitmax: Array = [0, 0, 0]  # Maksymalny cooldown z freq
+
 
 # ---- Granice usuwania (px Godot) ----
 const BOUNDS_LEFT   = -1400
@@ -64,6 +74,17 @@ func _ready():
 		eyccadd  = 1 if eycc > 0 else -1
 		if yrev == 0:
 			yrev = 100
+
+	# Inicjalizacja systemu strzelania
+	for i in range(3):
+		var weapon_id = tur[i]
+		if weapon_id == 252:
+			eshotwait[i] = 1
+		elif weapon_id != 0:
+			eshotwait[i] = 20
+		else:
+			eshotwait[i] = 255
+		eshotwaitmax[i] = freq[i]
 
 	# Ustaw kolor na podstawie enemy_id
 	var colors = [
@@ -98,13 +119,81 @@ func _ready():
 	if debug_label:
 		debug_label.text = "ID:%d\nET:%d" % [enemy_id, event_type]
 
+func _process_shooting(_delta):
+	# Przetwarzaj każdy kierunek strzelania
+	for i in range(3):
+		if tur[i] == 0 or freq[i] == 0:
+			continue  # Brak broni w tym kierunku
+
+		eshotwait[i] -= 1
+		if eshotwait[i] <= 0:
+			_fire_projectile(i)
+			eshotwait[i] = eshotwaitmax[i]
+
+func _fire_projectile(direction_index: int):
+	if not projectile_scene or weapons_data.is_empty():
+		print("ERROR: projectile_scene lub weapons_data puste")
+		return
+
+	var weapon_id = int(tur[direction_index])
+	var weapon_index_str = str(weapon_id).pad_zeros(4)
+	print("Strzał! weapon_id=", weapon_id, " direction=", direction_index)
+	
+	# Znajdź broń w weapons_data po indeksie
+	var weapon_data = null
+	for weapon in weapons_data:
+		if weapon.get("index") == weapon_index_str:
+			weapon_data = weapon
+			break
+	
+	if not weapon_data:
+		print("ERROR: Nie znaleziono broni o ID=", weapon_id)
+		return
+
+	var patterns = weapon_data.get("patterns", [])
+	if patterns.is_empty():
+		return
+
+	var pattern = patterns[0]  # Użyj pierwszego patternu
+	var attack = pattern.get("attack", 1)
+	var sx = pattern.get("sx", 0)
+	var sy = pattern.get("sy", 0)
+	var bx = pattern.get("bx", 0)
+	var by = pattern.get("by", 0)
+	var sg = pattern.get("sg", 0)
+
+	# Oblicz prędkość w zależności od kierunku
+	var projectile_velocity = Vector2(float(sx), float(sy))
+	match direction_index:
+		0:  # down
+			projectile_velocity = Vector2(float(sx), float(sy))
+		1:  # right
+			projectile_velocity = Vector2(float(abs(sx)), float(sy))
+		2:  # left
+			projectile_velocity = Vector2(float(-abs(sx)), float(sy))
+
+	# Utwórz pocisk
+	var projectile = projectile_scene.instantiate()
+	projectile.velocity = projectile_velocity
+	projectile.damage = attack
+	projectile.sprite_id = sg
+
+	# Oblicz pozycję startową z offsetem bx/by
+	var offset_x = float(bx) * SCALE_X
+	var offset_y = float(by) * SCALE_Y
+	projectile.global_position = global_position + Vector2(offset_x, offset_y)
+
+	# Dodaj do sceny (jako dziecko LevelManager, nie wroga)
+	get_parent().add_child(projectile)
+	print("Pocisk utworzony na pozycji: ", projectile.global_position, " velocity: ", projectile.velocity)
+
 func _process(delta):
 	# Kolejność zgodna z JE_drawEnemy w Tyrianie:
 	# 1. fixed_move_y
 	# 2. velocity (eyc) — po ewentualnej aktualizacji silnika wahadłowego
 	# 3. scroll tła (tempBackMove)
 
-# --- NOWOŚĆ: Stałe przyspieszenie liniowe (xaccel/yaccel) ---
+	# --- NOWOŚĆ: Stałe przyspieszenie liniowe (xaccel/yaccel) ---
 	# W Tyrianie te wartości są stosowane co klatkę (15 FPS).
 	# Musimy je przemnożyć przez delta i TYRIAN_FPS, aby działały płynnie.
 	velocity.x += float(xaccel) * TYRIAN_FPS * delta
@@ -141,7 +230,10 @@ func _process(delta):
 	position.x += move_x * delta
 	position.y += move_y * delta
 
-	# --- 4. Usuń poza ekranem ---
+	# --- 4. System strzelania ---
+	_process_shooting(delta)
+
+	# --- 5. Usuń poza ekranem ---
 	if position.x < BOUNDS_LEFT or position.x > BOUNDS_RIGHT:
 		queue_free()
 	if position.y < BOUNDS_TOP  or position.y > BOUNDS_BOTTOM:
