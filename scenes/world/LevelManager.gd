@@ -1,6 +1,7 @@
 extends Node2D
 
-@export var events_file: String = "res://data/lvl17.json"
+@export var level_name: String = "lvl17"
+@export var events_file: String = "res://data/%s.json" % level_name
 @export var enemies_file: String = "res://data/enemies.json"
 
 @onready var enemy_scene = preload("res://scenes/enemy/Enemy.tscn")
@@ -21,6 +22,12 @@ var enemies_data: Array = []
 var level_events: Array = []
 var current_event_index: int = 0
 
+# Random spawn system
+var enemies_active: bool = false
+var level_enemy_frequency: int = 96
+var level_enemies: Array = []
+var random_spawn_frame_counter: int = 0
+
 # Pozycja levelu (symulacja mapYPos z Tyrian)
 var level_distance: float = 0.0
 
@@ -35,6 +42,7 @@ func _process(delta):
 	print("Map position: ", int(level_distance), " | Event index: ", current_event_index, "/", level_events.size())
 
 	process_events_for_distance(int(level_distance))
+	process_random_spawn()
 
 func load_enemies_data():
 	var file = FileAccess.open(enemies_file, FileAccess.READ)
@@ -57,10 +65,14 @@ func load_events_data():
 		var error = json.parse(file.get_as_text())
 		if error == OK:
 			var data = json.get_data()
-			if data.has("lvl_17") and data["lvl_17"].has("events"):
-				level_events = data["lvl_17"]["events"]
-				level_events.sort_custom(func(a, b): return a["dist"] < b["dist"])
-				print("Załadowano ", level_events.size(), " eventów")
+			if data.has(level_name):
+				if data[level_name].has("events"):
+					level_events = data[level_name]["events"]
+					level_events.sort_custom(func(a, b): return a["dist"] < b["dist"])
+					print("Załadowano ", level_events.size(), " eventów")
+				if data[level_name].has("header") and data[level_name]["header"].has("level_enemies"):
+					level_enemies = data[level_name]["header"]["level_enemies"]
+					print("Załadowano ", level_enemies.size(), " wrogów do random spawn")
 		else:
 			push_error("Błąd parsowania JSON eventów: " + str(error))
 		file.close()
@@ -75,6 +87,59 @@ func process_events_for_distance(dist: int):
 		process_event(event)
 		current_event_index += 1
 
+func process_random_spawn():
+	if not enemies_active or level_enemies.is_empty():
+		return
+
+	# Kompensacja FPS: oryginał 15 FPS, obecnie 60 FPS = stosunek 4
+	# Losuj tylko co 4 klatkę
+	var fps_ratio = int(Engine.get_frames_per_second() / TYRIAN_FPS)
+	random_spawn_frame_counter += 1
+	if random_spawn_frame_counter < fps_ratio:
+		return
+	random_spawn_frame_counter = 0
+
+	# Sprawdź warunek losowania: randi() % 100 > level_enemy_frequency
+	if randi() % 100 > level_enemy_frequency:
+		# Wybierz losowego wroga z tablicy level_enemies
+		var enemy_id = level_enemies[randi() % level_enemies.size()]
+		var enemy_template = _find_template(enemy_id)
+
+		if enemy_template == null:
+			print("ERROR: Random spawn - nie znaleziono wroga o ID=", enemy_id)
+			return
+
+		# Oblicz pozycję startową z danych wroga
+		var startx = int(enemy_template.get("startx", 0))
+		var startxc = int(enemy_template.get("startxc", 0))
+		var starty = int(enemy_template.get("starty", 0))
+
+		# Losowa pozycja X z rozrzutem jeśli startxc != 0
+		var spawn_x = startx
+		if startxc != 0:
+			spawn_x = startx + (randi() % (startxc * 2)) - startxc + 1
+
+		var spawn_y = starty
+
+		# Konwertuj na współrzędne ekranu
+		var spawn_pos = Vector2(float(spawn_x) * SCALE_X, float(spawn_y) * SCALE_Y)
+
+		# Użyj slotu Ground (25)
+		var enemy_slot = 25
+		var scroll_for_slot = _scroll_for_slot(enemy_slot)
+
+		# Oblicz prędkość z danych wroga
+		var xmove = int(enemy_template.get("xmove", 0))
+		var ymove = int(enemy_template.get("ymove", 0))
+		var raw_velocity = Vector2(float(xmove), float(ymove))
+
+		# Utwórz wroga
+		var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
+			0, scroll_for_slot, enemy_id, 0, 0, enemy_slot)
+		if enemy:
+			add_child(enemy)
+			print("Random spawn: wróg ID=", enemy_id, " na pozycji ", spawn_pos)
+
 func process_event(event: Dictionary):
 	var event_type = int(event["event_type"])
 
@@ -82,8 +147,11 @@ func process_event(event: Dictionary):
 		2:                    set_scroll_speed(event)
 		6, 15, 17, 18:        spawn_enemy(event)
 		12:                   spawn_4x4_enemies(event)
+		13:                   disable_random_spawn(event)
+		14:                   enable_random_spawn(event)
 		19:                   enemy_global_move(event)
 		20:                   enemy_global_accel(event)
+		27:                   enemy_global_accelrev(event)
 		_:
 			pass
 
@@ -137,6 +205,16 @@ func spawn_4x4_enemies(event: Dictionary):
 		if enemy:
 			add_child(enemy)
 
+func disable_random_spawn(event: Dictionary):
+	"""Wyłącza losowy spawn wrogów (event type 13)."""
+	enemies_active = false
+	print("Random spawn wyłączony")
+
+func enable_random_spawn(event: Dictionary):
+	"""Włącza losowy spawn wrogów (event type 14)."""
+	enemies_active = true
+	print("Random spawn włączony")
+
 func enemy_global_accel(event: Dictionary):
 	"""Modyfikuje silnik wahadłowy (excc/eycc) grupy wrogów (event type 20)."""
 	var new_excc = event.get("new_excc", -99)
@@ -163,6 +241,28 @@ func enemy_global_accel(event: Dictionary):
 		# Zmień eycc (bez resetu stanu wahadła)
 		if new_eycc != -99:
 			child.eycc = new_eycc
+
+func enemy_global_accelrev(event: Dictionary):
+	"""Zmienia limity prędkości wahadła (exrev/eyrev) grupy wrogów (event type 27)."""
+	var new_exrev = event.get("new_exrev", -99)
+	var new_eyrev = event.get("new_eyrev", -99)
+	var link_num = event.get("link_num", 0)
+
+	for child in get_children():
+		if not "enemy_id" in child:  # Check if it's an Enemy node
+			continue
+
+		# Filtruj po link_num (0 = wszyscy)
+		if link_num != 0 and child.link_num != link_num:
+			continue
+
+		# Zmień exrev (limit prędkości X)
+		if new_exrev != -99:
+			child.xrev = new_exrev
+
+		# Zmień eyrev (limit prędkości Y)
+		if new_eyrev != -99:
+			child.yrev = new_eyrev
 
 
 func enemy_global_move(event: Dictionary):
