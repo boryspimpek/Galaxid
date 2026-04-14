@@ -33,6 +33,14 @@ func reload_weapon_config():
 		weapon_system.load_weapon_config()
 		print("PlayerConfigUI: Przeładowano konfigurację broni")
 
+func reload_ship_data():
+	# Znajdź gracza w scenie i przeładuj dane statku
+	var player = get_tree().current_scene.find_child("Player", true, false)
+	if player:
+		player.load_ship_data()
+		player.apply_ship_stats()
+		print("PlayerConfigUI: Przeładowano dane statku")
+
 func load_values_from_setup():
 	ship_id_spin.value = PlayerSetup.ship_id
 	front_weapon_index_spin.value = PlayerSetup.front_weapon_index
@@ -46,6 +54,7 @@ func _on_ship_id_changed(value: float):
 	PlayerSetup.ship_id = int(value)
 	print("PlayerConfigUI: Zmieniono ship_id = ", int(value))
 	ship_id_spin.release_focus()
+	reload_ship_data()
 
 func _on_front_weapon_index_changed(value: float):
 	PlayerSetup.front_weapon_index = int(value)
