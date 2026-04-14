@@ -142,13 +142,12 @@ func _fire_projectile(direction_index: int):
 		return
 
 	var weapon_id = int(tur[direction_index])
-	var weapon_index_str = str(weapon_id).pad_zeros(4)
 	# print("Strzał! weapon_id=", weapon_id, " direction=", direction_index)
 
 	# Znajdź broń w weapons_data po indeksie
 	var weapon_data = null
 	for weapon in weapons_data:
-		if weapon.get("index") == weapon_index_str:
+		if weapon.get("index") == weapon_id:
 			weapon_data = weapon
 			break
 

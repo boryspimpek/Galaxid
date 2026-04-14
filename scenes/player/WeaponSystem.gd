@@ -51,13 +51,12 @@ func load_weapon_config():
 	var firing_index = DataManager.get_weapon_firing_index(current_weapon_index, weapon_mode, power_level)
 	
 	# Krok 2: Pobierz dane broni z weapon.json używając firing_index
-	var weapon_id_str = str(firing_index).pad_zeros(4)
-	weapon_data = DataManager.get_weapon_by_id(weapon_id_str)
+	weapon_data = DataManager.get_weapon_by_id(firing_index)
 	
 	if weapon_data.is_empty():
-		push_error("WeaponSystem: Nie znaleziono broni o ID: ", weapon_id_str, " (firing_index=", firing_index, ")")
+		push_error("WeaponSystem: Nie znaleziono broni o ID: ", firing_index)
 	else:
-		print("WeaponSystem: Załadowano broń - port_index=", current_weapon_index, " mode=", weapon_mode, " power=", power_level, " weapon_id=", weapon_id_str)
+		print("WeaponSystem: Załadowano broń - port_index=", current_weapon_index, " mode=", weapon_mode, " power=", power_level, " weapon_id=", firing_index)
 
 func set_firing(firing: bool):
 	is_firing = firing

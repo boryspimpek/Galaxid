@@ -91,10 +91,9 @@ func get_weapons() -> Array:
 			print("DataManager: Załadowano ", weapons_cache.size(), " broni")
 	return weapons_cache
 
-func get_weapon_by_id(id: String) -> Dictionary:
-	var id_padded = str(id).pad_zeros(4)
+func get_weapon_by_id(id: int) -> Dictionary:
 	for weapon in get_weapons():
-		if weapon.get("index") == id_padded:
+		if weapon.get("index") == id:
 			return weapon
 	push_error("DataManager: Nie znaleziono broni o ID=", id)
 	return {}
