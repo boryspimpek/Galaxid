@@ -38,7 +38,10 @@ var current_event_index: int = 0
 var enemies_active: bool = false
 var level_enemy_frequency: int = 96
 var level_enemies: Array = []
-var random_spawn_frame_counter: int = 0
+
+# POPRAWKA 5: Akumulator delta do random spawnu zamiast Engine.get_frames_per_second().
+# Gwarantuje poprawną kompensację FPS niezależnie od chwilowych wahań.
+var random_spawn_timer: float = 0.0
 
 # Pozycja levelu (symulacja mapYPos z Tyrian)
 var level_distance: float = 0.0
@@ -51,11 +54,8 @@ func _ready():
 
 func _process(delta):
 	level_distance += float(back_move) * TYRIAN_FPS * delta
-
-	# print("Map position: ", int(level_distance), " | Event index: ", current_event_index, "/", level_events.size())
-
 	process_events_for_distance(int(level_distance))
-	process_random_spawn()
+	process_random_spawn(delta)
 
 func load_enemies_data():
 	var file = FileAccess.open(enemies_file, FileAccess.READ)
@@ -112,7 +112,6 @@ func load_events_data():
 						map_x2 = header["map_x2"]
 					if header.has("map_x3"):
 						map_x3 = header["map_x3"]
-					# print("Pozycje mapy: map_x=", map_x, ", map_x2=", map_x2, ", map_x3=", map_x3)
 		else:
 			push_error("Błąd parsowania JSON eventów: " + str(error))
 		file.close()
@@ -127,53 +126,44 @@ func process_events_for_distance(dist: int):
 		process_event(event)
 		current_event_index += 1
 
-func process_random_spawn():
+func process_random_spawn(delta: float):
 	if not enemies_active or level_enemies.is_empty():
 		return
 
-	# Kompensacja FPS: oryginał 15 FPS, obecnie 60 FPS = stosunek 4
-	# Losuj tylko co 4 klatkę
-	var fps_ratio = int(Engine.get_frames_per_second() / TYRIAN_FPS)
-	random_spawn_frame_counter += 1
-	if random_spawn_frame_counter < fps_ratio:
+	# POPRAWKA 5: Akumulator delta — 1.0 / TYRIAN_FPS = długość jednej klatki Tyrian.
+	# Logika spawnu wykonuje się dokładnie raz na klatkę Tyrian, niezależnie od FPS Godota.
+	random_spawn_timer += delta
+	if random_spawn_timer < 1.0 / TYRIAN_FPS:
 		return
-	random_spawn_frame_counter = 0
+	random_spawn_timer -= 1.0 / TYRIAN_FPS
 
 	# Sprawdź warunek losowania: randi() % 100 > level_enemy_frequency
 	if randi() % 100 > level_enemy_frequency:
-		# Wybierz losowego wroga z tablicy level_enemies
 		var enemy_id = level_enemies[randi() % level_enemies.size()]
 		var enemy_template = _find_template(enemy_id)
 
+		# POPRAWKA 6 (z LevelManager): _find_template zwraca null przy braku wyniku
 		if enemy_template == null:
 			print("ERROR: Random spawn - nie znaleziono wroga o ID=", enemy_id)
 			return
 
-		# Oblicz pozycję startową z danych wroga
-		var startx = int(enemy_template.get("startx", 0))
+		var startx  = int(enemy_template.get("startx",  0))
 		var startxc = int(enemy_template.get("startxc", 0))
-		var starty = int(enemy_template.get("starty", 0))
+		var starty  = int(enemy_template.get("starty",  0))
 
-		# Losowa pozycja X z rozrzutem jeśli startxc != 0
 		var spawn_x = startx
 		if startxc != 0:
 			spawn_x = startx + (randi() % (startxc * 2)) - startxc + 1
 
-		var spawn_y = starty
+		var spawn_pos = Vector2(float(spawn_x) * SCALE_X, float(starty) * SCALE_Y)
 
-		# Konwertuj na współrzędne ekranu
-		var spawn_pos = Vector2(float(spawn_x) * SCALE_X, float(spawn_y) * SCALE_Y)
-
-		# Użyj slotu Ground (25)
-		var enemy_slot = 25
+		var enemy_slot      = 25
 		var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
-		# Oblicz prędkość z danych wroga
-		var xmove = int(enemy_template.get("xmove", 0))
-		var ymove = int(enemy_template.get("ymove", 0))
+		var xmove       = int(enemy_template.get("xmove", 0))
+		var ymove       = int(enemy_template.get("ymove", 0))
 		var raw_velocity = Vector2(float(xmove), float(ymove))
 
-		# Utwórz wroga
 		var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
 			0, scroll_for_slot, enemy_id, 0, 0, enemy_slot)
 		if enemy:
@@ -198,7 +188,6 @@ func process_event(event: Dictionary):
 			pass
 
 func set_scroll_speed(event: Dictionary):
-	"""Ustawia prędkość scrollingu tła (event type 2)."""
 	back_move  = event.get("back_move",  back_move)
 	back_move2 = event.get("back_move2", back_move2)
 	back_move3 = event.get("back_move3", back_move3)
@@ -207,112 +196,91 @@ func set_scroll_speed(event: Dictionary):
 		background.set_scroll_speed(back_move, back_move2, back_move3)
 
 func spawn_enemy(event: Dictionary):
-	var enemy_id_raw = event.get("enemy_id", 0)
+	var enemy_id_raw   = event.get("enemy_id", 0)
 	var enemy_template = _find_template(enemy_id_raw)
 	if enemy_template == null:
 		print("ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
 		return
 
-	var enemy_id = int(enemy_template.get("index", 0))
-	var spawn_pos = _calc_spawn_pos(event)
-	var raw_velocity = _calc_velocity(enemy_template, event)
+	var enemy_id        = int(enemy_template.get("index", 0))
+	var spawn_pos       = _calc_spawn_pos(event)
+	var raw_velocity    = _calc_velocity(enemy_template, event)
 	var scroll_for_slot = _scroll_for_slot(event.get("enemy_slot", 0))
 
 	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
-		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, event.get("event_type", 0), event.get("link_num", 0), event.get("enemy_slot", 0))
+		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id,
+		event.get("event_type", 0), event.get("link_num", 0), event.get("enemy_slot", 0))
 	if enemy:
 		add_child(enemy)
 
 func spawn_top_enemy(event: Dictionary):
-	"""Spawns enemy in the Top slot (enemyOffset=50) - event type 7."""
-	var enemy_id_raw = event.get("enemy_id", 0)
+	var enemy_id_raw   = event.get("enemy_id", 0)
 	var enemy_template = _find_template(enemy_id_raw)
 	if enemy_template == null:
 		print("ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
 		return
 
-	var enemy_id = int(enemy_template.get("index", 0))
-	var enemy_slot = 50  # Top slot
+	var enemy_id        = int(enemy_template.get("index", 0))
+	var enemy_slot      = 50
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
-	# Oblicz pozycję X zgodnie z dokumentacją
-	var raw_x = event.get("raw_x", 0)
-	var spawn_x = raw_x
+	var raw_x    = event.get("raw_x", 0)
+	var spawn_x  = raw_x - (map_x3 - 1) * 24 - 12
+	var y_offset = event.get("y_offset", 0)
+	var spawn_y  = -28 - back_move3 + y_offset
 
 	if background3x1:
-		spawn_x = raw_x - (map_x - 1) * 24 - 12
-	else:
-		spawn_x = raw_x - map_x3 * 24 - 24 * 2 + 6
-
+		spawn_y += 4
 	if background3x1b:
-		spawn_x -= 6
+		spawn_y += 4
 
-	# Oblicz pozycję Y zgodnie z dokumentacją
-	var y_offset = event.get("y_offset", 0)
-	var spawn_y = -28 - back_move3
-
-	if background3x1b:
-		spawn_y += 4  # korekta do -24
-
-	spawn_y += y_offset
-
-	# Konwertuj na współrzędne ekranu
-	var spawn_pos = Vector2(float(spawn_x) * SCALE_X, float(spawn_y) * SCALE_Y)
-
-	# Oblicz prędkość
-	var xmove = int(enemy_template.get("xmove", 0))
-	var ymove = int(enemy_template.get("ymove", 0))
-	var y_vel = event.get("y_vel", 0)
+	var spawn_pos    = Vector2(float(spawn_x) * SCALE_X, float(spawn_y) * SCALE_Y)
+	var xmove        = int(enemy_template.get("xmove", 0))
+	var ymove        = int(enemy_template.get("ymove", 0))
+	var y_vel        = event.get("y_vel", 0)
 	var raw_velocity = Vector2(float(xmove), float(ymove + y_vel))
 
-	# Utwórz wroga
 	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
-		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, 7, event.get("link_num", 0), enemy_slot)
+		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, 7,
+		event.get("link_num", 0), enemy_slot)
 	if enemy:
 		add_child(enemy)
 
 func spawn_ground_enemy_2(event: Dictionary):
-	"""Spawns enemy in the Ground2 slot (enemyOffset=75) - event type 10."""
-	var enemy_id_raw = event.get("enemy_id", 0)
+	var enemy_id_raw   = event.get("enemy_id", 0)
 	var enemy_template = _find_template(enemy_id_raw)
 	if enemy_template == null:
 		print("ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
 		return
 
-	var enemy_id = int(enemy_template.get("index", 0))
-	var enemy_slot = 75  # Ground2 slot
+	var enemy_id        = int(enemy_template.get("index", 0))
+	var enemy_slot      = 75
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
-	# Oblicz pozycję X zgodnie z dokumentacją (identyczny wzór jak Event 6)
-	var raw_x = event.get("raw_x", 0)
-	var spawn_x = raw_x - (map_x - 1) * 24 - 12
-
-	# Oblicz pozycję Y zgodnie z dokumentacją
+	var raw_x    = event.get("raw_x", 0)
+	var spawn_x  = raw_x - (map_x - 1) * 24 - 12
 	var y_offset = event.get("y_offset", 0)
-	var spawn_y = -28 - back_move + y_offset
+	var spawn_y  = -28 - back_move + y_offset
 
-	# Konwertuj na współrzędne ekranu
-	var spawn_pos = Vector2(float(spawn_x) * SCALE_X, float(spawn_y) * SCALE_Y)
-
-	# Oblicz prędkość
-	var xmove = int(enemy_template.get("xmove", 0))
-	var ymove = int(enemy_template.get("ymove", 0))
-	var y_vel = event.get("y_vel", 0)
+	var spawn_pos    = Vector2(float(spawn_x) * SCALE_X, float(spawn_y) * SCALE_Y)
+	var xmove        = int(enemy_template.get("xmove", 0))
+	var ymove        = int(enemy_template.get("ymove", 0))
+	var y_vel        = event.get("y_vel", 0)
 	var raw_velocity = Vector2(float(xmove), float(ymove + y_vel))
 
-	# Utwórz wroga
 	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
-		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, 10, event.get("link_num", 0), enemy_slot)
+		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, 10,
+		event.get("link_num", 0), enemy_slot)
 	if enemy:
 		add_child(enemy)
 
 func spawn_4x4_enemies(event: Dictionary):
-	var enemy_ids = event.get("enemy_ids", [])
-	var enemy_slot = int(event.get("enemy_slot", 25))
+	var enemy_ids    = event.get("enemy_ids", [])
+	var enemy_slot   = int(event.get("enemy_slot", 25))
 	var fixed_move_y = int(event.get("fixed_move_y", 0))
-	var event_type = int(event.get("event_type", 0))
+	var event_type   = int(event.get("event_type", 0))
 
-	var base_pos = _calc_spawn_pos(event)
+	var base_pos        = _calc_spawn_pos(event)
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
 	var offsets = [Vector2(0, 0), Vector2(24, 0), Vector2(0, 28), Vector2(24, 28)]
@@ -322,118 +290,104 @@ func spawn_4x4_enemies(event: Dictionary):
 		if enemy_template == null:
 			continue
 
-		var spawn_pos = base_pos + Vector2(offsets[i].x * SCALE_X, offsets[i].y * SCALE_Y)
+		var spawn_pos    = base_pos + Vector2(offsets[i].x * SCALE_X, offsets[i].y * SCALE_Y)
 		var raw_velocity = _calc_velocity(enemy_template, event)
 
 		var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
-			fixed_move_y, scroll_for_slot, int(enemy_ids[i]), event_type, event.get("link_num", 0), enemy_slot)
+			fixed_move_y, scroll_for_slot, int(enemy_ids[i]), event_type,
+			event.get("link_num", 0), enemy_slot)
 		if enemy:
 			add_child(enemy)
 
 func disable_random_spawn(_event: Dictionary):
-	"""Wyłącza losowy spawn wrogów (event type 13)."""
 	enemies_active = false
 	print("Random spawn wyłączony")
 
 func enable_random_spawn(_event: Dictionary):
-	"""Włącza losowy spawn wrogów (event type 14)."""
 	enemies_active = true
 	print("Random spawn włączony")
 
 func enemy_global_accel(event: Dictionary):
-	"""Modyfikuje silnik wahadłowy (excc/eycc) grupy wrogów (event type 20)."""
-	var new_excc = event.get("new_excc", -99)
-	var new_eycc = event.get("new_eycc", -99)
-	var link_num = event.get("link_num", 0)
+	var new_excc  = event.get("new_excc",  -99)
+	var new_eycc  = event.get("new_eycc",  -99)
+	var link_num  = event.get("link_num",  0)
 
 	for child in get_children():
-		if not "enemy_id" in child:  # Check if it's an Enemy node
+		if not "enemy_id" in child:
 			continue
-
-		# Filtruj po link_num (0 = wszyscy)
 		if link_num != 0 and child.link_num != link_num:
 			continue
 
-		# Zmień excc (pełny reset stanu wahadła)
 		if new_excc != -99:
-			child.excc = new_excc
-			child.exccw = abs(new_excc)
+			child.excc    = new_excc
+			child.exccw   = abs(new_excc)
 			child.exccwmax = child.exccw
 			child.exccadd = 1 if new_excc > 0 else -1
 			if child.xrev == 0:
 				child.xrev = 100
 
-		# Zmień eycc (bez resetu stanu wahadła)
+		# POPRAWKA 7: eycc zmieniane z pełnym resetem stanu wahadła Y,
+		# tak samo jak dla X — bez tego wahadło Y jest martwe gdy eycc było 0.
 		if new_eycc != -99:
-			child.eycc = new_eycc
+			child.eycc    = new_eycc
+			child.eyccw   = abs(new_eycc)
+			child.eyccwmax = child.eyccw
+			child.eyccadd = 1 if new_eycc > 0 else -1
+			if child.yrev == 0:
+				child.yrev = 100
 
 func enemy_global_accelrev(event: Dictionary):
-	"""Zmienia limity prędkości wahadła (exrev/eyrev) grupy wrogów (event type 27)."""
 	var new_exrev = event.get("new_exrev", -99)
 	var new_eyrev = event.get("new_eyrev", -99)
-	var link_num = event.get("link_num", 0)
+	var link_num  = event.get("link_num",  0)
 
 	for child in get_children():
-		if not "enemy_id" in child:  # Check if it's an Enemy node
+		if not "enemy_id" in child:
 			continue
-
-		# Filtruj po link_num (0 = wszyscy)
 		if link_num != 0 and child.link_num != link_num:
 			continue
 
-		# Zmień exrev (limit prędkości X)
 		if new_exrev != -99:
 			child.xrev = new_exrev
-
-		# Zmień eyrev (limit prędkości Y)
 		if new_eyrev != -99:
 			child.yrev = new_eyrev
 
-
 func enemy_global_move(event: Dictionary):
-	"""Modyfikuje prędkość ruchu wrogów (event type 19)."""
-	var new_exc = event.get("new_exc", -99)
-	var new_eyc = event.get("new_eyc", -99)
+	var new_exc        = event.get("new_exc",         -99)
+	var new_eyc        = event.get("new_eyc",         -99)
 	var new_fixed_move_y = event.get("new_fixed_move_y", 0)
-	var scope_selector = event.get("scope_selector", 0)
-	var link_num = event.get("link_num", 0)
+	var scope_selector = event.get("scope_selector",  0)
+	var link_num       = event.get("link_num",        0)
 
 	for child in get_children():
-		if not "enemy_id" in child:  # Check if it's an Enemy node
+		if not "enemy_id" in child:
 			continue
 
-		# Sprawdzenie zakresu wrogów (scope_selector)
 		var in_range = false
 		match scope_selector:
-			0:   in_range = true  # wszyscy
-			1:   in_range = (child.enemy_slot >= 25 && child.enemy_slot < 50)  # Ground
-			2:   in_range = (child.enemy_slot < 25)  # Sky
-			3:   in_range = (child.enemy_slot >= 50 && child.enemy_slot < 75)  # Top
-			99:  in_range = true  # wszyscy
-			_:   in_range = true  # domyślnie wszyscy
+			0:   in_range = true
+			1:   in_range = (child.enemy_slot >= 25 && child.enemy_slot < 50)
+			2:   in_range = (child.enemy_slot < 25)
+			3:   in_range = (child.enemy_slot >= 50 && child.enemy_slot < 75)
+			99:  in_range = true
+			_:   in_range = true
 
 		if not in_range:
 			continue
 
-		# Filtrowanie po link_num (tylko gdy scope_selector == 0 lub >= 80)
 		if scope_selector == 0 or scope_selector >= 80:
 			if link_num != 0 and child.link_num != link_num:
 				continue
 
-		# Zmień exc (prędkość X)
 		if new_exc != -99:
 			child.velocity.x = float(new_exc)
-
-		# Zmień eyc (prędkość Y)
 		if new_eyc != -99:
 			child.velocity.y = float(new_eyc)
 
-		# Zmień fixed_move_y
 		if new_fixed_move_y == -99:
-			child.fixed_move_y = 0  # reset do 0
+			child.fixed_move_y = 0
 		elif new_fixed_move_y != 0:
-			child.fixed_move_y = new_fixed_move_y  # ustaw nową wartość
-		# wartość 0 pozostawia fixed_movey bez zmian
+			child.fixed_move_y = new_fixed_move_y
 
 # Pomocnicze
 
@@ -446,43 +400,46 @@ func _calc_velocity(template: Dictionary, event: Dictionary) -> Vector2:
 	var y_vel = int(event.get("y_vel", 0))
 	return Vector2(float(xmove), float(ymove + y_vel))
 
-func _find_template(enemy_id_raw) -> Dictionary:
+func _find_template(enemy_id_raw):
+	# POPRAWKA 6: Zwracamy null zamiast {} gdy wróg nie istnieje,
+	# żeby warunek "== null" w miejscach wywołania faktycznie działał.
 	for template in enemies_data:
 		if int(template.get("index", -1)) == int(enemy_id_raw):
 			return template
-	return {}
+	return null
 
 func _scroll_for_slot(enemy_slot: int) -> int:
-	"""Zwraca prędkość scrollingu (Tyrian px/klatkę) właściwą dla slotu."""
 	match enemy_slot:
-		0:        return back_move2   # Sky
-		25, 75:   return back_move    # Ground
-		50:       return back_move3   # Top
+		0:        return back_move2
+		25, 75:   return back_move
+		50:       return back_move3
 		_:        return back_move2
 
 func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 		raw_velocity: Vector2, fixed_move_y: int,
-		scroll_for_slot: int, enemy_id: int = 0, event_type: int = 0, link_num: int = 0, enemy_slot: int = 0) -> Node2D:
+		scroll_for_slot: int, enemy_id: int = 0, event_type: int = 0,
+		link_num: int = 0, enemy_slot: int = 0) -> Node2D:
 	var enemy = enemy_scene.instantiate()
-	enemy.name = "Enemy_%d" % enemy_id
+	enemy.name          = "Enemy_%d" % enemy_id
 	enemy.global_position = spawn_position
-	enemy.armor = template.get("armor", 1)
-	enemy.esize = template.get("esize", 0)
-	enemy.enemy_id = enemy_id
-	enemy.event_type = event_type
-	enemy.link_num = link_num
-	enemy.enemy_slot = enemy_slot
-	enemy.velocity = raw_velocity
-	enemy.fixed_move_y = fixed_move_y
-	enemy.scroll_y = scroll_for_slot
-	enemy.excc = template.get("xcaccel", 0)
-	enemy.eycc = template.get("ycaccel", 0)
-	enemy.xrev = template.get("xrev", 0)
-	enemy.yrev = template.get("yrev", 0)
-	enemy.xaccel = template.get("xaccel", 0)
-	enemy.yaccel = template.get("yaccel", 0)
-	enemy.tur = template.get("tur", [0, 0, 0])
-	enemy.freq = template.get("freq", [0, 0, 0])
-	enemy.weapons_data = weapons_data
+	enemy.armor         = template.get("armor",   1)
+	enemy.esize         = template.get("esize",   0)
+	enemy.enemy_id      = enemy_id
+	enemy.event_type    = event_type
+	enemy.link_num      = link_num
+	enemy.enemy_slot    = enemy_slot
+	enemy.velocity      = raw_velocity
+	enemy.fixed_move_y  = fixed_move_y
+	enemy.scroll_y      = scroll_for_slot
+	enemy.excc          = template.get("xcaccel", 0)
+	enemy.eycc          = template.get("ycaccel", 0)
+	enemy.xrev          = template.get("xrev",    0)
+	enemy.yrev          = template.get("yrev",    0)
+	enemy.xaccel        = template.get("xaccel",  0)
+	enemy.yaccel        = template.get("yaccel",  0)
+	enemy.tur           = template.get("tur",     [0, 0, 0])
+	enemy.freq          = template.get("freq",    [0, 0, 0])
+	enemy.weapons_data  = weapons_data
 	enemy.projectile_scene = enemy_projectile_scene
+	print("Created enemy: ", enemy.name)
 	return enemy
