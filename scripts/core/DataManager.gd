@@ -119,6 +119,25 @@ func get_weapon_port_by_id(id: int) -> Dictionary:
 	push_error("DataManager: Nie znaleziono portu broni o ID=", id)
 	return {}
 
+func get_weapon_firing_index(weapon_port_index: int, mode: int, power_level: int) -> int:
+	var port = get_weapon_port_by_id(weapon_port_index)
+	if port.is_empty():
+		return 0
+	
+	var firing_modes = port.get("firing_modes", {})
+	var mode_key = "mode_" + str(mode)
+	var mode_array = firing_modes.get(mode_key, [])
+	
+	if mode_array.is_empty():
+		return 0
+	
+	# power_level jest 1-11, tablica jest 0-10
+	var index = power_level - 1
+	if index < 0 or index >= mode_array.size():
+		return 0
+	
+	return mode_array[index]
+
 # ============================================================================
 # TARCZE (shields.json)
 # ============================================================================

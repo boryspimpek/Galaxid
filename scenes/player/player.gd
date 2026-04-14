@@ -6,6 +6,11 @@ var max_armor: int = 0
 var speed: float = 0.0
 var velocity_target = Vector2.ZERO
 
+# --- System energii (Power) ---
+var power: float = 900.0
+var power_max: float = 900.0
+var power_add: float = 0.5  # Regeneracja na klatkę
+
 # --- Parametry fizyki ---
 var acceleration: float = 0.15  # Jak szybko osiąga max prędkość
 var friction: float = 0.1      # Jak szybko się zatrzymuje
@@ -59,8 +64,17 @@ func setup_weapons():
 # ============================================================================
 
 func _physics_process(_delta):
+	# Regeneracja energii
+	power = min(power_max, power + power_add)
+	
 	# Pobieranie wektora ruchu
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
+	# Obsługa strzelania
+	if Input.is_action_pressed("ui_accept"):
+		weapon_system.set_firing(true)
+	else:
+		weapon_system.set_firing(false)
 	
 	# Obliczanie docelowej prędkości (Input * Max Speed)
 	var target_velocity = input_dir * speed

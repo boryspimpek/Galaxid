@@ -8,12 +8,12 @@ extends Node
 var ship_id: int = 1           # ID z ships.json (np. USP Talon)
 
 # --- BROŃ PRZEDNIA (FRONT WEAPON) ---
-var front_weapon_index: int = 1   # Indeks z weapon_port.json
-var front_weapon_mode: int = 1 # Tryb strzału (1-2)
-var front_power_level: int = 1 # Poziom mocy 1-11 (Tyrian miał 11 stopni!)
+var front_weapon_index: int = 1   # ID z weapon_port.json
+var front_weapon_mode: int = 1    # Tryb strzału (1 lub 2)
+var front_power_level: int = 1   # Poziom mocy 1-11 (Tyrian miał 11 stopni!)
 
 # --- BROŃ TYLNA (REAR WEAPON) ---
-var rear_weapon_index: int = 0    # Indeks z weapon_port.json
+var rear_weapon_index: int = 1    # Indeks z weapon_port.json
 var rear_weapon_mode: int = 1  # Tryb strzału (1-2)
 var rear_power_level: int = 1
 
