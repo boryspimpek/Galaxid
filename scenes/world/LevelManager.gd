@@ -58,65 +58,29 @@ func _process(delta):
 	process_random_spawn(delta)
 
 func load_enemies_data():
-	var file = FileAccess.open(enemies_file, FileAccess.READ)
-	if file:
-		var json = JSON.new()
-		var error = json.parse(file.get_as_text())
-		if error == OK:
-			enemies_data = json.get_data()
-			print("Załadowano ", enemies_data.size(), " przeciwników")
-		else:
-			push_error("Błąd parsowania JSON przeciwników: " + str(error))
-		file.close()
-	else:
-		push_error("Nie można otworzyć pliku: " + enemies_file)
+	enemies_data = DataManager.get_enemies()
 
 func load_weapons_data():
-	var file = FileAccess.open(weapon_file, FileAccess.READ)
-	if file:
-		var json = JSON.new()
-		var error = json.parse(file.get_as_text())
-		if error == OK:
-			var data = json.get_data()
-			if data.has("TyrianHDT"):
-				weapons_data = data["TyrianHDT"]["weapon"]
-				print("Załadowano ", weapons_data.size(), " broni")
-			else:
-				push_error("Brak klucza 'TyrianHDT' w weapon.json")
-		else:
-			push_error("Błąd parsowania JSON broni: " + str(error))
-		file.close()
-	else:
-		push_error("Nie można otworzyć pliku: " + weapon_file)
+	weapons_data = DataManager.get_weapons()
 
 func load_events_data():
-	var file = FileAccess.open(events_file, FileAccess.READ)
-	if file:
-		var json = JSON.new()
-		var error = json.parse(file.get_as_text())
-		if error == OK:
-			var data = json.get_data()
-			if data.has(level_name):
-				if data[level_name].has("events"):
-					level_events = data[level_name]["events"]
-					level_events.sort_custom(func(a, b): return a["dist"] < b["dist"])
-					print("Załadowano ", level_events.size(), " eventów")
-				if data[level_name].has("header"):
-					var header = data[level_name]["header"]
-					if header.has("level_enemies"):
-						level_enemies = header["level_enemies"]
-						print("Załadowano ", level_enemies.size(), " wrogów do random spawn")
-					if header.has("map_x"):
-						map_x = header["map_x"]
-					if header.has("map_x2"):
-						map_x2 = header["map_x2"]
-					if header.has("map_x3"):
-						map_x3 = header["map_x3"]
-		else:
-			push_error("Błąd parsowania JSON eventów: " + str(error))
-		file.close()
-	else:
-		push_error("Nie można otworzyć pliku: " + events_file)
+	var level_data = DataManager.get_level_data(level_name)
+	if not level_data.is_empty():
+		if level_data.has("events"):
+			level_events = level_data["events"]
+			level_events.sort_custom(func(a, b): return a["dist"] < b["dist"])
+			print("LevelManager: Załadowano ", level_events.size(), " eventów")
+		if level_data.has("header"):
+			var header = level_data["header"]
+			if header.has("level_enemies"):
+				level_enemies = header["level_enemies"]
+				print("LevelManager: Załadowano ", level_enemies.size(), " wrogów do random spawn")
+			if header.has("map_x"):
+				map_x = header["map_x"]
+			if header.has("map_x2"):
+				map_x2 = header["map_x2"]
+			if header.has("map_x3"):
+				map_x3 = header["map_x3"]
 
 func process_events_for_distance(dist: int):
 	while current_event_index < level_events.size():
@@ -144,7 +108,7 @@ func process_random_spawn(delta: float):
 
 		# POPRAWKA 6 (z LevelManager): _find_template zwraca null przy braku wyniku
 		if enemy_template == null:
-			print("ERROR: Random spawn - nie znaleziono wroga o ID=", enemy_id)
+			print("LevelManager: ERROR: Random spawn - nie znaleziono wroga o ID=", enemy_id)
 			return
 
 		var startx  = int(enemy_template.get("startx",  0))
@@ -168,7 +132,7 @@ func process_random_spawn(delta: float):
 			0, scroll_for_slot, enemy_id, 0, 0, enemy_slot)
 		if enemy:
 			add_child(enemy)
-			print("Random spawn: wróg ID=", enemy_id, " na pozycji ", spawn_pos)
+			print("LevelManager: Random spawn: wróg ID=", enemy_id, " na pozycji ", spawn_pos)
 
 func process_event(event: Dictionary):
 	var event_type = int(event["event_type"])
@@ -199,7 +163,7 @@ func spawn_enemy(event: Dictionary):
 	var enemy_id_raw   = event.get("enemy_id", 0)
 	var enemy_template = _find_template(enemy_id_raw)
 	if enemy_template == null:
-		print("ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
+		print("LevelManager: ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
 		return
 
 	var enemy_id        = int(enemy_template.get("index", 0))
@@ -217,7 +181,7 @@ func spawn_top_enemy(event: Dictionary):
 	var enemy_id_raw   = event.get("enemy_id", 0)
 	var enemy_template = _find_template(enemy_id_raw)
 	if enemy_template == null:
-		print("ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
+		print("LevelManager: ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
 		return
 
 	var enemy_id        = int(enemy_template.get("index", 0))
@@ -250,7 +214,7 @@ func spawn_ground_enemy_2(event: Dictionary):
 	var enemy_id_raw   = event.get("enemy_id", 0)
 	var enemy_template = _find_template(enemy_id_raw)
 	if enemy_template == null:
-		print("ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
+		print("LevelManager: ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
 		return
 
 	var enemy_id        = int(enemy_template.get("index", 0))
@@ -301,11 +265,11 @@ func spawn_4x4_enemies(event: Dictionary):
 
 func disable_random_spawn(_event: Dictionary):
 	enemies_active = false
-	print("Random spawn wyłączony")
+	print("LevelManager: Random spawn wyłączony")
 
 func enable_random_spawn(_event: Dictionary):
 	enemies_active = true
-	print("Random spawn włączony")
+	print("LevelManager: Random spawn włączony")
 
 func enemy_global_accel(event: Dictionary):
 	var new_excc  = event.get("new_excc",  -99)
@@ -441,5 +405,5 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 	enemy.freq          = template.get("freq",    [0, 0, 0])
 	enemy.weapons_data  = weapons_data
 	enemy.projectile_scene = enemy_projectile_scene
-	print("Created enemy: ", enemy.name)
+	print("LevelManager: Created enemy: ", enemy.name)
 	return enemy

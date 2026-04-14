@@ -1,0 +1,193 @@
+extends Node
+
+# Singleton - DataManager do centralnego ładowania i cache'owania danych JSON
+
+# Cache danych
+var ships_cache: Array = []
+var enemies_cache: Array = []
+var weapons_cache: Array = []
+var shields_cache: Array = []
+var weapon_ports_cache: Array = []
+var sidekicks_cache: Array = []
+
+# Flaga ładowania
+var _ships_loaded: bool = false
+var _enemies_loaded: bool = false
+var _weapons_loaded: bool = false
+var _shields_loaded: bool = false
+var _weapon_ports_loaded: bool = false
+var _sidekicks_loaded: bool = false
+
+# ============================================================================
+# PODSTAWOWA FUNKCJA ŁADOWANIA JSON
+# ============================================================================
+
+func load_json(file_path: String) -> Variant:
+	if not FileAccess.file_exists(file_path):
+		push_error("DataManager: Plik nie istnieje: " + file_path)
+		return null
+	
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	var json = JSON.new()
+	var error = json.parse(file.get_as_text())
+	file.close()
+	
+	if error != OK:
+		push_error("DataManager: Błąd JSON w " + file_path + ": " + json.get_error_message())
+		return null
+	
+	return json.get_data()
+
+# ============================================================================
+# STATKI (ships.json)
+# ============================================================================
+
+func get_ships() -> Array:
+	if not _ships_loaded:
+		var data = load_json("res://data/ships.json")
+		if data:
+			ships_cache = data
+			_ships_loaded = true
+			print("DataManager: Załadowano ", ships_cache.size(), " statków")
+	return ships_cache
+
+func get_ship_by_id(id: int) -> Dictionary:
+	for ship in get_ships():
+		if ship.get("index", 0) == id:
+			return ship
+	push_error("DataManager: Nie znaleziono statku o ID=", id)
+	return {}
+
+# ============================================================================
+# PRZECIWNICY (enemies.json)
+# ============================================================================
+
+func get_enemies() -> Array:
+	if not _enemies_loaded:
+		var data = load_json("res://data/enemies.json")
+		if data:
+			enemies_cache = data
+			_enemies_loaded = true
+			print("DataManager: Załadowano ", enemies_cache.size(), " przeciwników")
+	return enemies_cache
+
+func get_enemy_by_id(id: int) -> Dictionary:
+	for enemy in get_enemies():
+		if int(enemy.get("index", -1)) == int(id):
+			return enemy
+	push_error("DataManager: Nie znaleziono przeciwnika o ID=", id)
+	return {}
+
+# ============================================================================
+# BRONIE (weapon.json)
+# ============================================================================
+
+func get_weapons() -> Array:
+	if not _weapons_loaded:
+		var data = load_json("res://data/weapon.json")
+		if data:
+			weapons_cache = data.get("TyrianHDT", {}).get("weapon", [])
+			_weapons_loaded = true
+			print("DataManager: Załadowano ", weapons_cache.size(), " broni")
+	return weapons_cache
+
+func get_weapon_by_id(id: String) -> Dictionary:
+	var id_padded = str(id).pad_zeros(4)
+	for weapon in get_weapons():
+		if weapon.get("index") == id_padded:
+			return weapon
+	push_error("DataManager: Nie znaleziono broni o ID=", id)
+	return {}
+
+# ============================================================================
+# PORTY BRONI (weapon_ports.json)
+# ============================================================================
+
+func get_weapon_ports() -> Array:
+	if not _weapon_ports_loaded:
+		var data = load_json("res://data/weapon_ports.json")
+		if data:
+			weapon_ports_cache = data.get("weapon_ports", [])
+			_weapon_ports_loaded = true
+			print("DataManager: Załadowano ", weapon_ports_cache.size(), " portów broni")
+	return weapon_ports_cache
+
+func get_weapon_port_by_id(id: int) -> Dictionary:
+	for port in get_weapon_ports():
+		if port.get("index", 0) == id:
+			return port
+	push_error("DataManager: Nie znaleziono portu broni o ID=", id)
+	return {}
+
+# ============================================================================
+# TARCZE (shields.json)
+# ============================================================================
+
+func get_shields() -> Array:
+	if not _shields_loaded:
+		var data = load_json("res://data/shields.json")
+		if data:
+			shields_cache = data
+			_shields_loaded = true
+			print("DataManager: Załadowano ", shields_cache.size(), " tarcz")
+	return shields_cache
+
+func get_shield_by_id(id: int) -> Dictionary:
+	for shield in get_shields():
+		if shield.get("index", 0) == id:
+			return shield
+	push_error("DataManager: Nie znaleziono tarczy o ID=", id)
+	return {}
+
+# ============================================================================
+# SIDEKICKS (sidekicks.json)
+# ============================================================================
+
+func get_sidekicks() -> Array:
+	if not _sidekicks_loaded:
+		var data = load_json("res://data/sidekicks.json")
+		if data:
+			sidekicks_cache = data
+			_sidekicks_loaded = true
+			print("DataManager: Załadowano ", sidekicks_cache.size(), " sidekicków")
+	return sidekicks_cache
+
+func get_sidekick_by_id(id: int) -> Dictionary:
+	for sidekick in get_sidekicks():
+		if sidekick.get("index", 0) == id:
+			return sidekick
+	push_error("DataManager: Nie znaleziono sidekicka o ID=", id)
+	return {}
+
+# ============================================================================
+# POZIOMY (lvl*.json)
+# ============================================================================
+
+func get_level_data(level_name: String) -> Dictionary:
+	var file_path = "res://data/" + level_name + ".json"
+	var data = load_json(file_path)
+	if data and data.has(level_name):
+		return data[level_name]
+	push_error("DataManager: Nie znaleziono danych poziomu: ", level_name)
+	return {}
+
+# ============================================================================
+# CZYSZCZENIE CACHE (do debugowania)
+# ============================================================================
+
+func clear_cache():
+	ships_cache.clear()
+	enemies_cache.clear()
+	weapons_cache.clear()
+	shields_cache.clear()
+	weapon_ports_cache.clear()
+	sidekicks_cache.clear()
+	
+	_ships_loaded = false
+	_enemies_loaded = false
+	_weapons_loaded = false
+	_shields_loaded = false
+	_weapon_ports_loaded = false
+	_sidekicks_loaded = false
+	
+	print("DataManager: Cache wyczyszczony")

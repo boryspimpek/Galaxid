@@ -15,6 +15,11 @@ run/main_scene="uid://ckavqb25bdaul"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://assets/icon.svg"
 
+[autoload]
+
+DataManager="*res://scripts/core/DataManager.gd"
+PlayerSetup="*res://scripts/core/PlayerSetup.gd"
+
 [display]
 
 window/size/viewport_width=1280
