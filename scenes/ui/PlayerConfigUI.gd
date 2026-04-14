@@ -15,7 +15,7 @@ extends Control
 
 func _ready():
 	load_values_from_setup()
-	
+
 	# Podłącz sygnały - Callable z argumentem nazwy parametru
 	ship_id_spin.value_changed.connect(_on_ship_id_changed)
 	front_weapon_index_spin.value_changed.connect(_on_front_weapon_index_changed)
@@ -24,6 +24,14 @@ func _ready():
 	rear_weapon_index_spin.value_changed.connect(_on_rear_weapon_index_changed)
 	rear_weapon_mode_spin.value_changed.connect(_on_rear_weapon_mode_changed)
 	rear_power_level_spin.value_changed.connect(_on_rear_power_level_changed)
+
+func reload_weapon_config():
+	# Znajdź gracza w scenie i przeładuj konfigurację broni
+	var player = get_tree().current_scene.find_child("Player", true, false)
+	if player and player.has_node("WeaponSystem"):
+		var weapon_system = player.get_node("WeaponSystem")
+		weapon_system.load_weapon_config()
+		print("PlayerConfigUI: Przeładowano konfigurację broni")
 
 func load_values_from_setup():
 	ship_id_spin.value = PlayerSetup.ship_id
@@ -37,27 +45,37 @@ func load_values_from_setup():
 func _on_ship_id_changed(value: float):
 	PlayerSetup.ship_id = int(value)
 	print("PlayerConfigUI: Zmieniono ship_id = ", int(value))
+	ship_id_spin.release_focus()
 
 func _on_front_weapon_index_changed(value: float):
 	PlayerSetup.front_weapon_index = int(value)
 	print("PlayerConfigUI: Zmieniono front_weapon_index = ", int(value))
+	front_weapon_index_spin.release_focus()
+	reload_weapon_config()
 
 func _on_front_weapon_mode_changed(value: float):
 	PlayerSetup.front_weapon_mode = int(value)
 	print("PlayerConfigUI: Zmieniono front_weapon_mode = ", int(value))
+	front_weapon_mode_spin.release_focus()
+	reload_weapon_config()
 
 func _on_front_power_level_changed(value: float):
 	PlayerSetup.front_power_level = int(value)
 	print("PlayerConfigUI: Zmieniono front_power_level = ", int(value))
+	front_power_level_spin.release_focus()
+	reload_weapon_config()
 
 func _on_rear_weapon_index_changed(value: float):
 	PlayerSetup.rear_weapon_index = int(value)
 	print("PlayerConfigUI: Zmieniono rear_weapon_index = ", int(value))
+	rear_weapon_index_spin.release_focus()
 
 func _on_rear_weapon_mode_changed(value: float):
 	PlayerSetup.rear_weapon_mode = int(value)
 	print("PlayerConfigUI: Zmieniono rear_weapon_mode = ", int(value))
+	rear_weapon_mode_spin.release_focus()
 
 func _on_rear_power_level_changed(value: float):
 	PlayerSetup.rear_power_level = int(value)
 	print("PlayerConfigUI: Zmieniono rear_power_level = ", int(value))
+	rear_power_level_spin.release_focus()
