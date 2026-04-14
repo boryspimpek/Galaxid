@@ -5,49 +5,62 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 20.0
 offset_top = 20.0
-offset_right = 320.0
+offset_right = 520.0
 offset_bottom = 620.0
 grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="." unique_id=716108404]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -230.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00037879302, 2.2678797e-09, 0.00020417666, 0.9019608)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=849378536]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -5.0
-offset_right = -142.0
-offset_bottom = -175.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -240.0
+offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ShipIdLabel" type="Label" parent="VBoxContainer" unique_id=1355461273]
 layout_mode = 2
 text = "Ship ID"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="ShipId" type="SpinBox" parent="VBoxContainer" unique_id=1198482493]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 13.0
 value = 1.0
-alignment = 2
+alignment = 1
 
 [node name="FrontWeaponIndexLabel" type="Label" parent="VBoxContainer" unique_id=339620443]
 layout_mode = 2
 text = "Front Weapon Index"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="FrontWeaponIndex" type="SpinBox" parent="VBoxContainer" unique_id=2032106987]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 42.0
 value = 2.0
-alignment = 2
+alignment = 1
 
 [node name="FrontWeaponModeLabel" type="Label" parent="VBoxContainer" unique_id=1383835779]
 layout_mode = 2
 text = "Front Weapon Mode"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="FrontWeaponMode" type="SpinBox" parent="VBoxContainer" unique_id=468586884]
 layout_mode = 2
@@ -55,12 +68,12 @@ size_flags_horizontal = 3
 min_value = 1.0
 max_value = 2.0
 value = 1.0
-alignment = 2
+alignment = 1
 
 [node name="FrontPowerLevelLabel" type="Label" parent="VBoxContainer" unique_id=1924855925]
 layout_mode = 2
 text = "Front Power Level"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="FrontPowerLevel" type="SpinBox" parent="VBoxContainer" unique_id=1533827478]
 layout_mode = 2
@@ -68,24 +81,24 @@ size_flags_horizontal = 3
 min_value = 1.0
 max_value = 11.0
 value = 2.0
-alignment = 2
+alignment = 1
 
 [node name="RearWeaponIndexLabel" type="Label" parent="VBoxContainer" unique_id=1541351752]
 layout_mode = 2
 text = "Rear Weapon Index"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="RearWeaponIndex" type="SpinBox" parent="VBoxContainer" unique_id=1817939380]
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 42.0
 value = 1.0
-alignment = 2
+alignment = 1
 
 [node name="RearWeaponModeLabel" type="Label" parent="VBoxContainer" unique_id=2135259716]
 layout_mode = 2
 text = "Rear Weapon Mode"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="RearWeaponMode" type="SpinBox" parent="VBoxContainer" unique_id=2064037031]
 layout_mode = 2
@@ -93,12 +106,12 @@ size_flags_horizontal = 3
 min_value = 1.0
 max_value = 2.0
 value = 1.0
-alignment = 2
+alignment = 1
 
 [node name="RearPowerLevelLabel" type="Label" parent="VBoxContainer" unique_id=563343569]
 layout_mode = 2
 text = "Rear Power Level"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="RearPowerLevel" type="SpinBox" parent="VBoxContainer" unique_id=1457461733]
 layout_mode = 2
@@ -106,4 +119,4 @@ size_flags_horizontal = 3
 min_value = 1.0
 max_value = 11.0
 value = 1.0
-alignment = 2
+alignment = 1
