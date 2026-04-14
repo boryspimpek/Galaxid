@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://shield_system"]
+
+[ext_resource type="Script" path="res://scenes/player/ShieldSystem.gd" id="1"]
+
+[node name="ShieldSystem" type="Node"]
+script = ExtResource("1")

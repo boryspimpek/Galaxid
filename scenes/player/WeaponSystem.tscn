@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://weapon_system"]
+
+[ext_resource type="Script" path="res://scenes/player/WeaponSystem.gd" id="1"]
+
+[node name="WeaponSystem" type="Node"]
+script = ExtResource("1")

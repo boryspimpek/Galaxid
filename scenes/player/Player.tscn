@@ -2,6 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bfunvfplfmm05" path="res://assets/player.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://pksuovmfqm7m" path="res://scenes/player/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://weapon_system" path="res://scenes/player/WeaponSystem.tscn" id="2_weapon"]
+[ext_resource type="PackedScene" uid="uid://damage_system" path="res://scenes/player/DamageSystem.tscn" id="3_damage"]
+[ext_resource type="PackedScene" uid="uid://shield_system" path="res://scenes/player/ShieldSystem.tscn" id="4_shield"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 45.39824
@@ -17,3 +20,9 @@ shape = SubResource("CircleShape2D_onrkg")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=236923006]
 position = Vector2(0, -47)
+
+[node name="WeaponSystem" parent="." instance=ExtResource("2_weapon")]
+
+[node name="DamageSystem" parent="." instance=ExtResource("3_damage")]
+
+[node name="ShieldSystem" parent="." instance=ExtResource("4_shield")]

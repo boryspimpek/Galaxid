@@ -13,44 +13,46 @@ var friction: float = 0.1      # Jak szybko się zatrzymuje
 # --- Słownik na dane statku ---
 var ship_data: Dictionary = {}
 
+# --- Systemy (child nodes) ---
+@onready var weapon_system: Node = $WeaponSystem
+@onready var damage_system: Node = $DamageSystem
+@onready var shield_system: Node = $ShieldSystem
+
 # ============================================================================
 # 1. INICJALIZACJA (Kolejność ma znaczenie!)
 # ============================================================================
 
 func _ready():
-	# 1. Najpierw pobierz konfigurację (ID) i dane z bazy (JSON)
-	setup_player_from_config()
-	# 2. Potem przelicz statystyki na wartości silnika (np. manewrowość na speed)
-	configure_ship()
-	# 3. Na końcu skonfiguruj porty broni (zakładając, że masz je jako dzieci)
+	load_ship_data()
+	apply_ship_stats()
 	setup_weapons()
 
-func setup_player_from_config():
-	# Pobieramy ID z Autoloada PlayerSetup
+func load_ship_data():
 	var s_id = PlayerSetup.ship_id
-	
-	# Pobieramy dane z bazy DataManager
 	var data = DataManager.get_ship_by_id(s_id)
 	
 	if data:
 		ship_data = data
-		# Przypisujemy pancerz
-		armor = data.get("armor", 100)
-		max_armor = armor
 		print("Player: Statek załadowany: ", data.get("name", "Nieznany"))
 	else:
 		push_error("Player: BŁĄD: Nie znaleziono danych dla statku o ID: " + str(s_id))
 
-func configure_ship():
-	# Tyrianowa manewrowość (np. 1-21) przeliczona na piksele/sekundę
+func apply_ship_stats():
+	# Pancerz
+	armor = ship_data.get("armor", 100)
+	max_armor = armor
+	
+	# Prędkość - manewrowość (np. 1-21) przeliczona na piksele/sekundę
 	# Mnożnik 30.0 da nam zakres od 30 do 630 px/s
 	var maneuverability = ship_data.get("maneuverability", 10)
 	speed = maneuverability * 30.0
 
 func setup_weapons():
-	# Tu w przyszłości dodasz logikę sprawdzania PlayerSetup.front_weapon_id
-	# i wysyłania tych danych do węzłów broni
-	pass
+	print("Player: Konfiguracja broni...")
+	# Przekaż konfigurację broni do WeaponSystem
+	# TODO: Po implementacji logiki w WeaponSystem, przekaż tutaj:
+	# weapon_system.front_weapon_id = PlayerSetup.front_weapon_id
+	# weapon_system.front_power_level = PlayerSetup.front_power_level
 
 # ============================================================================
 # 2. RUCH I FIZYKA
