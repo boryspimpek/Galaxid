@@ -127,13 +127,9 @@ func _process_shooting(delta: float):
 		if tur[i] == 0 or freq[i] == 0:
 			continue
 
-		# POPRAWKA 1: dekrementacja przez delta * TYRIAN_FPS zamiast stałego -1.
-		# Wartość 1.0 = jedna klatka Tyrian. Zmiana TYRIAN_FPS skaluje strzelanie
-		# tak samo jak ruch wroga.
 		eshotwait[i] -= delta * TYRIAN_FPS
 		if eshotwait[i] <= 0.0:
 			_fire_projectile(i)
-			# += zamiast = żeby nie gubić reszty przy krótkim delta
 			eshotwait[i] += eshotwaitmax[i]
 
 func _fire_projectile(direction_index: int):
@@ -144,7 +140,6 @@ func _fire_projectile(direction_index: int):
 	var weapon_id = int(tur[direction_index])
 	# print("Strzał! weapon_id=", weapon_id, " direction=", direction_index)
 
-	# Znajdź broń w weapons_data po indeksie
 	var weapon_data = null
 	for weapon in weapons_data:
 		if weapon.get("index") == weapon_id:
@@ -161,12 +156,8 @@ func _fire_projectile(direction_index: int):
 
 	var weapon_multi = int(weapon_data.get("multi", 1))
 	var weapon_max   = int(weapon_data.get("max", 1))
+	var aim          = int(weapon_data.get("aim", 0))
 
-	# POPRAWKA 2+3: Poprawna logika multi/max.
-	# W jednym wywołaniu strzelamy dokładnie weapon_multi pocisków,
-	# biorąc kolejne patterny z cyklu o długości weapon_max.
-	# eshotmultipos wskazuje na pattern który zostanie użyty (0-indexed),
-	# i jest inkrementowany PO wyborze — dzięki temu pattern[0] jest używany.
 	for _i in range(weapon_multi):
 		var temp_pos = eshotmultipos[direction_index]
 		if temp_pos >= patterns.size():
@@ -180,37 +171,51 @@ func _fire_projectile(direction_index: int):
 		var by      = pattern.get("by", 0)
 		var sg      = pattern.get("sg", 0)
 
-		# POPRAWKA 4: Obsługa specjalnych wartości attack.
-		# 250 i 251 to kody animacji/efektów w Tyrianie, nie obrażenia.
-		# Na tym etapie traktujemy je jako brak obrażeń (0) —
-		# docelowo wymagają osobnej obsługi.
-		var real_damage: int
-		if attack >= 250:
-			real_damage = 0  # TODO: obsługa specjalnych efektów
-		else:
-			real_damage = attack
-
 		# print("DEBUG: direction_index=", direction_index, " temp_pos=", temp_pos, " sx=", sx, " sy=", sy)
 
 		# Oblicz prędkość w zależności od kierunku (zgodnie z kodem Tyrian)
 		# direction_index: 0 = down, 1 = right, 2 = left
 		var projectile_velocity: Vector2
-		match direction_index:
-			0:  # down
+		
+		if aim > 0:
+			# Logika aim: celowanie w gracza
+			var player = get_parent().get_node_or_null("Player")
+			if player:
+				var target_pos = player.global_position
+				var aim_x = target_pos.x - global_position.x
+				var aim_y = target_pos.y - global_position.y
+				
+				# Normalizacja przez maxMagAim (największą składową)
+				var max_mag_aim = max(abs(aim_x), abs(aim_y))
+				if max_mag_aim > 0:
+					aim_x = aim_x / max_mag_aim
+					aim_y = aim_y / max_mag_aim
+				
+				# Mnożenie przez aim i zaokrąglenie
+				var sxm = round(aim_x * float(aim))
+				var sym = round(aim_y * float(aim))
+				
+				projectile_velocity = Vector2(sxm, sym)
+			else:
+				# Fallback jeśli gracz nie istnieje
 				projectile_velocity = Vector2(float(sx), float(sy))
-			1:  # right: obrót 90° w prawo
-				projectile_velocity = Vector2(float(sy), float(-sx))
-			2:  # left: obrót 90° w lewo
-				projectile_velocity = Vector2(float(-sy), float(-sx))
-			_:
-				projectile_velocity = Vector2(float(sx), float(sy))
+		else:
+			# Standardowa logika sx/sy
+			match direction_index:
+				0:  # down
+					projectile_velocity = Vector2(float(sx), float(sy))
+				1:  # right: obrót 90° w prawo
+					projectile_velocity = Vector2(float(sy), float(-sx))
+				2:  # left: obrót 90° w lewo
+					projectile_velocity = Vector2(float(-sy), float(-sx))
+				_:
+					projectile_velocity = Vector2(float(sx), float(sy))
 
 		# print("DEBUG: final velocity=", projectile_velocity)
 
 		# Utwórz pocisk
 		var projectile = projectile_scene.instantiate()
 		projectile.velocity = projectile_velocity
-		projectile.damage   = real_damage
 		projectile.sprite_id = sg
 
 		# Oblicz pozycję startową z offsetem bx/by
