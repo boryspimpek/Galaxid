@@ -13,11 +13,10 @@ const SCALE_Y    = 720.0  / 200.0   # = 3.6
 @export var link_num: int = 0
 @export var enemy_slot: int = 0
 
-# ---- Ruch (surowe jednostki Tyrian: px/klatkę @ 15 FPS) ----
+# ---- Ruch (surowe jednostki Tyrian: px/klatkę np. @ 15 FPS) ----
 # velocity odpowiada exc/eyc z silnika Tyrian
 @export var velocity: Vector2 = Vector2(0, 0)
 @export var fixed_move_y: int = 0
-# Prędkość scrollingu właściwa dla slotu tego wroga (px/klatkę Tyrian)
 @export var scroll_y: int = 2
 
 # ---- Silnik wahadłowy (xcaccel / ycaccel) ----
@@ -81,13 +80,13 @@ func _ready():
 	# Inicjalizacja systemu strzelania
 	for i in range(3):
 		var weapon_id = tur[i]
-		if weapon_id == 252:
-			eshotwait[i] = 1.0
-		elif weapon_id != 0:
-			eshotwait[i] = 20.0
-		else:
-			eshotwait[i] = 255.0
 		eshotwaitmax[i] = float(freq[i])
+		if weapon_id == 252:
+			eshotwait[i] = 1.0  # specjalna broń strzela od razu
+		elif weapon_id != 0:
+			eshotwait[i] = eshotwaitmax[i]  # normalna broń - użyj freq
+		else:
+			eshotwait[i] = 255.0  # brak broni - duży cooldown
 
 	# Ustaw kolor na podstawie enemy_id
 	var colors = [
@@ -109,7 +108,6 @@ func _ready():
 			width  = 24.0 * SCALE_X
 			height = 28.0 * SCALE_Y
 
-		# Utwórz prostokąt wyśrodkowany w (0,0)
 		var half_w = width  / 2.0
 		var half_h = height / 2.0
 		visual.polygon = PackedVector2Array([
