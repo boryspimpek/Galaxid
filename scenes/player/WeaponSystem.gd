@@ -45,7 +45,6 @@ func _physics_process(_delta):
 func load_weapon_config():
 	current_weapon_index = PlayerSetup.front_weapon_index
 	power_level = PlayerSetup.front_power_level
-	
 	var weapon_mode = PlayerSetup.front_weapon_mode
 	
 	# Krok 1: Pobierz indeks sposobu strzelania z weapon_ports.json
@@ -84,6 +83,11 @@ func shoot():
 	if multi == 0:
 		multi = 1
 	
+	# Max - limit patterns (jeśli multi > max, używaj max)
+	var max_patterns = weapon_data.get("max", 0)
+	if max_patterns > 0 and multi > max_patterns:
+		multi = max_patterns
+	
 	# Strzelaj multi-shot
 	for i in range(multi):
 		if i < patterns.size():
@@ -93,20 +97,24 @@ func shoot():
 			var sy = pattern.get("sy", 0)
 			var bx = pattern.get("bx", 0)
 			var by = pattern.get("by", 0)
+			var del = pattern.get("del", 0)
+			var sg = pattern.get("sg", 0)
+			var acceleration = weapon_data.get("acceleration", 0)
+			var accelerationx = weapon_data.get("accelerationx", 0)
 			
 			# Ignoruj puste wpisy (attack=0)
 			if attack <= 0:
 				continue
 			
-			# Stwórz projectile z offsetem bx/by
-			create_projectile(attack, sx, sy, bx, by)
+			# Stwórz projectile z pełnymi parametrami
+			create_projectile(attack, sx, sy, bx, by, del, sg, acceleration, accelerationx)
 	
 	# Ustaw cooldown z repeat (shotRepeat z JSON)
 	# repeat to ilość klatek w 30 FPS, mnożymy x2 dla 60 FPS
 	var repeat = weapon_data.get("shotRepeat", 0)
 	fire_timer = repeat * 2
 
-func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0):
+func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, del: int = 0, sg: int = 0, acceleration: int = 0, accelerationx: int = 0):
 	if not projectile_scene:
 		return
 	
@@ -120,11 +128,20 @@ func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0):
 	var velocity = Vector2(float(sx), float(-sy))  # Odwracam Y bo w Godot Y w dół
 	projectile.velocity = velocity
 	
+	# Ustaw acceleration (przyspieszenie po wystrzeleniu)
+	projectile.acceleration = Vector2(float(accelerationx), float(-acceleration))
+	
 	# Ustaw damage (może być skalowane przez power level)
 	var scaled_damage = damage * power_level
 	projectile.damage = scaled_damage
 	
+	# Ustaw czas życia (del)
+	projectile.lifetime = del
+	
+	# Ustaw shot graphic (sg)
+	projectile.shot_graphic = sg
+	
 	# Dodaj do sceny
 	get_tree().current_scene.add_child(projectile)
 	
-	print("WeaponSystem: Strzał - damage=", scaled_damage, " velocity=", velocity, " offset=", Vector2(bx, -by))
+	print("WeaponSystem: Strzał - damage=", scaled_damage, " velocity=", velocity, " acc=", projectile.acceleration, " lifetime=", del)

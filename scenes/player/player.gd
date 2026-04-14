@@ -30,7 +30,6 @@ var ship_data: Dictionary = {}
 func _ready():
 	load_ship_data()
 	apply_ship_stats()
-	setup_weapons()
 
 func load_ship_data():
 	var s_id = PlayerSetup.ship_id
@@ -51,13 +50,6 @@ func apply_ship_stats():
 	# Mnożnik 30.0 da nam zakres od 30 do 630 px/s
 	var maneuverability = ship_data.get("maneuverability", 10)
 	speed = maneuverability * 30.0
-
-func setup_weapons():
-	print("Player: Konfiguracja broni...")
-	# Przekaż konfigurację broni do WeaponSystem
-	# TODO: Po implementacji logiki w WeaponSystem, przekaż tutaj:
-	# weapon_system.front_weapon_id = PlayerSetup.front_weapon_id
-	# weapon_system.front_power_level = PlayerSetup.front_power_level
 
 # ============================================================================
 # 2. RUCH I FIZYKA
