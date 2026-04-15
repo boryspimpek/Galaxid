@@ -2,72 +2,127 @@
 
 [ext_resource type="Script" path="res://scenes/ui/PlayerConfigUI.gd" id="1_8j8y8" uid="uid://c2f573g2ohek7"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.05, 0.05, 0.15, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.6, 1.0, 0.6)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.1, 0.1, 0.2, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.3, 0.5, 0.5)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="PlayerConfigUI" type="Control" unique_id=290511547]
 script = ExtResource("1_8j8y8")
 layout_mode = 3
 anchors_preset = 0
 offset_left = 20.0
 offset_top = 20.0
-offset_right = 520.0
-offset_bottom = 620.0
+offset_right = 320.0
+offset_bottom = 700.0
 grow_vertical = 2
 
-[node name="Background" type="ColorRect" parent="." unique_id=716108404]
+[node name="Background" type="PanelContainer" parent="." unique_id=716108404]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -230.0
-offset_bottom = -130.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.00037879302, 2.2678797e-09, 0.00020417666, 0.9019608)
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=849378536]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -240.0
-offset_bottom = -160.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ShipIdLabel" type="Label" parent="VBoxContainer" unique_id=1355461273]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background" unique_id=849378536]
 layout_mode = 2
-text = "Ship ID"
+theme_override_constants/separation = 4
+
+[node name="ShipNameLabel" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.7, 0.85, 1.0, 1)
+text = "Unknown Ship"
 horizontal_alignment = 1
 
-[node name="ShipId" type="SpinBox" parent="VBoxContainer" unique_id=1198482493]
+[node name="ShipId" type="SpinBox" parent="Background/VBoxContainer" unique_id=1198482493]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 max_value = 13.0
 value = 1.0
 alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.8, 1.0, 1)
 
-[node name="FrontWeaponIndexLabel" type="Label" parent="VBoxContainer" unique_id=339620443]
+[node name="HSeparator" type="HSeparator" parent="Background/VBoxContainer"]
 layout_mode = 2
-text = "Front Weapon Index"
+theme_override_styles/separator = SubResource("StyleBoxFlat_bar_bg")
+
+[node name="GeneratorNameLabel" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.7, 0.85, 1.0, 1)
+text = "Unknown Generator"
 horizontal_alignment = 1
 
-[node name="FrontWeaponIndex" type="SpinBox" parent="VBoxContainer" unique_id=2032106987]
+[node name="GeneratorId" type="SpinBox" parent="Background/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+max_value = 6.0
+value = 1.0
+alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.8, 1.0, 1)
+
+[node name="HSeparator2" type="HSeparator" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_bar_bg")
+
+[node name="FrontWeaponNameLabel" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.7, 0.85, 1.0, 1)
+text = "Unknown Weapon"
+horizontal_alignment = 1
+
+[node name="FrontWeaponIndex" type="SpinBox" parent="Background/VBoxContainer" unique_id=2032106987]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 max_value = 42.0
 value = 2.0
 alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.8, 1.0, 1)
 
-[node name="FrontWeaponModeLabel" type="Label" parent="VBoxContainer" unique_id=1383835779]
+[node name="FrontWeaponModeLabel" type="Label" parent="Background/VBoxContainer" unique_id=1383835779]
 layout_mode = 2
-text = "Front Weapon Mode"
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.6, 0.75, 0.95, 0.9)
+text = "Mode"
 horizontal_alignment = 1
 
-[node name="FrontWeaponMode" type="SpinBox" parent="VBoxContainer" unique_id=468586884]
+[node name="FrontWeaponMode" type="SpinBox" parent="Background/VBoxContainer" unique_id=468586884]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -75,13 +130,17 @@ min_value = 1.0
 max_value = 2.0
 value = 1.0
 alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.8, 1.0, 1)
 
-[node name="FrontPowerLevelLabel" type="Label" parent="VBoxContainer" unique_id=1924855925]
+[node name="FrontPowerLevelLabel" type="Label" parent="Background/VBoxContainer" unique_id=1924855925]
 layout_mode = 2
-text = "Front Power Level"
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.6, 0.75, 0.95, 0.9)
+text = "Power Level"
 horizontal_alignment = 1
 
-[node name="FrontPowerLevel" type="SpinBox" parent="VBoxContainer" unique_id=1533827478]
+[node name="FrontPowerLevel" type="SpinBox" parent="Background/VBoxContainer" unique_id=1533827478]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -89,26 +148,38 @@ min_value = 1.0
 max_value = 11.0
 value = 2.0
 alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.8, 1.0, 1)
 
-[node name="RearWeaponIndexLabel" type="Label" parent="VBoxContainer" unique_id=1541351752]
+[node name="HSeparator3" type="HSeparator" parent="Background/VBoxContainer"]
 layout_mode = 2
-text = "Rear Weapon Index"
+theme_override_styles/separator = SubResource("StyleBoxFlat_bar_bg")
+
+[node name="RearWeaponNameLabel" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.7, 0.85, 1.0, 1)
+text = "Unknown Weapon"
 horizontal_alignment = 1
 
-[node name="RearWeaponIndex" type="SpinBox" parent="VBoxContainer" unique_id=1817939380]
+[node name="RearWeaponIndex" type="SpinBox" parent="Background/VBoxContainer" unique_id=1817939380]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
 max_value = 42.0
 value = 1.0
 alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.8, 1.0, 1)
 
-[node name="RearWeaponModeLabel" type="Label" parent="VBoxContainer" unique_id=2135259716]
+[node name="RearWeaponModeLabel" type="Label" parent="Background/VBoxContainer" unique_id=2135259716]
 layout_mode = 2
-text = "Rear Weapon Mode"
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.6, 0.75, 0.95, 0.9)
+text = "Mode"
 horizontal_alignment = 1
 
-[node name="RearWeaponMode" type="SpinBox" parent="VBoxContainer" unique_id=2064037031]
+[node name="RearWeaponMode" type="SpinBox" parent="Background/VBoxContainer" unique_id=2064037031]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -116,13 +187,17 @@ min_value = 1.0
 max_value = 2.0
 value = 1.0
 alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.8, 1.0, 1)
 
-[node name="RearPowerLevelLabel" type="Label" parent="VBoxContainer" unique_id=563343569]
+[node name="RearPowerLevelLabel" type="Label" parent="Background/VBoxContainer" unique_id=563343569]
 layout_mode = 2
-text = "Rear Power Level"
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.6, 0.75, 0.95, 0.9)
+text = "Power Level"
 horizontal_alignment = 1
 
-[node name="RearPowerLevel" type="SpinBox" parent="VBoxContainer" unique_id=1457461733]
+[node name="RearPowerLevel" type="SpinBox" parent="Background/VBoxContainer" unique_id=1457461733]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
@@ -130,3 +205,5 @@ min_value = 1.0
 max_value = 11.0
 value = 1.0
 alignment = 1
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.8, 1.0, 1)

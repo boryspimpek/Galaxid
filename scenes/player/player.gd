@@ -65,6 +65,13 @@ func init_power_regeneration():
 	
 	print("Player: Generator ID=", generator_id, " power=", generator_power, " → power_add=", power_add, " (energia/klatkę)")
 
+func reload_power_regeneration():
+	# Przelicz power_add na podstawie aktualnego generatora
+	var generator_id = PlayerSetup.generator_id
+	var generator_power = DataManager.get_generator_power(generator_id)
+	power_add = (generator_power * GameConstants.TYRIAN_FPS) / 60.0
+	print("Player: Przeładowano regenerację energii → power_add=", power_add)
+
 # ============================================================================
 # 2. RUCH I FIZYKA
 # ============================================================================
