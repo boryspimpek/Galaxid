@@ -23,4 +23,4 @@ var player_projectile_scene: PackedScene
 func _ready():
 	# Załaduj sceny pocisków
 	enemy_projectile_scene = preload("res://scenes/enemy_projectile/EnemyProjectile.tscn")
-	player_projectile_scene = preload("res://scenes/projectile/projectile.tscn")
+	player_projectile_scene = preload("res://scenes/projectile/Projectile.tscn")
