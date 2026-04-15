@@ -68,7 +68,7 @@ func shoot():
 	
 	# Odejmij power_use
 	player.power -= power_use
-	print("aktualny power: ", player.power)
+	print("WeaponSystem: Power: ", player.power)
 	
 	var patterns = weapon_data.get("patterns", [])
 	if patterns.is_empty():

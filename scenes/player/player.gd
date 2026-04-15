@@ -9,9 +9,7 @@ var velocity_target = Vector2.ZERO
 # --- System energii (Power) ---
 var power: float = 900.0
 var power_max: float = 900.0
-# Regeneracja obliczana na podstawie TYRIAN_FPS
-# Jeśli Tyrian ma powerAdd=1 przy 15 FPS, to Godot przy 60 FPS potrzebuje: (15) / 60 = 0.25
-var power_add: float = GameConstants.TYRIAN_FPS / 60.0
+var power_add: float = 0.0  # Regeneracja obliczana dynamicznie na podstawie generatora
 
 # --- Parametry fizyki ---
 var acceleration: float = 0.15  # Jak szybko osiąga max prędkość
@@ -32,6 +30,7 @@ var ship_data: Dictionary = {}
 func _ready():
 	load_ship_data()
 	apply_ship_stats()
+	init_power_regeneration()
 
 func load_ship_data():
 	var s_id = PlayerSetup.ship_id
@@ -53,6 +52,19 @@ func apply_ship_stats():
 	var maneuverability = ship_data.get("maneuverability", 10)
 	speed = maneuverability * 30.0
 
+func init_power_regeneration():
+	# Pobierz generator_id z PlayerSetup
+	var generator_id = PlayerSetup.generator_id
+	
+	# Pobierz power z generatora
+	var generator_power = DataManager.get_generator_power(generator_id)
+	
+	# Oblicz power_add dla Godot (60 FPS) na podstawie Tyrian FPS
+	# Wzór: (generator_power * TYRIAN_FPS) / 60.0
+	power_add = (generator_power * GameConstants.TYRIAN_FPS) / 60.0
+	
+	print("Player: Generator ID=", generator_id, " power=", generator_power, " → power_add=", power_add, " (energia/klatkę)")
+
 # ============================================================================
 # 2. RUCH I FIZYKA
 # ============================================================================
@@ -60,7 +72,6 @@ func apply_ship_stats():
 func _physics_process(_delta):
 	# Regeneracja energii
 	power = min(power_max, power + power_add)
-	print("aktualny power: ", power)
 	
 	# Pobieranie wektora ruchu
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

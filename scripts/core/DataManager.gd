@@ -9,6 +9,7 @@ var weapons_cache: Array = []
 var shields_cache: Array = []
 var weapon_ports_cache: Array = []
 var sidekicks_cache: Array = []
+var generators_cache: Array = []
 
 # Flaga ładowania
 var _ships_loaded: bool = false
@@ -17,6 +18,7 @@ var _weapons_loaded: bool = false
 var _shields_loaded: bool = false
 var _weapon_ports_loaded: bool = false
 var _sidekicks_loaded: bool = false
+var _generators_loaded: bool = false
 
 # ============================================================================
 # PODSTAWOWA FUNKCJA ŁADOWANIA JSON
@@ -186,6 +188,33 @@ func get_sidekick_by_id(id: int) -> Dictionary:
 	return {}
 
 # ============================================================================
+# GENERATORY (generators.json)
+# ============================================================================
+
+func get_generators() -> Array:
+	if not _generators_loaded:
+		var data = load_json("res://data/generators.json")
+		if data:
+			generators_cache = data
+			_generators_loaded = true
+			print("DataManager: Załadowano ", generators_cache.size(), " generatorów")
+	return generators_cache
+
+func get_generator_by_id(id: int) -> Dictionary:
+	for generator in get_generators():
+		if generator.get("index", 0) == id:
+			return generator
+	push_error("DataManager: Nie znaleziono generatora o ID=", id)
+	return {}
+
+func get_generator_power(generator_id: int) -> int:
+	var generator = get_generator_by_id(generator_id)
+	if generator.is_empty():
+		return 0
+	var stats = generator.get("stats", {})
+	return stats.get("power", 0)
+
+# ============================================================================
 # POZIOMY (lvl*.json)
 # ============================================================================
 
@@ -208,6 +237,7 @@ func clear_cache():
 	shields_cache.clear()
 	weapon_ports_cache.clear()
 	sidekicks_cache.clear()
+	generators_cache.clear()
 	
 	_ships_loaded = false
 	_enemies_loaded = false
@@ -215,5 +245,6 @@ func clear_cache():
 	_shields_loaded = false
 	_weapon_ports_loaded = false
 	_sidekicks_loaded = false
+	_generators_loaded = false
 	
 	print("DataManager: Cache wyczyszczony")
