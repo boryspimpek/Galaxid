@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://b8j4k2l3m5n6"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://l2t6v8x1b3c" path="res://scenes/enemy/Enemy.gd" id="1_enemy"]
+[ext_resource type="Script" path="res://scenes/enemy/Enemy.gd" id="1_enemy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_enemy"]
 radius = 12.0

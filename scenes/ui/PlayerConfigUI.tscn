@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://b8vqx4tqi0fke"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://c2f573g2ohek7" path="res://scenes/ui/PlayerConfigUI.gd" id="1_8j8y8"]
+[ext_resource type="Script" path="res://scenes/ui/PlayerConfigUI.gd" id="1_8j8y8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 content_margin_left = 12.0

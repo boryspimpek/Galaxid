@@ -1,10 +1,10 @@
-[gd_scene format=3 uid="uid://c3ik8aourheqx"]
+[gd_scene format=3]
 
-[ext_resource type="Texture2D" uid="uid://bfunvfplfmm05" path="res://assets/player.png" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://pksuovmfqm7m" path="res://scenes/player/player.gd" id="1_onrkg"]
-[ext_resource type="PackedScene" uid="uid://cx8k4m2n5p7q" path="res://scenes/player/WeaponSystem.tscn" id="2_weapon"]
-[ext_resource type="PackedScene" uid="uid://e4k7m9n2p5s" path="res://scenes/player/DamageSystem.tscn" id="3_damage"]
-[ext_resource type="PackedScene" uid="uid://d9j3l6n8p1r" path="res://scenes/player/ShieldSystem.tscn" id="4_shield"]
+[ext_resource type="Texture2D" path="res://assets/player.png" id="1_4flbx"]
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" path="res://scenes/player/WeaponSystem.tscn" id="2_weapon"]
+[ext_resource type="PackedScene" path="res://scenes/player/DamageSystem.tscn" id="3_damage"]
+[ext_resource type="PackedScene" path="res://scenes/player/ShieldSystem.tscn" id="4_shield"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
 radius = 45.39824

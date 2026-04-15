@@ -1,10 +1,10 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bhf031a07mvs7"]
 
 [ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
-[ext_resource type="PackedScene" uid="uid://dr7gh8fwvyady" path="res://scenes/background/Background.tscn" id="2_background"]
-[ext_resource type="Script" uid="uid://m7pot1avds0x" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
-[ext_resource type="PackedScene" uid="uid://b8vqx4tqi0fke" path="res://scenes/ui/PlayerConfigUI.tscn" id="4_ui"]
-[ext_resource type="PackedScene" uid="uid://vbtl1lrhivag" path="res://scenes/ui/GeneratorInfoUI.tscn" id="5_generator_ui"]
+[ext_resource type="PackedScene" path="res://scenes/background/Background.tscn" id="2_background"]
+[ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
+[ext_resource type="PackedScene" path="res://scenes/ui/PlayerConfigUI.tscn" id="4_ui"]
+[ext_resource type="PackedScene" path="res://scenes/ui/GeneratorInfoUI.tscn" id="5_generator_ui"]
 
 [node name="World" type="Node2D" unique_id=1364436952]
 script = ExtResource("3_level_manager")
@@ -12,6 +12,7 @@ script = ExtResource("3_level_manager")
 [node name="Background" parent="." unique_id=2089491048 instance=ExtResource("2_background")]
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
+position = Vector2(658, 665)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2020724297]
 
