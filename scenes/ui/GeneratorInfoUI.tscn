@@ -2,17 +2,54 @@
 
 [ext_resource type="Script" uid="uid://b2qru852ujp7v" path="res://scenes/ui/GeneratorInfoUI.gd" id="1_generator_ui"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+content_margin_left = 12.0
+content_margin_top = 10.0
+content_margin_right = 12.0
+content_margin_bottom = 10.0
+bg_color = Color(0.05, 0.05, 0.15, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.3, 0.6, 1.0, 0.6)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_bg"]
+bg_color = Color(0.1, 0.1, 0.2, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.3, 0.5, 0.5)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar_fill"]
+bg_color = Color(0.2, 0.5, 1.0, 0.9)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
 [node name="GeneratorInfoUI" type="Control" unique_id=491276486]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 20.0
-offset_top = 640.0
-offset_right = 220.0
+offset_top = 580.0
+offset_right = 280.0
 offset_bottom = 700.0
 grow_vertical = 2
 script = ExtResource("1_generator_ui")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1388757404]
+[node name="Background" type="PanelContainer" parent="." unique_id=1388757404]
 z_index = -1
 layout_mode = 1
 anchors_preset = 15
@@ -20,31 +57,42 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.90588236, 0.050980393, 0.050980393, 0.7019608)
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1332167121]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = -10.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GeneratorNameLabel" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Background" unique_id=1332167121]
 layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="GeneratorNameLabel" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.7, 0.85, 1.0, 1)
 text = "Generator: Unknown"
 horizontal_alignment = 1
 
-[node name="PowerLabel" type="Label" parent="VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="Background/VBoxContainer"]
 layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxFlat_bar_bg")
+
+[node name="PowerLabel" type="Label" parent="Background/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.5, 0.8, 1.0, 1)
 text = "Power: 0/900"
 horizontal_alignment = 1
 
-[node name="PowerAddLabel" type="Label" parent="VBoxContainer" unique_id=1567955859]
+[node name="PowerBar" type="ProgressBar" parent="Background/VBoxContainer"]
 layout_mode = 2
-text = "Power Regen: 0.0 / frame"
+custom_minimum_size = Vector2(0, 14)
+theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bar_fill")
+max_value = 900.0
+value = 0.0
+show_percentage = false
+
+[node name="PowerAddLabel" type="Label" parent="Background/VBoxContainer" unique_id=1567955859]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.4, 0.7, 0.9, 0.8)
+text = "Regen: 0.0 / frame"
 horizontal_alignment = 1

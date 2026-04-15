@@ -4,9 +4,10 @@ extends Control
 # GENERATOR INFO UI - Wyświetlanie informacji o generatorze (tylko do odczytu)
 # ============================================================================
 
-@onready var generator_name_label: Label = $VBoxContainer/GeneratorNameLabel
-@onready var power_label: Label = $VBoxContainer/PowerLabel
-@onready var power_add_label: Label = $VBoxContainer/PowerAddLabel
+@onready var generator_name_label: Label = $Background/VBoxContainer/GeneratorNameLabel
+@onready var power_label: Label = $Background/VBoxContainer/PowerLabel
+@onready var power_add_label: Label = $Background/VBoxContainer/PowerAddLabel
+@onready var power_bar: ProgressBar = $Background/VBoxContainer/PowerBar
 
 func _ready():
 	# UI jest widoczne od początku
@@ -19,9 +20,11 @@ func _process(_delta):
 	if player:
 		# Aktualna wartość energii
 		power_label.text = "Power: " + str(int(player.power)) + "/" + str(int(player.power_max))
+		power_bar.max_value = player.power_max
+		power_bar.value = player.power
 		
 		# Szybkość regeneracji
-		power_add_label.text = "Power Regen: " + str(player.power_add) + " / frame"
+		power_add_label.text = "Regen: " + str(player.power_add) + " / frame"
 		
 		# Nazwa generatora
 		var generator_id = PlayerSetup.generator_id
@@ -34,4 +37,5 @@ func _process(_delta):
 	else:
 		generator_name_label.text = "Player not found"
 		power_label.text = "Power: ?/?"
-		power_add_label.text = "Power Regen: ? / frame"
+		power_bar.value = 0
+		power_add_label.text = "Regen: ? / frame"
