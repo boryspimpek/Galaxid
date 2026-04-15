@@ -1,9 +1,12 @@
 extends Node2D
 
-# ---- Stałe przeliczeniowe ----
-const TYRIAN_FPS = 15.0
-const SCALE_X    = 1280.0 / 320.0   # = 4.0
-const SCALE_Y    = 720.0  / 200.0   # = 3.6
+# ---- Sygnały ----
+signal projectile_spawned(projectile)
+
+# ---- Stałe przeliczeniowe (z GameConstants) ----
+const TYRIAN_FPS = GameConstants.TYRIAN_FPS
+const SCALE_X    = GameConstants.SCALE_X
+const SCALE_Y    = GameConstants.SCALE_Y
 
 # ---- Statystyki ----
 @export var armor: int = 1
@@ -39,7 +42,6 @@ var eyccadd: int = 1
 # ---- System strzelania ----
 @export var tur: Array = [0, 0, 0]   # ID broni [down, right, left]
 @export var freq: Array = [0, 0, 0]  # Częstotliwość strzelania [down, right, left]
-var weapons_data: Array = []         # Dane broni z LevelManager
 var projectile_scene: PackedScene    # Scena pocisku wroga
 
 # Runtime zmienne strzelania
@@ -50,11 +52,11 @@ var eshotwaitmax: Array = [0.0, 0.0, 0.0]  # Maksymalny cooldown z freq
 # POPRAWKA 2: eshotmultipos zaczyna od 0 (0-indexed), inkrementowany PO wyborze patternu.
 var eshotmultipos: Array = [0, 0, 0]       # Pozycja w cyklu patternów dla każdego kierunku
 
-# ---- Granice usuwania (px Godot) ----
-const BOUNDS_LEFT   = -1400
-const BOUNDS_RIGHT  = 1480
-const BOUNDS_TOP    = -1000
-const BOUNDS_BOTTOM = 1000
+# ---- Granice usuwania (z GameConstants) ----
+const BOUNDS_LEFT   = GameConstants.BOUNDS_LEFT
+const BOUNDS_RIGHT  = GameConstants.BOUNDS_RIGHT
+const BOUNDS_TOP    = GameConstants.BOUNDS_TOP
+const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 
 # Referencje do węzłów
 @onready var visual: Polygon2D = $Visual
@@ -131,20 +133,16 @@ func _process_shooting(delta: float):
 			eshotwait[i] += eshotwaitmax[i]
 
 func _fire_projectile(direction_index: int):
-	if not projectile_scene or weapons_data.is_empty():
-		print("ERROR: projectile_scene lub weapons_data puste")
+	if not projectile_scene:
+		print("ERROR: projectile_scene pusty")
 		return
 
 	var weapon_id = int(tur[direction_index])
 	# print("Strzał! weapon_id=", weapon_id, " direction=", direction_index)
 
-	var weapon_data = null
-	for weapon in weapons_data:
-		if weapon.get("index") == weapon_id:
-			weapon_data = weapon
-			break
+	var weapon_data = DataManager.get_weapon_by_id(weapon_id)
 
-	if not weapon_data:
+	if weapon_data.is_empty():
 		print("ERROR: Nie znaleziono broni o ID=", weapon_id)
 		return
 
@@ -247,8 +245,8 @@ func _fire_projectile(direction_index: int):
 		var offset_y = float(by) * SCALE_Y
 		projectile.global_position = global_position + Vector2(offset_x, offset_y)
 
-		# Dodaj do sceny (jako dziecko LevelManager, nie wroga)
-		get_parent().add_child(projectile)
+		# Emituj sygnał do spawnu pocisku (LevelManager doda go do sceny)
+		projectile_spawned.emit(projectile)
 		# print("Pocisk utworzony na pozycji: ", projectile.global_position, " velocity: ", projectile.velocity)
 
 		# Inkrementuj po wyborze i spawn pocisku, zawijaj po weapon_max

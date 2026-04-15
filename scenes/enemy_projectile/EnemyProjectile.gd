@@ -1,9 +1,9 @@
 extends Area2D
 
-# Stałe przeliczeniowe
-const TYRIAN_FPS = 15.0
-const SCALE_X = 1280.0 / 320.0   # = 4.0
-const SCALE_Y = 720.0 / 200.0   # = 3.6
+# Stałe przeliczeniowe (z GameConstants)
+const TYRIAN_FPS = GameConstants.TYRIAN_FPS
+const SCALE_X = GameConstants.SCALE_X
+const SCALE_Y = GameConstants.SCALE_Y
 
 # Parametry pocisku
 var velocity: Vector2 = Vector2.ZERO  # sx, sy z broni (Tyrian px/klatkę)
@@ -17,11 +17,11 @@ var acceleration: int = 0             # przyspieszenie Y
 var accelerationx: int = 0            # przyspieszenie X
 var duration: float = 255.0           # czas życia w klatkach Tyrian (255 = nieskończony)
 
-# Granice usuwania (px Godot)
-const BOUNDS_LEFT   = -1400
-const BOUNDS_RIGHT  = 1480
-const BOUNDS_TOP    = -1000
-const BOUNDS_BOTTOM = 1000
+# Granice usuwania (z GameConstants)
+const BOUNDS_LEFT   = GameConstants.BOUNDS_LEFT
+const BOUNDS_RIGHT  = GameConstants.BOUNDS_RIGHT
+const BOUNDS_TOP    = GameConstants.BOUNDS_TOP
+const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 
 # Referencja do węzła wizualnego
 @onready var visual: Polygon2D = $Visual

@@ -1,7 +1,7 @@
 extends Node2D
 
-const TYRIAN_FPS = 15.0
-const SCALE_Y = 720.0 / 200.0
+const TYRIAN_FPS = GameConstants.TYRIAN_FPS
+const SCALE_Y = GameConstants.SCALE_Y
 
 var back_move: int = 1
 var back_move2: int = 2

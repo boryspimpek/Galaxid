@@ -6,12 +6,11 @@ extends Node2D
 @export var weapon_file: String = "res://data/weapon.json"
 
 @onready var enemy_scene = preload("res://scenes/enemy/Enemy.tscn")
-@onready var enemy_projectile_scene = preload("res://scenes/enemy_projectile/EnemyProjectile.tscn")
 
-# Stałe
-const TYRIAN_FPS  = 15.0
-const SCALE_X     = 1280.0 / 320.0   # = 4.0
-const SCALE_Y     = 720.0  / 200.0   # = 3.6
+# Stałe (z GameConstants)
+const TYRIAN_FPS  = GameConstants.TYRIAN_FPS
+const SCALE_X     = GameConstants.SCALE_X
+const SCALE_Y     = GameConstants.SCALE_Y
 
 # Prędkości scrollingu (Tyrian px/klatkę)
 var back_move:  int = 1   # Ground (slot 25, 75)
@@ -131,6 +130,7 @@ func process_random_spawn(delta: float):
 		var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
 			0, scroll_for_slot, enemy_id, 0, 0, enemy_slot)
 		if enemy:
+			enemy.projectile_spawned.connect(_on_enemy_projectile_spawned)
 			add_child(enemy)
 			print("LevelManager: Random spawn: wróg ID=", enemy_id, " na pozycji ", spawn_pos)
 
@@ -175,6 +175,7 @@ func spawn_enemy(event: Dictionary):
 		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id,
 		event.get("event_type", 0), event.get("link_num", 0), event.get("enemy_slot", 0))
 	if enemy:
+		enemy.projectile_spawned.connect(_on_enemy_projectile_spawned)
 		add_child(enemy)
 
 func spawn_top_enemy(event: Dictionary):
@@ -208,6 +209,7 @@ func spawn_top_enemy(event: Dictionary):
 		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, 7,
 		event.get("link_num", 0), enemy_slot)
 	if enemy:
+		enemy.projectile_spawned.connect(_on_enemy_projectile_spawned)
 		add_child(enemy)
 
 func spawn_ground_enemy_2(event: Dictionary):
@@ -236,6 +238,7 @@ func spawn_ground_enemy_2(event: Dictionary):
 		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, 10,
 		event.get("link_num", 0), enemy_slot)
 	if enemy:
+		enemy.projectile_spawned.connect(_on_enemy_projectile_spawned)
 		add_child(enemy)
 
 func spawn_4x4_enemies(event: Dictionary):
@@ -261,6 +264,7 @@ func spawn_4x4_enemies(event: Dictionary):
 			fixed_move_y, scroll_for_slot, int(enemy_ids[i]), event_type,
 			event.get("link_num", 0), enemy_slot)
 		if enemy:
+			enemy.projectile_spawned.connect(_on_enemy_projectile_spawned)
 			add_child(enemy)
 
 func disable_random_spawn(_event: Dictionary):
@@ -403,7 +407,10 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 	enemy.yaccel        = template.get("yaccel",  0)
 	enemy.tur           = template.get("tur",     [0, 0, 0])
 	enemy.freq          = template.get("freq",    [0, 0, 0])
-	enemy.weapons_data  = weapons_data
-	enemy.projectile_scene = enemy_projectile_scene
+	enemy.projectile_scene = GameConstants.enemy_projectile_scene
 	print("LevelManager: Created enemy: ", enemy.name)
 	return enemy
+
+func _on_enemy_projectile_spawned(projectile):
+	# Dodaj pocisk do sceny (jako dziecko LevelManager)
+	add_child(projectile)

@@ -7,7 +7,6 @@ extends Node
 # --- Referencje ---
 var player: CharacterBody2D
 var muzzle: Marker2D
-var projectile_scene: PackedScene
 
 # --- Dane broni ---
 var weapon_data: Dictionary = {}
@@ -26,9 +25,6 @@ var shot_repeat_count: int = 0
 func _ready():
 	player = get_parent()
 	muzzle = player.get_node("Muzzle")
-	
-	# Załaduj scene projectile
-	projectile_scene = load("res://scenes/projectile/projectile.tscn")
 	
 	# Załaduj konfigurację broni
 	load_weapon_config()
@@ -114,6 +110,7 @@ func shoot():
 	fire_timer = repeat * 2
 
 func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, del: int = 0, sg: int = 0, acceleration: int = 0, accelerationx: int = 0):
+	var projectile_scene = GameConstants.player_projectile_scene
 	if not projectile_scene:
 		return
 	
