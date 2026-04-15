@@ -156,6 +156,27 @@ func _fire_projectile(direction_index: int):
 	var weapon_max   = int(weapon_data.get("max", 1))
 	var aim          = int(weapon_data.get("aim", 0))
 
+	# Szkielet dla specjalnych wartości tur (251-255)
+	match weapon_id:
+		251:
+			# Suck-O-Magnet - TODO: przyciąga statek gracza
+			pass
+		252:
+			# Savara Boss DualMissile - już obsługiwane
+			pass
+		253:
+			# Left ShortRange Magnet - TODO: odpycha gracza w lewo (krótki zasięg)
+			pass
+		254:
+			# Right ShortRange Magnet - TODO: odpycha gracza w prawo (krótki zasięg)
+			pass
+		255:
+			# Magneto RePulse - TODO: odpycha gracza (długi zasięg) + filtr wizualny
+			pass
+		_:
+			# Normalna broń - kontynuuj z standardową logiką
+			pass
+
 	for _i in range(weapon_multi):
 		var temp_pos = eshotmultipos[direction_index]
 		if temp_pos >= patterns.size():
@@ -215,6 +236,11 @@ func _fire_projectile(direction_index: int):
 		var projectile = projectile_scene.instantiate()
 		projectile.velocity = projectile_velocity
 		projectile.sprite_id = sg
+		projectile.tx = int(weapon_data.get("tx", 0))
+		projectile.ty = int(weapon_data.get("ty", 0))
+		projectile.acceleration = int(weapon_data.get("acceleration", 0))
+		projectile.accelerationx = int(weapon_data.get("accelerationx", 0))
+		projectile.duration = float(pattern.get("del", 255))
 
 		# Oblicz pozycję startową z offsetem bx/by
 		var offset_x = float(bx) * SCALE_X
