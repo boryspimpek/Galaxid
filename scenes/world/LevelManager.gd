@@ -132,7 +132,7 @@ func process_random_spawn(delta: float):
 		if enemy:
 			enemy.projectile_spawned.connect(_on_enemy_projectile_spawned)
 			add_child(enemy)
-			print("LevelManager: Random spawn: wróg ID=", enemy_id, " na pozycji ", spawn_pos)
+			# print("LevelManager: Random spawn: wróg ID=", enemy_id, " na pozycji ", spawn_pos)
 
 func process_event(event: Dictionary):
 	var event_type = int(event["event_type"])
@@ -408,7 +408,7 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 	enemy.tur           = template.get("tur",     [0, 0, 0])
 	enemy.freq          = template.get("freq",    [0, 0, 0])
 	enemy.projectile_scene = GameConstants.enemy_projectile_scene
-	print("LevelManager: Created enemy: ", enemy.name)
+	# print("LevelManager: Created enemy: ", enemy.name)
 	return enemy
 
 func _on_enemy_projectile_spawned(projectile):

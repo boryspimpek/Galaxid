@@ -9,7 +9,9 @@ var velocity_target = Vector2.ZERO
 # --- System energii (Power) ---
 var power: float = 900.0
 var power_max: float = 900.0
-var power_add: float = 0.5  # Regeneracja na klatkę
+# Regeneracja obliczana na podstawie TYRIAN_FPS
+# Jeśli Tyrian ma powerAdd=1 przy 15 FPS, to Godot przy 60 FPS potrzebuje: (15) / 60 = 0.25
+var power_add: float = GameConstants.TYRIAN_FPS / 60.0
 
 # --- Parametry fizyki ---
 var acceleration: float = 0.15  # Jak szybko osiąga max prędkość
@@ -58,6 +60,7 @@ func apply_ship_stats():
 func _physics_process(_delta):
 	# Regeneracja energii
 	power = min(power_max, power + power_add)
+	print("aktualny power: ", power)
 	
 	# Pobieranie wektora ruchu
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

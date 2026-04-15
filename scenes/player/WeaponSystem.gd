@@ -61,13 +61,14 @@ func shoot():
 	if weapon_data.is_empty():
 		return
 	
-	# Sprawdź drain (koszt energii)
-	var drain = weapon_data.get("drain", 0)
-	if player.power < drain:
+	# Sprawdź power_use (koszt energii z weapon_ports.json)
+	var power_use = DataManager.get_weapon_power_use(current_weapon_index)
+	if player.power < power_use:
 		return
 	
-	# Odejmij drain
-	player.power -= drain
+	# Odejmij power_use
+	player.power -= power_use
+	print("aktualny power: ", player.power)
 	
 	var patterns = weapon_data.get("patterns", [])
 	if patterns.is_empty():
@@ -144,4 +145,4 @@ func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, 
 	# Dodaj do sceny
 	get_tree().current_scene.add_child(projectile)
 	
-	print("WeaponSystem: Strzał - damage=", scaled_damage, " velocity=", velocity, " acc=", projectile.acceleration, " lifetime=", del)
+	# print("WeaponSystem: Strzał - damage=", scaled_damage, " velocity=", velocity, " acc=", projectile.acceleration, " lifetime=", del)

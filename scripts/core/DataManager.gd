@@ -137,6 +137,14 @@ func get_weapon_firing_index(weapon_port_index: int, mode: int, power_level: int
 	
 	return mode_array[index]
 
+func get_weapon_power_use(weapon_port_index: int) -> int:
+	var port = get_weapon_port_by_id(weapon_port_index)
+	if port.is_empty():
+		return 0
+	
+	var stats = port.get("stats", {})
+	return stats.get("power_use", 0)
+
 # ============================================================================
 # TARCZE (shields.json)
 # ============================================================================
