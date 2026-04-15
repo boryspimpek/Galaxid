@@ -233,6 +233,7 @@ func _fire_projectile(direction_index: int):
 		# Utwórz pocisk
 		var projectile = projectile_scene.instantiate()
 		projectile.velocity = projectile_velocity
+		projectile.damage = attack
 		projectile.sprite_id = sg
 		projectile.tx = int(weapon_data.get("tx", 0))
 		projectile.ty = int(weapon_data.get("ty", 0))

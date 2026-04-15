@@ -42,7 +42,7 @@ func _init_circlesize():
 			circle_size_x = circsize_mod20
 			circle_dev_x = circsize_mod20 >> 1  # dzielenie całkowite przez 2
 			
-			var circsize_div20 = circlesize / 20
+			var circsize_div20 = int(circlesize / 20)
 			circle_size_y = circsize_div20
 			circle_dev_y = circsize_div20 >> 1
 		else:

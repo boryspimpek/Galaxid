@@ -8,9 +8,9 @@ extends Node2D
 @onready var enemy_scene = preload("res://scenes/enemy/Enemy.tscn")
 
 # Stałe (z GameConstants)
-const TYRIAN_FPS  = GameConstants.TYRIAN_FPS
-const SCALE_X     = GameConstants.SCALE_X
-const SCALE_Y     = GameConstants.SCALE_Y
+var TYRIAN_FPS  = GameConstants.TYRIAN_FPS
+var SCALE_X     = GameConstants.SCALE_X
+var SCALE_Y     = GameConstants.SCALE_Y
 
 # Prędkości scrollingu (Tyrian px/klatkę)
 var back_move:  int = 1   # Ground (slot 25, 75)
