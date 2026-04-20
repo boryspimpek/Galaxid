@@ -112,31 +112,32 @@ func _ready():
 	
 	# Próba załadowania grafiki wroga
 	var enemy_id_str = "%03d" % enemy_id
-	var texture_path = "res://data/enemy_pic/enemy_%s_f00.png" % enemy_id_str
-	var texture = load(texture_path)
-	print("Enemy: enemy_id=", enemy_id, " f00 load result: ", texture != null)
+	var texture_path = ""
+	var texture: Texture2D = null
 	
-	# Jeśli f00 nie istnieje, szukaj innego frame (f01, f02, f08, itp.)
-	if not texture or not texture is Texture2D:
-		var dir = DirAccess.open("res://data/enemy_pic/")
-		if dir:
-			dir.list_dir_begin()
-			var file_name = dir.get_next()
-			var found_file = ""
-			while file_name != "":
-				if file_name.begins_with("enemy_%s_f" % enemy_id_str) and file_name.ends_with(".png"):
-					texture = load("res://data/enemy_pic/" + file_name)
-					found_file = file_name
-					print("Enemy: Found file: ", file_name, " load result: ", texture != null)
-					if texture and texture is Texture2D:
-						break
-				file_name = dir.get_next()
-			dir.list_dir_end()
-			if found_file == "":
-				print("Enemy: No file found for enemy_", enemy_id_str)
-		else:
-			print("Enemy: Failed to open directory res://data/enemy_pic/")
+	# Użyj DirAccess do znalezienia pliku
+	var dir = DirAccess.open("res://data/enemy_pic")
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			if file_name.ends_with(".png") and not file_name.ends_with(".import"):
+				# Sprawdź czy pasuje do wzorca enemy_XXX_bankYY_f00.png
+				var regex = RegEx.new()
+				regex.compile("^enemy_%s_bank\\d+_f00\\.png$" % enemy_id_str)
+				var result = regex.search(file_name)
+				if result:
+					texture_path = "res://data/enemy_pic/" + file_name
+					break
+			file_name = dir.get_next()
+		dir.list_dir_end()
 	
+	if texture_path != "":
+		texture = load(texture_path)
+		print("Enemy: enemy_id=", enemy_id, " found file: ", texture_path, " load result: ", texture != null)
+	else:
+		print("Enemy: enemy_id=", enemy_id, " no matching file found")
+		
 	if texture and texture is Texture2D:
 		visual.texture = texture
 		# Oblicz skalę aby tekstura miała odpowiedni rozmiar
