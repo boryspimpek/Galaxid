@@ -86,8 +86,12 @@ func shoot():
 	
 	# Strzelaj multi-shot
 	for i in range(multi):
-		if i < patterns.size():
-			var pattern = patterns[i]
+		# Cykluj pattern_index od 1 do max (jak w shots.c)
+		pattern_index = (pattern_index % int(max_patterns)) + 1
+		var pattern_index_zero = pattern_index - 1
+		
+		if pattern_index_zero < patterns.size():
+			var pattern = patterns[pattern_index_zero]
 			var attack = pattern.get("attack", 0)
 			var sx = pattern.get("sx", 0)
 			var sy = pattern.get("sy", 0)
