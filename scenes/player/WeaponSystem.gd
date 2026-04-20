@@ -14,8 +14,7 @@ var current_weapon_index: int = 1
 var power_level: int = 1
 
 # --- Konfiguracja strzelania ---
-var fire_cooldown: float = 0.1
-var fire_timer: int = 0  # Zmienione na int (system klatkowy)
+var fire_timer: int = 0  # System klatkowy
 var is_firing: bool = false
 
 # --- Stan strzelania (dla patterns) ---
@@ -111,9 +110,9 @@ func shoot():
 			create_projectile(attack, sx, sy, bx, by, del, sg, acceleration, accelerationx, circlesize)
 	
 	# Ustaw cooldown z repeat (shotRepeat z JSON)
-	# repeat to ilość klatek w 30 FPS, mnożymy x2 dla 60 FPS
+	# repeat to ilość klatek w TYRIAN_FPS, przeliczamy na 60 FPS
 	var repeat = weapon_data.get("shotRepeat", 0)
-	fire_timer = repeat * 2
+	fire_timer = int(repeat * (60.0 / GameConstants.TYRIAN_FPS))
 
 func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, del: int = 0, sg: int = 0, acceleration: int = 0, accelerationx: int = 0, circlesize: int = 0):
 	var projectile_scene = GameConstants.player_projectile_scene

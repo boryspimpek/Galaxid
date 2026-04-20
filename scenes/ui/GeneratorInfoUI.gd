@@ -31,9 +31,9 @@ func _process(_delta):
 		var generator = DataManager.get_generator_by_id(generator_id)
 		if not generator.is_empty():
 			var generator_name = generator.get("name", "Unknown")
-			generator_name_label.text = "Generator: " + generator_name
+			generator_name_label.text = generator_name
 		else:
-			generator_name_label.text = "Generator: Unknown"
+			generator_name_label.text = "Unknown"
 	else:
 		generator_name_label.text = "Player not found"
 		power_label.text = "Power: ?/?"

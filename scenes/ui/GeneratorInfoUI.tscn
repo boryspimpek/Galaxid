@@ -67,7 +67,7 @@ theme_override_constants/separation = 4
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 theme_override_colors/font_color = Color(0.7, 0.85, 1.0, 1)
-text = "Generator: Unknown"
+text = "Unknown"
 horizontal_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Background/VBoxContainer"]
