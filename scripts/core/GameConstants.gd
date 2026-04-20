@@ -5,7 +5,7 @@ extends Node
 # ============================================================================
 
 # ---- Stałe przeliczeniowe Tyrian -> Godot ----
-const TYRIAN_FPS = 15.0
+const TYRIAN_FPS = 30.0
 const SCALE_X = 1280.0 / 320.0   # = 4.0
 const SCALE_Y = 720.0 / 200.0   # = 3.6
 

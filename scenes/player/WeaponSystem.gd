@@ -14,7 +14,8 @@ var current_weapon_index: int = 1
 var power_level: int = 1
 
 # --- Konfiguracja strzelania ---
-var fire_timer: int = 0  # System klatkowy
+var fire_cooldown: float = 0.1
+var fire_timer: int = 0  # Zmienione na int (system klatkowy)
 var is_firing: bool = false
 
 # --- Stan strzelania (dla patterns) ---
@@ -122,15 +123,15 @@ func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, 
 	var projectile = projectile_scene.instantiate()
 	
 	# Ustaw pozycję na muzzle + offset bx/by
-	projectile.global_position = muzzle.global_position + Vector2(bx, -by)
+	projectile.global_position = muzzle.global_position + Vector2(bx * GameConstants.SCALE_X, -by * GameConstants.SCALE_Y)
 	
 	# Ustaw velocity (sx/sy to prędkość w Tyrianie)
 	# sx to prędkość X, sy to prędkość Y (ujemne = w górę)
-	var velocity = Vector2(float(sx), float(-sy))  # Odwracam Y bo w Godot Y w dół
+	var velocity = Vector2(float(sx * GameConstants.SCALE_X), float(-sy * GameConstants.SCALE_Y))  # Odwracam Y bo w Godot Y w dół
 	projectile.velocity = velocity
 	
 	# Ustaw acceleration (przyspieszenie po wystrzeleniu)
-	projectile.acceleration = Vector2(float(accelerationx), float(-acceleration))
+	projectile.acceleration = Vector2(float(accelerationx * GameConstants.SCALE_X), float(-acceleration * GameConstants.SCALE_Y))
 	
 	# Ustaw damage (może być skalowane przez power level)
 	var scaled_damage = damage * power_level
