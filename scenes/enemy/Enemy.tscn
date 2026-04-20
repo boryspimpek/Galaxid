@@ -9,7 +9,7 @@ radius = 12.0
 script = ExtResource("1_enemy")
 z_index = 100
 
-[node name="Visual" type="Polygon2D" parent="."]
+[node name="Visual" type="Sprite2D" parent="."]
 z_index = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

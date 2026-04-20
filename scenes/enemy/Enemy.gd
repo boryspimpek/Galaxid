@@ -59,7 +59,7 @@ const BOUNDS_TOP    = GameConstants.BOUNDS_TOP
 const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 
 # Referencje do węzłów
-@onready var visual: Polygon2D = $Visual
+@onready var visual: Sprite2D = $Visual
 @onready var debug_label: Label = $DebugLabel
 
 func _ready():
@@ -96,33 +96,19 @@ func _ready():
 		Color.CYAN, Color.MAGENTA, Color.ORANGE, Color.PURPLE
 	]
 	
-	# Ustaw wymiary kwadratu na podstawie esize
-	# esize 0: 14x12px Tyrian -> 56x43.2px Godot
-	# esize 1: 24x28px Tyrian -> 96x100.8px Godot
-	var width: float
-	var height: float
+	# Ustaw skalę sprite'a na podstawie esize
+	# esize 0: 14x12px Tyrian -> skalowane przez SCALE_X/SCALE_Y
+	# esize 1: 24x28px Tyrian -> skalowane przez SCALE_X/SCALE_Y
+	var base_width: float
+	var base_height: float
 	if esize == 0:
-		width  = 14.0 * SCALE_X
-		height = 12.0 * SCALE_Y
+		base_width  = 14.0
+		base_height = 12.0
 	else:
-		width  = 24.0 * SCALE_X
-		height = 28.0 * SCALE_Y
-
-	var half_w = width  / 2.0
-	var half_h = height / 2.0
-	visual.polygon = PackedVector2Array([
-		Vector2(-half_w, -half_h),
-		Vector2( half_w, -half_h),
-		Vector2( half_w,  half_h),
-		Vector2(-half_w,  half_h)
-	])
-	# Ustaw UV dla tekstury (0,0 to 1,1)
-	visual.uv = PackedVector2Array([
-		Vector2(0, 0),
-		Vector2(1, 0),
-		Vector2(1, 1),
-		Vector2(0, 1)
-	])
+		base_width  = 24.0
+		base_height = 28.0
+	
+	# Skala zostanie obliczona po załadowaniu tekstury, aby dopasować do rozmiaru bazowego
 	
 	# Próba załadowania grafiki wroga
 	var enemy_id_str = "%03d" % enemy_id
@@ -153,11 +139,19 @@ func _ready():
 	
 	if texture and texture is Texture2D:
 		visual.texture = texture
-		visual.color = Color.WHITE  # Reset koloru gdy używamy tekstury
-		print("Enemy: Texture set successfully for enemy_", enemy_id_str)
+		# Oblicz skalę aby tekstura miała odpowiedni rozmiar
+		var tex_width = texture.get_width()
+		var tex_height = texture.get_height()
+		var scale_x = (base_width * SCALE_X) / tex_width
+		var scale_y = (base_height * SCALE_Y) / tex_height
+		visual.scale = Vector2(scale_x, scale_y)
+		print("Enemy: Texture set successfully for enemy_", enemy_id_str, " scale: ", visual.scale)
 	else:
-		# Fallback: zachowaj kolorowany kwadrat
-		visual.color = colors[enemy_id % colors.size()]
+		# Fallback: użyj ColorRect jako kolorowany kwadrat
+		# Sprite2D bez tekstury nie wyświetla nic, więc musimy stworzyć fallback
+		visual.texture = null
+		# Użyj modulate zamiast color dla Sprite2D
+		visual.modulate = colors[enemy_id % colors.size()]
 		print("Enemy: Using colored square fallback for enemy_", enemy_id_str)
 
 	if debug_label:
