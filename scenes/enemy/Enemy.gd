@@ -95,29 +95,70 @@ func _ready():
 		Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW,
 		Color.CYAN, Color.MAGENTA, Color.ORANGE, Color.PURPLE
 	]
-	if visual:
-		visual.color = colors[enemy_id % colors.size()]
+	
+	# Ustaw wymiary kwadratu na podstawie esize
+	# esize 0: 14x12px Tyrian -> 56x43.2px Godot
+	# esize 1: 24x28px Tyrian -> 96x100.8px Godot
+	var width: float
+	var height: float
+	if esize == 0:
+		width  = 14.0 * SCALE_X
+		height = 12.0 * SCALE_Y
+	else:
+		width  = 24.0 * SCALE_X
+		height = 28.0 * SCALE_Y
 
-		# Ustaw wymiary kwadratu na podstawie esize
-		# esize 0: 14x12px Tyrian -> 56x43.2px Godot
-		# esize 1: 24x28px Tyrian -> 96x100.8px Godot
-		var width: float
-		var height: float
-		if esize == 0:
-			width  = 14.0 * SCALE_X
-			height = 12.0 * SCALE_Y
+	var half_w = width  / 2.0
+	var half_h = height / 2.0
+	visual.polygon = PackedVector2Array([
+		Vector2(-half_w, -half_h),
+		Vector2( half_w, -half_h),
+		Vector2( half_w,  half_h),
+		Vector2(-half_w,  half_h)
+	])
+	# Ustaw UV dla tekstury (0,0 to 1,1)
+	visual.uv = PackedVector2Array([
+		Vector2(0, 0),
+		Vector2(1, 0),
+		Vector2(1, 1),
+		Vector2(0, 1)
+	])
+	
+	# Próba załadowania grafiki wroga
+	var enemy_id_str = "%03d" % enemy_id
+	var texture_path = "res://data/enemy_pic/enemy_%s_f00.png" % enemy_id_str
+	var texture = load(texture_path)
+	print("Enemy: enemy_id=", enemy_id, " f00 load result: ", texture != null)
+	
+	# Jeśli f00 nie istnieje, szukaj innego frame (f01, f02, f08, itp.)
+	if not texture or not texture is Texture2D:
+		var dir = DirAccess.open("res://data/enemy_pic/")
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			var found_file = ""
+			while file_name != "":
+				if file_name.begins_with("enemy_%s_f" % enemy_id_str) and file_name.ends_with(".png"):
+					texture = load("res://data/enemy_pic/" + file_name)
+					found_file = file_name
+					print("Enemy: Found file: ", file_name, " load result: ", texture != null)
+					if texture and texture is Texture2D:
+						break
+				file_name = dir.get_next()
+			dir.list_dir_end()
+			if found_file == "":
+				print("Enemy: No file found for enemy_", enemy_id_str)
 		else:
-			width  = 24.0 * SCALE_X
-			height = 28.0 * SCALE_Y
-
-		var half_w = width  / 2.0
-		var half_h = height / 2.0
-		visual.polygon = PackedVector2Array([
-			Vector2(-half_w, -half_h),
-			Vector2( half_w, -half_h),
-			Vector2( half_w,  half_h),
-			Vector2(-half_w,  half_h)
-		])
+			print("Enemy: Failed to open directory res://data/enemy_pic/")
+	
+	if texture and texture is Texture2D:
+		visual.texture = texture
+		visual.color = Color.WHITE  # Reset koloru gdy używamy tekstury
+		print("Enemy: Texture set successfully for enemy_", enemy_id_str)
+	else:
+		# Fallback: zachowaj kolorowany kwadrat
+		visual.color = colors[enemy_id % colors.size()]
+		print("Enemy: Using colored square fallback for enemy_", enemy_id_str)
 
 	if debug_label:
 		debug_label.text = "ID:%d\nET:%d" % [enemy_id, event_type]
