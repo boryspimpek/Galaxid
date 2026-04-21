@@ -47,20 +47,20 @@ func load_ship_data():
 		push_error("Player: BŁĄD: Nie znaleziono danych dla statku o ID: " + str(s_id))
 
 func apply_ship_stats():
+	# Pobierz stats z zagnieżdżonej struktury
+	var stats = ship_data.get("stats", {})
+	
 	# Pancerz
-	armor = ship_data.get("armor", 100)
+	armor = stats.get("armor", 100)
 	max_armor = armor
 	
 	# === NOWA FIZYKA TYRIAN ===
 	# Maneuverability = limit prędkości (cap)
-	ship_maneuverability = ship_data.get("maneuverability", 10)
+	ship_maneuverability = stats.get("maneuverability", 10)
 	
 	# Osobne prędkości dla przodu i tyłu (z ships.json)
-	speed_forward = ship_data.get("speed_forward", 1)
-	speed_reverse = ship_data.get("speed_reverse", 1)
-	
-	# Uwaga: stara zmienna 'speed' już nie używana do fizyki, ale zachowana dla kompatybilności
-	speed = ship_maneuverability * 30.0
+	speed_forward = stats.get("speed_forward", 1)
+	speed_reverse = stats.get("speed_reverse", 1)
 	
 	print("Player: Fizyka Tyrian → maneuverability=", ship_maneuverability, 
 		  " forward=", speed_forward, " reverse=", speed_reverse)
@@ -104,32 +104,10 @@ func _physics_process(_delta):
 		weapon_system.set_firing(true)
 	else:
 		weapon_system.set_firing(false)
-	
-	# ================================================================
+
+	# ========================================================================
 	# FIZYKA TYRIAN: STAŁY PRZYROST PRĘDKOŚCI (BEZ LERP)
-	# ================================================================
-	
-
-# --- NOWE STEROWANIE MYSZKĄ ---
-	var mouse_pos = get_global_mouse_position()
-	var distance_to_mouse = mouse_pos - global_position
-	
-	# Martwa strefa (np. 5 pikseli), aby statek nie drgał, gdy jest pod kursorem
-	var deadzone = 5.0
-	
-	input_up = Input.is_action_pressed("ui_up")
-	input_down = Input.is_action_pressed("ui_down")
-	input_left = Input.is_action_pressed("ui_left")
-	input_right = Input.is_action_pressed("ui_right")
-
-	# Jeśli mysz jest używana (np. przycisk wciśnięty lub po prostu ruch)
-	# Możesz dodać warunek: if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-	if distance_to_mouse.length() > deadzone:
-		input_up = distance_to_mouse.y < -deadzone
-		input_down = distance_to_mouse.y > deadzone
-		input_left = distance_to_mouse.x < -deadzone
-		input_right = distance_to_mouse.x > deadzone
-
+	# ========================================================================
 	# Oś Y (przód/tył)
 	if input_up:
 		if velocity_y > -ship_maneuverability:
