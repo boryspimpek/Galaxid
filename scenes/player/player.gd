@@ -109,6 +109,27 @@ func _physics_process(_delta):
 	# FIZYKA TYRIAN: STAŁY PRZYROST PRĘDKOŚCI (BEZ LERP)
 	# ================================================================
 	
+
+# --- NOWE STEROWANIE MYSZKĄ ---
+	var mouse_pos = get_global_mouse_position()
+	var distance_to_mouse = mouse_pos - global_position
+	
+	# Martwa strefa (np. 5 pikseli), aby statek nie drgał, gdy jest pod kursorem
+	var deadzone = 5.0
+	
+	input_up = Input.is_action_pressed("ui_up")
+	input_down = Input.is_action_pressed("ui_down")
+	input_left = Input.is_action_pressed("ui_left")
+	input_right = Input.is_action_pressed("ui_right")
+
+	# Jeśli mysz jest używana (np. przycisk wciśnięty lub po prostu ruch)
+	# Możesz dodać warunek: if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if distance_to_mouse.length() > deadzone:
+		input_up = distance_to_mouse.y < -deadzone
+		input_down = distance_to_mouse.y > deadzone
+		input_left = distance_to_mouse.x < -deadzone
+		input_right = distance_to_mouse.x > deadzone
+
 	# Oś Y (przód/tył)
 	if input_up:
 		if velocity_y > -ship_maneuverability:
