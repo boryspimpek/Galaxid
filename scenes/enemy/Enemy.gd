@@ -299,23 +299,34 @@ func _process(delta):
 	velocity.x += float(xaccel) * TYRIAN_FPS * delta
 	velocity.y += float(yaccel) * TYRIAN_FPS * delta
 
-	# --- 1. Silnik wahadłowy X ---
+	# --- 1. Silnik wahadłowy X (Zsynchronizowany) ---
 	if excc != 0:
-		exccw -= 1
+		# Zamiast exccw -= 1, odejmujemy ułamek odpowiadający upływowi czasu
+		# delta * TYRIAN_FPS przy 60 FPS da nam ok. 0.5 na klatkę.
+		exccw -= delta * GameConstants.TYRIAN_FPS 
+		
 		if exccw <= 0:
 			velocity.x += exccadd
-			exccw = exccwmax
+			# Resetujemy licznik do max, ale zachowujemy "nadmiar" ujemny dla płynności
+			exccw += exccwmax 
+			
+			# Sprawdzenie punktu zwrotnego
 			if velocity.x == xrev:
 				excc    = -excc
 				xrev    = -xrev
 				exccadd = -exccadd
 
-	# --- 2. Silnik wahadłowy Y ---
+	# --- 2. Silnik wahadłowy Y (Zsynchronizowany) ---
 	if eycc != 0:
-		eyccw -= 1
+		# Zamiast odejmować 1, odejmujemy ułamek czasu odpowiadający klatce Tyriana.
+		# To sprawi, że licznik wyzeruje się po identycznym czasie rzeczywistym.
+		eyccw -= delta * GameConstants.TYRIAN_FPS
+		
 		if eyccw <= 0:
 			velocity.y += eyccadd
-			eyccw = eyccwmax
+			# Resetujemy licznik do max, zachowując nadmiar (overflow) dla płynności
+			eyccw += eyccwmax 
+			
 			if velocity.y == yrev:
 				eycc    = -eycc
 				yrev    = -yrev
