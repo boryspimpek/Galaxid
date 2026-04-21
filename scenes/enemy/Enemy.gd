@@ -78,6 +78,7 @@ func _ready():
 		eyccadd  = 1 if eycc > 0 else -1
 		if yrev == 0:
 			yrev = 100
+		yrev = int(yrev * 0.05)
 
 	# Inicjalizacja systemu strzelania
 	for i in range(3):
@@ -307,7 +308,7 @@ func _process(delta):
 		exccw -= delta * GameConstants.TYRIAN_FPS 
 		
 		if exccw <= 0:
-			velocity.x += exccadd
+			velocity.x += exccadd * GameConstants.SPEED_CORRECTION
 			# Resetujemy licznik do max, ale zachowujemy "nadmiar" ujemny dla płynności
 			exccw += exccwmax 
 			
@@ -324,7 +325,7 @@ func _process(delta):
 		eyccw -= delta * GameConstants.TYRIAN_FPS
 		
 		if eyccw <= 0:
-			velocity.y += eyccadd
+			velocity.y += eyccadd * GameConstants.SPEED_CORRECTION
 			# Resetujemy licznik do max, zachowując nadmiar (overflow) dla płynności
 			eyccw += eyccwmax 
 			
