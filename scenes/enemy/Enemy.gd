@@ -72,7 +72,6 @@ func _ready():
 		eyccadd  = 1 if eycc > 0 else -1
 		if yrev == 0:
 			yrev = 100
-		yrev = int(yrev * 0.05)
 
 	# Inicjalizacja systemu strzelania
 	for i in range(3):
@@ -121,7 +120,7 @@ func _ready():
 
 	if debug_label:
 		debug_label.text = "ID:%d" % enemy_id
-		debug_label.visible = false
+		debug_label.visible = true
 	
 func _process_shooting(delta: float):
 	for i in range(3):
