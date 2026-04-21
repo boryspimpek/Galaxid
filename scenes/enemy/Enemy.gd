@@ -134,7 +134,7 @@ func _ready():
 	
 	if texture_path != "":
 		texture = load(texture_path)
-		print("Enemy: enemy_id=", enemy_id, " found file: ", texture_path, " load result: ", texture != null)
+		# print("Enemy: enemy_id=", enemy_id, " found file: ", texture_path, " load result: ", texture != null)
 	else:
 		print("Enemy: enemy_id=", enemy_id, " no matching file found")
 		
@@ -146,7 +146,7 @@ func _ready():
 		var scale_x = (base_width * SCALE_X) / tex_width
 		var scale_y = (base_height * SCALE_Y) / tex_height
 		visual.scale = Vector2(scale_x, scale_y)
-		print("Enemy: Texture set successfully for enemy_", enemy_id_str, " scale: ", visual.scale)
+		# print("Enemy: Texture set successfully for enemy_", enemy_id_str, " scale: ", visual.scale)
 	else:
 		# Fallback: użyj ColorRect jako kolorowany kwadrat
 		# Sprite2D bez tekstury nie wyświetla nic, więc musimy stworzyć fallback
