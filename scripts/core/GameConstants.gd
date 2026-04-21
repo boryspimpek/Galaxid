@@ -12,7 +12,6 @@ const TYRIAN_FPS = 30.0
 var GODOT_FPS = Engine.physics_ticks_per_second 
 
 # Obliczamy wartości w funkcji _init() lub bezpośrednio, 
-# upewniając się, że nie ma tu @onready kolidującego z obliczeniami.
 var SPEED_CORRECTION: float = TYRIAN_FPS / GODOT_FPS     # 30 / 60 = 0.5
 var REACTION_CORRECTION: float = GODOT_FPS / TYRIAN_FPS  # 60 / 30 = 2.0
 
@@ -25,7 +24,7 @@ const SCALE_Y = 720.0 / 200.0   # 3.6
 const BOUNDS_LEFT = -150
 const BOUNDS_RIGHT = 1430   # 1280 + 150
 const BOUNDS_TOP = -1000
-const BOUNDS_BOTTOM = 870   # 720 + 150
+const BOUNDS_BOTTOM = 1870   # 720 + 150
 
 # ---- Sceny pocisków ----
 var enemy_projectile_scene: PackedScene
