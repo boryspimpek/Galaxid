@@ -15,22 +15,6 @@ var power_add: float = 0.0  # Regeneracja obliczana dynamicznie na podstawie gen
 var acceleration: float = 0.15  # Jak szybko osiąga max prędkość
 var friction: float = 0.1      # Jak szybko się zatrzymuje
 
-# --- Parametry fizyki (klatkowe, jak w Tyrianie) ---
-var vel_x: float = 0.0
-var vel_y: float = 0.0
-
-# Krok przyspieszenienia i hamowania (piksele/klatkę²)
-# Tyrian używa wartości ~1-2 na klatkę
-var accel_step: float = 1.5
-var friction_step: float = 1.0
-
-# Osobne limity prędkości (z ships.json × skala)
-var max_speed_forward: float = 0.0   # na podstawie maneuverability
-var max_speed_reverse: float = 0.0   # szybsze cofanie (speed_reverse = 2)
-
-const PIXELS_PER_UNIT: float = 2.0   # skalowanie jednostek Tyriana na piksele Godota
-const TYRIAN_FPS: float = 30.0
-
 # --- Słownik na dane statku ---
 var ship_data: Dictionary = {}
 
@@ -59,21 +43,14 @@ func load_ship_data():
 		push_error("Player: BŁĄD: Nie znaleziono danych dla statku o ID: " + str(s_id))
 
 func apply_ship_stats():
+	# Pancerz
 	armor = ship_data.get("armor", 100)
 	max_armor = armor
-
-	var maneuv = ship_data.get("maneuverability", 10)
-	var spd_fwd = ship_data.get("speed_forward", 1)
-	var spd_rev = ship_data.get("speed_reverse", 2)
-
-	# Maneuverability = limit prędkości (im wyższe, tym szybciej może lecieć)
-	# speed_forward/reverse to mnożniki kierunkowe
-	max_speed_forward = maneuv * spd_fwd * PIXELS_PER_UNIT
-	max_speed_reverse = maneuv * spd_rev * PIXELS_PER_UNIT
-
-	# Krok przyspieszenia skalowalny z maneuverability
-	accel_step = maneuv * 0.08 * PIXELS_PER_UNIT
-	friction_step = accel_step * 0.75  # hamowanie nieco wolniejsze niż przyspieszenie
+	
+	# Prędkość - manewrowość (np. 1-21) przeliczona na piksele/sekundę
+	# Mnożnik 30.0 da nam zakres od 30 do 630 px/s
+	var maneuverability = ship_data.get("maneuverability", 10)
+	speed = maneuverability * 30.0
 
 func init_power_regeneration():
 	# Pobierz generator_id z PlayerSetup
@@ -99,50 +76,33 @@ func reload_power_regeneration():
 # 2. RUCH I FIZYKA
 # ============================================================================
 
-func _physics_process(delta):
+func _physics_process(_delta):
+	# Regeneracja energii
 	power = min(power_max, power + power_add)
-
+	
+	# Pobieranie wektora ruchu
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-
+	
+	# Obsługa strzelania
 	if Input.is_action_pressed("ui_accept"):
 		weapon_system.set_firing(true)
 	else:
 		weapon_system.set_firing(false)
-
-	# --- Fizyka klatkowa (jak Tyrian) ---
-	# Przelicz delta na "klatki Tyriana" żeby zachować niezależność od FPS Godota
-	var frame_scale = delta * TYRIAN_FPS
-
-	# Przyspieszanie: stały przyrost w kierunku inputu
-	if input_dir.x != 0.0:
-		vel_x += input_dir.x * accel_step * frame_scale
+	
+	# Obliczanie docelowej prędkości (Input * Max Speed)
+	var target_velocity = input_dir * speed
+	
+	# Płynna inercja (Lerp)
+	if input_dir != Vector2.ZERO:
+		# Przyspieszanie
+		velocity = velocity.lerp(target_velocity, acceleration)
 	else:
-		# Hamowanie: odejmuj stałą wartość w kierunku aktualnej velocity
-		if abs(vel_x) <= friction_step * frame_scale:
-			vel_x = 0.0
-		else:
-			vel_x -= sign(vel_x) * friction_step * frame_scale
-
-	if input_dir.y != 0.0:
-		vel_y += input_dir.y * accel_step * frame_scale
-	else:
-		if abs(vel_y) <= friction_step * frame_scale:
-			vel_y = 0.0
-		else:
-			vel_y -= sign(vel_y) * friction_step * frame_scale
-
-	# Limit prędkości: osobny dla przodu (góra) i tyłu (dół)
-	# W Tyrianie "przód" to góra ekranu (statek leci w górę)
-	if vel_y < 0:  # leci do przodu (góra)
-		vel_y = max(vel_y, -max_speed_forward)
-	else:          # cofa się (dół)
-		vel_y = min(vel_y, max_speed_reverse)
-
-	# Poziomo symetrycznie
-	vel_x = clamp(vel_x, -max_speed_forward, max_speed_forward)
-
-	velocity = Vector2(vel_x, vel_y)
+		# Hamowanie
+		velocity = velocity.lerp(Vector2.ZERO, friction)
+	
 	move_and_slide()
+	
+	# Ograniczenie do ekranu (możesz to też zrobić przez Viewport)
 	_clamp_to_screen()
 
 func _clamp_to_screen():
