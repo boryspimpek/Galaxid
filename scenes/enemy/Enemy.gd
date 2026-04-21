@@ -42,12 +42,8 @@ var eyccadd: int = 1
 @export var freq: Array = [0, 0, 0]  # Częstotliwość strzelania [down, right, left]
 var projectile_scene: PackedScene    # Scena pocisku wroga
 
-# Runtime zmienne strzelania
-# POPRAWKA 1: eshotwait jako float — dekrementowany przez delta * TYRIAN_FPS,
-# dzięki czemu cooldown jest zsynchronizowany z tempem gry (TYRIAN_FPS).
 var eshotwait: Array    = [0.0, 0.0, 0.0]  # Licznik cooldown (w klatkach Tyrian)
 var eshotwaitmax: Array = [0.0, 0.0, 0.0]  # Maksymalny cooldown z freq
-# POPRAWKA 2: eshotmultipos zaczyna od 0 (0-indexed), inkrementowany PO wyborze patternu.
 var eshotmultipos: Array = [0, 0, 0]       # Pozycja w cyklu patternów dla każdego kierunku
 
 # ---- Granice usuwania (z GameConstants) ----
