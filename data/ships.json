@@ -15,7 +15,7 @@
   },
   {
     "index": 1,
-    "name": "USP Talon   Light Fighter",
+    "name": "USP Talon",
     "stats": {
       "armor": 233,
       "maneuverability": 21,
@@ -127,7 +127,7 @@
   },
   {
     "index": 9,
-    "name": "USP Fang    Light Fighter",
+    "name": "USP Fang",
     "stats": {
       "armor": 233,
       "maneuverability": 21,
