@@ -295,9 +295,10 @@ func _process(delta):
 	# 2. velocity (eyc) — po ewentualnej aktualizacji silnika wahadłowego
 	# 3. scroll tła (tempBackMove)
 
-	# --- Stałe przyspieszenie liniowe (xaccel/yaccel) ---
-	velocity.x += float(xaccel) * TYRIAN_FPS * delta
-	velocity.y += float(yaccel) * TYRIAN_FPS * delta
+	# Używamy REACTION_CORRECTION, aby siła przyspieszenia 
+	# była aplikowana z odpowiednią mocą w gęstszym odświeżaniu 60 FPS.
+	velocity.x += float(xaccel) * GameConstants.REACTION_CORRECTION
+	velocity.y += float(yaccel) * GameConstants.REACTION_CORRECTION
 
 	# --- 1. Silnik wahadłowy X (Zsynchronizowany) ---
 	if excc != 0:
@@ -333,8 +334,8 @@ func _process(delta):
 				eyccadd = -eyccadd
 
 	# --- 3. Przeliczenie na px/s Godot i zastosowanie ruchu ---
-	var move_x = velocity.x                                              * SCALE_X * TYRIAN_FPS
-	var move_y = (float(fixed_move_y) + velocity.y + float(scroll_y))  * SCALE_Y * TYRIAN_FPS
+	var move_x = velocity.x * SCALE_X * TYRIAN_FPS
+	var move_y = (float(fixed_move_y) + velocity.y + float(scroll_y)) * SCALE_Y * TYRIAN_FPS
 
 	position.x += move_x * delta
 	position.y += move_y * delta
