@@ -13,8 +13,14 @@ var power_add: float = 0.0  # Regeneracja obliczana dynamicznie na podstawie gen
 
 # --- Parametry fizyki TYRIAN (STAŁY PRZYROST, NIE LERP) ---
 var ship_maneuverability: int = 10    # limit prędkości (cap)
-var speed_forward: int = 1            # przyrost prędkości do przodu (klatka)
-var speed_reverse: int = 1            # przyrost prędkości do tyłu (klatka)
+var accel: int = 1 
+var friction: int = 2
+
+# speed_multiplier skaluje liniową akumulację pędu z natywnych ~30Hz (Tyrian Engine) 
+# do współczesnego standardu 60Hz. Przywraca oryginalną krzywą akceleracji 
+# oraz feeling "bezwładności masowej" przy wyższych rozdzielczościach.
+var speed_multiplier: float = 0.5
+
 var velocity_x: float = 0.0
 var velocity_y: float = 0.0
 var ship_data: Dictionary = {}
@@ -33,9 +39,6 @@ func _ready():
 	apply_ship_stats()
 	init_power_regeneration()
 	
-	# Opcjonalnie: ustaw stałe 30 FPS dla fizyki (jak w oryginalnym Tyrian)
-	# Engine.physics_ticks_per_second = 30
-
 func load_ship_data():
 	var s_id = PlayerSetup.ship_id
 	var data = DataManager.get_ship_by_id(s_id)
@@ -47,23 +50,18 @@ func load_ship_data():
 		push_error("Player: BŁĄD: Nie znaleziono danych dla statku o ID: " + str(s_id))
 
 func apply_ship_stats():
-	# Pobierz stats z zagnieżdżonej struktury
 	var stats = ship_data.get("stats", {})
 	
-	# Pancerz
 	armor = stats.get("armor", 100)
 	max_armor = armor
-	
-	# === NOWA FIZYKA TYRIAN ===
-	# Maneuverability = limit prędkości (cap)
 	ship_maneuverability = stats.get("maneuverability", 10)
 	
-	# Osobne prędkości dla przodu i tyłu (z ships.json)
-	speed_forward = stats.get("speed_forward", 1)
-	speed_reverse = stats.get("speed_reverse", 1)
+	# USUNIĘTO "var" przed nazwami - teraz przypisujemy do zmiennych klasy
+	accel = stats.get("speed_forward", 1)
+	friction = stats.get("speed_reverse", 2) 
 	
 	print("Player: Fizyka Tyrian → maneuverability=", ship_maneuverability, 
-		  " forward=", speed_forward, " reverse=", speed_reverse)
+		  " accel=", accel, " friction=", friction)
 
 func init_power_regeneration():
 	# Pobierz generator_id z PlayerSetup
@@ -108,34 +106,35 @@ func _physics_process(_delta):
 	# ========================================================================
 	# FIZYKA TYRIAN: STAŁY PRZYROST PRĘDKOŚCI (BEZ LERP)
 	# ========================================================================
-	# Oś Y (przód/tył)
-	if input_up:
-		if velocity_y > -ship_maneuverability:
-			velocity_y -= speed_forward
-	elif input_down:
-		if velocity_y < ship_maneuverability:
-			velocity_y += speed_reverse
-	else:
-		# Naturalne hamowanie (stała wartość 1 na klatkę)
-		if velocity_y > 0:
-			velocity_y -= 1
-		elif velocity_y < 0:
-			velocity_y += 1
-	
-	# Oś X (lewo/prawo) - używa speed_forward dla obu kierunków (zgodnie z Tyrian)
+
+	# Oś X
 	if input_left:
-		if velocity_x > -ship_maneuverability:
-			velocity_x -= speed_forward
+		if velocity_x > 0: 
+			velocity_x -= friction * GameConstants.REACTION_CORRECTION
+		elif velocity_x > -ship_maneuverability: 
+			velocity_x -= accel
 	elif input_right:
-		if velocity_x < ship_maneuverability:
-			velocity_x += speed_forward
+		if velocity_x < 0: 
+			velocity_x += friction * GameConstants.REACTION_CORRECTION
+		elif velocity_x < ship_maneuverability: 
+			velocity_x += accel
 	else:
-		# Naturalne hamowanie
-		if velocity_x > 0:
-			velocity_x -= 1
-		elif velocity_x < 0:
-			velocity_x += 1
-	
+		velocity_x = move_toward(velocity_x, 0, friction)
+
+	# Oś Y - POPRAWIONA
+	if input_up:
+		if velocity_y > 0: 
+			velocity_y -= friction * GameConstants.REACTION_CORRECTION
+		elif velocity_y > -ship_maneuverability: 
+			velocity_y -= accel
+	elif input_down:
+		if velocity_y < 0: 
+			velocity_y += friction * GameConstants.REACTION_CORRECTION
+		elif velocity_y < ship_maneuverability: 
+			velocity_y += friction 
+	else:
+		velocity_y = move_toward(velocity_y, 0, friction)
+
 	# Ograniczenie prędkości do maneuverability (cap)
 	velocity_x = clamp(velocity_x, -ship_maneuverability, ship_maneuverability)
 	velocity_y = clamp(velocity_y, -ship_maneuverability, ship_maneuverability)
@@ -145,9 +144,8 @@ func _physics_process(_delta):
 	# Statek porusza się z prędkością odczytaną wprost z ships.json (17-25 px/klatkę)
 	# i przy rozdzielczości 1280×720 daje to optymalne odczucia.
 	
-	var speed_multiplier = 1.0
-	position.x += velocity_x * speed_multiplier
-	position.y += velocity_y * speed_multiplier
+	position.x += velocity_x * GameConstants.SPEED_CORRECTION
+	position.y += velocity_y * GameConstants.SPEED_CORRECTION
 	
 	# Ograniczenie do ekranu
 	_clamp_to_screen()
@@ -169,4 +167,4 @@ func _process(_delta):
 		print("Player: Prędkość X/Y: ", velocity_x, "/", velocity_y)
 		print("Player: Pancerz: ", armor)
 		print("Player: Maneuverability: ", ship_maneuverability)
-		print("Player: Speed forward/reverse: ", speed_forward, "/", speed_reverse)
+		print("Player: Accel/Friction: ", accel, "/", friction)
