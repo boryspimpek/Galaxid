@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bte7ofi7pgn5b"]
 
-[ext_resource type="Texture2D" path="res://assets/player.png" id="1_4flbx"]
-[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://b3g0i6hvisfst" path="res://assets/player.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://l355mw8nf63d" path="res://scenes/player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" path="res://scenes/player/WeaponSystem.tscn" id="2_weapon"]
 [ext_resource type="PackedScene" path="res://scenes/player/DamageSystem.tscn" id="3_damage"]
 [ext_resource type="PackedScene" path="res://scenes/player/ShieldSystem.tscn" id="4_shield"]
@@ -13,6 +13,7 @@ radius = 45.39824
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1293718296]
+scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_4flbx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=851705633]
@@ -21,8 +22,8 @@ shape = SubResource("CircleShape2D_onrkg")
 [node name="Muzzle" type="Marker2D" parent="." unique_id=236923006]
 position = Vector2(0, -47)
 
-[node name="WeaponSystem" parent="." instance=ExtResource("2_weapon")]
+[node name="WeaponSystem" parent="." unique_id=2092281166 instance=ExtResource("2_weapon")]
 
-[node name="DamageSystem" parent="." instance=ExtResource("3_damage")]
+[node name="DamageSystem" parent="." unique_id=2122436112 instance=ExtResource("3_damage")]
 
-[node name="ShieldSystem" parent="." instance=ExtResource("4_shield")]
+[node name="ShieldSystem" parent="." unique_id=170053588 instance=ExtResource("4_shield")]

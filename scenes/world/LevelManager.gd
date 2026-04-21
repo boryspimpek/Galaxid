@@ -9,8 +9,6 @@ extends Node2D
 
 # Stałe (z GameConstants)
 var TYRIAN_FPS  = GameConstants.TYRIAN_FPS
-var SCALE_X     = GameConstants.SCALE_X
-var SCALE_Y     = GameConstants.SCALE_Y
 
 # Prędkości scrollingu (Tyrian px/klatkę)
 var back_move:  int = 1   # Ground (slot 25, 75)
@@ -52,9 +50,10 @@ func _ready():
 	load_events_data()
 
 func _process(delta):
-	level_distance += float(back_move) * TYRIAN_FPS * delta
+	level_distance += float(back_move) * delta * TYRIAN_FPS
 	process_events_for_distance(int(level_distance))
 	process_random_spawn(delta)
+	# print("LevelManager: Level distance: ", level_distance)
 
 func load_enemies_data():
 	enemies_data = DataManager.get_enemies()
@@ -118,7 +117,7 @@ func process_random_spawn(delta: float):
 		if startxc != 0:
 			spawn_x = startx + (randi() % (startxc * 2)) - startxc + 1
 
-		var spawn_pos = Vector2(float(spawn_x) * SCALE_X, float(starty) * SCALE_Y)
+		var spawn_pos = Vector2(float(spawn_x), float(starty))
 
 		var enemy_slot      = 25
 		var scroll_for_slot = _scroll_for_slot(enemy_slot)
@@ -199,7 +198,7 @@ func spawn_top_enemy(event: Dictionary):
 	if background3x1b:
 		spawn_y += 4
 
-	var spawn_pos    = Vector2(float(spawn_x) * SCALE_X, float(spawn_y) * SCALE_Y)
+	var spawn_pos    = Vector2(float(spawn_x), float(spawn_y))
 	var xmove        = int(enemy_template.get("xmove", 0))
 	var ymove        = int(enemy_template.get("ymove", 0))
 	var y_vel        = event.get("y_vel", 0)
@@ -228,7 +227,7 @@ func spawn_ground_enemy_2(event: Dictionary):
 	var y_offset = event.get("y_offset", 0)
 	var spawn_y  = -28 - back_move + y_offset
 
-	var spawn_pos    = Vector2(float(spawn_x) * SCALE_X, float(spawn_y) * SCALE_Y)
+	var spawn_pos    = Vector2(float(spawn_x), float(spawn_y))
 	var xmove        = int(enemy_template.get("xmove", 0))
 	var ymove        = int(enemy_template.get("ymove", 0))
 	var y_vel        = event.get("y_vel", 0)
@@ -257,7 +256,7 @@ func spawn_4x4_enemies(event: Dictionary):
 		if enemy_template == null:
 			continue
 
-		var spawn_pos    = base_pos + Vector2(offsets[i].x * SCALE_X, offsets[i].y * SCALE_Y)
+		var spawn_pos    = base_pos + Vector2(offsets[i].x, offsets[i].y)
 		var raw_velocity = _calc_velocity(enemy_template, event)
 
 		var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
@@ -360,7 +359,7 @@ func enemy_global_move(event: Dictionary):
 # Pomocnicze
 
 func _calc_spawn_pos(event: Dictionary) -> Vector2:
-	return Vector2(float(event.get("screen_x", 0)) * SCALE_X, float(event.get("screen_y", 0)) * SCALE_Y)
+	return Vector2(float(event.get("screen_x", 0)), float(event.get("screen_y", 0)))
 
 func _calc_velocity(template: Dictionary, event: Dictionary) -> Vector2:
 	var xmove = int(template.get("xmove", 0))

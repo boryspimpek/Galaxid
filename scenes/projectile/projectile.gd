@@ -1,5 +1,7 @@
 extends Area2D
 
+const TYRIAN_FPS = GameConstants.TYRIAN_FPS
+
 # --- Parametry pocisku (ustawiane przez WeaponSystem) ---
 @export var velocity: Vector2 = Vector2.ZERO
 @export var acceleration: Vector2 = Vector2.ZERO  # Przyspieszenie po wystrzeleniu
@@ -18,7 +20,6 @@ var circle_size_y: int = 0  # Promień orbity w osi Y
 var circle_center: Vector2 = Vector2.ZERO  # Środek orbity (pozycja startowa)
 
 # --- Wewnętrzne ---
-var speed_multiplier: float = 30.0  # Mnożnik prędkości z Tyriana
 var lifetime_timer: float = 0.0
 
 func _ready():
@@ -61,10 +62,12 @@ func _init_circlesize():
 
 func _physics_process(delta):
 	# Krok 2: Przyspieszenie → prędkość
-	velocity += acceleration * delta
+	velocity += acceleration * delta * TYRIAN_FPS
 	
 	# Krok 3: Prędkość → pozycja
-	position += velocity * speed_multiplier * delta
+	var move_x = velocity.x * TYRIAN_FPS
+	var move_y = velocity.y * TYRIAN_FPS
+	position += Vector2(move_x, move_y) * delta
 	
 	# Krok 5: Ruch okrężny (circlesize) - DODAWANE PO normalnym ruchu
 	if circlesize > 0:
@@ -82,7 +85,7 @@ func _physics_process(delta):
 	
 	# Obsługa czasu życia (jeśli lifetime > 0)
 	if lifetime > 0:
-		lifetime_timer += delta * 60  # delta * 60 dla klatek
+		lifetime_timer += delta
 		if lifetime_timer >= lifetime:
 			queue_free()
 			return

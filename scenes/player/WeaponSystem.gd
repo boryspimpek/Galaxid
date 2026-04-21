@@ -110,10 +110,8 @@ func shoot():
 			# Stwórz projectile z pełnymi parametrami
 			create_projectile(attack, sx, sy, bx, by, del, sg, acceleration, accelerationx, circlesize)
 	
-	# Ustaw cooldown z repeat (shotRepeat z JSON)
-	# repeat to ilość klatek w TYRIAN_FPS, przeliczamy na 60 FPS
 	var repeat = weapon_data.get("shotRepeat", 0)
-	fire_timer = int(repeat * (60.0 / GameConstants.TYRIAN_FPS))
+	fire_timer = repeat
 
 func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, del: int = 0, sg: int = 0, acceleration: int = 0, accelerationx: int = 0, circlesize: int = 0):
 	var projectile_scene = GameConstants.player_projectile_scene
@@ -123,15 +121,15 @@ func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, 
 	var projectile = projectile_scene.instantiate()
 	
 	# Ustaw pozycję na muzzle + offset bx/by
-	projectile.global_position = muzzle.global_position + Vector2(bx * GameConstants.SCALE_X, -by * GameConstants.SCALE_Y)
+	projectile.global_position = muzzle.global_position + Vector2(bx, -by)
 	
 	# Ustaw velocity (sx/sy to prędkość w Tyrianie)
 	# sx to prędkość X, sy to prędkość Y (ujemne = w górę)
-	var velocity = Vector2(float(sx * GameConstants.SCALE_X), float(-sy * GameConstants.SCALE_Y))  # Odwracam Y bo w Godot Y w dół
+	var velocity = Vector2(float(sx), float(-sy))  # Odwracam Y bo w Godot Y w dół
 	projectile.velocity = velocity
 	
 	# Ustaw acceleration (przyspieszenie po wystrzeleniu)
-	projectile.acceleration = Vector2(float(accelerationx * GameConstants.SCALE_X), float(-acceleration * GameConstants.SCALE_Y))
+	projectile.acceleration = Vector2(float(accelerationx), float(-acceleration))
 	
 	# Ustaw damage (może być skalowane przez power level)
 	var scaled_damage = damage * power_level

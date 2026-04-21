@@ -1,13 +1,12 @@
 extends Node2D
 
 const TYRIAN_FPS = GameConstants.TYRIAN_FPS
-const SCALE_Y = GameConstants.SCALE_Y
 
 var back_move: int = 1
 var back_move2: int = 2
 var back_move3: int = 3
 
-var scroll_velocity_y: float = float(back_move) * SCALE_Y * TYRIAN_FPS
+var scroll_velocity_y: float = float(back_move) * TYRIAN_FPS
 var player: CharacterBody2D
 
 @onready var background_rect: TextureRect = $BackgroundRect
@@ -36,4 +35,4 @@ func set_scroll_speed(p_back_move: int, p_back_move2: int, p_back_move3: int):
 	back_move = p_back_move
 	back_move2 = p_back_move2
 	back_move3 = p_back_move3
-	scroll_velocity_y = float(back_move) * SCALE_Y * TYRIAN_FPS
+	scroll_velocity_y = float(back_move) * TYRIAN_FPS

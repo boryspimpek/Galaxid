@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+const TYRIAN_FPS = GameConstants.TYRIAN_FPS
+
 # --- Zmienne dynamiczne (zmieniają się w locie) ---
 var armor: int = 0
 var max_armor: int = 0
@@ -15,11 +17,6 @@ var power_add: float = 0.0  # Regeneracja obliczana dynamicznie na podstawie gen
 var ship_maneuverability: int = 10    # limit prędkości (cap)
 var accel: int = 1 
 var friction: int = 2
-
-# speed_multiplier skaluje liniową akumulację pędu z natywnych ~30Hz (Tyrian Engine) 
-# do współczesnego standardu 60Hz. Przywraca oryginalną krzywą akceleracji 
-# oraz feeling "bezwładności masowej" przy wyższych rozdzielczościach.
-var speed_multiplier: float = 0.5
 
 var velocity_x: float = 0.0
 var velocity_y: float = 0.0
@@ -56,7 +53,6 @@ func apply_ship_stats():
 	max_armor = armor
 	ship_maneuverability = stats.get("maneuverability", 10)
 	
-	# USUNIĘTO "var" przed nazwami - teraz przypisujemy do zmiennych klasy
 	accel = stats.get("speed_forward", 1)
 	friction = stats.get("speed_reverse", 2) 
 	
@@ -64,32 +60,25 @@ func apply_ship_stats():
 		  " accel=", accel, " friction=", friction)
 
 func init_power_regeneration():
-	# Pobierz generator_id z PlayerSetup
 	var generator_id = PlayerSetup.generator_id
-	
-	# Pobierz power z generatora
 	var generator_power = DataManager.get_generator_power(generator_id)
-	
-	# Oblicz power_add dla Godot (60 FPS) na podstawie Tyrian FPS
-	# Wzór: (generator_power * TYRIAN_FPS) / 60.0
-	power_add = (generator_power * GameConstants.TYRIAN_FPS) / 60.0
-	
+	power_add = generator_power * GameConstants.TYRIAN_FPS
 	print("Player: Generator ID=", generator_id, " power=", generator_power, " → power_add=", power_add, " (energia/klatkę)")
 
 func reload_power_regeneration():
 	# Przelicz power_add na podstawie aktualnego generatora
 	var generator_id = PlayerSetup.generator_id
 	var generator_power = DataManager.get_generator_power(generator_id)
-	power_add = (generator_power * GameConstants.TYRIAN_FPS) / 60.0
+	power_add = generator_power * GameConstants.TYRIAN_FPS
 	print("Player: Przeładowano regenerację energii → power_add=", power_add)
 
 # ============================================================================
 # 2. RUCH I FIZYKA (NOWA IMPLEMENTACJA - BEZ LERP)
 # ============================================================================
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	# Regeneracja energii
-	power = min(power_max, power + power_add)
+	power = min(power_max, power + power_add * delta)
 	
 	# Pobieranie wektora ruchu
 	var input_up = Input.is_action_pressed("ui_up")
@@ -110,12 +99,12 @@ func _physics_process(_delta):
 	# Oś X
 	if input_left:
 		if velocity_x > 0: 
-			velocity_x -= friction * GameConstants.REACTION_CORRECTION
+			velocity_x -= friction
 		elif velocity_x > -ship_maneuverability: 
 			velocity_x -= accel
 	elif input_right:
 		if velocity_x < 0: 
-			velocity_x += friction * GameConstants.REACTION_CORRECTION
+			velocity_x += friction
 		elif velocity_x < ship_maneuverability: 
 			velocity_x += accel
 	else:
@@ -124,12 +113,12 @@ func _physics_process(_delta):
 	# Oś Y - POPRAWIONA
 	if input_up:
 		if velocity_y > 0: 
-			velocity_y -= friction * GameConstants.REACTION_CORRECTION
+			velocity_y -= friction
 		elif velocity_y > -ship_maneuverability: 
 			velocity_y -= accel
 	elif input_down:
 		if velocity_y < 0: 
-			velocity_y += friction * GameConstants.REACTION_CORRECTION
+			velocity_y += friction
 		elif velocity_y < ship_maneuverability: 
 			velocity_y += friction 
 	else:
@@ -139,19 +128,12 @@ func _physics_process(_delta):
 	velocity_x = clamp(velocity_x, -ship_maneuverability, ship_maneuverability)
 	velocity_y = clamp(velocity_y, -ship_maneuverability, ship_maneuverability)
 	
-	# Aktualizacja pozycji
-	# Nie przeliczamy prędkości na FPS, ponieważ ekran i assety są w tej samej skali co oryginał.
-	# Statek porusza się z prędkością odczytaną wprost z ships.json (17-25 px/klatkę)
-	# i przy rozdzielczości 1280×720 daje to optymalne odczucia.
+	position.x += velocity_x * delta * TYRIAN_FPS
+	position.y += velocity_y * delta * TYRIAN_FPS
 	
-	position.x += velocity_x * GameConstants.SPEED_CORRECTION
-	position.y += velocity_y * GameConstants.SPEED_CORRECTION
-	
-	# Ograniczenie do ekranu
 	_clamp_to_screen()
 
 func _clamp_to_screen():
-	# Proste ograniczenie pozycji gracza, aby nie wyleciał za obszar gry
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 32, screen_size.x - 32)
 	position.y = clamp(position.y, 32, screen_size.y - 32)

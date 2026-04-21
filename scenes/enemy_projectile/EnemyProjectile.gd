@@ -2,8 +2,6 @@ extends Area2D
 
 # Stałe przeliczeniowe (z GameConstants)
 const TYRIAN_FPS = GameConstants.TYRIAN_FPS
-const SCALE_X = GameConstants.SCALE_X
-const SCALE_Y = GameConstants.SCALE_Y
 
 # Parametry pocisku
 var velocity: Vector2 = Vector2.ZERO  # sx, sy z broni (Tyrian px/klatkę)
@@ -36,8 +34,8 @@ func _ready():
 		visual.color = colors[sprite_id % colors.size()]
 		
 		# Ustaw wymiary pocisku (prosty kwadrat 4x4px Tyrian -> 16x14.4px Godot)
-		var width = 4.0 * SCALE_X
-		var height = 4.0 * SCALE_Y
+		var width = 4.0
+		var height = 4.0
 		var half_w = width / 2.0
 		var half_h = height / 2.0
 		visual.polygon = PackedVector2Array([
@@ -74,9 +72,8 @@ func _physics_process(delta):
 					if velocity.y < float(ty):
 						velocity.y += 1.0
 
-	# Przeliczenie na px/s Godot: tyrian_px_per_frame * scale * TYRIAN_FPS
-	var move_x = velocity.x * SCALE_X * TYRIAN_FPS
-	var move_y = velocity.y * SCALE_Y * TYRIAN_FPS
+	var move_x = velocity.x * TYRIAN_FPS
+	var move_y = velocity.y * TYRIAN_FPS
 
 	position.x += move_x * delta
 	position.y += move_y * delta
@@ -96,5 +93,4 @@ func _physics_process(delta):
 
 func _on_body_entered(_body):
 	# Kolizja z graczem (lub innym obiektem)
-	# TODO: Dodaj logikę zadawania obrażeń graczowi
 	queue_free()

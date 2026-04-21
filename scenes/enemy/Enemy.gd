@@ -5,8 +5,6 @@ signal projectile_spawned(projectile)
 
 # ---- Stałe przeliczeniowe (z GameConstants) ----
 const TYRIAN_FPS = GameConstants.TYRIAN_FPS
-const SCALE_X    = GameConstants.SCALE_X
-const SCALE_Y    = GameConstants.SCALE_Y
 
 # ---- Statystyki ----
 @export var armor: int = 1
@@ -16,7 +14,7 @@ const SCALE_Y    = GameConstants.SCALE_Y
 @export var link_num: int = 0
 @export var enemy_slot: int = 0
 
-# ---- Ruch (surowe jednostki Tyrian: px/klatkę np. @ 15 FPS) ----
+# ---- Ruch ----
 # velocity odpowiada exc/eyc z silnika Tyrian
 @export var velocity: Vector2 = Vector2(0, 0)
 @export var fixed_move_y: int = 0
@@ -91,25 +89,6 @@ func _ready():
 		else:
 			eshotwait[i] = 255.0  # brak broni - duży cooldown
 
-	# Ustaw kolor na podstawie enemy_id
-	var colors = [
-		Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW,
-		Color.CYAN, Color.MAGENTA, Color.ORANGE, Color.PURPLE
-	]
-	
-	# Ustaw skalę sprite'a na podstawie esize
-	# esize 0: 14x12px Tyrian -> skalowane przez SCALE_X/SCALE_Y
-	# esize 1: 24x28px Tyrian -> skalowane przez SCALE_X/SCALE_Y
-	var base_width: float
-	var base_height: float
-	if esize == 0:
-		base_width  = 14.0
-		base_height = 12.0
-	else:
-		base_width  = 24.0
-		base_height = 28.0
-	
-	# Skala zostanie obliczona po załadowaniu tekstury, aby dopasować do rozmiaru bazowego
 	
 	# Próba załadowania grafiki wroga
 	var enemy_id_str = "%03d" % enemy_id
@@ -141,24 +120,13 @@ func _ready():
 		
 	if texture and texture is Texture2D:
 		visual.texture = texture
-		# Oblicz skalę aby tekstura miała odpowiedni rozmiar
-		var tex_width = texture.get_width()
-		var tex_height = texture.get_height()
-		var scale_x = (base_width * SCALE_X) / tex_width
-		var scale_y = (base_height * SCALE_Y) / tex_height
-		visual.scale = Vector2(scale_x, scale_y)
-		# print("Enemy: Texture set successfully for enemy_", enemy_id_str, " scale: ", visual.scale)
-	else:
-		# Fallback: użyj ColorRect jako kolorowany kwadrat
-		# Sprite2D bez tekstury nie wyświetla nic, więc musimy stworzyć fallback
-		visual.texture = null
-		# Użyj modulate zamiast color dla Sprite2D
-		visual.modulate = colors[enemy_id % colors.size()]
-		print("Enemy: Using colored square fallback for enemy_", enemy_id_str)
+		visual.scale = Vector2(1.0, 1.0)
+		# print("Enemy: Texture set successfully for enemy_", enemy_id_str)
 
 	if debug_label:
-		debug_label.text = "ID:%d\nET:%d" % [enemy_id, event_type]
-
+		debug_label.text = "ID:%d" % enemy_id
+		debug_label.visible = false
+	
 func _process_shooting(delta: float):
 	for i in range(3):
 		if tur[i] == 0 or freq[i] == 0:
@@ -279,8 +247,8 @@ func _fire_projectile(direction_index: int):
 		projectile.duration = float(pattern.get("del", 255))
 
 		# Oblicz pozycję startową z offsetem bx/by
-		var offset_x = float(bx) * SCALE_X
-		var offset_y = float(by) * SCALE_Y
+		var offset_x = float(bx)
+		var offset_y = float(by) 
 		projectile.global_position = global_position + Vector2(offset_x, offset_y)
 
 		# Emituj sygnał do spawnu pocisku (LevelManager doda go do sceny)
@@ -296,23 +264,17 @@ func _process(delta):
 	# 2. velocity (eyc) — po ewentualnej aktualizacji silnika wahadłowego
 	# 3. scroll tła (tempBackMove)
 
-	# Używamy REACTION_CORRECTION, aby siła przyspieszenia 
-	# była aplikowana z odpowiednią mocą w gęstszym odświeżaniu 60 FPS.
-	velocity.x += float(xaccel) * GameConstants.REACTION_CORRECTION
-	velocity.y += float(yaccel) * GameConstants.REACTION_CORRECTION
+	velocity.x += float(xaccel)
+	velocity.y += float(yaccel)
 
 	# --- 1. Silnik wahadłowy X (Zsynchronizowany) ---
 	if excc != 0:
-		# Zamiast exccw -= 1, odejmujemy ułamek odpowiadający upływowi czasu
-		# delta * TYRIAN_FPS przy 60 FPS da nam ok. 0.5 na klatkę.
-		exccw -= delta * GameConstants.TYRIAN_FPS 
+		exccw -= delta * TYRIAN_FPS
 		
 		if exccw <= 0:
-			velocity.x += exccadd * GameConstants.SPEED_CORRECTION
-			# Resetujemy licznik do max, ale zachowujemy "nadmiar" ujemny dla płynności
+			velocity.x += exccadd
 			exccw += exccwmax 
 			
-			# Sprawdzenie punktu zwrotnego
 			if velocity.x == xrev:
 				excc    = -excc
 				xrev    = -xrev
@@ -320,13 +282,10 @@ func _process(delta):
 
 	# --- 2. Silnik wahadłowy Y (Zsynchronizowany) ---
 	if eycc != 0:
-		# Zamiast odejmować 1, odejmujemy ułamek czasu odpowiadający klatce Tyriana.
-		# To sprawi, że licznik wyzeruje się po identycznym czasie rzeczywistym.
-		eyccw -= delta * GameConstants.TYRIAN_FPS
+		eyccw -= delta * TYRIAN_FPS
 		
 		if eyccw <= 0:
-			velocity.y += eyccadd * GameConstants.SPEED_CORRECTION
-			# Resetujemy licznik do max, zachowując nadmiar (overflow) dla płynności
+			velocity.y += eyccadd
 			eyccw += eyccwmax 
 			
 			if velocity.y == yrev:
@@ -335,8 +294,8 @@ func _process(delta):
 				eyccadd = -eyccadd
 
 	# --- 3. Przeliczenie na px/s Godot i zastosowanie ruchu ---
-	var move_x = velocity.x * SCALE_X * TYRIAN_FPS
-	var move_y = (float(fixed_move_y) + velocity.y + float(scroll_y)) * SCALE_Y * TYRIAN_FPS
+	var move_x = velocity.x * TYRIAN_FPS
+	var move_y = (float(fixed_move_y) + velocity.y + float(scroll_y)) * TYRIAN_FPS
 
 	position.x += move_x * delta
 	position.y += move_y * delta
