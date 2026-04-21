@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var level_name: String = "lvl17"
+@export var level_name: String = "lvl1"
 @export var events_file: String = "res://data/%s.json" % level_name
 @export var enemies_file: String = "res://data/enemies.json"
 @export var weapon_file: String = "res://data/weapon.json"

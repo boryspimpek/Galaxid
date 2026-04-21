@@ -116,7 +116,7 @@ func _ready():
 	var texture: Texture2D = null
 	
 	# Użyj DirAccess do znalezienia pliku
-	var dir = DirAccess.open("res://data/enemy_pic")
+	var dir = DirAccess.open("res://data/enemy_lvl1")
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
@@ -127,7 +127,7 @@ func _ready():
 				regex.compile("^enemy_%s_bank\\d+_f00\\.png$" % enemy_id_str)
 				var result = regex.search(file_name)
 				if result:
-					texture_path = "res://data/enemy_pic/" + file_name
+					texture_path = "res://data/enemy_lvl1/" + file_name
 					break
 			file_name = dir.get_next()
 		dir.list_dir_end()
