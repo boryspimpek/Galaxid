@@ -226,6 +226,27 @@ func get_level_data(level_name: String) -> Dictionary:
 	push_error("DataManager: Nie znaleziono danych poziomu: ", level_name)
 	return {}
 
+func load_level_data(level_name: String) -> Dictionary:
+	var result = {}
+	var level_data = get_level_data(level_name)
+	
+	if not level_data.is_empty():
+		if level_data.has("events"):
+			result["events"] = level_data["events"]
+			result["events"].sort_custom(func(a, b): return a["dist"] < b["dist"])
+		else:
+			result["events"] = []
+		
+		if level_data.has("header"):
+			result["header"] = level_data["header"]
+		else:
+			result["header"] = {}
+	else:
+		result["events"] = []
+		result["header"] = {}
+	
+	return result
+
 # ============================================================================
 # CZYSZCZENIE CACHE (do debugowania)
 # ============================================================================
