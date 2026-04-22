@@ -24,7 +24,7 @@ func enemy_global_accel(event: Dictionary):
 	var new_eycc  = event.get("new_eycc",  -99)
 	var link_num  = event.get("link_num",  0)
 
-	print("EnemyController: enemy_global_accel", " link_num: ", link_num)
+	# print("EnemyController: enemy_global_accel", " link_num: ", link_num)
 
 	for child in level_manager.get_children():
 		if not "enemy_id" in child:

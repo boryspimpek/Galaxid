@@ -102,7 +102,7 @@ func spawn_enemy(event: Dictionary):
 	if enemy:
 		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 		level_manager.add_child(enemy)
-	print("EnemySpawner: enemy_id: ", enemy_id, " link_num: ", event.get("link_num", 0))
+	# print("EnemySpawner: enemy_id: ", enemy_id, " link_num: ", event.get("link_num", 0))
 
 func spawn_top_enemy(event: Dictionary):
 	var enemy_id_raw   = event.get("enemy_id", 0)

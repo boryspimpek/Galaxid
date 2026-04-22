@@ -52,8 +52,8 @@ func _process(delta):
 	event_processor.process_events_for_distance(int(level_distance))
 	enemy_spawner.process_random_spawn(delta)
 	
-	if Engine.get_frames_drawn() % 10 == 0:
-		print("Dist: ", int(level_distance))
+	# if Engine.get_frames_drawn() % 10 == 0:
+	# 	print("Dist: ", int(level_distance))
 		
 func load_data():
 	enemies_data = DataManager.get_enemies()

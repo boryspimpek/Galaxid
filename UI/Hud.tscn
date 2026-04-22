@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://iddg8culgc7q"]
 
+[ext_resource type="Script" path="res://UI/Hud.gd" id="1_hud_script"]
+
 ; Tło panelu bocznego (SidePanel)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcei2"]
 bg_color = Color(0, 0, 0, 0.9)
@@ -41,6 +43,7 @@ corner_radius_bottom_left = 3
 corner_radius_bottom_right = 3
 
 [node name="HUD" type="CanvasLayer" unique_id=21387505]
+script = ExtResource("1_hud_script")
 
 [node name="SidePanel" type="Panel" parent="." unique_id=110622867]
 offset_left = 320.0

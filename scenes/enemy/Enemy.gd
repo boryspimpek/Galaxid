@@ -58,9 +58,10 @@ const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 
 func _ready():
 	add_to_group("enemies")
-	# Warstwa 2 = wróg; maska 4 = wykrywa pociski gracza (warstwa 4 = bit 2)
+	# Warstwa 2 = wróg; maska 4 = pociski gracza, maska 1 = ciało gracza
 	collision_layer = 2
-	collision_mask  = 4
+	collision_mask  = 5
+	body_entered.connect(_on_body_entered)
 
 	# Konwersja xrev/yrev — zawsze przy spawnie, niezależnie od excc/eycc (jak w Tyrianie)
 	if xrev == 0:    xrev = 100
@@ -327,3 +328,10 @@ func take_damage(amount: int):
 
 func die():
 	queue_free()
+
+func _on_body_entered(body: Node2D):
+	if body.is_in_group("player"):
+		var ds = body.get_node_or_null("DamageSystem")
+		if ds:
+			ds.take_damage(armor)
+		die()
