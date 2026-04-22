@@ -16,7 +16,7 @@ func _ready():
 	power_bar.max_value = _player.power_max
 	armor_bar.max_value = _player.max_armor
 	if _shield_system:
-		shield_bar.max_value = _shield_system.SHIELD_MAX
+		shield_bar.max_value = _shield_system.shield_max
 
 func _process(_delta):
 	if not _player:
