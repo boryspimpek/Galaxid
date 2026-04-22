@@ -265,23 +265,36 @@ func _process(delta):
 	# --- 1. Silnik wahadłowy X (Zsynchronizowany) ---
 	if excc != 0:
 		exccw -= delta * TYRIAN_FPS
-		
 		if exccw <= 0:
-			velocity.x += exccadd
-			exccw += exccwmax 
-			
-			if velocity.x == xrev:
-				excc    = -excc
-				xrev    = -xrev
+			if velocity.x == xrev:          # sprawdź PRZED dodaniem
+				excc = -excc
+				xrev = -xrev
 				exccadd = -exccadd
+				# exccw NIE jest resetowane tutaj
+			else:
+				velocity.x += exccadd
+				exccw += exccwmax            # reset tylko tutaj
+				if velocity.x == xrev:      # sprawdź PO dodaniu
+					excc = -excc
+					xrev = -xrev
+					exccadd = -exccadd
 
 	# --- 2. Silnik wahadłowy Y (Zsynchronizowany) ---
 	if eycc != 0:
 		eyccw -= delta * TYRIAN_FPS
-		
 		if eyccw <= 0:
-			velocity.y += eyccadd
-			eyccw += eyccwmax 
+			if velocity.y == yrev:          # sprawdź PRZED dodaniem
+				eycc = -eycc
+				yrev = -yrev
+				eyccadd = -eyccadd
+				# eyccw NIE jest resetowane tutaj
+			else:
+				velocity.y += eyccadd
+				eyccw += eyccwmax            # reset tylko tutaj
+				if velocity.y == yrev:      # sprawdź PO dodaniu
+					eycc = -eycc
+					yrev = -yrev
+					eyccadd = -eyccadd
 			
 			if velocity.y == yrev:
 				eycc    = -eycc
@@ -302,3 +315,5 @@ func _process(delta):
 	if position.x < BOUNDS_LEFT  or position.x > BOUNDS_RIGHT \
 	or position.y < BOUNDS_TOP   or position.y > BOUNDS_BOTTOM:
 		queue_free()
+	# if enemy_id == 5:
+	# 	print("F:", Engine.get_frames_drawn(), " vx:", velocity.x, " vy:", velocity.y, " x:", position.x, " y:", position.y, " exccw:", exccw, " excc:", excc)

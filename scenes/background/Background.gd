@@ -6,7 +6,7 @@ var back_move: int = 1
 var back_move2: int = 2
 var back_move3: int = 3
 
-var scroll_velocity_y: float = float(back_move) * TYRIAN_FPS
+var scroll_velocity_y = float(back_move) * TYRIAN_FPS
 var player: CharacterBody2D
 
 @onready var background_rect: TextureRect = $BackgroundRect
@@ -27,9 +27,6 @@ func _process(delta):
 	if background_rect2.position.y >= 720:
 		background_rect2.position.y -= 1440
 
-	# if player:
-	#     var target_x = -(player.global_position.x - 640) * 0.05
-	#     position.x = lerp(position.x, target_x, 0.1)
 
 func set_scroll_speed(p_back_move: int, p_back_move2: int, p_back_move3: int):
 	back_move = p_back_move

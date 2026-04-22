@@ -24,20 +24,18 @@ var map_x: int = 1
 var map_x2: int = 1
 var map_x3: int = 1
 
-# Referencje
+# SEKCJA: Referencje do danych
 var background: Node2D
 var enemies_data: Array = []
 var weapons_data: Array = []
 var level_events: Array = []
 var current_event_index: int = 0
 
-# Random spawn system
+# SEKCJA: Random spawn system
 var enemies_active: bool = false
 var level_enemy_frequency: int = 96
 var level_enemies: Array = []
 
-# POPRAWKA 5: Akumulator delta do random spawnu zamiast Engine.get_frames_per_second().
-# Gwarantuje poprawną kompensację FPS niezależnie od chwilowych wahań.
 var random_spawn_timer: float = 0.0
 
 # Pozycja levelu (symulacja mapYPos z Tyrian)
@@ -50,11 +48,13 @@ func _ready():
 	load_events_data()
 
 func _process(delta):
-	level_distance += float(back_move) * delta * TYRIAN_FPS
+	level_distance += float(back_move) * TYRIAN_FPS * delta
 	process_events_for_distance(int(level_distance))
 	process_random_spawn(delta)
-	# print("LevelManager: Level distance: ", level_distance)
-
+	
+	if Engine.get_frames_drawn() % 10 == 0:
+		print("Dist: ", int(level_distance))
+		
 func load_enemies_data():
 	enemies_data = DataManager.get_enemies()
 
@@ -92,19 +92,15 @@ func process_random_spawn(delta: float):
 	if not enemies_active or level_enemies.is_empty():
 		return
 
-	# POPRAWKA 5: Akumulator delta — 1.0 / TYRIAN_FPS = długość jednej klatki Tyrian.
-	# Logika spawnu wykonuje się dokładnie raz na klatkę Tyrian, niezależnie od FPS Godota.
 	random_spawn_timer += delta
 	if random_spawn_timer < 1.0 / TYRIAN_FPS:
 		return
 	random_spawn_timer -= 1.0 / TYRIAN_FPS
 
-	# Sprawdź warunek losowania: randi() % 100 > level_enemy_frequency
 	if randi() % 100 > level_enemy_frequency:
 		var enemy_id = level_enemies[randi() % level_enemies.size()]
 		var enemy_template = _find_template(enemy_id)
 
-		# POPRAWKA 6 (z LevelManager): _find_template zwraca null przy braku wyniku
 		if enemy_template == null:
 			print("LevelManager: ERROR: Random spawn - nie znaleziono wroga o ID=", enemy_id)
 			return
@@ -119,7 +115,7 @@ func process_random_spawn(delta: float):
 
 		var spawn_pos = Vector2(float(spawn_x), float(starty))
 
-		var enemy_slot      = 25
+		var enemy_slot      = int(enemy_template.get("enemy_slot", 25))
 		var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
 		var xmove       = int(enemy_template.get("xmove", 0))
@@ -150,6 +146,8 @@ func process_event(event: Dictionary):
 		_:
 			pass
 
+
+# --- Scroll speed ---
 func set_scroll_speed(event: Dictionary):
 	back_move  = event.get("back_move",  back_move)
 	back_move2 = event.get("back_move2", back_move2)
@@ -157,7 +155,10 @@ func set_scroll_speed(event: Dictionary):
 
 	if background and background.has_method("set_scroll_speed"):
 		background.set_scroll_speed(back_move, back_move2, back_move3)
+	print("LevelManager: Set scroll speed: back move=", back_move, ", back move2=", back_move2, ", back move3=", back_move3)
 
+
+# --- Enemy spawn functions ---
 func spawn_enemy(event: Dictionary):
 	var enemy_id_raw   = event.get("enemy_id", 0)
 	var enemy_template = _find_template(enemy_id_raw)
@@ -166,18 +167,20 @@ func spawn_enemy(event: Dictionary):
 		return
 
 	var enemy_id        = int(enemy_template.get("index", 0))
+	var enemy_slot      = int(event.get("enemy_slot", 25))
 	var spawn_pos       = _calc_spawn_pos(event)
 	var raw_velocity    = _calc_velocity(enemy_template, event)
-	var scroll_for_slot = _scroll_for_slot(event.get("enemy_slot", 0))
+	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
 	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
 		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id,
-		event.get("event_type", 0), event.get("link_num", 0), event.get("enemy_slot", 0))
+		event.get("event_type", 0), event.get("link_num", 0), enemy_slot)
 	if enemy:
 		enemy.projectile_spawned.connect(_on_enemy_projectile_spawned)
 		add_child(enemy)
+	print("LevelManager: enemy_id: ", enemy_id, " link_num: ", event.get("link_num", 0))
 
-func spawn_top_enemy(event: Dictionary):
+func spawn_top_enemy(event: Dictionary): # Back_move3
 	var enemy_id_raw   = event.get("enemy_id", 0)
 	var enemy_template = _find_template(enemy_id_raw)
 	if enemy_template == null:
@@ -185,7 +188,7 @@ func spawn_top_enemy(event: Dictionary):
 		return
 
 	var enemy_id        = int(enemy_template.get("index", 0))
-	var enemy_slot      = 50
+	var enemy_slot      = int(event.get("enemy_slot", 50)) # Default to top layer
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
 	var raw_x    = event.get("raw_x", 0)
@@ -211,7 +214,7 @@ func spawn_top_enemy(event: Dictionary):
 		enemy.projectile_spawned.connect(_on_enemy_projectile_spawned)
 		add_child(enemy)
 
-func spawn_ground_enemy_2(event: Dictionary):
+func spawn_ground_enemy_2(event: Dictionary): # Back_move
 	var enemy_id_raw   = event.get("enemy_id", 0)
 	var enemy_template = _find_template(enemy_id_raw)
 	if enemy_template == null:
@@ -219,7 +222,7 @@ func spawn_ground_enemy_2(event: Dictionary):
 		return
 
 	var enemy_id        = int(enemy_template.get("index", 0))
-	var enemy_slot      = 75
+	var enemy_slot      = int(event.get("enemy_slot", 75)) # Default to ground layer
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
 	var raw_x    = event.get("raw_x", 0)
@@ -240,9 +243,9 @@ func spawn_ground_enemy_2(event: Dictionary):
 		enemy.projectile_spawned.connect(_on_enemy_projectile_spawned)
 		add_child(enemy)
 
-func spawn_4x4_enemies(event: Dictionary):
+func spawn_4x4_enemies(event: Dictionary): # Back_move
 	var enemy_ids    = event.get("enemy_ids", [])
-	var enemy_slot   = int(event.get("enemy_slot", 25))
+	var enemy_slot   = int(event.get("enemy_slot", 25)) # Default to main layer
 	var fixed_move_y = int(event.get("fixed_move_y", 0))
 	var event_type   = int(event.get("event_type", 0))
 
@@ -266,6 +269,8 @@ func spawn_4x4_enemies(event: Dictionary):
 			enemy.projectile_spawned.connect(_on_enemy_projectile_spawned)
 			add_child(enemy)
 
+
+# --- Enemy global control ---
 func disable_random_spawn(_event: Dictionary):
 	enemies_active = false
 	print("LevelManager: Random spawn wyłączony")
@@ -279,6 +284,8 @@ func enemy_global_accel(event: Dictionary):
 	var new_eycc  = event.get("new_eycc",  -99)
 	var link_num  = event.get("link_num",  0)
 
+	print("LevelManager: enemy_global_accel", " link_num: ", link_num)
+
 	for child in get_children():
 		if not "enemy_id" in child:
 			continue
@@ -287,21 +294,21 @@ func enemy_global_accel(event: Dictionary):
 
 		if new_excc != -99:
 			child.excc    = new_excc
-			child.exccw   = abs(new_excc)
-			child.exccwmax = child.exccw
+			child.exccwmax = abs(new_excc) 
+			child.exccw = abs(new_excc)
 			child.exccadd = 1 if new_excc > 0 else -1
 			if child.xrev == 0:
 				child.xrev = 100
+			# print("SET excc=", child.excc, " exccw=", child.exccw, " exccadd=", child.exccadd)
 
-		# POPRAWKA 7: eycc zmieniane z pełnym resetem stanu wahadła Y,
-		# tak samo jak dla X — bez tego wahadło Y jest martwe gdy eycc było 0.
 		if new_eycc != -99:
 			child.eycc    = new_eycc
-			child.eyccw   = abs(new_eycc)
-			child.eyccwmax = child.eyccw
+			child.eyccwmax = abs(new_eycc)
+			child.eyccw = abs(new_eycc)
 			child.eyccadd = 1 if new_eycc > 0 else -1
 			if child.yrev == 0:
 				child.yrev = 100
+			# print("SET eycc=", child.eycc, " eyccw=", child.eyccw, " eyccadd=", child.eyccadd)
 
 func enemy_global_accelrev(event: Dictionary):
 	var new_exrev = event.get("new_exrev", -99)
@@ -356,7 +363,10 @@ func enemy_global_move(event: Dictionary):
 		elif new_fixed_move_y != 0:
 			child.fixed_move_y = new_fixed_move_y
 
-# Pomocnicze
+
+# ========================================
+# SEKCJA: Funkcje pomocnicze
+# ========================================
 
 func _calc_spawn_pos(event: Dictionary) -> Vector2:
 	return Vector2(float(event.get("screen_x", 0)), float(event.get("screen_y", 0)))
@@ -368,8 +378,6 @@ func _calc_velocity(template: Dictionary, event: Dictionary) -> Vector2:
 	return Vector2(float(xmove), float(ymove + y_vel))
 
 func _find_template(enemy_id_raw):
-	# POPRAWKA 6: Zwracamy null zamiast {} gdy wróg nie istnieje,
-	# żeby warunek "== null" w miejscach wywołania faktycznie działał.
 	for template in enemies_data:
 		if int(template.get("index", -1)) == int(enemy_id_raw):
 			return template
@@ -377,10 +385,10 @@ func _find_template(enemy_id_raw):
 
 func _scroll_for_slot(enemy_slot: int) -> int:
 	match enemy_slot:
-		0:        return back_move2
+		0:        return 0
 		25, 75:   return back_move
 		50:       return back_move3
-		_:        return back_move2
+		_:        return 0
 
 func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 		raw_velocity: Vector2, fixed_move_y: int,
@@ -410,6 +418,10 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 	# print("LevelManager: Created enemy: ", enemy.name)
 	return enemy
 
+
+# ========================================
+# SEKCJA: Callbacks
+# ========================================
 func _on_enemy_projectile_spawned(projectile):
 	# Dodaj pocisk do sceny (jako dziecko LevelManager)
 	add_child(projectile)
