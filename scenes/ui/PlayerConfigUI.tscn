@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://byib6lftjgibm" path="res://scenes/ui/PlayerConfigUI.gd" id="1_8j8y8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
-content_margin_left = 12.0
-content_margin_top = 10.0
-content_margin_right = 12.0
-content_margin_bottom = 10.0
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
 bg_color = Color(0.05, 0.05, 0.15, 0.85)
 border_width_left = 2
 border_width_top = 2
@@ -61,7 +61,7 @@ theme_override_constants/separation = 0
 [node name="ShipNameLabel" type="Label" parent="Background/VBoxContainer" unique_id=334429806]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.85, 1, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 11
 text = "Unknown Ship"
 horizontal_alignment = 1
 
@@ -79,7 +79,7 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_bar_bg")
 [node name="GeneratorNameLabel" type="Label" parent="Background/VBoxContainer" unique_id=1673560890]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.85, 1, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 11
 text = "Unknown Generator"
 horizontal_alignment = 1
 
@@ -97,7 +97,7 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_bar_bg")
 [node name="FrontWeaponNameLabel" type="Label" parent="Background/VBoxContainer" unique_id=973819030]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.85, 1, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 11
 text = "Unknown Weapon"
 horizontal_alignment = 1
 
@@ -111,7 +111,7 @@ alignment = 1
 [node name="FrontWeaponModeLabel" type="Label" parent="Background/VBoxContainer" unique_id=1383835779]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.75, 0.95, 0.9)
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 9
 text = "Mode"
 horizontal_alignment = 1
 
@@ -126,7 +126,7 @@ alignment = 1
 [node name="FrontPowerLevelLabel" type="Label" parent="Background/VBoxContainer" unique_id=1924855925]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.75, 0.95, 0.9)
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 9
 text = "Power Level"
 horizontal_alignment = 1
 
@@ -145,7 +145,7 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_bar_bg")
 [node name="RearWeaponNameLabel" type="Label" parent="Background/VBoxContainer" unique_id=902445415]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.85, 1, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 11
 text = "Unknown Weapon"
 horizontal_alignment = 1
 
@@ -159,7 +159,7 @@ alignment = 1
 [node name="RearWeaponModeLabel" type="Label" parent="Background/VBoxContainer" unique_id=2135259716]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.75, 0.95, 0.9)
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 9
 text = "Mode"
 horizontal_alignment = 1
 
@@ -174,7 +174,7 @@ alignment = 1
 [node name="RearPowerLevelLabel" type="Label" parent="Background/VBoxContainer" unique_id=563343569]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.6, 0.75, 0.95, 0.9)
-theme_override_font_sizes/font_size = 13
+theme_override_font_sizes/font_size = 9
 text = "Power Level"
 horizontal_alignment = 1
 

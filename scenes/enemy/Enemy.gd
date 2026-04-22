@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 # ---- Sygnały ----
 signal projectile_spawned(projectile)
@@ -57,6 +57,11 @@ const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 @onready var debug_label: Label = $DebugLabel
 
 func _ready():
+	add_to_group("enemies")
+	# Warstwa 2 = wróg; maska 4 = wykrywa pociski gracza (warstwa 4 = bit 2)
+	collision_layer = 2
+	collision_mask  = 4
+
 	# Konwersja xrev/yrev — zawsze przy spawnie, niezależnie od excc/eycc (jak w Tyrianie)
 	if xrev == 0:    xrev = 100
 	elif xrev == -99: xrev = 0
@@ -310,3 +315,15 @@ func _process(delta):
 		queue_free()
 	# if enemy_id == 5:
 	# 	print("F:", Engine.get_frames_drawn(), " vx:", velocity.x, " vy:", velocity.y, " x:", position.x, " y:", position.y, " exccw:", exccw, " excc:", excc)
+
+# ============================================================================
+# SYSTEM OBRAŻEŃ
+# ============================================================================
+
+func take_damage(amount: int):
+	armor -= amount
+	if armor <= 0:
+		die()
+
+func die():
+	queue_free()

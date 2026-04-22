@@ -25,6 +25,10 @@ const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 @onready var visual: Polygon2D = $Visual
 
 func _ready():
+	# Warstwa 8 = pocisk wroga; maska 1 = wykrywa gracza (warstwa 1)
+	collision_layer = 8
+	collision_mask  = 1
+	body_entered.connect(_on_body_entered)
 	# Ustaw kolor na podstawie sprite_id (prosta wizualizacja)
 	var colors = [
 		Color.RED, Color.ORANGE, Color.YELLOW, Color.WHITE,
@@ -91,6 +95,9 @@ func _physics_process(delta):
 	if position.y < BOUNDS_TOP or position.y > BOUNDS_BOTTOM:
 		queue_free()
 
-func _on_body_entered(_body):
-	# Kolizja z graczem (lub innym obiektem)
+func _on_body_entered(body: Node2D):
+	if body.is_in_group("player"):
+		var ds = body.get_node_or_null("DamageSystem")
+		if ds:
+			ds.take_damage(damage)
 	queue_free()

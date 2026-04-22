@@ -4,20 +4,25 @@ extends Node
 # SHIELD SYSTEM - Obsługa tarczy
 # ============================================================================
 
-# --- Referencje ---
 var player: CharacterBody2D
 
-# --- Statystyki tarczy ---
 var shield: int = 0
 var max_shield: int = 0
-var shield_regen_rate: float = 1.0  # punkty na sekundę
+var shield_regen_rate: float = 0.0  # punkty na sekundę
 
 func _ready():
 	player = get_parent()
-	# TODO: Załaduj shield_data z DataManager (PlayerSetup.shield_id)
+	var shield_data = DataManager.get_shield_by_id(PlayerSetup.shield_id)
+	if not shield_data.is_empty():
+		var stats = shield_data.get("stats", {})
+		max_shield      = stats.get("capacity", 0)
+		shield_regen_rate = float(stats.get("regen_rate", 0.0))
+		shield          = max_shield
+		print("ShieldSystem: tarcza=", shield, " regen=", shield_regen_rate, "/s")
+	else:
+		print("ShieldSystem: brak danych tarczy (shield_id=", PlayerSetup.shield_id, ")")
 
 func _physics_process(delta):
-	# Regeneracja tarczy
 	if shield < max_shield:
 		shield = min(shield + shield_regen_rate * delta, max_shield)
 

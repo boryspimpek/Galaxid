@@ -1,0 +1,52 @@
+[
+  {
+    "index": 0,
+    "name": "None",
+    "stats": {
+      "capacity": 0,
+      "regen_rate": 0.0,
+      "item_graphic": 0,
+      "cost": 0
+    }
+  },
+  {
+    "index": 1,
+    "name": "Standard MicroShield",
+    "stats": {
+      "capacity": 50,
+      "regen_rate": 5.0,
+      "item_graphic": 240,
+      "cost": 500
+    }
+  },
+  {
+    "index": 2,
+    "name": "Advanced MR-12 Shield",
+    "stats": {
+      "capacity": 100,
+      "regen_rate": 8.0,
+      "item_graphic": 241,
+      "cost": 2000
+    }
+  },
+  {
+    "index": 3,
+    "name": "HardShield 1.0",
+    "stats": {
+      "capacity": 200,
+      "regen_rate": 12.0,
+      "item_graphic": 242,
+      "cost": 5000
+    }
+  },
+  {
+    "index": 4,
+    "name": "HardShield 2.0",
+    "stats": {
+      "capacity": 350,
+      "regen_rate": 18.0,
+      "item_graphic": 243,
+      "cost": 10000
+    }
+  }
+]

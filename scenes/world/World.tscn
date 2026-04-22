@@ -15,18 +15,17 @@ script = ExtResource("3_level_manager")
 position = Vector2(658, 665)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2020724297]
-visible = false
 
 [node name="PlayerConfigUI" parent="UI" unique_id=920573385 instance=ExtResource("4_ui")]
-offset_left = 8.0
-offset_top = 3.0
-offset_right = 335.0
-offset_bottom = 424.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 185.0
+offset_bottom = 415.0
 grow_vertical = 1
 
 [node name="GeneratorInfoUI" parent="UI" unique_id=1717254505 instance=ExtResource("5_generator_ui")]
-offset_left = 9.0
-offset_top = 455.0
-offset_right = 217.0
-offset_bottom = 569.0
+offset_left = 5.0
+offset_top = 420.0
+offset_right = 185.0
+offset_bottom = 500.0
 grow_vertical = 1

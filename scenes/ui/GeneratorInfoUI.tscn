@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://scenes/ui/GeneratorInfoUI.gd" id="1_generator_ui"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
-content_margin_left = 12.0
-content_margin_top = 10.0
-content_margin_right = 12.0
-content_margin_bottom = 10.0
+content_margin_left = 6.0
+content_margin_top = 6.0
+content_margin_right = 6.0
+content_margin_bottom = 6.0
 bg_color = Color(0.05, 0.05, 0.15, 0.85)
 border_width_left = 2
 border_width_top = 2
@@ -65,7 +65,7 @@ theme_override_constants/separation = 4
 
 [node name="GeneratorNameLabel" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 11
 theme_override_colors/font_color = Color(0.7, 0.85, 1.0, 1)
 text = "Unknown"
 horizontal_alignment = 1
@@ -76,14 +76,14 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_bar_bg")
 
 [node name="PowerLabel" type="Label" parent="Background/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 10
 theme_override_colors/font_color = Color(0.5, 0.8, 1.0, 1)
 text = "Power: 0/900"
 horizontal_alignment = 1
 
 [node name="PowerBar" type="ProgressBar" parent="Background/VBoxContainer"]
 layout_mode = 2
-custom_minimum_size = Vector2(0, 14)
+custom_minimum_size = Vector2(0, 8)
 theme_override_styles/background = SubResource("StyleBoxFlat_bar_bg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bar_fill")
 max_value = 900.0
@@ -92,7 +92,7 @@ show_percentage = false
 
 [node name="PowerAddLabel" type="Label" parent="Background/VBoxContainer" unique_id=1567955859]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 9
 theme_override_colors/font_color = Color(0.4, 0.7, 0.9, 0.8)
 text = "Regen: 0.0 / frame"
 horizontal_alignment = 1

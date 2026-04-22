@@ -32,6 +32,10 @@ var ship_data: Dictionary = {}
 # ============================================================================
 
 func _ready():
+	add_to_group("player")
+	# Warstwa 1 = gracz; pociski wroga muszą mieć maskę 1 żeby go wykryć
+	collision_layer = 1
+	collision_mask  = 0
 	load_ship_data()
 	apply_ship_stats()
 	init_power_regeneration()

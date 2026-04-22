@@ -23,6 +23,9 @@ var circle_center: Vector2 = Vector2.ZERO  # Środek orbity (pozycja startowa)
 var lifetime_timer: float = 0.0
 
 func _ready():
+	# Warstwa 4 = pocisk gracza; maska 2 = wykrywa wrogów (warstwa 2)
+	collision_layer = 4
+	collision_mask  = 2
 	_init_circlesize()
 
 func _init_circlesize():
@@ -94,3 +97,11 @@ func _physics_process(delta):
 	# Marginesy: -50 góra, 800 dół (720 + margines), -50/-50 boki
 	if position.y < -50 or position.y > 800 or position.x < -50 or position.x > 1330:
 		queue_free()
+
+func _on_area_entered(area: Area2D):
+	if area.is_in_group("enemies"):
+		area.take_damage(damage)
+		queue_free()
+
+func _on_body_entered(_body: Node2D):
+	queue_free()
