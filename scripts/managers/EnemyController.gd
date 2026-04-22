@@ -37,16 +37,12 @@ func enemy_global_accel(event: Dictionary):
 			child.exccwmax = abs(new_excc) 
 			child.exccw = abs(new_excc)
 			child.exccadd = 1 if new_excc > 0 else -1
-			if child.xrev == 0:
-				child.xrev = 100
 
 		if new_eycc != -99:
 			child.eycc    = new_eycc
 			child.eyccwmax = abs(new_eycc)
 			child.eyccw = abs(new_eycc)
 			child.eyccadd = 1 if new_eycc > 0 else -1
-			if child.yrev == 0:
-				child.yrev = 100
 
 func enemy_global_accelrev(event: Dictionary):
 	var new_exrev = event.get("new_exrev", -99)

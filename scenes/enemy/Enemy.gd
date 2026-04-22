@@ -57,21 +57,24 @@ const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 @onready var debug_label: Label = $DebugLabel
 
 func _ready():
+	# Konwersja xrev/yrev — zawsze przy spawnie, niezależnie od excc/eycc (jak w Tyrianie)
+	if xrev == 0:    xrev = 100
+	elif xrev == -99: xrev = 0
+
+	if yrev == 0:    yrev = 100
+	elif yrev == -99: yrev = 0
+
 	# Inicjalizacja silnika wahadłowego X
 	if excc != 0:
 		exccw    = abs(excc)
 		exccwmax = exccw
 		exccadd  = 1 if excc > 0 else -1
-		if xrev == 0:
-			xrev = 100
 
 	# Inicjalizacja silnika wahadłowego Y
 	if eycc != 0:
 		eyccw    = abs(eycc)
 		eyccwmax = eyccw
 		eyccadd  = 1 if eycc > 0 else -1
-		if yrev == 0:
-			yrev = 100
 
 	# Inicjalizacja systemu strzelania
 	for i in range(3):
@@ -243,7 +246,7 @@ func _fire_projectile(direction_index: int):
 
 		# Oblicz pozycję startową z offsetem bx/by
 		var offset_x = float(bx)
-		var offset_y = float(by) 
+		var offset_y = float(by)
 		projectile.global_position = global_position + Vector2(offset_x, offset_y)
 
 		# Emituj sygnał do spawnu pocisku (LevelManager doda go do sceny)
@@ -254,11 +257,6 @@ func _fire_projectile(direction_index: int):
 		eshotmultipos[direction_index] = (eshotmultipos[direction_index] + 1) % weapon_max
 
 func _process(delta):
-	# Kolejność zgodna z JE_drawEnemy w Tyrianie:
-	# 1. fixed_move_y
-	# 2. velocity (eyc) — po ewentualnej aktualizacji silnika wahadłowego
-	# 3. scroll tła (tempBackMove)
-
 	velocity.x += float(xaccel)
 	velocity.y += float(yaccel)
 
@@ -296,11 +294,6 @@ func _process(delta):
 					yrev = -yrev
 					eyccadd = -eyccadd
 			
-			if velocity.y == yrev:
-				eycc    = -eycc
-				yrev    = -yrev
-				eyccadd = -eyccadd
-
 	# --- 3. Przeliczenie na px/s Godot i zastosowanie ruchu ---
 	var move_x = velocity.x * TYRIAN_FPS
 	var move_y = (float(fixed_move_y) + velocity.y + float(scroll_y)) * TYRIAN_FPS
