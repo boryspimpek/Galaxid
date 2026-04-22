@@ -1,0 +1,298 @@
+[gd_scene format=3 uid="uid://iddg8culgc7q"]
+
+; Tło panelu bocznego (SidePanel)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcei2"]
+bg_color = Color(0, 0, 0, 0.9)
+
+; Tło pasków postępu (PowerBar, ShieldBar, ArmorBar)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abcde"]
+bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.2901961)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_left = 3
+corner_radius_bottom_right = 3
+
+; Wypełnienie pasków postępu (żółte)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fghij"]
+bg_color = Color(1, 1, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_left = 3
+corner_radius_bottom_right = 3
+
+; Styl przycisków "<" i ">" (czarne tło z obramowaniem)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klmno"]
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_left = 3
+corner_radius_bottom_right = 3
+
+[node name="HUD" type="CanvasLayer" unique_id=21387505]
+
+[node name="SidePanel" type="Panel" parent="." unique_id=110622867]
+offset_left = 320.0
+offset_right = 400.0
+offset_bottom = 200.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lcei2")
+
+[node name="Margin" type="MarginContainer" parent="SidePanel" unique_id=94847652]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="MainVBox" type="VBoxContainer" parent="SidePanel/Margin" unique_id=697872794]
+layout_mode = 2
+theme_override_constants/separation = 3
+
+[node name="HBoxGuns" type="HBoxContainer" parent="SidePanel/Margin/MainVBox" unique_id=830333975]
+layout_mode = 2
+
+[node name="PowerBar" type="ProgressBar" parent="SidePanel/Margin/MainVBox/HBoxGuns" unique_id=283286676]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_abcde")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fghij")
+value = 75.0
+fill_mode = 3
+show_percentage = false
+
+[node name="ButtonList" type="VBoxContainer" parent="SidePanel/Margin/MainVBox/HBoxGuns" unique_id=412590657]
+custom_minimum_size = Vector2(0, 127)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 2
+
+[node name="T1" type="Label" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=204402054]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Weapon"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=1216830918]
+layout_mode = 2
+
+[node name="Btn1" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer" unique_id=1580871166]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = "<"
+
+[node name="Btn7" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer" unique_id=1431070833]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = ">"
+
+[node name="T6" type="Label" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=625018512]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Power"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=2142472029]
+layout_mode = 2
+
+[node name="Btn1" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer2" unique_id=55888021]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = "<"
+
+[node name="Btn7" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer2" unique_id=1443104366]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = ">"
+
+[node name="T5" type="Label" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=759823979]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Weapon"
+horizontal_alignment = 1
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=2052158110]
+layout_mode = 2
+
+[node name="Btn1" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer5" unique_id=497739769]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = "<"
+
+[node name="Btn7" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer5" unique_id=1167252978]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = ">"
+
+[node name="T2" type="Label" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=75073021]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Power"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=542498289]
+layout_mode = 2
+
+[node name="Btn1" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer3" unique_id=881269713]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = "<"
+
+[node name="Btn7" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer3" unique_id=858554794]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = ">"
+
+[node name="T3" type="Label" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=1618286415]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Generator"
+horizontal_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=1803623151]
+layout_mode = 2
+
+[node name="Btn1" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer4" unique_id=1028028583]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = "<"
+
+[node name="Btn7" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer4" unique_id=123935804]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = ">"
+
+[node name="T4" type="Label" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=1685217706]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+text = "Shield"
+horizontal_alignment = 1
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=1581896127]
+layout_mode = 2
+
+[node name="Btn1" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer6" unique_id=872001212]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = "<"
+
+[node name="Btn7" type="Button" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList/HBoxContainer6" unique_id=47041728]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0.2, 1, 1)
+theme_override_font_sizes/font_size = 6
+theme_override_styles/normal = SubResource("StyleBoxFlat_klmno")
+text = ">"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SidePanel/Margin/MainVBox" unique_id=274079044]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SidePanel/Margin/MainVBox/HBoxContainer" unique_id=757583503]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 6
+text = "SHIELD"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="SidePanel/Margin/MainVBox/HBoxContainer" unique_id=747237893]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 5
+theme_override_font_sizes/font_size = 6
+text = "ARMOR"
+horizontal_alignment = 1
+
+[node name="LowerSection" type="VBoxContainer" parent="SidePanel/Margin/MainVBox" unique_id=426664992]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxStatus" type="HBoxContainer" parent="SidePanel/Margin/MainVBox/LowerSection" unique_id=1031301349]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="ShieldBar" type="ProgressBar" parent="SidePanel/Margin/MainVBox/LowerSection/HBoxStatus" unique_id=1568357001]
+custom_minimum_size = Vector2(20, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_abcde")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fghij")
+value = 35.0
+fill_mode = 3
+show_percentage = false
+
+[node name="ArmorBar" type="ProgressBar" parent="SidePanel/Margin/MainVBox/LowerSection/HBoxStatus" unique_id=1057929686]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/background = SubResource("StyleBoxFlat_abcde")
+theme_override_styles/fill = SubResource("StyleBoxFlat_fghij")
+value = 75.0
+fill_mode = 3
+show_percentage = false

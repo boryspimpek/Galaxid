@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bte7ofi7pgn5b" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
 [ext_resource type="PackedScene" path="res://scenes/background/Background.tscn" id="2_background"]
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
-[ext_resource type="PackedScene" uid="uid://iddg8culgc7q" path="res://UI/Generator.tscn" id="4_gbddb"]
+[ext_resource type="PackedScene" uid="uid://iddg8culgc7q" path="res://UI/Hud.tscn" id="4_gbddb"]
 
 [node name="World" type="Node2D" unique_id=1364436952]
 script = ExtResource("3_level_manager")
