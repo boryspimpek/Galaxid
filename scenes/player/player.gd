@@ -59,7 +59,7 @@ func apply_ship_stats():
 	accel = stats.get("speed_forward", 1)
 	friction = stats.get("speed_reverse", 2) 
 	
-	print("Player: Fizyka Tyrian → maneuverability=", ship_maneuverability, 
+	print("Player: Ship → maneuverability=", ship_maneuverability, 
 		  " accel=", accel, " friction=", friction)
 
 func init_power_regeneration():
