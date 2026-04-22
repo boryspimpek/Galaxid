@@ -2,51 +2,78 @@
   {
     "index": 0,
     "name": "None",
-    "stats": {
-      "capacity": 0,
-      "regen_rate": 0.0,
-      "item_graphic": 0,
-      "cost": 0
-    }
+    "generator_needed": 0,
+    "protection": 0,
+    "cost": 0
   },
   {
     "index": 1,
-    "name": "Standard MicroShield",
-    "stats": {
-      "capacity": 50,
-      "regen_rate": 5.0,
-      "item_graphic": 240,
-      "cost": 500
-    }
+    "name": "Structural Integrity Field",
+    "generator_needed": 5,
+    "protection": 2,
+    "cost": 100
   },
   {
     "index": 2,
-    "name": "Advanced MR-12 Shield",
-    "stats": {
-      "capacity": 100,
-      "regen_rate": 8.0,
-      "item_graphic": 241,
-      "cost": 2000
-    }
+    "name": "Advanced Integrity Field",
+    "generator_needed": 3,
+    "protection": 3,
+    "cost": 250
   },
   {
     "index": 3,
-    "name": "HardShield 1.0",
-    "stats": {
-      "capacity": 200,
-      "regen_rate": 12.0,
-      "item_graphic": 242,
-      "cost": 5000
-    }
+    "name": "Gencore Low Energy Shield",
+    "generator_needed": 4,
+    "protection": 4,
+    "cost": 500
   },
   {
     "index": 4,
-    "name": "HardShield 2.0",
-    "stats": {
-      "capacity": 350,
-      "regen_rate": 18.0,
-      "item_graphic": 243,
-      "cost": 10000
-    }
+    "name": "Gencore High Energy Shield",
+    "generator_needed": 6,
+    "protection": 5,
+    "cost": 1000
+  },
+  {
+    "index": 5,
+    "name": "MicroCorp LXS Class A",
+    "generator_needed": 8,
+    "protection": 6,
+    "cost": 2000
+  },
+  {
+    "index": 6,
+    "name": "MicroCorp LXS Class B",
+    "generator_needed": 6,
+    "protection": 7,
+    "cost": 4000
+  },
+  {
+    "index": 7,
+    "name": "MicroCorp LXS Class C",
+    "generator_needed": 5,
+    "protection": 9,
+    "cost": 5000
+  },
+  {
+    "index": 8,
+    "name": "MicroCorp HXS Class A",
+    "generator_needed": 9,
+    "protection": 10,
+    "cost": 12000
+  },
+  {
+    "index": 9,
+    "name": "MicroCorp HXS Class B",
+    "generator_needed": 7,
+    "protection": 12,
+    "cost": 20000
+  },
+  {
+    "index": 10,
+    "name": "MicroCorp HXS Class C",
+    "generator_needed": 6,
+    "protection": 14,
+    "cost": 25000
   }
 ]
