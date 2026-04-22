@@ -15,12 +15,16 @@ var power_add: float = 0.0  # Regeneracja obliczana dynamicznie na podstawie gen
 
 # --- Parametry fizyki TYRIAN (STAŁY PRZYROST, NIE LERP) ---
 var ship_maneuverability: int = 10    # limit prędkości (cap)
-var accel: int = 1 
+var accel: int = 1
 var friction: int = 2
 
 var velocity_x: float = 0.0
 var velocity_y: float = 0.0
 var ship_data: Dictionary = {}
+
+# --- Sterowanie myszką ---
+var _last_mouse_pos: Vector2 = Vector2.ZERO
+var _use_mouse: bool = false
 
 # --- Systemy (child nodes) ---
 @onready var weapon_system: Node = $WeaponSystem
@@ -82,64 +86,81 @@ func reload_power_regeneration():
 func _physics_process(delta):
 	# Regeneracja energii
 	power = min(power_max, power + power_add * delta)
-	
-	# Pobieranie wektora ruchu
-	var input_up = Input.is_action_pressed("ui_up")
-	var input_down = Input.is_action_pressed("ui_down")
-	var input_left = Input.is_action_pressed("ui_left")
-	var input_right = Input.is_action_pressed("ui_right")
-	
-	# Obsługa strzelania
-	if Input.is_action_pressed("ui_accept"):
-		weapon_system.set_firing(true)
+
+	# --- Wykrywanie aktywnego schematu sterowania ---
+	var mouse_pos = get_global_mouse_position()
+	var any_key = Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down") \
+				or Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")
+
+	if mouse_pos != _last_mouse_pos:
+		_use_mouse = true
+	if any_key:
+		_use_mouse = false
+	_last_mouse_pos = mouse_pos
+
+	# Obsługa strzelania (myszka lub klawiatura)
+	var firing = Input.is_action_pressed("ui_accept") \
+			  or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT)
+	weapon_system.set_firing(firing)
+
+	if _use_mouse:
+		# ====================================================================
+		# STEROWANIE MYSZKĄ: bezpośrednia pozycja – brak bezwładności
+		# ====================================================================
+		position = mouse_pos
+		velocity_x = 0.0
+		velocity_y = 0.0
 	else:
-		weapon_system.set_firing(false)
+		# ====================================================================
+		# FIZYKA TYRIAN: STAŁY PRZYROST PRĘDKOŚCI (BEZ LERP)
+		# ====================================================================
+		var input_up    = Input.is_action_pressed("ui_up")
+		var input_down  = Input.is_action_pressed("ui_down")
+		var input_left  = Input.is_action_pressed("ui_left")
+		var input_right = Input.is_action_pressed("ui_right")
 
-	# ========================================================================
-	# FIZYKA TYRIAN: STAŁY PRZYROST PRĘDKOŚCI (BEZ LERP)
-	# ========================================================================
+		# Oś X
+		if input_left:
+			if velocity_x > 0:
+				velocity_x -= friction
+			elif velocity_x > -ship_maneuverability:
+				velocity_x -= accel
+		elif input_right:
+			if velocity_x < 0:
+				velocity_x += friction
+			elif velocity_x < ship_maneuverability:
+				velocity_x += accel
+		else:
+			velocity_x = move_toward(velocity_x, 0, friction)
 
-	# Oś X
-	if input_left:
-		if velocity_x > 0: 
-			velocity_x -= friction
-		elif velocity_x > -ship_maneuverability: 
-			velocity_x -= accel
-	elif input_right:
-		if velocity_x < 0: 
-			velocity_x += friction
-		elif velocity_x < ship_maneuverability: 
-			velocity_x += accel
-	else:
-		velocity_x = move_toward(velocity_x, 0, friction)
+		# Oś Y
+		if input_up:
+			if velocity_y > 0:
+				velocity_y -= friction
+			elif velocity_y > -ship_maneuverability:
+				velocity_y -= accel
+		elif input_down:
+			if velocity_y < 0:
+				velocity_y += friction
+			elif velocity_y < ship_maneuverability:
+				velocity_y += friction
+		else:
+			velocity_y = move_toward(velocity_y, 0, friction)
 
-	# Oś Y - POPRAWIONA
-	if input_up:
-		if velocity_y > 0: 
-			velocity_y -= friction
-		elif velocity_y > -ship_maneuverability: 
-			velocity_y -= accel
-	elif input_down:
-		if velocity_y < 0: 
-			velocity_y += friction
-		elif velocity_y < ship_maneuverability: 
-			velocity_y += friction 
-	else:
-		velocity_y = move_toward(velocity_y, 0, friction)
+		velocity_x = clamp(velocity_x, -ship_maneuverability, ship_maneuverability)
+		velocity_y = clamp(velocity_y, -ship_maneuverability, ship_maneuverability)
 
-	# Ograniczenie prędkości do maneuverability (cap)
-	velocity_x = clamp(velocity_x, -ship_maneuverability, ship_maneuverability)
-	velocity_y = clamp(velocity_y, -ship_maneuverability, ship_maneuverability)
-	
-	position.x += velocity_x * delta * TYRIAN_FPS
-	position.y += velocity_y * delta * TYRIAN_FPS
-	
+		position.x += velocity_x * delta * TYRIAN_FPS
+		position.y += velocity_y * delta * TYRIAN_FPS
+
 	_clamp_to_screen()
 
 func _clamp_to_screen():
 	var screen_size = get_viewport_rect().size
-	position.x = clamp(position.x, 32, screen_size.x - 32)
-	position.y = clamp(position.y, 32, screen_size.y - 32)
+	var shape = $CollisionShape2D.shape
+	var margin: float = shape.radius if shape is CircleShape2D else 16.0
+	position.x = clamp(position.x, margin, screen_size.x - margin)
+	position.y = clamp(position.y, margin, screen_size.y - margin)
 
 # ============================================================================
 # 3. DEBUG
