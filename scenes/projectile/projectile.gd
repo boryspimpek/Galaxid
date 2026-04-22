@@ -93,9 +93,9 @@ func _physics_process(delta):
 			queue_free()
 			return
 	
-	# Usuwamy pocisk, gdy wyjdzie poza ekran
-	# Marginesy: -50 góra, 800 dół (720 + margines), -50/-50 boki
-	if position.y < -50 or position.y > 800 or position.x < -50 or position.x > 1330:
+	# Usuwamy pocisk gdy wyjdzie poza viewport
+	var vp = get_viewport_rect().size
+	if position.y < -10 or position.y > vp.y + 10 or position.x < -10 or position.x > vp.x + 10:
 		queue_free()
 
 func _on_area_entered(area: Area2D):
