@@ -24,11 +24,11 @@ GameConstants="*res://scripts/core/GameConstants.gd"
 
 [display]
 
-window/size/viewport_width=320
+window/size/viewport_width=400
 window/size/viewport_height=200
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [physics]
 

@@ -1,65 +1,114 @@
-[gd_scene load_steps=1 format=3]
+[gd_scene format=3 uid="uid://iddg8culgc7q"]
 
-[node name="HUD" type="CanvasLayer"]
+[sub_resource type="StyleBoxFlat" id="ProgressBar_bg"]
+bg_color = Color(0.05, 0.05, 0.1, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3, 0.3, 0.4, 0.9)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
-[node name="SidePanel" type="ColorRect" parent="."]
-offset_left = 260.0
-offset_right = 320.0
+[sub_resource type="StyleBoxFlat" id="ProgressBar_fill_guns"]
+bg_color = Color(1, 0.95, 0.2, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="ProgressBar_fill_shield"]
+bg_color = Color(0, 0.9, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="ProgressBar_fill_armor"]
+bg_color = Color(1, 0.2, 0.2, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="HUD" type="CanvasLayer" unique_id=974291927]
+
+[node name="SidePanel" type="Panel" parent="." unique_id=1582430690]
+offset_left = 320.0
+offset_right = 400.0
 offset_bottom = 200.0
-color = Color(0.239216, 0.180392, 0.117647, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="SidePanel"]
+[node name="MarginContainer" type="MarginContainer" parent="SidePanel" unique_id=1016168930]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 4
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 4
-theme_override_constants/margin_bottom = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SidePanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SidePanel/MarginContainer" unique_id=1968514268]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 8
 
-[node name="Label" type="Label" parent="SidePanel/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="SidePanel/MarginContainer/VBoxContainer" unique_id=787944288]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "GUNS"
+theme_override_colors/font_color = Color(1, 0.9, 0.5, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 10
+text = "⚡ GUNS"
 horizontal_alignment = 1
 
-[node name="MainPowerBar" type="ProgressBar" parent="SidePanel/MarginContainer/VBoxContainer"]
-modulate = Color(1, 0.843137, 0, 1)
+[node name="MainPowerBar" type="ProgressBar" parent="SidePanel/MarginContainer/VBoxContainer" unique_id=961809520]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 size_flags_vertical = 3
+value = 35.0
 fill_mode = 3
 show_percentage = false
+theme_override_styles/background = SubResource("ProgressBar_bg")
+theme_override_styles/fill = SubResource("ProgressBar_fill_guns")
 
-[node name="Label2" type="Label" parent="SidePanel/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="SidePanel/MarginContainer/VBoxContainer" unique_id=333972881]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "STATUS"
+theme_override_colors/font_color = Color(0.8, 0.9, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.8)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 10
+text = "🛡️ STATUS"
 horizontal_alignment = 1
 
-[node name="HBoxBottom" type="HBoxContainer" parent="SidePanel/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 40)
+[node name="HBoxBottom" type="HBoxContainer" parent="SidePanel/MarginContainer/VBoxContainer" unique_id=1071588802]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 8
 
-[node name="ShieldBar" type="ProgressBar" parent="SidePanel/MarginContainer/VBoxContainer/HBoxBottom"]
-modulate = Color(0, 0.733333, 1, 1)
+[node name="ShieldBar" type="ProgressBar" parent="SidePanel/MarginContainer/VBoxContainer/HBoxBottom" unique_id=1765121222]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+value = 50.0
 fill_mode = 3
 show_percentage = false
+theme_override_styles/background = SubResource("ProgressBar_bg")
+theme_override_styles/fill = SubResource("ProgressBar_fill_shield")
 
-[node name="ArmorBar" type="ProgressBar" parent="SidePanel/MarginContainer/VBoxContainer/HBoxBottom"]
-modulate = Color(0.184314, 0.584314, 0, 1)
+[node name="ArmorBar" type="ProgressBar" parent="SidePanel/MarginContainer/VBoxContainer/HBoxBottom" unique_id=1766279693]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+value = 75.0
 fill_mode = 3
 show_percentage = false
+theme_override_styles/background = SubResource("ProgressBar_bg")
+theme_override_styles/fill = SubResource("ProgressBar_fill_armor")
