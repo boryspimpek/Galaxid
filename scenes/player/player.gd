@@ -56,7 +56,6 @@ func apply_ship_stats():
 	armor = stats.get("armor", 100)
 	max_armor = armor
 	ship_maneuverability = stats.get("maneuverability", 10)
-	
 	accel = stats.get("speed_forward", 1)
 	friction = stats.get("speed_reverse", 2) 
 	
