@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://iddg8culgc7q"]
 
-[ext_resource type="Script" path="res://UI/Hud.gd" id="1_hud_script"]
+[ext_resource type="Script" uid="uid://bih2e50362adp" path="res://UI/Hud.gd" id="1_hud_script"]
 
-; Tło panelu bocznego (SidePanel)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lcei2"]
 bg_color = Color(0, 0, 0, 0.9)
 
-; Tło pasków postępu (PowerBar, ShieldBar, ArmorBar)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_abcde"]
 bg_color = Color(0.003921569, 0.003921569, 0.003921569, 0.2901961)
 border_width_left = 1
@@ -16,18 +14,16 @@ border_width_bottom = 1
 border_color = Color(0.4, 0.4, 0.4, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
-corner_radius_bottom_left = 3
 corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
-; Wypełnienie pasków postępu (żółte)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fghij"]
 bg_color = Color(1, 1, 0, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
-corner_radius_bottom_left = 3
 corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
-; Styl przycisków "<" i ">" (czarne tło z obramowaniem)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_klmno"]
 content_margin_top = 0.0
 content_margin_bottom = 0.0
@@ -39,8 +35,8 @@ border_width_bottom = 1
 border_color = Color(0.4, 0.4, 0.4, 1)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
-corner_radius_bottom_left = 3
 corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="HUD" type="CanvasLayer" unique_id=21387505]
 script = ExtResource("1_hud_script")
@@ -90,7 +86,7 @@ theme_override_constants/separation = 2
 [node name="T1" type="Label" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=204402054]
 layout_mode = 2
 theme_override_font_sizes/font_size = 6
-text = "Weapon"
+text = "Weapon 1"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=1216830918]
@@ -117,7 +113,7 @@ text = ">"
 [node name="T6" type="Label" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=625018512]
 layout_mode = 2
 theme_override_font_sizes/font_size = 6
-text = "Power"
+text = "Level"
 horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=2142472029]
@@ -144,7 +140,7 @@ text = ">"
 [node name="T5" type="Label" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=759823979]
 layout_mode = 2
 theme_override_font_sizes/font_size = 6
-text = "Weapon"
+text = "Weapon 2"
 horizontal_alignment = 1
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=2052158110]
@@ -171,7 +167,7 @@ text = ">"
 [node name="T2" type="Label" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=75073021]
 layout_mode = 2
 theme_override_font_sizes/font_size = 6
-text = "Power"
+text = "Level"
 horizontal_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="SidePanel/Margin/MainVBox/HBoxGuns/ButtonList" unique_id=542498289]

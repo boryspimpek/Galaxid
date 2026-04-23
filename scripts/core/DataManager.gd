@@ -248,6 +248,62 @@ func load_level_data(level_name: String) -> Dictionary:
 	return result
 
 # ============================================================================
+# SPRITE'Y POCISKÓW (data/weapon_sprites/)
+# ============================================================================
+
+var _shot_textures: Dictionary = {}   # sg -> Texture2D
+var _shot_sprite_map: Dictionary = {} # "shots_0059.bmp" -> "res://data/weapon_sprites/..."
+var _shot_sprites_scanned: bool = false
+
+func _scan_weapon_sprites():
+	if _shot_sprites_scanned:
+		return
+	_shot_sprites_scanned = true
+	var dir = DirAccess.open("res://data/weapon_sprites")
+	if not dir:
+		push_error("DataManager: Nie można otworzyć res://data/weapon_sprites")
+		return
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if not dir.current_is_dir():
+			var parts = file_name.split("__")
+			if parts.size() > 0:
+				var sprite_key = parts[-1]  # np. "shots_0059.bmp"
+				_shot_sprite_map[sprite_key] = "res://data/weapon_sprites/" + file_name
+		file_name = dir.get_next()
+	dir.list_dir_end()
+	print("DataManager: Zeskanowano ", _shot_sprite_map.size(), " unikalnych sprite'ów pocisków")
+
+func get_shot_texture(sg: int) -> Texture2D:
+	if _shot_textures.has(sg):
+		return _shot_textures[sg]
+
+	_scan_weapon_sprites()
+
+	var effective_sg = sg
+	if effective_sg >= 60000:
+		return null  # option shapes — nie dotyczy pocisków
+	if effective_sg > 1000:
+		effective_sg = effective_sg % 1000
+
+	var sprite_key: String
+	if effective_sg > 500:
+		sprite_key = "shots2_%04d.bmp" % (effective_sg - 500)
+	else:
+		sprite_key = "shots_%04d.bmp" % effective_sg
+
+	var path = _shot_sprite_map.get(sprite_key, "")
+	if path == "":
+		push_warning("DataManager: Brak sprite'a dla sg=", sg, " (szukano: ", sprite_key, ")")
+		_shot_textures[sg] = null
+		return null
+
+	var texture = load(path) as Texture2D
+	_shot_textures[sg] = texture
+	return texture
+
+# ============================================================================
 # CZYSZCZENIE CACHE (do debugowania)
 # ============================================================================
 

@@ -27,6 +27,16 @@ func _ready():
 	collision_layer = 4
 	collision_mask  = 2
 	_init_circlesize()
+	_apply_shot_graphic()
+
+func _apply_shot_graphic():
+	if shot_graphic <= 0:
+		return
+	var texture = DataManager.get_shot_texture(shot_graphic)
+	if texture:
+		var sprite = $Sprite2D
+		sprite.texture = texture
+		sprite.scale = Vector2(1.0, 1.0)
 
 func _init_circlesize():
 	# Inicjalizacja ruchu okrężnego zgodnie z dokumentacją Tyriana
