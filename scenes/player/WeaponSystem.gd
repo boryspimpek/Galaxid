@@ -110,6 +110,8 @@ func shoot():
 			# Stwórz projectile z pełnymi parametrami
 			create_projectile(attack, sx, sy, bx, by, del, sg, acceleration, accelerationx, circlesize)
 	
+	SoundManager.play_weapon_sound(weapon_data.get("sound", 0))
+
 	var repeat = weapon_data.get("shotRepeat", 0)
 	fire_timer = repeat
 

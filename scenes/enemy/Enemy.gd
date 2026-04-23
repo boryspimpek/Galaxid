@@ -325,8 +325,14 @@ func take_damage(amount: int):
 	armor -= amount
 	if armor <= 0:
 		die()
+	else:
+		SoundManager.play_sound(3)  # S_ENEMY_HIT
 
 func die():
+	if esize == 1:
+		SoundManager.play_sound(9)  # S_EXPLOSION_9 - duży wróg
+	else:
+		SoundManager.play_sound(8)  # S_EXPLOSION_8 - mały wróg
 	queue_free()
 
 func _on_body_entered(body: Node2D):
