@@ -13,6 +13,9 @@ var _wait_timer: float = 0.0
 
 func _ready():
 	player = get_parent()
+	load_shield_config()
+
+func load_shield_config():
 	var shield_data = DataManager.get_shield_by_id(PlayerSetup.shield_id)
 	if not shield_data.is_empty():
 		protection = shield_data.get("protection", 0)        # mpwr
@@ -36,14 +39,7 @@ func _physics_process(delta):
 			_wait_timer   = SHIELD_WAIT
 
 func reload():
-	var shield_data = DataManager.get_shield_by_id(PlayerSetup.shield_id)
-	if not shield_data.is_empty():
-		protection = shield_data.get("protection", 0)
-		var tpwr = shield_data.get("generator_needed", 0)
-		shield_t  = tpwr * 20
-		shield    = float(protection)
-		shield_max = float(protection * 2)
-		print("ShieldSystem: Przeładowano → shield=", shield, "/", shield_max)
+	load_shield_config()
 
 func take_shield_damage(amount: float):
 	shield = max(shield - amount, 0.0)
