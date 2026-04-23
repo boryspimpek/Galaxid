@@ -289,9 +289,9 @@ func get_shot_texture(sg: int) -> Texture2D:
 
 	var sprite_key: String
 	if effective_sg > 500:
-		sprite_key = "shots2_%04d.bmp" % (effective_sg - 500)
+		sprite_key = "shots2_%04d.png" % (effective_sg - 500)
 	else:
-		sprite_key = "shots_%04d.bmp" % effective_sg
+		sprite_key = "shots_%04d.png" % effective_sg
 
 	var path = _shot_sprite_map.get(sprite_key, "")
 	if path == "":
