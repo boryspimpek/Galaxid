@@ -86,7 +86,7 @@ func _preload_level_textures(level_data: Dictionary) -> void:
 			ids[int(event["enemy_id"])] = true
 		for id in event.get("enemy_ids", []):
 			ids[int(id)] = true
-	var sprites_folder = "res://data/enemy_" + level_name
+	var sprites_folder = "res://data/enemy_sprites"
 	DataManager.preload_enemy_textures(sprites_folder, ids.keys())
 
 func init_managers():

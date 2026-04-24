@@ -9,7 +9,6 @@
 script = ExtResource("3_level_manager")
 
 [node name="Background" parent="." unique_id=2089491048 instance=ExtResource("2_background")]
-visible = false
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(146, 185)
