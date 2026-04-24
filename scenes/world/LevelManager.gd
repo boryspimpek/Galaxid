@@ -73,7 +73,8 @@ func load_data():
 		if level_data["header"].has("map_x3"):
 			map_x3 = level_data["header"]["map_x3"]
 
-		_preload_level_textures(level_data)
+		# Preload tekstur wyłączony — tekstury ładowane przez sceny Enemy_XXX.tscn
+		# _preload_level_textures(level_data)
 		return level_data
 	return {}
 

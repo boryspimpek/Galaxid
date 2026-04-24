@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" path="res://data/enemy_sprites/enemy_126_bank1_f00.png" id="2_tex"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_126"]
+radius = 14.0
+
+[node name="Enemy_126" instance=ExtResource("1_base")]
+
+[node name="Visual" parent="." index="0"]
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_126")

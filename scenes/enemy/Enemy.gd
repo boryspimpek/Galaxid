@@ -93,14 +93,15 @@ func _ready():
 
 	
 	var texture = visual.texture
-	if not texture:
-		texture = DataManager.get_enemy_texture(enemy_id, sprites_folder)
+	# Fallback przez DataManager wyłączony — tekstura powinna pochodzić ze sceny Enemy_XXX.tscn
+	# if not texture:
+	# 	texture = DataManager.get_enemy_texture(enemy_id, sprites_folder)
 	if texture:
 		visual.texture = texture
 		visual.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 		visual.scale = GameConstants.ENEMY_SPRITE_SIZE / texture.get_size()
 	else:
-		print("Enemy: enemy_id=", enemy_id, " no matching file found")
+		print("Enemy %d: brak tekstury w scenie" % enemy_id)
 
 	if debug_label:
 		debug_label.text = "ID:%d" % enemy_id
