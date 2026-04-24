@@ -60,7 +60,7 @@ func _process(_delta):
 func load_data():
 	enemies_data = DataManager.get_enemies()
 	weapons_data = DataManager.get_weapons()
-	
+
 	var level_data = DataManager.load_level_data(level_name)
 	if not level_data.is_empty():
 		print("LevelManager: Załadowano ", level_data["events"].size(), " eventów")
@@ -72,9 +72,22 @@ func load_data():
 			map_x2 = level_data["header"]["map_x2"]
 		if level_data["header"].has("map_x3"):
 			map_x3 = level_data["header"]["map_x3"]
-		
+
+		_preload_level_textures(level_data)
 		return level_data
 	return {}
+
+func _preload_level_textures(level_data: Dictionary) -> void:
+	var ids: Dictionary = {}
+	for id in level_data["header"].get("level_enemies", []):
+		ids[int(id)] = true
+	for event in level_data["events"]:
+		if event.has("enemy_id"):
+			ids[int(event["enemy_id"])] = true
+		for id in event.get("enemy_ids", []):
+			ids[int(id)] = true
+	var sprites_folder = "res://data/enemy_" + level_name
+	DataManager.preload_enemy_textures(sprites_folder, ids.keys())
 
 func init_managers():
 	enemy_spawner = EnemySpawner.new(self, enemies_data, enemy_scene, level_name)

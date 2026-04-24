@@ -92,37 +92,12 @@ func _ready():
 			eshotwait[i] = 255.0  # brak broni - duży cooldown
 
 	
-	# Próba załadowania grafiki wroga
-	var enemy_id_str = "%03d" % enemy_id
-	var texture_path = ""
-	var texture: Texture2D = null
-	
-	# Użyj DirAccess do znalezienia pliku
-	var dir = DirAccess.open(sprites_folder)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if file_name.ends_with(".png") and not file_name.ends_with(".import"):
-				var regex = RegEx.new()
-				regex.compile("^enemy_%s_bank\\d+_f00\\.png$" % enemy_id_str)
-				var result = regex.search(file_name)
-				if result:
-					texture_path = sprites_folder + "/" + file_name
-					break
-			file_name = dir.get_next()
-		dir.list_dir_end()
-	
-	if texture_path != "":
-		texture = load(texture_path)
-		# print("Enemy: enemy_id=", enemy_id, " found file: ", texture_path, " load result: ", texture != null)
-	else:
-		print("Enemy: enemy_id=", enemy_id, " no matching file found")
-		
-	if texture and texture is Texture2D:
+	var texture = DataManager.get_enemy_texture(enemy_id, sprites_folder)
+	if texture:
 		visual.texture = texture
 		visual.scale = Vector2(1.0, 1.0)
-		# print("Enemy: Texture set successfully for enemy_", enemy_id_str)
+	else:
+		print("Enemy: enemy_id=", enemy_id, " no matching file found")
 
 	if debug_label:
 		debug_label.text = "ID:%d" % enemy_id
