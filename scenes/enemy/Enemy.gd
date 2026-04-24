@@ -126,7 +126,7 @@ func _ready():
 
 	if debug_label:
 		debug_label.text = "ID:%d" % enemy_id
-		debug_label.visible = false
+		debug_label.visible = true
 	
 func _process_shooting(_delta: float):
 	for i in range(3):

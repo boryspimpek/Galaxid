@@ -179,7 +179,9 @@ func spawn_4x4_enemies(event: Dictionary):
 	var base_pos = _calc_spawn_pos(event)
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
-	var offsets = [Vector2(0, 0), Vector2(24, 0), Vector2(0, 28), Vector2(24, 28)]
+	# Offsety dla 4x4 gridu (24x28px), celowo zmieniona kolejność, 
+	# i przesuniete do srodka, aby nie było szpar
+	var offsets = [Vector2(0, 26), Vector2(23, 26), Vector2(0, 0), Vector2(23, 0)]
 
 	for i in range(min(4, enemy_ids.size())):
 		var enemy_template = _find_template(enemy_ids[i])
