@@ -43,23 +43,20 @@ func set_random_spawn_data(p_level_enemies: Array, p_level_enemy_frequency: int 
 func set_enemies_active(p_active: bool):
 	enemies_active = p_active
 
-func process_random_spawn(delta: float):
+func process_random_spawn(_delta: float): # Delta ignorowana
 	if not enemies_active or level_enemies.is_empty():
 		return
 
-	random_spawn_timer += delta
-	if random_spawn_timer < 1.0 / GameConstants.TYRIAN_FPS:
-		return
-	random_spawn_timer -= 1.0 / GameConstants.TYRIAN_FPS
-
+	# W TYM SYSTEMIE TA FUNKCJA WYKONUJE SIĘ RAZ NA KLATKĘ (30 FPS).
+	# Szansa na spawn w danej klatce (identycznie jak w oryginale)
 	if randi() % 100 > level_enemy_frequency:
 		var enemy_id = level_enemies[randi() % level_enemies.size()]
 		var enemy_template = _find_template(enemy_id)
 
 		if enemy_template == null:
-			print("EnemySpawner: ERROR: Random spawn - nie znaleziono wroga o ID=", enemy_id)
 			return
 
+		# Logika pozycji (startx, startxc, starty) - zostaje bez zmian
 		var startx  = int(enemy_template.get("startx",  0))
 		var startxc = int(enemy_template.get("startxc", 0))
 		var starty  = int(enemy_template.get("starty",  0))
@@ -68,17 +65,21 @@ func process_random_spawn(delta: float):
 		if startxc != 0:
 			spawn_x = startx + (randi() % (startxc * 2)) - startxc + 1
 
+		# Używamy float dla Godota, ale wartości pochodzą z int-ów Tyriana
 		var spawn_pos = Vector2(float(spawn_x), float(starty))
 
-		var enemy_slot = int(enemy_template.get("enemy_slot", 25))
-		var scroll_for_slot = _scroll_for_slot(enemy_slot)
-
+		# Pobieranie prędkości (xmove, ymove) - to są piksele na klatkę!
 		var xmove = int(enemy_template.get("xmove", 0))
 		var ymove = int(enemy_template.get("ymove", 0))
 		var raw_velocity = Vector2(float(xmove), float(ymove))
 
+		var enemy_slot = int(enemy_template.get("enemy_slot", 25))
+		var scroll_for_slot = _scroll_for_slot(enemy_slot)
+
+		# Tworzenie wroga - przesyłasz "czyste" wartości bez mnożenia przez deltę
 		var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
 			0, scroll_for_slot, enemy_id, 0, 0, enemy_slot)
+			
 		if enemy:
 			enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 			level_manager.add_child(enemy)

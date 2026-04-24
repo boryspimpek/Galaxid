@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-const TYRIAN_FPS = GameConstants.TYRIAN_FPS
-
 # --- Zmienne dynamiczne (zmieniają się w locie) ---
 var armor: int = 0
 var max_armor: int = 0
@@ -69,23 +67,23 @@ func apply_ship_stats():
 func init_power_regeneration():
 	var generator_id = PlayerSetup.generator_id
 	var generator_power = DataManager.get_generator_power(generator_id)
-	power_add = generator_power * GameConstants.TYRIAN_FPS
+	power_add = generator_power
 	print("Player: Generator ID=", generator_id, " power=", generator_power, " → power_add=", power_add, " (energia/klatkę)")
 
 func reload_power_regeneration():
 	# Przelicz power_add na podstawie aktualnego generatora
 	var generator_id = PlayerSetup.generator_id
 	var generator_power = DataManager.get_generator_power(generator_id)
-	power_add = generator_power * GameConstants.TYRIAN_FPS
+	power_add = generator_power
 	print("Player: Przeładowano regenerację energii → power_add=", power_add)
 
 # ============================================================================
 # 2. RUCH I FIZYKA (NOWA IMPLEMENTACJA - BEZ LERP)
 # ============================================================================
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Regeneracja energii
-	power = min(power_max, power + power_add * delta)
+	power = min(power_max, power + power_add)
 
 	# --- Wykrywanie aktywnego schematu sterowania ---
 	var mouse_pos = get_global_mouse_position()
@@ -150,8 +148,8 @@ func _physics_process(delta):
 		velocity_x = clamp(velocity_x, -ship_maneuverability, ship_maneuverability)
 		velocity_y = clamp(velocity_y, -ship_maneuverability, ship_maneuverability)
 
-		position.x += velocity_x * delta * TYRIAN_FPS
-		position.y += velocity_y * delta * TYRIAN_FPS
+		position.x += velocity_x
+		position.y += velocity_y
 
 	_clamp_to_screen()
 

@@ -12,8 +12,6 @@ const EventProcessor = preload("res://scripts/managers/EventProcessor.gd")
 
 @onready var enemy_scene = preload("res://scenes/enemy/Enemy.tscn")
 
-# Stałe (z GameConstants)
-var TYRIAN_FPS  = GameConstants.TYRIAN_FPS
 
 # Prędkości scrollingu (Tyrian px/klatkę)
 var back_move:  int = 1   # Ground (slot 25, 75)
@@ -47,10 +45,10 @@ func _ready():
 	load_data()
 	init_managers()
 
-func _process(delta):
-	level_distance += float(back_move) * TYRIAN_FPS * delta
+func _process(_delta):
+	level_distance += float(back_move)
 	event_processor.process_events_for_distance(int(level_distance))
-	enemy_spawner.process_random_spawn(delta)
+	enemy_spawner.process_random_spawn(_delta)
 	
 	# if Engine.get_frames_drawn() % 10 == 0:
 	# 	print("Dist: ", int(level_distance))

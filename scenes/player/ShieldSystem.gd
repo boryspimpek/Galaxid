@@ -1,7 +1,6 @@
 extends Node
 
-const TYRIAN_FPS  = GameConstants.TYRIAN_FPS
-const SHIELD_WAIT = 15.0 / TYRIAN_FPS  # 0.5s między każdym punktem regeneracji
+const SHIELD_WAIT = 15.0
 
 var player: CharacterBody2D
 
@@ -27,16 +26,17 @@ func load_shield_config():
 	else:
 		print("ShieldSystem: brak danych tarczy (shield_id=", PlayerSetup.shield_id, ")")
 
-func _physics_process(delta):
-	if _wait_timer > 0.0:
-		_wait_timer -= delta
-
-	# Regeneruj tylko jeśli tarcza wyposażona, niepełna i minął cooldown
-	if protection > 0 and shield < shield_max and _wait_timer <= 0.0:
+func _physics_process(_delta): # Delta ignorowana
+	# 1. Odliczanie klatkowe
+	if _wait_timer > 0:
+		_wait_timer -= 1 # Odejmujemy po prostu 1 klatkę
+		
+	# 2. Regeneracja
+	if protection > 0 and shield < shield_max and _wait_timer <= 0:
 		if player.power >= shield_t:
 			player.power -= shield_t
-			shield       += 1.0
-			_wait_timer   = SHIELD_WAIT
+			shield += 1.0
+			_wait_timer = SHIELD_WAIT # Resetujemy na 15 klatek
 
 func reload():
 	load_shield_config()

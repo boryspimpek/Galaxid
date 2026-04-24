@@ -1,8 +1,5 @@
 extends Area2D
 
-# Stałe przeliczeniowe (z GameConstants)
-const TYRIAN_FPS = GameConstants.TYRIAN_FPS
-
 # Parametry pocisku
 var velocity: Vector2 = Vector2.ZERO  # sx, sy z broni (Tyrian px/klatkę)
 var damage: int = 1                   # attack z broni
@@ -49,10 +46,10 @@ func _ready():
 			Vector2(-half_w, half_h)
 		])
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# KROK 1: Dodaj akcelerację do velocity (rzadko używane)
-	velocity.x += float(accelerationx) * delta * TYRIAN_FPS
-	velocity.y += float(acceleration) * delta * TYRIAN_FPS
+	velocity.x += float(accelerationx)
+	velocity.y += float(acceleration)
 
 	# KROK 2: Homing (tylko jeśli tx != 0 lub ty != 0)
 	if tx != 0 or ty != 0:
@@ -76,15 +73,15 @@ func _physics_process(delta):
 					if velocity.y < float(ty):
 						velocity.y += 1.0
 
-	var move_x = velocity.x * TYRIAN_FPS
-	var move_y = velocity.y * TYRIAN_FPS
+	var move_x = velocity.x
+	var move_y = velocity.y
 
-	position.x += move_x * delta
-	position.y += move_y * delta
+	position.x += move_x	
+	position.y += move_y	
 
 	# KROK 3: Sprawdź czy pocisk żyje (duration)
 	if duration != 255.0:
-		duration -= delta * TYRIAN_FPS
+		duration -= 1
 		if duration <= 0.0:
 			queue_free()
 			return

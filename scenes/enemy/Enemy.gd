@@ -3,9 +3,6 @@ extends Area2D
 # ---- Sygnały ----
 signal projectile_spawned(projectile)
 
-# ---- Stałe przeliczeniowe (z GameConstants) ----
-const TYRIAN_FPS = GameConstants.TYRIAN_FPS
-
 # ---- Statystyki ----
 @export var armor: int = 1
 @export var esize: int = 0
@@ -131,12 +128,12 @@ func _ready():
 		debug_label.text = "ID:%d" % enemy_id
 		debug_label.visible = false
 	
-func _process_shooting(delta: float):
+func _process_shooting(_delta: float):
 	for i in range(3):
 		if tur[i] == 0 or freq[i] == 0:
 			continue
 
-		eshotwait[i] -= delta * TYRIAN_FPS
+		eshotwait[i] -= 1
 		if eshotwait[i] <= 0.0:
 			_fire_projectile(i)
 			eshotwait[i] += eshotwaitmax[i]
@@ -262,13 +259,13 @@ func _fire_projectile(direction_index: int):
 		# Inkrementuj po wyborze i spawn pocisku, zawijaj po weapon_max
 		eshotmultipos[direction_index] = (eshotmultipos[direction_index] + 1) % weapon_max
 
-func _process(delta):
+func _process(_delta):
 	velocity.x += float(xaccel)
 	velocity.y += float(yaccel)
 
 	# --- 1. Silnik wahadłowy X (Zsynchronizowany) ---
 	if excc != 0:
-		exccw -= delta * TYRIAN_FPS
+		exccw -= 1
 		if exccw <= 0:
 			if velocity.x == xrev:          # sprawdź PRZED dodaniem
 				excc = -excc
@@ -285,7 +282,7 @@ func _process(delta):
 
 	# --- 2. Silnik wahadłowy Y (Zsynchronizowany) ---
 	if eycc != 0:
-		eyccw -= delta * TYRIAN_FPS
+		eyccw -= 1
 		if eyccw <= 0:
 			if velocity.y == yrev:          # sprawdź PRZED dodaniem
 				eycc = -eycc
@@ -301,14 +298,14 @@ func _process(delta):
 					eyccadd = -eyccadd
 			
 	# --- 3. Przeliczenie na px/s Godot i zastosowanie ruchu ---
-	var move_x = velocity.x * TYRIAN_FPS
-	var move_y = (float(fixed_move_y) + velocity.y + float(scroll_y)) * TYRIAN_FPS
+	var move_x = velocity.x
+	var move_y = (float(fixed_move_y) + velocity.y + float(scroll_y))
 
-	position.x += move_x * delta
-	position.y += move_y * delta
+	position.x += move_x
+	position.y += move_y
 
 	# --- 4. System strzelania ---
-	_process_shooting(delta)
+	_process_shooting(_delta)
 
 	# --- 5. Usuń poza ekranem (jeden warunek — poprawka podwójnego queue_free) ---
 	if position.x < BOUNDS_LEFT  or position.x > BOUNDS_RIGHT \

@@ -4,9 +4,6 @@ extends Node
 # GAME CONSTANTS - Centralne miejsce dla stałych używanych w całej grze
 # ============================================================================
 
-# ---- Stałe przeliczeniowe Tyrian -> Godot ----
-const TYRIAN_FPS = 30.0
-
 # ---- Granice usuwania (px Godot) ----
 # Ekran: 320x200, margines 50px żeby wrogowie nie strzelali spoza ekranu
 const BOUNDS_LEFT = -80
