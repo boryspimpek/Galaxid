@@ -38,7 +38,6 @@ var eyccadd: int = 1
 @export var tur: Array = [0, 0, 0]   # ID broni [down, right, left]
 @export var freq: Array = [0, 0, 0]  # Częstotliwość strzelania [down, right, left]
 var projectile_scene: PackedScene    # Scena pocisku wroga
-var sprites_folder: String = ""
 
 var eshotwait: Array    = [0.0, 0.0, 0.0]  # Licznik cooldown (w klatkach Tyrian)
 var eshotwaitmax: Array = [0.0, 0.0, 0.0]  # Maksymalny cooldown z freq
@@ -92,16 +91,8 @@ func _ready():
 			eshotwait[i] = 255.0  # brak broni - duży cooldown
 
 	
-	var texture = visual.texture
-	# Fallback przez DataManager wyłączony — tekstura powinna pochodzić ze sceny Enemy_XXX.tscn
-	# if not texture:
-	# 	texture = DataManager.get_enemy_texture(enemy_id, sprites_folder)
-	if texture:
-		visual.texture = texture
+	if visual.texture:
 		visual.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-		visual.scale = GameConstants.ENEMY_SPRITE_SIZE / texture.get_size()
-	else:
-		print("Enemy %d: brak tekstury w scenie" % enemy_id)
 
 	if debug_label:
 		debug_label.text = "ID:%d" % enemy_id

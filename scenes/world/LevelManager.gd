@@ -73,22 +73,8 @@ func load_data():
 		if level_data["header"].has("map_x3"):
 			map_x3 = level_data["header"]["map_x3"]
 
-		# Preload tekstur wyłączony — tekstury ładowane przez sceny Enemy_XXX.tscn
-		# _preload_level_textures(level_data)
 		return level_data
 	return {}
-
-func _preload_level_textures(level_data: Dictionary) -> void:
-	var ids: Dictionary = {}
-	for id in level_data["header"].get("level_enemies", []):
-		ids[int(id)] = true
-	for event in level_data["events"]:
-		if event.has("enemy_id"):
-			ids[int(event["enemy_id"])] = true
-		for id in event.get("enemy_ids", []):
-			ids[int(id)] = true
-	var sprites_folder = "res://data/enemy_sprites"
-	DataManager.preload_enemy_textures(sprites_folder, ids.keys())
 
 func init_managers():
 	enemy_spawner = EnemySpawner.new(self, enemies_data, enemy_scene, level_name)

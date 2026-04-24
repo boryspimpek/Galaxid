@@ -248,67 +248,6 @@ func load_level_data(level_name: String) -> Dictionary:
 	return result
 
 # ============================================================================
-# SPRITE'Y PRZECIWNIKÓW (data/enemy_lvl*)
-# ============================================================================
-
-var _enemy_textures: Dictionary = {}  # "sprites_folder/001" -> Texture2D | null
-
-func preload_enemy_textures(sprites_folder: String, enemy_ids: Array) -> void:
-	var dir = DirAccess.open(sprites_folder)
-	if not dir:
-		push_error("DataManager: Nie można otworzyć: " + sprites_folder)
-		return
-
-	var path_map: Dictionary = {}
-	var regex = RegEx.new()
-	regex.compile("^enemy_(\\d+)_bank\\d+_f00\\.png$")
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if file_name.ends_with(".png") and not file_name.ends_with(".import"):
-			var result = regex.search(file_name)
-			if result:
-				path_map[result.get_string(1)] = sprites_folder + "/" + file_name
-		file_name = dir.get_next()
-	dir.list_dir_end()
-
-	for raw_id in enemy_ids:
-		var id_str = "%03d" % int(raw_id)
-		var cache_key = sprites_folder + "/" + id_str
-		if _enemy_textures.has(cache_key):
-			continue
-		var path = path_map.get(id_str, "")
-		_enemy_textures[cache_key] = load(path) as Texture2D if path != "" else null
-
-	print("DataManager: Załadowano tekstury dla ", enemy_ids.size(), " przeciwników z ", sprites_folder)
-
-func get_enemy_texture(enemy_id: int, sprites_folder: String) -> Texture2D:
-	var id_str = "%03d" % enemy_id
-	var cache_key = sprites_folder + "/" + id_str
-	if _enemy_textures.has(cache_key):
-		return _enemy_textures[cache_key]
-
-	# Fallback — skan na żądanie (gdy preload nie był wywołany)
-	var dir = DirAccess.open(sprites_folder)
-	if not dir:
-		return null
-	var regex = RegEx.new()
-	regex.compile("^enemy_%s_bank\\d+_f00\\.png$" % id_str)
-	dir.list_dir_begin()
-	var file_name = dir.get_next()
-	while file_name != "":
-		if file_name.ends_with(".png") and not file_name.ends_with(".import"):
-			if regex.search(file_name):
-				var texture = load(sprites_folder + "/" + file_name) as Texture2D
-				_enemy_textures[cache_key] = texture
-				dir.list_dir_end()
-				return texture
-		file_name = dir.get_next()
-	dir.list_dir_end()
-	_enemy_textures[cache_key] = null
-	return null
-
-# ============================================================================
 # SPRITE'Y POCISKÓW (data/weapon_sprites/)
 # ============================================================================
 

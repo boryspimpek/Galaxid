@@ -258,5 +258,4 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 	enemy.tur           = template.get("tur",     [0, 0, 0])
 	enemy.freq          = template.get("freq",    [0, 0, 0])
 	enemy.projectile_scene = GameConstants.enemy_projectile_scene
-	enemy.sprites_folder = "res://data/enemy_sprites"
 	return enemy
