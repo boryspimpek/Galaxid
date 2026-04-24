@@ -20,7 +20,7 @@ texture = ExtResource("1_4flbx")
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=236923006]
-position = Vector2(0, -47)
+position = Vector2(0, -12)
 
 [node name="WeaponSystem" parent="." unique_id=2092281166 instance=ExtResource("2_weapon")]
 

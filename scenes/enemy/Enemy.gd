@@ -95,13 +95,15 @@ func _ready():
 	var texture = DataManager.get_enemy_texture(enemy_id, sprites_folder)
 	if texture:
 		visual.texture = texture
-		visual.scale = Vector2(1.0, 1.0)
+		visual.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+		var tex_size = texture.get_size()
+		visual.scale = GameConstants.ENEMY_SPRITE_SIZE / tex_size
 	else:
 		print("Enemy: enemy_id=", enemy_id, " no matching file found")
 
 	if debug_label:
 		debug_label.text = "ID:%d" % enemy_id
-		debug_label.visible = true
+		debug_label.visible = false
 	
 func _process_shooting(_delta: float):
 	for i in range(3):

@@ -11,6 +11,9 @@ const BOUNDS_RIGHT = 340
 const BOUNDS_TOP = -112
 const BOUNDS_BOTTOM = 210
 
+# ---- Rozmiar sprite'a wroga w jednostkach gry (px przy rozdzielczości 320x200) ----
+const ENEMY_SPRITE_SIZE = Vector2(35.0, 35.0)
+
 # ---- Sceny pocisków ----
 var enemy_projectile_scene: PackedScene
 var player_projectile_scene: PackedScene
