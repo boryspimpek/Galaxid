@@ -5,7 +5,7 @@ const EnemySpawner = preload("res://scripts/managers/EnemySpawner.gd")
 const EnemyController = preload("res://scripts/managers/EnemyController.gd")
 const EventProcessor = preload("res://scripts/managers/EventProcessor.gd")
 
-@export var level_name: String = "lvl17"
+@export var level_name: String = "lvl3"
 @export var events_file: String = "res://data/%s.json" % level_name
 @export var enemies_file: String = "res://data/enemies.json"
 @export var weapon_file: String = "res://data/weapon.json"
