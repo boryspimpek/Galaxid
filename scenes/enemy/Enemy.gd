@@ -92,12 +92,13 @@ func _ready():
 			eshotwait[i] = 255.0  # brak broni - duży cooldown
 
 	
-	var texture = DataManager.get_enemy_texture(enemy_id, sprites_folder)
+	var texture = visual.texture
+	if not texture:
+		texture = DataManager.get_enemy_texture(enemy_id, sprites_folder)
 	if texture:
 		visual.texture = texture
 		visual.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-		var tex_size = texture.get_size()
-		visual.scale = GameConstants.ENEMY_SPRITE_SIZE / tex_size
+		visual.scale = GameConstants.ENEMY_SPRITE_SIZE / texture.get_size()
 	else:
 		print("Enemy: enemy_id=", enemy_id, " no matching file found")
 

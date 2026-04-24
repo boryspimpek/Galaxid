@@ -7,6 +7,7 @@ var level_manager: Node2D
 var enemies_data: Array = []
 var enemy_scene: PackedScene
 var level_name: String = ""
+var _scene_cache: Dictionary = {}  # enemy_id_str -> PackedScene | null
 
 # Dane scrollingu i mapy
 var back_move: int = 1
@@ -215,6 +216,15 @@ func _find_template(enemy_id_raw):
 			return template
 	return null
 
+func _scene_for_enemy(enemy_id: int) -> PackedScene:
+	var key = "%03d" % enemy_id
+	if _scene_cache.has(key):
+		return _scene_cache[key]
+	var path = "res://scenes/enemies/Enemy_%s.tscn" % key
+	var scene = load(path) if ResourceLoader.exists(path) else null
+	_scene_cache[key] = scene
+	return scene
+
 func _scroll_for_slot(enemy_slot: int) -> int:
 	match enemy_slot:
 		0:        return 0
@@ -226,7 +236,8 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 		raw_velocity: Vector2, fixed_move_y: int,
 		scroll_for_slot: int, enemy_id: int = 0, event_type: int = 0,
 		link_num: int = 0, enemy_slot: int = 0) -> Node2D:
-	var enemy = enemy_scene.instantiate()
+	var scene = _scene_for_enemy(enemy_id)
+	var enemy = scene.instantiate() if scene else enemy_scene.instantiate()
 	enemy.name          = "Enemy_%d" % enemy_id
 	enemy.global_position = spawn_position
 	enemy.armor         = template.get("armor",   1)
