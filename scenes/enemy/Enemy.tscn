@@ -11,6 +11,7 @@ z_index = 100
 
 [node name="Visual" type="Sprite2D" parent="."]
 z_index = 100
+centered = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_enemy")
