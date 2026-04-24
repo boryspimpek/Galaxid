@@ -6,6 +6,7 @@ extends Node
 var level_manager: Node2D
 var enemies_data: Array = []
 var enemy_scene: PackedScene
+var level_name: String = ""
 
 # Dane scrollingu i mapy
 var back_move: int = 1
@@ -21,10 +22,11 @@ var level_enemy_frequency: int = 96
 var level_enemies: Array = []
 var random_spawn_timer: float = 0.0
 
-func _init(p_level_manager: Node2D, p_enemies_data: Array, p_enemy_scene: PackedScene):
+func _init(p_level_manager: Node2D, p_enemies_data: Array, p_enemy_scene: PackedScene, p_level_name: String = ""):
 	level_manager = p_level_manager
 	enemies_data = p_enemies_data
 	enemy_scene = p_enemy_scene
+	level_name = p_level_name
 
 func set_scroll_data(p_back_move: int, p_back_move3: int, p_map_x: int, p_map_x3: int):
 	back_move = p_back_move
@@ -243,4 +245,5 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 	enemy.tur           = template.get("tur",     [0, 0, 0])
 	enemy.freq          = template.get("freq",    [0, 0, 0])
 	enemy.projectile_scene = GameConstants.enemy_projectile_scene
+	enemy.sprites_folder = "res://data/enemy_" + level_name
 	return enemy

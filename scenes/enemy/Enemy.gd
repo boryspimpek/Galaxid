@@ -38,6 +38,7 @@ var eyccadd: int = 1
 @export var tur: Array = [0, 0, 0]   # ID broni [down, right, left]
 @export var freq: Array = [0, 0, 0]  # Częstotliwość strzelania [down, right, left]
 var projectile_scene: PackedScene    # Scena pocisku wroga
+var sprites_folder: String = ""
 
 var eshotwait: Array    = [0.0, 0.0, 0.0]  # Licznik cooldown (w klatkach Tyrian)
 var eshotwaitmax: Array = [0.0, 0.0, 0.0]  # Maksymalny cooldown z freq
@@ -97,18 +98,17 @@ func _ready():
 	var texture: Texture2D = null
 	
 	# Użyj DirAccess do znalezienia pliku
-	var dir = DirAccess.open("res://data/enemy_lvl3")
+	var dir = DirAccess.open(sprites_folder)
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if file_name.ends_with(".png") and not file_name.ends_with(".import"):
-				# Sprawdź czy pasuje do wzorca enemy_XXX_bankYY_f00.png
 				var regex = RegEx.new()
 				regex.compile("^enemy_%s_bank\\d+_f00\\.png$" % enemy_id_str)
 				var result = regex.search(file_name)
 				if result:
-					texture_path = "res://data/enemy_lvl3/" + file_name
+					texture_path = sprites_folder + "/" + file_name
 					break
 			file_name = dir.get_next()
 		dir.list_dir_end()

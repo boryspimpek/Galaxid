@@ -5,7 +5,10 @@ const EnemySpawner = preload("res://scripts/managers/EnemySpawner.gd")
 const EnemyController = preload("res://scripts/managers/EnemyController.gd")
 const EventProcessor = preload("res://scripts/managers/EventProcessor.gd")
 
-@export var level_name: String = "lvl3"
+# Główny plik z eventami - SCENARIUSZ POZIOMU
+@export var level_name: String = "lvl11"
+
+# Ścieżki do plików z danymi
 @export var events_file: String = "res://data/%s.json" % level_name
 @export var enemies_file: String = "res://data/enemies.json"
 @export var weapon_file: String = "res://data/weapon.json"
@@ -73,7 +76,7 @@ func load_data():
 	return {}
 
 func init_managers():
-	enemy_spawner = EnemySpawner.new(self, enemies_data, enemy_scene)
+	enemy_spawner = EnemySpawner.new(self, enemies_data, enemy_scene, level_name)
 	enemy_controller = EnemyController.new(self)
 	event_processor = EventProcessor.new(self, background, enemy_spawner, enemy_controller)
 	
