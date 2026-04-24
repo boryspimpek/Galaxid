@@ -6,7 +6,7 @@ const EnemyController = preload("res://scripts/managers/EnemyController.gd")
 const EventProcessor = preload("res://scripts/managers/EventProcessor.gd")
 
 # Główny plik z eventami - SCENARIUSZ POZIOMU
-@export var level_name: String = "lvl11"
+@export var level_name: String = "lvl17"
 
 # Ścieżki do plików z danymi
 @export var events_file: String = "res://data/%s.json" % level_name
