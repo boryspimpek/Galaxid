@@ -5,7 +5,8 @@ const EnemySpawner = preload("res://scripts/managers/EnemySpawner.gd")
 const EnemyController = preload("res://scripts/managers/EnemyController.gd")
 const EventProcessor = preload("res://scripts/managers/EventProcessor.gd")
 
-# Główny plik z eventami - SCENARIUSZ POZIOMU
+# Główny plik z eventami - SCENARIUSZ POZIOMU, tu ustawiamy 
+# w ktory poziom gracz ma grać
 @export var level_name: String = "lvl17"
 
 # Ścieżki do plików z danymi
