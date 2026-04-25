@@ -47,8 +47,9 @@ func process_event(event: Dictionary):
 
 	match event_type:
 		2:                    set_scroll_speed(event)
-		6, 15, 17, 18:        enemy_spawner.spawn_enemy(event)
+		15, 17, 18:           enemy_spawner.spawn_enemy(event)
 		7:                    enemy_spawner.spawn_top_enemy(event)
+		6:                    enemy_spawner.spawn_ground_enemy(event)
 		10:                   enemy_spawner.spawn_ground_enemy_2(event)
 		12:                   enemy_spawner.spawn_4x4_enemies(event)
 		13:                   enemy_controller.disable_random_spawn(event)
