@@ -7,7 +7,7 @@ const EventProcessor = preload("res://scripts/managers/EventProcessor.gd")
 
 # Główny plik z eventami - SCENARIUSZ POZIOMU, tu ustawiamy 
 # w ktory poziom gracz ma grać
-@export var level_name: String = "lvl23"
+@export var level_name: String = "lvl17"
 
 # Ścieżki do plików z danymi
 @export var events_file: String = "res://data/%s.json" % level_name

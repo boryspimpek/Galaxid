@@ -21,7 +21,7 @@ func setup(tilemap: Array, textures: Dictionary, cols: int, back_move: int, x_of
 	_scroll_y = float((_total_rows - 2) * TILE_H)
 	position.x = float(x_offset)
 	# ile kolumn potrzeba żeby wypełnić ekran od lewej krawędzi kafelka 0
-	_draw_cols = ceili((320.0 - x_offset) / TILE_W)
+	_draw_cols = ceili((288.0 - x_offset) / TILE_W)
 
 func set_back_move(value: int) -> void:
 	_back_move = value
@@ -38,7 +38,7 @@ func _draw() -> void:
 	if _tilemap.is_empty():
 		return
 	var s := int(_scroll_y)
-	var first_row := s / TILE_H
+	var first_row := int(float(s) / TILE_H)
 	var offset_y := s % TILE_H
 
 	for i in range(11):
