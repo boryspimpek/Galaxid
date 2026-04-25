@@ -112,6 +112,33 @@ func spawn_enemy(event: Dictionary):
 		level_manager.add_child(enemy)
 	# print("EnemySpawner: enemy_id: ", enemy_id, " link_num: ", event.get("link_num", 0))
 
+func spawn_sky_enemy(event: Dictionary):
+	var enemy_id_raw   = event.get("enemy_id", 0)
+	var enemy_template = _find_template(enemy_id_raw)
+	if enemy_template == null:
+		print("EnemySpawner: ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
+		return
+
+	var enemy_id = int(enemy_template.get("index", 0))
+	var enemy_slot = int(event.get("enemy_slot", 25))
+
+	# Użyj screen_x i screen_y już przeliczonych przez parser
+	# Dodaj korektę pozycji
+	var spawn_x = event.get("screen_x", 0) + 24
+	var spawn_y = event.get("screen_y", 0)
+	var spawn_pos = Vector2(float(spawn_x), float(spawn_y))
+
+	var raw_velocity = _calc_velocity(enemy_template, event)
+	var scroll_for_slot = _scroll_for_slot(enemy_slot)
+
+	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
+		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id,
+		event.get("event_type", 0), event.get("link_num", 0), enemy_slot)
+	if enemy:
+		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
+		level_manager.add_child(enemy)
+	# print("EnemySpawner: enemy_id: ", enemy_id, " link_num: ", event.get("link_num", 0))
+
 func spawn_top_enemy(event: Dictionary):
 	var enemy_id_raw   = event.get("enemy_id", 0)
 	var enemy_template = _find_template(enemy_id_raw)
@@ -159,6 +186,7 @@ func spawn_ground_enemy(event: Dictionary):
 	var enemy_slot = int(event.get("enemy_slot", 25))
 
 	# Użyj screen_x i screen_y już przeliczonych przez parser
+	# Dodaj korektę pozycji
 	var spawn_x = event.get("screen_x", 0) + 6
 	var spawn_y = event.get("screen_y", 0) + 3
 	var spawn_pos = Vector2(float(spawn_x), float(spawn_y))
@@ -187,8 +215,9 @@ func spawn_ground_enemy_2(event: Dictionary):
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
 	# Użyj screen_x i screen_y już przeliczonych przez parser
-	var spawn_x = event.get("screen_x", 0)
-	var spawn_y = event.get("screen_y", 0)
+	# Dodaj korektę pozycji
+	var spawn_x = event.get("screen_x", 0) + 6
+	var spawn_y = event.get("screen_y", 0) + 3
 	var spawn_pos = Vector2(float(spawn_x), float(spawn_y))
 	
 	# Korekta smallEnemyAdjust (jak w oryginale Tyrian)
@@ -215,6 +244,7 @@ func spawn_4x4_enemies(event: Dictionary):
 	var event_type = int(event.get("event_type", 0))
 
 	# Użyj screen_x i screen_y już przeliczonych przez parser
+	# Dodaj korektę pozycji
 	var spawn_x = event.get("screen_x", 0) + 6
 	var spawn_y = event.get("screen_y", 0) + 3
 	var base_pos = Vector2(float(spawn_x), float(spawn_y))
