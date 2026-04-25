@@ -86,7 +86,7 @@ func _ready():
 		if weapon_id == 252:
 			eshotwait[i] = 1.0  # specjalna broń strzela od razu
 		elif weapon_id != 0:
-			eshotwait[i] = eshotwaitmax[i]  # normalna broń - użyj freq
+			eshotwait[i] = 20.0  # jak w Tyrianie: JE_makeEnemy zawsze startuje od 20
 		else:
 			eshotwait[i] = 255.0  # brak broni - duży cooldown
 
