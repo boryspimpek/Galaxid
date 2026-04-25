@@ -6,5 +6,5 @@
 [node name="Enemy_017" unique_id=580469517 instance=ExtResource("1_base")]
 
 [node name="Visual" parent="." index="0"]
-scale = Vector2(0.06, 0.05)
+scale = Vector2(0.068, 0.05)
 texture = ExtResource("2_tex")
