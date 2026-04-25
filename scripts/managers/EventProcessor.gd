@@ -67,7 +67,14 @@ func set_scroll_speed(event: Dictionary):
 
 	if background and background.has_method("set_scroll_speed"):
 		background.set_scroll_speed(back_move, back_move2, back_move3)
-	
+
+	# Aktualizuj scroll_y żyjących wrogów — bez tego dryfują gdy back_move się zmienia
+	for enemy in level_manager.get_children():
+		if enemy.is_in_group("enemies"):
+			match enemy.enemy_slot:
+				25, 75: enemy.scroll_y = back_move
+				50:     enemy.scroll_y = back_move3
+
 	# Aktualizuj dane w EnemySpawner
 	enemy_spawner.set_scroll_data(back_move, back_move3, level_manager.map_x, level_manager.map_x3)
 	

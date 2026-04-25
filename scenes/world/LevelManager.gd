@@ -30,6 +30,7 @@ var background3x1b: bool = false
 var map_x: int = 1
 var map_x2: int = 1
 var map_x3: int = 1
+var map_y: int = 0
 
 # SEKCJA: Referencje do danych
 var background: Node2D
@@ -48,7 +49,7 @@ func _ready():
 	background = get_node_or_null("Background")
 	load_data()
 	if background and background.has_method("setup"):
-		background.setup(level_name, back_move, back_move2, back_move3, map_x, map_x2, map_x3)
+		background.setup(level_name, back_move, back_move2, back_move3, map_x, map_x2, map_x3, map_y)
 	init_managers()
 
 func _process(_delta):
@@ -74,6 +75,8 @@ func load_data():
 			map_x2 = level_data["header"]["map_x2"]
 		if level_data["header"].has("map_x3"):
 			map_x3 = level_data["header"]["map_x3"]
+		if level_data["header"].has("map_y"):
+			map_y = level_data["header"]["map_y"]
 
 		return level_data
 	return {}

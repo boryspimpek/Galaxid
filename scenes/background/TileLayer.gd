@@ -12,13 +12,13 @@ var _back_move: int = 1
 
 var _draw_cols: int = 0
 
-func setup(tilemap: Array, textures: Dictionary, cols: int, back_move: int, x_offset: int = 0) -> void:
+func setup(tilemap: Array, textures: Dictionary, cols: int, back_move: int, x_offset: int = 0, map_y: int = 0) -> void:
 	_tilemap = tilemap
 	_textures = textures
 	_total_rows = tilemap.size()
 	_total_cols = cols
 	_back_move = back_move
-	_scroll_y = float((_total_rows - 2) * TILE_H)
+	_scroll_y = float((_total_rows - 2 - map_y) * TILE_H)
 	position.x = float(x_offset)
 	# ile kolumn potrzeba żeby wypełnić ekran od lewej krawędzi kafelka 0
 	_draw_cols = ceili((288.0 - x_offset) / TILE_W)

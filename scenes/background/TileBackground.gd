@@ -8,7 +8,8 @@ var _layer3: Node2D
 
 func setup(level_name: String,
 		back_move: int, back_move2: int, back_move3: int,
-		map_x: int = 1, map_x2: int = 1, map_x3: int = 1) -> void:
+		map_x: int = 1, map_x2: int = 1, map_x3: int = 1,
+		map_y: int = 0) -> void:
 
 	var base_path := _find_level_folder(level_name)
 	if base_path.is_empty():
@@ -20,9 +21,9 @@ func setup(level_name: String,
 	var ox2 := -(map_x2 + 1) * TileLayer.TILE_W
 	var ox3 := -(map_x3 + 1) * TileLayer.TILE_W
 
-	_layer1 = _build_layer(base_path + "/layer1", base_path + "/tilemap_layer1.json", 14, back_move,  ox1)
-	_layer2 = _build_layer(base_path + "/layer2", base_path + "/tilemap_layer2.json", 14, back_move2, ox2)
-	_layer3 = _build_layer(base_path + "/layer3", base_path + "/tilemap_layer3.json", 15, back_move3, ox3)
+	_layer1 = _build_layer(base_path + "/layer1", base_path + "/tilemap_layer1.json", 14, back_move,  ox1, map_y)
+	_layer2 = _build_layer(base_path + "/layer2", base_path + "/tilemap_layer2.json", 14, back_move2, ox2, map_y)
+	_layer3 = _build_layer(base_path + "/layer3", base_path + "/tilemap_layer3.json", 15, back_move3, ox3, map_y)
 	add_child(_layer1)
 	add_child(_layer2)
 	add_child(_layer3)
@@ -52,11 +53,11 @@ func _find_level_folder(level_name: String) -> String:
 	dir.list_dir_end()
 	return ""
 
-func _build_layer(tiles_path: String, tilemap_path: String, cols: int, back_move: int, x_offset: int) -> Node2D:
+func _build_layer(tiles_path: String, tilemap_path: String, cols: int, back_move: int, x_offset: int, map_y: int = 0) -> Node2D:
 	var tilemap := _load_tilemap(tilemap_path)
 	var textures := _load_textures(tiles_path)
 	var layer := TileLayer.new()
-	layer.setup(tilemap, textures, cols, back_move, x_offset)
+	layer.setup(tilemap, textures, cols, back_move, x_offset, map_y)
 	return layer
 
 func _load_tilemap(path: String) -> Array:
