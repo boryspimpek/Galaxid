@@ -123,27 +123,19 @@ func spawn_top_enemy(event: Dictionary):
 	var enemy_slot = int(event.get("enemy_slot", 50))
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
+	# Niewiadomo dlaczego ale trzeba dodać -24px do x, żeby wyrównać spawn 
+	# oraz + 34px do y aby wyrównać spawn z mapą
 	var raw_x = event.get("raw_x", 0)
-	var spawn_x: int
-	if background3x1:
-		spawn_x = raw_x - (map_x - 1) * 24 - 12
-	else:
-		spawn_x = raw_x - map_x3 * 24 - 42
-	if background3x1b:
-		spawn_x -= 6
+	var spawn_x = raw_x - (map_x3 - 1) * 24 - 12 - 24
+	var y_offset = event.get("y_offset", 0) 
+	var spawn_y = -28 - back_move3 + y_offset + 34
 
-	var y_offset = event.get("y_offset", 0)
-	var spawn_y = -28 - back_move3 + y_offset
+	if background3x1:
+		spawn_y += 4
 	if background3x1b:
 		spawn_y += 4
 
 	var spawn_pos = Vector2(float(spawn_x), float(spawn_y))
-	
-	# Korekta smallEnemyAdjust (jak w oryginale Tyrian)
-	if small_enemy_adjust and int(enemy_template.get("esize", 0)) == 0:
-		spawn_pos.x -= 10
-		spawn_pos.y -= 7
-	
 	var xmove = int(enemy_template.get("xmove", 0))
 	var ymove = int(enemy_template.get("ymove", 0))
 	var y_vel = event.get("y_vel", 0)
@@ -167,11 +159,9 @@ func spawn_ground_enemy_2(event: Dictionary):
 	var enemy_slot = int(event.get("enemy_slot", 75))
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
-	var raw_x = event.get("raw_x", 0)
-	var spawn_x = raw_x - (map_x - 1) * 24 - 12
-	var y_offset = event.get("y_offset", 0)
-	var spawn_y = -28 - back_move + y_offset
-
+	# Użyj screen_x i screen_y już przeliczonych przez parser
+	var spawn_x = event.get("screen_x", 0)
+	var spawn_y = event.get("screen_y", 0)
 	var spawn_pos = Vector2(float(spawn_x), float(spawn_y))
 	
 	# Korekta smallEnemyAdjust (jak w oryginale Tyrian)
@@ -197,7 +187,11 @@ func spawn_4x4_enemies(event: Dictionary):
 	var fixed_move_y = int(event.get("fixed_move_y", 0))
 	var event_type = int(event.get("event_type", 0))
 
-	var base_pos = _calc_spawn_pos(event, null)
+	# Użyj screen_x i screen_y już przeliczonych przez parser
+	var spawn_x = event.get("screen_x", 0) + 6
+	var spawn_y = event.get("screen_y", 0) + 3
+	var base_pos = Vector2(float(spawn_x), float(spawn_y))
+
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
 	# Offsety dla 4x4 gridu (24x28px), celowo zmieniona kolejność, 
