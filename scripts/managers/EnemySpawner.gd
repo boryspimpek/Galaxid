@@ -16,6 +16,7 @@ var map_x: int = 1
 var map_x3: int = 1
 var background3x1: bool = false
 var background3x1b: bool = false
+var small_enemy_adjust: bool = false
 
 # Random spawn system
 var enemies_active: bool = false
@@ -38,6 +39,9 @@ func set_scroll_data(p_back_move: int, p_back_move3: int, p_map_x: int, p_map_x3
 func set_background_flags(p_background3x1: bool, p_background3x1b: bool):
 	background3x1 = p_background3x1
 	background3x1b = p_background3x1b
+
+func set_small_enemy_adjust(active: bool):
+	small_enemy_adjust = active
 
 func set_random_spawn_data(p_level_enemies: Array, p_level_enemy_frequency: int = 96):
 	level_enemies = p_level_enemies
@@ -96,7 +100,7 @@ func spawn_enemy(event: Dictionary):
 
 	var enemy_id = int(enemy_template.get("index", 0))
 	var enemy_slot = int(event.get("enemy_slot", 25))
-	var spawn_pos = _calc_spawn_pos(event)
+	var spawn_pos = _calc_spawn_pos(event, enemy_template)
 	var raw_velocity = _calc_velocity(enemy_template, event)
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
@@ -120,12 +124,16 @@ func spawn_top_enemy(event: Dictionary):
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
 	var raw_x = event.get("raw_x", 0)
-	var spawn_x = raw_x - (map_x3 - 1) * 24 - 12
+	var spawn_x: int
+	if background3x1:
+		spawn_x = raw_x - (map_x - 1) * 24 - 12
+	else:
+		spawn_x = raw_x - map_x3 * 24 - 42
+	if background3x1b:
+		spawn_x -= 6
+
 	var y_offset = event.get("y_offset", 0)
 	var spawn_y = -28 - back_move3 + y_offset
-
-	if background3x1:
-		spawn_y += 4
 	if background3x1b:
 		spawn_y += 4
 
@@ -177,7 +185,7 @@ func spawn_4x4_enemies(event: Dictionary):
 	var fixed_move_y = int(event.get("fixed_move_y", 0))
 	var event_type = int(event.get("event_type", 0))
 
-	var base_pos = _calc_spawn_pos(event)
+	var base_pos = _calc_spawn_pos(event, null)
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
 	# Offsety dla 4x4 gridu (24x28px), celowo zmieniona kolejność, 
@@ -201,8 +209,11 @@ func spawn_4x4_enemies(event: Dictionary):
 
 # Funkcje pomocnicze
 
-func _calc_spawn_pos(event: Dictionary) -> Vector2:
-	return Vector2(float(event.get("screen_x", 0)), float(event.get("screen_y", 0)))
+func _calc_spawn_pos(event: Dictionary, template) -> Vector2:
+	var pos = Vector2(float(event.get("screen_x", 0)), float(event.get("screen_y", 0)))
+	if small_enemy_adjust and template != null and int(template.get("esize", 0)) == 0:
+		pos.y -= 7
+	return pos
 
 func _calc_velocity(template: Dictionary, event: Dictionary) -> Vector2:
 	var xmove = int(template.get("xmove", 0))

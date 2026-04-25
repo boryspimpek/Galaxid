@@ -55,6 +55,7 @@ func process_event(event: Dictionary):
 		14:                   enemy_controller.enable_random_spawn(event)
 		19:                   enemy_controller.enemy_global_move(event)
 		20:                   enemy_controller.enemy_global_accel(event)
+		26:                   enemy_spawner.set_small_enemy_adjust(bool(event.get("small_enemy_adjust", false)))
 		27:                   enemy_controller.enemy_global_accelrev(event)
 		_:
 			pass
