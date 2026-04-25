@@ -50,8 +50,8 @@ border_color = Color(0.011764706, 0.5647059, 1, 1)
 script = ExtResource("1_hud_script")
 
 [node name="SidePanel" type="Panel" parent="." unique_id=110622867]
-offset_left = 320.0
-offset_right = 400.0
+offset_left = 290.0
+offset_right = 370.0
 offset_bottom = 200.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lcei2")
 
