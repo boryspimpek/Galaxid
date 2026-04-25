@@ -138,6 +138,12 @@ func spawn_top_enemy(event: Dictionary):
 		spawn_y += 4
 
 	var spawn_pos = Vector2(float(spawn_x), float(spawn_y))
+	
+	# Korekta smallEnemyAdjust (jak w oryginale Tyrian)
+	if small_enemy_adjust and int(enemy_template.get("esize", 0)) == 0:
+		spawn_pos.x -= 10
+		spawn_pos.y -= 7
+	
 	var xmove = int(enemy_template.get("xmove", 0))
 	var ymove = int(enemy_template.get("ymove", 0))
 	var y_vel = event.get("y_vel", 0)
@@ -167,6 +173,12 @@ func spawn_ground_enemy_2(event: Dictionary):
 	var spawn_y = -28 - back_move + y_offset
 
 	var spawn_pos = Vector2(float(spawn_x), float(spawn_y))
+	
+	# Korekta smallEnemyAdjust (jak w oryginale Tyrian)
+	if small_enemy_adjust and int(enemy_template.get("esize", 0)) == 0:
+		spawn_pos.x -= 10
+		spawn_pos.y -= 7
+	
 	var xmove = int(enemy_template.get("xmove", 0))
 	var ymove = int(enemy_template.get("ymove", 0))
 	var y_vel = event.get("y_vel", 0)
@@ -198,6 +210,12 @@ func spawn_4x4_enemies(event: Dictionary):
 			continue
 
 		var spawn_pos = base_pos + Vector2(offsets[i].x, offsets[i].y)
+		
+		# Korekta smallEnemyAdjust (jak w oryginale Tyrian) - dla każdego wroga osobno
+		if small_enemy_adjust and int(enemy_template.get("esize", 0)) == 0:
+			spawn_pos.x -= 10
+			spawn_pos.y -= 7
+		
 		var raw_velocity = _calc_velocity(enemy_template, event)
 
 		var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
@@ -212,6 +230,7 @@ func spawn_4x4_enemies(event: Dictionary):
 func _calc_spawn_pos(event: Dictionary, template) -> Vector2:
 	var pos = Vector2(float(event.get("screen_x", 0)), float(event.get("screen_y", 0)))
 	if small_enemy_adjust and template != null and int(template.get("esize", 0)) == 0:
+		pos.x -= 10
 		pos.y -= 7
 	return pos
 
