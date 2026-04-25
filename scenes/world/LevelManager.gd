@@ -47,6 +47,8 @@ var level_distance: float = 0.0
 func _ready():
 	background = get_node_or_null("Background")
 	load_data()
+	if background and background.has_method("setup"):
+		background.setup(level_name, back_move, back_move2, back_move3, map_x, map_x2, map_x3)
 	init_managers()
 
 func _process(_delta):

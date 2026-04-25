@@ -1,27 +1,26 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://b72pvnswg7eaa"]
 
-[ext_resource type="Script" path="res://scenes/enemy/Enemy.gd" id="1_enemy"]
+[ext_resource type="Script" uid="uid://b6u5jc5l8dstd" path="res://scenes/enemy/Enemy.gd" id="1_enemy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_enemy"]
-radius = 10.0
 
-[node name="Enemy" type="Area2D"]
+[node name="Enemy" type="Area2D" unique_id=119960324]
+z_index = 100
 script = ExtResource("1_enemy")
-z_index = 100
 
-[node name="Visual" type="Sprite2D" parent="."]
+[node name="Visual" type="Sprite2D" parent="." unique_id=1405638014]
 z_index = 100
-centered = true
+centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=183017983]
 shape = SubResource("CircleShape2D_enemy")
 
-[node name="DebugLabel" type="Label" parent="."]
+[node name="DebugLabel" type="Label" parent="." unique_id=1796875769]
+z_index = 200
 offset_left = -10.0
 offset_top = -10.0
 offset_right = 10.0
 offset_bottom = 10.0
+theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
 vertical_alignment = 1
-z_index = 200
-theme_override_font_sizes/font_size = 8
