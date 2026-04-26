@@ -3,18 +3,16 @@ extends CharacterBody2D
 # --- Zmienne dynamiczne (zmieniają się w locie) ---
 var armor: int = 0
 var max_armor: int = 0
-var speed: float = 0.0
-var velocity_target = Vector2.ZERO
 
 # --- System energii (Power) ---
 var power: float = 900.0
 var power_max: float = 900.0
-var power_add: float = 0.0  # Regeneracja obliczana dynamicznie na podstawie generatora
+var power_add: float = 0.0
 
-# --- Parametry fizyki TYRIAN (STAŁY PRZYROST, NIE LERP) ---
-var ship_maneuverability: int = 10    # limit prędkości (cap)
-var accel: int = 1
-var friction: int = 2
+# --- Fizyka ruchu (identyczna dla wszystkich statków, jak w oryginale Tyrian) ---
+const SPEED_CAP: int = 4
+const ACCEL: int = 1
+const FRICTION: int = 2
 
 var velocity_x: float = 0.0
 var velocity_y: float = 0.0
@@ -54,19 +52,9 @@ func load_ship_data():
 
 func apply_ship_stats():
 	var stats = ship_data.get("stats", {})
-
 	armor = stats.get("armor", 10)
 	max_armor = armor
-
-	# Oryginalne dane Tyrian nie mają osobnych pól maneuverability/accel/friction.
-	# Pole "speed" (spd, signed) to modyfikator z danych: 0=normalne, -1=wolniejsze, -2=najwolniejsze.
-	var speed_mod = stats.get("speed", 0)  # 0, -1 lub -2
-	ship_maneuverability = max(6, 10 + speed_mod * 2)  # np. 10, 8, 6
-	accel = 1
-	friction = 2
-
-	print("Player: Ship → maneuverability=", ship_maneuverability,
-		  " accel=", accel, " friction=", friction, " armor=", armor)
+	print("Player: Ship → armor=", armor)
 
 func init_power_regeneration():
 	var generator_id = PlayerSetup.generator_id
@@ -124,33 +112,33 @@ func _physics_process(_delta):
 		# Oś X
 		if input_left:
 			if velocity_x > 0:
-				velocity_x -= friction
-			elif velocity_x > -ship_maneuverability:
-				velocity_x -= accel
+				velocity_x -= FRICTION
+			elif velocity_x > -SPEED_CAP:
+				velocity_x -= ACCEL
 		elif input_right:
 			if velocity_x < 0:
-				velocity_x += friction
-			elif velocity_x < ship_maneuverability:
-				velocity_x += accel
+				velocity_x += FRICTION
+			elif velocity_x < SPEED_CAP:
+				velocity_x += ACCEL
 		else:
-			velocity_x = move_toward(velocity_x, 0, friction)
+			velocity_x = move_toward(velocity_x, 0, FRICTION)
 
 		# Oś Y
 		if input_up:
 			if velocity_y > 0:
-				velocity_y -= friction
-			elif velocity_y > -ship_maneuverability:
-				velocity_y -= accel
+				velocity_y -= FRICTION
+			elif velocity_y > -SPEED_CAP:
+				velocity_y -= ACCEL
 		elif input_down:
 			if velocity_y < 0:
-				velocity_y += friction
-			elif velocity_y < ship_maneuverability:
-				velocity_y += friction
+				velocity_y += FRICTION
+			elif velocity_y < SPEED_CAP:
+				velocity_y += FRICTION
 		else:
-			velocity_y = move_toward(velocity_y, 0, friction)
+			velocity_y = move_toward(velocity_y, 0, FRICTION)
 
-		velocity_x = clamp(velocity_x, -ship_maneuverability, ship_maneuverability)
-		velocity_y = clamp(velocity_y, -ship_maneuverability, ship_maneuverability)
+		velocity_x = clamp(velocity_x, -SPEED_CAP, SPEED_CAP)
+		velocity_y = clamp(velocity_y, -SPEED_CAP, SPEED_CAP)
 
 		position.x += velocity_x
 		position.y += velocity_y
@@ -173,6 +161,4 @@ func _process(_delta):
 		print("Player: --- DEBUG GRACZA ---")
 		print("Player: Statek ID: ", PlayerSetup.ship_id)
 		print("Player: Prędkość X/Y: ", velocity_x, "/", velocity_y)
-		print("Player: Pancerz: ", armor)
-		print("Player: Maneuverability: ", ship_maneuverability)
-		print("Player: Accel/Friction: ", accel, "/", friction)
+		print("Player: Pancerz: ", armor, "/", max_armor)

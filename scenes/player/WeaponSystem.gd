@@ -14,8 +14,7 @@ var current_weapon_index: int = 1
 var power_level: int = 1
 
 # --- Konfiguracja strzelania ---
-var fire_cooldown: float = 0.1
-var fire_timer: int = 0  # Zmienione na int (system klatkowy)
+var fire_timer: int = 0
 var is_firing: bool = false
 
 # --- Stan strzelania (dla patterns) ---
@@ -133,9 +132,7 @@ func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, 
 	# Ustaw acceleration (przyspieszenie po wystrzeleniu)
 	projectile.acceleration = Vector2(float(accelerationx), float(-acceleration))
 	
-	# Ustaw damage (może być skalowane przez power level)
-	var scaled_damage = damage * power_level
-	projectile.damage = scaled_damage
+	projectile.damage = damage
 	
 	# Ustaw czas życia (del)
 	projectile.lifetime = del
