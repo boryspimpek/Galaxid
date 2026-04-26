@@ -6,7 +6,6 @@ var player: CharacterBody2D
 
 var shield: float = 0.0
 var shield_max: float = 0.0
-var protection: int = 0  # mpwr: pojemność (shield=mpwr, shield_max=mpwr*2)
 var shield_t: int = 0    # tpwr*20: koszt power za 1 punkt regeneracji
 var _wait_timer: float = 0.0
 
@@ -17,11 +16,11 @@ func _ready():
 func load_shield_config():
 	var shield_data = DataManager.get_shield_by_id(PlayerSetup.shield_id)
 	if not shield_data.is_empty():
-		protection = shield_data.get("protection", 0)        # mpwr
-		var tpwr   = shield_data.get("generator_needed", 0)  # tpwr
+		var mpwr   = shield_data.get("protection", 0)        # mpwr: shield capacity
+		var tpwr   = shield_data.get("generator_needed", 0)  # tpwr: generator power needed
 		shield_t   = tpwr * 20
-		shield     = float(protection)
-		shield_max = float(protection * 2)
+		shield     = float(mpwr)
+		shield_max = float(mpwr * 2)
 		print("ShieldSystem: shield=", shield, "/", shield_max, " shield_t=", shield_t, " (power/pkt)")
 	else:
 		print("ShieldSystem: brak danych tarczy (shield_id=", PlayerSetup.shield_id, ")")
@@ -32,7 +31,7 @@ func _physics_process(_delta): # Delta ignorowana
 		_wait_timer -= 1 # Odejmujemy po prostu 1 klatkę
 		
 	# 2. Regeneracja
-	if protection > 0 and shield < shield_max and _wait_timer <= 0:
+	if shield < shield_max and _wait_timer <= 0:
 		if player.power >= shield_t:
 			player.power -= shield_t
 			shield += 1.0
