@@ -46,8 +46,7 @@ func process_event(event: Dictionary):
 	var event_type = int(event["event_type"])
 
 	match event_type:
-		2:                    set_scroll_speed(event)
-		17, 18:               enemy_spawner.spawn_enemy(event)
+		2, 30:                set_scroll_speed(event)
 		6:                    enemy_spawner.spawn_ground_enemy(event)
 		7:                    enemy_spawner.spawn_top_enemy(event)
 		10:                   enemy_spawner.spawn_ground_enemy_2(event)
@@ -55,10 +54,17 @@ func process_event(event: Dictionary):
 		13:                   enemy_controller.disable_random_spawn(event)
 		14:                   enemy_controller.enable_random_spawn(event)
 		15:                   enemy_spawner.spawn_sky_enemy(event)
+		17:                   enemy_spawner.spawn_enemy(event)
+		18:                   enemy_spawner.spawn_sky_bottom(event)
 		19:                   enemy_controller.enemy_global_move(event)
 		20:                   enemy_controller.enemy_global_accel(event)
 		26:                   enemy_spawner.set_small_enemy_adjust(bool(event.get("small_enemy_adjust", false)))
 		27:                   enemy_controller.enemy_global_accelrev(event)
+		31:                   enemy_controller.enemy_fire_override(event)
+		32:                   enemy_spawner.spawn_enemy_special(event)
+		33:                   enemy_controller.enemy_from_enemy(event)
+		40:                   enemy_controller.enemy_continual_damage(event)
+		60:                   enemy_controller.assign_special_enemy(event)
 		_:
 			pass
 

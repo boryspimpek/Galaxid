@@ -34,6 +34,12 @@ var eyccadd: int = 1
 @export var xaccel: int = 0
 @export var yaccel: int = 0
 
+# ---- Eventy śmierci (event 33, 60) ----
+var enemy_die: int = 0   # ID wroga do spawnowania przy śmierci (enemy_from_enemy)
+var special: bool = false
+var flagnum: int = 0
+var setto: bool = false
+
 # ---- System strzelania ----
 @export var tur: Array = [0, 0, 0]   # ID broni [down, right, left]
 @export var freq: Array = [0, 0, 0]  # Częstotliwość strzelania [down, right, left]

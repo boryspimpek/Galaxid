@@ -237,6 +237,59 @@ func spawn_ground_enemy_2(event: Dictionary):
 		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 		level_manager.add_child(enemy)
 
+func spawn_sky_bottom(event: Dictionary):
+	var enemy_id_raw   = event.get("enemy_id", 0)
+	var enemy_template = _find_template(enemy_id_raw)
+	if enemy_template == null:
+		print("EnemySpawner: ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
+		return
+
+	var enemy_id   = int(enemy_template.get("index", 0))
+	var enemy_slot = int(event.get("enemy_slot", 0))
+
+	var spawn_x = event.get("screen_x", 0) + 24
+	var spawn_y = event.get("screen_y", 0)  # 190 + y_offset, obliczone przez parser
+	var spawn_pos = Vector2(float(spawn_x), float(spawn_y))
+
+	var raw_velocity    = _calc_velocity(enemy_template, event)
+	var scroll_for_slot = -int(event.get("back_move2", back_move))
+
+	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
+		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id,
+		event.get("event_type", 0), event.get("link_num", 0), enemy_slot)
+	if enemy:
+		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
+		level_manager.add_child(enemy)
+
+func spawn_enemy_special(event: Dictionary):
+	var enemy_id_raw   = event.get("enemy_id", 0)
+	var enemy_template = _find_template(enemy_id_raw)
+	if enemy_template == null:
+		print("EnemySpawner: ERROR: Nie znaleziono przeciwnika o index=", enemy_id_raw)
+		return
+
+	var enemy_id   = int(enemy_template.get("index", 0))
+	var enemy_slot = int(event.get("enemy_slot", 50))
+	var scroll_for_slot = -back_move3
+
+	# X jak typ 7 (Top Enemy), Y stałe = 190 (y_offset ignorowany wg dokumentacji)
+	var raw_x   = event.get("raw_x", 0)
+	var spawn_x = raw_x - (map_x3 - 1) * 24 - 12 - 24
+	var spawn_y = 190.0
+
+	var spawn_pos = Vector2(float(spawn_x), float(spawn_y))
+	var xmove = int(enemy_template.get("xmove", 0))
+	var ymove = int(enemy_template.get("ymove", 0))
+	var y_vel = event.get("y_vel", 0)
+	var raw_velocity = Vector2(float(xmove), float(ymove + y_vel))
+
+	var enemy = _create_enemy_node(enemy_template, spawn_pos, raw_velocity,
+		event.get("fixed_move_y", 0), scroll_for_slot, enemy_id, 32,
+		event.get("link_num", 0), enemy_slot)
+	if enemy:
+		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
+		level_manager.add_child(enemy)
+
 func spawn_4x4_enemies(event: Dictionary):
 	var enemy_ids = event.get("enemy_ids", [])
 	var enemy_slot = int(event.get("enemy_slot", 25))
@@ -339,4 +392,5 @@ func _create_enemy_node(template: Dictionary, spawn_position: Vector2,
 	enemy.tur           = template.get("tur",     [0, 0, 0])
 	enemy.freq          = template.get("freq",    [0, 0, 0])
 	enemy.projectile_scene = GameConstants.enemy_projectile_scene
+	print("Enemy spawned: ", enemy_id)
 	return enemy

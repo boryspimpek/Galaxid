@@ -96,3 +96,45 @@ func enemy_global_move(event: Dictionary):
 			child.fixed_move_y = 0
 		elif new_fixed_move_y != 0:
 			child.fixed_move_y = new_fixed_move_y
+
+func enemy_fire_override(event: Dictionary):
+	var new_freq = event.get("new_freq", [0, 0, 0])
+	var link_num = event.get("link_num", 0)
+
+	for child in level_manager.get_children():
+		if not "enemy_id" in child:
+			continue
+		if link_num != 99 and child.link_num != link_num:
+			continue
+		for i in range(3):
+			child.freq[i] = new_freq[i]
+		child.eshotwait = [1.0, 1.0, 1.0]
+
+func enemy_from_enemy(event: Dictionary):
+	var spawn_on_death_id = event.get("spawn_on_death_id", 0)
+	var link_num = event.get("link_num", 0)
+
+	for child in level_manager.get_children():
+		if not "enemy_id" in child:
+			continue
+		if child.link_num != link_num:
+			continue
+		child.enemy_die = spawn_on_death_id
+
+func enemy_continual_damage(_event: Dictionary):
+	level_manager.enemy_continual_damage = true
+	print("EnemyController: enemy_continual_damage włączony")
+
+func assign_special_enemy(event: Dictionary):
+	var p_flagnum = event.get("dat", 0)
+	var p_setto   = int(event.get("dat2", 0)) == 1
+	var link_num  = event.get("dat4", 0)
+
+	for child in level_manager.get_children():
+		if not "enemy_id" in child:
+			continue
+		if child.link_num != link_num:
+			continue
+		child.special  = true
+		child.flagnum  = p_flagnum
+		child.setto    = p_setto
