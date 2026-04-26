@@ -54,15 +54,19 @@ func load_ship_data():
 
 func apply_ship_stats():
 	var stats = ship_data.get("stats", {})
-	
-	armor = stats.get("armor", 100)
+
+	armor = stats.get("armor", 10)
 	max_armor = armor
-	ship_maneuverability = stats.get("maneuverability", 10)
-	accel = stats.get("speed_forward", 1)
-	friction = stats.get("speed_reverse", 2) 
-	
-	print("Player: Ship → maneuverability=", ship_maneuverability, 
-		  " accel=", accel, " friction=", friction)
+
+	# Oryginalne dane Tyrian nie mają osobnych pól maneuverability/accel/friction.
+	# Pole "speed" (spd, signed) to modyfikator z danych: 0=normalne, -1=wolniejsze, -2=najwolniejsze.
+	var speed_mod = stats.get("speed", 0)  # 0, -1 lub -2
+	ship_maneuverability = max(6, 10 + speed_mod * 2)  # np. 10, 8, 6
+	accel = 1
+	friction = 2
+
+	print("Player: Ship → maneuverability=", ship_maneuverability,
+		  " accel=", accel, " friction=", friction, " armor=", armor)
 
 func init_power_regeneration():
 	var generator_id = PlayerSetup.generator_id

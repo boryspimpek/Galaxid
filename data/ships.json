@@ -3,196 +3,182 @@
     "index": 0,
     "name": "None",
     "stats": {
+      "ship_graphic": 0,
+      "item_graphic": 1,
+      "ani": 2,
+      "speed": 0,
       "armor": 0,
-      "maneuverability": 1,
-      "speed_forward": 0,
-      "speed_reverse": 2,
-      "rear_weapon_type": 0,
-      "sidekick_type": 0,
-      "sprite_id": 0,
-      "availability": 0
+      "cost": 0,
+      "big_ship_graphic": 0
     }
   },
   {
     "index": 1,
-    "name": "USP Talon",
+    "name": "USP Talon Light Fighter",
     "stats": {
-      "armor": 233,
-      "maneuverability": 21,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 0,
-      "sidekick_type": 10,
-      "sprite_id": 6000,
-      "availability": 32
+      "ship_graphic": 233,
+      "item_graphic": 277,
+      "ani": 2,
+      "speed": 0,
+      "armor": 10,
+      "cost": 6000,
+      "big_ship_graphic": 32
     }
   },
   {
     "index": 2,
     "name": "SuperCarrot",
     "stats": {
-      "armor": 119,
-      "maneuverability": 25,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 254,
-      "sidekick_type": 26,
-      "sprite_id": 65000,
-      "availability": 32
+      "ship_graphic": 119,
+      "item_graphic": 281,
+      "ani": 2,
+      "speed": -2,
+      "armor": 26,
+      "cost": 65000,
+      "big_ship_graphic": 32
     }
   },
   {
     "index": 3,
     "name": "Gencore Phoenix",
     "stats": {
-      "armor": 157,
-      "maneuverability": 17,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 255,
-      "sidekick_type": 17,
-      "sprite_id": 12000,
-      "availability": 28
+      "ship_graphic": 157,
+      "item_graphic": 273,
+      "ani": 2,
+      "speed": -1,
+      "armor": 17,
+      "cost": 12000,
+      "big_ship_graphic": 28
     }
   },
   {
     "index": 4,
     "name": "Gencore Maelstrom",
     "stats": {
-      "armor": 157,
-      "maneuverability": 17,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 0,
-      "sidekick_type": 20,
-      "sprite_id": 15000,
-      "availability": 28
+      "ship_graphic": 157,
+      "item_graphic": 273,
+      "ani": 2,
+      "speed": 0,
+      "armor": 20,
+      "cost": 15000,
+      "big_ship_graphic": 28
     }
   },
   {
     "index": 5,
     "name": "MicroCorp Stalker",
     "stats": {
-      "armor": 195,
-      "maneuverability": 19,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 254,
-      "sidekick_type": 25,
-      "sprite_id": 20000,
-      "availability": 33
+      "ship_graphic": 195,
+      "item_graphic": 275,
+      "ani": 2,
+      "speed": -2,
+      "armor": 25,
+      "cost": 20000,
+      "big_ship_graphic": 33
     }
   },
   {
     "index": 6,
     "name": "MicroCorp Stalker-B",
     "stats": {
-      "armor": 195,
-      "maneuverability": 19,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 254,
-      "sidekick_type": 27,
-      "sprite_id": 25000,
-      "availability": 33
+      "ship_graphic": 195,
+      "item_graphic": 275,
+      "ani": 2,
+      "speed": -2,
+      "armor": 27,
+      "cost": 25000,
+      "big_ship_graphic": 33
     }
   },
   {
     "index": 7,
     "name": "Prototype Stalker-C",
     "stats": {
-      "armor": 195,
-      "maneuverability": 19,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 0,
-      "sidekick_type": 28,
-      "sprite_id": 50000,
-      "availability": 33
+      "ship_graphic": 195,
+      "item_graphic": 275,
+      "ani": 2,
+      "speed": 0,
+      "armor": 28,
+      "cost": 50000,
+      "big_ship_graphic": 33
     }
   },
   {
     "index": 8,
     "name": "Stalker",
     "stats": {
-      "armor": 195,
-      "maneuverability": 19,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 0,
-      "sidekick_type": 15,
-      "sprite_id": 10000,
-      "availability": 33
+      "ship_graphic": 195,
+      "item_graphic": 275,
+      "ani": 2,
+      "speed": 0,
+      "armor": 15,
+      "cost": 10000,
+      "big_ship_graphic": 33
     }
   },
   {
     "index": 9,
-    "name": "USP Fang",
+    "name": "USP Fang Light Fighter",
     "stats": {
-      "armor": 233,
-      "maneuverability": 21,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 0,
-      "sidekick_type": 14,
-      "sprite_id": 8000,
-      "availability": 32
+      "ship_graphic": 233,
+      "item_graphic": 277,
+      "ani": 2,
+      "speed": 0,
+      "armor": 14,
+      "cost": 8000,
+      "big_ship_graphic": 32
     }
   },
   {
     "index": 10,
     "name": "U-Ship",
     "stats": {
-      "armor": 271,
-      "maneuverability": 21,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 0,
-      "sidekick_type": 8,
-      "sprite_id": 8000,
-      "availability": 28
+      "ship_graphic": 271,
+      "item_graphic": 277,
+      "ani": 2,
+      "speed": 0,
+      "armor": 8,
+      "cost": 8000,
+      "big_ship_graphic": 28
     }
   },
   {
     "index": 11,
     "name": "Silver Ship",
     "stats": {
-      "armor": 81,
-      "maneuverability": 21,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 0,
-      "sidekick_type": 10,
-      "sprite_id": 8000,
-      "availability": 32
+      "ship_graphic": 81,
+      "item_graphic": 277,
+      "ani": 2,
+      "speed": 0,
+      "armor": 10,
+      "cost": 8000,
+      "big_ship_graphic": 32
     }
   },
   {
     "index": 12,
     "name": "Nort Ship",
     "stats": {
-      "armor": 1,
-      "maneuverability": 21,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 0,
-      "sidekick_type": 30,
-      "sprite_id": 65000,
-      "availability": 33
+      "ship_graphic": 1,
+      "item_graphic": 277,
+      "ani": 2,
+      "speed": 0,
+      "armor": 30,
+      "cost": 65000,
+      "big_ship_graphic": 33
     }
   },
   {
     "index": 13,
     "name": "The Stalker 21.126",
     "stats": {
-      "armor": 195,
-      "maneuverability": 19,
-      "speed_forward": 1,
-      "speed_reverse": 2,
-      "rear_weapon_type": 0,
-      "sidekick_type": 30,
-      "sprite_id": 65535,
-      "availability": 33
+      "ship_graphic": 195,
+      "item_graphic": 275,
+      "ani": 2,
+      "speed": 0,
+      "armor": 30,
+      "cost": 65535,
+      "big_ship_graphic": 33
     }
   }
 ]
