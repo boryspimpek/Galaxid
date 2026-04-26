@@ -1,7 +1,9 @@
 extends Node2D
 
 const TileLayer = preload("res://scenes/background/TileLayer.gd")
+const Starfield = preload("res://scenes/background/Starfield.gd")
 
+var _starfield: Node2D
 var _layer1: Node2D
 var _layer2: Node2D
 var _layer3: Node2D
@@ -21,6 +23,9 @@ func setup(level_name: String,
 	var ox2 := -(map_x2 + 1) * TileLayer.TILE_W
 	var ox3 := -(map_x3 + 1) * TileLayer.TILE_W
 
+	_starfield = Starfield.new()
+	add_child(_starfield)
+
 	_layer1 = _build_layer(base_path + "/layer1", base_path + "/tilemap_layer1.json", 14, back_move,  ox1, map_y)
 	_layer2 = _build_layer(base_path + "/layer2", base_path + "/tilemap_layer2.json", 14, back_move2, ox2, map_y)
 	_layer3 = _build_layer(base_path + "/layer3", base_path + "/tilemap_layer3.json", 15, back_move3, ox3, map_y)
@@ -35,6 +40,14 @@ func set_scroll_speed(back_move: int, back_move2: int, back_move3: int) -> void:
 		_layer2.set_back_move(back_move2)
 	if _layer3:
 		_layer3.set_back_move(back_move3)
+
+func set_starfield_speed(value: int) -> void:
+	if _starfield:
+		_starfield.set_speed(value)
+
+func set_starfield_active(value: bool) -> void:
+	if _starfield:
+		_starfield.set_active(value)
 
 # --- helpers ---
 

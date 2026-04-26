@@ -46,7 +46,9 @@ func process_event(event: Dictionary):
 	var event_type = int(event["event_type"])
 
 	match event_type:
+		1:                    set_starfield_speed(event)
 		2, 30:                set_scroll_speed(event)
+		8:                    set_starfield_active(event)
 		6:                    enemy_spawner.spawn_ground_enemy(event)
 		7:                    enemy_spawner.spawn_top_enemy(event)
 		10:                   enemy_spawner.spawn_ground_enemy_2(event)
@@ -67,6 +69,16 @@ func process_event(event: Dictionary):
 		60:                   enemy_controller.assign_special_enemy(event)
 		_:
 			pass
+
+func set_starfield_speed(event: Dictionary):
+	var speed: int = event.get("starfield_speed", 1)
+	if background and background.has_method("set_starfield_speed"):
+		background.set_starfield_speed(speed)
+
+func set_starfield_active(event: Dictionary):
+	var active: bool = bool(event.get("star_active", true))
+	if background and background.has_method("set_starfield_active"):
+		background.set_starfield_active(active)
 
 func set_scroll_speed(event: Dictionary):
 	back_move  = event.get("back_move",  back_move)
