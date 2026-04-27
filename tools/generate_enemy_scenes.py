@@ -60,6 +60,44 @@ def build_scene(idx: int, esize: int, sprite_file: str | None) -> str:
 
     return "\n".join(lines)
 
+def patch_sprites(enemies: list, sprites: dict) -> int:
+    """Uzupełnia teksturę w istniejących scenach, które jej nie mają."""
+    enemy_map = {int(e.get("index", -1)): e for e in enemies}
+    patched = 0
+
+    for fname in os.listdir(OUTPUT_DIR):
+        if not fname.endswith(".tscn"):
+            continue
+        path = os.path.join(OUTPUT_DIR, fname)
+        with open(path, encoding="utf-8") as f:
+            content = f.read()
+
+        if 'type="Texture2D"' in content:
+            continue  # już ma teksturę
+
+        m = re.match(r"Enemy_(\d+)\.tscn", fname)
+        if not m:
+            continue
+        idx = int(m.group(1))
+
+        sprite_file = sprites.get(idx)
+        if not sprite_file:
+            continue  # sprite nadal niedostępny
+
+        enemy = enemy_map.get(idx)
+        if enemy is None:
+            continue
+        esize = int(enemy.get("esize", 0))
+
+        new_content = build_scene(idx, esize, sprite_file)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(new_content)
+        patched += 1
+        print(f"  Uzupelniono: {fname}  ->  {sprite_file}")
+
+    return patched
+
+
 def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
@@ -90,11 +128,14 @@ def main():
             f.write(content)
         created += 1
 
+    patched = patch_sprites(enemies, sprites)
+
     total = created + skipped
     print(f"Wrogów w enemies.json:      {len(enemies)}")
     print(f"Scen utworzono:             {created}")
     print(f"Pominięto (już istnieje):   {skipped}")
     print(f"Bez sprite'a (fallback):    {no_sprite}")
+    print(f"Uzupełniono sprite'y:       {patched}")
     print(f"Łącznie scen w folderze:    {total}")
 
 if __name__ == "__main__":

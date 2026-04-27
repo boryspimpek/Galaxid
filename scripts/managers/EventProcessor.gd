@@ -58,6 +58,7 @@ func process_event(event: Dictionary):
 		15:                   enemy_spawner.spawn_sky_enemy(event)
 		17:                   enemy_spawner.spawn_enemy(event)
 		18:                   enemy_spawner.spawn_sky_bottom(event)
+		23:                   enemy_spawner.spawn_sky_bottom2(event)
 		19:                   enemy_controller.enemy_global_move(event)
 		20:                   enemy_controller.enemy_global_accel(event)
 		26:                   enemy_spawner.set_small_enemy_adjust(bool(event.get("small_enemy_adjust", false)))
@@ -65,10 +66,14 @@ func process_event(event: Dictionary):
 		31:                   enemy_controller.enemy_fire_override(event)
 		32:                   enemy_spawner.spawn_enemy_special(event)
 		33:                   enemy_controller.enemy_from_enemy(event)
+		56:                   enemy_spawner.spawn_ground2_bottom(event)
 		40:                   enemy_controller.enemy_continual_damage(event)
 		60:                   enemy_controller.assign_special_enemy(event)
 		_:
 			pass
+
+	if event.has("enemies_active"):
+		enemy_spawner.set_enemies_active(bool(event.get("enemies_active", false)))
 
 func set_starfield_speed(event: Dictionary):
 	var speed: int = event.get("starfield_speed", 1)
@@ -85,6 +90,11 @@ func set_scroll_speed(event: Dictionary):
 	back_move2 = event.get("back_move2", back_move2)
 	back_move3 = event.get("back_move3", back_move3)
 
+	# Synchronizuj LevelManager — bez tego level_distance rośnie o 1/kl.
+	# zamiast o back_move/kl., a eventy odpalają się 2× za późno względem pozycji mapy
+	level_manager.back_move  = back_move
+	level_manager.back_move3 = back_move3
+
 	if background and background.has_method("set_scroll_speed"):
 		background.set_scroll_speed(back_move, back_move2, back_move3)
 
@@ -97,5 +107,5 @@ func set_scroll_speed(event: Dictionary):
 
 	# Aktualizuj dane w EnemySpawner
 	enemy_spawner.set_scroll_data(back_move, back_move3, level_manager.map_x, level_manager.map_x3)
-	
+
 	print("EventProcessor: Set scroll speed: back move=", back_move, ", back move2=", back_move2, ", back move3=", back_move3)
