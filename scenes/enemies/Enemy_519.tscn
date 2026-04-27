@@ -1,20 +1,22 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://bj0s7fre8nk6w"]
 
-[ext_resource type="PackedScene" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
-[ext_resource type="Texture2D" path="res://data/enemy_sprites/enemy_519_bank9_f00.png" id="2_tex"]
+[ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://dryn7g0b5urmb" path="res://data/enemy_sprites/enemy_519_bank9_f00.png" id="2_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_519"]
-radius = 14.0
+radius = 12.0
 
-[node name="Enemy_519" instance=ExtResource("1_base")]
+[node name="Enemy_519" unique_id=2070545208 instance=ExtResource("1_base")]
 armor = 20
 esize = 1
 startx = 150
 starty = -13
 startxc = 100
 
-[node name="Visual" parent="." index="0"]
+[node name="Visual" parent="." index="0" unique_id=1405638014]
+position = Vector2(0, 28)
 texture = ExtResource("2_tex")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
+position = Vector2(0, 30)
 shape = SubResource("CircleShape2D_519")
