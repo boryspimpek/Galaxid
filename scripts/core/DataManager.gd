@@ -275,6 +275,14 @@ func _scan_weapon_sprites():
 	dir.list_dir_end()
 	print("DataManager: Zeskanowano ", _shot_sprite_map.size(), " unikalnych sprite'ów pocisków")
 
+func get_shot_texture_frames(sg: int, anim_count: int) -> Array:
+	var frames: Array = []
+	for i in range(max(1, anim_count)):
+		var tex = get_shot_texture(sg + i)
+		if tex:
+			frames.append(tex)
+	return frames
+
 func get_shot_texture(sg: int) -> Texture2D:
 	if _shot_textures.has(sg):
 		return _shot_textures[sg]

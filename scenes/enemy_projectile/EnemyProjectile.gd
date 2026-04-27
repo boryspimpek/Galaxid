@@ -4,6 +4,7 @@ extends Area2D
 var velocity: Vector2 = Vector2.ZERO  # sx, sy z broni (Tyrian px/klatkę)
 var damage: int = 1                   # attack z broni
 var sprite_id: int = 0                # sg z broni
+var anim_max: int = 0                 # weapAni z broni (0 = brak animacji)
 
 # Parametry homingu i akceleracji
 var tx: int = 0                       # homing X (maksymalna korekta na klatkę)
@@ -21,6 +22,9 @@ const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 # Referencja do węzła wizualnego
 @onready var visual: Sprite2D = $Visual
 
+var _anim_frames: Array = []
+var _anim_frame: int = 0
+
 func _ready():
 	# Warstwa 8 = pocisk wroga; maska 1 = wykrywa gracza (warstwa 1)
 	collision_layer = 8
@@ -31,11 +35,16 @@ func _ready():
 func _apply_shot_graphic():
 	if sprite_id <= 0 or not visual:
 		return
-	var texture = DataManager.get_shot_texture(sprite_id)
-	if texture:
-		visual.texture = texture
+	_anim_frames = DataManager.get_shot_texture_frames(sprite_id, anim_max)
+	if _anim_frames.size() > 0:
+		visual.texture = _anim_frames[0]
 
 func _physics_process(_delta):
+	# Animacja klatek (zgodnie z Tyrianem: +1 każda klatka, reset do 0)
+	if _anim_frames.size() > 1:
+		_anim_frame = (_anim_frame + 1) % _anim_frames.size()
+		visual.texture = _anim_frames[_anim_frame]
+
 	# KROK 1: Dodaj akcelerację do velocity (rzadko używane)
 	velocity.x += float(accelerationx)
 	velocity.y += float(acceleration)

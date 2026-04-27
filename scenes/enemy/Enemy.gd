@@ -217,6 +217,7 @@ func _fire_projectile(direction_index: int):
 		projectile.velocity = projectile_velocity
 		projectile.damage = attack
 		projectile.sprite_id = sg
+		projectile.anim_max = int(weapon_data.get("weapAni", 0))
 		projectile.tx = int(weapon_data.get("tx", 0))
 		projectile.ty = int(weapon_data.get("ty", 0))
 		projectile.acceleration = int(weapon_data.get("acceleration", 0))
