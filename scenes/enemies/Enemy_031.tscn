@@ -7,6 +7,8 @@
 radius = 12.0
 
 [node name="Enemy_031" unique_id=1201927491 instance=ExtResource("1_base")]
+armor = 6
+esize = 1
 
 [node name="Visual" parent="." index="0"]
 scale = Vector2(0.06, 0.06)

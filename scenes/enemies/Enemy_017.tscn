@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://nni8t24donw7" path="res://data/enemy_sprites/enemy_017_bank1_f00.png" id="2_tex"]
 
 [node name="Enemy_017" unique_id=580469517 instance=ExtResource("1_base")]
+armor = 5
+esize = 1
+ymove = 1
+tur = [59, 0, 0]
 
 [node name="Visual" parent="." index="0"]
 scale = Vector2(0.068, 0.05)

@@ -7,6 +7,12 @@
 radius = 14.0
 
 [node name="Enemy_465" instance=ExtResource("1_base")]
+armor = 20
+esize = 1
+eycc = 2
+xrev = 4
+yrev = 3
+tur = [59, 0, 0]
 
 [node name="Visual" parent="." index="0"]
 texture = ExtResource("2_tex")

@@ -6,6 +6,7 @@
       "map_x": 1,
       "map_x2": 1,
       "map_x3": 1,
+      "map_y": 6,
       "level_enemy_max": 1,
       "level_enemies": [
         163

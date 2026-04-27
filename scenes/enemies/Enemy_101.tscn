@@ -6,6 +6,9 @@
 radius = 14.0
 
 [node name="Enemy_101" instance=ExtResource("1_base")]
+armor = 254
+esize = 1
+ymove = 1
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_101")

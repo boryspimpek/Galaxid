@@ -7,14 +7,9 @@ const EventProcessor = preload("res://scripts/managers/EventProcessor.gd")
 
 # Główny plik z eventami - SCENARIUSZ POZIOMU, tu ustawiamy 
 # w ktory poziom gracz ma grać
-@export var level_name: String = "lvl23"
+@export var level_name: String = "lvl15"
 
-# Ścieżki do plików z danymi
-@export var events_file: String = "res://data/%s.json" % level_name
-@export var enemies_file: String = "res://data/enemies.json"
-@export var weapon_file: String = "res://data/weapon.json"
-
-@onready var enemy_scene = preload("res://scenes/enemy/Enemy.tscn")
+# Uwaga: enemies.json nie jest już używany w runtime — dane wrogów są osadzone w scenach Enemy_XXX.tscn
 
 
 # Prędkości scrollingu (Tyrian px/klatkę)
@@ -34,8 +29,6 @@ var map_y: int = 0
 
 # SEKCJA: Referencje do danych
 var background: Node2D
-var enemies_data: Array = []
-var weapons_data: Array = []
 
 # SEKCJA: Menedżery
 var enemy_spawner: EnemySpawner
@@ -50,10 +43,9 @@ var enemy_continual_damage: bool = false
 
 func _ready():
 	background = get_node_or_null("Background")
-	load_data()
+	init_managers()
 	if background and background.has_method("setup"):
 		background.setup(level_name, back_move, back_move2, back_move3, map_x, map_x2, map_x3, map_y)
-	init_managers()
 
 func _process(_delta):
 	level_distance += float(back_move)
@@ -64,8 +56,7 @@ func _process(_delta):
 	# 	print("Dist: ", int(level_distance))
 		
 func load_data():
-	enemies_data = DataManager.get_enemies()
-	weapons_data = DataManager.get_weapons()
+	DataManager.get_weapons()  # pre-cache broni przed pierwszym strzałem
 
 	var level_data = DataManager.load_level_data(level_name)
 	if not level_data.is_empty():
@@ -80,20 +71,19 @@ func load_data():
 			map_x3 = level_data["header"]["map_x3"]
 		if level_data["header"].has("map_y"):
 			map_y = level_data["header"]["map_y"]
-
-		return level_data
-	return {}
+	return level_data
 
 func init_managers():
-	enemy_spawner = EnemySpawner.new(self, enemies_data, enemy_scene, level_name)
+	var level_data = load_data()
+
+	enemy_spawner = EnemySpawner.new(self)
 	enemy_controller = EnemyController.new(self)
 	event_processor = EventProcessor.new(self, background, enemy_spawner, enemy_controller)
-	
-	var level_data = DataManager.load_level_data(level_name)
+
 	event_processor.set_level_events(level_data["events"])
 	event_processor.set_scroll_data(back_move, back_move2, back_move3)
-	
-	enemy_spawner.set_scroll_data(back_move, back_move3, map_x, map_x3)
+
+	enemy_spawner.set_scroll_data(back_move, back_move3, map_x3)
 	enemy_spawner.set_background_flags(background3x1, background3x1b)
 	if level_data["header"].has("level_enemies"):
 		enemy_spawner.set_random_spawn_data(level_data["header"]["level_enemies"])

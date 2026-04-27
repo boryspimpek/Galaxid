@@ -6,6 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_010"]
 
 [node name="Enemy_010" unique_id=834132465 instance=ExtResource("1_base")]
+armor = 3
+esize = 1
+ymove = 1
+startx = 130
+starty = -13
+startxc = 100
 
 [node name="Visual" parent="." index="0"]
 scale = Vector2(0.06, 0.06)
