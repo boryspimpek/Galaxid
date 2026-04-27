@@ -19,32 +19,21 @@ const BOUNDS_TOP    = GameConstants.BOUNDS_TOP
 const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 
 # Referencja do węzła wizualnego
-@onready var visual: Polygon2D = $Visual
+@onready var visual: Sprite2D = $Visual
 
 func _ready():
 	# Warstwa 8 = pocisk wroga; maska 1 = wykrywa gracza (warstwa 1)
 	collision_layer = 8
 	collision_mask  = 1
 	body_entered.connect(_on_body_entered)
-	# Ustaw kolor na podstawie sprite_id (prosta wizualizacja)
-	var colors = [
-		Color.RED, Color.ORANGE, Color.YELLOW, Color.WHITE,
-		Color.PINK, Color.LIGHT_BLUE, Color.LIME, Color.VIOLET
-	]
-	if visual:
-		visual.color = colors[sprite_id % colors.size()]
-		
-		# Ustaw wymiary pocisku (prosty kwadrat 4x4px Tyrian -> 16x14.4px Godot)
-		var width = 4.0
-		var height = 4.0
-		var half_w = width / 2.0
-		var half_h = height / 2.0
-		visual.polygon = PackedVector2Array([
-			Vector2(-half_w, -half_h),
-			Vector2(half_w, -half_h),
-			Vector2(half_w, half_h),
-			Vector2(-half_w, half_h)
-		])
+	_apply_shot_graphic()
+
+func _apply_shot_graphic():
+	if sprite_id <= 0 or not visual:
+		return
+	var texture = DataManager.get_shot_texture(sprite_id)
+	if texture:
+		visual.texture = texture
 
 func _physics_process(_delta):
 	# KROK 1: Dodaj akcelerację do velocity (rzadko używane)

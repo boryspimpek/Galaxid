@@ -11,5 +11,4 @@ script = ExtResource("1_enemy_proj")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_enemy")
 
-[node name="Visual" type="Polygon2D" parent="."]
-color = Color(1, 0, 0, 1)
+[node name="Visual" type="Sprite2D" parent="."]
