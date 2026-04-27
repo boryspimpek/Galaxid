@@ -47,13 +47,18 @@ func _ready():
 	if background and background.has_method("setup"):
 		background.setup(level_name, back_move, back_move2, back_move3, map_x, map_x2, map_x3, map_y)
 
+	var start_dist: int = ProjectSettings.get_setting("game/debug/start_dist", 0)
+	if start_dist > 0:
+		level_distance = float(start_dist)
+		event_processor.fast_forward_to(start_dist)  # seek_to tła wywołane wewnętrznie
+
 func _process(_delta):
 	level_distance += float(back_move)
 	event_processor.process_events_for_distance(int(level_distance))
 	enemy_spawner.process_random_spawn(_delta)
 	
-	# if Engine.get_frames_drawn() % 10 == 0:
-	# 	print("Dist: ", int(level_distance))
+	if Engine.get_frames_drawn() % 100 == 0:
+		print("Dist: ", int(level_distance))
 		
 func load_data():
 	DataManager.get_weapons()  # pre-cache broni przed pierwszym strzałem

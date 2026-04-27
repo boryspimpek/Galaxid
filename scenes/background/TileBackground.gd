@@ -41,6 +41,12 @@ func set_scroll_speed(back_move: int, back_move2: int, back_move3: int) -> void:
 	if _layer3:
 		_layer3.set_back_move(back_move3)
 
+# Przesuwa każdą warstwę o dokładną liczbę pikseli obliczoną przez fast_forward_to.
+func seek_to(dist1: int, dist2: int, dist3: int) -> void:
+	if _layer1: _layer1.seek_to(dist1)
+	if _layer2: _layer2.seek_to(dist2)
+	if _layer3: _layer3.seek_to(dist3)
+
 func set_starfield_speed(value: int) -> void:
 	if _starfield:
 		_starfield.set_speed(value)

@@ -32,3 +32,18 @@ func set_scroll_speed(p_back_move: int, p_back_move2: int, p_back_move3: int):
 	back_move2 = p_back_move2
 	back_move3 = p_back_move3
 	scroll_velocity_y = float(back_move)
+
+# Przesuwa tło do pozycji odpowiadającej start_dist.
+# TextureRecty scrollują z prędkością back_move (tak samo jak level_distance),
+# więc ich offset = start_dist mod 1440.
+func seek_to(dist1: int, dist2: int, dist3: int) -> void:
+	var offset := fmod(float(dist1), 1440.0)
+	background_rect.position.y  = offset
+	background_rect2.position.y = offset - 1440.0
+	if background_rect.position.y >= 720.0:
+		background_rect.position.y  -= 1440.0
+	if background_rect2.position.y >= 720.0:
+		background_rect2.position.y -= 1440.0
+	var tile_bg := get_node_or_null("TileBackground")
+	if tile_bg and tile_bg.has_method("seek_to"):
+		tile_bg.seek_to(dist1, dist2, dist3)

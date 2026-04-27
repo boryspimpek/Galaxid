@@ -26,6 +26,17 @@ func setup(tilemap: Array, textures: Dictionary, cols: int, back_move: int, x_of
 func set_back_move(value: int) -> void:
 	_back_move = value
 
+# Przesuwa warstwę o dist_pixels do przodu (symulacja minięcia dist klatek).
+# Wywołać po setup(), przed pierwszym _process().
+func seek_to(dist_pixels: int) -> void:
+	var total_h := float(_total_rows * TILE_H)
+	if total_h <= 0.0:
+		return
+	_scroll_y -= float(dist_pixels)
+	_scroll_y = fmod(_scroll_y, total_h)
+	if _scroll_y < 0.0:
+		_scroll_y += total_h
+
 func _process(_delta: float) -> void:
 	if _total_rows == 0:
 		return
