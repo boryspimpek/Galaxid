@@ -16,6 +16,12 @@ _data = {
 }
 point_count = 35
 
+[sub_resource type="Curve2D" id="Curve2D_nmie8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 104, 0, 0, 0, 0, -2.0788178, 130.3077, 0, 0, 0, 0, -12.048202, 150.21153, 0, 0, 0, 0, -30.668148, 166.13461, 0, 0, 0, 0, -60.241005, 177.08173, 0, 0, 0, 0, -87.62328, 181.0625, 0, 0, 0, 0, -117.19614, 180.0673, 0, 0, 0, 0, -144.57841, 176.08653, 0, 0, 0, 0, -164.79837, 168.53064, 0, 0, 0, 0, -179.62773, 157.17789, 0, 0, 0, 0, -190.58064, 143.2452, 0, 0, 0, 0, -199.34297, 125.331726, 0, 0, 0, 0, -203.72414, 106.42307, 0, 0, 0, 0, -203.72415, 87.51442, 0, 0, 0, 0, -201.53355, 61.639423, 0, 0, 0, 0, -196.0571, 44.721153, 0, 0, 0, 0, -188.39006, 28.798075, 0, 0, 0, 0, -173.05598, 11.8798065, 0, 0, 0, 0, -159.91249, 1.9278833, 0, 0, 0, 0, -143.48312, -4.0432706, 0, 0, 0, 0, -124.863174, -9.019232, 0, 0, 0, 0, -102.00147, -9.824966, 0, 0, 0, 0, -71.19392, -8.024039, 0, 0, 0, 0, -44.906933, 2.9230754, 0, 0, 0, 0, -29.572857, 16.855766, 0, 0, 0, 0, -9.857619, 37.754807, 0, 0, 0, 0, -2.3966856, 54.580303, 0, 0, 0, 0, 0.97751755, 94.21431, 0, 0, 0, 0, -0.14721687, 118.985565, 0, 0, 0, 0, -5.770889, 152.67448, 0, 0, 0, 0, -10.269827, 170.50978, 0, 0, 0, 0, -20.392437, 199.24445, 0, 0, 0, 0, -30.515045, 221.04315, 0, 0, 0, 0, -53.009735, 258.69543)
+}
+point_count = 35
+
 [node name="Enemy_005" unique_id=1841420694 instance=ExtResource("1_base")]
 armor = 6
 esize = 1
@@ -26,16 +32,16 @@ path_speed = 6.0
 path_speed_curve = SubResource("Curve_nmie7")
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-position = Vector2(-0.13089034, -0.084307924)
-scale = Vector2(0.053345926, 0.06055405)
+position = Vector2(-0.06756159, -0.04771633)
+scale = Vector2(0.049458772, 0.06077751)
 texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
 shape = SubResource("CircleShape2D_005")
 
 [node name="CircleRight" type="Path2D" parent="." index="3" unique_id=1774883715]
-position = Vector2(-0.13089034, -0.084307924)
-scale = Vector2(0.88909876, 1.0092342)
+position = Vector2(-0.19774497, -0.12089663)
+scale = Vector2(0.8207065, 1.0055101)
 curve = SubResource("Curve2D_nmie7")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CircleRight" index="0" unique_id=1234804078]
@@ -43,6 +49,20 @@ rotation = 1.5707964
 loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="CircleRight/PathFollow2D" index="0" unique_id=1451128993]
+rotation = -1.5707964
+scale = Vector2(0.06, 0.06)
+remote_path = NodePath("../../../Visual")
+
+[node name="CircleLeft" type="Path2D" parent="." index="4" unique_id=1992249639]
+position = Vector2(-0.06756159, -0.04771633)
+scale = Vector2(0.82431287, 1.0129585)
+curve = SubResource("Curve2D_nmie8")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="CircleLeft" index="0" unique_id=1306223210]
+rotation = 1.5707964
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="CircleLeft/PathFollow2D" index="0" unique_id=236225448]
 rotation = -1.5707964
 scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../Visual")
