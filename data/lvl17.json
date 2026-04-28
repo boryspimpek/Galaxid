@@ -32,7 +32,7 @@
 				"event_type": 100,
 				"link_num": 1,
 				"path": "Turn",
-				"screen_x": 0,
+				"screen_x": 24,
 				"screen_y": -30
 			},
 			{
@@ -83,7 +83,7 @@
 				"from_bottom": false,
 				"link_num": 20,
 				"screen_x": 30,
-				"screen_y": 0,
+				"screen_y": -28,
 				"slot_selector": 0,
 				"y_offset": 0,
 				"y_vel": 0
@@ -103,7 +103,7 @@
 				"from_bottom": false,
 				"link_num": 21,
 				"screen_x": 102,
-				"screen_y": 0,
+				"screen_y": -28,
 				"slot_selector": 0,
 				"y_offset": 0,
 				"y_vel": 0
