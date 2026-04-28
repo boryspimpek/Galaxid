@@ -32,6 +32,7 @@ scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
+rotation = 1.5707964
 shape = SubResource("CircleShape2D_010")
 
 [node name="Turn" type="Path2D" parent="." index="3" unique_id=2018425666]
@@ -45,3 +46,6 @@ loop = false
 rotation = -1.5707964
 scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Turn/PathFollow2D" index="1" unique_id=900774758]
+remote_path = NodePath("../../../CollisionShape2D")
