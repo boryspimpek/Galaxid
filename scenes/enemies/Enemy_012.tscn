@@ -22,9 +22,6 @@ point_count = 5
 armor = 3
 esize = 1
 ymove = 1
-startx = 130
-starty = -13
-startxc = 100
 path_speed_curve = SubResource("Curve_3spji")
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]

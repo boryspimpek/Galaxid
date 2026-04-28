@@ -6,16 +6,16 @@ signal projectile_spawned(projectile)
 # ---- Statystyki ----
 @export var armor: int = 1
 @export var esize: int = 0
-@export var enemy_id: int = 0
-@export var event_type: int = 0
-@export var link_num: int = 0
-@export var enemy_slot: int = 0
+var enemy_id: int = 0
+var event_type: int = 0
+var link_num: int = 0
+var enemy_slot: int = 0
 
 # ---- Ruch ----
 # velocity odpowiada exc/eyc z silnika Tyrian
-@export var velocity: Vector2 = Vector2(0, 0)
-@export var fixed_move_y: int = 0
-@export var scroll_y: int = 2
+var velocity: Vector2 = Vector2(0, 0)
+var fixed_move_y: int = 0
+var scroll_y: int = 2
 # Ruch bazowy (px/klatkę Tyrian) — ustawiany przez scenę wroga
 @export var xmove: int = 0
 @export var ymove: int = 0
@@ -41,6 +41,8 @@ var eyccadd: int = 1
 @export var xaccel: int = 0
 @export var yaccel: int = 0
 
+var projectile_scene: PackedScene
+
 # ---- Eventy śmierci (event 33, 60) ----
 var enemy_die: int = 0   # ID wroga do spawnowania przy śmierci (enemy_from_enemy)
 var special: bool = false
@@ -56,7 +58,6 @@ var setto: bool = false
 @export var path_speed: float = 3.0
 @export var path_speed_curve: Curve
 var _active_follow: PathFollow2D = null
-var projectile_scene: PackedScene    # Scena pocisku wroga
 
 var eshotwait: Array    = [0.0, 0.0, 0.0]  # Licznik cooldown (w klatkach Tyrian)
 var eshotwaitmax: Array = [0.0, 0.0, 0.0]  # Maksymalny cooldown z freq
