@@ -1,0 +1,1554 @@
+{
+  "level_name": "TYRIAN (revisit)",
+  "game_order": 17,
+  "json_source": "lvl29.json",
+  "lvl_pos_index": 28,
+  "map_file": "Z",
+  "shape_file": "Z",
+  "shapes_dat": "shapesz.dat",
+  "palette_idx": 0,
+  "bonus": false,
+  "tiles_per_layer": [
+    72,
+    71,
+    70
+  ],
+  "tilemap_size": {
+    "layer1": "300 rows × 14 cols",
+    "layer2": "600 rows × 14 cols",
+    "layer3": "600 rows × 15 cols"
+  },
+  "tile_size_px": "24×28",
+  "map_sh_used": {
+    "layer1": [
+      {
+        "slot": 0,
+        "shp_idx": 341
+      },
+      {
+        "slot": 1,
+        "shp_idx": 342
+      },
+      {
+        "slot": 2,
+        "shp_idx": 343
+      },
+      {
+        "slot": 3,
+        "shp_idx": 321
+      },
+      {
+        "slot": 4,
+        "shp_idx": 322
+      },
+      {
+        "slot": 5,
+        "shp_idx": 323
+      },
+      {
+        "slot": 6,
+        "shp_idx": 324
+      },
+      {
+        "slot": 7,
+        "shp_idx": 66
+      },
+      {
+        "slot": 8,
+        "shp_idx": 67
+      },
+      {
+        "slot": 9,
+        "shp_idx": 68
+      },
+      {
+        "slot": 10,
+        "shp_idx": 79
+      },
+      {
+        "slot": 11,
+        "shp_idx": 80
+      },
+      {
+        "slot": 12,
+        "shp_idx": 351
+      },
+      {
+        "slot": 13,
+        "shp_idx": 352
+      },
+      {
+        "slot": 14,
+        "shp_idx": 353
+      },
+      {
+        "slot": 15,
+        "shp_idx": 331
+      },
+      {
+        "slot": 16,
+        "shp_idx": 332
+      },
+      {
+        "slot": 17,
+        "shp_idx": 333
+      },
+      {
+        "slot": 18,
+        "shp_idx": 334
+      },
+      {
+        "slot": 19,
+        "shp_idx": 76
+      },
+      {
+        "slot": 20,
+        "shp_idx": 69
+      },
+      {
+        "slot": 21,
+        "shp_idx": 78
+      },
+      {
+        "slot": 22,
+        "shp_idx": 89
+      },
+      {
+        "slot": 23,
+        "shp_idx": 90
+      },
+      {
+        "slot": 24,
+        "shp_idx": 101
+      },
+      {
+        "slot": 25,
+        "shp_idx": 234
+      },
+      {
+        "slot": 26,
+        "shp_idx": 224
+      },
+      {
+        "slot": 27,
+        "shp_idx": 222
+      },
+      {
+        "slot": 28,
+        "shp_idx": 215
+      },
+      {
+        "slot": 29,
+        "shp_idx": 225
+      },
+      {
+        "slot": 30,
+        "shp_idx": 111
+      },
+      {
+        "slot": 31,
+        "shp_idx": 86
+      },
+      {
+        "slot": 32,
+        "shp_idx": 87
+      },
+      {
+        "slot": 33,
+        "shp_idx": 88
+      },
+      {
+        "slot": 34,
+        "shp_idx": 211
+      },
+      {
+        "slot": 35,
+        "shp_idx": 213
+      },
+      {
+        "slot": 36,
+        "shp_idx": 96
+      },
+      {
+        "slot": 37,
+        "shp_idx": 97
+      },
+      {
+        "slot": 38,
+        "shp_idx": 98
+      },
+      {
+        "slot": 39,
+        "shp_idx": 99
+      },
+      {
+        "slot": 40,
+        "shp_idx": 100
+      },
+      {
+        "slot": 41,
+        "shp_idx": 36
+      },
+      {
+        "slot": 42,
+        "shp_idx": 37
+      },
+      {
+        "slot": 43,
+        "shp_idx": 38
+      },
+      {
+        "slot": 44,
+        "shp_idx": 212
+      },
+      {
+        "slot": 45,
+        "shp_idx": 232
+      },
+      {
+        "slot": 46,
+        "shp_idx": 221
+      },
+      {
+        "slot": 47,
+        "shp_idx": 223
+      },
+      {
+        "slot": 48,
+        "shp_idx": 106
+      },
+      {
+        "slot": 49,
+        "shp_idx": 107
+      },
+      {
+        "slot": 50,
+        "shp_idx": 108
+      },
+      {
+        "slot": 51,
+        "shp_idx": 109
+      },
+      {
+        "slot": 52,
+        "shp_idx": 110
+      },
+      {
+        "slot": 53,
+        "shp_idx": 46
+      },
+      {
+        "slot": 54,
+        "shp_idx": 47
+      },
+      {
+        "slot": 55,
+        "shp_idx": 48
+      },
+      {
+        "slot": 56,
+        "shp_idx": 39
+      },
+      {
+        "slot": 57,
+        "shp_idx": 40
+      },
+      {
+        "slot": 58,
+        "shp_idx": 231
+      },
+      {
+        "slot": 59,
+        "shp_idx": 233
+      },
+      {
+        "slot": 60,
+        "shp_idx": 114
+      },
+      {
+        "slot": 61,
+        "shp_idx": 113
+      },
+      {
+        "slot": 62,
+        "shp_idx": 118
+      },
+      {
+        "slot": 63,
+        "shp_idx": 119
+      },
+      {
+        "slot": 64,
+        "shp_idx": 120
+      },
+      {
+        "slot": 65,
+        "shp_idx": 56
+      },
+      {
+        "slot": 66,
+        "shp_idx": 57
+      },
+      {
+        "slot": 67,
+        "shp_idx": 58
+      },
+      {
+        "slot": 68,
+        "shp_idx": 49
+      },
+      {
+        "slot": 69,
+        "shp_idx": 50
+      },
+      {
+        "slot": 70,
+        "shp_idx": 351
+      },
+      {
+        "slot": 71,
+        "shp_idx": 59
+      },
+      {
+        "slot": 72,
+        "shp_idx": 1
+      },
+      {
+        "slot": 73,
+        "shp_idx": 1
+      },
+      {
+        "slot": 74,
+        "shp_idx": 1
+      },
+      {
+        "slot": 75,
+        "shp_idx": 1
+      },
+      {
+        "slot": 76,
+        "shp_idx": 1
+      },
+      {
+        "slot": 77,
+        "shp_idx": 1
+      },
+      {
+        "slot": 78,
+        "shp_idx": 1
+      },
+      {
+        "slot": 79,
+        "shp_idx": 1
+      },
+      {
+        "slot": 80,
+        "shp_idx": 1
+      },
+      {
+        "slot": 81,
+        "shp_idx": 1
+      },
+      {
+        "slot": 82,
+        "shp_idx": 1
+      },
+      {
+        "slot": 83,
+        "shp_idx": 1
+      },
+      {
+        "slot": 84,
+        "shp_idx": 1
+      },
+      {
+        "slot": 85,
+        "shp_idx": 1
+      },
+      {
+        "slot": 86,
+        "shp_idx": 1
+      },
+      {
+        "slot": 87,
+        "shp_idx": 1
+      },
+      {
+        "slot": 88,
+        "shp_idx": 1
+      },
+      {
+        "slot": 89,
+        "shp_idx": 1
+      },
+      {
+        "slot": 90,
+        "shp_idx": 1
+      },
+      {
+        "slot": 91,
+        "shp_idx": 1
+      },
+      {
+        "slot": 92,
+        "shp_idx": 1
+      },
+      {
+        "slot": 93,
+        "shp_idx": 1
+      },
+      {
+        "slot": 94,
+        "shp_idx": 1
+      },
+      {
+        "slot": 95,
+        "shp_idx": 1
+      },
+      {
+        "slot": 96,
+        "shp_idx": 1
+      },
+      {
+        "slot": 97,
+        "shp_idx": 1
+      },
+      {
+        "slot": 98,
+        "shp_idx": 1
+      },
+      {
+        "slot": 99,
+        "shp_idx": 1
+      },
+      {
+        "slot": 100,
+        "shp_idx": 1
+      },
+      {
+        "slot": 101,
+        "shp_idx": 1
+      },
+      {
+        "slot": 102,
+        "shp_idx": 1
+      },
+      {
+        "slot": 103,
+        "shp_idx": 1
+      },
+      {
+        "slot": 104,
+        "shp_idx": 1
+      },
+      {
+        "slot": 105,
+        "shp_idx": 1
+      },
+      {
+        "slot": 106,
+        "shp_idx": 1
+      },
+      {
+        "slot": 107,
+        "shp_idx": 1
+      },
+      {
+        "slot": 108,
+        "shp_idx": 1
+      },
+      {
+        "slot": 109,
+        "shp_idx": 1
+      },
+      {
+        "slot": 110,
+        "shp_idx": 1
+      },
+      {
+        "slot": 111,
+        "shp_idx": 1
+      },
+      {
+        "slot": 112,
+        "shp_idx": 1
+      },
+      {
+        "slot": 113,
+        "shp_idx": 1
+      },
+      {
+        "slot": 114,
+        "shp_idx": 1
+      },
+      {
+        "slot": 115,
+        "shp_idx": 1
+      },
+      {
+        "slot": 116,
+        "shp_idx": 1
+      },
+      {
+        "slot": 117,
+        "shp_idx": 1
+      },
+      {
+        "slot": 118,
+        "shp_idx": 1
+      },
+      {
+        "slot": 119,
+        "shp_idx": 1
+      },
+      {
+        "slot": 120,
+        "shp_idx": 1
+      },
+      {
+        "slot": 121,
+        "shp_idx": 1
+      },
+      {
+        "slot": 122,
+        "shp_idx": 1
+      },
+      {
+        "slot": 123,
+        "shp_idx": 1
+      },
+      {
+        "slot": 124,
+        "shp_idx": 1
+      },
+      {
+        "slot": 125,
+        "shp_idx": 1
+      },
+      {
+        "slot": 126,
+        "shp_idx": 1
+      }
+    ],
+    "layer2": [
+      {
+        "slot": 0,
+        "shp_idx": 41
+      },
+      {
+        "slot": 1,
+        "shp_idx": 42
+      },
+      {
+        "slot": 2,
+        "shp_idx": 43
+      },
+      {
+        "slot": 3,
+        "shp_idx": 44
+      },
+      {
+        "slot": 4,
+        "shp_idx": 45
+      },
+      {
+        "slot": 5,
+        "shp_idx": 1
+      },
+      {
+        "slot": 6,
+        "shp_idx": 1
+      },
+      {
+        "slot": 7,
+        "shp_idx": 1
+      },
+      {
+        "slot": 8,
+        "shp_idx": 1
+      },
+      {
+        "slot": 9,
+        "shp_idx": 1
+      },
+      {
+        "slot": 10,
+        "shp_idx": 1
+      },
+      {
+        "slot": 11,
+        "shp_idx": 1
+      },
+      {
+        "slot": 12,
+        "shp_idx": 51
+      },
+      {
+        "slot": 13,
+        "shp_idx": 52
+      },
+      {
+        "slot": 14,
+        "shp_idx": 53
+      },
+      {
+        "slot": 15,
+        "shp_idx": 54
+      },
+      {
+        "slot": 16,
+        "shp_idx": 55
+      },
+      {
+        "slot": 17,
+        "shp_idx": 1
+      },
+      {
+        "slot": 18,
+        "shp_idx": 1
+      },
+      {
+        "slot": 19,
+        "shp_idx": 1
+      },
+      {
+        "slot": 20,
+        "shp_idx": 1
+      },
+      {
+        "slot": 21,
+        "shp_idx": 1
+      },
+      {
+        "slot": 22,
+        "shp_idx": 1
+      },
+      {
+        "slot": 23,
+        "shp_idx": 1
+      },
+      {
+        "slot": 24,
+        "shp_idx": 1
+      },
+      {
+        "slot": 25,
+        "shp_idx": 1
+      },
+      {
+        "slot": 26,
+        "shp_idx": 61
+      },
+      {
+        "slot": 27,
+        "shp_idx": 62
+      },
+      {
+        "slot": 28,
+        "shp_idx": 63
+      },
+      {
+        "slot": 29,
+        "shp_idx": 64
+      },
+      {
+        "slot": 30,
+        "shp_idx": 65
+      },
+      {
+        "slot": 31,
+        "shp_idx": 1
+      },
+      {
+        "slot": 32,
+        "shp_idx": 1
+      },
+      {
+        "slot": 33,
+        "shp_idx": 1
+      },
+      {
+        "slot": 34,
+        "shp_idx": 1
+      },
+      {
+        "slot": 35,
+        "shp_idx": 1
+      },
+      {
+        "slot": 36,
+        "shp_idx": 1
+      },
+      {
+        "slot": 37,
+        "shp_idx": 1
+      },
+      {
+        "slot": 38,
+        "shp_idx": 1
+      },
+      {
+        "slot": 39,
+        "shp_idx": 1
+      },
+      {
+        "slot": 40,
+        "shp_idx": 1
+      },
+      {
+        "slot": 41,
+        "shp_idx": 1
+      },
+      {
+        "slot": 42,
+        "shp_idx": 1
+      },
+      {
+        "slot": 43,
+        "shp_idx": 1
+      },
+      {
+        "slot": 44,
+        "shp_idx": 1
+      },
+      {
+        "slot": 45,
+        "shp_idx": 1
+      },
+      {
+        "slot": 46,
+        "shp_idx": 1
+      },
+      {
+        "slot": 47,
+        "shp_idx": 1
+      },
+      {
+        "slot": 48,
+        "shp_idx": 1
+      },
+      {
+        "slot": 49,
+        "shp_idx": 1
+      },
+      {
+        "slot": 50,
+        "shp_idx": 1
+      },
+      {
+        "slot": 51,
+        "shp_idx": 1
+      },
+      {
+        "slot": 52,
+        "shp_idx": 1
+      },
+      {
+        "slot": 53,
+        "shp_idx": 1
+      },
+      {
+        "slot": 54,
+        "shp_idx": 1
+      },
+      {
+        "slot": 55,
+        "shp_idx": 1
+      },
+      {
+        "slot": 56,
+        "shp_idx": 1
+      },
+      {
+        "slot": 57,
+        "shp_idx": 1
+      },
+      {
+        "slot": 58,
+        "shp_idx": 1
+      },
+      {
+        "slot": 59,
+        "shp_idx": 1
+      },
+      {
+        "slot": 60,
+        "shp_idx": 1
+      },
+      {
+        "slot": 61,
+        "shp_idx": 1
+      },
+      {
+        "slot": 62,
+        "shp_idx": 1
+      },
+      {
+        "slot": 63,
+        "shp_idx": 1
+      },
+      {
+        "slot": 64,
+        "shp_idx": 1
+      },
+      {
+        "slot": 65,
+        "shp_idx": 1
+      },
+      {
+        "slot": 66,
+        "shp_idx": 1
+      },
+      {
+        "slot": 67,
+        "shp_idx": 1
+      },
+      {
+        "slot": 68,
+        "shp_idx": 1
+      },
+      {
+        "slot": 69,
+        "shp_idx": 1
+      },
+      {
+        "slot": 70,
+        "shp_idx": 1
+      },
+      {
+        "slot": 71,
+        "shp_idx": 1
+      },
+      {
+        "slot": 72,
+        "shp_idx": 1
+      },
+      {
+        "slot": 73,
+        "shp_idx": 1
+      },
+      {
+        "slot": 74,
+        "shp_idx": 1
+      },
+      {
+        "slot": 75,
+        "shp_idx": 1
+      },
+      {
+        "slot": 76,
+        "shp_idx": 1
+      },
+      {
+        "slot": 77,
+        "shp_idx": 1
+      },
+      {
+        "slot": 78,
+        "shp_idx": 1
+      },
+      {
+        "slot": 79,
+        "shp_idx": 1
+      },
+      {
+        "slot": 80,
+        "shp_idx": 1
+      },
+      {
+        "slot": 81,
+        "shp_idx": 1
+      },
+      {
+        "slot": 82,
+        "shp_idx": 1
+      },
+      {
+        "slot": 83,
+        "shp_idx": 1
+      },
+      {
+        "slot": 84,
+        "shp_idx": 1
+      },
+      {
+        "slot": 85,
+        "shp_idx": 1
+      },
+      {
+        "slot": 86,
+        "shp_idx": 1
+      },
+      {
+        "slot": 87,
+        "shp_idx": 1
+      },
+      {
+        "slot": 88,
+        "shp_idx": 1
+      },
+      {
+        "slot": 89,
+        "shp_idx": 1
+      },
+      {
+        "slot": 90,
+        "shp_idx": 1
+      },
+      {
+        "slot": 91,
+        "shp_idx": 1
+      },
+      {
+        "slot": 92,
+        "shp_idx": 1
+      },
+      {
+        "slot": 93,
+        "shp_idx": 1
+      },
+      {
+        "slot": 94,
+        "shp_idx": 1
+      },
+      {
+        "slot": 95,
+        "shp_idx": 1
+      },
+      {
+        "slot": 96,
+        "shp_idx": 1
+      },
+      {
+        "slot": 97,
+        "shp_idx": 1
+      },
+      {
+        "slot": 98,
+        "shp_idx": 1
+      },
+      {
+        "slot": 99,
+        "shp_idx": 1
+      },
+      {
+        "slot": 100,
+        "shp_idx": 1
+      },
+      {
+        "slot": 101,
+        "shp_idx": 1
+      },
+      {
+        "slot": 102,
+        "shp_idx": 1
+      },
+      {
+        "slot": 103,
+        "shp_idx": 1
+      },
+      {
+        "slot": 104,
+        "shp_idx": 1
+      },
+      {
+        "slot": 105,
+        "shp_idx": 1
+      },
+      {
+        "slot": 106,
+        "shp_idx": 1
+      },
+      {
+        "slot": 107,
+        "shp_idx": 1
+      },
+      {
+        "slot": 108,
+        "shp_idx": 1
+      },
+      {
+        "slot": 109,
+        "shp_idx": 1
+      },
+      {
+        "slot": 110,
+        "shp_idx": 1
+      },
+      {
+        "slot": 111,
+        "shp_idx": 1
+      },
+      {
+        "slot": 112,
+        "shp_idx": 1
+      },
+      {
+        "slot": 113,
+        "shp_idx": 1
+      },
+      {
+        "slot": 114,
+        "shp_idx": 1
+      },
+      {
+        "slot": 115,
+        "shp_idx": 1
+      },
+      {
+        "slot": 116,
+        "shp_idx": 1
+      },
+      {
+        "slot": 117,
+        "shp_idx": 1
+      },
+      {
+        "slot": 118,
+        "shp_idx": 1
+      },
+      {
+        "slot": 119,
+        "shp_idx": 1
+      },
+      {
+        "slot": 120,
+        "shp_idx": 1
+      },
+      {
+        "slot": 121,
+        "shp_idx": 1
+      },
+      {
+        "slot": 122,
+        "shp_idx": 1
+      },
+      {
+        "slot": 123,
+        "shp_idx": 1
+      },
+      {
+        "slot": 124,
+        "shp_idx": 1
+      },
+      {
+        "slot": 125,
+        "shp_idx": 1
+      },
+      {
+        "slot": 126,
+        "shp_idx": 1
+      }
+    ],
+    "layer3": [
+      {
+        "slot": 0,
+        "shp_idx": 181
+      },
+      {
+        "slot": 1,
+        "shp_idx": 182
+      },
+      {
+        "slot": 2,
+        "shp_idx": 252
+      },
+      {
+        "slot": 3,
+        "shp_idx": 184
+      },
+      {
+        "slot": 4,
+        "shp_idx": 185
+      },
+      {
+        "slot": 5,
+        "shp_idx": 121
+      },
+      {
+        "slot": 6,
+        "shp_idx": 122
+      },
+      {
+        "slot": 7,
+        "shp_idx": 123
+      },
+      {
+        "slot": 8,
+        "shp_idx": 124
+      },
+      {
+        "slot": 9,
+        "shp_idx": 125
+      },
+      {
+        "slot": 10,
+        "shp_idx": 252
+      },
+      {
+        "slot": 11,
+        "shp_idx": 252
+      },
+      {
+        "slot": 12,
+        "shp_idx": 191
+      },
+      {
+        "slot": 13,
+        "shp_idx": 192
+      },
+      {
+        "slot": 14,
+        "shp_idx": 193
+      },
+      {
+        "slot": 15,
+        "shp_idx": 194
+      },
+      {
+        "slot": 16,
+        "shp_idx": 195
+      },
+      {
+        "slot": 17,
+        "shp_idx": 131
+      },
+      {
+        "slot": 18,
+        "shp_idx": 132
+      },
+      {
+        "slot": 19,
+        "shp_idx": 133
+      },
+      {
+        "slot": 20,
+        "shp_idx": 134
+      },
+      {
+        "slot": 21,
+        "shp_idx": 135
+      },
+      {
+        "slot": 22,
+        "shp_idx": 252
+      },
+      {
+        "slot": 23,
+        "shp_idx": 252
+      },
+      {
+        "slot": 24,
+        "shp_idx": 201
+      },
+      {
+        "slot": 25,
+        "shp_idx": 202
+      },
+      {
+        "slot": 26,
+        "shp_idx": 200
+      },
+      {
+        "slot": 27,
+        "shp_idx": 190
+      },
+      {
+        "slot": 28,
+        "shp_idx": 252
+      },
+      {
+        "slot": 29,
+        "shp_idx": 141
+      },
+      {
+        "slot": 30,
+        "shp_idx": 142
+      },
+      {
+        "slot": 31,
+        "shp_idx": 143
+      },
+      {
+        "slot": 32,
+        "shp_idx": 252
+      },
+      {
+        "slot": 33,
+        "shp_idx": 150
+      },
+      {
+        "slot": 34,
+        "shp_idx": 179
+      },
+      {
+        "slot": 35,
+        "shp_idx": 252
+      },
+      {
+        "slot": 36,
+        "shp_idx": 186
+      },
+      {
+        "slot": 37,
+        "shp_idx": 187
+      },
+      {
+        "slot": 38,
+        "shp_idx": 156
+      },
+      {
+        "slot": 39,
+        "shp_idx": 157
+      },
+      {
+        "slot": 40,
+        "shp_idx": 158
+      },
+      {
+        "slot": 41,
+        "shp_idx": 144
+      },
+      {
+        "slot": 42,
+        "shp_idx": 159
+      },
+      {
+        "slot": 43,
+        "shp_idx": 160
+      },
+      {
+        "slot": 44,
+        "shp_idx": 161
+      },
+      {
+        "slot": 45,
+        "shp_idx": 162
+      },
+      {
+        "slot": 46,
+        "shp_idx": 188
+      },
+      {
+        "slot": 47,
+        "shp_idx": 189
+      },
+      {
+        "slot": 48,
+        "shp_idx": 196
+      },
+      {
+        "slot": 49,
+        "shp_idx": 197
+      },
+      {
+        "slot": 50,
+        "shp_idx": 166
+      },
+      {
+        "slot": 51,
+        "shp_idx": 167
+      },
+      {
+        "slot": 52,
+        "shp_idx": 168
+      },
+      {
+        "slot": 53,
+        "shp_idx": 154
+      },
+      {
+        "slot": 54,
+        "shp_idx": 169
+      },
+      {
+        "slot": 55,
+        "shp_idx": 170
+      },
+      {
+        "slot": 56,
+        "shp_idx": 171
+      },
+      {
+        "slot": 57,
+        "shp_idx": 172
+      },
+      {
+        "slot": 58,
+        "shp_idx": 198
+      },
+      {
+        "slot": 59,
+        "shp_idx": 199
+      },
+      {
+        "slot": 60,
+        "shp_idx": 252
+      },
+      {
+        "slot": 61,
+        "shp_idx": 252
+      },
+      {
+        "slot": 62,
+        "shp_idx": 176
+      },
+      {
+        "slot": 63,
+        "shp_idx": 177
+      },
+      {
+        "slot": 64,
+        "shp_idx": 178
+      },
+      {
+        "slot": 65,
+        "shp_idx": 151
+      },
+      {
+        "slot": 66,
+        "shp_idx": 152
+      },
+      {
+        "slot": 67,
+        "shp_idx": 153
+      },
+      {
+        "slot": 68,
+        "shp_idx": 252
+      },
+      {
+        "slot": 69,
+        "shp_idx": 252
+      },
+      {
+        "slot": 70,
+        "shp_idx": 252
+      },
+      {
+        "slot": 71,
+        "shp_idx": 1
+      },
+      {
+        "slot": 72,
+        "shp_idx": 1
+      },
+      {
+        "slot": 73,
+        "shp_idx": 1
+      },
+      {
+        "slot": 74,
+        "shp_idx": 1
+      },
+      {
+        "slot": 75,
+        "shp_idx": 1
+      },
+      {
+        "slot": 76,
+        "shp_idx": 1
+      },
+      {
+        "slot": 77,
+        "shp_idx": 1
+      },
+      {
+        "slot": 78,
+        "shp_idx": 1
+      },
+      {
+        "slot": 79,
+        "shp_idx": 1
+      },
+      {
+        "slot": 80,
+        "shp_idx": 1
+      },
+      {
+        "slot": 81,
+        "shp_idx": 1
+      },
+      {
+        "slot": 82,
+        "shp_idx": 1
+      },
+      {
+        "slot": 83,
+        "shp_idx": 1
+      },
+      {
+        "slot": 84,
+        "shp_idx": 1
+      },
+      {
+        "slot": 85,
+        "shp_idx": 1
+      },
+      {
+        "slot": 86,
+        "shp_idx": 1
+      },
+      {
+        "slot": 87,
+        "shp_idx": 1
+      },
+      {
+        "slot": 88,
+        "shp_idx": 1
+      },
+      {
+        "slot": 89,
+        "shp_idx": 1
+      },
+      {
+        "slot": 90,
+        "shp_idx": 1
+      },
+      {
+        "slot": 91,
+        "shp_idx": 1
+      },
+      {
+        "slot": 92,
+        "shp_idx": 1
+      },
+      {
+        "slot": 93,
+        "shp_idx": 1
+      },
+      {
+        "slot": 94,
+        "shp_idx": 1
+      },
+      {
+        "slot": 95,
+        "shp_idx": 1
+      },
+      {
+        "slot": 96,
+        "shp_idx": 1
+      },
+      {
+        "slot": 97,
+        "shp_idx": 1
+      },
+      {
+        "slot": 98,
+        "shp_idx": 1
+      },
+      {
+        "slot": 99,
+        "shp_idx": 1
+      },
+      {
+        "slot": 100,
+        "shp_idx": 1
+      },
+      {
+        "slot": 101,
+        "shp_idx": 1
+      },
+      {
+        "slot": 102,
+        "shp_idx": 1
+      },
+      {
+        "slot": 103,
+        "shp_idx": 1
+      },
+      {
+        "slot": 104,
+        "shp_idx": 1
+      },
+      {
+        "slot": 105,
+        "shp_idx": 1
+      },
+      {
+        "slot": 106,
+        "shp_idx": 1
+      },
+      {
+        "slot": 107,
+        "shp_idx": 1
+      },
+      {
+        "slot": 108,
+        "shp_idx": 1
+      },
+      {
+        "slot": 109,
+        "shp_idx": 1
+      },
+      {
+        "slot": 110,
+        "shp_idx": 1
+      },
+      {
+        "slot": 111,
+        "shp_idx": 1
+      },
+      {
+        "slot": 112,
+        "shp_idx": 1
+      },
+      {
+        "slot": 113,
+        "shp_idx": 1
+      },
+      {
+        "slot": 114,
+        "shp_idx": 1
+      },
+      {
+        "slot": 115,
+        "shp_idx": 1
+      },
+      {
+        "slot": 116,
+        "shp_idx": 1
+      },
+      {
+        "slot": 117,
+        "shp_idx": 1
+      },
+      {
+        "slot": 118,
+        "shp_idx": 1
+      },
+      {
+        "slot": 119,
+        "shp_idx": 1
+      },
+      {
+        "slot": 120,
+        "shp_idx": 1
+      },
+      {
+        "slot": 121,
+        "shp_idx": 1
+      },
+      {
+        "slot": 122,
+        "shp_idx": 1
+      },
+      {
+        "slot": 123,
+        "shp_idx": 1
+      },
+      {
+        "slot": 124,
+        "shp_idx": 1
+      },
+      {
+        "slot": 125,
+        "shp_idx": 1
+      },
+      {
+        "slot": 126,
+        "shp_idx": 1
+      }
+    ]
+  }
+}

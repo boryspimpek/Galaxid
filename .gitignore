@@ -1,6 +1,0 @@
-# Godot 4+ specific ignores
-.godot/
-/android/
-/data/enemy*/
-/data/weapon_sprites
-/data/extracted_*

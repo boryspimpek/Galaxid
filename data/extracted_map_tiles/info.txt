@@ -1,0 +1,26 @@
+Struktura tilemap_layer1.json
+To jest tablica 300 wierszy × 14 kolumn — każda wartość to numer slotu (0-based):
+
+row 0:   [20, 46, 27, 27, 27, 27, 47, 20, 20, 20, 20, 20, 20, 20]
+row 1:   [20, 58, 26, 27, 27, 29, 59, 20, ...]
+...
+row 299: [...]
+Jak zamienić numer w tilemapie na plik PNG
+Wartość w tilemap = numer slotu → bezpośrednio odpowiada nazwie pliku:
+
+tilemap[row][col] = 20  →  tile_slot020_shp???.png
+tilemap[row][col] = 46  →  tile_slot046_shp???.png
+Plik PNG masz gotowy w katalogu layer1/ — wystarczy dopasować prefix tile_slotNNN_*. Nie musisz szukać w map_sh_used (to informacja debugowa), bo nazwa pliku już zawiera oba numery.
+
+Układ na mapie
+col:  0    1    2    3  ...  13
+      ┌────┬────┬────┬────┬────┐  ← row 0 (TOP mapy = koniec levelu)
+      │    │    │    │    │    │
+      ├────┼────┼────┼────┼────┤
+      │    │    │    │    │    │
+      ...
+      └────┴────┴────┴────┴────┘  ← row 299 (BOTTOM = start levelu)
+Każdy kafelek: 24 × 28 px → cała mapa layer1: 336 × 8400 px
+
+Ważne: kierunek scrollowania
+Gra scrolluje od dołu do góry — gracz wlatuje od row 299 w kierunku row 0. Więc jeśli chcesz wyrenderować podgląd "jak widzi gracz", row 299 jest pierwszym widocznym ekranem.

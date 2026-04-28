@@ -1,0 +1,37 @@
+Tyrian Sound Effects Index
+===========================
+
+Total sounds: 29
+Format: 8-bit signed PCM, mono, 11025 Hz
+
+Note: file entry i=0 -> sound ID 1 (S_NONE/ID=0 is silence, not stored)
+
+  1: S_WEAPON_1                -   6134 bytes ( 556 ms)
+  2: S_WEAPON_2                -   6813 bytes ( 617 ms)
+  3: S_ENEMY_HIT               -   1676 bytes ( 152 ms)
+  4: S_EXPLOSION_4             -   5701 bytes ( 517 ms)
+  5: S_WEAPON_5                -   9789 bytes ( 887 ms)
+  6: S_WEAPON_6                -   9886 bytes ( 896 ms)
+  7: S_WEAPON_7                -  10261 bytes ( 930 ms)
+  8: S_SELECT_EXPLOSION_8      -   6743 bytes ( 611 ms)
+  9: S_EXPLOSION_9             -   5277 bytes ( 478 ms)
+ 10: S_WEAPON_10               -  12333 bytes (1118 ms)
+ 11: S_EXPLOSION_11            -  14165 bytes (1284 ms)
+ 12: S_EXPLOSION_12            -  12544 bytes (1137 ms)
+ 13: S_WEAPON_13               -   7061 bytes ( 640 ms)
+ 14: S_WEAPON_14               -  27796 bytes (2521 ms)
+ 15: S_WEAPON_15               -   4353 bytes ( 394 ms)
+ 16: S_SPRING                  -   7745 bytes ( 702 ms)
+ 17: S_WARNING                 -   8421 bytes ( 763 ms)
+ 18: S_ITEM                    -   5500 bytes ( 498 ms)
+ 19: S_HULL_HIT                -  14660 bytes (1329 ms)
+ 20: S_MACHINE_GUN             -   9856 bytes ( 893 ms)
+ 21: S_SOUL_OF_ZINGLON         -  24975 bytes (2265 ms)
+ 22: S_EXPLOSION_22            -  16000 bytes (1451 ms)
+ 23: S_CLINK                   -   3145 bytes ( 285 ms)
+ 24: S_CLICK                   -   1745 bytes ( 158 ms)
+ 25: S_WEAPON_25               -   3334 bytes ( 302 ms)
+ 26: S_WEAPON_26               -  11006 bytes ( 998 ms)
+ 27: S_SHIELD_HIT              -   5460 bytes ( 495 ms)
+ 28: S_CURSOR                  -   3014 bytes ( 273 ms)
+ 29: S_POWERUP                 -   9001 bytes ( 816 ms)
