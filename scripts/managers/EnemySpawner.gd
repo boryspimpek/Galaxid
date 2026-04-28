@@ -291,7 +291,9 @@ func spawn_path_enemy(event: Dictionary):
 	if event.has("path") and "wybran_sciezka" in enemy:
 		enemy.wybran_sciezka = event.get("path")
 
-	var spawn_pos = Vector2(float(event.get("screen_x", 0)), float(event.get("screen_y", 0)))
+	var spawn_pos = Vector2(
+		float(event.get("screen_x", 0)) + 24.0,
+		float(event.get("screen_y", 0)))
 
 	if enemy.has_signal("projectile_spawned"):
 		_setup_enemy(enemy, enemy_id, spawn_pos, Vector2.ZERO, 0, 0, 100, 0, 25)

@@ -53,7 +53,7 @@ var setto: bool = false
 
 # ---- Ruch po ścieżce ----
 @export var wybran_sciezka: String = ""
-@export var path_speed: float = 150.0
+@export var path_speed: float = 3.0
 var _active_follow: PathFollow2D = null
 var projectile_scene: PackedScene    # Scena pocisku wroga
 

@@ -13,9 +13,9 @@ point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_llqvf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 0, 0, 250, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 195, 0, 0, 0, 0, 6, 200, 0, 0, 0, 0, 14, 200, 0, 0, 0, 0, 191, 0)
 }
-point_count = 3
+point_count = 5
 
 [node name="Enemy_010" unique_id=834132465 instance=ExtResource("1_base")]
 armor = 3

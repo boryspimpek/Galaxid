@@ -497,6 +497,16 @@
       },
       {
         "dist": 300,
+        "event_type": 100,
+        "event_name": "path_enemy",
+        "enemy_id": 10,
+        "screen_x": 100,
+        "screen_y": -30,
+        "path": "Atak",
+        "category": "spawn"
+      },
+      {
+        "dist": 300,
         "event_type": 20,
         "event_name": "enemy_global_accel",
         "new_excc": -12,
