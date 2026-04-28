@@ -50,6 +50,11 @@ var setto: bool = false
 # ---- System strzelania ----
 @export var tur: Array = [0, 0, 0]   # ID broni [down, right, left]
 @export var freq: Array = [0, 0, 0]  # Częstotliwość strzelania [down, right, left]
+
+# ---- Ruch po ścieżce ----
+@export var wybran_sciezka: String = ""
+@export var path_speed: float = 150.0
+var _active_follow: PathFollow2D = null
 var projectile_scene: PackedScene    # Scena pocisku wroga
 
 var eshotwait: Array    = [0.0, 0.0, 0.0]  # Licznik cooldown (w klatkach Tyrian)
@@ -110,6 +115,22 @@ func _ready():
 	if debug_label:
 		debug_label.text = "ID:%d" % enemy_id
 		debug_label.visible = true
+
+	if wybran_sciezka != "":
+		_setup_path()
+
+func _setup_path():
+	for child in get_children():
+		if child is Path2D:
+			var rt = child.get_node_or_null("PathFollow2D/RemoteTransform2D")
+			if rt:
+				rt.update_position = false
+	var follow = get_node_or_null("Path_" + wybran_sciezka + "/PathFollow2D")
+	if follow:
+		_active_follow = follow
+		var rt = follow.get_node_or_null("RemoteTransform2D")
+		if rt:
+			rt.update_position = true
 	
 func _process_shooting(_delta: float):
 	for i in range(3):
@@ -244,6 +265,12 @@ func _fire_projectile(direction_index: int):
 		eshotmultipos[direction_index] = (eshotmultipos[direction_index] + 1) % weapon_max
 
 func _process(_delta):
+	if _active_follow:
+		_active_follow.progress += path_speed
+		if _active_follow.progress_ratio >= 1.0:
+			queue_free()
+		return
+
 	velocity.x += float(xaccel)
 	velocity.y += float(yaccel)
 

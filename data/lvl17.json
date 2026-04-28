@@ -70,6 +70,16 @@
         "category": "spawn"
       },
       {
+        "dist": 100,
+        "event_type": 100,
+        "event_name": "path_enemy",
+        "enemy_id": 10,
+        "screen_x": 10,
+        "screen_y": -30,
+        "path": "Atak",
+        "category": "spawn"
+      },
+      {
         "dist": 110,
         "event_type": 15,
         "event_name": "spawn_sky_enemy",

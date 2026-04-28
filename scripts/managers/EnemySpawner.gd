@@ -282,6 +282,26 @@ func spawn_4x4_enemies(event: Dictionary):
 		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 		level_manager.add_child(enemy)
 
+func spawn_path_enemy(event: Dictionary):
+	var enemy_id = int(event.get("enemy_id", 900))
+	var enemy = _instantiate(enemy_id)
+	if not enemy:
+		return
+
+	if event.has("path") and "wybran_sciezka" in enemy:
+		enemy.wybran_sciezka = event.get("path")
+
+	var spawn_pos = Vector2(float(event.get("screen_x", 0)), float(event.get("screen_y", 0)))
+
+	if enemy.has_signal("projectile_spawned"):
+		_setup_enemy(enemy, enemy_id, spawn_pos, Vector2.ZERO, 0, 0, 100, 0, 25)
+		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
+	else:
+		enemy.name = "Enemy_%03d" % enemy_id
+		enemy.global_position = spawn_pos
+
+	level_manager.add_child(enemy)
+
 # ============================================================================
 # Funkcje pomocnicze
 # ============================================================================

@@ -1,9 +1,21 @@
 [gd_scene format=3 uid="uid://2v3sf067o17a"]
 
-[ext_resource type="PackedScene" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://3hwj8x43630t" path="res://data/enemy_sprites/enemy_010_bank1_f00.png" id="2_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_010"]
+
+[sub_resource type="Curve2D" id="Curve2D_231e8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_llqvf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 0, 0, 250, 0)
+}
+point_count = 3
 
 [node name="Enemy_010" unique_id=834132465 instance=ExtResource("1_base")]
 armor = 3
@@ -13,9 +25,32 @@ startx = 130
 starty = -13
 startxc = 100
 
-[node name="Visual" parent="." index="0"]
+[node name="Visual" parent="." index="0" unique_id=1405638014]
+rotation = 1.5707964
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_tex")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
 shape = SubResource("CircleShape2D_010")
+
+[node name="Path_Zygzak" type="Path2D" parent="." index="3" unique_id=1901942120]
+visible = false
+curve = SubResource("Curve2D_231e8")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path_Zygzak" index="0" unique_id=1344715146]
+rotation = 0.7853982
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path_Zygzak/PathFollow2D" index="0" unique_id=536673973]
+scale = Vector2(0.06, 0.06)
+remote_path = NodePath("../../../Visual")
+
+[node name="Path_Atak" type="Path2D" parent="." index="4" unique_id=2018425666]
+curve = SubResource("Curve2D_llqvf")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path_Atak" index="0" unique_id=284355530]
+rotation = 1.5707964
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path_Atak/PathFollow2D" index="0" unique_id=540892254]
+scale = Vector2(0.06, 0.06)
+remote_path = NodePath("../../../Visual")
