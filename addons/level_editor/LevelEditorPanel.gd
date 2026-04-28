@@ -76,6 +76,13 @@ func _build_toolbar(parent: Control) -> void:
 	_spin_start.value_changed.connect(func(_v): _timeline.queue_redraw())
 	top.add_child(_spin_start)
 
+	var b_save := Button.new()
+	b_save.text = "💾 Zapisz plik"
+	b_save.pressed.connect(_save_to_disk)
+	top.add_child(b_save)
+
+	top.add_child(VSeparator.new())
+
 	var b1 := Button.new()
 	b1.text = "▶ Play from dist"
 	b1.pressed.connect(_on_play_from)
@@ -565,13 +572,62 @@ func _on_save_pressed() -> void:
 
 func _save_to_disk() -> void:
 	var path := "res://data/" + _level_file
-	var text := JSON.stringify(_json_root, "\t")
+	var text := _serialize(_json_root, 0)
 	var f    := FileAccess.open(path, FileAccess.WRITE)
 	if f == null:
 		push_error("LevelEditor: nie można zapisać " + path)
 		return
 	f.store_string(text)
 	f.close()
+
+# Własny serializer JSON:
+# - zachowuje kolejność kluczy słownika (brak sort_keys)
+# - proste tablice (tylko liczby/boole/stringi) zostają w jednej linii
+func _serialize(value: Variant, depth: int) -> String:
+	var indent := "\t"
+	var pad    := indent.repeat(depth)
+	var pad1   := indent.repeat(depth + 1)
+
+	match typeof(value):
+		TYPE_DICTIONARY:
+			var d := value as Dictionary
+			if d.is_empty():
+				return "{}"
+			var parts: PackedStringArray
+			for k in d:
+				parts.append(pad1 + JSON.stringify(str(k)) + ": " + _serialize(d[k], depth + 1))
+			return "{\n" + ",\n".join(parts) + "\n" + pad + "}"
+
+		TYPE_ARRAY:
+			var a := value as Array
+			if a.is_empty():
+				return "[]"
+			# Sprawdź czy tablica jest "prosta" (tylko skalary)
+			var simple := true
+			for item in a:
+				if typeof(item) in [TYPE_DICTIONARY, TYPE_ARRAY]:
+					simple = false
+					break
+			if simple:
+				var items: PackedStringArray
+				for item in a:
+					items.append(JSON.stringify(item))
+				return "[" + ", ".join(items) + "]"
+			else:
+				var parts: PackedStringArray
+				for item in a:
+					parts.append(pad1 + _serialize(item, depth + 1))
+				return "[\n" + ",\n".join(parts) + "\n" + pad + "]"
+
+		TYPE_BOOL:
+			return "true" if value else "false"
+		TYPE_INT:
+			return str(value)
+		TYPE_FLOAT:
+			# Unikaj "1.0" dla liczb całkowitych
+			return str(int(value)) if value == float(int(value)) else str(value)
+		_:
+			return JSON.stringify(value)
 
 # --- Playback ---------------------------------------------------------------
 

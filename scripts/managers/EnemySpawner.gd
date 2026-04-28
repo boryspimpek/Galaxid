@@ -82,7 +82,7 @@ func spawn_sky_enemy(event: Dictionary):
 		return
 
 	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)) + 24.0,
+		float(event.get("screen_x", 0)),
 		float(event.get("screen_y", 0)))
 	var enemy_slot = int(event.get("enemy_slot", 25))
 
@@ -102,8 +102,8 @@ func spawn_top_enemy(event: Dictionary):
 
 	var enemy_slot = int(event.get("enemy_slot", 50))
 	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)) + 24.0 + 6.0,
-		float(event.get("screen_y", 0)) + 28.0)
+		float(event.get("screen_x", 0)),
+		float(event.get("screen_y", 0)))
 
 	_setup_enemy(enemy, enemy_id, spawn_pos,
 		_velocity(enemy, int(event.get("y_vel", 0))),
@@ -121,8 +121,8 @@ func spawn_ground_enemy(event: Dictionary):
 
 	var enemy_slot = int(event.get("enemy_slot", 25))
 	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)) + 6.0,
-		float(event.get("screen_y", 0)) + 3.0)
+		float(event.get("screen_x", 0)),
+		float(event.get("screen_y", 0)))
 
 	_setup_enemy(enemy, enemy_id, spawn_pos,
 		_velocity(enemy, int(event.get("y_vel", 0))),
@@ -140,8 +140,8 @@ func spawn_ground_enemy_2(event: Dictionary):
 
 	var enemy_slot = int(event.get("enemy_slot", 75))
 	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)) + 6.0,
-		float(event.get("screen_y", 0)) + 3.0)
+		float(event.get("screen_x", 0)),
+		float(event.get("screen_y", 0)))
 
 	if small_enemy_adjust and enemy.esize == 0:
 		spawn_pos.x -= 10
@@ -163,7 +163,7 @@ func spawn_sky_bottom(event: Dictionary):
 
 	var enemy_slot = int(event.get("enemy_slot", 0))
 	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)) + 24.0,
+		float(event.get("screen_x", 0)),
 		float(event.get("screen_y", 0)))
 
 	_setup_enemy(enemy, enemy_id, spawn_pos,
@@ -182,7 +182,7 @@ func spawn_sky_bottom2(event: Dictionary):
 
 	var enemy_slot = int(event.get("enemy_slot", 50))
 	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)) + 24.0,
+		float(event.get("screen_x", 0)),
 		float(event.get("screen_y", 0)))
 
 	_setup_enemy(enemy, enemy_id, spawn_pos,
@@ -240,8 +240,8 @@ func spawn_4x4_enemies(event: Dictionary):
 	var scroll_for_slot = _scroll_for_slot(enemy_slot)
 
 	var base_pos = Vector2(
-		float(event.get("screen_x", 0)) + 6.0,
-		float(event.get("screen_y", 0)) + 3.0 - 28.0)
+		float(event.get("screen_x", 0)),
+		float(event.get("screen_y", 0)))
 
 	# Offsety dla 4x4 gridu (24x28px)
 	var offsets = [Vector2(0, 26), Vector2(23, 26), Vector2(0, 0), Vector2(23, 0)]
@@ -275,7 +275,7 @@ func spawn_path_enemy(event: Dictionary):
 		enemy.wybran_sciezka = event.get("path")
 
 	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)) + 24.0,
+		float(event.get("screen_x", 0)),
 		float(event.get("screen_y", 0)))
 
 	if enemy.has_signal("projectile_spawned"):
