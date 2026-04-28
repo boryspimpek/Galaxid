@@ -1,45 +1,50 @@
 [gd_scene format=3 uid="uid://csuh4qw4viv65"]
 
-[ext_resource type="Texture2D" uid="uid://b4ajitc7c7iby" path="res://assets/enemies/enemy.png" id="1_egddp"]
-[ext_resource type="Script" uid="uid://d3544aaudnv6u" path="res://scenes/enemies/enemy_900.gd" id="1_srtmv"]
+[ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://3hwj8x43630t" path="res://data/enemy_sprites/enemy_010_bank1_f00.png" id="2_tex"]
 
-[sub_resource type="Curve2D" id="Curve2D_epcrr"]
+[sub_resource type="Curve" id="Curve_cbe6x"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.07368421, 1), 0.0, -2.5854084, 1, 1, Vector2(0.11659665, 0.8890538), 0.0, 0.0, 0, 0, Vector2(0.7510505, 0.8890538), 0.0, 0.0, 0, 0, Vector2(1, 1.9034173), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_010"]
+
+[sub_resource type="Curve2D" id="Curve2D_llqvf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 100)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 104, 0, 0, 0, 0, 2.0788178, 130.3077, 0, 0, 0, 0, 12.048202, 150.21153, 0, 0, 0, 0, 30.668148, 166.13461, 0, 0, 0, 0, 60.241005, 177.08173, 0, 0, 0, 0, 87.62328, 181.0625, 0, 0, 0, 0, 117.19614, 180.0673, 0, 0, 0, 0, 144.57841, 176.08653, 0, 0, 0, 0, 164.79837, 168.53064, 0, 0, 0, 0, 179.62773, 157.17789, 0, 0, 0, 0, 190.58064, 143.2452, 0, 0, 0, 0, 199.34297, 125.331726, 0, 0, 0, 0, 203.72414, 106.42307, 0, 0, 0, 0, 203.72415, 87.51442, 0, 0, 0, 0, 201.53355, 61.639423, 0, 0, 0, 0, 196.0571, 44.721153, 0, 0, 0, 0, 188.39006, 28.798075, 0, 0, 0, 0, 173.05598, 11.8798065, 0, 0, 0, 0, 159.91249, 1.9278833, 0, 0, 0, 0, 143.48312, -4.0432706, 0, 0, 0, 0, 124.863174, -9.019232, 0, 0, 0, 0, 102.00147, -9.824966, 0, 0, 0, 0, 71.19392, -8.024039, 0, 0, 0, 0, 44.906933, 2.9230754, 0, 0, 0, 0, 29.572857, 16.855766, 0, 0, 0, 0, 9.857619, 37.754807, 0, 0, 0, 0, 1.095291, 54.673077, 0, 0, 0, 0, -5.476455, 74.57692, 0, 0, 0, 0, -5.476455, 100.45192, 0, 0, 0, 0, -1.095291, 135.28365, 0, 0, 0, 0, 4.381164, 162.15384, 0, 0, 0, 0, 9.857619, 188.02884, 0, 0, 0, 0, 46.261333, 259.68634)
 }
-point_count = 2
+point_count = 34
 
-[sub_resource type="Curve2D" id="Curve2D_srtmv"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 190, 0, 0, 0, 0, 250, 0)
-}
-point_count = 3
+[node name="Enemy_900" unique_id=834132465 instance=ExtResource("1_base")]
+armor = 3
+esize = 1
+ymove = 1
+startx = 130
+starty = -13
+startxc = 100
+wybran_sciezka = "Turn"
+path_speed = 6.0
+path_speed_curve = SubResource("Curve_cbe6x")
 
-[node name="Enemy_900" type="Node2D" unique_id=81345473]
-position = Vector2(25, 0)
-script = ExtResource("1_srtmv")
-wybran_sciezka = "Atak"
+[node name="Visual" parent="." index="0" unique_id=1405638014]
+position = Vector2(-0.13089076, 0.09912406)
+scale = Vector2(0.053345926, 0.060511664)
+texture = ExtResource("2_tex")
 
-[node name="Path_Zygzak" type="Path2D" parent="." unique_id=429757186]
-visible = false
-curve = SubResource("Curve2D_epcrr")
+[node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
+shape = SubResource("CircleShape2D_010")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path_Zygzak" unique_id=753876716]
-rotation = 0.7853982
+[node name="Turn" type="Path2D" parent="." index="3" unique_id=2028404003]
+position = Vector2(-0.13089076, 0.09912406)
+scale = Vector2(0.88909876, 1.0085278)
+curve = SubResource("Curve2D_llqvf")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Turn" index="0" unique_id=698643156]
+rotation = 1.5707964
 loop = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path_Zygzak/PathFollow2D" unique_id=754253355]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Turn/PathFollow2D" index="0" unique_id=153412787]
+rotation = -1.5707964
+scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../Visual")
-
-[node name="Path_Atak" type="Path2D" parent="." unique_id=674837978]
-curve = SubResource("Curve2D_srtmv")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path_Atak" unique_id=595017941]
-rotation = 1.5707964
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path_Atak/PathFollow2D" unique_id=2007301451]
-remote_path = NodePath("../../../Visual")
-
-[node name="Visual" type="Sprite2D" parent="." unique_id=121684436]
-rotation = 1.5707964
-texture = ExtResource("1_egddp")

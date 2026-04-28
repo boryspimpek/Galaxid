@@ -34,14 +34,14 @@ texture = ExtResource("2_tex")
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
 shape = SubResource("CircleShape2D_012")
 
-[node name="Path_Atak" type="Path2D" parent="." index="3" unique_id=652082014]
+[node name="Turn" type="Path2D" parent="." index="3" unique_id=652082014]
 curve = SubResource("Curve2D_3spji")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path_Atak" index="0" unique_id=401587729]
+[node name="PathFollow2D" type="PathFollow2D" parent="Turn" index="0" unique_id=401587729]
 rotation = 1.5707964
 loop = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path_Atak/PathFollow2D" index="0" unique_id=972967285]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Turn/PathFollow2D" index="0" unique_id=972967285]
 rotation = -1.5707964
 scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../Visual")

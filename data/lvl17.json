@@ -58,7 +58,7 @@
         "screen_x": 10,
         "screen_y": -30,
         "link_num": 1,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -69,7 +69,7 @@
         "screen_x": 10,
         "screen_y": -30,
         "link_num": 2,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -80,7 +80,7 @@
         "screen_x": 10,
         "screen_y": -30,
         "link_num": 3,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -91,7 +91,7 @@
         "screen_x": 10,
         "screen_y": -30,
         "link_num": 4,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -154,7 +154,7 @@
         "screen_x": 10,
         "screen_y": -30,
         "link_num": 5,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -185,7 +185,7 @@
         "screen_x": 240,
         "screen_y": -30,
         "link_num": 6,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -196,7 +196,7 @@
         "screen_x": 240,
         "screen_y": -30,
         "link_num": 7,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -233,7 +233,7 @@
         "screen_x": 240,
         "screen_y": -30,
         "link_num": 8,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -244,7 +244,7 @@
         "screen_x": 240,
         "screen_y": -30,
         "link_num": 9,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -255,7 +255,7 @@
         "screen_x": 240,
         "screen_y": -30,
         "link_num": 10,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -286,7 +286,7 @@
         "screen_x": 100,
         "screen_y": -30,
         "link_num": 1,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -297,7 +297,7 @@
         "screen_x": 100,
         "screen_y": -30,
         "link_num": 2,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -308,7 +308,7 @@
         "screen_x": 100,
         "screen_y": -30,
         "link_num": 3,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -319,7 +319,7 @@
         "screen_x": 100,
         "screen_y": -30,
         "link_num": 4,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -330,7 +330,7 @@
         "screen_x": 100,
         "screen_y": -30,
         "link_num": 5,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -413,7 +413,7 @@
         "screen_x": 160,
         "screen_y": -30,
         "link_num": 6,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -424,7 +424,7 @@
         "screen_x": 160,
         "screen_y": -30,
         "link_num": 7,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -435,7 +435,7 @@
         "screen_x": 160,
         "screen_y": -30,
         "link_num": 8,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -446,7 +446,7 @@
         "screen_x": 160,
         "screen_y": -30,
         "link_num": 9,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -457,7 +457,7 @@
         "screen_x": 160,
         "screen_y": -30,
         "link_num": 10,
-        "path": "Atak",
+        "path": "Turn",
         "category": "spawn"
       },
       {
@@ -525,6 +525,18 @@
         "back_move3": 0,
         "category": "spawn"
       },
+      {
+        "dist": 600,
+        "event_type": 100,
+        "event_name": "path_enemy",
+        "enemy_id": 5,
+        "screen_x": 20,
+        "screen_y": -30,
+        "link_num": 11,
+        "path": "CircleRight",
+        "category": "spawn"
+      },
+
       {
         "dist": 608,
         "event_type": 12,

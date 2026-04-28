@@ -126,7 +126,7 @@ func _setup_path():
 			var rt = child.get_node_or_null("PathFollow2D/RemoteTransform2D")
 			if rt:
 				rt.update_position = false
-	var follow = get_node_or_null("Path_" + wybran_sciezka + "/PathFollow2D")
+	var follow = get_node_or_null(wybran_sciezka + "/PathFollow2D")
 	if follow:
 		_active_follow = follow
 		var rt = follow.get_node_or_null("RemoteTransform2D")
