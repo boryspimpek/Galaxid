@@ -127,7 +127,7 @@ func spawn_ground_enemy(event: Dictionary):
 	_setup_enemy(enemy, enemy_id, spawn_pos,
 		_velocity(enemy, int(event.get("y_vel", 0))),
 		int(event.get("fixed_move_y", 0)), _scroll_for_slot(enemy_slot),
-		int(event.get("event_type", 0)), int(event.get("link_num", 0)), enemy_slot)
+		6, int(event.get("link_num", 0)), enemy_slot)
 
 	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 	level_manager.add_child(enemy)

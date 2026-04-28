@@ -12,6 +12,8 @@ const MAX_SCALE := 5.0
 const DEFAULT_HIDDEN := ["enemy_global_accel", "enemy_global_move"]
 # Pola tylko do odczytu — definiują typ eventu, edycja zepsułaby strukturę
 const READONLY_FIELDS := ["event_name", "event_type", "category"]
+# Pola usuwane automatycznie przy wczytaniu (zbędne relikty)
+const STRIP_FIELDS    := ["raw_x"]
 
 var _spin_start:   SpinBox
 var _spin_scale:   SpinBox
@@ -219,6 +221,15 @@ func _load_level(filename: String) -> void:
 	for ev in _events:
 		if int(ev["dist"]) > _max_dist:
 			_max_dist = int(ev["dist"])
+	# Usuń zbędne pola ze wszystkich eventów
+	var stripped := false
+	for ev in _events:
+		for field in STRIP_FIELDS:
+			if (ev as Dictionary).erase(field):
+				stripped = true
+	if stripped:
+		_save_to_disk()
+
 	_selected = -1
 	_clear_detail()
 	_populate_filter_bar()
