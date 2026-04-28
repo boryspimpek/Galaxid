@@ -9,22 +9,28 @@ const SPAWN_R  := 4.0
 const MIN_SCALE := 0.02
 const MAX_SCALE := 5.0
 
-# Typy domyślnie ukryte (szum animacyjny, zwykle niepotrzebny w edytorze)
 const DEFAULT_HIDDEN := ["enemy_global_accel", "enemy_global_move"]
+# Pola tylko do odczytu — definiują typ eventu, edycja zepsułaby strukturę
+const READONLY_FIELDS := ["event_name", "event_type", "category"]
 
 var _spin_start:   SpinBox
 var _spin_scale:   SpinBox
 var _level_option: OptionButton
 var _scroll:       ScrollContainer
 var _timeline:     Control
-var _detail:       RichTextLabel
-var _filter_box:   HBoxContainer   # dynamiczne checkboxy filtrów
+var _detail_vbox:  VBoxContainer   # formularz edycji
+var _filter_box:   HBoxContainer
 
 var _events:        Array      = []
 var _max_dist:      int        = 0
 var _selected:      int        = -1
 var _event_draw:    Array      = []
-var _visible_types: Dictionary = {}  # event_name -> bool
+var _visible_types: Dictionary = {}
+
+var _json_root:    Dictionary = {}  # cały JSON — żeby nie gubić headera
+var _level_key:    String     = ""
+var _level_file:   String     = ""
+var _field_editors: Dictionary = {}  # field_name -> Control
 
 class _TL extends Control:
 	var panel_ref: Control
@@ -103,10 +109,9 @@ func _build_toolbar(parent: Control) -> void:
 	top.add_child(bz_in)
 
 func _build_filter_bar(parent: Control) -> void:
-	# Poziomy scroll żeby nie pożerał wysokości gdy eventów jest dużo
 	var sc := ScrollContainer.new()
 	sc.custom_minimum_size.y = 26
-	sc.vertical_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	sc.vertical_scroll_mode   = ScrollContainer.SCROLL_MODE_DISABLED
 	sc.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_AUTO
 	parent.add_child(sc)
 
@@ -114,7 +119,6 @@ func _build_filter_bar(parent: Control) -> void:
 	hbox.add_theme_constant_override("separation", 4)
 	sc.add_child(hbox)
 
-	# Przyciski zbiorcze
 	var btn_all := Button.new()
 	btn_all.text = "Wszystkie"
 	btn_all.custom_minimum_size.x = 70
@@ -133,12 +137,6 @@ func _build_filter_bar(parent: Control) -> void:
 	_filter_box.add_theme_constant_override("separation", 2)
 	hbox.add_child(_filter_box)
 
-func _add_lbl(parent: Control, text: String) -> void:
-	var lbl := Label.new()
-	lbl.text = text
-	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	parent.add_child(lbl)
-
 func _build_main_area(parent: Control) -> void:
 	var split := HSplitContainer.new()
 	split.size_flags_vertical = Control.SIZE_EXPAND_FILL
@@ -156,16 +154,26 @@ func _build_main_area(parent: Control) -> void:
 	_timeline = tl
 	_scroll.add_child(_timeline)
 
+	# Panel szczegółów / edycja
 	var pnl := PanelContainer.new()
-	pnl.custom_minimum_size.x = 220
+	pnl.custom_minimum_size.x = 240
 	split.add_child(pnl)
 
-	_detail = RichTextLabel.new()
-	_detail.bbcode_enabled        = true
-	_detail.scroll_active         = true
-	_detail.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	_detail.size_flags_vertical   = Control.SIZE_EXPAND_FILL
-	pnl.add_child(_detail)
+	var detail_scroll := ScrollContainer.new()
+	detail_scroll.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	detail_scroll.size_flags_vertical   = Control.SIZE_EXPAND_FILL
+	pnl.add_child(detail_scroll)
+
+	_detail_vbox = VBoxContainer.new()
+	_detail_vbox.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	_detail_vbox.add_theme_constant_override("separation", 3)
+	detail_scroll.add_child(_detail_vbox)
+
+func _add_lbl(parent: Control, text: String) -> void:
+	var lbl := Label.new()
+	lbl.text = text
+	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	parent.add_child(lbl)
 
 # --- Level loading ----------------------------------------------------------
 
@@ -203,14 +211,16 @@ func _load_level(filename: String) -> void:
 	f.close()
 	if json == null:
 		return
-	var key: String = (json as Dictionary).keys()[0]
-	_events   = json[key].get("events", [])
-	_max_dist = 0
+	_json_root  = json
+	_level_key  = (json as Dictionary).keys()[0]
+	_level_file = filename
+	_events     = _json_root[_level_key].get("events", [])
+	_max_dist   = 0
 	for ev in _events:
 		if int(ev["dist"]) > _max_dist:
 			_max_dist = int(ev["dist"])
 	_selected = -1
-	_detail.text = ""
+	_clear_detail()
 	_populate_filter_bar()
 	_rebuild_draw_data()
 
@@ -221,8 +231,7 @@ func _populate_filter_bar() -> void:
 		child.queue_free()
 	_visible_types.clear()
 
-	# Zbierz unikalne event_name w kolejności wystąpienia
-	var seen: Dictionary = {}
+	var seen:  Dictionary    = {}
 	var names: Array[String] = []
 	for ev in _events:
 		var n: String = ev.get("event_name", "")
@@ -234,12 +243,10 @@ func _populate_filter_bar() -> void:
 	for name in names:
 		var visible: bool = name not in DEFAULT_HIDDEN
 		_visible_types[name] = visible
-
 		var btn := CheckButton.new()
 		btn.text = name
 		btn.button_pressed = visible
 		btn.add_theme_font_size_override("font_size", 10)
-		# Kolorowy pasek jako modulate ikony — prościej: tylko tekst
 		btn.toggled.connect(func(on: bool): _on_filter_toggled(name, on))
 		_filter_box.add_child(btn)
 
@@ -261,14 +268,12 @@ func _on_filter_all(visible: bool) -> void:
 
 func _rebuild_draw_data() -> void:
 	_event_draw.clear()
-	var scale: float = _spin_scale.value
+	var scale: float    = _spin_scale.value
 	var ctx_count: Dictionary = {}
 
 	for i in _events.size():
-		var ev: Dictionary  = _events[i]
-		var name: String    = ev.get("event_name", "")
-
-		# Filtr — pomiń jeśli typ jest wyłączony
+		var ev: Dictionary = _events[i]
+		var name: String   = ev.get("event_name", "")
 		if not _visible_types.get(name, true):
 			continue
 
@@ -307,7 +312,6 @@ func _draw_tl() -> void:
 	_timeline.draw_rect(Rect2(Vector2.ZERO, sz), Color(0.13, 0.13, 0.13))
 	_timeline.draw_line(Vector2(LABEL_W, 0), Vector2(LABEL_W, sz.y), Color(0.35, 0.35, 0.35))
 
-	# Siatka
 	var step := _grid_step(scale)
 	var d    := 0
 	while d <= _max_dist + step:
@@ -323,7 +327,6 @@ func _draw_tl() -> void:
 		)
 		d += step
 
-	# Eventy
 	for dd in _event_draw:
 		var idx: int       = dd["idx"]
 		var ev: Dictionary = _events[idx]
@@ -349,9 +352,8 @@ func _draw_tl() -> void:
 				Color.WHITE
 			)
 
-	# Marker start_dist
-	var sd  := int(_spin_start.value)
-	var sy  := _dist_to_y(sd)
+	var sd := int(_spin_start.value)
+	var sy := _dist_to_y(sd)
 	_timeline.draw_line(Vector2(0, sy), Vector2(sz.x, sy), Color(0.1, 0.9, 0.5, 0.9), 1.5)
 	_timeline.draw_string(
 		font, Vector2(2.0, sy + fs),
@@ -423,15 +425,142 @@ func _tl_input(event: InputEvent) -> void:
 	_show_detail(best_idx)
 	_timeline.queue_redraw()
 
+# --- Detail / Edit panel ----------------------------------------------------
+
+func _clear_detail() -> void:
+	for child in _detail_vbox.get_children():
+		child.queue_free()
+	_field_editors.clear()
+
 func _show_detail(idx: int) -> void:
+	_clear_detail()
 	if idx < 0 or idx >= _events.size():
-		_detail.text = ""
 		return
+
 	var ev: Dictionary = _events[idx]
-	var bb := "[b][color=#ffdd88]" + str(ev.get("event_name", "?")) + "[/color][/b]\n\n"
-	for k in ev.keys():
-		bb += "[color=#888888]" + str(k) + ":[/color]  " + str(ev[k]) + "\n"
-	_detail.parse_bbcode(bb)
+
+	# Nagłówek
+	var title := Label.new()
+	title.text = ev.get("event_name", "?")
+	title.add_theme_font_size_override("font_size", 13)
+	title.add_theme_color_override("font_color", Color(1.0, 0.87, 0.53))
+	_detail_vbox.add_child(title)
+
+	_detail_vbox.add_child(HSeparator.new())
+
+	# Wiersz per pole
+	for key in ev.keys():
+		var val = ev[key]
+		var is_ro: bool = key in READONLY_FIELDS
+
+		var row := HBoxContainer.new()
+		row.add_theme_constant_override("separation", 6)
+		_detail_vbox.add_child(row)
+
+		var lbl := Label.new()
+		lbl.text = key + ":"
+		lbl.custom_minimum_size.x = 110
+		lbl.add_theme_font_size_override("font_size", 10)
+		lbl.add_theme_color_override("font_color",
+			Color(0.6, 0.6, 0.6) if is_ro else Color(0.85, 0.85, 0.85))
+		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		row.add_child(lbl)
+
+		if is_ro:
+			var ro_lbl := Label.new()
+			ro_lbl.text = str(val)
+			ro_lbl.add_theme_font_size_override("font_size", 10)
+			ro_lbl.add_theme_color_override("font_color", Color(0.55, 0.55, 0.55))
+			ro_lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			row.add_child(ro_lbl)
+		else:
+			var editor := _make_field_editor(val)
+			editor.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+			row.add_child(editor)
+			_field_editors[key] = editor
+
+	_detail_vbox.add_child(HSeparator.new())
+
+	# Przycisk zapisu
+	var btn_save := Button.new()
+	btn_save.text = "💾  Zapisz zmiany"
+	btn_save.pressed.connect(_on_save_pressed)
+	_detail_vbox.add_child(btn_save)
+
+func _make_field_editor(value: Variant) -> Control:
+	match typeof(value):
+		TYPE_BOOL:
+			var cb := CheckButton.new()
+			cb.button_pressed = value
+			cb.add_theme_font_size_override("font_size", 10)
+			return cb
+		TYPE_INT:
+			var sp := SpinBox.new()
+			sp.min_value = -99999
+			sp.max_value = 99999
+			sp.step = 1
+			sp.value = value
+			sp.add_theme_font_size_override("font_size", 10)
+			return sp
+		TYPE_FLOAT:
+			var sp := SpinBox.new()
+			sp.min_value = -99999.0
+			sp.max_value = 99999.0
+			sp.step = 0.01
+			sp.value = value
+			sp.add_theme_font_size_override("font_size", 10)
+			return sp
+		_:
+			# String, Array, inne — LineEdit z JSON-encoded wartością
+			var le := LineEdit.new()
+			le.text = JSON.stringify(value) if typeof(value) == TYPE_ARRAY else str(value)
+			le.add_theme_font_size_override("font_size", 10)
+			return le
+
+func _read_field_value(editor: Control, original: Variant) -> Variant:
+	if editor is CheckButton:
+		return (editor as CheckButton).button_pressed
+	if editor is SpinBox:
+		var sp := editor as SpinBox
+		return int(sp.value) if typeof(original) == TYPE_INT else sp.value
+	if editor is LineEdit:
+		var text: String = (editor as LineEdit).text
+		if typeof(original) == TYPE_ARRAY:
+			var parsed = JSON.parse_string(text)
+			return parsed if parsed != null else original
+		# zachowaj oryginalny typ (int/float/string)
+		if typeof(original) == TYPE_INT   and text.is_valid_int():   return text.to_int()
+		if typeof(original) == TYPE_FLOAT and text.is_valid_float(): return text.to_float()
+		return text
+	return original
+
+func _on_save_pressed() -> void:
+	if _selected < 0 or _selected >= _events.size():
+		return
+
+	var ev: Dictionary = _events[_selected]
+	for key in _field_editors.keys():
+		var editor: Control = _field_editors[key]
+		ev[key] = _read_field_value(editor, ev[key])
+
+	# Uaktualnij max_dist jeśli dist się zmieniło
+	_max_dist = 0
+	for e in _events:
+		if int(e["dist"]) > _max_dist:
+			_max_dist = int(e["dist"])
+
+	_save_to_disk()
+	_rebuild_draw_data()
+
+func _save_to_disk() -> void:
+	var path := "res://data/" + _level_file
+	var text := JSON.stringify(_json_root, "\t")
+	var f    := FileAccess.open(path, FileAccess.WRITE)
+	if f == null:
+		push_error("LevelEditor: nie można zapisać " + path)
+		return
+	f.store_string(text)
+	f.close()
 
 # --- Playback ---------------------------------------------------------------
 

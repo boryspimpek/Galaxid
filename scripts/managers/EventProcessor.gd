@@ -156,6 +156,6 @@ func set_scroll_speed(event: Dictionary):
 				50:     enemy.scroll_y = back_move3
 
 	# Aktualizuj dane w EnemySpawner
-	enemy_spawner.set_scroll_data(back_move, back_move3, level_manager.map_x3)
+	enemy_spawner.set_scroll_data(back_move, back_move3)
 
 	print("EventProcessor: Set scroll speed: back move=", back_move, ", back move2=", back_move2, ", back move3=", back_move3)

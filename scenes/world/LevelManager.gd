@@ -17,10 +17,6 @@ var back_move:  int = 1   # Ground (slot 25, 75)
 var back_move2: int = 2   # Sky (slot 0)
 var back_move3: int = 3   # Top (slot 50)
 
-# Flagi tła dla eventów typu 7 (Top Enemy)
-var background3x1: bool = false
-var background3x1b: bool = false
-
 # Pozycje mapy z nagłówka poziomu
 var map_x: int = 1
 var map_x2: int = 1
@@ -88,8 +84,7 @@ func init_managers():
 	event_processor.set_level_events(level_data["events"])
 	event_processor.set_scroll_data(back_move, back_move2, back_move3)
 
-	enemy_spawner.set_scroll_data(back_move, back_move3, map_x3)
-	enemy_spawner.set_background_flags(background3x1, background3x1b)
+	enemy_spawner.set_scroll_data(back_move, back_move3)
 	if level_data["header"].has("level_enemies"):
 		enemy_spawner.set_random_spawn_data(level_data["header"]["level_enemies"])
 

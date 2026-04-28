@@ -8,9 +8,6 @@ var _scene_cache: Dictionary = {}  # enemy_id_str -> PackedScene | null
 # Dane scrollingu i mapy
 var back_move: int = 1
 var back_move3: int = 3
-var map_x3: int = 1
-var background3x1: bool = false
-var background3x1b: bool = false
 var small_enemy_adjust: bool = false
 
 # Random spawn system
@@ -21,14 +18,9 @@ var level_enemies: Array = []
 func _init(p_level_manager: Node2D):
 	level_manager = p_level_manager
 
-func set_scroll_data(p_back_move: int, p_back_move3: int, p_map_x3: int):
+func set_scroll_data(p_back_move: int, p_back_move3: int):
 	back_move = p_back_move
 	back_move3 = p_back_move3
-	map_x3 = p_map_x3
-
-func set_background_flags(p_background3x1: bool, p_background3x1b: bool):
-	background3x1 = p_background3x1
-	background3x1b = p_background3x1b
 
 func set_small_enemy_adjust(active: bool):
 	small_enemy_adjust = active
@@ -109,18 +101,11 @@ func spawn_top_enemy(event: Dictionary):
 		return
 
 	var enemy_slot = int(event.get("enemy_slot", 50))
+	var spawn_pos = Vector2(
+		float(event.get("screen_x", 0)) + 24.0 + 6.0,
+		float(event.get("screen_y", 0)) + 28.0)
 
-	# Korekta pozycji X i Y (jak w oryginale Tyrian)
-	var raw_x = event.get("raw_x", 0)
-	var spawn_x = raw_x - (map_x3 - 1) * 24 - 12 - 24
-	var y_offset = event.get("y_offset", 0)
-	var spawn_y = -28 - back_move3 + y_offset + 34
-	if background3x1:
-		spawn_y += 4
-	if background3x1b:
-		spawn_y += 4
-
-	_setup_enemy(enemy, enemy_id, Vector2(float(spawn_x), float(spawn_y)),
+	_setup_enemy(enemy, enemy_id, spawn_pos,
 		_velocity(enemy, int(event.get("y_vel", 0))),
 		int(event.get("fixed_move_y", 0)), _scroll_for_slot(enemy_slot),
 		7, int(event.get("link_num", 0)), enemy_slot)
@@ -238,10 +223,8 @@ func spawn_enemy_special(event: Dictionary):
 		return
 
 	var enemy_slot = int(event.get("enemy_slot", 50))
-	var raw_x = event.get("raw_x", 0)
-	var spawn_x = raw_x - (map_x3 - 1) * 24 - 12 - 24
 
-	_setup_enemy(enemy, enemy_id, Vector2(float(spawn_x), 190.0),
+	_setup_enemy(enemy, enemy_id, Vector2(float(event.get("screen_x", 0)), 190.0),
 		_velocity(enemy, int(event.get("y_vel", 0))),
 		int(event.get("fixed_move_y", 0)), -back_move3,
 		32, int(event.get("link_num", 0)), enemy_slot)
