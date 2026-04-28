@@ -54,6 +54,7 @@ var setto: bool = false
 # ---- Ruch po ścieżce ----
 @export var wybran_sciezka: String = ""
 @export var path_speed: float = 3.0
+@export var path_speed_curve: Curve
 var _active_follow: PathFollow2D = null
 var projectile_scene: PackedScene    # Scena pocisku wroga
 
@@ -266,7 +267,8 @@ func _fire_projectile(direction_index: int):
 
 func _process(_delta):
 	if _active_follow:
-		_active_follow.progress += path_speed
+		var speed_mult = path_speed_curve.sample(_active_follow.progress_ratio) if path_speed_curve else 1.0
+		_active_follow.progress += path_speed * speed_mult
 		if _active_follow.progress_ratio >= 1.0:
 			queue_free()
 		return
