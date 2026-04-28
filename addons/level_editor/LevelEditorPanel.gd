@@ -76,13 +76,6 @@ func _build_toolbar(parent: Control) -> void:
 	_spin_start.value_changed.connect(func(_v): _timeline.queue_redraw())
 	top.add_child(_spin_start)
 
-	var b_save := Button.new()
-	b_save.text = "💾 Zapisz plik"
-	b_save.pressed.connect(_save_to_disk)
-	top.add_child(b_save)
-
-	top.add_child(VSeparator.new())
-
 	var b1 := Button.new()
 	b1.text = "▶ Play from dist"
 	b1.pressed.connect(_on_play_from)

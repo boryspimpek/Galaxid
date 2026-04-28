@@ -8,11 +8,11 @@ armor = 10
 esize = 1
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-position = Vector2(0, 28)
 texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
 disabled = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2" unique_id=1251228731]
+position = Vector2(0, -29)
 polygon = PackedVector2Array(0, 18, 11, 18, 11, 44, -11, 44, -11, 18)
