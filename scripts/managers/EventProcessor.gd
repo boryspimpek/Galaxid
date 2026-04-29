@@ -131,6 +131,8 @@ func process_event(event: Dictionary):
 		40:                   enemy_controller.enemy_continual_damage(event)
 		60:                   enemy_controller.assign_special_enemy(event)
 		100:                  enemy_spawner.spawn_path_enemy(event)
+		200:                  enemy_spawner.spawn_free_enemy(event)
+		201:                  enemy_spawner.spawn_free_4x4(event)
 		_:
 			pass
 

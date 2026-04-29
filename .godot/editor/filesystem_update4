@@ -1,2 +1,5 @@
 res://scenes/enemies/Enemy_003.tscn
 res://scripts/managers/EnemySpawner.gd
+res://scripts/managers/EventProcessor.gd
+res://scenes/enemies/Enemy_955.tscn
+res://scenes/enemies/Enemy_010.tscn

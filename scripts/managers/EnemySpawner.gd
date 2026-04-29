@@ -75,6 +75,68 @@ func spawn_enemy(event: Dictionary):
 	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 	level_manager.add_child(enemy)
 
+func spawn_free_enemy(event: Dictionary):
+	var enemy_id = int(event.get("enemy_id", 0))
+	var enemy = _instantiate(enemy_id)
+	if not enemy:
+		return
+
+	var spawn_pos = Vector2(
+		float(event.get("screen_x", 0)),
+		float(event.get("screen_y", 0)))
+
+	var vel = Vector2(
+        float(event.get("vel_x", float(enemy.xmove))),
+        float(event.get("vel_y", float(enemy.ymove))))
+
+	enemy.name            = "Enemy_%d" % enemy_id
+	enemy.global_position = spawn_pos
+	enemy.velocity        = vel
+	enemy.fixed_move_y    = 0
+	enemy.scroll_y        = 0
+	enemy.enemy_slot      = 0
+	enemy.event_type      = 0
+	enemy.link_num        = int(event.get("link_num", 0))
+	enemy.enemy_id        = enemy_id
+	enemy.projectile_scene = GameConstants.enemy_projectile_scene
+
+	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
+	level_manager.add_child(enemy)
+
+func spawn_free_4x4(event: Dictionary):
+	var enemy_ids = event.get("enemy_ids", [])
+	var base_pos = Vector2(
+		float(event.get("screen_x", 0)),
+		float(event.get("screen_y", 0)))
+	# Offsety dla 4x4 gridu (24x28px)
+	var offsets = [Vector2(0, 26), Vector2(23, 26), Vector2(0, 0), Vector2(23, 0)]
+
+	for i in range(4):
+		var eid = int(enemy_ids[i])
+		var enemy = _instantiate(eid)
+		if not enemy:
+			continue
+
+		var spawn_pos = base_pos + offsets[i]
+		var vel = Vector2(
+			float(event.get("vel_x", float(enemy.xmove))),
+			float(event.get("vel_y", float(enemy.ymove))))
+
+		enemy.name            = "Enemy_%d" % eid
+		enemy.global_position = spawn_pos
+		enemy.velocity        = vel
+		enemy.fixed_move_y    = 0
+		enemy.scroll_y        = 0
+		enemy.enemy_slot      = 0
+		enemy.event_type      = 0
+		enemy.link_num        = int(event.get("link_num", 0))
+		enemy.enemy_id        = eid
+		enemy.projectile_scene = GameConstants.enemy_projectile_scene
+
+		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
+		level_manager.add_child(enemy)
+
+
 func spawn_sky_enemy(event: Dictionary):
 	var enemy_id = int(event.get("enemy_id", 0))
 	var enemy = _instantiate(enemy_id)
