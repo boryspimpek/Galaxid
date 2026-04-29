@@ -7,7 +7,7 @@ const EventProcessor = preload("res://scripts/managers/EventProcessor.gd")
 
 # Główny plik z eventami - SCENARIUSZ POZIOMU, tu ustawiamy 
 # w ktory poziom gracz ma grać
-@export var level_name: String = "lvl17"
+@export var level_name: String = "lvl23"
 
 # Uwaga: enemies.json nie jest już używany w runtime — dane wrogów są osadzone w scenach Enemy_XXX.tscn
 

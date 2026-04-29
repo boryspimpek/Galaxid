@@ -5,9 +5,9 @@ const SETTING := "game/debug/start_dist"
 const GAME_W   := 288
 const LABEL_W  := 60
 const BAR_H    := 12
-const SPAWN_R  := 4.0
-const MIN_SCALE := 0.02
-const MAX_SCALE := 5.0
+const SPAWN_R  := 10.0
+const MIN_SCALE := 1
+const MAX_SCALE := 10.0
 
 const DEFAULT_HIDDEN := ["enemy_global_accel", "enemy_global_move"]
 # Pola tylko do odczytu — definiują typ eventu, edycja zepsułaby strukturę
@@ -98,8 +98,8 @@ func _build_toolbar(parent: Control) -> void:
 	_spin_scale = SpinBox.new()
 	_spin_scale.min_value = MIN_SCALE
 	_spin_scale.max_value = MAX_SCALE
-	_spin_scale.step = 0.01
-	_spin_scale.value = 0.1
+	_spin_scale.step = 1
+	_spin_scale.value = 1
 	_spin_scale.custom_minimum_size.x = 75
 	_spin_scale.value_changed.connect(_on_scale_changed)
 	top.add_child(_spin_scale)
@@ -321,7 +321,8 @@ func _draw_tl() -> void:
 	var scale := _spin_scale.value
 
 	_timeline.draw_rect(Rect2(Vector2.ZERO, sz), Color(0.13, 0.13, 0.13))
-	_timeline.draw_line(Vector2(LABEL_W, 0), Vector2(LABEL_W, sz.y), Color(0.35, 0.35, 0.35))
+	_timeline.draw_line(Vector2(LABEL_W, 0),          Vector2(LABEL_W, sz.y),          Color(0.35, 0.35, 0.35))
+	_timeline.draw_line(Vector2(LABEL_W + GAME_W, 0), Vector2(LABEL_W + GAME_W, sz.y), Color(0.35, 0.35, 0.35))
 
 	var step := _grid_step(scale)
 	var d    := 0
