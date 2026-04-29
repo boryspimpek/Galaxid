@@ -26,18 +26,6 @@
 			},
 			{
 				"category": "spawn",
-				"event_name": "spawn_free_enemy",
-				"event_type": 200,
-				"dist": 150,
-				"screen_x": 250,
-				"screen_y": 20,
-				"vel_x": 0,
-				"vel_y": 2,
-				"enemy_id": 955,
-				"link_num": 0
-			},
-			{
-				"category": "spawn",
 				"dist": 100,
 				"enemy_id": 10,
 				"event_name": "path_enemy",
@@ -3669,6 +3657,18 @@
 				"screen_y": 3,
 				"y_offset": 1,
 				"y_vel": 0
+			},
+			{
+				"category": "spawn",
+				"event_name": "spawn_free_enemy",
+				"event_type": 200,
+				"dist": 2407,
+				"screen_x": 210,
+				"screen_y": 3,
+				"vel_x": 0,
+				"vel_y": 3,
+				"enemy_id": 955,
+				"link_num": 0
 			},
 			{
 				"back_move": 1,
