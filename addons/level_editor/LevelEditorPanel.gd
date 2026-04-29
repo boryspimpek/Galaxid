@@ -355,7 +355,8 @@ func _draw_tl() -> void:
 		if dd["spawn"]:
 			var cx: float = dd["cx"]
 			var cy: float = dd["cy"]
-			var col := _spawn_color(ev.get("enemy_id", 0))
+			var eid_for_color: int = ev.get("enemy_id", ev.get("enemy_ids", [0])[0] if ev.has("enemy_ids") else 0)
+			var col := _spawn_color(eid_for_color)
 			if is_sel:
 				_timeline.draw_circle(Vector2(cx, cy), SPAWN_R + 2.5, Color.WHITE)
 			_timeline.draw_circle(Vector2(cx, cy), SPAWN_R, col)

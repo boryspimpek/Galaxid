@@ -3,3 +3,4 @@ res://scripts/managers/EnemySpawner.gd
 res://scripts/managers/EventProcessor.gd
 res://scenes/enemies/Enemy_955.tscn
 res://scenes/enemies/Enemy_010.tscn
+res://addons/level_editor/LevelEditorPanel.gd

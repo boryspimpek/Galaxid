@@ -113,7 +113,6 @@ func process_event(event: Dictionary):
 		6:                    enemy_spawner.spawn_ground_enemy(event)
 		7:                    enemy_spawner.spawn_top_enemy(event)
 		10:                   enemy_spawner.spawn_ground_enemy_2(event)
-		12:                   enemy_spawner.spawn_4x4_enemies(event)
 		13:                   enemy_controller.disable_random_spawn(event)
 		14:                   enemy_controller.enable_random_spawn(event)
 		15:                   enemy_spawner.spawn_sky_enemy(event)
