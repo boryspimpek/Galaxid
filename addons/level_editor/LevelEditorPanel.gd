@@ -626,11 +626,14 @@ func _serialize(value: Variant, depth: int) -> String:
 # --- Playback ---------------------------------------------------------------
 
 func _on_play_from() -> void:
+	var level_name: String = _level_option.get_item_text(_level_option.selected)
+	ProjectSettings.set_setting("game/debug/level_name", level_name)
 	ProjectSettings.set_setting(SETTING, int(_spin_start.value))
 	ProjectSettings.save()
 	EditorInterface.play_main_scene()
 
 func _on_play_start() -> void:
+	ProjectSettings.set_setting("game/debug/level_name", "")
 	ProjectSettings.set_setting(SETTING, 0)
 	ProjectSettings.save()
 	EditorInterface.play_main_scene()

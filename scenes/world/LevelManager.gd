@@ -7,7 +7,7 @@ const EventProcessor = preload("res://scripts/managers/EventProcessor.gd")
 
 # Główny plik z eventami - SCENARIUSZ POZIOMU, tu ustawiamy 
 # w ktory poziom gracz ma grać
-@export var level_name: String = "lvl23"
+@export var level_name: String = "lvl15"
 
 # Uwaga: enemies.json nie jest już używany w runtime — dane wrogów są osadzone w scenach Enemy_XXX.tscn
 
@@ -39,11 +39,19 @@ var enemy_continual_damage: bool = false
 
 func _ready():
 	background = get_node_or_null("Background")
+
+	# Debug: plugin może narzucić level i start_dist przez ProjectSettings.
+	# level_name trzeba nadpisać PRZED init_managers(), bo tam jest load_data().
+	var start_dist: int = ProjectSettings.get_setting("game/debug/start_dist", 0)
+	if start_dist > 0:
+		var debug_level: String = ProjectSettings.get_setting("game/debug/level_name", "")
+		if debug_level != "":
+			level_name = debug_level
+
 	init_managers()
 	if background and background.has_method("setup"):
 		background.setup(level_name, back_move, back_move2, back_move3, map_x, map_x2, map_x3, map_y)
 
-	var start_dist: int = ProjectSettings.get_setting("game/debug/start_dist", 0)
 	if start_dist > 0:
 		level_distance = float(start_dist)
 		event_processor.fast_forward_to(start_dist)  # seek_to tła wywołane wewnętrznie

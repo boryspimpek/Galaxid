@@ -1,2 +1,2 @@
 res://scenes/world/LevelManager.gd
-res://addons/level_editor/LevelEditorPanel.gd
+res://scripts/managers/EventProcessor.gd

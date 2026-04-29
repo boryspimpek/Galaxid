@@ -41,10 +41,16 @@ const CONTEXT_EVENT_TYPES = [1, 2, 8, 13, 14, 19, 20, 26, 27, 30, 31]
 # Jednocześnie śledzi dokładne piksele scrollu każdej warstwy tła,
 # żeby seek_to ustawił je precyzyjnie (niezależnie od zmian back_move w trakcie).
 func fast_forward_to(target_dist: int):
-	var layer_dist1: int = 0
-	var layer_dist2: int = 0
-	var layer_dist3: int = 0
-	var prev_dist:   int = 0
+	# layer_distX to piksele przesunięcia każdej warstwy.
+	# Kluczowa zależność: level_distance += back_move/kl. i scroll_y -= back_move/kl.,
+	# więc layer1_scroll == level_distance (bez mnożenia!).
+	# Layer2/3 muszą być przeliczone przez liczbę klatek w segmencie:
+	#   frames = segment / back_move
+	#   layerN_scroll = frames * back_moveN = segment * back_moveN / back_move
+	var layer_dist1: float = 0.0
+	var layer_dist2: float = 0.0
+	var layer_dist3: float = 0.0
+	var prev_dist:   int   = 0
 	var i = 0
 
 	while i < level_events.size():
@@ -53,12 +59,13 @@ func fast_forward_to(target_dist: int):
 		if event_dist > target_dist:
 			break
 
-		# Piksele każdej warstwy od poprzedniego eventu do tego
+		# Piksele każdej warstwy w tym segmencie
 		# (używamy OBECNYCH prędkości, ZANIM ten event je zmieni)
 		var segment = event_dist - prev_dist
-		layer_dist1 += segment * back_move
-		layer_dist2 += segment * back_move2
-		layer_dist3 += segment * back_move3
+		layer_dist1 += float(segment)
+		if back_move > 0:
+			layer_dist2 += float(segment) * float(back_move2) / float(back_move)
+			layer_dist3 += float(segment) * float(back_move3) / float(back_move)
 		prev_dist = event_dist
 
 		var event_type = int(event["event_type"])
@@ -70,18 +77,23 @@ func fast_forward_to(target_dist: int):
 
 	# Reszta dystansu od ostatniego eventu do target_dist
 	var remaining = target_dist - prev_dist
-	layer_dist1 += remaining * back_move
-	layer_dist2 += remaining * back_move2
-	layer_dist3 += remaining * back_move3
+	layer_dist1 += float(remaining)
+	if back_move > 0:
+		layer_dist2 += float(remaining) * float(back_move2) / float(back_move)
+		layer_dist3 += float(remaining) * float(back_move3) / float(back_move)
+
+	var px1 := int(layer_dist1)
+	var px2 := int(layer_dist2)
+	var px3 := int(layer_dist3)
 
 	current_event_index = i
 	print("EventProcessor: fast_forward do dist=", target_dist,
 		  ", next_idx=", current_event_index,
-		  " (layer_px: ", layer_dist1, " / ", layer_dist2, " / ", layer_dist3, ")")
+		  " (layer_px: ", px1, " / ", px2, " / ", px3, ")")
 
 	# Ustaw warstwy tła na dokładne pozycje
 	if background and background.has_method("seek_to"):
-		background.seek_to(layer_dist1, layer_dist2, layer_dist3)
+		background.seek_to(px1, px2, px3)
 
 func process_events_for_distance(dist: int):
 	while current_event_index < level_events.size():

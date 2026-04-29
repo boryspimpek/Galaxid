@@ -1,9 +1,9 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1777453416
+::res://::1777455754
 export_presets.cfg::TextFile::-1::1776678763::0::1::::<><><>0<>0<><>::
 ::res://addons/::1777307092
-::res://addons/level_editor/::1777402596
-LevelEditorPanel.gd::GDScript::4240372761121804423::1777402596::0::1::::<>Control<><>0<>1<><>::
+::res://addons/level_editor/::1777455406
+LevelEditorPanel.gd::GDScript::4240372761121804423::1777455406::0::1::::<>Control<><>0<>1<><>::
 plugin.cfg::TextFile::-1::1777307092::0::1::::<><><>0<>0<><>::
 plugin.gd::GDScript::3226501489191534769::1777307097::0::1::::<>EditorPlugin<><>0<>1<><>::
 ::res://assets/::1777130608
@@ -13,7 +13,7 @@ icon.svg::CompressedTexture2D::292374000686953482::1776678763::1776678827::1::::
 player.png::CompressedTexture2D::4365628423255801083::1776678763::1776678827::1::::<><><>0<>0<>d241499d9907d73485e7071b5ac61d8c<>res://.godot/imported/player.png-be2216fcaabb5c62aa2466cd9a5726a8.ctex::
 ::res://assets/enemies/::1777130608
 enemy.png::CompressedTexture2D::4422458890973312378::1776678763::1776678827::1::::<><><>0<>0<>598168e0c1f496c52e15a6934c2edf7c<>res://.godot/imported/enemy.png-c5e5ce2cc95af3e7478fe405e968ef94.ctex::
-::res://data/::1777408361
+::res://data/::1777453441
 enemies.json::JSON::-1::1776697616::0::1::::<><><>0<>0<><>::
 generators.json::JSON::-1::1776678763::0::1::::<><><>0<>0<><>::
 lvl1.json::JSON::-1::1777278384::0::1::::<><><>0<>0<><>::
@@ -26,7 +26,7 @@ lvl15.json::JSON::-1::1777300771::0::1::::<><><>0<>0<><>::
 lvl17.json::JSON::-1::1777408361::0::1::::<><><>0<>0<><>::
 lvl19.json::JSON::-1::1777020737::0::1::::<><><>0<>0<><>::
 lvl21.json::JSON::-1::1777135298::0::1::::<><><>0<>0<><>::
-lvl23.json::JSON::-1::1777397654::0::1::::<><><>0<>0<><>::
+lvl23.json::JSON::-1::1777453441::0::1::::<><><>0<>0<><>::
 lvl25.json::JSON::-1::1777135510::0::1::::<><><>0<>0<><>::
 lvl27.json::JSON::-1::1777020765::0::1::::<><><>0<>0<><>::
 lvl29.json::JSON::-1::1777135888::0::1::::<><><>0<>0<><>::
@@ -7466,8 +7466,8 @@ WeaponSystem.tscn::PackedScene::-1::1776678763::0::1::::<><><>0<>0<><>::res://sc
 ::res://scenes/projectile/::1777130634
 projectile.gd::GDScript::6425248782272021058::1777019479::0::1::::<>Area2D<><>0<>0<><>::
 Projectile.tscn::PackedScene::4061135435519992803::1776865653::0::1::::<><><>0<>0<><>::uid://cxso55pxdnnn3::::res://scenes/projectile/projectile.gd<>uid://c7xhvqsl08oyb::::res://assets/bullet.png
-::res://scenes/world/::1777399196
-LevelManager.gd::GDScript::7303798033325442::1777397897::0::1::::<>Node2D<><>0<>0<><>::
+::res://scenes/world/::1777455417
+LevelManager.gd::GDScript::7303798033325442::1777455417::0::1::::<>Node2D<><>0<>0<><>::
 World.tscn::PackedScene::2889633771764373976::1777399196::0::1::::<><><>0<>0<><>::uid://bte7ofi7pgn5b::::res://scenes/player/Player.tscn<>res://scenes/background/Background.tscn<>uid://dsj7d5ivh3g::::res://scenes/world/LevelManager.gd<>uid://iddg8culgc7q::::res://UI/Hud.tscn
 ::res://scripts/::1777286563
 ::res://scripts/core/::1777285474
