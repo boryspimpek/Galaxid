@@ -1,10 +1,20 @@
 [gd_scene format=3 uid="uid://g7jf04a3wrnj"]
 
-[ext_resource type="PackedScene" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
+[ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://cfy65k0uy3wpx" path="res://data/enemy_sprites/enemy_028_bank1_f00.png" id="2_tex"]
+
+[sub_resource type="Curve" id="Curve_xbd0p"]
+_data = [Vector2(0, 0.53041834), 0.0, 0.058310702, 0, 0, Vector2(0.11390729, 1), 0.0, 0.0, 0, 0, Vector2(0.6331126, 1), 0.0, 0.0, 0, 0, Vector2(0.69536424, 0.9258556), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_028"]
 radius = 14.0
+
+[sub_resource type="Curve2D" id="Curve2D_xbd0p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 20, 0, 0, 0, 0, -50, 90, 0, 0, 0, 0, -50, 110, 0, 0, 0, 0, 0, 170, 0, 0, 0, 0, 0, 210, 0, 0, 0, 0, -50, 290)
+}
+point_count = 7
 
 [node name="Enemy_028" unique_id=827389811 instance=ExtResource("1_base")]
 armor = 4
@@ -12,10 +22,30 @@ esize = 1
 excc = -12
 xrev = -2
 tur = [125, 0, 0]
+path_speed = 2.5
+path_speed_curve = SubResource("Curve_xbd0p")
 
-[node name="Visual" parent="." index="0"]
-scale = Vector2(0.06, 0.06)
+[node name="Visual" parent="." index="0" unique_id=1405638014]
+scale = Vector2(0.06, 0.06060914)
 texture = ExtResource("2_tex")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
+rotation = 1.5707964
+scale = Vector2(1.0101523, 1)
 shape = SubResource("CircleShape2D_028")
+
+[node name="Swing" type="Path2D" parent="." index="3" unique_id=1205056641]
+scale = Vector2(1, 1.0101523)
+curve = SubResource("Curve2D_xbd0p")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Swing" index="0" unique_id=1412383518]
+rotation = 1.5707964
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Swing/PathFollow2D" index="0" unique_id=588057827]
+rotation = -1.5707964
+scale = Vector2(0.06, 0.06)
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Swing/PathFollow2D" index="1" unique_id=522655960]
+remote_path = NodePath("../../../CollisionShape2D")

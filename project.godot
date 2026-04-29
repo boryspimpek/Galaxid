@@ -37,8 +37,8 @@ enabled=PackedStringArray("res://addons/level_editor/plugin.cfg")
 
 [game]
 
-debug/start_dist=0
-debug/level_name=""
+debug/start_dist=1530
+debug/level_name="lvl17"
 
 [physics]
 
