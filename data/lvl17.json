@@ -3713,15 +3713,6 @@
 				"note": "preset: backMove=1 z opóźnieniami (map1YDelayMax=3, map2YDelayMax=2)"
 			},
 			{
-				"category": "context",
-				"dist": 2400,
-				"event_name": "scroll_speed",
-				"event_type": 2,
-				"back_move": 1,
-				"back_move2": 2,
-				"back_move3": 2
-			},
-			{
 				"back_move": 1,
 				"back_move2": 1,
 				"back_move3": 1,
