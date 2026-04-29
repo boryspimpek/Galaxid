@@ -10560,9 +10560,9 @@
 			{
 				"drain": 10,
 				"shotRepeat": 1,
-				"multi": 1,
+				"multi": 2,
 				"weapAni": 2,
-				"max": 1,
+				"max": 2,
 				"tx": 0,
 				"ty": 0,
 				"aim": 3,
@@ -10577,13 +10577,13 @@
 						"sg": 112
 					},
 					{
-						"attack": 0,
-						"del": 0,
+						"attack": 2,
+						"del": 255,
 						"sx": 0,
 						"sy": 0,
-						"bx": 0,
-						"by": 0,
-						"sg": 0
+						"bx": -8,
+						"by": -2,
+						"sg": 112
 					},
 					{
 						"attack": 0,

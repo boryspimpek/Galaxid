@@ -4,3 +4,5 @@ res://scripts/managers/EventProcessor.gd
 res://scenes/enemies/Enemy_955.tscn
 res://scenes/enemies/Enemy_010.tscn
 res://addons/level_editor/LevelEditorPanel.gd
+res://scenes/enemies/Enemy_013.tscn
+res://scenes/enemies/Enemy_006.tscn
