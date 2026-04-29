@@ -8,11 +8,11 @@ radius = 7.071068
 
 [node name="Enemy_003" unique_id=398450216 instance=ExtResource("1_base")]
 armor = 2
+ymove = 1
 startx = 130
 starty = -13
 startxc = 100
 eycc = 8
-xaccel = 92
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
 texture = ExtResource("2_tex")

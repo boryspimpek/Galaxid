@@ -93,6 +93,7 @@ func spawn_sky_enemy(event: Dictionary):
 
 	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 	level_manager.add_child(enemy)
+	# print("spawned sky enemy", enemy_id)
 
 func spawn_top_enemy(event: Dictionary):
 	var enemy_id = int(event.get("enemy_id", 0))

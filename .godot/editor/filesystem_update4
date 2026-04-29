@@ -1,1 +1,2 @@
 res://scenes/enemies/Enemy_003.tscn
+res://scripts/managers/EnemySpawner.gd
