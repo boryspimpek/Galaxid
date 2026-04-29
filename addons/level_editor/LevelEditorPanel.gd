@@ -9,7 +9,7 @@ const SPAWN_R  := 10.0
 const MIN_SCALE := 1
 const MAX_SCALE := 10.0
 
-const DEFAULT_HIDDEN := ["enemy_global_accel", "enemy_global_move"]
+# Domyślnie widoczne tylko spawny — context ukryty (można włączyć w pasku filtrów)
 # Pola tylko do odczytu — definiują typ eventu, edycja zepsułaby strukturę
 const READONLY_FIELDS := ["event_name", "event_type", "category"]
 # Pola usuwane automatycznie przy wczytaniu (zbędne relikty)
@@ -251,8 +251,16 @@ func _populate_filter_bar() -> void:
 			names.append(n)
 	names.sort()
 
+	# Słownik: name -> kategoria (potrzebna do ustalenia domyślnej widoczności)
+	var name_to_category: Dictionary = {}
+	for ev in _events:
+		var n: String = ev.get("event_name", "")
+		if n != "" and not name_to_category.has(n):
+			name_to_category[n] = ev.get("category", "")
+
 	for name in names:
-		var visible: bool = name not in DEFAULT_HIDDEN
+		# Domyślnie widoczne tylko spawny; context ukryty
+		var visible: bool = name_to_category.get(name, "") == "spawn"
 		_visible_types[name] = visible
 		var btn := CheckButton.new()
 		btn.text = name
