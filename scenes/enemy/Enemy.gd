@@ -352,10 +352,6 @@ func die():
 		var origin := visual.global_position if _active_follow else global_position
 		_spawn_death_explosion(parent, enemyground, explonum, origin)
 
-	if esize == 1:
-		SoundManager.play_sound(9)  # S_EXPLOSION_9 - duży wróg
-	else:
-		SoundManager.play_sound(8)  # S_EXPLOSION_8 - mały wróg
 	queue_free()
 
 
@@ -363,10 +359,10 @@ func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int, orig
 	var s := float(scroll_y)
 
 	if esize == 0:
-		var exp: Node2D = GameConstants.explosion_scene.instantiate()
-		exp.global_position = origin
-		parent.add_child(exp)
-		exp.setup(1, s)
+		var explosion: Node2D = GameConstants.explosion_scene.instantiate()
+		explosion.global_position = origin
+		parent.add_child(explosion)
+		explosion.setup(1, s)
 		return
 
 	# Duży wróg (esize == 1) — 4 eksplozje w rogach
@@ -375,10 +371,10 @@ func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int, orig
 	var offsets := [Vector2(-6, -14), Vector2(6, -14), Vector2(-6, 0), Vector2(6, 0)]
 
 	for i in range(4):
-		var exp: Node2D = GameConstants.explosion_scene.instantiate()
-		exp.global_position = origin + offsets[i]
-		parent.add_child(exp)
-		exp.setup(corner_types[i], s)
+		var explosion: Node2D = GameConstants.explosion_scene.instantiate()
+		explosion.global_position = origin + offsets[i]
+		parent.add_child(explosion)
+		explosion.setup(corner_types[i], s)
 
 	if explonum > 0:
 		var big   := explonum > 10

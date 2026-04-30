@@ -20,13 +20,13 @@ func _scan_sounds():
 		push_error("SoundManager: nie można otworzyć ", SOUND_DIR)
 		return
 	dir.list_dir_begin()
-	var name = dir.get_next()
-	while name != "":
-		if name.ends_with(".wav"):
-			var id = name.left(3).to_int()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if file_name.ends_with(".wav"):
+			var id = file_name.left(3).to_int()
 			if id > 0:
-				_path_map[id] = SOUND_DIR + name
-		name = dir.get_next()
+				_path_map[id] = SOUND_DIR + file_name
+		file_name = dir.get_next()
 	dir.list_dir_end()
 
 func play_weapon_sound(sound_id: int) -> void:

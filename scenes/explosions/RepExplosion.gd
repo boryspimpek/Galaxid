@@ -57,11 +57,11 @@ func _fire_burst() -> void:
 		SoundManager.play_sound(9)
 	else:
 		_spawn_explosion(parent, burst_pos, 1)
-		SoundManager.play_sound(8)
+		SoundManager.play_sound(9)
 
 
 func _spawn_explosion(parent: Node, pos: Vector2, type: int) -> void:
-	var exp: Node2D = GameConstants.explosion_scene.instantiate()
-	exp.global_position = pos
-	parent.add_child(exp)
-	exp.setup(type, _scroll_y)
+	var explosion: Node2D = GameConstants.explosion_scene.instantiate()
+	explosion.global_position = pos
+	parent.add_child(explosion)
+	explosion.setup(type, _scroll_y)

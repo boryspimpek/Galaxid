@@ -39,10 +39,10 @@ func _connect_buttons():
 	bl.get_node("HBoxContainer6/Btn1").pressed.connect(_on_shield_prev)
 	bl.get_node("HBoxContainer6/Btn7").pressed.connect(_on_shield_next)
 
-func _shorten(name: String) -> String:
-	if name.length() <= 12:
-		return name
-	return name.left(11) + "…"
+func _shorten(text: String) -> String:
+	if text.length() <= 12:
+		return text
+	return text.left(11) + "…"
 
 func _update_labels():
 	var wp = DataManager.get_weapon_port_by_id(PlayerSetup.front_weapon_index)

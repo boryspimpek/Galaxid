@@ -10,3 +10,6 @@ res://scenes/enemy/Enemy.gd
 res://scenes/enemies/Enemy_851.tscn
 res://scripts/managers/EnemyController.gd
 res://scripts/core/GameConstants.gd
+res://scenes/explosions/RepExplosion.gd
+res://scripts/managers/SoundManager.gd
+res://UI/Hud.gd
