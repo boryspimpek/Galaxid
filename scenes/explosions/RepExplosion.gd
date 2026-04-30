@@ -11,7 +11,7 @@ var _ticks_since_last: int = 0
 var _next_delay: int = 3
 
 # Offsets i typy dla czterech rogów dużej eksplozji powietrznej
-const LARGE_OFFSETS := [Vector2(-6, -14), Vector2(6, -14), Vector2(-6, 0), Vector2(6, 0)]
+const LARGE_OFFSETS := [Vector2(-6, -14), Vector2(6, -14), Vector2(-6, -1), Vector2(6, -1)]
 const LARGE_TYPES   := [7, 9, 8, 10]
 
 

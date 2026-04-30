@@ -368,7 +368,7 @@ func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int, orig
 	# Duży wróg (esize == 1) — 4 eksplozje w rogach
 	# enemyground == true → powietrzny (typy 7-10), false → naziemny (typy 2-5)
 	var corner_types: Array = [2, 4, 3, 5] if enemyground else [7, 9, 8, 10]
-	var offsets := [Vector2(-6, -14), Vector2(6, -14), Vector2(-6, 0), Vector2(6, 0)]
+	var offsets := [Vector2(-6, -14), Vector2(6, -14), Vector2(-6, -2), Vector2(6, -2)]
 
 	for i in range(4):
 		var explosion: Node2D = GameConstants.explosion_scene.instantiate()
