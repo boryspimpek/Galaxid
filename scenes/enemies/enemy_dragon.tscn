@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://cdsjde4gy67v4"]
+
+[ext_resource type="PackedScene" uid="uid://dic8h40mdvd5e" path="res://scenes/enemies/Enemy_031.tscn" id="1_58qnf"]
+[ext_resource type="PackedScene" uid="uid://dxig3tjotcbfr" path="res://scenes/enemies/Enemy_030.tscn" id="2_3bjur"]
+[ext_resource type="PackedScene" uid="uid://g7jf04a3wrnj" path="res://scenes/enemies/Enemy_028.tscn" id="4_v5sy4"]
+[ext_resource type="PackedScene" uid="uid://cg4rf8n00wvml" path="res://scenes/enemies/Enemy_029.tscn" id="5_iwqi0"]
+
+[node name="Enemy_dragon" type="Node2D" unique_id=508708888]
+position = Vector2(160, 0)
+
+[node name="Enemy_031" parent="." unique_id=1201927491 instance=ExtResource("1_58qnf")]
+
+[node name="Enemy_030" parent="." unique_id=1731212102 instance=ExtResource("2_3bjur")]
+position = Vector2(0, -24)
+
+[node name="Enemy_030_1" parent="." unique_id=1875599094 instance=ExtResource("2_3bjur")]
+position = Vector2(0, -48)
+
+[node name="Enemy_030_2" parent="." unique_id=1767168188 instance=ExtResource("2_3bjur")]
+position = Vector2(0, -72)
+
+[node name="Enemy_028" parent="." unique_id=827389811 instance=ExtResource("4_v5sy4")]
+position = Vector2(-24, -72)
+wybran_sciezka = "Swing3"
+
+[node name="Enemy_029" parent="." unique_id=1539318556 instance=ExtResource("5_iwqi0")]
+position = Vector2(24, -72)
+wybran_sciezka = "Swing3"
+
+[node name="Enemy_028_1" parent="." unique_id=1294151947 instance=ExtResource("4_v5sy4")]
+position = Vector2(-24, -48)
+wybran_sciezka = "Swing2"
+
+[node name="Enemy_029_1" parent="." unique_id=2056700556 instance=ExtResource("5_iwqi0")]
+position = Vector2(24, -48)
+wybran_sciezka = "Swing2"
+
+[node name="Enemy_028_2" parent="." unique_id=1839665324 instance=ExtResource("4_v5sy4")]
+position = Vector2(-24, -24)
+wybran_sciezka = "Swing"
+
+[node name="Enemy_029_2" parent="." unique_id=411020658 instance=ExtResource("5_iwqi0")]
+position = Vector2(24, -24)
+wybran_sciezka = "Swing"
