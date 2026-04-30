@@ -131,6 +131,50 @@ func just_spawn_enemy(event: Dictionary):
 	else:
 		spawn_free_enemy(event)
 
+func spawn_group_enemy(event: Dictionary):
+	var group_id = int(event.get("enemy_id", 0))
+	var base_pos = Vector2(
+		float(event.get("screen_x", 0)),
+		float(event.get("screen_y", 0)))
+	var link_num = int(event.get("link_num", 0))
+
+	var group_scene = _scene_for_enemy(group_id)
+	if not group_scene:
+		return
+
+	var group = group_scene.instantiate()
+
+	var id_regex = RegEx.new()
+	id_regex.compile("^Enemy_(\\d+)")
+
+	for child in group.get_children():
+		if not child is Node2D:
+			continue
+		var rx = id_regex.search(child.name)
+		if not rx:
+			continue
+
+		var child_id = int(rx.get_string(1))
+		var child_pos = base_pos + child.position
+
+		var sub_event: Dictionary = {
+			"enemy_id": child_id,
+			"screen_x": child_pos.x,
+			"screen_y": child_pos.y,
+			"link_num": link_num,
+		}
+
+		if "wybran_sciezka" in child and child.wybran_sciezka != "":
+			sub_event["path"] = child.wybran_sciezka
+		else:
+			sub_event["vel_x"] = float(event.get("vel_x", child.xmove))
+			sub_event["vel_y"] = float(event.get("vel_y", child.ymove))
+
+		just_spawn_enemy(sub_event)
+
+	group.queue_free()
+
+
 func spawn_free_4x4(event: Dictionary):
 	var enemy_ids = event.get("enemy_ids", [])
 	var base_pos = Vector2(

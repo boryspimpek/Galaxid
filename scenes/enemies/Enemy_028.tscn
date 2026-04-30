@@ -38,11 +38,12 @@ path_speed = 2.5
 path_speed_curve = SubResource("Curve_xbd0p")
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-scale = Vector2(0.06, 0.06)
+scale = Vector2(0.06, 0.06060914)
 texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
 rotation = 1.5707964
+scale = Vector2(1.0101523, 1)
 shape = SubResource("CircleShape2D_028")
 
 [node name="Swing" type="Path2D" parent="." index="3" unique_id=1205056641]
@@ -81,6 +82,7 @@ curve = SubResource("Curve2D_bk2xq")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Swing3" index="0" unique_id=308292737]
 rotation = 1.5707964
+loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Swing3/PathFollow2D" index="0" unique_id=939833461]
 rotation = -1.5707964

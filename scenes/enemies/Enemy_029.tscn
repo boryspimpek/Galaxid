@@ -80,6 +80,7 @@ curve = SubResource("Curve2D_cjokv")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Swing3" index="0" unique_id=1089045393]
 rotation = 1.5707964
+loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Swing3/PathFollow2D" index="0" unique_id=1572294625]
 rotation = -1.5707964

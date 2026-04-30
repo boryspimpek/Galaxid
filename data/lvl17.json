@@ -26,6 +26,18 @@
 			},
 			{
 				"category": "spawn",
+				"event_name": "spawn_group_enemy",
+				"event_type": 203,
+				"dist": 100,
+				"screen_x": 144,
+				"screen_y": -5,
+				"enemy_id": 851,
+				"vel_x": 0,
+				"vel_y": 2,
+				"link_num": 0
+			},
+			{
+				"category": "spawn",
 				"dist": 100,
 				"enemy_id": 10,
 				"event_name": "just_spawn_enemy",
