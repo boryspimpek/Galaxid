@@ -348,7 +348,9 @@ func die():
 		var exptype := int(enemy_data.get("explosiontype", 0)) if not enemy_data.is_empty() else 0
 		var enemyground := (exptype & 1) == 0
 		var explonum   := exptype >> 1
-		_spawn_death_explosion(parent, enemyground, explonum)
+		# Path enemies: Visual jest przesuwany przez RemoteTransform2D, nie węzeł główny
+		var origin := visual.global_position if _active_follow else global_position
+		_spawn_death_explosion(parent, enemyground, explonum, origin)
 
 	if esize == 1:
 		SoundManager.play_sound(9)  # S_EXPLOSION_9 - duży wróg
@@ -357,13 +359,12 @@ func die():
 	queue_free()
 
 
-func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int) -> void:
+func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int, origin: Vector2) -> void:
 	var s := float(scroll_y)
 
 	if esize == 0:
-		# Mały wróg — jedna eksplozja typ 1
 		var exp: Node2D = GameConstants.explosion_scene.instantiate()
-		exp.global_position = global_position
+		exp.global_position = origin
 		parent.add_child(exp)
 		exp.setup(1, s)
 		return
@@ -375,16 +376,15 @@ func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int) -> v
 
 	for i in range(4):
 		var exp: Node2D = GameConstants.explosion_scene.instantiate()
-		exp.global_position = global_position + offsets[i]
+		exp.global_position = origin + offsets[i]
 		parent.add_child(exp)
 		exp.setup(corner_types[i], s)
 
-	# Powtarzające eksplozje (rep_explosion)
 	if explonum > 0:
 		var big   := explonum > 10
 		var burst := explonum - 10 if big else explonum
 		var rep: Node2D = GameConstants.rep_explosion_scene.instantiate()
-		rep.global_position = global_position
+		rep.global_position = origin
 		parent.add_child(rep)
 		rep.setup(burst, big, s)
 
