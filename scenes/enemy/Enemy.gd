@@ -342,11 +342,51 @@ func take_damage(amount: int):
 		SoundManager.play_sound(3)  # S_ENEMY_HIT
 
 func die():
+	var parent := get_parent()
+	if parent:
+		var enemy_data := DataManager.get_enemy_by_id(enemy_id)
+		var exptype := int(enemy_data.get("explosiontype", 0)) if not enemy_data.is_empty() else 0
+		var enemyground := (exptype & 1) == 0
+		var explonum   := exptype >> 1
+		_spawn_death_explosion(parent, enemyground, explonum)
+
 	if esize == 1:
 		SoundManager.play_sound(9)  # S_EXPLOSION_9 - duży wróg
 	else:
 		SoundManager.play_sound(8)  # S_EXPLOSION_8 - mały wróg
 	queue_free()
+
+
+func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int) -> void:
+	var s := float(scroll_y)
+
+	if esize == 0:
+		# Mały wróg — jedna eksplozja typ 1
+		var exp: Node2D = GameConstants.explosion_scene.instantiate()
+		exp.global_position = global_position
+		parent.add_child(exp)
+		exp.setup(1, s)
+		return
+
+	# Duży wróg (esize == 1) — 4 eksplozje w rogach
+	# enemyground == true → powietrzny (typy 7-10), false → naziemny (typy 2-5)
+	var corner_types: Array = [7, 9, 8, 10] if enemyground else [2, 4, 3, 5]
+	var offsets := [Vector2(-6, -14), Vector2(6, -14), Vector2(-6, 0), Vector2(6, 0)]
+
+	for i in range(4):
+		var exp: Node2D = GameConstants.explosion_scene.instantiate()
+		exp.global_position = global_position + offsets[i]
+		parent.add_child(exp)
+		exp.setup(corner_types[i], s)
+
+	# Powtarzające eksplozje (rep_explosion)
+	if explonum > 0:
+		var big   := explonum > 10
+		var burst := explonum - 10 if big else explonum
+		var rep: Node2D = GameConstants.rep_explosion_scene.instantiate()
+		rep.global_position = global_position
+		parent.add_child(rep)
+		rep.setup(burst, big, s)
 
 func _on_body_entered(body: Node2D):
 	if body.is_in_group("player"):

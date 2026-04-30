@@ -9,3 +9,4 @@ res://scripts/managers/EventProcessor.gd
 res://scenes/enemy/Enemy.gd
 res://scenes/enemies/Enemy_851.tscn
 res://scripts/managers/EnemyController.gd
+res://scripts/core/GameConstants.gd
