@@ -4,3 +4,6 @@ res://scenes/enemies/enemy_dragon.tscn
 res://scenes/enemies/Enemy_029.tscn
 res://scenes/enemies/Enemy_028.tscn
 res://node_2d.tscn
+res://scripts/managers/EnemySpawner.gd
+res://scripts/managers/EventProcessor.gd
+res://scenes/enemy/Enemy.gd

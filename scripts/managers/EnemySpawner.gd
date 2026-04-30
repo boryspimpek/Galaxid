@@ -103,6 +103,34 @@ func spawn_free_enemy(event: Dictionary):
 	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 	level_manager.add_child(enemy)
 
+func spawn_path_enemy(event: Dictionary):
+	var enemy_id = int(event.get("enemy_id", 900))
+	var enemy = _instantiate(enemy_id)
+	if not enemy:
+		return
+
+	if event.has("path") and "wybran_sciezka" in enemy:
+		enemy.wybran_sciezka = event.get("path")
+
+	var spawn_pos = Vector2(
+		float(event.get("screen_x", 0)),
+		float(event.get("screen_y", 0)))
+
+	if enemy.has_signal("projectile_spawned"):
+		_setup_enemy(enemy, enemy_id, spawn_pos, Vector2.ZERO, 0, 0, 100, 0, 25)
+		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
+	else:
+		enemy.name = "Enemy_%03d" % enemy_id
+		enemy.global_position = spawn_pos
+
+	level_manager.add_child(enemy)
+
+func just_spawn_enemy(event: Dictionary):
+	if "path" in event:
+		spawn_path_enemy(event)
+	else:
+		spawn_free_enemy(event)
+
 func spawn_free_4x4(event: Dictionary):
 	var enemy_ids = event.get("enemy_ids", [])
 	var base_pos = Vector2(
@@ -292,28 +320,6 @@ func spawn_enemy_special(event: Dictionary):
 		32, int(event.get("link_num", 0)), enemy_slot)
 
 	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-	level_manager.add_child(enemy)
-
-func spawn_path_enemy(event: Dictionary):
-	var enemy_id = int(event.get("enemy_id", 900))
-	var enemy = _instantiate(enemy_id)
-	if not enemy:
-		return
-
-	if event.has("path") and "wybran_sciezka" in enemy:
-		enemy.wybran_sciezka = event.get("path")
-
-	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)),
-		float(event.get("screen_y", 0)))
-
-	if enemy.has_signal("projectile_spawned"):
-		_setup_enemy(enemy, enemy_id, spawn_pos, Vector2.ZERO, 0, 0, 100, 0, 25)
-		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-	else:
-		enemy.name = "Enemy_%03d" % enemy_id
-		enemy.global_position = spawn_pos
-
 	level_manager.add_child(enemy)
 
 # ============================================================================

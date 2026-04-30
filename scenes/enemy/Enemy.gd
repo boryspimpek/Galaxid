@@ -257,7 +257,8 @@ func _fire_projectile(direction_index: int):
 		# Oblicz pozycję startową z offsetem bx/by
 		var offset_x = float(bx)
 		var offset_y = float(by)
-		projectile.global_position = global_position + Vector2(offset_x, offset_y)
+		var spawn_origin = visual.global_position if _active_follow else global_position
+		projectile.global_position = spawn_origin + Vector2(offset_x, offset_y)
 
 		# Emituj sygnał do spawnu pocisku (LevelManager doda go do sceny)
 		projectile_spawned.emit(projectile)
@@ -270,6 +271,7 @@ func _process(_delta):
 	if _active_follow:
 		var speed_mult = path_speed_curve.sample(_active_follow.progress_ratio) if path_speed_curve else 1.0
 		_active_follow.progress += path_speed * speed_mult
+		_process_shooting(_delta)
 		if _active_follow.progress_ratio >= 1.0:
 			queue_free()
 		return

@@ -132,6 +132,7 @@ func process_event(event: Dictionary):
 		100:                  enemy_spawner.spawn_path_enemy(event)
 		200:                  enemy_spawner.spawn_free_enemy(event)
 		201:                  enemy_spawner.spawn_free_4x4(event)
+		202:                  enemy_spawner.just_spawn_enemy(event)
 		_:
 			pass
 
