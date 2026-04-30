@@ -116,7 +116,7 @@ func _ready():
 
 	if debug_label:
 		debug_label.text = "ID:%d" % enemy_id
-		debug_label.visible = true
+		debug_label.visible = false
 
 	if wybran_sciezka != "":
 		_setup_path()

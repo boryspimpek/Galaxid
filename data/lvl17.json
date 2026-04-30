@@ -26,18 +26,6 @@
 			},
 			{
 				"category": "spawn",
-				"event_name": "spawn_group_enemy",
-				"event_type": 203,
-				"dist": 100,
-				"screen_x": 144,
-				"screen_y": -5,
-				"enemy_id": 851,
-				"vel_x": 0,
-				"vel_y": 2,
-				"link_num": 0
-			},
-			{
-				"category": "spawn",
 				"dist": 100,
 				"enemy_id": 10,
 				"event_name": "just_spawn_enemy",
@@ -1536,49 +1524,15 @@
 			},
 			{
 				"category": "spawn",
-				"event_name": "spawn_free_enemy",
-				"event_type": 200,
+				"event_name": "spawn_group_enemy",
+				"event_type": 203,
 				"dist": 1557,
 				"screen_x": 78,
-				"screen_y": -29,
+				"screen_y": -5,
+				"enemy_id": 851,
 				"vel_x": 0,
 				"vel_y": 2,
-				"enemy_id": 31,
-				"link_num": 82
-			},
-			{
-				"category": "spawn",
-				"event_name": "spawn_free_enemy",
-				"event_type": 200,
-				"dist": 1568,
-				"screen_x": 78,
-				"screen_y": -29,
-				"vel_x": 0,
-				"vel_y": 2,
-				"enemy_id": 30,
 				"link_num": 81
-			},
-			{
-				"category": "spawn",
-				"dist": 1568,
-				"enemy_id": 28,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 66,
-				"screen_y": -29
-			},
-			{
-				"category": "spawn",
-				"dist": 1568,
-				"enemy_id": 29,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 90,
-				"screen_y": -29
 			},
 			{
 				"category": "context",
@@ -1589,80 +1543,12 @@
 				"spawn_on_death_id": 391
 			},
 			{
-				"category": "spawn",
-				"event_name": "spawn_free_enemy",
-				"event_type": 200,
-				"dist": 1579,
-				"screen_x": 78,
-				"screen_y": -29,
-				"vel_x": 0,
-				"vel_y": 2,
-				"enemy_id": 30,
-				"link_num": 81
-			},
-			{
-				"category": "spawn",
-				"dist": 1579,
-				"enemy_id": 28,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 66,
-				"screen_y": -29
-			},
-			{
-				"category": "spawn",
-				"dist": 1579,
-				"enemy_id": 29,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 90,
-				"screen_y": -29
-			},
-			{
 				"category": "context",
 				"dist": 1579,
 				"event_name": "enemy_from_enemy",
 				"event_type": 33,
 				"link_num": 81,
 				"spawn_on_death_id": 391
-			},
-			{
-				"category": "spawn",
-				"event_name": "spawn_free_enemy",
-				"event_type": 200,
-				"dist": 1590,
-				"screen_x": 78,
-				"screen_y": -29,
-				"vel_x": 0,
-				"vel_y": 2,
-				"enemy_id": 30,
-				"link_num": 81
-			},
-			{
-				"category": "spawn",
-				"dist": 1590,
-				"enemy_id": 28,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 66,
-				"screen_y": -29
-			},
-			{
-				"category": "spawn",
-				"dist": 1590,
-				"enemy_id": 29,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 90,
-				"screen_y": -29
 			},
 			{
 				"category": "context",
@@ -1674,51 +1560,17 @@
 			},
 			{
 				"category": "spawn",
-				"event_name": "spawn_free_enemy",
-				"event_type": 200,
+				"event_name": "spawn_group_enemy",
+				"event_type": 203,
 				"dist": 1627,
 				"screen_x": 150,
-				"screen_y": -30,
+				"screen_y": -5,
+				"enemy_id": 851,
 				"vel_x": 0,
 				"vel_y": 2,
-				"enemy_id": 31,
 				"link_num": 42
 			},
 			{
-				"category": "spawn",
-				"event_name": "spawn_free_enemy",
-				"event_type": 200,
-				"dist": 1638,
-				"screen_x": 150,
-				"screen_y": -30,
-				"vel_x": 0,
-				"vel_y": 2,
-				"enemy_id": 30,
-				"link_num": 41
-			},
-			{
-				"category": "spawn",
-				"dist": 1638,
-				"enemy_id": 28,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 138,
-				"screen_y": -30
-			},
-			{
-				"category": "spawn",
-				"dist": 1638,
-				"enemy_id": 29,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 162,
-				"screen_y": -30
-			},
-			{
 				"category": "context",
 				"dist": 1638,
 				"event_name": "enemy_from_enemy",
@@ -1727,80 +1579,12 @@
 				"spawn_on_death_id": 391
 			},
 			{
-				"category": "spawn",
-				"event_name": "spawn_free_enemy",
-				"event_type": 200,
-				"dist": 1649,
-				"screen_x": 150,
-				"screen_y": -30,
-				"vel_x": 0,
-				"vel_y": 2,
-				"enemy_id": 30,
-				"link_num": 41
-			},
-			{
-				"category": "spawn",
-				"dist": 1649,
-				"enemy_id": 28,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 138,
-				"screen_y": -30
-			},
-			{
-				"category": "spawn",
-				"dist": 1649,
-				"enemy_id": 29,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 162,
-				"screen_y": -30
-			},
-			{
 				"category": "context",
 				"dist": 1649,
 				"event_name": "enemy_from_enemy",
 				"event_type": 33,
 				"link_num": 41,
 				"spawn_on_death_id": 391
-			},
-			{
-				"category": "spawn",
-				"event_name": "spawn_free_enemy",
-				"event_type": 200,
-				"dist": 1660,
-				"screen_x": 150,
-				"screen_y": -30,
-				"vel_x": 0,
-				"vel_y": 2,
-				"enemy_id": 30,
-				"link_num": 41
-			},
-			{
-				"category": "spawn",
-				"dist": 1660,
-				"enemy_id": 28,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 138,
-				"screen_y": -30
-			},
-			{
-				"category": "spawn",
-				"dist": 1660,
-				"enemy_id": 29,
-				"event_name": "just_spawn_enemy",
-				"event_type": 202,
-				"link_num": 0,
-				"path": "Swing",
-				"screen_x": 162,
-				"screen_y": -30
 			},
 			{
 				"category": "context",
