@@ -32,9 +32,13 @@ window/size/window_height_override=800
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/level_editor/plugin.cfg")
+
 [game]
 
-debug/start_dist=80
+debug/start_dist=1500
 debug/level_name="lvl17"
 
 [physics]
