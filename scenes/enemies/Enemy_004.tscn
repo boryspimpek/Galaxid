@@ -6,6 +6,18 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_004"]
 radius = 9.0
 
+[sub_resource type="Curve2D" id="Curve2D_5upmo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0.49052376, -33.519123, -0.49052376, 33.519123, 0, 45, -28.88715, -10.74694, 28.88715, 10.74694, 71, 230)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_bd12s"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -0.491, -33.519, 0.491, 33.519, 0, 45, 31.887, -10.747, 28.88715, 10.74694, -71, 230)
+}
+point_count = 3
+
 [node name="Enemy_004" unique_id=2074857542 instance=ExtResource("1_base")]
 armor = 4
 esize = 1
@@ -13,6 +25,7 @@ ymove = 1
 startx = 130
 starty = -13
 startxc = 100
+path_speed = 6.0
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
 position = Vector2(-0.5, -4)
@@ -20,3 +33,31 @@ texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
 shape = SubResource("CircleShape2D_004")
+
+[node name="PathL" type="Path2D" parent="." index="3" unique_id=845865028]
+curve = SubResource("Curve2D_5upmo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathL" index="0" unique_id=371312212]
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathL/PathFollow2D" index="0" unique_id=1238052679]
+position = Vector2(-0.5, -4)
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="PathL/PathFollow2D" index="1" unique_id=1527885242]
+remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="PathR" type="Path2D" parent="." index="4" unique_id=1513262963]
+curve = SubResource("Curve2D_bd12s")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PathR" index="0" unique_id=1368122678]
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathR/PathFollow2D" index="0" unique_id=187270759]
+position = Vector2(-0.5, -4)
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="PathR/PathFollow2D" index="1" unique_id=1354316724]
+remote_path = NodePath("../../../CollisionShape2D")

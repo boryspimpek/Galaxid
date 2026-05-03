@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1777822046
+::res://::1777832905
 CLAUDE.md::TextFile::-1::1777488681::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1776678763::0::1::::<><><>0<>0<><>::
 ::res://addons/::1777307092
@@ -24,7 +24,7 @@ lvl7.json::JSON::-1::1776678763::0::1::::<><><>0<>0<><>::
 lvl11.json::JSON::-1::1777456707::0::1::::<><><>0<>0<><>::
 lvl13.json::JSON::-1::1777456634::0::1::::<><><>0<>0<><>::
 lvl15.json::JSON::-1::1777456388::0::1::::<><><>0<>0<><>::
-lvl17.json::JSON::-1::1777547950::0::1::::<><><>0<>0<><>::
+lvl17.json::JSON::-1::1777828934::0::1::::<><><>0<>0<><>::
 lvl19.json::JSON::-1::1777456328::0::1::::<><><>0<>0<><>::
 lvl21.json::JSON::-1::1777456056::0::1::::<><><>0<>0<><>::
 lvl23.json::JSON::-1::1777453441::0::1::::<><><>0<>0<><>::
@@ -6980,13 +6980,13 @@ Background.tscn::PackedScene::-1::1777099191::0::1::::<><><>0<>0<><>::res://scen
 Starfield.gd::GDScript::4035138971863682642::1777224768::0::1::::<>Node2D<><>0<>0<><>::
 TileBackground.gd::GDScript::4520554966889417413::1777317157::0::1::::<>Node2D<><>0<>0<><>::
 TileLayer.gd::GDScript::2169311136984687300::1777315491::0::1::::<>Node2D<><>0<>0<><>::
-::res://scenes/enemies/::1777585842
+::res://scenes/enemies/::1777830605
 Enemy_000.tscn::PackedScene::-1::1777369345::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn
 Enemy_001.tscn::PackedScene::-1::1777369345::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn<>res://data/enemy_sprites/enemy_001_bank2_f00.png
 Enemy_002.tscn::PackedScene::-1::1777369345::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn<>res://data/enemy_sprites/enemy_002_bank10_f00.png
 Enemy_003.tscn::PackedScene::6338125484202406180::1777462106::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://bp4jwig4nvmhk::::res://data/enemy_sprites/enemy_003_bank1_f00.png
-Enemy_004.tscn::PackedScene::7488441508247843216::1777585842::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://bkjvu174y0oq3::::res://data/enemy_sprites/enemy_004_bank1_f00.png
-Enemy_005.tscn::PackedScene::3229391492398099427::1777391778::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://c8ai6ge61r2w8::::res://data/enemy_sprites/enemy_005_bank1_f00.png
+Enemy_004.tscn::PackedScene::7488441508247843216::1777829328::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://bkjvu174y0oq3::::res://data/enemy_sprites/enemy_004_bank1_f00.png
+Enemy_005.tscn::PackedScene::3229391492398099427::1777827680::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://c8ai6ge61r2w8::::res://data/enemy_sprites/enemy_005_bank1_f00.png
 Enemy_006.tscn::PackedScene::3384785003728530526::1777480686::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://bow4kne3gikib::::res://data/enemy_sprites/enemy_006_bank1_f00.png
 Enemy_007.tscn::PackedScene::-1::1777369345::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn<>res://data/enemy_sprites/enemy_007_bank1_f00.png
 Enemy_008.tscn::PackedScene::-1::1777369345::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn<>res://data/enemy_sprites/enemy_008_bank1_f00.png
@@ -7833,10 +7833,9 @@ Enemy_848.tscn::PackedScene::-1::1777369346::0::1::::<><><>0<>0<><>::res://scene
 Enemy_849.tscn::PackedScene::-1::1777369346::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn<>res://data/enemy_sprites/enemy_849_bank17_f00.png
 Enemy_850.tscn::PackedScene::-1::1777369346::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn
 Enemy_851.tscn::PackedScene::5021118763388657503::1777545471::0::1::::<><><>0<>0<><>::uid://dic8h40mdvd5e::::res://scenes/enemies/Enemy_031.tscn<>uid://dxig3tjotcbfr::::res://scenes/enemies/Enemy_030.tscn<>uid://g7jf04a3wrnj::::res://scenes/enemies/Enemy_028.tscn<>uid://cg4rf8n00wvml::::res://scenes/enemies/Enemy_029.tscn
-Enemy_900.tscn::PackedScene::6078005790629917376::1777387517::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://3hwj8x43630t::::res://data/enemy_sprites/enemy_010_bank1_f00.png
-Enemy_955.tscn::PackedScene::3913380723935183504::1777467023::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://uvy8qqkca2ux::::res://data/enemy_sprites/enemy_121_bank1_f00.png
-::res://scenes/enemy/::1777552112
-Enemy.gd::GDScript::4605400125416299353::1777563828::0::1::::<>Area2D<><>0<>0<><>::
+enemy_852.tscn::PackedScene::3094730246276512549::1777830605::0::1::::<><><>0<>0<><>::uid://dexpsjoqudwr5::::res://scenes/enemies/Enemy_004.tscn
+::res://scenes/enemy/::1777823397
+Enemy.gd::GDScript::4605400125416299353::1777823397::0::1::::<>Area2D<><>0<>0<><>::
 Enemy.tscn::PackedScene::4689150847652142128::1777133528::0::1::::<><><>0<>0<><>::uid://b6u5jc5l8dstd::::res://scenes/enemy/Enemy.gd
 ::res://scenes/enemy_projectile/::1777284555
 EnemyProjectile.gd::GDScript::8392561708853174740::1777284555::0::1::::<>Area2D<><>0<>0<><>::
@@ -7858,8 +7857,8 @@ WeaponSystem.tscn::PackedScene::-1::1776678763::0::1::::<><><>0<>0<><>::res://sc
 ::res://scenes/projectile/::1777130634
 projectile.gd::GDScript::6425248782272021058::1777019479::0::1::::<>Area2D<><>0<>0<><>::
 Projectile.tscn::PackedScene::4061135435519992803::1776865653::0::1::::<><><>0<>0<><>::uid://cxso55pxdnnn3::::res://scenes/projectile/projectile.gd<>uid://c7xhvqsl08oyb::::res://assets/bullet.png
-::res://scenes/world/::1777490410
-LevelManager.gd::GDScript::7303798033325442::1777490410::0::1::::<>Node2D<><>0<>0<><>::
+::res://scenes/world/::1777829128
+LevelManager.gd::GDScript::7303798033325442::1777829128::0::1::::<>Node2D<><>0<>0<><>::
 World.tscn::PackedScene::2889633771764373976::1777399196::0::1::::<><><>0<>0<><>::uid://bte7ofi7pgn5b::::res://scenes/player/Player.tscn<>res://scenes/background/Background.tscn<>uid://dsj7d5ivh3g::::res://scenes/world/LevelManager.gd<>uid://iddg8culgc7q::::res://UI/Hud.tscn
 ::res://scripts/::1777286563
 ::res://scripts/core/::1777550872
