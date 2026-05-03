@@ -352,6 +352,10 @@ func die():
 		var origin := visual.global_position if _active_follow else global_position
 		_spawn_death_explosion(parent, enemyground, explonum, origin)
 
+	if esize == 1:
+		SoundManager.play_sound(9)
+	else:
+		SoundManager.play_sound(8)
 	queue_free()
 
 

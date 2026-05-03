@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1777560830
+::res://::1777822046
 CLAUDE.md::TextFile::-1::1777488681::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1776678763::0::1::::<><><>0<>0<><>::
 ::res://addons/::1777307092
@@ -15,7 +15,7 @@ player.png::CompressedTexture2D::4365628423255801083::1776678763::1776678827::1:
 ::res://assets/enemies/::1777130608
 enemy.png::CompressedTexture2D::4422458890973312378::1776678763::1776678827::1::::<><><>0<>0<>598168e0c1f496c52e15a6934c2edf7c<>res://.godot/imported/enemy.png-c5e5ce2cc95af3e7478fe405e968ef94.ctex::
 ::res://data/::1777560803
-enemies.json::JSON::-1::1777552733::0::1::::<><><>0<>0<><>::
+enemies.json::JSON::-1::1777562370::0::1::::<><><>0<>0<><>::
 generators.json::JSON::-1::1776678763::0::1::::<><><>0<>0<><>::
 lvl1.json::JSON::-1::1777278384::0::1::::<><><>0<>0<><>::
 lvl3.json::JSON::-1::1777127492::0::1::::<><><>0<>0<><>::
@@ -1467,7 +1467,7 @@ enemy_846_bank17_f00.png::CompressedTexture2D::937087197720064464::1777021565::1
 enemy_847_bank17_f00.png::CompressedTexture2D::7846640701938258550::1777021565::1777052193::1::::<><><>0<>0<>93290168dd8a7fc8e00a8e6709545f49<>res://.godot/imported/enemy_847_bank17_f00.png-a9de70c65501a51da83bf8d519bd6257.ctex::
 enemy_848_bank17_f00.png::CompressedTexture2D::5921285345850116451::1777021565::1777052193::1::::<><><>0<>0<>ac47e674a2ffcae855da037cea858644<>res://.godot/imported/enemy_848_bank17_f00.png-5bfa27b033b91d2629818b14b1973623.ctex::
 enemy_849_bank17_f00.png::CompressedTexture2D::7348306257876542046::1777021565::1777052193::1::::<><><>0<>0<>ad1a726b92b6327b8d3cad3a82a89437<>res://.godot/imported/enemy_849_bank17_f00.png-ad3ad118bc142f316024cd44d1f45c91.ctex::
-::res://data/explosion_sprites/::1777560559
+::res://data/explosion_sprites/::1777560832
 explo_t00_hit_flash_f00.png::CompressedTexture2D::1396682918068084739::1777560160::1777560832::1::::<><><>0<>0<>dbe4c6819f59f08b0c790adad49079dc<>res://.godot/imported/explo_t00_hit_flash_f00.png-65b765effda0b82f0aae81f89e0eb1b0.ctex::
 explo_t00_hit_flash_f01.png::CompressedTexture2D::3584534781828373954::1777560160::1777560832::1::::<><><>0<>0<>67a3ae28b59ae3e3bd599901ea206727<>res://.godot/imported/explo_t00_hit_flash_f01.png-f4864731d7d52803be615edc81a0edff.ctex::
 explo_t00_hit_flash_f02.png::CompressedTexture2D::697412693885339667::1777560160::1777560832::1::::<><><>0<>0<>747f8b5f44e5a6aadd4c21dcb3cea24c<>res://.godot/imported/explo_t00_hit_flash_f02.png-10f2895943569d2a0022e2fb34f1fc5e.ctex::
@@ -6980,12 +6980,12 @@ Background.tscn::PackedScene::-1::1777099191::0::1::::<><><>0<>0<><>::res://scen
 Starfield.gd::GDScript::4035138971863682642::1777224768::0::1::::<>Node2D<><>0<>0<><>::
 TileBackground.gd::GDScript::4520554966889417413::1777317157::0::1::::<>Node2D<><>0<>0<><>::
 TileLayer.gd::GDScript::2169311136984687300::1777315491::0::1::::<>Node2D<><>0<>0<><>::
-::res://scenes/enemies/::1777547408
+::res://scenes/enemies/::1777585842
 Enemy_000.tscn::PackedScene::-1::1777369345::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn
 Enemy_001.tscn::PackedScene::-1::1777369345::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn<>res://data/enemy_sprites/enemy_001_bank2_f00.png
 Enemy_002.tscn::PackedScene::-1::1777369345::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn<>res://data/enemy_sprites/enemy_002_bank10_f00.png
 Enemy_003.tscn::PackedScene::6338125484202406180::1777462106::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://bp4jwig4nvmhk::::res://data/enemy_sprites/enemy_003_bank1_f00.png
-Enemy_004.tscn::PackedScene::-1::1777369345::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn<>res://data/enemy_sprites/enemy_004_bank1_f00.png
+Enemy_004.tscn::PackedScene::7488441508247843216::1777585842::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://bkjvu174y0oq3::::res://data/enemy_sprites/enemy_004_bank1_f00.png
 Enemy_005.tscn::PackedScene::3229391492398099427::1777391778::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://c8ai6ge61r2w8::::res://data/enemy_sprites/enemy_005_bank1_f00.png
 Enemy_006.tscn::PackedScene::3384785003728530526::1777480686::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://bow4kne3gikib::::res://data/enemy_sprites/enemy_006_bank1_f00.png
 Enemy_007.tscn::PackedScene::-1::1777369345::0::1::::<><><>0<>0<><>::res://scenes/enemy/Enemy.tscn<>res://data/enemy_sprites/enemy_007_bank1_f00.png
@@ -7836,7 +7836,7 @@ Enemy_851.tscn::PackedScene::5021118763388657503::1777545471::0::1::::<><><>0<>0
 Enemy_900.tscn::PackedScene::6078005790629917376::1777387517::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://3hwj8x43630t::::res://data/enemy_sprites/enemy_010_bank1_f00.png
 Enemy_955.tscn::PackedScene::3913380723935183504::1777467023::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://uvy8qqkca2ux::::res://data/enemy_sprites/enemy_121_bank1_f00.png
 ::res://scenes/enemy/::1777552112
-Enemy.gd::GDScript::4605400125416299353::1777554245::0::1::::<>Area2D<><>0<>0<><>::
+Enemy.gd::GDScript::4605400125416299353::1777563828::0::1::::<>Area2D<><>0<>0<><>::
 Enemy.tscn::PackedScene::4689150847652142128::1777133528::0::1::::<><><>0<>0<><>::uid://b6u5jc5l8dstd::::res://scenes/enemy/Enemy.gd
 ::res://scenes/enemy_projectile/::1777284555
 EnemyProjectile.gd::GDScript::8392561708853174740::1777284555::0::1::::<>Area2D<><>0<>0<><>::
@@ -7844,7 +7844,7 @@ EnemyProjectile.tscn::PackedScene::-1::1777283848::0::1::::<><><>0<>0<><>::res:/
 ::res://scenes/explosions/::1777551129
 Explosion.gd::GDScript::3912205470008550662::1777560794::0::1::::<>Node2D<><>0<>0<><>::
 Explosion.tscn::PackedScene::-1::1777550843::0::1::::<><><>0<>0<><>::res://scenes/explosions/Explosion.gd
-RepExplosion.gd::GDScript::1634191662732247263::1777554156::0::1::::<>Node2D<><>0<>0<><>::
+RepExplosion.gd::GDScript::1634191662732247263::1777562872::0::1::::<>Node2D<><>0<>0<><>::
 RepExplosion.tscn::PackedScene::-1::1777550862::0::1::::<><><>0<>0<><>::res://scenes/explosions/RepExplosion.gd
 ::res://scenes/player/::1777201325
 DamageSystem.gd::GDScript::2289176751178949268::1777194918::0::1::::<>Node<><>0<>0<><>::
