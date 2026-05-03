@@ -1,7 +1,73 @@
 [gd_scene format=3 uid="uid://bkdd0w16u4dl2"]
 
-[ext_resource type="PackedScene" uid="uid://bmaluuutr0n8v" path="res://scenes/enemies/Enemy_005.tscn" id="1_qqqwt"]
+[ext_resource type="PackedScene" uid="uid://dexpsjoqudwr5" path="res://scenes/enemies/Enemy_004.tscn" id="1_qqqwt"]
 
-[node name="Enemy_852" type="Node2D" unique_id=1064666783]
+[sub_resource type="Curve2D" id="Curve2D_qqqwt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 192, 193)
+}
+point_count = 2
 
-[node name="Enemy_005" parent="." unique_id=1841420694 instance=ExtResource("1_qqqwt")]
+[node name="Enemy_852" type="Node2D" unique_id=605979066]
+
+[node name="Enemy_004" parent="." unique_id=2074857542 instance=ExtResource("1_qqqwt")]
+rotation = 0.7879956
+wybran_sciezka = "Path2D"
+
+[node name="Enemy_005" parent="." unique_id=1614931576 instance=ExtResource("1_qqqwt")]
+rotation = 0.7879956
+wybran_sciezka = "Path2D"
+
+[node name="Enemy_006" parent="." unique_id=501251502 instance=ExtResource("1_qqqwt")]
+rotation = 0.7879956
+wybran_sciezka = "Path2D"
+
+[node name="Enemy_007" parent="." unique_id=166690952 instance=ExtResource("1_qqqwt")]
+rotation = 0.7879956
+wybran_sciezka = "Path2D"
+
+[node name="Enemy_008" parent="." unique_id=1516244006 instance=ExtResource("1_qqqwt")]
+rotation = 0.7879956
+wybran_sciezka = "Path2D"
+
+[node name="Enemy_009" parent="." unique_id=2004619911 instance=ExtResource("1_qqqwt")]
+rotation = 0.7879956
+wybran_sciezka = "Path2D"
+
+[node name="Enemy_010" parent="." unique_id=1604965374 instance=ExtResource("1_qqqwt")]
+rotation = 0.7879956
+wybran_sciezka = "Path2D"
+
+[node name="Enemy_011" parent="." unique_id=1467905323 instance=ExtResource("1_qqqwt")]
+rotation = 0.7879956
+wybran_sciezka = "Path2D"
+
+[node name="Path2D" type="Path2D" parent="." unique_id=831484735]
+curve = SubResource("Curve2D_qqqwt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=4587987]
+rotation = 0.7879956
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=55360286]
+remote_path = NodePath("../../../Enemy_004")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=1221480824]
+remote_path = NodePath("../../../Enemy_005")
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=1087810819]
+remote_path = NodePath("../../../Enemy_006")
+
+[node name="RemoteTransform2D4" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=620780409]
+remote_path = NodePath("../../../Enemy_007")
+
+[node name="RemoteTransform2D5" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=2128648925]
+remote_path = NodePath("../../../Enemy_008")
+
+[node name="RemoteTransform2D6" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=951117192]
+remote_path = NodePath("../../../Enemy_009")
+
+[node name="RemoteTransform2D7" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=1196821024]
+remote_path = NodePath("../../../Enemy_010")
+
+[node name="RemoteTransform2D8" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=1933092194]
+remote_path = NodePath("../../../Enemy_011")

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bkjvu174y0oq3" path="res://data/enemy_sprites/enemy_004_bank1_f00.png" id="2_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_004"]
-radius = 14.0
+radius = 9.0
 
 [node name="Enemy_004" unique_id=2074857542 instance=ExtResource("1_base")]
 armor = 4
@@ -15,6 +15,7 @@ starty = -13
 startxc = 100
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
+position = Vector2(-0.5, -4)
 texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
