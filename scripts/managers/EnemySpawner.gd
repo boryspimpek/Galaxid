@@ -86,8 +86,8 @@ func spawn_free_enemy(event: Dictionary):
 		float(event.get("screen_y", 0)))
 
 	var vel = Vector2(
-        float(event.get("vel_x", float(enemy.xmove))),
-        float(event.get("vel_y", float(enemy.ymove))))
+		float(event.get("vel_x", float(enemy.xmove))),
+		float(event.get("vel_y", float(enemy.ymove))))
 
 	enemy.name            = "Enemy_%d" % enemy_id
 	enemy.global_position = spawn_pos
