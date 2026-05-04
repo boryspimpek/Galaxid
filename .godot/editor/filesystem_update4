@@ -1,6 +1,4 @@
-res://scenes/enemies/enemy_852.tscn
-res://scenes/enemies/Enemy_004.tscn
 res://scenes/enemy/Enemy.gd
-res://scripts/managers/EnemySpawner.gd
-res://scripts/managers/EventProcessor.gd
-res://scenes/enemies/Enemy_852.tscn
+res://scenes/enemies/Enemy_005.tscn
+res://scenes/enemies/Enemy_013.tscn
+res://scenes/enemies/Enemy_006.tscn

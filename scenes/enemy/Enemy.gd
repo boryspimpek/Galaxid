@@ -58,6 +58,8 @@ var setto: bool = false
 @export var path_speed: float = 3.0
 @export var path_speed_curve: Curve
 var _active_follow: PathFollow2D = null
+var _active_path_speed: float = 3.0
+var _active_path_curve: Curve = null
 
 var eshotwait: Array    = [0.0, 0.0, 0.0]  # Licznik cooldown (w klatkach Tyrian)
 var eshotwaitmax: Array = [0.0, 0.0, 0.0]  # Maksymalny cooldown z freq
@@ -127,12 +129,20 @@ func _setup_path():
 			var rt = child.get_node_or_null("PathFollow2D/RemoteTransform2D")
 			if rt:
 				rt.update_position = false
-	var follow = get_node_or_null(wybran_sciezka + "/PathFollow2D")
-	if follow:
-		_active_follow = follow
-		var rt = follow.get_node_or_null("RemoteTransform2D")
-		if rt:
-			rt.update_position = true
+	var path_node = get_node_or_null(wybran_sciezka)
+	if path_node and path_node is Path2D:
+		var follow = path_node.get_node_or_null("PathFollow2D")
+		if follow:
+			_active_follow = follow
+			var rt = follow.get_node_or_null("RemoteTransform2D")
+			if rt:
+				rt.update_position = true
+			if "speed" in path_node:
+				_active_path_speed = path_node.speed
+				_active_path_curve = path_node.speed_curve
+			else:
+				_active_path_speed = path_speed
+				_active_path_curve = path_speed_curve
 	
 func _process_shooting(_delta: float):
 	for i in range(3):
@@ -269,8 +279,8 @@ func _fire_projectile(direction_index: int):
 
 func _process(_delta):
 	if _active_follow:
-		var speed_mult = path_speed_curve.sample(_active_follow.progress_ratio) if path_speed_curve else 1.0
-		_active_follow.progress += path_speed * speed_mult
+		var speed_mult = _active_path_curve.sample(_active_follow.progress_ratio) if _active_path_curve else 1.0
+		_active_follow.progress += _active_path_speed * speed_mult
 		_process_shooting(_delta)
 		if _active_follow.progress_ratio >= 1.0:
 			queue_free()
