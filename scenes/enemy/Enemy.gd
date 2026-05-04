@@ -345,8 +345,8 @@ func _process(_delta):
 	_process_shooting(_delta)
 
 	# --- 5. Usuń poza ekranem (jeden warunek — poprawka podwójnego queue_free) ---
-	if position.x < BOUNDS_LEFT  or position.x > BOUNDS_RIGHT \
-	or position.y < BOUNDS_TOP   or position.y > BOUNDS_BOTTOM:
+	if global_position.x < BOUNDS_LEFT  or global_position.x > BOUNDS_RIGHT \
+	or global_position.y < BOUNDS_TOP   or global_position.y > BOUNDS_BOTTOM:
 		queue_free()
 	# if enemy_id == 5:
 	# 	print("F:", Engine.get_frames_drawn(), " vx:", velocity.x, " vy:", velocity.y, " x:", position.x, " y:", position.y, " exccw:", exccw, " excc:", excc)
