@@ -6,3 +6,4 @@ res://scenes/enemies/Enemy_853.tscn
 res://scripts/managers/EventProcessor.gd
 res://scenes/enemies/PathConfig.gd
 res://scripts/managers/EnemySpawner.gd
+res://scenes/enemies/Enemy_010.tscn

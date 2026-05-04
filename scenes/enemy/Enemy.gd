@@ -134,6 +134,7 @@ func _setup_path():
 		var follow = path_node.get_node_or_null("PathFollow2D")
 		if follow:
 			_active_follow = follow
+			_active_follow.set_meta("enemy_controlled", true)
 			var rt = follow.get_node_or_null("RemoteTransform2D")
 			if rt:
 				rt.update_position = true

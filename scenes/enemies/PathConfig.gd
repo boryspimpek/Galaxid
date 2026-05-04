@@ -10,6 +10,8 @@ func _process(_delta: float) -> void:
 	for child in get_children():
 		if not child is PathFollow2D:
 			continue
+		if child.has_meta("enemy_controlled"):
+			continue
 		var mult := speed_curve.sample(child.progress_ratio) if speed_curve else 1.0
 		child.progress += speed * mult
 		if child.progress_ratio >= 1.0:
