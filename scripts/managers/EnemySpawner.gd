@@ -174,6 +174,58 @@ func spawn_group_enemy(event: Dictionary):
 
 	group.queue_free()
 
+func spawn_formation(event: Dictionary):
+	var formation_id = int(event.get("enemy_id", 0))
+	var base_pos = Vector2(
+		float(event.get("screen_x", 0)),
+		float(event.get("screen_y", 0)))
+	var link_num = int(event.get("link_num", 0))
+
+	var formation_scene = _scene_for_enemy(formation_id)
+	if not formation_scene:
+		return
+
+	var formation = formation_scene.instantiate()
+	formation.position = base_pos
+
+	# Zbierz wrogów kontrolowanych przez RemoteTransform2D (ruch po ścieżce)
+	var path_controlled: Array = []
+	for rt in formation.find_children("*", "RemoteTransform2D", true, false):
+		if rt.remote_path:
+			var target = rt.get_node_or_null(rt.remote_path)
+			if target:
+				path_controlled.append(target)
+
+	var id_regex = RegEx.new()
+	id_regex.compile("^Enemy_(\\d+)")
+
+	for child in formation.get_children():
+		if not child is Node2D:
+			continue
+		var rx = id_regex.search(child.name)
+		if not rx:
+			continue
+		if not child.has_signal("projectile_spawned"):
+			continue
+
+		var child_id = int(rx.get_string(1))
+		child.enemy_id = child_id
+		child.link_num = link_num
+		child.enemy_slot = 0
+		child.event_type = 0
+		child.fixed_move_y = 0
+		child.scroll_y = 0
+		child.projectile_scene = GameConstants.enemy_projectile_scene
+		child.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
+
+		if child in path_controlled:
+			child.velocity = Vector2.ZERO
+		else:
+			child.velocity = Vector2(
+				float(event.get("vel_x", child.xmove)),
+				float(event.get("vel_y", child.ymove)))
+
+	level_manager.add_child(formation)
 
 func spawn_free_4x4(event: Dictionary):
 	var enemy_ids = event.get("enemy_ids", [])
@@ -349,59 +401,6 @@ func spawn_ground2_bottom(event: Dictionary):
 
 	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 	level_manager.add_child(enemy)
-
-func spawn_formation(event: Dictionary):
-	var formation_id = int(event.get("enemy_id", 0))
-	var base_pos = Vector2(
-		float(event.get("screen_x", 0)),
-		float(event.get("screen_y", 0)))
-	var link_num = int(event.get("link_num", 0))
-
-	var formation_scene = _scene_for_enemy(formation_id)
-	if not formation_scene:
-		return
-
-	var formation = formation_scene.instantiate()
-	formation.position = base_pos
-
-	# Zbierz wrogów kontrolowanych przez RemoteTransform2D (ruch po ścieżce)
-	var path_controlled: Array = []
-	for rt in formation.find_children("*", "RemoteTransform2D", true, false):
-		if rt.remote_path:
-			var target = rt.get_node_or_null(rt.remote_path)
-			if target:
-				path_controlled.append(target)
-
-	var id_regex = RegEx.new()
-	id_regex.compile("^Enemy_(\\d+)")
-
-	for child in formation.get_children():
-		if not child is Node2D:
-			continue
-		var rx = id_regex.search(child.name)
-		if not rx:
-			continue
-		if not child.has_signal("projectile_spawned"):
-			continue
-
-		var child_id = int(rx.get_string(1))
-		child.enemy_id = child_id
-		child.link_num = link_num
-		child.enemy_slot = 0
-		child.event_type = 0
-		child.fixed_move_y = 0
-		child.scroll_y = 0
-		child.projectile_scene = GameConstants.enemy_projectile_scene
-		child.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-
-		if child in path_controlled:
-			child.velocity = Vector2.ZERO
-		else:
-			child.velocity = Vector2(
-				float(event.get("vel_x", child.xmove)),
-				float(event.get("vel_y", child.ymove)))
-
-	level_manager.add_child(formation)
 
 func spawn_enemy_special(event: Dictionary):
 	var enemy_id = int(event.get("enemy_id", 0))
