@@ -2,3 +2,7 @@ res://scenes/enemy/Enemy.gd
 res://scenes/enemies/Enemy_005.tscn
 res://scenes/enemies/Enemy_013.tscn
 res://scenes/enemies/Enemy_006.tscn
+res://scenes/enemies/Enemy_853.tscn
+res://scripts/managers/EventProcessor.gd
+res://scenes/enemies/PathConfig.gd
+res://scripts/managers/EnemySpawner.gd
