@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ccmjxaxkerc4a"]
+
+[ext_resource type="PackedScene" uid="uid://cu32to11r3wlg" path="res://scenes/enemies/Enemy_126.tscn" id="1_ytrcu"]
+[ext_resource type="PackedScene" uid="uid://dcu185ifgchmh" path="res://scenes/enemies/Enemy_127.tscn" id="2_txbup"]
+[ext_resource type="PackedScene" uid="uid://b40uk2hhip257" path="res://scenes/enemies/Enemy_128.tscn" id="3_nw5ba"]
+[ext_resource type="PackedScene" uid="uid://dp3jde8veq04v" path="res://scenes/enemies/Enemy_125.tscn" id="4_ytrcu"]
+
+[node name="Enemy_858" type="Node2D" unique_id=543405257]
+
+[node name="Enemy_126" parent="." unique_id=905869189 instance=ExtResource("1_ytrcu")]
+position = Vector2(12, 10)
+
+[node name="Enemy_127" parent="." unique_id=840602486 instance=ExtResource("2_txbup")]
+position = Vector2(-11, -16)
+
+[node name="Enemy_128" parent="." unique_id=1572149157 instance=ExtResource("3_nw5ba")]
+position = Vector2(12, -16)
+
+[node name="Enemy_125" parent="." unique_id=1516568110 instance=ExtResource("4_ytrcu")]
+position = Vector2(-11, 10)

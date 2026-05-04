@@ -385,8 +385,8 @@ func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int, orig
 
 	if esize == 0:
 		var explosion: Node2D = GameConstants.explosion_scene.instantiate()
-		explosion.global_position = origin
 		parent.add_child(explosion)
+		explosion.global_position = origin
 		explosion.setup(1, s)
 		return
 
@@ -397,8 +397,8 @@ func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int, orig
 
 	for i in range(4):
 		var explosion: Node2D = GameConstants.explosion_scene.instantiate()
-		explosion.global_position = origin + offsets[i]
 		parent.add_child(explosion)
+		explosion.global_position = origin + offsets[i]
 		explosion.setup(corner_types[i], s)
 
 	if explonum > 0:

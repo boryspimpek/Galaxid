@@ -660,4 +660,4 @@ func _zoom(factor: float) -> void:
 	var center_dist  := _max_dist - center_y / old_scale
 	_spin_scale.value = clampf(old_scale * factor, MIN_SCALE, MAX_SCALE)
 	var new_center_y := (_max_dist - center_dist) * _spin_scale.value
-	_scroll.call_deferred("set_scroll_vertical", maxi(int(new_center_y - vp_h * 0.5), 0))
+	_scroll.set_deferred("scroll_vertical", maxi(int(new_center_y - vp_h * 0.5), 0))

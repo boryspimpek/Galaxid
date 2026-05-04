@@ -82,15 +82,15 @@
 			},
 			{
 				"category": "spawn",
-				"event_name": "spawn_free_4x4",
-				"event_type": 201,
+				"event_name": "spawn_formation",
+				"event_type": 204,
 				"dist": 132,
-				"screen_x": 36,
-				"screen_y": -25,
+				"screen_x": 48,
+				"screen_y": -10,
+				"enemy_id": 857,
 				"vel_x": 0,
 				"vel_y": 1,
-				"enemy_ids": [121.0, 122.0, 123.0, 124.0],
-				"link_num": 20
+				"link_num": 0
 			},
 			{
 				"category": "spawn",
@@ -1873,7 +1873,7 @@
 				"category": "spawn",
 				"event_name": "spawn_formation",
 				"event_type": 204,
-				"dist": 2325,
+				"dist": 2275,
 				"screen_x": 126,
 				"screen_y": -30,
 				"vel_x": 0,
@@ -2001,7 +2001,6 @@
 				"vel_y": 3,
 				"link_num": 0
 			},
-
 			{
 				"back_move": 1,
 				"back_move2": 1,

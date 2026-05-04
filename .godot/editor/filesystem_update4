@@ -14,3 +14,6 @@ res://scenes/enemies/Enemy_029.tscn
 res://scenes/enemies/Enemy_854.tscn
 res://scenes/enemies/Enemy_855.tscn
 res://scenes/enemies/Enemy_856.tscn
+res://addons/level_editor/LevelEditorPanel.gd
+res://scenes/enemies/Enemy_857.tscn
+res://scenes/enemies/Enemy_858.tscn
