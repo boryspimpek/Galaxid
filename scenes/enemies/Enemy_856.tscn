@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cbin0vutq1oek"]
+
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_032.tscn" id="1_6c1ht"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_033.tscn" id="2_x1uhi"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_034.tscn" id="3_fhkix"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_035.tscn" id="4_tqmsn"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_036.tscn" id="5_4v2xa"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_037.tscn" id="6_2o0ic"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_038.tscn" id="7_p4wqm"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_039.tscn" id="8_0cg6y"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_041.tscn" id="9_mff1i"]
+
+[node name="Enemy_856" type="Node2D" unique_id=1204527149]
+
+[node name="Enemy_032" parent="." unique_id=1985850832 instance=ExtResource("1_6c1ht")]
+position = Vector2(-24, 28)
+
+[node name="Enemy_033" parent="." unique_id=620249392 instance=ExtResource("2_x1uhi")]
+position = Vector2(0, 28)
+
+[node name="Enemy_034" parent="." unique_id=609060012 instance=ExtResource("3_fhkix")]
+position = Vector2(24, 28)
+
+[node name="Enemy_035" parent="." unique_id=918102577 instance=ExtResource("4_tqmsn")]
+position = Vector2(-24, -28)
+
+[node name="Enemy_036" parent="." unique_id=548620637 instance=ExtResource("5_4v2xa")]
+position = Vector2(0, -28)
+
+[node name="Enemy_037" parent="." unique_id=1539142476 instance=ExtResource("6_2o0ic")]
+position = Vector2(24, -28)
+
+[node name="Enemy_038" parent="." unique_id=11762698 instance=ExtResource("7_p4wqm")]
+position = Vector2(-24, 0)
+
+[node name="Enemy_039" parent="." unique_id=1250056180 instance=ExtResource("8_0cg6y")]
+position = Vector2(24, 0)
+
+[node name="Enemy_041" parent="." unique_id=1061715132 instance=ExtResource("9_mff1i")]
