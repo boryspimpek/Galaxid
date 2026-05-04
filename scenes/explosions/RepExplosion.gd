@@ -62,6 +62,6 @@ func _fire_burst() -> void:
 
 func _spawn_explosion(parent: Node, pos: Vector2, type: int) -> void:
 	var explosion: Node2D = GameConstants.explosion_scene.instantiate()
-	explosion.global_position = pos
 	parent.add_child(explosion)
+	explosion.global_position = pos
 	explosion.setup(type, _scroll_y)

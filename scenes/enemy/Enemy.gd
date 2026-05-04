@@ -405,8 +405,8 @@ func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int, orig
 		var big   := explonum > 10
 		var burst := explonum - 10 if big else explonum
 		var rep: Node2D = GameConstants.rep_explosion_scene.instantiate()
-		rep.global_position = origin
 		parent.add_child(rep)
+		rep.global_position = origin
 		rep.setup(burst, big, s)
 
 func _on_body_entered(body: Node2D):
