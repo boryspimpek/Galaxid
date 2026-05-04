@@ -75,6 +75,17 @@ const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 @onready var visual: Sprite2D = $Visual
 @onready var debug_label: Label = $DebugLabel
 
+func _enter_tree() -> void:
+	for child in get_children():
+		if not child is Path2D:
+			continue
+		for follow in child.get_children():
+			if not follow is PathFollow2D:
+				continue
+			for rt in follow.get_children():
+				if rt is RemoteTransform2D:
+					rt.update_position = false
+
 func _ready():
 	add_to_group("enemies")
 	# Warstwa 2 = wróg; maska 4 = pociski gracza, maska 1 = ciało gracza
@@ -134,9 +145,9 @@ func _setup_path():
 		var follow = path_node.get_node_or_null("PathFollow2D")
 		if follow:
 			_active_follow = follow
-			var rt = follow.get_node_or_null("RemoteTransform2D")
-			if rt:
-				rt.update_position = true
+			for rt in follow.get_children():
+				if rt is RemoteTransform2D:
+					rt.update_position = true
 			if "speed" in path_node:
 				_active_path_speed = path_node.speed
 				_active_path_curve = path_node.speed_curve

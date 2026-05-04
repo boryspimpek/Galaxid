@@ -31,8 +31,6 @@ point_count = 7
 [node name="Enemy_029" unique_id=1539318556 instance=ExtResource("1_base")]
 armor = 4
 esize = 1
-excc = 12
-xrev = 2
 tur = [126, 0, 0]
 path_speed = 2.5
 path_speed_curve = SubResource("Curve_yiiv7")

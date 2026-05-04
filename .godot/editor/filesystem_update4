@@ -9,3 +9,7 @@ res://scripts/managers/EnemySpawner.gd
 res://scenes/enemies/Enemy_010.tscn
 res://scenes/enemies/Enemy_024.tscn
 res://scenes/enemies/Enemy_025.tscn
+res://scenes/enemies/Enemy_028.tscn
+res://scenes/enemies/Enemy_029.tscn
+res://scenes/enemies/Enemy_854.tscn
+res://scenes/enemies/Enemy_855.tscn

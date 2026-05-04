@@ -31,13 +31,10 @@ xmove = 2
 ymove = 2
 startx = -20
 starty = -3
-excc = 10
-eycc = -20
 tur = [62, 0, 0]
 freq = [20, 0, 0]
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-rotation = 1.8434329
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_tex")
 
