@@ -26,6 +26,7 @@ position = Vector2(72, 0)
 curve = SubResource("Curve2D_k1lis")
 script = ExtResource("2_k1lis")
 speed = 5.0
+auto_advance = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1136410321]
 
