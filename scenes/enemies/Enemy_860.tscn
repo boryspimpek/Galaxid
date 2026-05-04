@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bhpyo2nyc43tk"]
+
+[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="1_5a5hw"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_072.tscn" id="1_yimem"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_071.tscn" id="2_5a5hw"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_070.tscn" id="3_h4be1"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_069.tscn" id="4_h1cik"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_068.tscn" id="5_lt8vp"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_067.tscn" id="6_hn5f1"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_066.tscn" id="7_07dv2"]
+
+[sub_resource type="Curve2D" id="Curve2D_h4be1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 135, 29, 0, 0, 0, 0, -208, 66)
+}
+point_count = 3
+
+[node name="Enemy_860" type="Node2D" unique_id=1160752038]
+
+[node name="Move" type="Path2D" parent="." unique_id=975719544]
+curve = SubResource("Curve2D_h4be1")
+script = ExtResource("1_5a5hw")
+speed = 6.0
+auto_advance = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Move" unique_id=697960554]
+rotates = false
+loop = false
+
+[node name="Node2D" type="Node2D" parent="Move/PathFollow2D" unique_id=1754219447]
+
+[node name="Enemy_072" parent="Move/PathFollow2D/Node2D" unique_id=1497276194 instance=ExtResource("1_yimem")]
+position = Vector2(135, -4)
+
+[node name="Enemy_071" parent="Move/PathFollow2D/Node2D" unique_id=572592498 instance=ExtResource("2_5a5hw")]
+position = Vector2(112, -3)
+
+[node name="Enemy_070" parent="Move/PathFollow2D/Node2D" unique_id=287908315 instance=ExtResource("3_h4be1")]
+position = Vector2(90, -1)
+
+[node name="Enemy_069" parent="Move/PathFollow2D/Node2D" unique_id=1864102204 instance=ExtResource("4_h1cik")]
+position = Vector2(67, 0)
+
+[node name="Enemy_068" parent="Move/PathFollow2D/Node2D" unique_id=95767507 instance=ExtResource("5_lt8vp")]
+position = Vector2(44, 0)
+
+[node name="Enemy_067" parent="Move/PathFollow2D/Node2D" unique_id=185078100 instance=ExtResource("6_hn5f1")]
+position = Vector2(22, 0)
+
+[node name="Enemy_066" parent="Move/PathFollow2D/Node2D" unique_id=80533997 instance=ExtResource("7_07dv2")]
