@@ -1853,7 +1853,7 @@
 				"screen_x": 26,
 				"screen_y": -30,
 				"vel_x": 0,
-				"vel_y": 3,
+				"vel_y": 2,
 				"enemy_id": 855,
 				"link_num": 0
 			},
@@ -1861,11 +1861,11 @@
 				"category": "spawn",
 				"event_name": "spawn_formation",
 				"event_type": 204,
-				"dist": 2125,
+				"dist": 2200,
 				"screen_x": 176,
 				"screen_y": -30,
 				"vel_x": 0,
-				"vel_y": 3,
+				"vel_y": 2,
 				"enemy_id": 855,
 				"link_num": 0
 			},
@@ -1877,7 +1877,7 @@
 				"screen_x": 126,
 				"screen_y": -30,
 				"vel_x": 0,
-				"vel_y": 3,
+				"vel_y": 2,
 				"enemy_id": 855,
 				"link_num": 0
 			},
