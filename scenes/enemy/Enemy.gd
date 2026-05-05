@@ -144,27 +144,6 @@ func _fire_projectile(direction_index: int):
 	var weapon_max   = int(weapon_data.get("max", 1))
 	var aim          = int(weapon_data.get("aim", 0))
 
-	# Szkielet dla specjalnych wartości tur (251-255)
-	match weapon_id:
-		251:
-			# Suck-O-Magnet - TODO: przyciąga statek gracza
-			pass
-		252:
-			# Savara Boss DualMissile - już obsługiwane
-			pass
-		253:
-			# Left ShortRange Magnet - TODO: odpycha gracza w lewo (krótki zasięg)
-			pass
-		254:
-			# Right ShortRange Magnet - TODO: odpycha gracza w prawo (krótki zasięg)
-			pass
-		255:
-			# Magneto RePulse - TODO: odpycha gracza (długi zasięg) + filtr wizualny
-			pass
-		_:
-			# Normalna broń - kontynuuj z standardową logiką
-			pass
-
 	for _i in range(weapon_multi):
 		var temp_pos = eshotmultipos[direction_index]
 		if temp_pos >= patterns.size():
@@ -271,8 +250,6 @@ func _process(_delta):
 	if global_position.x < BOUNDS_LEFT  or global_position.x > BOUNDS_RIGHT \
 	or global_position.y < BOUNDS_TOP   or global_position.y > BOUNDS_BOTTOM:
 		queue_free()
-	# if enemy_id == 5:
-	# 	print("F:", Engine.get_frames_drawn(), " vx:", velocity.x, " vy:", velocity.y, " x:", position.x, " y:", position.y, " exccw:", exccw, " excc:", excc)
 
 # ============================================================================
 # SYSTEM OBRAŻEŃ
