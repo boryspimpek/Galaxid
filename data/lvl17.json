@@ -28,13 +28,31 @@
 				"category": "spawn",
 				"event_name": "spawn_formation",
 				"event_type": 204,
-				"dist": 100,
+				"dist": 7500,
 				"screen_x": 144,
 				"screen_y": 100,
 				"vel_x": 0,
 				"vel_y": 0,
 				"enemy_id": 865,
 				"link_num": 0
+			},
+			{
+				"category": "context",
+				"dist": 7600,
+				"event_name": "enemy_fire_power",
+				"event_type": 300,
+				"link_num": 0,
+				"new_tur": [],
+				"new_freq": [60.0, 10.0, 5.0]
+			},
+			{
+				"category": "context",
+				"dist": 7700,
+				"event_name": "enemy_fire_power",
+				"event_type": 300,
+				"link_num": 0,
+				"new_tur": [],
+				"new_freq": [60.0, 10.0, 0.0]
 			},
 			{
 				"category": "spawn",
