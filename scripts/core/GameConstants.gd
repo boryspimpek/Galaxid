@@ -5,11 +5,10 @@ extends Node
 # ============================================================================
 
 # ---- Granice usuwania (px Godot) ----
-# Ekran: 320x200, margines 50px żeby wrogowie nie strzelali spoza ekranu
-const BOUNDS_LEFT = -80
+const BOUNDS_LEFT = -50
 const BOUNDS_RIGHT = 340
-const BOUNDS_TOP = -112
-const BOUNDS_BOTTOM = 210
+const BOUNDS_TOP = -100
+const BOUNDS_BOTTOM = 230
 
 # ---- Sceny pocisków ----
 var enemy_projectile_scene: PackedScene
