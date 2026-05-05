@@ -3,3 +3,12 @@ res://scenes/enemies/Enemy_020.tscn
 res://scenes/enemies/Enemy_019.tscn
 res://scenes/enemies/Enemy_018.tscn
 res://scenes/enemies/Enemy_862.tscn
+res://scenes/enemies/Enemy_015.tscn
+res://scenes/enemies/Enemy_863.tscn
+res://scenes/enemies/Enemy_468.tscn
+res://scenes/enemies/Enemy_469.tscn
+res://scenes/enemies/Enemy_470.tscn
+res://scenes/enemies/Enemy_471.tscn
+res://scenes/enemies/Enemy_472.tscn
+res://scenes/enemies/Enemy_473.tscn
+res://scripts/managers/EnemySpawner.gd
