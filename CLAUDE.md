@@ -71,41 +71,23 @@ Each event has: `dist`, `event_type`, `event_name`, `category` (`"spawn"` or `"c
 
 ### Context events (change global state, replayed on fast-forward)
 
-| type | event_name            | key fields                                      |
-|------|-----------------------|-------------------------------------------------|
-| 1    | starfield_speed       | `starfield_speed`                               |
-| 2,30 | scroll_speed          | `back_move`, `back_move2`, `back_move3`         |
-| 8    | starfield             | `star_active` (bool)                            |
-| 13   | disable_random_spawn  | `enemies_active: false`                         |
-| 14   | enable_random_spawn   | `enemies_active: true`                          |
-| 19   | global_enemy_move     | applies velocity to all live enemies            |
-| 20   | global_enemy_accel    | applies acceleration to all live enemies        |
-| 26   | small_enemy_adjust    | `small_enemy_adjust` (bool)                     |
-| 27   | global_enemy_accelrev | reverse accel                                   |
-| 31   | enemy_fire_override   | overrides fire params of live enemies           |
-| 34   | enemy_fire_power      | `link_num`, `new_tur[3]`, `new_freq[3]` (-1 = keep current); affects all enemies (incl. formations) with matching link_num |
+| type | event_name   | key fields                              |
+|------|--------------|-----------------------------------------|
+| 2    | scroll_speed | `back_move`, `back_move2`, `back_move3` |
 
 ### Spawn events (create enemies)
 
-| type | event_name        | key fields                                                  |
-|------|-------------------|-------------------------------------------------------------|
-| 6    | spawn_ground      | `screen_x`, `screen_y`, `enemy_id`, `enemy_slot`(25)       |
-| 7    | spawn_top         | `screen_x`, `screen_y`, `enemy_id`, `enemy_slot`(50)       |
-| 10   | spawn_ground_2    | like 6, slot 75                                             |
-| 15   | spawn_sky         | `screen_x`, `screen_y`, `enemy_id`, `enemy_slot`           |
-| 17   | spawn_enemy       | generic: `screen_x`, `screen_y`, `enemy_id`, `enemy_slot`, `y_vel` |
-| 18   | spawn_sky_bottom  | sky layer, scrolls upward (`-back_move2`)                   |
-| 23   | spawn_sky_bottom2 | sky layer, scrolls with slot                                |
-| 32   | spawn_enemy_special | spawns at y=190, scrolls with `-back_move3`               |
-| 33   | enemy_from_enemy  | spawns enemy when another dies                              |
-| 40   | enemy_continual_damage | env damage to player                                  |
-| 56   | spawn_ground2_bottom | ground2, offset +6/+3                                   |
-| 60   | assign_special_enemy | `dat`..`dat6` fields, marks special/boss enemy          |
-| 100  | path_enemy        | `enemy_id`, `path` (node name), `screen_x`, `screen_y`     |
-| 200  | spawn_free_enemy  | `enemy_id`, `screen_x`, `screen_y`, `vel_x`, `vel_y` — scroll_y=0, slot=0 |
-| 201  | spawn_free_4x4    | `enemy_ids`[4], `screen_x`, `screen_y`, `vel_x`, `vel_y` — 2×2 grid, free |
+| type | event_name        | key fields                                                            |
+|------|-------------------|-----------------------------------------------------------------------|
+| 100  | path_enemy        | `enemy_id`, `path` (node name), `screen_x`, `screen_y`               |
+| 200  | spawn_free_enemy  | `enemy_id`, `screen_x`, `screen_y`, `vel_x`, `vel_y`                 |
+| 201  | spawn_free_4x4    | `enemy_ids`[4], `screen_x`, `screen_y`, `vel_x`, `vel_y` — 2×2 grid |
+| 202  | just_spawn_enemy  | jak 200, lub 100 jeśli ma `path`                                      |
+| 203  | spawn_group_enemy | `enemy_id` (scena-grupy), `screen_x`, `screen_y`, `link_num`         |
+| 204  | spawn_formation   | `enemy_id` (scena-formacji), `screen_x`, `screen_y`, `link_num`      |
+| 300  | enemy_fire_power  | `link_num`, `new_tur[3]`, `new_freq[3]` (-1 = zachowaj)              |
 
-Common optional fields: `link_num`, `fixed_move_y`, `y_vel`, `enemy_slot`.
+Common optional fields: `link_num`, `vel_x`, `vel_y`.
 
 ---
 
@@ -124,9 +106,7 @@ Loaded on demand and cached by `EnemySpawner._scene_for_enemy(id)`.
 | `ymove`  | base velocity Y (px/frame, added to scroll_y)            |
 | `startx`, `starty` | default spawn position for random spawn         |
 | `startxc`| random spread radius for X in random spawn               |
-| `excc`, `eycc` | pendulum acceleration engine (Tyrian xcaccel/ycaccel) |
-| `xrev`, `yrev` | pendulum reversal threshold velocity                |
-| `xaccel`, `yaccel` | random per-frame velocity addition (unbounded if excc=0!) |
+| `xaccel`, `yaccel` | random per-frame velocity addition                  |
 | `tur[3]` | weapon IDs [down, right, left], 0=none                  |
 | `freq[3]`| fire cooldown frames per weapon                         |
 
@@ -135,7 +115,6 @@ Loaded on demand and cached by `EnemySpawner._scene_for_enemy(id)`.
 ```gdscript
 velocity.x += float(xaccel)     # random accel (dangerous without excc)
 velocity.y += float(yaccel)
-# pendulum engine updates velocity.x / velocity.y via excc/eycc
 position.x += velocity.x
 position.y += velocity.y + float(fixed_move_y) + float(scroll_y)
 ```

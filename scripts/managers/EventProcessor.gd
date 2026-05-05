@@ -34,7 +34,7 @@ func set_scroll_data(p_back_move: int, p_back_move2: int, p_back_move3: int):
 	back_move2 = p_back_move2
 	back_move3 = p_back_move3
 
-const CONTEXT_EVENT_TYPES = [1, 2, 8, 13, 14, 19, 20, 26, 27, 30, 31, 34]
+const CONTEXT_EVENT_TYPES = [2]
 
 # Stosuje eventy kontekstowe (scroll, starfield, flagi) przed start_dist,
 # pomija spawny — używane przez "Play from dist".
@@ -107,28 +107,7 @@ func process_event(event: Dictionary):
 	var event_type = int(event["event_type"])
 
 	match event_type:
-		1:                    set_starfield_speed(event)
-		2, 30:                set_scroll_speed(event)
-		8:                    set_starfield_active(event)
-		6:                    enemy_spawner.spawn_ground_enemy(event)
-		7:                    enemy_spawner.spawn_top_enemy(event)
-		10:                   enemy_spawner.spawn_ground_enemy_2(event)
-		13:                   enemy_controller.disable_random_spawn(event)
-		14:                   enemy_controller.enable_random_spawn(event)
-		15:                   enemy_spawner.spawn_sky_enemy(event)
-		17:                   enemy_spawner.spawn_enemy(event)
-		18:                   enemy_spawner.spawn_sky_bottom(event)
-		23:                   enemy_spawner.spawn_sky_bottom2(event)
-		19:                   enemy_controller.enemy_global_move(event)
-		20:                   enemy_controller.enemy_global_accel(event)
-		26:                   enemy_spawner.set_small_enemy_adjust(bool(event.get("small_enemy_adjust", false)))
-		27:                   enemy_controller.enemy_global_accelrev(event)
-		31:                   enemy_controller.enemy_fire_override(event)
-		32:                   enemy_spawner.spawn_enemy_special(event)
-		33:                   enemy_controller.enemy_from_enemy(event)
-		56:                   enemy_spawner.spawn_ground2_bottom(event)
-		40:                   enemy_controller.enemy_continual_damage(event)
-		60:                   enemy_controller.assign_special_enemy(event)
+		2:                    set_scroll_speed(event)
 		100:                  enemy_spawner.spawn_path_enemy(event)
 		200:                  enemy_spawner.spawn_free_enemy(event)
 		201:                  enemy_spawner.spawn_free_4x4(event)
@@ -141,16 +120,6 @@ func process_event(event: Dictionary):
 
 	if event.has("enemies_active"):
 		enemy_spawner.set_enemies_active(bool(event.get("enemies_active", false)))
-
-func set_starfield_speed(event: Dictionary):
-	var speed: int = event.get("starfield_speed", 1)
-	if background and background.has_method("set_starfield_speed"):
-		background.set_starfield_speed(speed)
-
-func set_starfield_active(event: Dictionary):
-	var active: bool = bool(event.get("star_active", true))
-	if background and background.has_method("set_starfield_active"):
-		background.set_starfield_active(active)
 
 func set_scroll_speed(event: Dictionary):
 	back_move  = event.get("back_move",  back_move)

@@ -24,30 +24,11 @@ var scroll_y: int = 2
 @export var starty: int = 0
 @export var startxc: int = 0
 
-# ---- Silnik wahadłowy (xcaccel / ycaccel) ----
-@export var excc: int = 0
-@export var eycc: int = 0
-@export var xrev: int = 0
-@export var yrev: int = 0
-
-var exccw: int = 0
-var eyccw: int = 0
-var exccwmax: int = 0
-var eyccwmax: int = 0
-var exccadd: int = 1
-var eyccadd: int = 1
-
 # ---- Losowe przyspieszenie ----
 @export var xaccel: int = 0
 @export var yaccel: int = 0
 
 var projectile_scene: PackedScene
-
-# ---- Eventy śmierci (event 33, 60) ----
-var enemy_die: int = 0   # ID wroga do spawnowania przy śmierci (enemy_from_enemy)
-var special: bool = false
-var flagnum: int = 0
-var setto: bool = false
 
 # ---- System strzelania ----
 @export var tur: Array = [0, 0, 0]   # ID broni [down, right, left]
@@ -92,25 +73,6 @@ func _ready():
 	collision_layer = 2
 	collision_mask  = 5
 	body_entered.connect(_on_body_entered)
-
-	# Konwersja xrev/yrev — zawsze przy spawnie, niezależnie od excc/eycc (jak w Tyrianie)
-	if xrev == 0:    xrev = 100
-	elif xrev == -99: xrev = 0
-
-	if yrev == 0:    yrev = 100
-	elif yrev == -99: yrev = 0
-
-	# Inicjalizacja silnika wahadłowego X
-	if excc != 0:
-		exccw    = abs(excc)
-		exccwmax = exccw
-		exccadd  = 1 if excc > 0 else -1
-
-	# Inicjalizacja silnika wahadłowego Y
-	if eycc != 0:
-		eyccw    = abs(eycc)
-		eyccwmax = eyccw
-		eyccadd  = 1 if eycc > 0 else -1
 
 	# Inicjalizacja systemu strzelania
 	for i in range(3):
@@ -300,51 +262,17 @@ func _process(_delta):
 	velocity.x += float(xaccel)
 	velocity.y += float(yaccel)
 
-	# --- 1. Silnik wahadłowy X (Zsynchronizowany) ---
-	if excc != 0:
-		exccw -= 1
-		if exccw <= 0:
-			if velocity.x == xrev:          # sprawdź PRZED dodaniem
-				excc = -excc
-				xrev = -xrev
-				exccadd = -exccadd
-				# exccw NIE jest resetowane tutaj
-			else:
-				velocity.x += exccadd
-				exccw += exccwmax            # reset tylko tutaj
-				if velocity.x == xrev:      # sprawdź PO dodaniu
-					excc = -excc
-					xrev = -xrev
-					exccadd = -exccadd
-
-	# --- 2. Silnik wahadłowy Y (Zsynchronizowany) ---
-	if eycc != 0:
-		eyccw -= 1
-		if eyccw <= 0:
-			if velocity.y == yrev:          # sprawdź PRZED dodaniem
-				eycc = -eycc
-				yrev = -yrev
-				eyccadd = -eyccadd
-				# eyccw NIE jest resetowane tutaj
-			else:
-				velocity.y += eyccadd
-				eyccw += eyccwmax            # reset tylko tutaj
-				if velocity.y == yrev:      # sprawdź PO dodaniu
-					eycc = -eycc
-					yrev = -yrev
-					eyccadd = -eyccadd
-			
-	# --- 3. Przeliczenie na px/s Godot i zastosowanie ruchu ---
+	# --- 1. Przeliczenie na px/s Godot i zastosowanie ruchu ---
 	var move_x = velocity.x
 	var move_y = (float(fixed_move_y) + velocity.y + float(scroll_y))
 
 	position.x += move_x
 	position.y += move_y
 
-	# --- 4. System strzelania ---
+	# --- 2. System strzelania ---
 	_process_shooting(_delta)
 
-	# --- 5. Usuń poza ekranem (jeden warunek — poprawka podwójnego queue_free) ---
+	# --- 3. Usuń poza ekranem ---
 	if global_position.x < BOUNDS_LEFT  or global_position.x > BOUNDS_RIGHT \
 	or global_position.y < BOUNDS_TOP   or global_position.y > BOUNDS_BOTTOM:
 		queue_free()

@@ -8,7 +8,6 @@ var _scene_cache: Dictionary = {}  # enemy_id_str -> PackedScene | null
 # Dane scrollingu i mapy
 var back_move: int = 1
 var back_move3: int = 3
-var small_enemy_adjust: bool = false
 
 # Random spawn system
 var enemies_active: bool = false
@@ -21,9 +20,6 @@ func _init(p_level_manager: Node2D):
 func set_scroll_data(p_back_move: int, p_back_move3: int):
 	back_move = p_back_move
 	back_move3 = p_back_move3
-
-func set_small_enemy_adjust(active: bool):
-	small_enemy_adjust = active
 
 func set_random_spawn_data(p_level_enemies: Array, p_level_enemy_frequency: int = 96):
 	level_enemies = p_level_enemies
@@ -54,26 +50,6 @@ func process_random_spawn(_delta: float):
 
 		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 		level_manager.add_child(enemy)
-
-func spawn_enemy(event: Dictionary):
-	var enemy_id = int(event.get("enemy_id", 0))
-	var enemy = _instantiate(enemy_id)
-	if not enemy:
-		return
-
-	var spawn_pos = Vector2(float(event.get("screen_x", 0)), float(event.get("screen_y", 0)))
-	if small_enemy_adjust and enemy.esize == 0:
-		spawn_pos.x -= 10
-		spawn_pos.y -= 7
-
-	var enemy_slot = int(event.get("enemy_slot", 25))
-	_setup_enemy(enemy, enemy_id, spawn_pos,
-		_velocity(enemy, int(event.get("y_vel", 0))),
-		int(event.get("fixed_move_y", 0)), _scroll_for_slot(enemy_slot),
-		int(event.get("event_type", 0)), int(event.get("link_num", 0)), enemy_slot)
-
-	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-	level_manager.add_child(enemy)
 
 func spawn_free_enemy(event: Dictionary):
 	var enemy_id = int(event.get("enemy_id", 0))
@@ -261,164 +237,6 @@ func spawn_free_4x4(event: Dictionary):
 		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 		level_manager.add_child(enemy)
 
-func spawn_sky_enemy(event: Dictionary):
-	var enemy_id = int(event.get("enemy_id", 0))
-	var enemy = _instantiate(enemy_id)
-	if not enemy:
-		return
-
-	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)),
-		float(event.get("screen_y", 0)))
-	var enemy_slot = int(event.get("enemy_slot", 25))
-
-	_setup_enemy(enemy, enemy_id, spawn_pos,
-		_velocity(enemy, int(event.get("y_vel", 0))),
-		int(event.get("fixed_move_y", 0)), _scroll_for_slot(enemy_slot),
-		int(event.get("event_type", 0)), int(event.get("link_num", 0)), enemy_slot)
-
-	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-	level_manager.add_child(enemy)
-	# print("spawned sky enemy", enemy_id)
-
-func spawn_top_enemy(event: Dictionary):
-	var enemy_id = int(event.get("enemy_id", 0))
-	var enemy = _instantiate(enemy_id)
-	if not enemy:
-		return
-
-	var enemy_slot = int(event.get("enemy_slot", 50))
-	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)),
-		float(event.get("screen_y", 0)))
-
-	_setup_enemy(enemy, enemy_id, spawn_pos,
-		_velocity(enemy, int(event.get("y_vel", 0))),
-		int(event.get("fixed_move_y", 0)), _scroll_for_slot(enemy_slot),
-		7, int(event.get("link_num", 0)), enemy_slot)
-
-	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-	level_manager.add_child(enemy)
-
-func spawn_ground_enemy(event: Dictionary):
-	var enemy_id = int(event.get("enemy_id", 0))
-	var enemy = _instantiate(enemy_id)
-	if not enemy:
-		return
-
-	var enemy_slot = int(event.get("enemy_slot", 25))
-	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)),
-		float(event.get("screen_y", 0)))
-
-	_setup_enemy(enemy, enemy_id, spawn_pos,
-		_velocity(enemy, int(event.get("y_vel", 0))),
-		int(event.get("fixed_move_y", 0)), _scroll_for_slot(enemy_slot),
-		6, int(event.get("link_num", 0)), enemy_slot)
-
-	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-	level_manager.add_child(enemy)
-
-func spawn_ground_enemy_2(event: Dictionary):
-	var enemy_id = int(event.get("enemy_id", 0))
-	var enemy = _instantiate(enemy_id)
-	if not enemy:
-		return
-
-	var enemy_slot = int(event.get("enemy_slot", 75))
-	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)),
-		float(event.get("screen_y", 0)))
-
-	if small_enemy_adjust and enemy.esize == 0:
-		spawn_pos.x -= 10
-		spawn_pos.y -= 7
-
-	_setup_enemy(enemy, enemy_id, spawn_pos,
-		_velocity(enemy, int(event.get("y_vel", 0))),
-		int(event.get("fixed_move_y", 0)), _scroll_for_slot(enemy_slot),
-		10, int(event.get("link_num", 0)), enemy_slot)
-
-	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-	level_manager.add_child(enemy)
-
-func spawn_sky_bottom(event: Dictionary):
-	var enemy_id = int(event.get("enemy_id", 0))
-	var enemy = _instantiate(enemy_id)
-	if not enemy:
-		return
-
-	var enemy_slot = int(event.get("enemy_slot", 0))
-	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)),
-		float(event.get("screen_y", 0)))
-
-	_setup_enemy(enemy, enemy_id, spawn_pos,
-		_velocity(enemy, int(event.get("y_vel", 0))),
-		int(event.get("fixed_move_y", 0)), -int(event.get("back_move2", back_move)),
-		int(event.get("event_type", 0)), int(event.get("link_num", 0)), enemy_slot)
-
-	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-	level_manager.add_child(enemy)
-
-func spawn_sky_bottom2(event: Dictionary):
-	var enemy_id = int(event.get("enemy_id", 0))
-	var enemy = _instantiate(enemy_id)
-	if not enemy:
-		return
-
-	var enemy_slot = int(event.get("enemy_slot", 50))
-	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)),
-		float(event.get("screen_y", 0)))
-
-	_setup_enemy(enemy, enemy_id, spawn_pos,
-		_velocity(enemy, int(event.get("y_vel", 0))),
-		int(event.get("fixed_move_y", 0)), _scroll_for_slot(enemy_slot),
-		int(event.get("event_type", 0)), int(event.get("link_num", 0)), enemy_slot)
-
-	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-	level_manager.add_child(enemy)
-
-func spawn_ground2_bottom(event: Dictionary):
-	var enemy_id = int(event.get("enemy_id", 0))
-	var enemy = _instantiate(enemy_id)
-	if not enemy:
-		return
-
-	var enemy_slot = int(event.get("enemy_slot", 75))
-	var spawn_pos = Vector2(
-		float(event.get("screen_x", 0)) + 6.0,
-		float(event.get("screen_y", 0)) + 3.0)
-
-	if small_enemy_adjust and enemy.esize == 0:
-		spawn_pos.x -= 10
-		spawn_pos.y -= 7
-
-	_setup_enemy(enemy, enemy_id, spawn_pos,
-		_velocity(enemy, int(event.get("y_vel", 0))),
-		int(event.get("fixed_move_y", 0)), _scroll_for_slot(enemy_slot),
-		56, int(event.get("link_num", 0)), enemy_slot)
-
-	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-	level_manager.add_child(enemy)
-
-func spawn_enemy_special(event: Dictionary):
-	var enemy_id = int(event.get("enemy_id", 0))
-	var enemy = _instantiate(enemy_id)
-	if not enemy:
-		return
-
-	var enemy_slot = int(event.get("enemy_slot", 50))
-
-	_setup_enemy(enemy, enemy_id, Vector2(float(event.get("screen_x", 0)), 190.0),
-		_velocity(enemy, int(event.get("y_vel", 0))),
-		int(event.get("fixed_move_y", 0)), -back_move3,
-		32, int(event.get("link_num", 0)), enemy_slot)
-
-	enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
-	level_manager.add_child(enemy)
-
 # ============================================================================
 # Funkcje pomocnicze
 # ============================================================================
@@ -444,9 +262,6 @@ func _setup_enemy(enemy: Node2D, enemy_id: int, spawn_position: Vector2,
 	enemy.enemy_slot     = enemy_slot
 	enemy.projectile_scene = GameConstants.enemy_projectile_scene
 
-func _velocity(enemy: Node2D, y_vel: int) -> Vector2:
-	return Vector2(float(enemy.xmove), float(enemy.ymove + y_vel))
-
 func _scene_for_enemy(enemy_id: int) -> PackedScene:
 	var key = "%03d" % enemy_id
 	if _scene_cache.has(key):
@@ -455,10 +270,3 @@ func _scene_for_enemy(enemy_id: int) -> PackedScene:
 	var scene = load(path) if ResourceLoader.exists(path) else null
 	_scene_cache[key] = scene
 	return scene
-
-func _scroll_for_slot(enemy_slot: int) -> int:
-	match enemy_slot:
-		0:        return 0
-		25, 75:   return back_move
-		50:       return back_move3
-		_:        return 0
