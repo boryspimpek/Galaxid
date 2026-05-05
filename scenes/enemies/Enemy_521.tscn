@@ -14,9 +14,7 @@ starty = -13
 startxc = 100
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-position = Vector2(0, 28)
 texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
-position = Vector2(0, 30)
 shape = SubResource("CircleShape2D_521")

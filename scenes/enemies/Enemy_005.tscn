@@ -52,6 +52,12 @@ _data = {
 }
 point_count = 6
 
+[sub_resource type="Curve2D" id="Curve2D_t72cd"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112, -18.340328, -11.72101, 18.340328, 11.72101, 14, 180, -14.483215, -7.531272, 14.483215, 7.531272, 144, 178, 0, 0, 0, 0, 176, 214, 0, 0, 0, 0, 177, 279)
+}
+point_count = 6
+
 [node name="Enemy_005" unique_id=1841420694 instance=ExtResource("1_base")]
 armor = 6
 esize = 1
@@ -66,7 +72,6 @@ scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
-rotation = 1.5707964
 scale = Vector2(0.06, 0.06)
 shape = SubResource("CircleShape2D_005")
 
@@ -74,6 +79,7 @@ shape = SubResource("CircleShape2D_005")
 metadata/_edit_use_anchors_ = true
 
 [node name="CircleRight" type="Path2D" parent="." index="3" unique_id=1774883715]
+visible = false
 position = Vector2(-0.19774497, -0.12089663)
 scale = Vector2(0.8207065, 1.0055101)
 curve = SubResource("Curve2D_nmie7")
@@ -95,6 +101,7 @@ position = Vector2(0.12023413, -0.24094482)
 remote_path = NodePath("../../../CollisionShape2D")
 
 [node name="CircleLeft" type="Path2D" parent="." index="4" unique_id=1992249639]
+visible = false
 position = Vector2(-0.06756159, -0.04771633)
 scale = Vector2(0.82431287, 1.0129585)
 curve = SubResource("Curve2D_nmie8")
@@ -115,6 +122,7 @@ remote_path = NodePath("../../../Visual")
 remote_path = NodePath("../../../CollisionShape2D")
 
 [node name="BottomTopA" type="Path2D" parent="." index="5" unique_id=1323757102]
+visible = false
 curve = SubResource("Curve2D_q2qvc")
 script = ExtResource("3_q2qvc")
 speed = 6.0
@@ -132,6 +140,7 @@ remote_path = NodePath("../../../Visual")
 remote_path = NodePath("../../../CollisionShape2D")
 
 [node name="BottomTopB" type="Path2D" parent="." index="6" unique_id=1624746506]
+visible = false
 curve = SubResource("Curve2D_4n1c2")
 script = ExtResource("3_q2qvc")
 speed = 6.0
@@ -149,6 +158,7 @@ remote_path = NodePath("../../../Visual")
 remote_path = NodePath("../../../CollisionShape2D")
 
 [node name="TopBottomA" type="Path2D" parent="." index="7" unique_id=208557103]
+visible = false
 curve = SubResource("Curve2D_s3ai2")
 script = ExtResource("3_q2qvc")
 speed = 4.0
@@ -166,6 +176,7 @@ scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../CollisionShape2D")
 
 [node name="TopBottomB" type="Path2D" parent="." index="8" unique_id=1768960888]
+visible = false
 curve = SubResource("Curve2D_wt502")
 script = ExtResource("3_q2qvc")
 speed = 4.0
@@ -179,5 +190,22 @@ scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../Visual")
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="TopBottomB/PathFollow2D" index="1" unique_id=1609434434]
+scale = Vector2(0.06, 0.06)
+remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="TopBottomC" type="Path2D" parent="." index="9" unique_id=752307952]
+curve = SubResource("Curve2D_t72cd")
+script = ExtResource("3_q2qvc")
+speed = 4.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="TopBottomC" index="0" unique_id=947383809]
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="TopBottomC/PathFollow2D" index="0" unique_id=216296669]
+rotation = 1.5707964
+scale = Vector2(0.06, 0.06)
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="TopBottomC/PathFollow2D" index="1" unique_id=1488698604]
 scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../CollisionShape2D")
