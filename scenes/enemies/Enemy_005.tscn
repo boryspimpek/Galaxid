@@ -84,7 +84,6 @@ curve = SubResource("Curve2D_nmie7")
 script = ExtResource("3_q2qvc")
 speed = 6.0
 speed_curve = SubResource("Curve_nmie7")
-auto_advance = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CircleRight" index="0" unique_id=1234804078]
 rotation = 1.5707964

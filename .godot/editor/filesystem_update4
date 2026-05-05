@@ -34,3 +34,4 @@ res://scenes/world/LevelManager.gd
 res://scenes/enemy_projectile/EnemyProjectile.gd
 res://scripts/core/GameConstants.gd
 res://scenes/enemies/Enemy_999.tscn
+res://scenes/enemies/PathConfig.gd

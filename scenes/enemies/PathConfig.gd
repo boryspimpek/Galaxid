@@ -3,11 +3,15 @@ extends Path2D
 
 @export var speed: float = 3.0
 @export var speed_curve: Curve
+@export var scroll_speed: int = 0
 # Tylko formacje ustawiają auto_advance = true. Enemy-embedded paths nigdy.
 @export var auto_advance: bool = false
 
 func _process(_delta: float) -> void:
-	if Engine.is_editor_hint() or not auto_advance:
+	if Engine.is_editor_hint():
+		return
+	position.y += float(scroll_speed)
+	if not auto_advance:
 		return
 	for child in get_children():
 		if not child is PathFollow2D:
