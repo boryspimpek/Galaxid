@@ -229,7 +229,7 @@ func _fire_projectile(direction_index: int):
 		
 		if aim > 0:
 			# Logika aim: celowanie w gracza
-			var player = get_parent().get_node_or_null("Player")
+			var player = get_tree().get_first_node_in_group("player")
 			if player:
 				var target_pos = player.global_position
 				var aim_x = target_pos.x - global_position.x

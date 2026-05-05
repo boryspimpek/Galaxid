@@ -29,6 +29,18 @@
 				"event_name": "spawn_formation",
 				"event_type": 204,
 				"dist": 100,
+				"screen_x": 144,
+				"screen_y": 100,
+				"vel_x": 0,
+				"vel_y": 0,
+				"enemy_id": 865,
+				"link_num": 0
+			},
+			{
+				"category": "spawn",
+				"event_name": "spawn_formation",
+				"event_type": 204,
+				"dist": 100,
 				"screen_x": 48,
 				"screen_y": -30,
 				"enemy_id": 853,
@@ -770,7 +782,7 @@
 				"dist": 1760,
 				"enemy_id": 24,
 				"event_name": "spawn_path_enemy",
-				"event_type": 10,
+				"event_type": 100,
 				"link_num": 0,
 				"path": "FromLeftA",
 				"screen_x": -10,
@@ -3427,18 +3439,6 @@
 			},
 			{
 				"category": "context",
-				"dat": 0,
-				"dat2": 0,
-				"dat3": 0,
-				"dat4": 0,
-				"dat5": 0,
-				"dat6": 0,
-				"dist": 5400,
-				"event_name": "enemy_continual_damage",
-				"event_type": 40
-			},
-			{
-				"category": "context",
 				"dist": 5435,
 				"event_name": "enemy_global_accel",
 				"event_type": 20,
@@ -4918,18 +4918,6 @@
 				"link_num": 142,
 				"new_freq": [20.0, 0.0, 40.0],
 				"new_launch_freq": 0
-			},
-			{
-				"category": "spawn",
-				"event_name": "spawn_formation",
-				"event_type": 204,
-				"dist": 10000,
-				"screen_x": 144,
-				"screen_y": 100,
-				"vel_x": 0,
-				"vel_y": 0,
-				"enemy_id": 865,
-				"link_num": 0
 			}
 		],
 		"extracted_count": 968,
