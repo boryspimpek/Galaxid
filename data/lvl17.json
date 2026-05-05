@@ -14,12 +14,13 @@
 				"dist": 5340,
 				"enemy_id": 999,
 				"category": "spawn",
-				"event_name": "spawn_path_enemy",
-				"event_type": 100,
-				"path": "Path2D",
+				"event_name": "spawn_formation",
+				"event_type": 204,
+				"vel_x": 0,
+				"vel_y": 2,
 				"link_num": 0,
-				"screen_x": 48,
-				"screen_y": 10
+				"screen_x": 144,
+				"screen_y": -30
 			},
 			{
 				"dist": 100,

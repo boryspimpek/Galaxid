@@ -9,7 +9,7 @@ _data = {
 }
 point_count = 9
 
-[node name="test_enemy" type="Node2D" unique_id=468308396]
+[node name="Enemy_999" type="Node2D" unique_id=468308396]
 
 [node name="Enemy_308" parent="." unique_id=865143584 instance=ExtResource("1_bu86r")]
 rotation = 0.3189177
@@ -17,7 +17,6 @@ rotation = 0.3189177
 [node name="Path2D" type="Path2D" parent="." unique_id=1630259269]
 curve = SubResource("Curve2D_bu86r")
 script = ExtResource("2_ccgyu")
-speed = 8.0
 scroll_speed = 1
 auto_advance = true
 
