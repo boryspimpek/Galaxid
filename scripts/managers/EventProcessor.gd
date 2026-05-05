@@ -34,7 +34,7 @@ func set_scroll_data(p_back_move: int, p_back_move2: int, p_back_move3: int):
 	back_move2 = p_back_move2
 	back_move3 = p_back_move3
 
-const CONTEXT_EVENT_TYPES = [1, 2, 8, 13, 14, 19, 20, 26, 27, 30, 31]
+const CONTEXT_EVENT_TYPES = [1, 2, 8, 13, 14, 19, 20, 26, 27, 30, 31, 34]
 
 # Stosuje eventy kontekstowe (scroll, starfield, flagi) przed start_dist,
 # pomija spawny — używane przez "Play from dist".
@@ -135,6 +135,7 @@ func process_event(event: Dictionary):
 		202:                  enemy_spawner.just_spawn_enemy(event)
 		203:                  enemy_spawner.spawn_group_enemy(event)
 		204:                  enemy_spawner.spawn_formation(event)
+		300:                  enemy_controller.enemy_fire_power(event)
 		_:
 			pass
 

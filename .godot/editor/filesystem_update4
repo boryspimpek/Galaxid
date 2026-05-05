@@ -26,3 +26,5 @@ res://scenes/enemies/Enemy_054.tscn
 res://scenes/enemies/Enemy_017.tscn
 res://scenes/enemy/Enemy.gd
 res://scenes/enemies/Enemy_024.tscn
+res://scripts/managers/EnemyController.gd
+res://scripts/managers/EventProcessor.gd

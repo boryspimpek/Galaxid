@@ -84,6 +84,7 @@ Each event has: `dist`, `event_type`, `event_name`, `category` (`"spawn"` or `"c
 | 26   | small_enemy_adjust    | `small_enemy_adjust` (bool)                     |
 | 27   | global_enemy_accelrev | reverse accel                                   |
 | 31   | enemy_fire_override   | overrides fire params of live enemies           |
+| 34   | enemy_fire_power      | `link_num`, `new_tur[3]`, `new_freq[3]` (-1 = keep current); affects all enemies (incl. formations) with matching link_num |
 
 ### Spawn events (create enemies)
 

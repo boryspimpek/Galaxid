@@ -121,6 +121,21 @@ func enemy_from_enemy(event: Dictionary):
 			continue
 		child.enemy_die = spawn_on_death_id
 
+func enemy_fire_power(event: Dictionary):
+	var new_tur  = event.get("new_tur",  [-1, -1, -1])
+	var new_freq = event.get("new_freq", [-1, -1, -1])
+	var link_num = int(event.get("link_num", 0))
+
+	for enemy in level_manager.get_tree().get_nodes_in_group("enemies"):
+		if enemy.link_num != link_num:
+			continue
+		for i in range(3):
+			if int(new_tur[i]) != -1:
+				enemy.tur[i] = int(new_tur[i])
+			if int(new_freq[i]) != -1:
+				enemy.freq[i] = int(new_freq[i])
+		enemy.eshotwait = [1.0, 1.0, 1.0]
+
 func enemy_continual_damage(_event: Dictionary):
 	level_manager.enemy_continual_damage = true
 	print("EnemyController: enemy_continual_damage włączony")
