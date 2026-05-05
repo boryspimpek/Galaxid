@@ -42,7 +42,7 @@
 				"event_name": "enemy_fire_power",
 				"event_type": 300,
 				"link_num": 0,
-				"new_tur": [],
+				"new_tur": [0, 0, 0],
 				"new_freq": [60.0, 10.0, 5.0]
 			},
 			{
@@ -51,7 +51,7 @@
 				"event_name": "enemy_fire_power",
 				"event_type": 300,
 				"link_num": 0,
-				"new_tur": [],
+				"new_tur": [0, 0, 0],
 				"new_freq": [60.0, 10.0, 0.0]
 			},
 			{
