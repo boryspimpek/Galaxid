@@ -13,9 +13,9 @@ const EventProcessor = preload("res://scripts/managers/EventProcessor.gd")
 
 
 # Prędkości scrollingu (Tyrian px/klatkę)
-var back_move:  int = 1   # Ground (slot 25, 75)
-var back_move2: int = 2   # Sky (slot 0)
-var back_move3: int = 3   # Top (slot 50)
+var back_move:  int = 1   # Ground 
+var back_move2: int = 2   # Sky
+var back_move3: int = 3   # Top
 
 # Pozycje mapy z nagłówka poziomu
 var map_x: int = 1

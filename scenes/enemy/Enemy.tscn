@@ -13,13 +13,3 @@ z_index = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=183017983]
 shape = SubResource("CircleShape2D_enemy")
-
-[node name="DebugLabel" type="Label" parent="." unique_id=1796875769]
-z_index = 200
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-theme_override_font_sizes/font_size = 8
-horizontal_alignment = 1
-vertical_alignment = 1

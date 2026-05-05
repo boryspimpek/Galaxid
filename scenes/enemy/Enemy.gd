@@ -47,9 +47,7 @@ const BOUNDS_RIGHT  = GameConstants.BOUNDS_RIGHT
 const BOUNDS_TOP    = GameConstants.BOUNDS_TOP
 const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 
-# Referencje do węzłów
 @onready var visual: Sprite2D = $Visual
-@onready var debug_label: Label = $DebugLabel
 
 func _enter_tree() -> void:
 	for child in get_children():
@@ -83,10 +81,6 @@ func _ready():
 	
 	if visual.texture:
 		visual.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-
-	if debug_label:
-		debug_label.text = "ID:%d" % enemy_id
-		debug_label.visible = false
 
 	if wybran_sciezka != "":
 		_setup_path()
