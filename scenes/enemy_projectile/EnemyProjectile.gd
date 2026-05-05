@@ -71,11 +71,7 @@ func _physics_process(_delta):
 					if velocity.y < float(ty):
 						velocity.y += 1.0
 
-	var move_x = velocity.x
-	var move_y = velocity.y
-
-	position.x += move_x	
-	position.y += move_y	
+	position += velocity
 
 	# KROK 3: Sprawdź czy pocisk żyje (duration)
 	if duration != 255.0:
@@ -85,9 +81,8 @@ func _physics_process(_delta):
 			return
 
 	# Usuń poza ekranem
-	if position.x < BOUNDS_LEFT or position.x > BOUNDS_RIGHT:
-		queue_free()
-	if position.y < BOUNDS_TOP or position.y > BOUNDS_BOTTOM:
+	if position.x < BOUNDS_LEFT or position.x > BOUNDS_RIGHT \
+	or position.y < BOUNDS_TOP  or position.y > BOUNDS_BOTTOM:
 		queue_free()
 
 func _on_body_entered(body: Node2D):

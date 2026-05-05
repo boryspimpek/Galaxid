@@ -31,3 +31,4 @@ res://scripts/managers/EventProcessor.gd
 res://scenes/explosions/Explosion.gd
 res://scenes/explosions/RepExplosion.gd
 res://scenes/world/LevelManager.gd
+res://scenes/enemy_projectile/EnemyProjectile.gd
