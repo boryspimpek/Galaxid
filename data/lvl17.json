@@ -11,6 +11,17 @@
 				"back_move3": 0
 			},
 			{
+				"dist": 5340,
+				"enemy_id": 999,
+				"category": "spawn",
+				"event_name": "spawn_path_enemy",
+				"event_type": 100,
+				"path": "Path2D",
+				"link_num": 0,
+				"screen_x": 48,
+				"screen_y": 10
+			},
+			{
 				"dist": 100,
 				"enemy_id": 853,
 				"category": "spawn",

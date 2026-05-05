@@ -72,7 +72,9 @@ scale = Vector2(0.04924239, 0.060330603)
 texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
+position = Vector2(1.4901161e-08, 7.450581e-09)
 rotation = 1.5707964
+scale = Vector2(1.0055101, 0.8207065)
 shape = SubResource("CircleShape2D_005")
 
 [node name="CircleRight" type="Path2D" parent="." index="2" unique_id=1774883715]
@@ -82,6 +84,7 @@ curve = SubResource("Curve2D_nmie7")
 script = ExtResource("3_q2qvc")
 speed = 6.0
 speed_curve = SubResource("Curve_nmie7")
+auto_advance = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="CircleRight" index="0" unique_id=1234804078]
 rotation = 1.5707964
