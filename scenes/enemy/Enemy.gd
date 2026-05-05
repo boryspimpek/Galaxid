@@ -7,15 +7,10 @@ signal projectile_spawned(projectile)
 @export var armor: int = 1
 @export var esize: int = 0
 var enemy_id: int = 0
-var event_type: int = 0
 var link_num: int = 0
-var enemy_slot: int = 0
 
 # ---- Ruch ----
-# velocity odpowiada exc/eyc z silnika Tyrian
 var velocity: Vector2 = Vector2(0, 0)
-var fixed_move_y: int = 0
-var scroll_y: int = 2
 # Ruch bazowy (px/klatkę Tyrian) — ustawiany przez scenę wroga
 @export var xmove: int = 0
 @export var ymove: int = 0
@@ -264,7 +259,7 @@ func _process(_delta):
 
 	# --- 1. Przeliczenie na px/s Godot i zastosowanie ruchu ---
 	var move_x = velocity.x
-	var move_y = (float(fixed_move_y) + velocity.y + float(scroll_y))
+	var move_y = velocity.y
 
 	position.x += move_x
 	position.y += move_y
@@ -309,13 +304,11 @@ func die():
 
 
 func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int, origin: Vector2) -> void:
-	var s := float(scroll_y)
-
 	if esize == 0:
 		var explosion: Node2D = GameConstants.explosion_scene.instantiate()
 		parent.add_child(explosion)
 		explosion.global_position = origin
-		explosion.setup(1, s)
+		explosion.setup(1)
 		return
 
 	# Duży wróg (esize == 1) — 4 eksplozje w rogach
@@ -327,7 +320,7 @@ func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int, orig
 		var explosion: Node2D = GameConstants.explosion_scene.instantiate()
 		parent.add_child(explosion)
 		explosion.global_position = origin + offsets[i]
-		explosion.setup(corner_types[i], s)
+		explosion.setup(corner_types[i])
 
 	if explonum > 0:
 		var big   := explonum > 10
@@ -335,7 +328,7 @@ func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int, orig
 		var rep: Node2D = GameConstants.rep_explosion_scene.instantiate()
 		parent.add_child(rep)
 		rep.global_position = origin
-		rep.setup(burst, big, s)
+		rep.setup(burst, big)
 
 func _on_body_entered(body: Node2D):
 	if body.is_in_group("player"):

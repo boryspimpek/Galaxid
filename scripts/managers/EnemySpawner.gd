@@ -45,8 +45,7 @@ func process_random_spawn(_delta: float):
 		var spawn_pos = Vector2(float(spawn_x), float(enemy.starty))
 
 		_setup_enemy(enemy, enemy_id, spawn_pos,
-			Vector2(float(enemy.xmove), float(enemy.ymove)),
-			0, back_move, 0, 0, 25)
+			Vector2(float(enemy.xmove), float(enemy.ymove)), 0)
 
 		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 		level_manager.add_child(enemy)
@@ -68,10 +67,6 @@ func spawn_free_enemy(event: Dictionary):
 	enemy.name            = "Enemy_%d" % enemy_id
 	enemy.global_position = spawn_pos
 	enemy.velocity        = vel
-	enemy.fixed_move_y    = 0
-	enemy.scroll_y        = 0
-	enemy.enemy_slot      = 0
-	enemy.event_type      = 0
 	enemy.link_num        = int(event.get("link_num", 0))
 	enemy.enemy_id        = enemy_id
 	enemy.projectile_scene = GameConstants.enemy_projectile_scene
@@ -94,7 +89,7 @@ func spawn_path_enemy(event: Dictionary):
 		float(event.get("screen_y", 0)))
 
 	if enemy.has_signal("projectile_spawned"):
-		_setup_enemy(enemy, enemy_id, spawn_pos, Vector2.ZERO, 0, 0, 100, 0, 25)
+		_setup_enemy(enemy, enemy_id, spawn_pos, Vector2.ZERO, 0)
 		enemy.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 	else:
 		enemy.name = "Enemy_%03d" % enemy_id
@@ -188,10 +183,6 @@ func spawn_formation(event: Dictionary):
 		var child_id = int(rx.get_string(1))
 		child.enemy_id = child_id
 		child.link_num = link_num
-		child.enemy_slot = 0
-		child.event_type = 0
-		child.fixed_move_y = 0
-		child.scroll_y = 0
 		child.projectile_scene = GameConstants.enemy_projectile_scene
 		child.projectile_spawned.connect(level_manager._on_enemy_projectile_spawned)
 
@@ -226,10 +217,6 @@ func spawn_free_4x4(event: Dictionary):
 		enemy.name            = "Enemy_%d" % eid
 		enemy.global_position = spawn_pos
 		enemy.velocity        = vel
-		enemy.fixed_move_y    = 0
-		enemy.scroll_y        = 0
-		enemy.enemy_slot      = 0
-		enemy.event_type      = 0
 		enemy.link_num        = int(event.get("link_num", 0))
 		enemy.enemy_id        = eid
 		enemy.projectile_scene = GameConstants.enemy_projectile_scene
@@ -249,17 +236,12 @@ func _instantiate(enemy_id: int) -> Node2D:
 	return scene.instantiate()
 
 func _setup_enemy(enemy: Node2D, enemy_id: int, spawn_position: Vector2,
-		velocity: Vector2, fixed_move_y: int, scroll_y: int,
-		event_type: int, link_num: int, enemy_slot: int) -> void:
-	enemy.name           = "Enemy_%d" % enemy_id
+		velocity: Vector2, link_num: int) -> void:
+	enemy.name            = "Enemy_%d" % enemy_id
 	enemy.global_position = spawn_position
-	enemy.velocity       = velocity
-	enemy.fixed_move_y   = fixed_move_y
-	enemy.scroll_y       = scroll_y
-	enemy.enemy_id       = enemy_id
-	enemy.event_type     = event_type
-	enemy.link_num       = link_num
-	enemy.enemy_slot     = enemy_slot
+	enemy.velocity        = velocity
+	enemy.enemy_id        = enemy_id
+	enemy.link_num        = link_num
 	enemy.projectile_scene = GameConstants.enemy_projectile_scene
 
 func _scene_for_enemy(enemy_id: int) -> PackedScene:

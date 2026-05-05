@@ -25,13 +25,11 @@ const TYPE_TTL: Dictionary = {
 
 var _textures: Array = []
 var _frame: int = 0
-var _scroll_y: float = 0.0
 
 @onready var _sprite: Sprite2D = $Sprite2D
 
 
-func setup(type: int, p_scroll_y: float) -> void:
-	_scroll_y = p_scroll_y
+func setup(type: int) -> void:
 	var label: String = TYPE_LABELS.get(type, "type%02d" % type)
 	var ttl: int = TYPE_TTL.get(type, 7)
 	for f in range(ttl):
@@ -45,7 +43,6 @@ func setup(type: int, p_scroll_y: float) -> void:
 
 
 func _process(_delta: float) -> void:
-	position.y += _scroll_y
 	_frame += 1
 	if _frame >= _textures.size():
 		queue_free()

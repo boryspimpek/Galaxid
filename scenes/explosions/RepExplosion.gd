@@ -6,7 +6,6 @@ extends Node2D
 
 var _bursts_left: int = 0
 var _big: bool = false
-var _scroll_y: float = 0.0
 var _ticks_since_last: int = 0
 var _next_delay: int = 3
 
@@ -15,10 +14,9 @@ const LARGE_OFFSETS := [Vector2(-6, -14), Vector2(6, -14), Vector2(-6, -1), Vect
 const LARGE_TYPES   := [7, 9, 8, 10]
 
 
-func setup(bursts: int, big: bool, p_scroll_y: float) -> void:
+func setup(bursts: int, big: bool) -> void:
 	_bursts_left = bursts
 	_big = big
-	_scroll_y = p_scroll_y
 	_next_delay = 4 if big else 3
 
 
@@ -26,9 +24,6 @@ func _process(_delta: float) -> void:
 	if _bursts_left <= 0:
 		queue_free()
 		return
-
-	# Pozycja centrum dryfuje z scrollem (backMove2 ≈ scroll_y, +1 dodatkowy)
-	position.y += _scroll_y + 1.0
 
 	_ticks_since_last += 1
 	if _ticks_since_last < _next_delay:
@@ -64,4 +59,4 @@ func _spawn_explosion(parent: Node, pos: Vector2, type: int) -> void:
 	var explosion: Node2D = GameConstants.explosion_scene.instantiate()
 	parent.add_child(explosion)
 	explosion.global_position = pos
-	explosion.setup(type, _scroll_y)
+	explosion.setup(type)
