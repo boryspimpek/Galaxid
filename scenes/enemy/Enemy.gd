@@ -78,7 +78,6 @@ func _ready():
 		else:
 			eshotwait[i] = 255.0  # brak broni - duży cooldown
 
-	
 	if visual.texture:
 		visual.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 
@@ -122,7 +121,6 @@ func _fire_projectile(direction_index: int):
 		return
 
 	var weapon_id = int(tur[direction_index])
-	# print("Strzał! weapon_id=", weapon_id, " direction=", direction_index)
 
 	var weapon_data = DataManager.get_weapon_by_id(weapon_id)
 
@@ -150,8 +148,6 @@ func _fire_projectile(direction_index: int):
 		var bx      = pattern.get("bx", 0)
 		var by      = pattern.get("by", 0)
 		var sg      = pattern.get("sg", 0)
-
-		# print("DEBUG: direction_index=", direction_index, " temp_pos=", temp_pos, " sx=", sx, " sy=", sy)
 
 		# Oblicz prędkość w zależności od kierunku (zgodnie z kodem Tyrian)
 		# direction_index: 0 = down, 1 = right, 2 = left
@@ -191,8 +187,6 @@ func _fire_projectile(direction_index: int):
 				_:
 					projectile_velocity = Vector2(float(sx), float(sy))
 
-		# print("DEBUG: final velocity=", projectile_velocity)
-
 		# Utwórz pocisk
 		var projectile = projectile_scene.instantiate()
 		projectile.velocity = projectile_velocity
@@ -205,11 +199,8 @@ func _fire_projectile(direction_index: int):
 		projectile.accelerationx = int(weapon_data.get("accelerationx", 0))
 		projectile.duration = float(pattern.get("del", 255))
 
-		# Oblicz pozycję startową z offsetem bx/by
-		var offset_x = float(bx)
-		var offset_y = float(by)
 		var spawn_origin = visual.global_position if _active_follow else global_position
-		projectile.global_position = spawn_origin + Vector2(offset_x, offset_y)
+		projectile.global_position = spawn_origin + Vector2(float(bx), float(by))
 
 		# Emituj sygnał do spawnu pocisku (LevelManager doda go do sceny)
 		projectile_spawned.emit(projectile)
@@ -230,12 +221,7 @@ func _process(_delta):
 	velocity.x += float(xaccel)
 	velocity.y += float(yaccel)
 
-	# --- 1. Przeliczenie na px/s Godot i zastosowanie ruchu ---
-	var move_x = velocity.x
-	var move_y = velocity.y
-
-	position.x += move_x
-	position.y += move_y
+	position += velocity
 
 	# --- 2. System strzelania ---
 	_process_shooting(_delta)

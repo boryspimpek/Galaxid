@@ -72,9 +72,7 @@ scale = Vector2(0.04924239, 0.060330603)
 texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
-position = Vector2(1.4901161e-08, 7.450581e-09)
 rotation = 1.5707964
-scale = Vector2(1.0055101, 0.8207065)
 shape = SubResource("CircleShape2D_005")
 
 [node name="CircleRight" type="Path2D" parent="." index="2" unique_id=1774883715]
@@ -166,7 +164,6 @@ scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../Visual")
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="TopBottomA/PathFollow2D" index="1" unique_id=671352227]
-scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../CollisionShape2D")
 
 [node name="TopBottomB" type="Path2D" parent="." index="7" unique_id=1768960888]
@@ -183,7 +180,6 @@ scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../Visual")
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="TopBottomB/PathFollow2D" index="1" unique_id=1609434434]
-scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../CollisionShape2D")
 
 [node name="TopBottomC" type="Path2D" parent="." index="8" unique_id=752307952]
@@ -201,5 +197,4 @@ scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../Visual")
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="TopBottomC/PathFollow2D" index="1" unique_id=1488698604]
-scale = Vector2(0.06, 0.06)
 remote_path = NodePath("../../../CollisionShape2D")

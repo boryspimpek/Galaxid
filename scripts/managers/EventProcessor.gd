@@ -71,8 +71,8 @@ func fast_forward_to(target_dist: int):
 		var event_type = int(event["event_type"])
 		if event_type in CONTEXT_EVENT_TYPES:
 			process_event(event)          # może zmienić back_move/back_move2/back_move3
-		elif event.has("enemies_active"):
-			enemy_spawner.set_enemies_active(bool(event.get("enemies_active", false)))
+		# elif event.has("enemies_active"):
+		# 	enemy_spawner.set_enemies_active(bool(event.get("enemies_active", false)))
 		i += 1
 
 	# Reszta dystansu od ostatniego eventu do target_dist
