@@ -86,9 +86,6 @@ func _ready():
 
 	_init_shooting_timers()
 
-	if visual.texture:
-		visual.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
-
 	if wybran_sciezka != "":
 		_setup_path()
 

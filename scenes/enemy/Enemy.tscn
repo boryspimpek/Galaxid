@@ -10,6 +10,7 @@ script = ExtResource("1_enemy")
 
 [node name="Visual" type="Sprite2D" parent="." unique_id=1405638014]
 z_index = 100
+texture_filter = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=183017983]
 shape = SubResource("CircleShape2D_enemy")
