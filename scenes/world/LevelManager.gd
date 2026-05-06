@@ -61,8 +61,8 @@ func _process(_delta):
 	event_processor.process_events_for_distance(int(level_distance))
 	enemy_spawner.process_random_spawn(_delta)
 	
-	if Engine.get_frames_drawn() % 100 == 0:
-		print("Dist: ", int(level_distance))
+	# if Engine.get_frames_drawn() % 100 == 0:
+		# print("Dist: ", int(level_distance))
 		
 func load_data():
 	DataManager.get_weapons()  # pre-cache broni przed pierwszym strzałem

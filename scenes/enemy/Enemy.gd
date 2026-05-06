@@ -39,6 +39,8 @@ var eshotwait: Array    = [0.0, 0.0, 0.0]  # Licznik cooldown (w klatkach Tyrian
 var eshotwaitmax: Array = [0.0, 0.0, 0.0]  # Maksymalny cooldown z freq
 var eshotmultipos: Array = [0, 0, 0]       # Pozycja w cyklu patternów dla każdego kierunku
 
+var _player: Node2D  # Cache — ustawiany raz w _ready(), nie szukamy w drzewie co strzał
+
 @onready var visual: Sprite2D = $Visual
 
 func _enter_tree() -> void:
@@ -77,6 +79,7 @@ func _ready():
 		_setup_path()
 
 	$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
+	_player = get_tree().get_first_node_in_group("player")
 
 func _setup_path():
 	for child in get_children():
@@ -107,7 +110,7 @@ func _process_shooting(_delta: float):
 
 func _fire_projectile(direction_index: int):
 	if not projectile_scene:
-		print("ERROR: projectile_scene pusty")
+		push_error("Enemy: projectile_scene pusty (enemy_id=%d)" % enemy_id)
 		return
 
 	var weapon_id = int(tur[direction_index])
@@ -115,7 +118,7 @@ func _fire_projectile(direction_index: int):
 	var weapon_data = DataManager.get_weapon_by_id(weapon_id)
 
 	if weapon_data.is_empty():
-		print("ERROR: Nie znaleziono broni o ID=", weapon_id)
+		push_error("Enemy: nie znaleziono broni o ID=%d (enemy_id=%d)" % [weapon_id, enemy_id])
 		return
 
 	var patterns = weapon_data.get("patterns", [])
@@ -145,9 +148,8 @@ func _fire_projectile(direction_index: int):
 		
 		if aim > 0:
 			# Logika aim: celowanie w gracza
-			var player = get_tree().get_first_node_in_group("player")
-			if player:
-				var target_pos = player.global_position
+			if is_instance_valid(_player):
+				var target_pos = _player.global_position
 				var aim_x = target_pos.x - global_position.x
 				var aim_y = target_pos.y - global_position.y
 				
@@ -194,7 +196,6 @@ func _fire_projectile(direction_index: int):
 
 		# Emituj sygnał do spawnu pocisku (LevelManager doda go do sceny)
 		projectile_spawned.emit(projectile)
-		# print("Pocisk utworzony na pozycji: ", projectile.global_position, " velocity: ", projectile.velocity)
 
 		# Inkrementuj po wyborze i spawn pocisku, zawijaj po weapon_max
 		eshotmultipos[direction_index] = (eshotmultipos[direction_index] + 1) % weapon_max

@@ -23,7 +23,7 @@ func load_shield_config():
 		shield_max = float(mpwr * 2)
 		print("ShieldSystem: shield=", shield, "/", shield_max, " shield_t=", shield_t, " (power/pkt)")
 	else:
-		print("ShieldSystem: brak danych tarczy (shield_id=", PlayerSetup.shield_id, ")")
+		push_warning("ShieldSystem: brak danych tarczy (shield_id=%d)" % PlayerSetup.shield_id)
 
 func _physics_process(_delta): # Delta ignorowana
 	# 1. Odliczanie klatkowe

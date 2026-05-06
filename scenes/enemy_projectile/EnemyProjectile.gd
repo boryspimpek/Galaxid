@@ -13,6 +13,8 @@ var acceleration: int = 0             # przyspieszenie Y
 var accelerationx: int = 0            # przyspieszenie X
 var duration: float = 255.0           # czas życia w klatkach Tyrian (255 = nieskończony)
 
+var _player: Node2D  # Cache — ustawiany raz w _ready(), nie szukamy w drzewie co klatka
+
 # Referencja do węzła wizualnego
 @onready var visual: Sprite2D = $Visual
 
@@ -26,6 +28,7 @@ func _ready():
 	body_entered.connect(_on_body_entered)
 	_apply_shot_graphic()
 	$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
+	_player = get_tree().get_first_node_in_group("player")
 
 func _apply_shot_graphic():
 	if sprite_id <= 0 or not visual:
@@ -45,26 +48,24 @@ func _physics_process(_delta):
 	velocity.y += float(acceleration)
 
 	# KROK 2: Homing (tylko jeśli tx != 0 lub ty != 0)
-	if tx != 0 or ty != 0:
-		var player = get_tree().get_first_node_in_group("player")
-		if player:
-			# Homing X
-			if tx != 0:
-				if global_position.x > player.global_position.x:
-					if velocity.x > -float(tx):
-						velocity.x -= 1.0
-				else:
-					if velocity.x < float(tx):
-						velocity.x += 1.0
+	if (tx != 0 or ty != 0) and is_instance_valid(_player):
+		# Homing X
+		if tx != 0:
+			if global_position.x > _player.global_position.x:
+				if velocity.x > -float(tx):
+					velocity.x -= 1.0
+			else:
+				if velocity.x < float(tx):
+					velocity.x += 1.0
 
-			# Homing Y
-			if ty != 0:
-				if global_position.y > player.global_position.y:
-					if velocity.y > -float(ty):
-						velocity.y -= 1.0
-				else:
-					if velocity.y < float(ty):
-						velocity.y += 1.0
+		# Homing Y
+		if ty != 0:
+			if global_position.y > _player.global_position.y:
+				if velocity.y > -float(ty):
+					velocity.y -= 1.0
+			else:
+				if velocity.y < float(ty):
+					velocity.y += 1.0
 
 	position += velocity
 
