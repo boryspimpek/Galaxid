@@ -88,7 +88,6 @@ ymove = 1
 startx = 130
 starty = -13
 startxc = 100
-path_speed = 0.0
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
 position = Vector2(-0.5, -4)

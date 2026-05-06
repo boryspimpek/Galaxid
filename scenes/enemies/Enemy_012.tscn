@@ -25,7 +25,6 @@ esize = 1
 value = 15
 explosiontype = 4
 ymove = 1
-path_speed_curve = SubResource("Curve_3spji")
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
 scale = Vector2(0.06, 0.06)

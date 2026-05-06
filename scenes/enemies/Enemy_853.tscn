@@ -13,11 +13,9 @@ point_count = 3
 [node name="Enemy_853" type="Node2D" unique_id=1500145978]
 
 [node name="Enemy_003" parent="." unique_id=398450216 instance=ExtResource("1_kpqbk")]
-path_speed = 0.0
 
 [node name="Enemy_003_1" parent="." unique_id=200795562 instance=ExtResource("1_kpqbk")]
 position = Vector2(-0.016922547, 23.989357)
-path_speed = 0.0
 
 [node name="Enemy_016" parent="." unique_id=1421474503 instance=ExtResource("3_pa7gk")]
 position = Vector2(72, 0)

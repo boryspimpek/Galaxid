@@ -35,8 +35,6 @@ esize = 1
 value = 10
 explosiontype = 6
 tur = [125, 0, 0]
-path_speed = 0.0
-path_speed_curve = SubResource("Curve_xbd0p")
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
 scale = Vector2(0.06, 0.06060914)

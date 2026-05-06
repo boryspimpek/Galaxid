@@ -23,7 +23,6 @@ explosiontype = 26
 armor = 12
 esize = 1
 tur = [0, 0, 78]
-path_speed = 0.0
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
 scale = Vector2(0.06, 0.06)

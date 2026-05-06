@@ -16,6 +16,7 @@ var velocity: Vector2 = Vector2(0, 0)
 # Ruch bazowy (px/klatkę Tyrian) — ustawiany przez scenę wroga
 @export var xmove: int = 0
 @export var ymove: int = 0
+
 # Pozycja domyślna dla random spawn
 @export var startx: int = 0
 @export var starty: int = 0
@@ -30,10 +31,8 @@ var projectile_scene: PackedScene
 
 # ---- Ruch po ścieżce ----
 @export var wybran_sciezka: String = ""
-@export var path_speed: float = 3.0
-@export var path_speed_curve: Curve
 var _active_follow: PathFollow2D = null
-var _active_path_speed: float = 3.0
+var _active_path_speed: float = 0.0
 var _active_path_curve: Curve = null
 
 var eshotwait: Array    = [0.0, 0.0, 0.0]  # Licznik cooldown (w klatkach Tyrian)
@@ -97,12 +96,8 @@ func _setup_path():
 			for rt in follow.get_children():
 				if rt is RemoteTransform2D:
 					rt.update_position = true
-			if "speed" in path_node:
-				_active_path_speed = path_node.speed
-				_active_path_curve = path_node.speed_curve
-			else:
-				_active_path_speed = path_speed
-				_active_path_curve = path_speed_curve
+			_active_path_speed = path_node.speed
+			_active_path_curve = path_node.speed_curve
 	
 func _process_shooting(_delta: float):
 	for i in range(3):
