@@ -13,12 +13,6 @@ var acceleration: int = 0             # przyspieszenie Y
 var accelerationx: int = 0            # przyspieszenie X
 var duration: float = 255.0           # czas życia w klatkach Tyrian (255 = nieskończony)
 
-# Granice usuwania (z GameConstants)
-const BOUNDS_LEFT   = GameConstants.BOUNDS_LEFT
-const BOUNDS_RIGHT  = GameConstants.BOUNDS_RIGHT
-const BOUNDS_TOP    = GameConstants.BOUNDS_TOP
-const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
-
 # Referencja do węzła wizualnego
 @onready var visual: Sprite2D = $Visual
 
@@ -31,6 +25,7 @@ func _ready():
 	collision_mask  = 1
 	body_entered.connect(_on_body_entered)
 	_apply_shot_graphic()
+	$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
 
 func _apply_shot_graphic():
 	if sprite_id <= 0 or not visual:
@@ -80,10 +75,6 @@ func _physics_process(_delta):
 			queue_free()
 			return
 
-	# Usuń poza ekranem
-	if position.x < BOUNDS_LEFT or position.x > BOUNDS_RIGHT \
-	or position.y < BOUNDS_TOP  or position.y > BOUNDS_BOTTOM:
-		queue_free()
 
 func _on_body_entered(body: Node2D):
 	if body.is_in_group("player"):

@@ -4,12 +4,6 @@ extends Node
 # GAME CONSTANTS - Centralne miejsce dla stałych używanych w całej grze
 # ============================================================================
 
-# ---- Granice usuwania (px Godot) ----
-const BOUNDS_LEFT = -50
-const BOUNDS_RIGHT = 340
-const BOUNDS_TOP = -100
-const BOUNDS_BOTTOM = 230
-
 # ---- Sceny pocisków ----
 var enemy_projectile_scene: PackedScene
 var player_projectile_scene: PackedScene

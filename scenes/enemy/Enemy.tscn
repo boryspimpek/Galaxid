@@ -13,3 +13,5 @@ z_index = 100
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=183017983]
 shape = SubResource("CircleShape2D_enemy")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=291847561]

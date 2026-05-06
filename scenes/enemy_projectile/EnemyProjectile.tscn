@@ -12,3 +12,5 @@ script = ExtResource("1_enemy_proj")
 shape = SubResource("CircleShape2D_enemy")
 
 [node name="Visual" type="Sprite2D" parent="."]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

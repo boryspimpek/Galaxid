@@ -39,12 +39,6 @@ var eshotwait: Array    = [0.0, 0.0, 0.0]  # Licznik cooldown (w klatkach Tyrian
 var eshotwaitmax: Array = [0.0, 0.0, 0.0]  # Maksymalny cooldown z freq
 var eshotmultipos: Array = [0, 0, 0]       # Pozycja w cyklu patternów dla każdego kierunku
 
-# ---- Granice usuwania (z GameConstants) ----
-const BOUNDS_LEFT   = GameConstants.BOUNDS_LEFT
-const BOUNDS_RIGHT  = GameConstants.BOUNDS_RIGHT
-const BOUNDS_TOP    = GameConstants.BOUNDS_TOP
-const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
-
 @onready var visual: Sprite2D = $Visual
 
 func _enter_tree() -> void:
@@ -81,6 +75,8 @@ func _ready():
 
 	if wybran_sciezka != "":
 		_setup_path()
+
+	$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
 
 func _setup_path():
 	for child in get_children():
@@ -217,10 +213,6 @@ func _process(_delta):
 	# --- 2. System strzelania ---
 	_process_shooting(_delta)
 
-	# --- 3. Usuń poza ekranem ---
-	if global_position.x < BOUNDS_LEFT  or global_position.x > BOUNDS_RIGHT \
-	or global_position.y < BOUNDS_TOP   or global_position.y > BOUNDS_BOTTOM:
-		queue_free()
 
 # ============================================================================
 # SYSTEM OBRAŻEŃ

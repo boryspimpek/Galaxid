@@ -26,6 +26,7 @@ func _ready():
 	collision_mask  = 2
 	_init_circlesize()
 	_apply_shot_graphic()
+	$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
 
 func _apply_shot_graphic():
 	if shot_graphic <= 0:
@@ -101,10 +102,6 @@ func _physics_process(_delta):
 			queue_free()
 			return
 	
-	# Usuwamy pocisk gdy wyjdzie poza viewport
-	var vp = get_viewport_rect().size
-	if position.y < -10 or position.y > vp.y + 10 or position.x < -10 or position.x > vp.x + 10:
-		queue_free()
 
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("enemies"):
