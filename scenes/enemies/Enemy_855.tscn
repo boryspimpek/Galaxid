@@ -26,24 +26,30 @@ point_count = 5
 [node name="Enemy_855" type="Node2D" unique_id=2013483122]
 
 [node name="Enemy_031" parent="." unique_id=1201927491 instance=ExtResource("1_wc4ty")]
+ymove = 1
 
 [node name="Enemy_030" parent="." unique_id=1731212102 instance=ExtResource("2_qhu54")]
 position = Vector2(0, -24)
+ymove = 1
 
 [node name="Enemy_030_2" parent="." unique_id=809319394 instance=ExtResource("2_qhu54")]
 position = Vector2(0, -48)
+ymove = 1
 
 [node name="Enemy_026" parent="." unique_id=1909639894 instance=ExtResource("3_euauw")]
 position = Vector2(-20, -24)
+ymove = 1
 
 [node name="Enemy_027" parent="." unique_id=183903693 instance=ExtResource("4_i4rks")]
 position = Vector2(20, -24)
+ymove = 1
 
 [node name="Path2D" type="Path2D" parent="." unique_id=808110891]
 curve = SubResource("Curve2D_wc4ty")
 script = ExtResource("5_qhu54")
 speed = 2.0
 speed_curve = SubResource("Curve_qhu54")
+scroll_speed = -1
 auto_advance = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=486932771]
@@ -59,6 +65,7 @@ curve = SubResource("Curve2D_qhu54")
 script = ExtResource("5_qhu54")
 speed = 2.0
 speed_curve = SubResource("Curve_qhu54")
+scroll_speed = -1
 auto_advance = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1759352035]
@@ -68,3 +75,5 @@ loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D2/PathFollow2D" unique_id=1278483360]
 remote_path = NodePath("../../../Enemy_026")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1654278292]

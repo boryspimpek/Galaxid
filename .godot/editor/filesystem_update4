@@ -1,10 +1,7 @@
-res://scenes/enemy_projectile/EnemyProjectile.gd
-res://scenes/player/DamageSystem.gd
-res://scenes/player/player.gd
-res://scenes/player/ShieldSystem.gd
-res://scenes/player/WeaponSystem.gd
-res://scenes/world/LevelManager.gd
-res://scripts/core/DataManager.gd
-res://scripts/managers/EventProcessor.gd
-res://scripts/managers/EnemyController.gd
-res://scenes/enemy/Enemy.tscn
+res://scenes/world/World.tscn
+res://scenes/enemies/Enemy_005.tscn
+res://scenes/enemies/Enemy_003.tscn
+res://scenes/enemies/Enemy_006.tscn
+res://scenes/enemies/Enemy_013.tscn
+res://scenes/enemies/Enemy_855.tscn
+res://scenes/enemy/Enemy.gd

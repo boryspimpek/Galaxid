@@ -9,38 +9,34 @@ radius = 22.022715
 
 [sub_resource type="Curve2D" id="Curve2D_0thwq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 195, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, -402)
 }
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_0thwq"]
-_data = [Vector2(0.4334917, 1), 0.0, 0.0, 0, 0, Vector2(0.49881238, 0.50528544), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Enemy_013" unique_id=980532165 instance=ExtResource("1_base")]
-value = 25
-explosiontype = 26
 armor = 12
 esize = 1
+value = 25
+explosiontype = 26
 tur = [116, 0, 0]
 freq = [20, 0, 0]
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
+rotation = -3.0572164
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
-rotation = 1.5707964
+rotation = -1.48642
 shape = SubResource("CircleShape2D_013")
 
 [node name="Reverse" type="Path2D" parent="." index="3" unique_id=341558307]
 curve = SubResource("Curve2D_0thwq")
 script = ExtResource("3_w2opv")
-speed = 2.0
-speed_curve = SubResource("Curve_0thwq")
+speed = 1.0
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Reverse" index="0" unique_id=1352660429]
-rotation = 1.5707964
+rotation = -1.48642
 loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Reverse/PathFollow2D" index="0" unique_id=918814049]

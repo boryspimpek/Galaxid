@@ -38,7 +38,7 @@ signal projectile_spawned(projectile)
 #region Stan wewnętrzny
 
 var enemy_id: int = 0
-var link_num: int = 0   # Numer grupy — używany przez EnemyController (eventy typu 300)
+var link_num: int = 0
 
 var velocity: Vector2 = Vector2.ZERO
 var projectile_scene: PackedScene
@@ -53,9 +53,8 @@ var eshotwait:    Array = [0.0, 0.0, 0.0]  # Aktualny cooldown
 var eshotwaitmax: Array = [0.0, 0.0, 0.0]  # Maksymalny cooldown (z freq)
 var eshotmultipos: Array = [0, 0, 0]       # Pozycja w cyklu patternów
 
-# Cache'e — wypełniane w _ready(), odświeżane przez EnemyController
-var _player: Node2D                                  # Referencja do gracza
-var _weapon_cache: Array = [null, null, null]        # Dane broni per slot (O(1) zamiast O(n))
+var _player: Node2D
+var _weapon_cache: Array = [null, null, null]
 
 @onready var visual: Sprite2D = $Visual
 
@@ -80,9 +79,12 @@ func _enter_tree() -> void:
 
 func _ready():
 	add_to_group("enemies")
-	collision_layer = 2   # warstwa: wróg
-	collision_mask  = 5   # maska: pociski gracza (4) + ciało gracza (1)
+	collision_layer = 2
+	collision_mask  = 5
 	body_entered.connect(_on_body_entered)
+
+	velocity = Vector2(float(xmove), float(ymove))
+	projectile_scene = GameConstants.enemy_projectile_scene
 
 	_init_shooting_timers()
 
@@ -90,8 +92,10 @@ func _ready():
 		_setup_path()
 
 	$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
+	$VisibleOnScreenNotifier2D.screen_entered.connect(_on_screen_entered)
 	_player = get_tree().get_first_node_in_group("player")
 	refresh_weapon_cache()
+	set_process(false)
 
 func _init_shooting_timers():
 	# Startowe cooldowny zgodne z logiką Tyrian (JE_makeEnemy):
@@ -123,8 +127,10 @@ func _setup_path():
 			_active_path_speed = path_node.speed
 			_active_path_curve = path_node.speed_curve
 
+func _on_screen_entered():
+	set_process(true)
+
 func refresh_weapon_cache():
-	# Wywoływane przy spawnie i po każdej zmianie tur[] przez EnemyController.
 	for i in range(3):
 		_weapon_cache[i] = DataManager.get_weapon_by_id(tur[i]) if tur[i] != 0 else null
 
@@ -214,7 +220,8 @@ func _fire_projectile(direction_index: int):
 		eshotmultipos[direction_index] = (eshotmultipos[direction_index] + 1) % weapon_max
 
 func _calc_aim_velocity(aim: int, sx: int, sy: int) -> Vector2:
-	# Celowanie w gracza: normalizacja przez maxMagAim (logika Tyrian).
+	if not is_instance_valid(_player):
+		_player = get_tree().get_first_node_in_group("player")
 	if not is_instance_valid(_player):
 		return Vector2(float(sx), float(sy))
 	var diff = _player.global_position - global_position
