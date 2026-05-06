@@ -22,10 +22,8 @@ metadata/_snap_count = 100
 [node name="Enemy_010" unique_id=834132465 instance=ExtResource("1_base")]
 armor = 3
 esize = 1
-ymove = 1
-startx = 130
-starty = -13
-startxc = 100
+value = 15
+explosiontype = 4
 path_speed = 0.0
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
@@ -36,7 +34,7 @@ texture = ExtResource("2_tex")
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_010")
 
-[node name="Turn" type="Path2D" parent="." index="3" unique_id=2018425666]
+[node name="Turn" type="Path2D" parent="." index="2" unique_id=2018425666]
 curve = SubResource("Curve2D_llqvf")
 script = ExtResource("3_llqvf")
 speed_curve = SubResource("Curve_llqvf")

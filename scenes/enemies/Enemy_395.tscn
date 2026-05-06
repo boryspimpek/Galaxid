@@ -6,6 +6,8 @@
 radius = 10.0
 
 [node name="Enemy_395" instance=ExtResource("1_base")]
+value = 250
+explosiontype = 40
 armor = 0
 ymove = 1
 startx = 130

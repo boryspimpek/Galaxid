@@ -14,6 +14,7 @@ scripts/managers/EnemySpawner.gd  — instantiates & configures enemy scenes
 scripts/managers/EnemyController.gd — global enemy commands (move, accel, fire)
 scripts/managers/EventProcessor.gd — reads lvlXX.json events, dispatches them
 scenes/enemy/Enemy.gd             — base class for all enemies (Area2D)
+scenes/enemies                    - enemy scenes
 scenes/background/TileBackground.gd — skrypt węzła Background; tworzy 3 TileLayer + Starfield
 scenes/background/TileLayer.gd    — scrolls a tilemap layer each frame
 addons/level_editor/LevelEditorPanel.gd — @tool editor plugin (timeline + JSON editor)

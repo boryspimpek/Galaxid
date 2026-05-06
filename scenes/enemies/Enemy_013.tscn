@@ -18,6 +18,8 @@ _data = [Vector2(0.4334917, 1), 0.0, 0.0, 0, 0, Vector2(0.49881238, 0.50528544),
 point_count = 2
 
 [node name="Enemy_013" unique_id=980532165 instance=ExtResource("1_base")]
+value = 25
+explosiontype = 26
 armor = 12
 esize = 1
 tur = [116, 0, 0]

@@ -7,14 +7,14 @@
 radius = 11.0
 
 [node name="Enemy_025" unique_id=2012766853 instance=ExtResource("1_base")]
+value = 50
+explosiontype = 8
 armor = 2
 esize = 1
 xmove = -2
 ymove = 2
 startx = 100
 starty = -3
-excc = -10
-eycc = -20
 tur = [62, 0, 0]
 freq = [20, 0, 0]
 

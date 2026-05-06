@@ -6,6 +6,8 @@
 radius = 10.0
 
 [node name="Enemy_252" instance=ExtResource("1_base")]
+value = 150
+explosiontype = 27
 armor = 40
 
 [node name="CollisionShape2D" parent="." index="1"]

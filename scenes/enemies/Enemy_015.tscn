@@ -28,6 +28,8 @@ _data = [Vector2(0.6910112, 1), 0.0, 0.0, 0, 0, Vector2(0.6938202, 0.7531646), 0
 point_count = 2
 
 [node name="Enemy_015" unique_id=556058861 instance=ExtResource("1_base")]
+value = 20
+explosiontype = 3
 armor = 10
 esize = 1
 startx = 130

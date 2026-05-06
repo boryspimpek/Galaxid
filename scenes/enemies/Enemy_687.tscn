@@ -6,10 +6,9 @@
 radius = 14.0
 
 [node name="Enemy_687" instance=ExtResource("1_base")]
+value = 5
 esize = 1
 ymove = -2
-xaccel = 94
-eycc = 20
 startx = 130
 starty = -13
 startxc = 125

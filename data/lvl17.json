@@ -24,18 +24,6 @@
 			},
 			{
 				"dist": 100,
-				"enemy_id": 853,
-				"category": "spawn",
-				"event_name": "spawn_formation",
-				"event_type": 204,
-				"vel_x": 0,
-				"vel_y": 2,
-				"link_num": 0,
-				"screen_x": 48,
-				"screen_y": -30
-			},
-			{
-				"dist": 100,
 				"enemy_id": 10,
 				"category": "spawn",
 				"event_name": "spawn_path_enemy",

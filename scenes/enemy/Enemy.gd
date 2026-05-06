@@ -6,6 +6,8 @@ signal projectile_spawned(projectile)
 # ---- Statystyki ----
 @export var armor: int = 1
 @export var esize: int = 0
+@export var value: int = 0
+@export var explosiontype: int = 0
 var enemy_id: int = 0
 var link_num: int = 0
 
@@ -19,9 +21,6 @@ var velocity: Vector2 = Vector2(0, 0)
 @export var starty: int = 0
 @export var startxc: int = 0
 
-# ---- Losowe przyspieszenie ----
-@export var xaccel: int = 0
-@export var yaccel: int = 0
 
 var projectile_scene: PackedScene
 
@@ -218,9 +217,6 @@ func _process(_delta):
 			queue_free()
 		return
 
-	velocity.x += float(xaccel)
-	velocity.y += float(yaccel)
-
 	position += velocity
 
 	# --- 2. System strzelania ---
@@ -245,11 +241,8 @@ func take_damage(amount: int):
 func die():
 	var parent := get_parent()
 	if parent:
-		var enemy_data := DataManager.get_enemy_by_id(enemy_id)
-		var exptype := int(enemy_data.get("explosiontype", 0)) if not enemy_data.is_empty() else 0
-		var enemyground := (exptype & 1) == 0
-		var explonum   := exptype >> 1
-		# Path enemies: Visual jest przesuwany przez RemoteTransform2D, nie węzeł główny
+		var enemyground := (explosiontype & 1) == 0
+		var explonum   := explosiontype >> 1
 		var origin := visual.global_position if _active_follow else global_position
 		_spawn_death_explosion(parent, enemyground, explonum, origin)
 

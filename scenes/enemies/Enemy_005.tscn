@@ -61,9 +61,8 @@ point_count = 6
 [node name="Enemy_005" unique_id=1841420694 instance=ExtResource("1_base")]
 armor = 6
 esize = 1
-startx = 130
-starty = -13
-startxc = 100
+value = 20
+explosiontype = 4
 path_speed = 0.0
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]

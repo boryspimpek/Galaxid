@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ch4rihh0mayos" path="res://data/enemy_sprites/enemy_122_bank1_f00.png" id="2_tex"]
 
 [node name="Enemy_122" unique_id=1881442134 instance=ExtResource("1_base")]
+value = 5
+explosiontype = 29
 armor = 10
 esize = 1
 

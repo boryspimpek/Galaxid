@@ -19,6 +19,8 @@ _data = {
 point_count = 5
 
 [node name="Enemy_012" unique_id=139073837 instance=ExtResource("1_base")]
+value = 15
+explosiontype = 4
 armor = 3
 esize = 1
 ymove = 1
