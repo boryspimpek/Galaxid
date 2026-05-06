@@ -80,15 +80,15 @@ _data = {
 point_count = 3
 
 [node name="Enemy_004" unique_id=2074857542 instance=ExtResource("1_base")]
-value = 25
-explosiontype = 2
 armor = 4
 esize = 1
+value = 25
+explosiontype = 2
 ymove = 1
 startx = 130
 starty = -13
 startxc = 100
-path_speed = 6.0
+path_speed = 0.0
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
 position = Vector2(-0.5, -4)
@@ -97,9 +97,10 @@ texture = ExtResource("2_tex")
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
 shape = SubResource("CircleShape2D_004")
 
-[node name="PathL" type="Path2D" parent="." index="3" unique_id=845865028]
-visible = false
+[node name="PathL" type="Path2D" parent="." index="2" unique_id=845865028]
 curve = SubResource("Curve2D_5upmo")
+script = ExtResource("3_bd12s")
+speed = 6.0
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PathL" index="0" unique_id=371312212]
 rotates = false
@@ -112,9 +113,10 @@ remote_path = NodePath("../../../Visual")
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="PathL/PathFollow2D" index="1" unique_id=1527885242]
 remote_path = NodePath("../../../CollisionShape2D")
 
-[node name="PathR" type="Path2D" parent="." index="4" unique_id=1513262963]
-visible = false
+[node name="PathR" type="Path2D" parent="." index="3" unique_id=1513262963]
 curve = SubResource("Curve2D_bd12s")
+script = ExtResource("3_bd12s")
+speed = 6.0
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PathR" index="0" unique_id=1368122678]
 rotates = false
@@ -127,7 +129,7 @@ remote_path = NodePath("../../../Visual")
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="PathR/PathFollow2D" index="1" unique_id=1354316724]
 remote_path = NodePath("../../../CollisionShape2D")
 
-[node name="1R" type="Path2D" parent="." index="5" unique_id=503030490]
+[node name="1R" type="Path2D" parent="." index="4" unique_id=503030490]
 curve = SubResource("Curve2D_uvs3i")
 script = ExtResource("3_bd12s")
 speed = 6.0
@@ -143,7 +145,7 @@ remote_path = NodePath("../../../Visual")
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="1R/PathFollow2D" index="1" unique_id=344706069]
 remote_path = NodePath("../../../CollisionShape2D")
 
-[node name="2R" type="Path2D" parent="." index="6" unique_id=505984017]
+[node name="2R" type="Path2D" parent="." index="5" unique_id=505984017]
 curve = SubResource("Curve2D_nisqg")
 script = ExtResource("3_bd12s")
 speed = 6.0
@@ -159,7 +161,7 @@ remote_path = NodePath("../../../Visual")
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="2R/PathFollow2D" index="1" unique_id=1072606687]
 remote_path = NodePath("../../../CollisionShape2D")
 
-[node name="3R" type="Path2D" parent="." index="7" unique_id=2107563716]
+[node name="3R" type="Path2D" parent="." index="6" unique_id=2107563716]
 curve = SubResource("Curve2D_yh7u4")
 script = ExtResource("3_bd12s")
 speed = 6.0
@@ -175,7 +177,7 @@ remote_path = NodePath("../../../Visual")
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="3R/PathFollow2D" index="1" unique_id=422790370]
 remote_path = NodePath("../../../CollisionShape2D")
 
-[node name="4R" type="Path2D" parent="." index="8" unique_id=331110773]
+[node name="4R" type="Path2D" parent="." index="7" unique_id=331110773]
 curve = SubResource("Curve2D_mvoqq")
 script = ExtResource("3_bd12s")
 speed = 6.0
@@ -191,7 +193,7 @@ remote_path = NodePath("../../../Visual")
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="4R/PathFollow2D" index="1" unique_id=333120847]
 remote_path = NodePath("../../../CollisionShape2D")
 
-[node name="5R" type="Path2D" parent="." index="9" unique_id=1286830086]
+[node name="5R" type="Path2D" parent="." index="8" unique_id=1286830086]
 curve = SubResource("Curve2D_lyy3l")
 script = ExtResource("3_bd12s")
 speed = 6.0
@@ -207,7 +209,7 @@ remote_path = NodePath("../../../Visual")
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="5R/PathFollow2D" index="1" unique_id=1362848549]
 remote_path = NodePath("../../../CollisionShape2D")
 
-[node name="1L" type="Path2D" parent="." index="10" unique_id=984853616]
+[node name="1L" type="Path2D" parent="." index="9" unique_id=984853616]
 curve = SubResource("Curve2D_ds3hj")
 script = ExtResource("3_bd12s")
 speed = 6.0
@@ -223,7 +225,7 @@ remote_path = NodePath("../../../Visual")
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="1L/PathFollow2D" index="1" unique_id=1747904358]
 remote_path = NodePath("../../../CollisionShape2D")
 
-[node name="2L" type="Path2D" parent="." index="11" unique_id=1092012504]
+[node name="2L" type="Path2D" parent="." index="10" unique_id=1092012504]
 curve = SubResource("Curve2D_o2m7y")
 script = ExtResource("3_bd12s")
 speed = 6.0
@@ -239,7 +241,7 @@ remote_path = NodePath("../../../Visual")
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="2L/PathFollow2D" index="1" unique_id=1849658128]
 remote_path = NodePath("../../../CollisionShape2D")
 
-[node name="3L" type="Path2D" parent="." index="12" unique_id=118964030]
+[node name="3L" type="Path2D" parent="." index="11" unique_id=118964030]
 curve = SubResource("Curve2D_6nx2e")
 script = ExtResource("3_bd12s")
 speed = 6.0
@@ -255,7 +257,7 @@ remote_path = NodePath("../../../Visual")
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="3L/PathFollow2D" index="1" unique_id=564022853]
 remote_path = NodePath("../../../CollisionShape2D")
 
-[node name="4L" type="Path2D" parent="." index="13" unique_id=1788753562]
+[node name="4L" type="Path2D" parent="." index="12" unique_id=1788753562]
 curve = SubResource("Curve2D_nxma0")
 script = ExtResource("3_bd12s")
 speed = 6.0
@@ -271,7 +273,7 @@ remote_path = NodePath("../../../Visual")
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="4L/PathFollow2D" index="1" unique_id=2073206735]
 remote_path = NodePath("../../../CollisionShape2D")
 
-[node name="5L" type="Path2D" parent="." index="14" unique_id=692130337]
+[node name="5L" type="Path2D" parent="." index="13" unique_id=692130337]
 curve = SubResource("Curve2D_l8fio")
 script = ExtResource("3_bd12s")
 speed = 6.0
