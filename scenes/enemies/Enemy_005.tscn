@@ -120,7 +120,8 @@ remote_path = NodePath("../../../CollisionShape2D")
 [node name="BottomTopA" type="Path2D" parent="." index="4" unique_id=1323757102]
 curve = SubResource("Curve2D_q2qvc")
 script = ExtResource("3_q2qvc")
-speed = 6.0
+speed = 2.0
+scroll_speed = -1
 
 [node name="PathFollow2D" type="PathFollow2D" parent="BottomTopA" index="0" unique_id=2120986938]
 rotation = -1.2315037

@@ -9,7 +9,7 @@ radius = 22.022715
 
 [sub_resource type="Curve2D" id="Curve2D_0thwq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 34, -402)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -5, -6681)
 }
 point_count = 2
 
@@ -22,21 +22,23 @@ tur = [116, 0, 0]
 freq = [20, 0, 0]
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-rotation = -3.0572164
+rotation = 3.140844
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_tex")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
-rotation = -1.48642
+rotation = -1.5715448
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("CircleShape2D_013")
 
-[node name="Reverse" type="Path2D" parent="." index="3" unique_id=341558307]
+[node name="Reverse" type="Path2D" parent="." index="2" unique_id=341558307]
 curve = SubResource("Curve2D_0thwq")
 script = ExtResource("3_w2opv")
-speed = 1.0
+speed = 2.0
+scroll_speed = 1
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Reverse" index="0" unique_id=1352660429]
-rotation = -1.48642
+rotation = -1.5715448
 loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Reverse/PathFollow2D" index="0" unique_id=918814049]

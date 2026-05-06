@@ -31,7 +31,7 @@ show_in_game = true
 position = Vector2(-184, 25)
 
 [node name="Enemy_005" parent="LevelMap" unique_id=1841420694 instance=ExtResource("4_qxiha")]
-position = Vector2(-237, -3)
+position = Vector2(33, -15)
 wybran_sciezka = "CircleRight"
 
 [node name="Enemy_865" parent="LevelMap" unique_id=865785455 instance=ExtResource("6_i1jm3")]
@@ -42,7 +42,7 @@ position = Vector2(547, -74)
 wybran_sciezka = "Reverse"
 
 [node name="Enemy_013" parent="LevelMap" unique_id=980532165 instance=ExtResource("8_yr1n6")]
-position = Vector2(119, 172)
+position = Vector2(158, 87)
 wybran_sciezka = "Reverse"
 
 [node name="Enemy_855" parent="LevelMap" unique_id=2013483122 instance=ExtResource("9_ckp8c")]

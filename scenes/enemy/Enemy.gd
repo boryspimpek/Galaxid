@@ -91,7 +91,7 @@ func _ready():
 	if wybran_sciezka != "":
 		_setup_path()
 
-	$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
+	$VisibleOnScreenNotifier2D.screen_exited.connect(_on_screen_exited)
 	$VisibleOnScreenNotifier2D.screen_entered.connect(_on_screen_entered)
 	_player = get_tree().get_first_node_in_group("player")
 	refresh_weapon_cache()
@@ -130,6 +130,15 @@ func _setup_path():
 func _on_screen_entered():
 	set_process(true)
 
+func _on_screen_exited():
+	# Podczas podążania za ścieżką ignorujemy screen_exited —
+	# visual może wychodzić poza ekran (np. leci w górę) ale wróg
+	# powinien żyć dopóki ścieżka trwa. Usuń dopiero gdy ścieżka
+	# skończyła się i wróg w trybie swobodnym opuści ekran.
+	if _active_follow:
+		return
+	queue_free()
+
 func refresh_weapon_cache():
 	for i in range(3):
 		_weapon_cache[i] = DataManager.get_weapon_by_id(tur[i]) if tur[i] != 0 else null
@@ -144,7 +153,9 @@ func _process(_delta):
 		_active_follow.progress += _active_path_speed * speed_mult
 		_process_shooting(_delta)
 		if _active_follow.progress_ratio >= 1.0:
-			queue_free()
+			# Ścieżka skończona → przejdź na swobodny ruch (velocity).
+			# screen_exited wyczyści wroga gdy opuści ekran.
+			_active_follow = null
 		return
 
 	position += velocity
