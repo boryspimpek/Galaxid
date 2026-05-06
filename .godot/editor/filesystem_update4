@@ -5,3 +5,4 @@ res://scenes/enemies/Enemy_028.tscn
 res://scenes/enemies/Enemy_029.tscn
 res://scenes/enemies/Enemy_012.tscn
 res://scenes/enemy/Enemy.gd
+res://scenes/explosions/Explosion.gd

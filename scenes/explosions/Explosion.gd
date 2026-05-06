@@ -23,6 +23,8 @@ const TYPE_TTL: Dictionary = {
 	11: 3, 12: 7, 13: 3,
 }
 
+static var _cache: Dictionary = {}
+
 var _textures: Array = []
 var _frame: int = 0
 
@@ -30,12 +32,16 @@ var _frame: int = 0
 
 
 func setup(type: int) -> void:
-	var label: String = TYPE_LABELS.get(type, "type%02d" % type)
-	var ttl: int = TYPE_TTL.get(type, 7)
-	for f in range(ttl):
-		var path := "res://data/explosion_sprites/explo_t%02d_%s_f%02d.png" % [type, label, f]
-		if ResourceLoader.exists(path):
-			_textures.append(load(path))
+	if not _cache.has(type):
+		var frames: Array = []
+		var label: String = TYPE_LABELS.get(type, "type%02d" % type)
+		var ttl: int = TYPE_TTL.get(type, 7)
+		for f in range(ttl):
+			var path := "res://data/explosion_sprites/explo_t%02d_%s_f%02d.png" % [type, label, f]
+			if ResourceLoader.exists(path):
+				frames.append(load(path))
+		_cache[type] = frames
+	_textures = _cache[type]
 	if _textures.is_empty():
 		queue_free()
 		return
