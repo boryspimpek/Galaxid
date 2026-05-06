@@ -6,3 +6,4 @@ res://scenes/player/WeaponSystem.gd
 res://scenes/world/LevelManager.gd
 res://scripts/core/DataManager.gd
 res://scripts/managers/EventProcessor.gd
+res://scripts/managers/EnemyController.gd

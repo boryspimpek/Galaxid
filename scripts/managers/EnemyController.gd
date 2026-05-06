@@ -21,4 +21,5 @@ func enemy_fire_power(event: Dictionary):
 			if int(new_freq[i]) != -1:
 				enemy.freq[i] = int(new_freq[i])
 		enemy.eshotwait = [1.0, 1.0, 1.0]
+		enemy.refresh_weapon_cache()
 

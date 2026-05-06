@@ -40,6 +40,7 @@ var eshotwaitmax: Array = [0.0, 0.0, 0.0]  # Maksymalny cooldown z freq
 var eshotmultipos: Array = [0, 0, 0]       # Pozycja w cyklu patternów dla każdego kierunku
 
 var _player: Node2D  # Cache — ustawiany raz w _ready(), nie szukamy w drzewie co strzał
+var _weapon_cache: Array = [null, null, null]  # Cache danych broni per slot, O(1) zamiast O(n)
 
 @onready var visual: Sprite2D = $Visual
 
@@ -80,6 +81,7 @@ func _ready():
 
 	$VisibleOnScreenNotifier2D.screen_exited.connect(queue_free)
 	_player = get_tree().get_first_node_in_group("player")
+	refresh_weapon_cache()
 
 func _setup_path():
 	for child in get_children():
@@ -97,7 +99,11 @@ func _setup_path():
 					rt.update_position = true
 			_active_path_speed = path_node.speed
 			_active_path_curve = path_node.speed_curve
-	
+
+func refresh_weapon_cache():
+	for i in range(3):
+		_weapon_cache[i] = DataManager.get_weapon_by_id(tur[i]) if tur[i] != 0 else null
+
 func _process_shooting(_delta: float):
 	for i in range(3):
 		if tur[i] == 0 or freq[i] == 0:
@@ -114,8 +120,7 @@ func _fire_projectile(direction_index: int):
 		return
 
 	var weapon_id = int(tur[direction_index])
-
-	var weapon_data = DataManager.get_weapon_by_id(weapon_id)
+	var weapon_data: Dictionary = _weapon_cache[direction_index] if _weapon_cache[direction_index] != null else {}
 
 	if weapon_data.is_empty():
 		push_error("Enemy: nie znaleziono broni o ID=%d (enemy_id=%d)" % [weapon_id, enemy_id])
