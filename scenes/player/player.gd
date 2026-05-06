@@ -71,7 +71,7 @@ func _physics_process(_delta):
 func _clamp_to_screen():
 	var screen_size = get_viewport_rect().size
 	var shape = $CollisionShape2D.shape
-	var margin: float = shape.radius if shape is CircleShape2D else 16.0
+	var margin: float = shape.radius
 	position.x = clamp(position.x, margin, screen_size.x - margin)
 	position.y = clamp(position.y, margin, screen_size.y - margin)
 
