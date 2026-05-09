@@ -1,21 +1,17 @@
 [gd_scene format=3 uid="uid://bohu6dfbn78ms"]
 
 [ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
-[ext_resource type="Texture2D" uid="uid://bow4kne3gikib" path="res://data/enemy_sprites/enemy_006_bank1_f00.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://cco6qy4bntjuf" path="res://assets/Copilot_20260509_093337-removebg-preview.png" id="2_e4ru5"]
 [ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="3_e4ru5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_006"]
-radius = 22.090721
+radius = 71.063354
 
 [sub_resource type="Curve2D" id="Curve2D_lk7ja"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 195, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, -20.209476, -19.830942, 20.209476, 19.830942, 21, 519, 0, 0, 0, 0, 90, 540, 0, 0, 0, 0, 191, 540, -18.510265, 22.515987, 18.510265, -22.515987, 245, 516, 0, 0, 0, 0, 266, 468, 0, 0, 0, 0, 266, -2325)
 }
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_lk7ja"]
-_data = [Vector2(0.4334917, 1), 0.0, 0.0, 0, 0, Vector2(0.49881238, 0.50528544), 0.0, 0.0, 0, 0]
-point_count = 2
+point_count = 8
 
 [node name="Enemy_006" unique_id=1414137520 instance=ExtResource("1_base")]
 armor = 12
@@ -23,21 +19,24 @@ esize = 1
 value = 25
 explosiontype = 26
 tur = [0, 0, 78]
+wybran_sciezka = "Reverse"
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-scale = Vector2(0.06, 0.06)
-texture = ExtResource("2_tex")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_e4ru5")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_006")
 
+[node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=291847561]
+position = Vector2(0, 45)
+rect = Rect2(-138, -146, 276, 173)
+
 [node name="Reverse" type="Path2D" parent="." index="3" unique_id=1394775524]
 curve = SubResource("Curve2D_lk7ja")
 script = ExtResource("3_e4ru5")
-speed = 2.0
-speed_curve = SubResource("Curve_lk7ja")
-scroll_speed = -1
+speed = 4.0
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Reverse" index="0" unique_id=88554994]
 rotation = 1.5707964
@@ -45,7 +44,7 @@ loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Reverse/PathFollow2D" index="0" unique_id=559912800]
 rotation = -1.5707964
-scale = Vector2(0.06, 0.06)
+scale = Vector2(0.7, 0.7)
 remote_path = NodePath("../../../Visual")
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Reverse/PathFollow2D" index="1" unique_id=679992955]

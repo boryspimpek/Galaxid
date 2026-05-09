@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://bte7ofi7pgn5b"]
 
-[ext_resource type="Texture2D" uid="uid://b3g0i6hvisfst" path="res://assets/player.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://l355mw8nf63d" path="res://scenes/player/player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://cu47ernld8ka7" path="res://assets/Gemini_Generated_Image___5_-removebg-preview.png" id="2_tpg5x"]
 [ext_resource type="PackedScene" path="res://scenes/player/WeaponSystem.tscn" id="2_weapon"]
 [ext_resource type="PackedScene" path="res://scenes/player/DamageSystem.tscn" id="3_damage"]
 [ext_resource type="PackedScene" path="res://scenes/player/ShieldSystem.tscn" id="4_shield"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
-radius = 6.0
+radius = 29.068884
 
 [node name="Player" type="CharacterBody2D" unique_id=1834704228]
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1293718296]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_4flbx")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_tpg5x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=851705633]
 shape = SubResource("CircleShape2D_onrkg")
