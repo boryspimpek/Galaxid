@@ -9,6 +9,39 @@
 [ext_resource type="Script" uid="uid://cjwf83wntumr8" path="res://scenes/world/LevelRuler.gd" id="7_ruler"]
 [ext_resource type="PackedScene" uid="uid://dic8h40mdvd5e" path="res://scenes/enemies/Enemy_031.tscn" id="7_yr1n6"]
 [ext_resource type="PackedScene" uid="uid://bohu6dfbn78ms" path="res://scenes/enemies/Enemy_006.tscn" id="8_qh0kd"]
+[ext_resource type="PackedScene" uid="uid://cwkiaa3a6uwq3" path="res://scenes/enemies/Enemy_003.tscn" id="e200_003"]
+[ext_resource type="PackedScene" uid="uid://dexpsjoqudwr5" path="res://scenes/enemies/Enemy_004.tscn" id="e201_004"]
+[ext_resource type="PackedScene" uid="uid://qohvs0vmg2o0" path="res://scenes/enemies/Enemy_012.tscn" id="e202_012"]
+[ext_resource type="PackedScene" uid="uid://dou2hvvid4mkc" path="res://scenes/enemies/Enemy_013.tscn" id="e203_013"]
+[ext_resource type="PackedScene" uid="uid://l0nkqtw8qkdd" path="res://scenes/enemies/Enemy_015.tscn" id="e204_015"]
+[ext_resource type="PackedScene" uid="uid://coodjrnsfubi8" path="res://scenes/enemies/Enemy_017.tscn" id="e205_017"]
+[ext_resource type="PackedScene" uid="uid://dyvepuloj5mmd" path="res://scenes/enemies/Enemy_018.tscn" id="e206_018"]
+[ext_resource type="PackedScene" uid="uid://wyosllojps0w" path="res://scenes/enemies/Enemy_019.tscn" id="e207_019"]
+[ext_resource type="PackedScene" uid="uid://j8yx8cnlu0ct" path="res://scenes/enemies/Enemy_020.tscn" id="e208_020"]
+[ext_resource type="PackedScene" uid="uid://dgfsoa6o2xpk7" path="res://scenes/enemies/Enemy_024.tscn" id="e209_024"]
+[ext_resource type="PackedScene" uid="uid://v2eg75v6jf0l" path="res://scenes/enemies/Enemy_025.tscn" id="e210_025"]
+[ext_resource type="PackedScene" uid="uid://be0k42i3xgp1a" path="res://scenes/enemies/Enemy_026.tscn" id="e211_026"]
+[ext_resource type="PackedScene" uid="uid://ds4ftwhooq43s" path="res://scenes/enemies/Enemy_027.tscn" id="e212_027"]
+[ext_resource type="PackedScene" uid="uid://g7jf04a3wrnj" path="res://scenes/enemies/Enemy_028.tscn" id="e213_028"]
+[ext_resource type="PackedScene" uid="uid://cg4rf8n00wvml" path="res://scenes/enemies/Enemy_029.tscn" id="e214_029"]
+[ext_resource type="PackedScene" uid="uid://dxig3tjotcbfr" path="res://scenes/enemies/Enemy_030.tscn" id="e215_030"]
+[ext_resource type="PackedScene" uid="uid://dadbo3vf4msek" path="res://scenes/enemies/Enemy_052.tscn" id="e216_052"]
+[ext_resource type="PackedScene" uid="uid://b1m0wj8yajxf1" path="res://scenes/enemies/Enemy_054.tscn" id="e217_054"]
+[ext_resource type="PackedScene" uid="uid://b5n6riq0g3o3l" path="res://scenes/enemies/Enemy_079.tscn" id="e218_079"]
+[ext_resource type="PackedScene" uid="uid://cqokramyhm7gr" path="res://scenes/enemies/Enemy_121.tscn" id="e219_121"]
+[ext_resource type="PackedScene" uid="uid://dp3jde8veq04v" path="res://scenes/enemies/Enemy_125.tscn" id="e220_125"]
+[ext_resource type="PackedScene" uid="uid://dusl2akrwywfv" path="res://scenes/enemies/Enemy_468.tscn" id="e221_468"]
+[ext_resource type="PackedScene" uid="uid://7s33cpdc71q1" path="res://scenes/enemies/Enemy_469.tscn" id="e222_469"]
+[ext_resource type="PackedScene" uid="uid://dbqvgjh14yoiw" path="res://scenes/enemies/Enemy_470.tscn" id="e223_470"]
+[ext_resource type="PackedScene" uid="uid://c8t0ys81ubua5" path="res://scenes/enemies/Enemy_471.tscn" id="e224_471"]
+[ext_resource type="PackedScene" uid="uid://6wsnujc6j4lc" path="res://scenes/enemies/Enemy_472.tscn" id="e225_472"]
+[ext_resource type="PackedScene" uid="uid://bq8g0fwkyinje" path="res://scenes/enemies/Enemy_473.tscn" id="e226_473"]
+[ext_resource type="PackedScene" uid="uid://dadvoopyp3fhb" path="res://scenes/enemies/Enemy_516.tscn" id="e227_516"]
+[ext_resource type="PackedScene" uid="uid://kto0dq6rqyt4" path="res://scenes/enemies/Enemy_517.tscn" id="e228_517"]
+[ext_resource type="PackedScene" uid="uid://t7scxcsnier3" path="res://scenes/enemies/Enemy_518.tscn" id="e229_518"]
+[ext_resource type="PackedScene" uid="uid://bj0s7fre8nk6w" path="res://scenes/enemies/Enemy_519.tscn" id="e230_519"]
+[ext_resource type="PackedScene" uid="uid://ckcybbj7jbmtf" path="res://scenes/enemies/Enemy_520.tscn" id="e231_520"]
+[ext_resource type="PackedScene" uid="uid://djog5bmi4sus8" path="res://scenes/enemies/Enemy_521.tscn" id="e232_521"]
 
 [node name="World" type="Node2D" unique_id=1364436952]
 
@@ -17,7 +50,6 @@ script = ExtResource("3_level_manager")
 scroll_speed = 1
 
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=1111111111]
-visible = false
 script = ExtResource("7_ruler")
 scroll_speed = 1
 show_in_game = true
@@ -26,22 +58,813 @@ show_in_game = true
 position = Vector2(725, -1952)
 texture = ExtResource("5_qh0kd")
 
-[node name="Enemy_005" parent="LevelMap" unique_id=1841420694 instance=ExtResource("4_qxiha")]
-position = Vector2(876, -150)
-ymove = 2
-tur = [59, 0, 0]
-freq = [20, 0, 0]
-
-[node name="Enemy_010" parent="LevelMap" unique_id=834132465 instance=ExtResource("5_252at")]
-position = Vector2(684, -55)
+[node name="Enemy_010_1" parent="LevelMap" unique_id=515324881 instance=ExtResource("5_252at")]
+position = Vector2(386, -60)
 wybran_sciezka = "Turn"
 
-[node name="Enemy_006" parent="LevelMap" unique_id=1414137520 instance=ExtResource("8_qh0kd")]
-position = Vector2(492, -345)
+[node name="Enemy_010_2" parent="LevelMap" unique_id=974326000 instance=ExtResource("5_252at")]
+position = Vector2(386, -94)
+wybran_sciezka = "Turn"
 
-[node name="Enemy_031" parent="LevelMap" unique_id=1201927491 instance=ExtResource("7_yr1n6")]
-position = Vector2(984, -343)
-starty = 1
+[node name="Enemy_010_3" parent="LevelMap" unique_id=915294801 instance=ExtResource("5_252at")]
+position = Vector2(386, -128)
+wybran_sciezka = "Turn"
+
+[node name="Enemy_010_4" parent="LevelMap" unique_id=745234101 instance=ExtResource("5_252at")]
+position = Vector2(386, -161)
+wybran_sciezka = "Turn"
+
+[node name="Enemy_010_5" parent="LevelMap" unique_id=806875060 instance=ExtResource("5_252at")]
+position = Vector2(386, -194)
+wybran_sciezka = "Turn"
+
+[node name="Enemy_012_1" parent="LevelMap" unique_id=623521748 instance=ExtResource("e202_012")]
+position = Vector2(960, -680)
+wybran_sciezka = "Turn"
+
+[node name="Enemy_012_2" parent="LevelMap" unique_id=839285508 instance=ExtResource("e202_012")]
+position = Vector2(960, -720)
+wybran_sciezka = "Turn"
+
+[node name="Enemy_012_3" parent="LevelMap" unique_id=718780530 instance=ExtResource("e202_012")]
+position = Vector2(960, -760)
+wybran_sciezka = "Turn"
+
+[node name="Enemy_012_4" parent="LevelMap" unique_id=687763498 instance=ExtResource("e202_012")]
+position = Vector2(960, -800)
+wybran_sciezka = "Turn"
+
+[node name="Enemy_012_5" parent="LevelMap" unique_id=473304690 instance=ExtResource("e202_012")]
+position = Vector2(960, -840)
+wybran_sciezka = "Turn"
+
+[node name="Enemy_010_6" parent="LevelMap" unique_id=806242701 instance=ExtResource("5_252at")]
+position = Vector2(399, -783)
+
+[node name="Enemy_010_7" parent="LevelMap" unique_id=352062345 instance=ExtResource("5_252at")]
+position = Vector2(399, -817)
+
+[node name="Enemy_010_8" parent="LevelMap" unique_id=697847181 instance=ExtResource("5_252at")]
+position = Vector2(399, -851)
+
+[node name="Enemy_010_9" parent="LevelMap" unique_id=838411631 instance=ExtResource("5_252at")]
+position = Vector2(399, -884)
+
+[node name="Enemy_010_10" parent="LevelMap" unique_id=448977464 instance=ExtResource("5_252at")]
+position = Vector2(399, -917)
+
+[node name="Enemy_012_6" parent="LevelMap" unique_id=756613957 instance=ExtResource("e202_012")]
+position = Vector2(640, -1480)
+
+[node name="Enemy_012_7" parent="LevelMap" unique_id=226712524 instance=ExtResource("e202_012")]
+position = Vector2(640, -1520)
+
+[node name="Enemy_012_8" parent="LevelMap" unique_id=139786027 instance=ExtResource("e202_012")]
+position = Vector2(640, -1560)
+
+[node name="Enemy_012_9" parent="LevelMap" unique_id=751421019 instance=ExtResource("e202_012")]
+position = Vector2(640, -1600)
+
+[node name="Enemy_012_10" parent="LevelMap" unique_id=810339165 instance=ExtResource("e202_012")]
+position = Vector2(640, -1640)
+
+[node name="Enemy_121_4" parent="LevelMap" unique_id=836678006 instance=ExtResource("e219_121")]
+position = Vector2(696, -1980)
+
+[node name="Enemy_005_1" parent="LevelMap" unique_id=483990594 instance=ExtResource("4_qxiha")]
+position = Vector2(80, -2280)
+
+[node name="Enemy_121_5" parent="LevelMap" unique_id=503994033 instance=ExtResource("e219_121")]
+position = Vector2(408, -2316)
+
+[node name="Enemy_005_2" parent="LevelMap" unique_id=344295025 instance=ExtResource("4_qxiha")]
+position = Vector2(80, -2340)
+
+[node name="Enemy_005_3" parent="LevelMap" unique_id=260694378 instance=ExtResource("4_qxiha")]
+position = Vector2(80, -2400)
+
+[node name="Enemy_005_4" parent="LevelMap" unique_id=438577460 instance=ExtResource("4_qxiha")]
+position = Vector2(80, -2460)
+
+[node name="Enemy_005_5" parent="LevelMap" unique_id=550186885 instance=ExtResource("4_qxiha")]
+position = Vector2(80, -2520)
+
+[node name="Enemy_125_3" parent="LevelMap" unique_id=452931416 instance=ExtResource("e220_125")]
+position = Vector2(888, -2540)
+
+[node name="Enemy_005_6" parent="LevelMap" unique_id=615995222 instance=ExtResource("4_qxiha")]
+position = Vector2(880, -2680)
+
+[node name="Enemy_005_7" parent="LevelMap" unique_id=202225806 instance=ExtResource("4_qxiha")]
+position = Vector2(880, -2740)
+
+[node name="Enemy_005_8" parent="LevelMap" unique_id=953721625 instance=ExtResource("4_qxiha")]
+position = Vector2(880, -2800)
+
+[node name="Enemy_005_9" parent="LevelMap" unique_id=728607754 instance=ExtResource("4_qxiha")]
+position = Vector2(880, -2860)
+
+[node name="Enemy_005_10" parent="LevelMap" unique_id=560351492 instance=ExtResource("4_qxiha")]
+position = Vector2(880, -2920)
+
+[node name="Enemy_013_1" parent="LevelMap" unique_id=513111205 instance=ExtResource("e203_013")]
+position = Vector2(112, -3300)
+
+[node name="Enemy_121_6" parent="LevelMap" unique_id=861218159 instance=ExtResource("e219_121")]
+position = Vector2(216, -3548)
+
+[node name="Enemy_013_2" parent="LevelMap" unique_id=187818600 instance=ExtResource("e203_013")]
+position = Vector2(432, -3500)
+
+[node name="Enemy_013_3" parent="LevelMap" unique_id=683042218 instance=ExtResource("e203_013")]
+position = Vector2(672, -3700)
+
+[node name="Enemy_006_1" parent="LevelMap" unique_id=177951837 instance=ExtResource("8_qh0kd")]
+position = Vector2(832, -3820)
+
+[node name="Enemy_006_2" parent="LevelMap" unique_id=908809146 instance=ExtResource("8_qh0kd")]
+position = Vector2(512, -3820)
+
+[node name="Enemy_005_11" parent="LevelMap" unique_id=174916013 instance=ExtResource("4_qxiha")]
+position = Vector2(80, -4280)
+
+[node name="Enemy_005_12" parent="LevelMap" unique_id=403010328 instance=ExtResource("4_qxiha")]
+position = Vector2(80, -4340)
+
+[node name="Enemy_005_13" parent="LevelMap" unique_id=389902057 instance=ExtResource("4_qxiha")]
+position = Vector2(80, -4400)
+
+[node name="Enemy_005_14" parent="LevelMap" unique_id=600207512 instance=ExtResource("4_qxiha")]
+position = Vector2(80, -4460)
+
+[node name="Enemy_005_15" parent="LevelMap" unique_id=685877366 instance=ExtResource("4_qxiha")]
+position = Vector2(80, -4520)
+
+[node name="Enemy_017_1" parent="LevelMap" unique_id=335586952 instance=ExtResource("e205_017")]
+position = Vector2(552, -5084)
+
+[node name="Enemy_517_1" parent="LevelMap" unique_id=633509908 instance=ExtResource("e228_517")]
+position = Vector2(888, -5004)
+
+[node name="Enemy_518_1" parent="LevelMap" unique_id=283000385 instance=ExtResource("e229_518")]
+position = Vector2(984, -5004)
+
+[node name="Enemy_519_1" parent="LevelMap" unique_id=941187087 instance=ExtResource("e230_519")]
+position = Vector2(792, -5116)
+
+[node name="Enemy_520_1" parent="LevelMap" unique_id=212629443 instance=ExtResource("e231_520")]
+position = Vector2(888, -5116)
+
+[node name="Enemy_521_1" parent="LevelMap" unique_id=666839442 instance=ExtResource("e232_521")]
+position = Vector2(984, -5116)
+
+[node name="Enemy_516_1" parent="LevelMap" unique_id=246321070 instance=ExtResource("e227_516")]
+position = Vector2(792, -5004)
+
+[node name="Enemy_017_2" parent="LevelMap" unique_id=590172993 instance=ExtResource("e205_017")]
+position = Vector2(352, -5124)
+
+[node name="Enemy_017_3" parent="LevelMap" unique_id=582119409 instance=ExtResource("e205_017")]
+position = Vector2(752, -5124)
+
+[node name="Enemy_017_4" parent="LevelMap" unique_id=391417826 instance=ExtResource("e205_017")]
+position = Vector2(152, -5164)
+
+[node name="Enemy_017_5" parent="LevelMap" unique_id=405442960 instance=ExtResource("e205_017")]
+position = Vector2(952, -5164)
+
+[node name="Enemy_024_1" parent="LevelMap" unique_id=104374205 instance=ExtResource("e209_024")]
+position = Vector2(-40, -5400)
+
+[node name="Enemy_025_1" parent="LevelMap" unique_id=887345406 instance=ExtResource("e210_025")]
+position = Vector2(1160, -5520)
+
+[node name="Enemy_024_2" parent="LevelMap" unique_id=425430317 instance=ExtResource("e209_024")]
+position = Vector2(-40, -5640)
+
+[node name="Enemy_031_1" parent="LevelMap" unique_id=697424285 instance=ExtResource("7_yr1n6")]
+position = Vector2(312, -6112)
+
+[node name="Enemy_030_1" parent="LevelMap" unique_id=877580331 instance=ExtResource("e215_030")]
+position = Vector2(312, -6156)
+
+[node name="Enemy_028_1" parent="LevelMap" unique_id=591254193 instance=ExtResource("e213_028")]
+position = Vector2(264, -6156)
+
+[node name="Enemy_029_1" parent="LevelMap" unique_id=373460681 instance=ExtResource("e214_029")]
+position = Vector2(360, -6156)
+
+[node name="Enemy_030_2" parent="LevelMap" unique_id=294524344 instance=ExtResource("e215_030")]
+position = Vector2(312, -6200)
+
+[node name="Enemy_028_2" parent="LevelMap" unique_id=509597236 instance=ExtResource("e213_028")]
+position = Vector2(264, -6200)
+
+[node name="Enemy_029_2" parent="LevelMap" unique_id=134778895 instance=ExtResource("e214_029")]
+position = Vector2(360, -6200)
+
+[node name="Enemy_030_3" parent="LevelMap" unique_id=186011614 instance=ExtResource("e215_030")]
+position = Vector2(312, -6244)
+
+[node name="Enemy_028_3" parent="LevelMap" unique_id=205317984 instance=ExtResource("e213_028")]
+position = Vector2(264, -6244)
+
+[node name="Enemy_029_3" parent="LevelMap" unique_id=301191437 instance=ExtResource("e214_029")]
+position = Vector2(360, -6244)
+
+[node name="Enemy_031_2" parent="LevelMap" unique_id=906631826 instance=ExtResource("7_yr1n6")]
+position = Vector2(600, -6388)
+
+[node name="Enemy_030_4" parent="LevelMap" unique_id=536666719 instance=ExtResource("e215_030")]
+position = Vector2(600, -6432)
+
+[node name="Enemy_028_4" parent="LevelMap" unique_id=693037529 instance=ExtResource("e213_028")]
+position = Vector2(552, -6432)
+
+[node name="Enemy_029_4" parent="LevelMap" unique_id=387452727 instance=ExtResource("e214_029")]
+position = Vector2(648, -6432)
+
+[node name="Enemy_030_5" parent="LevelMap" unique_id=856832662 instance=ExtResource("e215_030")]
+position = Vector2(600, -6476)
+
+[node name="Enemy_028_5" parent="LevelMap" unique_id=990316858 instance=ExtResource("e213_028")]
+position = Vector2(552, -6476)
+
+[node name="Enemy_029_5" parent="LevelMap" unique_id=689372177 instance=ExtResource("e214_029")]
+position = Vector2(648, -6476)
+
+[node name="Enemy_030_6" parent="LevelMap" unique_id=418521941 instance=ExtResource("e215_030")]
+position = Vector2(600, -6520)
+
+[node name="Enemy_028_6" parent="LevelMap" unique_id=752581648 instance=ExtResource("e213_028")]
+position = Vector2(552, -6520)
+
+[node name="Enemy_029_6" parent="LevelMap" unique_id=881423616 instance=ExtResource("e214_029")]
+position = Vector2(648, -6520)
+
+[node name="Enemy_024_3" parent="LevelMap" unique_id=935341620 instance=ExtResource("e209_024")]
+position = Vector2(-40, -6600)
+
+[node name="Enemy_025_2" parent="LevelMap" unique_id=389621601 instance=ExtResource("e210_025")]
+position = Vector2(1160, -6720)
+
+[node name="Enemy_024_4" parent="LevelMap" unique_id=134216230 instance=ExtResource("e209_024")]
+position = Vector2(-40, -6840)
+
+[node name="Enemy_024_5" parent="LevelMap" unique_id=613544755 instance=ExtResource("e209_024")]
+position = Vector2(-40, -6920)
+
+[node name="Enemy_025_3" parent="LevelMap" unique_id=591523989 instance=ExtResource("e210_025")]
+position = Vector2(1160, -7000)
+
+[node name="Enemy_025_4" parent="LevelMap" unique_id=945547519 instance=ExtResource("e210_025")]
+position = Vector2(1160, -7080)
+
+[node name="Enemy_031_3" parent="LevelMap" unique_id=719692011 instance=ExtResource("7_yr1n6")]
+position = Vector2(360, -7308)
+
+[node name="Enemy_030_7" parent="LevelMap" unique_id=426528311 instance=ExtResource("e215_030")]
+position = Vector2(360, -7352)
+
+[node name="Enemy_028_7" parent="LevelMap" unique_id=473806361 instance=ExtResource("e213_028")]
+position = Vector2(312, -7352)
+
+[node name="Enemy_029_7" parent="LevelMap" unique_id=353478029 instance=ExtResource("e214_029")]
+position = Vector2(408, -7352)
+
+[node name="Enemy_030_8" parent="LevelMap" unique_id=162022675 instance=ExtResource("e215_030")]
+position = Vector2(360, -7396)
+
+[node name="Enemy_028_8" parent="LevelMap" unique_id=208050710 instance=ExtResource("e213_028")]
+position = Vector2(312, -7396)
+
+[node name="Enemy_029_8" parent="LevelMap" unique_id=869653709 instance=ExtResource("e214_029")]
+position = Vector2(408, -7396)
+
+[node name="Enemy_030_9" parent="LevelMap" unique_id=562058991 instance=ExtResource("e215_030")]
+position = Vector2(360, -7440)
+
+[node name="Enemy_028_9" parent="LevelMap" unique_id=264009644 instance=ExtResource("e213_028")]
+position = Vector2(312, -7440)
+
+[node name="Enemy_029_9" parent="LevelMap" unique_id=385145488 instance=ExtResource("e214_029")]
+position = Vector2(408, -7440)
+
+[node name="Enemy_031_4" parent="LevelMap" unique_id=299720820 instance=ExtResource("7_yr1n6")]
+position = Vector2(600, -7588)
+
+[node name="Enemy_030_10" parent="LevelMap" unique_id=114207781 instance=ExtResource("e215_030")]
+position = Vector2(600, -7632)
+
+[node name="Enemy_028_10" parent="LevelMap" unique_id=900599789 instance=ExtResource("e213_028")]
+position = Vector2(552, -7632)
+
+[node name="Enemy_029_10" parent="LevelMap" unique_id=437198631 instance=ExtResource("e214_029")]
+position = Vector2(648, -7632)
+
+[node name="Enemy_030_11" parent="LevelMap" unique_id=912567092 instance=ExtResource("e215_030")]
+position = Vector2(600, -7676)
+
+[node name="Enemy_028_11" parent="LevelMap" unique_id=180710215 instance=ExtResource("e213_028")]
+position = Vector2(552, -7676)
+
+[node name="Enemy_029_11" parent="LevelMap" unique_id=693354786 instance=ExtResource("e214_029")]
+position = Vector2(648, -7676)
+
+[node name="Enemy_030_12" parent="LevelMap" unique_id=725718724 instance=ExtResource("e215_030")]
+position = Vector2(600, -7720)
+
+[node name="Enemy_028_12" parent="LevelMap" unique_id=493164458 instance=ExtResource("e213_028")]
+position = Vector2(552, -7720)
+
+[node name="Enemy_029_12" parent="LevelMap" unique_id=846831574 instance=ExtResource("e214_029")]
+position = Vector2(648, -7720)
+
+[node name="Enemy_031_5" parent="LevelMap" unique_id=560679246 instance=ExtResource("7_yr1n6")]
+position = Vector2(320, -7880)
+
+[node name="Enemy_030_13" parent="LevelMap" unique_id=430385779 instance=ExtResource("e215_030")]
+position = Vector2(320, -7784)
+
+[node name="Enemy_030_14" parent="LevelMap" unique_id=764438400 instance=ExtResource("e215_030")]
+position = Vector2(320, -7688)
+
+[node name="Enemy_030_15" parent="LevelMap" unique_id=541438106 instance=ExtResource("e215_030")]
+position = Vector2(320, -7592)
+
+[node name="Enemy_031_6" parent="LevelMap" unique_id=174418856 instance=ExtResource("7_yr1n6")]
+position = Vector2(680, -8000)
+
+[node name="Enemy_030_16" parent="LevelMap" unique_id=857909560 instance=ExtResource("e215_030")]
+position = Vector2(680, -7904)
+
+[node name="Enemy_030_17" parent="LevelMap" unique_id=279490115 instance=ExtResource("e215_030")]
+position = Vector2(680, -7808)
+
+[node name="Enemy_030_18" parent="LevelMap" unique_id=990763451 instance=ExtResource("e215_030")]
+position = Vector2(680, -7712)
+
+[node name="Enemy_031_7" parent="LevelMap" unique_id=665341346 instance=ExtResource("7_yr1n6")]
+position = Vector2(520, -8200)
+
+[node name="Enemy_030_19" parent="LevelMap" unique_id=515070645 instance=ExtResource("e215_030")]
+position = Vector2(520, -8104)
+
+[node name="Enemy_030_20" parent="LevelMap" unique_id=279036413 instance=ExtResource("e215_030")]
+position = Vector2(520, -8008)
+
+[node name="Enemy_030_21" parent="LevelMap" unique_id=262472258 instance=ExtResource("e215_030")]
+position = Vector2(520, -7912)
+
+[node name="Enemy_031_8" parent="LevelMap" unique_id=397542468 instance=ExtResource("7_yr1n6")]
+position = Vector2(104, -8256)
+
+[node name="Enemy_030_22" parent="LevelMap" unique_id=210404350 instance=ExtResource("e215_030")]
+position = Vector2(104, -8276)
+
+[node name="Enemy_026_1" parent="LevelMap" unique_id=254130933 instance=ExtResource("e211_026")]
+position = Vector2(56, -8276)
+
+[node name="Enemy_027_1" parent="LevelMap" unique_id=514513805 instance=ExtResource("e212_027")]
+position = Vector2(152, -8276)
+
+[node name="Enemy_031_9" parent="LevelMap" unique_id=273979819 instance=ExtResource("7_yr1n6")]
+position = Vector2(704, -8376)
+
+[node name="Enemy_030_23" parent="LevelMap" unique_id=186772953 instance=ExtResource("e215_030")]
+position = Vector2(704, -8396)
+
+[node name="Enemy_026_2" parent="LevelMap" unique_id=966621927 instance=ExtResource("e211_026")]
+position = Vector2(656, -8396)
+
+[node name="Enemy_027_2" parent="LevelMap" unique_id=538488018 instance=ExtResource("e212_027")]
+position = Vector2(752, -8396)
+
+[node name="Enemy_031_10" parent="LevelMap" unique_id=298726755 instance=ExtResource("7_yr1n6")]
+position = Vector2(504, -9176)
+
+[node name="Enemy_030_24" parent="LevelMap" unique_id=600151892 instance=ExtResource("e215_030")]
+position = Vector2(504, -9196)
+
+[node name="Enemy_026_3" parent="LevelMap" unique_id=327844192 instance=ExtResource("e211_026")]
+position = Vector2(456, -9196)
+
+[node name="Enemy_027_3" parent="LevelMap" unique_id=977346599 instance=ExtResource("e212_027")]
+position = Vector2(552, -9196)
+
+[node name="Enemy_005_16" parent="LevelMap" unique_id=874998556 instance=ExtResource("4_qxiha")]
+position = Vector2(-104, -9524)
+
+[node name="Enemy_005_17" parent="LevelMap" unique_id=862299273 instance=ExtResource("4_qxiha")]
+position = Vector2(-104, -9544)
+
+[node name="Enemy_005_18" parent="LevelMap" unique_id=498312338 instance=ExtResource("4_qxiha")]
+position = Vector2(-104, -9564)
+
+[node name="Enemy_005_19" parent="LevelMap" unique_id=377337878 instance=ExtResource("4_qxiha")]
+position = Vector2(-104, -9584)
+
+[node name="Enemy_005_20" parent="LevelMap" unique_id=994937201 instance=ExtResource("4_qxiha")]
+position = Vector2(-104, -9604)
+
+[node name="Enemy_005_21" parent="LevelMap" unique_id=721608836 instance=ExtResource("4_qxiha")]
+position = Vector2(616, -9724)
+
+[node name="Enemy_005_22" parent="LevelMap" unique_id=188604187 instance=ExtResource("4_qxiha")]
+position = Vector2(616, -9744)
+
+[node name="Enemy_005_23" parent="LevelMap" unique_id=100217919 instance=ExtResource("4_qxiha")]
+position = Vector2(616, -9764)
+
+[node name="Enemy_005_24" parent="LevelMap" unique_id=294764794 instance=ExtResource("4_qxiha")]
+position = Vector2(616, -9784)
+
+[node name="Enemy_005_25" parent="LevelMap" unique_id=505106796 instance=ExtResource("4_qxiha")]
+position = Vector2(616, -9804)
+
+[node name="Enemy_005_26" parent="LevelMap" unique_id=743910308 instance=ExtResource("4_qxiha")]
+position = Vector2(616, -9824)
+
+[node name="Enemy_005_27" parent="LevelMap" unique_id=581736570 instance=ExtResource("4_qxiha")]
+position = Vector2(336, -11120)
+
+[node name="Enemy_005_28" parent="LevelMap" unique_id=967871721 instance=ExtResource("4_qxiha")]
+position = Vector2(336, -11140)
+
+[node name="Enemy_005_29" parent="LevelMap" unique_id=464070216 instance=ExtResource("4_qxiha")]
+position = Vector2(336, -11160)
+
+[node name="Enemy_005_30" parent="LevelMap" unique_id=289192529 instance=ExtResource("4_qxiha")]
+position = Vector2(336, -11180)
+
+[node name="Enemy_005_31" parent="LevelMap" unique_id=615640289 instance=ExtResource("4_qxiha")]
+position = Vector2(336, -11200)
+
+[node name="Enemy_005_32" parent="LevelMap" unique_id=548568468 instance=ExtResource("4_qxiha")]
+position = Vector2(336, -11220)
+
+[node name="Enemy_004_1" parent="LevelMap" unique_id=773099387 instance=ExtResource("e201_004")]
+position = Vector2(-104, -10684)
+
+[node name="Enemy_004_2" parent="LevelMap" unique_id=105596902 instance=ExtResource("e201_004")]
+position = Vector2(-104, -10704)
+
+[node name="Enemy_004_3" parent="LevelMap" unique_id=189064040 instance=ExtResource("e201_004")]
+position = Vector2(-104, -10724)
+
+[node name="Enemy_004_4" parent="LevelMap" unique_id=916416152 instance=ExtResource("e201_004")]
+position = Vector2(-104, -10744)
+
+[node name="Enemy_004_5" parent="LevelMap" unique_id=897977373 instance=ExtResource("e201_004")]
+position = Vector2(-104, -10764)
+
+[node name="Enemy_004_6" parent="LevelMap" unique_id=527254865 instance=ExtResource("e201_004")]
+position = Vector2(-104, -10784)
+
+[node name="Enemy_004_7" parent="LevelMap" unique_id=361385246 instance=ExtResource("e201_004")]
+position = Vector2(-104, -10804)
+
+[node name="Enemy_004_8" parent="LevelMap" unique_id=814393218 instance=ExtResource("e201_004")]
+position = Vector2(936, -10804)
+
+[node name="Enemy_004_9" parent="LevelMap" unique_id=872361897 instance=ExtResource("e201_004")]
+position = Vector2(-104, -10824)
+
+[node name="Enemy_004_10" parent="LevelMap" unique_id=239497436 instance=ExtResource("e201_004")]
+position = Vector2(936, -10824)
+
+[node name="Enemy_004_11" parent="LevelMap" unique_id=844404553 instance=ExtResource("e201_004")]
+position = Vector2(936, -10844)
+
+[node name="Enemy_004_12" parent="LevelMap" unique_id=191519476 instance=ExtResource("e201_004")]
+position = Vector2(936, -10864)
+
+[node name="Enemy_004_13" parent="LevelMap" unique_id=565550311 instance=ExtResource("e201_004")]
+position = Vector2(936, -10884)
+
+[node name="Enemy_004_14" parent="LevelMap" unique_id=846604120 instance=ExtResource("e201_004")]
+position = Vector2(936, -10904)
+
+[node name="Enemy_004_15" parent="LevelMap" unique_id=185707291 instance=ExtResource("e201_004")]
+position = Vector2(936, -10924)
+
+[node name="Enemy_004_16" parent="LevelMap" unique_id=316700901 instance=ExtResource("e201_004")]
+position = Vector2(936, -10944)
+
+[node name="Enemy_004_17" parent="LevelMap" unique_id=615700447 instance=ExtResource("e201_004")]
+position = Vector2(-104, -11124)
+
+[node name="Enemy_004_18" parent="LevelMap" unique_id=654292103 instance=ExtResource("e201_004")]
+position = Vector2(-104, -11144)
+
+[node name="Enemy_004_19" parent="LevelMap" unique_id=374310860 instance=ExtResource("e201_004")]
+position = Vector2(-104, -11164)
+
+[node name="Enemy_004_20" parent="LevelMap" unique_id=268884664 instance=ExtResource("e201_004")]
+position = Vector2(-104, -11184)
+
+[node name="Enemy_004_21" parent="LevelMap" unique_id=605404554 instance=ExtResource("e201_004")]
+position = Vector2(-104, -11204)
+
+[node name="Enemy_004_22" parent="LevelMap" unique_id=126441033 instance=ExtResource("e201_004")]
+position = Vector2(-104, -11224)
+
+[node name="Enemy_004_23" parent="LevelMap" unique_id=793007654 instance=ExtResource("e201_004")]
+position = Vector2(-104, -11244)
+
+[node name="Enemy_004_24" parent="LevelMap" unique_id=591637640 instance=ExtResource("e201_004")]
+position = Vector2(936, -11244)
+
+[node name="Enemy_004_25" parent="LevelMap" unique_id=977696548 instance=ExtResource("e201_004")]
+position = Vector2(-104, -11264)
+
+[node name="Enemy_004_26" parent="LevelMap" unique_id=219017647 instance=ExtResource("e201_004")]
+position = Vector2(936, -11264)
+
+[node name="Enemy_004_27" parent="LevelMap" unique_id=510669876 instance=ExtResource("e201_004")]
+position = Vector2(936, -11284)
+
+[node name="Enemy_004_28" parent="LevelMap" unique_id=206780083 instance=ExtResource("e201_004")]
+position = Vector2(936, -11304)
+
+[node name="Enemy_004_29" parent="LevelMap" unique_id=595465659 instance=ExtResource("e201_004")]
+position = Vector2(936, -11324)
+
+[node name="Enemy_004_30" parent="LevelMap" unique_id=217301954 instance=ExtResource("e201_004")]
+position = Vector2(936, -11344)
+
+[node name="Enemy_004_31" parent="LevelMap" unique_id=335976416 instance=ExtResource("e201_004")]
+position = Vector2(936, -11364)
+
+[node name="Enemy_004_32" parent="LevelMap" unique_id=808694478 instance=ExtResource("e201_004")]
+position = Vector2(936, -11384)
+
+[node name="Enemy_015_1" parent="LevelMap" unique_id=652122807 instance=ExtResource("e204_015")]
+position = Vector2(696, -11828)
+
+[node name="Enemy_015_2" parent="LevelMap" unique_id=964902015 instance=ExtResource("e204_015")]
+position = Vector2(776, -11828)
+
+[node name="Enemy_015_3" parent="LevelMap" unique_id=607049332 instance=ExtResource("e204_015")]
+position = Vector2(504, -11828)
+
+[node name="Enemy_015_4" parent="LevelMap" unique_id=424998965 instance=ExtResource("e204_015")]
+position = Vector2(408, -12116)
+
+[node name="Enemy_015_5" parent="LevelMap" unique_id=153512635 instance=ExtResource("e204_015")]
+position = Vector2(256, -12348)
+
+[node name="Enemy_015_6" parent="LevelMap" unique_id=757230194 instance=ExtResource("e204_015")]
+position = Vector2(-72, -12348)
+
+[node name="Enemy_015_7" parent="LevelMap" unique_id=766704714 instance=ExtResource("e204_015")]
+position = Vector2(-72, -12796)
+
+[node name="Enemy_015_8" parent="LevelMap" unique_id=914263973 instance=ExtResource("e204_015")]
+position = Vector2(24, -12796)
+
+[node name="Enemy_015_9" parent="LevelMap" unique_id=374352663 instance=ExtResource("e204_015")]
+position = Vector2(24, -12836)
+
+[node name="Enemy_015_10" parent="LevelMap" unique_id=174042199 instance=ExtResource("e204_015")]
+position = Vector2(-72, -12836)
+
+[node name="Enemy_004_33" parent="LevelMap" unique_id=695864332 instance=ExtResource("e201_004")]
+position = Vector2(-104, -13124)
+
+[node name="Enemy_004_34" parent="LevelMap" unique_id=829538972 instance=ExtResource("e201_004")]
+position = Vector2(-104, -13144)
+
+[node name="Enemy_004_35" parent="LevelMap" unique_id=656836515 instance=ExtResource("e201_004")]
+position = Vector2(-104, -13164)
+
+[node name="Enemy_004_36" parent="LevelMap" unique_id=496118060 instance=ExtResource("e201_004")]
+position = Vector2(-104, -13184)
+
+[node name="Enemy_004_37" parent="LevelMap" unique_id=236847786 instance=ExtResource("e201_004")]
+position = Vector2(-104, -13204)
+
+[node name="Enemy_004_38" parent="LevelMap" unique_id=202850560 instance=ExtResource("e201_004")]
+position = Vector2(-104, -13224)
+
+[node name="Enemy_004_39" parent="LevelMap" unique_id=511265008 instance=ExtResource("e201_004")]
+position = Vector2(-104, -13244)
+
+[node name="Enemy_004_40" parent="LevelMap" unique_id=475722278 instance=ExtResource("e201_004")]
+position = Vector2(-104, -13264)
+
+[node name="Enemy_004_41" parent="LevelMap" unique_id=725481265 instance=ExtResource("e201_004")]
+position = Vector2(936, -13404)
+
+[node name="Enemy_004_42" parent="LevelMap" unique_id=817935090 instance=ExtResource("e201_004")]
+position = Vector2(936, -13424)
+
+[node name="Enemy_004_43" parent="LevelMap" unique_id=104101796 instance=ExtResource("e201_004")]
+position = Vector2(936, -13444)
+
+[node name="Enemy_004_44" parent="LevelMap" unique_id=472904557 instance=ExtResource("e201_004")]
+position = Vector2(936, -13464)
+
+[node name="Enemy_004_45" parent="LevelMap" unique_id=470811353 instance=ExtResource("e201_004")]
+position = Vector2(936, -13484)
+
+[node name="Enemy_004_46" parent="LevelMap" unique_id=533819808 instance=ExtResource("e201_004")]
+position = Vector2(936, -13504)
+
+[node name="Enemy_004_47" parent="LevelMap" unique_id=926691054 instance=ExtResource("e201_004")]
+position = Vector2(936, -13524)
+
+[node name="Enemy_004_48" parent="LevelMap" unique_id=921643987 instance=ExtResource("e201_004")]
+position = Vector2(936, -13544)
+
+[node name="Enemy_079_1" parent="LevelMap" unique_id=667294426 instance=ExtResource("e218_079")]
+position = Vector2(936, -13976)
+
+[node name="Enemy_079_2" parent="LevelMap" unique_id=301652897 instance=ExtResource("e218_079")]
+position = Vector2(744, -15328)
+
+[node name="Enemy_079_3" parent="LevelMap" unique_id=426087001 instance=ExtResource("e218_079")]
+position = Vector2(744, -15588)
+
+[node name="Enemy_010_11" parent="LevelMap" unique_id=597874141 instance=ExtResource("5_252at")]
+position = Vector2(80, -16632)
+
+[node name="Enemy_010_12" parent="LevelMap" unique_id=832051816 instance=ExtResource("5_252at")]
+position = Vector2(80, -16672)
+
+[node name="Enemy_010_13" parent="LevelMap" unique_id=537137676 instance=ExtResource("5_252at")]
+position = Vector2(80, -16712)
+
+[node name="Enemy_010_14" parent="LevelMap" unique_id=107791719 instance=ExtResource("5_252at")]
+position = Vector2(80, -16752)
+
+[node name="Enemy_010_15" parent="LevelMap" unique_id=978398870 instance=ExtResource("5_252at")]
+position = Vector2(80, -16792)
+
+[node name="Enemy_010_16" parent="LevelMap" unique_id=755418463 instance=ExtResource("5_252at")]
+position = Vector2(1000, -16872)
+
+[node name="Enemy_010_17" parent="LevelMap" unique_id=596675878 instance=ExtResource("5_252at")]
+position = Vector2(1000, -16912)
+
+[node name="Enemy_010_18" parent="LevelMap" unique_id=299155153 instance=ExtResource("5_252at")]
+position = Vector2(1000, -16952)
+
+[node name="Enemy_025_5" parent="LevelMap" unique_id=756530252 instance=ExtResource("e210_025")]
+position = Vector2(1160, -16972)
+
+[node name="Enemy_010_19" parent="LevelMap" unique_id=532294564 instance=ExtResource("5_252at")]
+position = Vector2(1000, -16992)
+
+[node name="Enemy_010_20" parent="LevelMap" unique_id=169735313 instance=ExtResource("5_252at")]
+position = Vector2(1000, -17032)
+
+[node name="Enemy_010_21" parent="LevelMap" unique_id=614922520 instance=ExtResource("5_252at")]
+position = Vector2(80, -17112)
+
+[node name="Enemy_010_22" parent="LevelMap" unique_id=155031134 instance=ExtResource("5_252at")]
+position = Vector2(80, -17152)
+
+[node name="Enemy_010_23" parent="LevelMap" unique_id=420105579 instance=ExtResource("5_252at")]
+position = Vector2(80, -17192)
+
+[node name="Enemy_010_24" parent="LevelMap" unique_id=194887408 instance=ExtResource("5_252at")]
+position = Vector2(80, -17232)
+
+[node name="Enemy_010_25" parent="LevelMap" unique_id=714967742 instance=ExtResource("5_252at")]
+position = Vector2(80, -17272)
+
+[node name="Enemy_017_6" parent="LevelMap" unique_id=136774238 instance=ExtResource("e205_017")]
+position = Vector2(520, -17872)
+
+[node name="Enemy_017_7" parent="LevelMap" unique_id=259661486 instance=ExtResource("e205_017")]
+position = Vector2(320, -17912)
+
+[node name="Enemy_017_8" parent="LevelMap" unique_id=348213343 instance=ExtResource("e205_017")]
+position = Vector2(720, -17912)
+
+[node name="Enemy_017_9" parent="LevelMap" unique_id=326039950 instance=ExtResource("e205_017")]
+position = Vector2(520, -17936)
+
+[node name="Enemy_017_10" parent="LevelMap" unique_id=103413212 instance=ExtResource("e205_017")]
+position = Vector2(120, -17952)
+
+[node name="Enemy_017_11" parent="LevelMap" unique_id=527544891 instance=ExtResource("e205_017")]
+position = Vector2(920, -17952)
+
+[node name="Enemy_003_1" parent="LevelMap" unique_id=781342678 instance=ExtResource("e200_003")]
+position = Vector2(80, -18652)
+
+[node name="Enemy_003_2" parent="LevelMap" unique_id=244937625 instance=ExtResource("e200_003")]
+position = Vector2(80, -18692)
+
+[node name="Enemy_003_3" parent="LevelMap" unique_id=532378683 instance=ExtResource("e200_003")]
+position = Vector2(80, -18732)
+
+[node name="Enemy_003_4" parent="LevelMap" unique_id=178624751 instance=ExtResource("e200_003")]
+position = Vector2(80, -18772)
+
+[node name="Enemy_003_5" parent="LevelMap" unique_id=502057073 instance=ExtResource("e200_003")]
+position = Vector2(80, -18812)
+
+[node name="Enemy_003_6" parent="LevelMap" unique_id=461804894 instance=ExtResource("e200_003")]
+position = Vector2(1000, -18892)
+
+[node name="Enemy_003_7" parent="LevelMap" unique_id=531759674 instance=ExtResource("e200_003")]
+position = Vector2(1000, -18932)
+
+[node name="Enemy_003_8" parent="LevelMap" unique_id=205409590 instance=ExtResource("e200_003")]
+position = Vector2(1000, -18972)
+
+[node name="Enemy_003_9" parent="LevelMap" unique_id=849060181 instance=ExtResource("e200_003")]
+position = Vector2(1000, -19012)
+
+[node name="Enemy_003_10" parent="LevelMap" unique_id=629804864 instance=ExtResource("e200_003")]
+position = Vector2(1000, -19052)
+
+[node name="Enemy_003_11" parent="LevelMap" unique_id=519013494 instance=ExtResource("e200_003")]
+position = Vector2(80, -19132)
+
+[node name="Enemy_003_12" parent="LevelMap" unique_id=852292827 instance=ExtResource("e200_003")]
+position = Vector2(80, -19172)
+
+[node name="Enemy_003_13" parent="LevelMap" unique_id=521283842 instance=ExtResource("e200_003")]
+position = Vector2(80, -19212)
+
+[node name="Enemy_003_14" parent="LevelMap" unique_id=488653148 instance=ExtResource("e200_003")]
+position = Vector2(80, -19252)
+
+[node name="Enemy_003_15" parent="LevelMap" unique_id=526893792 instance=ExtResource("e200_003")]
+position = Vector2(80, -19292)
+
+[node name="Enemy_019_1" parent="LevelMap" unique_id=815151173 instance=ExtResource("e207_019")]
+position = Vector2(608, -19528)
+
+[node name="Enemy_019_2" parent="LevelMap" unique_id=992127591 instance=ExtResource("e207_019")]
+position = Vector2(704, -19528)
+
+[node name="Enemy_019_3" parent="LevelMap" unique_id=460335619 instance=ExtResource("e207_019")]
+position = Vector2(800, -19528)
+
+[node name="Enemy_019_4" parent="LevelMap" unique_id=689051174 instance=ExtResource("e207_019")]
+position = Vector2(896, -19528)
+
+[node name="Enemy_019_5" parent="LevelMap" unique_id=963180576 instance=ExtResource("e207_019")]
+position = Vector2(992, -19528)
+
+[node name="Enemy_020_1" parent="LevelMap" unique_id=997866017 instance=ExtResource("e208_020")]
+position = Vector2(1088, -19528)
+
+[node name="Enemy_018_1" parent="LevelMap" unique_id=462952543 instance=ExtResource("e206_018")]
+position = Vector2(512, -19528)
+
+[node name="Enemy_019_6" parent="LevelMap" unique_id=497362289 instance=ExtResource("e207_019")]
+position = Vector2(608, -19688)
+
+[node name="Enemy_019_7" parent="LevelMap" unique_id=802210550 instance=ExtResource("e207_019")]
+position = Vector2(704, -19688)
+
+[node name="Enemy_019_8" parent="LevelMap" unique_id=860907618 instance=ExtResource("e207_019")]
+position = Vector2(800, -19688)
+
+[node name="Enemy_019_9" parent="LevelMap" unique_id=392090959 instance=ExtResource("e207_019")]
+position = Vector2(896, -19688)
+
+[node name="Enemy_019_10" parent="LevelMap" unique_id=719285253 instance=ExtResource("e207_019")]
+position = Vector2(992, -19688)
+
+[node name="Enemy_020_2" parent="LevelMap" unique_id=357238529 instance=ExtResource("e208_020")]
+position = Vector2(1088, -19688)
+
+[node name="Enemy_019_11" parent="LevelMap" unique_id=483931478 instance=ExtResource("e207_019")]
+position = Vector2(512, -19688)
+
+[node name="Enemy_018_2" parent="LevelMap" unique_id=640512989 instance=ExtResource("e206_018")]
+position = Vector2(416, -19688)
+
+[node name="Enemy_473_1" parent="LevelMap" unique_id=961538229 instance=ExtResource("e226_473")]
+position = Vector2(592, -20760)
+
+[node name="Enemy_468_1" parent="LevelMap" unique_id=265443008 instance=ExtResource("e221_468")]
+position = Vector2(400, -20664)
+
+[node name="Enemy_469_1" parent="LevelMap" unique_id=261546005 instance=ExtResource("e222_469")]
+position = Vector2(496, -20664)
+
+[node name="Enemy_470_1" parent="LevelMap" unique_id=624308420 instance=ExtResource("e223_470")]
+position = Vector2(592, -20664)
+
+[node name="Enemy_471_1" parent="LevelMap" unique_id=328711385 instance=ExtResource("e224_471")]
+position = Vector2(400, -20760)
+
+[node name="Enemy_472_1" parent="LevelMap" unique_id=128940260 instance=ExtResource("e225_472")]
+position = Vector2(496, -20760)
+
+[node name="Enemy_054_1" parent="LevelMap" unique_id=493376728 instance=ExtResource("e217_054")]
+position = Vector2(648, -21304)
+
+[node name="Enemy_052_1" parent="LevelMap" unique_id=727245612 instance=ExtResource("e216_052")]
+position = Vector2(456, -21304)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1006581802]
 

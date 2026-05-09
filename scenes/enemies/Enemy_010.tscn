@@ -9,9 +9,14 @@ radius = 140.0
 
 [sub_resource type="Curve2D" id="Curve2D_llqvf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -0.25936532, -79.19058, 0, 0, 0, 195, -33.04093, -39.245365, 33.04093, 39.245365, 30, 329, 0, 0, 0, 0, 160, 364, 0, 0, 0, 0, 535, 365, -1.4153299, 90.12263, 1.4153299, -90.12263, 633, 270, 0, 0, 0, 0, 537, 186, 0, 0, 0, 0, 264, 184, 26.842428, 29.164673, -26.842428, -29.164673, 106, 151, 0, 0, 0, 0, 74, 50, 0, 0, 0, 0, 74, -2012)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 597, 0, 0, 0, 0, 727, -169)
 }
-point_count = 11
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_llqvf"]
+_limits = [0.0, 6.0, 0.0, 1.0]
+_data = [Vector2(0.23393741, 1.0337958), 0.0, 0.0, 0, 0, Vector2(0.4003295, 6), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Enemy_010" unique_id=834132465 instance=ExtResource("1_base")]
 armor = 3
@@ -20,21 +25,21 @@ value = 15
 explosiontype = 4
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-rotation = 0.0022396406
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_llqvf")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
-rotation = 1.573036
+rotation = 1.5707964
 scale = Vector2(0.25, 0.25)
 shape = SubResource("CircleShape2D_010")
 
 [node name="Turn" type="Path2D" parent="." index="2" unique_id=2018425666]
 curve = SubResource("Curve2D_llqvf")
 script = ExtResource("3_llqvf")
+speed_curve = SubResource("Curve_llqvf")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Turn" index="0" unique_id=284355530]
-rotation = 1.573036
+rotation = 1.5707964
 scale = Vector2(0.25, 0.25)
 loop = false
 
