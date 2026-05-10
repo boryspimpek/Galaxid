@@ -13,3 +13,5 @@ res://scenes/projectile/Projectile.tscn
 res://scenes/world/LevelManager.gd
 res://scenes/projectile/projectile.gd
 res://scenes/enemy_projectile/EnemyProjectile.gd
+res://scenes/formations/formation_5.tscn
+res://scenes/enemies/Enemy_017.tscn

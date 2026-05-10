@@ -9,9 +9,9 @@ radius = 71.063354
 
 [sub_resource type="Curve2D" id="Curve2D_lk7ja"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 492, 0, 0, 0, 0, 956, 677, 0, 0, 0, 0, 935, 104)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 744, 0, 0, 0, 0, 0, -344)
 }
-point_count = 4
+point_count = 3
 
 [node name="Enemy_006" unique_id=1414137520 instance=ExtResource("1_base")]
 armor = 12
@@ -21,9 +21,7 @@ explosiontype = 26
 tur = [0, 0, 78]
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-position = Vector2(1, 1)
-rotation = -0.0020366907
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_e4ru5")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
@@ -32,19 +30,22 @@ shape = SubResource("CircleShape2D_006")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=291847561]
 position = Vector2(0, 45)
-rect = Rect2(-138, -146, 276, 173)
+rect = Rect2(-96, -146, 192, 173)
 
-[node name="Path2D" type="Path2D" parent="." index="3" unique_id=114479712]
+[node name="Path2D" type="Path2D" parent="." index="3" unique_id=1701089560]
 curve = SubResource("Curve2D_lk7ja")
 script = ExtResource("3_e4ru5")
-speed = 8.0
+speed = 5.0
 scroll_speed = -2
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" unique_id=701177434]
-position = Vector2(1, 1)
-rotation = 1.5687597
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" unique_id=652795789]
+rotation = 1.5707964
+loop = false
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D" index="0" unique_id=1063009875]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D" index="0" unique_id=1785248941]
 rotation = -1.5707964
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.5, 0.5)
 remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Path2D/PathFollow2D" index="1" unique_id=488894029]
+remote_path = NodePath("../../../CollisionShape2D")

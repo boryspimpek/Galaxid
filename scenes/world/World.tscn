@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ki0qkfbmgk6g" path="res://scenes/formations/formation_4.tscn" id="7_0qn2w"]
 [ext_resource type="Script" uid="uid://cjwf83wntumr8" path="res://scenes/world/LevelRuler.gd" id="7_ruler"]
 [ext_resource type="PackedScene" uid="uid://dic8h40mdvd5e" path="res://scenes/enemies/Enemy_031.tscn" id="7_yr1n6"]
+[ext_resource type="PackedScene" uid="uid://fvloll18j1im" path="res://scenes/formations/formation_5.tscn" id="8_0qn2w"]
 [ext_resource type="PackedScene" uid="uid://bohu6dfbn78ms" path="res://scenes/enemies/Enemy_006.tscn" id="8_qh0kd"]
 [ext_resource type="PackedScene" uid="uid://cwkiaa3a6uwq3" path="res://scenes/enemies/Enemy_003.tscn" id="e200_003"]
 [ext_resource type="PackedScene" uid="uid://dexpsjoqudwr5" path="res://scenes/enemies/Enemy_004.tscn" id="e201_004"]
@@ -36,18 +37,12 @@
 [ext_resource type="PackedScene" uid="uid://c8t0ys81ubua5" path="res://scenes/enemies/Enemy_471.tscn" id="e224_471"]
 [ext_resource type="PackedScene" uid="uid://6wsnujc6j4lc" path="res://scenes/enemies/Enemy_472.tscn" id="e225_472"]
 [ext_resource type="PackedScene" uid="uid://bq8g0fwkyinje" path="res://scenes/enemies/Enemy_473.tscn" id="e226_473"]
-[ext_resource type="PackedScene" uid="uid://dadvoopyp3fhb" path="res://scenes/enemies/Enemy_516.tscn" id="e227_516"]
-[ext_resource type="PackedScene" uid="uid://kto0dq6rqyt4" path="res://scenes/enemies/Enemy_517.tscn" id="e228_517"]
-[ext_resource type="PackedScene" uid="uid://t7scxcsnier3" path="res://scenes/enemies/Enemy_518.tscn" id="e229_518"]
-[ext_resource type="PackedScene" uid="uid://bj0s7fre8nk6w" path="res://scenes/enemies/Enemy_519.tscn" id="e230_519"]
-[ext_resource type="PackedScene" uid="uid://ckcybbj7jbmtf" path="res://scenes/enemies/Enemy_520.tscn" id="e231_520"]
-[ext_resource type="PackedScene" uid="uid://djog5bmi4sus8" path="res://scenes/enemies/Enemy_521.tscn" id="e232_521"]
 
 [node name="World" type="Node2D" unique_id=1364436952]
 
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
 script = ExtResource("3_level_manager")
-start_dist = 1300
+start_dist = 2000
 
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=1111111111]
 script = ExtResource("7_ruler")
@@ -76,70 +71,59 @@ position = Vector2(399, -2124)
 [node name="Formation_4" parent="LevelMap" unique_id=1203146526 instance=ExtResource("7_0qn2w")]
 position = Vector2(1055, -2484)
 
+[node name="Formation_5" parent="LevelMap" unique_id=1781764924 instance=ExtResource("8_0qn2w")]
+position = Vector2(426, -3148)
+
 [node name="Enemy_006_1" parent="LevelMap" unique_id=177951837 instance=ExtResource("8_qh0kd")]
-position = Vector2(593, -2267)
+position = Vector2(495, -2326)
 ymove = 3
 tur = [116, 0, 0]
 freq = [20, 0, 0]
-wybran_sciezka = "Path2D"
 
 [node name="Enemy_006_2" parent="LevelMap" unique_id=908809146 instance=ExtResource("8_qh0kd")]
-position = Vector2(1265, -4644)
-ymove = 3
-
-[node name="Enemy_006_3" parent="LevelMap" unique_id=1414137520 instance=ExtResource("8_qh0kd")]
-position = Vector2(743, -3643)
+position = Vector2(728, -2449)
 ymove = 5
 tur = [116, 0, 0]
 freq = [20, 0, 0]
 
-[node name="Enemy_005_11" parent="LevelMap" unique_id=174916013 instance=ExtResource("4_qxiha")]
-position = Vector2(80, -4280)
+[node name="Enemy_006_3" parent="LevelMap" unique_id=1414137520 instance=ExtResource("8_qh0kd")]
+position = Vector2(969, -2761)
+ymove = 5
+tur = [0, 0, 0]
+wybran_sciezka = "Path2D"
 
-[node name="Enemy_005_12" parent="LevelMap" unique_id=403010328 instance=ExtResource("4_qxiha")]
-position = Vector2(80, -4340)
+[node name="Enemy_006_4" parent="LevelMap" unique_id=2139955197 instance=ExtResource("8_qh0kd")]
+position = Vector2(768, -2720)
+ymove = 5
+tur = [116, 0, 0]
+freq = [20, 0, 0]
+wybran_sciezka = "Path2D"
 
-[node name="Enemy_005_13" parent="LevelMap" unique_id=389902057 instance=ExtResource("4_qxiha")]
-position = Vector2(80, -4400)
-
-[node name="Enemy_005_14" parent="LevelMap" unique_id=600207512 instance=ExtResource("4_qxiha")]
-position = Vector2(80, -4460)
-
-[node name="Enemy_005_15" parent="LevelMap" unique_id=685877366 instance=ExtResource("4_qxiha")]
-position = Vector2(80, -4520)
+[node name="Enemy_006_5" parent="LevelMap" unique_id=977234753 instance=ExtResource("8_qh0kd")]
+position = Vector2(590, -2760)
+ymove = 5
+tur = [0, 0, 0]
+wybran_sciezka = "Path2D"
 
 [node name="Enemy_017_1" parent="LevelMap" unique_id=335586952 instance=ExtResource("e205_017")]
-position = Vector2(552, -5084)
-
-[node name="Enemy_517_1" parent="LevelMap" unique_id=633509908 instance=ExtResource("e228_517")]
-position = Vector2(888, -5004)
-
-[node name="Enemy_518_1" parent="LevelMap" unique_id=283000385 instance=ExtResource("e229_518")]
-position = Vector2(984, -5004)
-
-[node name="Enemy_519_1" parent="LevelMap" unique_id=941187087 instance=ExtResource("e230_519")]
-position = Vector2(792, -5116)
-
-[node name="Enemy_520_1" parent="LevelMap" unique_id=212629443 instance=ExtResource("e231_520")]
-position = Vector2(888, -5116)
-
-[node name="Enemy_521_1" parent="LevelMap" unique_id=666839442 instance=ExtResource("e232_521")]
-position = Vector2(984, -5116)
-
-[node name="Enemy_516_1" parent="LevelMap" unique_id=246321070 instance=ExtResource("e227_516")]
-position = Vector2(792, -5004)
+position = Vector2(730, -3368)
+ymove = 3
 
 [node name="Enemy_017_2" parent="LevelMap" unique_id=590172993 instance=ExtResource("e205_017")]
-position = Vector2(352, -5124)
+position = Vector2(560, -3408)
+ymove = 3
 
 [node name="Enemy_017_3" parent="LevelMap" unique_id=582119409 instance=ExtResource("e205_017")]
-position = Vector2(752, -5124)
+position = Vector2(905, -3408)
+ymove = 3
 
 [node name="Enemy_017_4" parent="LevelMap" unique_id=391417826 instance=ExtResource("e205_017")]
-position = Vector2(152, -5164)
+position = Vector2(400, -3448)
+ymove = 3
 
 [node name="Enemy_017_5" parent="LevelMap" unique_id=405442960 instance=ExtResource("e205_017")]
-position = Vector2(952, -5164)
+position = Vector2(1053, -3448)
+ymove = 3
 
 [node name="Enemy_024_1" parent="LevelMap" unique_id=104374205 instance=ExtResource("e209_024")]
 position = Vector2(-40, -5400)

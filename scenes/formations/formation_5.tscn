@@ -1,0 +1,85 @@
+[gd_scene format=3 uid="uid://fvloll18j1im"]
+
+[ext_resource type="PackedScene" uid="uid://bmaluuutr0n8v" path="res://scenes/enemies/Enemy_005.tscn" id="1_scg41"]
+[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="2_if8lv"]
+
+[sub_resource type="Curve2D" id="Curve2D_h1orx"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 732, 0, 0, 0, 0, 0, 1160, -60.10518, -48.49395, 60.10518, 48.49395, 74, 1360, -67.76, -35.09, 67.76, 35.09, 499, 1371, 0, 0, 0, 0, 603, 1543)
+}
+point_count = 6
+
+[node name="Formation_5" type="Node2D" unique_id=1781764924]
+position = Vector2(0, -676)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1170765146]
+rect = Rect2(-35, -44, 70, 720)
+
+[node name="Enemy_005" parent="." unique_id=1841420694 instance=ExtResource("1_scg41")]
+
+[node name="Enemy_006" parent="." unique_id=968404522 instance=ExtResource("1_scg41")]
+position = Vector2(0, 159.99707)
+
+[node name="Enemy_007" parent="." unique_id=130347899 instance=ExtResource("1_scg41")]
+position = Vector2(0, 319.99948)
+
+[node name="Enemy_008" parent="." unique_id=956800623 instance=ExtResource("1_scg41")]
+position = Vector2(0, 480.0002)
+
+[node name="Enemy_009" parent="." unique_id=1916124967 instance=ExtResource("1_scg41")]
+position = Vector2(0, 640.0034)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=288859986]
+curve = SubResource("Curve2D_h1orx")
+script = ExtResource("2_if8lv")
+speed = 8.0
+scroll_speed = -2
+auto_advance = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=2035814045]
+rotation = 1.5707964
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=2124732395]
+rotation = -1.5707964
+remote_path = NodePath("../../../Enemy_005")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D" unique_id=1152867744]
+position = Vector2(0, 159.9971)
+rotation = 1.5707964
+progress = 160.0
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D2" unique_id=493804243]
+rotation = -1.5707964
+remote_path = NodePath("../../../Enemy_006")
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="Path2D" unique_id=901197521]
+position = Vector2(0, 319.99948)
+rotation = 1.5707964
+progress = 320.0
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D3" unique_id=1123007986]
+rotation = -1.5707964
+remote_path = NodePath("../../../Enemy_007")
+
+[node name="PathFollow2D4" type="PathFollow2D" parent="Path2D" unique_id=1020454365]
+position = Vector2(0, 480.0002)
+rotation = 1.5707964
+progress = 480.0
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D4" unique_id=954679447]
+rotation = -1.5707964
+remote_path = NodePath("../../../Enemy_008")
+
+[node name="PathFollow2D5" type="PathFollow2D" parent="Path2D" unique_id=361105473]
+position = Vector2(0, 640.0034)
+rotation = 1.5707964
+progress = 640.0
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D5" unique_id=850389534]
+rotation = -1.5707964
+remote_path = NodePath("../../../Enemy_009")
