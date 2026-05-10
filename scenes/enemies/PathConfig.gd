@@ -7,11 +7,23 @@ extends Path2D
 # Tylko formacje ustawiają auto_advance = true. Enemy-embedded paths nigdy.
 @export var auto_advance: bool = false
 
+var _active: bool = false
+
+func _ready() -> void:
+	if Engine.is_editor_hint():
+		return
+	if auto_advance:
+		var notifier = get_parent().get_node_or_null("VisibleOnScreenNotifier2D")
+		if notifier:
+			notifier.screen_entered.connect(func(): _active = true)
+		else:
+			_active = true  # brak notifiera — ruszaj od razu
+
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
 	position.y += float(scroll_speed)
-	if not auto_advance:
+	if not auto_advance or not _active:
 		return
 	for child in get_children():
 		if not child is PathFollow2D:

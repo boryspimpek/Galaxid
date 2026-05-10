@@ -2,16 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://cco6qy4bntjuf" path="res://assets/Copilot_20260509_093337-removebg-preview.png" id="2_e4ru5"]
-[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="3_e4ru5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_006"]
 radius = 71.063354
-
-[sub_resource type="Curve2D" id="Curve2D_lk7ja"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 468, -20.209476, -19.830942, 20.209476, 19.830942, 21, 519, 0, 0, 0, 0, 90, 540, 0, 0, 0, 0, 191, 540, -18.510265, 22.515987, 18.510265, -22.515987, 245, 516, 0, 0, 0, 0, 266, 468, 0, 0, 0, 0, 266, -2325)
-}
-point_count = 8
 
 [node name="Enemy_006" unique_id=1414137520 instance=ExtResource("1_base")]
 armor = 12
@@ -19,7 +12,6 @@ esize = 1
 value = 25
 explosiontype = 26
 tur = [0, 0, 78]
-wybran_sciezka = "Reverse"
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
 scale = Vector2(0.7, 0.7)
@@ -32,20 +24,3 @@ shape = SubResource("CircleShape2D_006")
 [node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=291847561]
 position = Vector2(0, 45)
 rect = Rect2(-138, -146, 276, 173)
-
-[node name="Reverse" type="Path2D" parent="." index="3" unique_id=1394775524]
-curve = SubResource("Curve2D_lk7ja")
-script = ExtResource("3_e4ru5")
-speed = 4.0
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Reverse" index="0" unique_id=88554994]
-rotation = 1.5707964
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Reverse/PathFollow2D" index="0" unique_id=559912800]
-rotation = -1.5707964
-scale = Vector2(0.7, 0.7)
-remote_path = NodePath("../../../Visual")
-
-[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Reverse/PathFollow2D" index="1" unique_id=679992955]
-remote_path = NodePath("../../../CollisionShape2D")

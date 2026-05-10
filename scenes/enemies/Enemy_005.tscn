@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bmaluuutr0n8v"]
 
 [ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
-[ext_resource type="Texture2D" uid="uid://b6wi3tffwt2d" path="res://assets/Copilot_20260507_195821-removebg-preview.png" id="2_q2qvc"]
+[ext_resource type="Texture2D" uid="uid://ygmukd8qaego" path="res://assets/Gemini_Generated_Image_u9dzc0u9dzc0u9dz-removebg-preview.png" id="2_nmie7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_005"]
 radius = 36.0
@@ -13,13 +13,13 @@ value = 20
 explosiontype = 4
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
+rotation = 3.1415927
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_q2qvc")
+texture = ExtResource("2_nmie7")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
-position = Vector2(0, -14)
 shape = SubResource("CircleShape2D_005")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=291847561]
-position = Vector2(0, 13)
-rect = Rect2(-50, -67, 100, 77)
+position = Vector2(0, 23)
+rect = Rect2(-28, -67, 57, 80)

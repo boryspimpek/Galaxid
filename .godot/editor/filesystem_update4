@@ -1,7 +1,11 @@
-res://scenes/world/World.tscn
 res://scenes/enemies/Enemy_010.tscn
-res://scenes/world/LevelRuler.gd
+res://scenes/world/World.tscn
+res://formation_1.tscn
+res://scenes/formations/formation_1.tscn
+res://scenes/formations/formation_2.tscn
+res://scenes/enemy/Enemy.gd
+res://scenes/enemies/PathConfig.gd
 res://scenes/enemies/Enemy_006.tscn
 res://scenes/enemies/Enemy_005.tscn
-res://scenes/enemies/Enemy_031.tscn
-res://scenes/enemies/Enemy_012.tscn
+res://scenes/formations/formation_3.tscn
+res://scenes/formations/formation_4.tscn

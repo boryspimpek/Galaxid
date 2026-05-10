@@ -1,22 +1,10 @@
 [gd_scene format=3 uid="uid://2v3sf067o17a"]
 
 [ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
-[ext_resource type="Texture2D" uid="uid://4nwgn2may0qr" path="res://assets/Copilot_20260509_091100-removebg-preview.png" id="2_llqvf"]
-[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="3_llqvf"]
+[ext_resource type="Texture2D" uid="uid://b6wi3tffwt2d" path="res://assets/Copilot_20260507_195821-removebg-preview.png" id="2_llqvf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_010"]
 radius = 140.0
-
-[sub_resource type="Curve2D" id="Curve2D_llqvf"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 597, 0, 0, 0, 0, 727, -169)
-}
-point_count = 3
-
-[sub_resource type="Curve" id="Curve_llqvf"]
-_limits = [0.0, 6.0, 0.0, 1.0]
-_data = [Vector2(0.23393741, 1.0337958), 0.0, 0.0, 0, 0, Vector2(0.4003295, 6), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [node name="Enemy_010" unique_id=834132465 instance=ExtResource("1_base")]
 armor = 3
@@ -29,27 +17,11 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_llqvf")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
+position = Vector2(0, -13)
 rotation = 1.5707964
 scale = Vector2(0.25, 0.25)
 shape = SubResource("CircleShape2D_010")
 
-[node name="Turn" type="Path2D" parent="." index="2" unique_id=2018425666]
-curve = SubResource("Curve2D_llqvf")
-script = ExtResource("3_llqvf")
-speed_curve = SubResource("Curve_llqvf")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Turn" index="0" unique_id=284355530]
-rotation = 1.5707964
-scale = Vector2(0.25, 0.25)
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Turn/PathFollow2D" index="0" unique_id=540892254]
-rotation = 4.712389
-remote_path = NodePath("../../../Visual")
-
-[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Turn/PathFollow2D" index="1" unique_id=900774758]
-remote_path = NodePath("../../../CollisionShape2D")
-
-[node name="VisibleOnScreenNotifier2D" parent="." index="3" unique_id=291847561]
+[node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=291847561]
 position = Vector2(0, 48)
-rect = Rect2(-35, -107, 70, 111)
+rect = Rect2(-35, -102, 70, 77)
