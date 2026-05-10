@@ -9,3 +9,5 @@ res://scenes/enemies/Enemy_006.tscn
 res://scenes/enemies/Enemy_005.tscn
 res://scenes/formations/formation_3.tscn
 res://scenes/formations/formation_4.tscn
+res://scenes/projectile/Projectile.tscn
+res://scenes/world/LevelManager.gd

@@ -56,6 +56,7 @@ scroll_speed = 1
 show_in_game = true
 
 [node name="Road2" type="Sprite2D" parent="LevelMap" unique_id=1178242620]
+visible = false
 position = Vector2(725, -1952)
 texture = ExtResource("5_qh0kd")
 
@@ -72,10 +73,10 @@ position = Vector2(1045, -732)
 position = Vector2(859, -1507)
 
 [node name="Formation_3" parent="LevelMap" unique_id=1064303126 instance=ExtResource("6_qv6fn")]
-position = Vector2(385, -2153)
+position = Vector2(378, -2188)
 
 [node name="Formation_4" parent="LevelMap" unique_id=1203146526 instance=ExtResource("7_0qn2w")]
-position = Vector2(1071, -2429)
+position = Vector2(1061, -2487)
 
 [node name="Enemy_013_1" parent="LevelMap" unique_id=513111205 instance=ExtResource("e203_013")]
 position = Vector2(112, -3300)

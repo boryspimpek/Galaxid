@@ -48,7 +48,7 @@ Galaxid/
 │       ├── EnemyController.gd       (NIEUŻYWANY — stary system eventowy)
 │       └── EventProcessor.gd        (NIEUŻYWANY — stary system eventowy)
 ├── demo/                            (demo 3D Terrain3D — niezależne od gry)
-├── addons/terrain_3d/, level_editor/
+├── addons/terrain_3d/
 └── data/
     ├── ships.json, enemies.json, weapon.json, shields.json, generators.json
     ├── lvl01.json … lvl99.json      (NIEUŻYWANE — stary system eventowy)

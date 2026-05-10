@@ -34,7 +34,7 @@ window/stretch/aspect="expand"
 
 [game]
 
-debug/start_dist=0
+debug/start_dist=1300
 debug/level_name=""
 
 [physics]
