@@ -33,6 +33,7 @@ position = Vector2(0, 640.0004)
 curve = SubResource("Curve2D_5f3wn")
 script = ExtResource("2_5vu25")
 speed = 6.0
+scroll_speed = -2
 auto_advance = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=429889898]

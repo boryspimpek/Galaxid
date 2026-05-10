@@ -1,9 +1,9 @@
+RemoteTransform2D
+PathFollow2D
+Path2D
 Sprite2D
 VisibleOnScreenNotifier2D
 Node2D
-Path2D
-RemoteTransform2D
-PathFollow2D
 Area2D
 CollisionPolygon2D
 Label

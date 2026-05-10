@@ -47,8 +47,7 @@
 
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
 script = ExtResource("3_level_manager")
-scroll_speed = 1
-start_dist = 1600
+start_dist = 900
 
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=1111111111]
 script = ExtResource("7_ruler")
@@ -61,35 +60,36 @@ position = Vector2(725, -1952)
 texture = ExtResource("5_qh0kd")
 
 [node name="Formation_1" parent="LevelMap" unique_id=1333379857 instance=ExtResource("4_0qn2w")]
-position = Vector2(429, -343)
+position = Vector2(437, -345)
 
 [node name="Formation_1_1" parent="LevelMap" unique_id=1395344730 instance=ExtResource("4_0qn2w")]
-position = Vector2(631, -644)
+position = Vector2(643, -985)
 
 [node name="Formation_2" parent="LevelMap" unique_id=1171025841 instance=ExtResource("5_l5iln")]
-position = Vector2(1043, -474)
+position = Vector2(998, -661)
 
 [node name="Formation_2_2" parent="LevelMap" unique_id=1177419308 instance=ExtResource("5_l5iln")]
-position = Vector2(858, -835)
+position = Vector2(870, -1307)
 
 [node name="Formation_3" parent="LevelMap" unique_id=1064303126 instance=ExtResource("6_qv6fn")]
-position = Vector2(385, -1484)
+position = Vector2(407, -1879)
 
 [node name="Formation_4" parent="LevelMap" unique_id=1203146526 instance=ExtResource("7_0qn2w")]
-position = Vector2(1055, -1804)
+position = Vector2(1045, -1886)
 
 [node name="Enemy_006_1" parent="LevelMap" unique_id=177951837 instance=ExtResource("8_qh0kd")]
-position = Vector2(364, -1722)
+position = Vector2(613, -1274)
 ymove = 3
 tur = [116, 0, 0]
 freq = [20, 0, 0]
+wybran_sciezka = "Path2D"
 
 [node name="Enemy_006_2" parent="LevelMap" unique_id=908809146 instance=ExtResource("8_qh0kd")]
-position = Vector2(684, -2567)
+position = Vector2(1265, -4644)
 ymove = 3
 
 [node name="Enemy_006_3" parent="LevelMap" unique_id=1414137520 instance=ExtResource("8_qh0kd")]
-position = Vector2(670, -1783)
+position = Vector2(743, -3643)
 ymove = 5
 tur = [116, 0, 0]
 freq = [20, 0, 0]

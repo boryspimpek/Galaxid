@@ -2,9 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
 [ext_resource type="Texture2D" uid="uid://cco6qy4bntjuf" path="res://assets/Copilot_20260509_093337-removebg-preview.png" id="2_e4ru5"]
+[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="3_e4ru5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_006"]
 radius = 71.063354
+
+[sub_resource type="Curve2D" id="Curve2D_lk7ja"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 492, 0, 0, 0, 0, 935, 490, 0, 0, 0, 0, 935, 104)
+}
+point_count = 4
 
 [node name="Enemy_006" unique_id=1414137520 instance=ExtResource("1_base")]
 armor = 12
@@ -14,6 +21,8 @@ explosiontype = 26
 tur = [0, 0, 78]
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
+position = Vector2(1, 1)
+rotation = -0.0020366907
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_e4ru5")
 
@@ -24,3 +33,18 @@ shape = SubResource("CircleShape2D_006")
 [node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=291847561]
 position = Vector2(0, 45)
 rect = Rect2(-138, -146, 276, 173)
+
+[node name="Path2D" type="Path2D" parent="." index="3" unique_id=114479712]
+curve = SubResource("Curve2D_lk7ja")
+script = ExtResource("3_e4ru5")
+speed = 2.0
+scroll_speed = -2
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" unique_id=701177434]
+position = Vector2(1, 1)
+rotation = 1.5687597
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D" index="0" unique_id=1063009875]
+rotation = -1.5707964
+scale = Vector2(0.7, 0.7)
+remote_path = NodePath("../../../Visual")
