@@ -32,11 +32,6 @@ window/size/window_height_override=800
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
-[game]
-
-debug/start_dist=1300
-debug/level_name=""
-
 [physics]
 
 common/physics_ticks_per_second=30

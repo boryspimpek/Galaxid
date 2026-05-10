@@ -1,13 +1,12 @@
 extends Node2D
 
 @export var scroll_speed: int = 2
+@export var start_dist: int = 0
 
 func _ready():
 	_connect_signals(self)
-	if OS.is_debug_build():
-		var start_dist: int = ProjectSettings.get_setting("game/debug/start_dist", 0)
-		if start_dist > 0:
-			position.y = start_dist
+	if OS.is_debug_build() and start_dist > 0:
+		position.y = start_dist
 
 func _process(_delta):
 	position.y += scroll_speed
