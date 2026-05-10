@@ -19,10 +19,14 @@ func _ready() -> void:
 		else:
 			_active = true  # brak notifiera — ruszaj od razu
 
+func activate() -> void:
+	_active = true
+
 func _process(_delta: float) -> void:
 	if Engine.is_editor_hint():
 		return
-	position.y += float(scroll_speed)
+	if _active and scroll_speed != 0:
+		position.y += float(scroll_speed)
 	if not auto_advance or not _active:
 		return
 	for child in get_children():

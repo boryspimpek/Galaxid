@@ -5,9 +5,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_5f3wn"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1060, -71.28386, -50.047398, 71.28386, 50.047398, 72, 1212, -80.99173, 3.305785, 80.99173, -3.305785, 320, 1252, -61.583298, 70.75225, 61.583298, -70.75225, 512, 1124, 0, 0, 0, 0, 576, 932, 0, 0, 0, 0, 576, 548, 62.15718, 61.34555, -62.15718, -61.34555, 512, 420, 63.671455, -65.8798, -63.671455, 65.8798, 64, 420, 0, 0, 0, 0, 0, 548, 0, 0, 0, 0, 0, 1676)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 732, -10.4012375, -57.83161, 10.4012375, 57.83161, 8, 1228, -50, -32.727272, 50, 32.727272, 128, 1380, -33.154953, 0.5266624, 33.154953, -0.5266624, 256, 1420, -51.054543, 33.53636, 51.054543, -33.53636, 400, 1372, -10.90909, 71.818184, 10.90909, -71.818184, 512, 1180, 11, 59, -11, -59, 512, 932, 32.398746, 31.925194, -32.398746, -31.925194, 440, 772, 63.903805, -0.1978446, -63.903805, 0.1978446, 256, 708, 32.78464, -32.47726, -32.78464, 32.47726, 72, 788, 19.090908, -68.181816, -19.090908, 68.181816, 0, 932, -10.382982, -58.14042, 10.382982, 58.14042, 8, 1228, -352.69193, 42.846104, 352.69193, -42.846104, 440, 1548)
 }
-point_count = 11
+point_count = 14
 
 [node name="Formation_3" type="Node2D" unique_id=1064303126]
 position = Vector2(0, -676)
@@ -18,21 +18,21 @@ rect = Rect2(-35, -44, 70, 720)
 [node name="Enemy_005" parent="." unique_id=1841420694 instance=ExtResource("1_tqm35")]
 
 [node name="Enemy_006" parent="." unique_id=1647355075 instance=ExtResource("1_tqm35")]
-position = Vector2(0, 159.99585)
+position = Vector2(0, 159.99707)
 
 [node name="Enemy_007" parent="." unique_id=801410709 instance=ExtResource("1_tqm35")]
-position = Vector2(0, 319.9993)
+position = Vector2(0, 319.99948)
 
 [node name="Enemy_008" parent="." unique_id=732863736 instance=ExtResource("1_tqm35")]
-position = Vector2(0, 479.99997)
+position = Vector2(0, 480.0002)
 
 [node name="Enemy_009" parent="." unique_id=716640729 instance=ExtResource("1_tqm35")]
-position = Vector2(0, 640.0004)
+position = Vector2(0, 640.0034)
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1019325857]
 curve = SubResource("Curve2D_5f3wn")
 script = ExtResource("2_5vu25")
-speed = 6.0
+speed = 8.0
 scroll_speed = -2
 auto_advance = true
 
@@ -45,7 +45,7 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_005")
 
 [node name="PathFollow2D2" type="PathFollow2D" parent="Path2D" unique_id=2009948723]
-position = Vector2(0, 159.99582)
+position = Vector2(0, 159.9971)
 rotation = 1.5707964
 progress = 160.0
 loop = false
@@ -55,7 +55,7 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_006")
 
 [node name="PathFollow2D3" type="PathFollow2D" parent="Path2D" unique_id=1897474267]
-position = Vector2(0, 319.9993)
+position = Vector2(0, 319.99948)
 rotation = 1.5707964
 progress = 320.0
 loop = false
@@ -65,7 +65,7 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_007")
 
 [node name="PathFollow2D4" type="PathFollow2D" parent="Path2D" unique_id=1067983553]
-position = Vector2(0, 479.99997)
+position = Vector2(0, 480.0002)
 rotation = 1.5707964
 progress = 480.0
 loop = false
@@ -75,7 +75,7 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_008")
 
 [node name="PathFollow2D5" type="PathFollow2D" parent="Path2D" unique_id=1828865659]
-position = Vector2(0, 640.0004)
+position = Vector2(0, 640.0034)
 rotation = 1.5707964
 progress = 640.0
 loop = false

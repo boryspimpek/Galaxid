@@ -5,13 +5,13 @@
 
 [sub_resource type="Curve2D" id="Curve2D_nx81r"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 772, -37.331165, -4.6356344, 37.331165, 4.6356344, 39, 828, 0, 0, 0, 0, 116, 763, 0, 0, 0, 0, 851, -471)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1031, -44.406754, 0.1179229, 44.406754, -0.1179229, 64, 1087, 0, 0, 0, 0, 128, 1031, 0, 0, 0, 0, 851, -471)
 }
 point_count = 5
 
 [sub_resource type="Curve" id="Curve_jfofg"]
 _limits = [0.0, 4.0, 0.0, 1.0]
-_data = [Vector2(0, 0.9958947), 0.0, 0.0, 0, 0, Vector2(0.38489646, 1.0030446), 0.0, 0.0, 0, 0, Vector2(0.680877, 3.0952587), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.9958947), 0.0, 0.0, 0, 0, Vector2(0.38489646, 1.0030446), 0.0, 0.0, 0, 0, Vector2(0.6797312, 4), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [node name="Formation_1" type="Node2D" unique_id=1333379857]
@@ -23,22 +23,23 @@ rect = Rect2(-50, -54, 100, 397)
 [node name="Enemy_010" parent="." unique_id=834132465 instance=ExtResource("1_vxo47")]
 
 [node name="Enemy_010_2" parent="." unique_id=642863663 instance=ExtResource("1_vxo47")]
-position = Vector2(0, 79.99811)
+position = Vector2(0, 79.99396)
 
 [node name="Enemy_010_3" parent="." unique_id=643514869 instance=ExtResource("1_vxo47")]
-position = Vector2(0, 159.99985)
+position = Vector2(0, 159.99567)
 
 [node name="Enemy_010_4" parent="." unique_id=2064646767 instance=ExtResource("1_vxo47")]
-position = Vector2(0, 239.9999)
+position = Vector2(0, 239.99901)
 
 [node name="Enemy_010_5" parent="." unique_id=1021687849 instance=ExtResource("1_vxo47")]
-position = Vector2(0, 319.9991)
+position = Vector2(0, 319.9995)
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1949118489]
 curve = SubResource("Curve2D_nx81r")
 script = ExtResource("2_jfofg")
-speed = 4.0
+speed = 6.0
 speed_curve = SubResource("Curve_jfofg")
+scroll_speed = -2
 auto_advance = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1407009769]
@@ -50,7 +51,7 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_010")
 
 [node name="PathFollow2D2" type="PathFollow2D" parent="Path2D" unique_id=113058989]
-position = Vector2(0, 79.99809)
+position = Vector2(0, 79.99396)
 rotation = 1.5707964
 progress = 80.0
 loop = false
@@ -60,7 +61,7 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_010_2")
 
 [node name="PathFollow2D3" type="PathFollow2D" parent="Path2D" unique_id=832618758]
-position = Vector2(0, 159.99985)
+position = Vector2(0, 159.99567)
 rotation = 1.5707964
 progress = 160.0
 loop = false
@@ -70,7 +71,7 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_010_3")
 
 [node name="PathFollow2D4" type="PathFollow2D" parent="Path2D" unique_id=1021634053]
-position = Vector2(0, 239.9999)
+position = Vector2(0, 239.99901)
 rotation = 1.5707964
 progress = 240.0
 loop = false
@@ -80,7 +81,7 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_010_4")
 
 [node name="PathFollow2D5" type="PathFollow2D" parent="Path2D" unique_id=328579828]
-position = Vector2(0, 319.9991)
+position = Vector2(0, 319.9995)
 rotation = 1.5707964
 progress = 320.0
 loop = false

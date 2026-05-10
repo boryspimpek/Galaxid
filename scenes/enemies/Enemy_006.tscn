@@ -9,7 +9,7 @@ radius = 71.063354
 
 [sub_resource type="Curve2D" id="Curve2D_lk7ja"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 492, 0, 0, 0, 0, 935, 490, 0, 0, 0, 0, 935, 104)
+"points": PackedVector2Array(0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 2, 492, 0, 0, 0, 0, 956, 677, 0, 0, 0, 0, 935, 104)
 }
 point_count = 4
 
@@ -37,7 +37,7 @@ rect = Rect2(-138, -146, 276, 173)
 [node name="Path2D" type="Path2D" parent="." index="3" unique_id=114479712]
 curve = SubResource("Curve2D_lk7ja")
 script = ExtResource("3_e4ru5")
-speed = 2.0
+speed = 8.0
 scroll_speed = -2
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" unique_id=701177434]

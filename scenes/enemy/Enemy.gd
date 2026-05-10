@@ -129,6 +129,9 @@ func _setup_path():
 
 func _on_screen_entered():
 	set_process(true)
+	for child in get_children():
+		if child is Path2D and child.has_method("activate"):
+			child.activate()
 
 func _on_screen_exited():
 	# Podczas podążania za ścieżką ignorujemy screen_exited —
