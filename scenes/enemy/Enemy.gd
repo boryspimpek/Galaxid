@@ -156,9 +156,14 @@ func _process(_delta):
 		_active_follow.progress += _active_path_speed * speed_mult
 		_process_shooting(_delta)
 		if _active_follow.progress_ratio >= 1.0:
-			# Ścieżka skończona → przejdź na swobodny ruch (velocity).
-			# screen_exited wyczyści wroga gdy opuści ekran.
+			global_position = visual.global_position
+			for rt in _active_follow.get_children():
+				if rt is RemoteTransform2D:
+					rt.update_position = false
 			_active_follow = null
+			if not $VisibleOnScreenNotifier2D.is_on_screen():
+				queue_free()
+				return
 		return
 
 	position += velocity

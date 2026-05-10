@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d6w8o4cos820" path="res://scenes/formations/formation_1.tscn" id="4_0qn2w"]
 [ext_resource type="PackedScene" uid="uid://iddg8culgc7q" path="res://UI/Hud.tscn" id="4_gbddb"]
 [ext_resource type="PackedScene" uid="uid://bmaluuutr0n8v" path="res://scenes/enemies/Enemy_005.tscn" id="4_qxiha"]
+[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="5_0qn2w"]
 [ext_resource type="PackedScene" uid="uid://d36cocwho3h4p" path="res://scenes/formations/formation_2.tscn" id="5_l5iln"]
 [ext_resource type="Texture2D" uid="uid://dyb0a8s83pn38" path="res://assets/road2.png" id="5_qh0kd"]
 [ext_resource type="PackedScene" uid="uid://dufg46b0vcy53" path="res://scenes/formations/formation_3.tscn" id="6_qv6fn"]
@@ -14,11 +15,17 @@
 [ext_resource type="PackedScene" uid="uid://fvloll18j1im" path="res://scenes/formations/formation_5.tscn" id="8_0qn2w"]
 [ext_resource type="PackedScene" uid="uid://bohu6dfbn78ms" path="res://scenes/enemies/Enemy_006.tscn" id="8_qh0kd"]
 
+[sub_resource type="Curve2D" id="Curve2D_8xm5o"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -91.435425, -31.722496, 91.435425, 31.722496, 164, 96, -96.863716, 14.90211, 96.863716, -14.90211, 573, 106, 0, 0, 0, 0, 831, 95)
+}
+point_count = 4
+
 [node name="World" type="Node2D" unique_id=1364436952]
 
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
 script = ExtResource("3_level_manager")
-start_dist = 3100
+start_dist = 4800
 
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=1111111111]
 script = ExtResource("7_ruler")
@@ -26,6 +33,7 @@ scroll_speed = 1
 show_in_game = true
 
 [node name="Road2" type="Sprite2D" parent="LevelMap" unique_id=1178242620]
+visible = false
 position = Vector2(725, -1952)
 texture = ExtResource("5_qh0kd")
 
@@ -56,10 +64,44 @@ position = Vector2(1034, -2743)
 position = Vector2(432, -3952)
 
 [node name="Enemy_005" parent="LevelMap" unique_id=1841420694 instance=ExtResource("4_qxiha")]
-position = Vector2(298, -4139)
+position = Vector2(286, -4998)
 tur = [62, 0, 0]
 freq = [20, 0, 0]
 wybran_sciezka = "Path2D"
+
+[node name="Path2D" type="Path2D" parent="LevelMap/Enemy_005" unique_id=1243182891]
+curve = SubResource("Curve2D_8xm5o")
+script = ExtResource("5_0qn2w")
+speed = 6.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Enemy_005/Path2D" unique_id=451398343]
+rotation = 0.7249127
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="LevelMap/Enemy_005/Path2D/PathFollow2D" unique_id=1783642677]
+rotation = 1.5707964
+scale = Vector2(0.3, 0.3)
+remote_path = NodePath("../../../Visual")
+
+[node name="Enemy_005_1" parent="LevelMap" unique_id=1116802693 instance=ExtResource("4_qxiha")]
+position = Vector2(416, -4170)
+ymove = 5
+
+[node name="Enemy_005_2" parent="LevelMap" unique_id=1349071817 instance=ExtResource("4_qxiha")]
+position = Vector2(1018, -4169)
+ymove = 5
+
+[node name="Enemy_005_3" parent="LevelMap" unique_id=1146365919 instance=ExtResource("4_qxiha")]
+position = Vector2(864, -4140)
+ymove = 5
+
+[node name="Enemy_005_4" parent="LevelMap" unique_id=825711051 instance=ExtResource("4_qxiha")]
+position = Vector2(724, -4200)
+ymove = 8
+
+[node name="Enemy_005_5" parent="LevelMap" unique_id=1921057289 instance=ExtResource("4_qxiha")]
+position = Vector2(584, -4140)
+ymove = 5
 
 [node name="Enemy_006_1" parent="LevelMap" unique_id=177951837 instance=ExtResource("8_qh0kd")]
 position = Vector2(466.00003, -3013)
@@ -89,24 +131,24 @@ position = Vector2(595, -3436)
 wybran_sciezka = "Path2D"
 
 [node name="Enemy_031_1" parent="LevelMap" unique_id=697424285 instance=ExtResource("7_yr1n6")]
-position = Vector2(929, -4244)
+position = Vector2(876, -4656)
 ymove = 4
 
 [node name="Enemy_031_2" parent="LevelMap" unique_id=906631826 instance=ExtResource("7_yr1n6")]
-position = Vector2(553, -4139)
+position = Vector2(444, -4551)
 ymove = 3
 wybran_sciezka = "Path2D"
 
 [node name="Enemy_031_3" parent="LevelMap" unique_id=1201927491 instance=ExtResource("7_yr1n6")]
-position = Vector2(1010, -4462)
+position = Vector2(991, -4876)
 ymove = 5
 
 [node name="Enemy_031_4" parent="LevelMap" unique_id=1267138040 instance=ExtResource("7_yr1n6")]
-position = Vector2(808, -4495)
+position = Vector2(720, -4909)
 ymove = 3
 
 [node name="Enemy_031_5" parent="LevelMap" unique_id=779470780 instance=ExtResource("7_yr1n6")]
-position = Vector2(617, -4372)
+position = Vector2(514, -4788)
 ymove = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1006581802]
