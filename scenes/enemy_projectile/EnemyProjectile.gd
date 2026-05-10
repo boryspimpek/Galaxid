@@ -67,7 +67,7 @@ func _physics_process(_delta):
 				if velocity.y < float(ty):
 					velocity.y += 1.0
 
-	position += velocity
+	position += velocity * 4
 
 	# KROK 3: Sprawdź czy pocisk żyje (duration)
 	if duration != 255.0:

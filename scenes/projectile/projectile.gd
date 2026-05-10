@@ -35,7 +35,7 @@ func _apply_shot_graphic():
 	if texture:
 		var sprite = $Sprite2D
 		sprite.texture = texture
-		sprite.scale = Vector2(1.0, 1.0)
+		sprite.scale = Vector2(4.0, 4.0)
 
 func _init_circlesize():
 	# Inicjalizacja ruchu okrężnego zgodnie z dokumentacją Tyriana
@@ -77,8 +77,8 @@ func _physics_process(_delta):
 	velocity += acceleration
 	
 	# Krok 3: Prędkość → pozycja
-	var move_x = velocity.x
-	var move_y = velocity.y
+	var move_x = velocity.x * 4
+	var move_y = velocity.y * 4
 	position += Vector2(move_x, move_y)
 	
 	# Krok 5: Ruch okrężny (circlesize) - DODAWANE PO normalnym ruchu
