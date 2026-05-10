@@ -1,51 +1,24 @@
 [gd_scene format=3 uid="uid://qohvs0vmg2o0"]
 
 [ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
-[ext_resource type="Texture2D" uid="uid://b6wi3tffwt2d" path="res://assets/Copilot_20260507_195821-removebg-preview.png" id="2_4e33k"]
-[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="3_4e33k"]
+[ext_resource type="Texture2D" uid="uid://4nwgn2may0qr" path="res://assets/Copilot_20260509_091100-removebg-preview.png" id="2_3spji"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_012"]
-
-[sub_resource type="Curve2D" id="Curve2D_3spji"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 195, 0, 0, 0, 0, -2, 205, 0, 0, 0, 0, -21, 205, 0, 0, 0, 0, -190, 0)
-}
-point_count = 5
-
-[sub_resource type="Curve" id="Curve_3spji"]
-_limits = [0.0, 4.0, 0.0, 1.0]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.36999, 1), -0.23443767, -0.23443767, 0, 0, Vector2(0.39999998, 0.44), 0.04187763, 0.04187763, 0, 0, Vector2(0.42999998, 0.44), 11.71219, 11.71219, 0, 0, Vector2(1, 3), 0.038008116, 0.0, 0, 0]
-point_count = 5
-metadata/_snap_enabled = true
-metadata/_snap_count = 100
+radius = 35.69314
 
 [node name="Enemy_012" unique_id=139073837 instance=ExtResource("1_base")]
-armor = 3
+armor = 60
 esize = 1
 value = 15
 explosiontype = 4
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("2_4e33k")
+texture = ExtResource("2_3spji")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_012")
 
-[node name="Turn" type="Path2D" parent="." index="2" unique_id=652082014]
-curve = SubResource("Curve2D_3spji")
-script = ExtResource("3_4e33k")
-speed_curve = SubResource("Curve_3spji")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Turn" index="0" unique_id=401587729]
-rotation = 1.5707964
-loop = false
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Turn/PathFollow2D" index="0" unique_id=972967285]
-rotation = -1.5707964
-scale = Vector2(0.25, 0.25)
-remote_path = NodePath("../../../Visual")
-
-[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Turn/PathFollow2D" index="1" unique_id=67385874]
-remote_path = NodePath("../../../CollisionShape2D")
+[node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=291847561]
+rect = Rect2(-35, -59, 70, 111)

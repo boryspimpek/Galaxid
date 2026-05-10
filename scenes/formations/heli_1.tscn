@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cona3urcrup33"]
+
+[ext_resource type="PackedScene" uid="uid://dic8h40mdvd5e" path="res://scenes/enemies/Enemy_031.tscn" id="1_68yx1"]
+[ext_resource type="PackedScene" uid="uid://cwkiaa3a6uwq3" path="res://scenes/enemies/Enemy_003.tscn" id="2_5128p"]
+[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="3_5128p"]
+
+[sub_resource type="Curve2D" id="Curve2D_5128p"]
+_data = {
+"points": PackedVector2Array(0, -55.03677, 0, 55.03677, -128, -8, -32.0027, -31.926207, 32.0027, 31.926207, -80, 104, -32.454052, 31.85496, 32.454052, -31.85496, 80, 104, -0.42409757, 53.012196, 0.42409757, -53.012196, 128, 0, 23.806402, 24.649778, -23.806402, -24.649778, 80, -104, 25.20334, -22.337984, -25.20334, 22.337984, -80, -104, -0.046845913, -54.822235, 0.046845913, 54.822235, -128, -8)
+}
+point_count = 7
+
+[sub_resource type="Curve2D" id="Curve2D_7xh3g"]
+_data = {
+"points": PackedVector2Array(0, -55.03677, 0, 55.03677, 128, -8, 32.003, -31.926, -32.003, 31.926, 80, 104, 32.454, 31.855, -32.454, -31.855, -80, 104, 0.424, 53.012, -0.424, -53.012, -128, 0, -23.806, 24.65, 23.806, -24.65, -80, -104, -25.203, -22.338, 25.203, 22.338, 80, -104, 0.047, -54.822, 0.046845913, 54.822235, 128, -8)
+}
+point_count = 7
+
+[node name="Heli_1" type="Node2D" unique_id=1827970850]
+position = Vector2(688, 176)
+
+[node name="Enemy_031" parent="." unique_id=1201927491 instance=ExtResource("1_68yx1")]
+armor = 18
+ymove = 5
+
+[node name="Path2D" type="Path2D" parent="Enemy_031" unique_id=1990491013]
+curve = SubResource("Curve2D_5128p")
+script = ExtResource("3_5128p")
+speed = 7.0
+auto_advance = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemy_031/Path2D" unique_id=329701742]
+position = Vector2(-128, -8)
+rotation = 1.5707964
+
+[node name="Enemy_003" parent="Enemy_031/Path2D/PathFollow2D" unique_id=398450216 instance=ExtResource("2_5128p")]
+position = Vector2(0, -1.9073486e-06)
+rotation = -1.5707964
+wybran_sciezka = "Path2D"
+
+[node name="Path2D2" type="Path2D" parent="Enemy_031" unique_id=637400839]
+curve = SubResource("Curve2D_7xh3g")
+script = ExtResource("3_5128p")
+speed = 7.0
+auto_advance = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemy_031/Path2D2" unique_id=2013899946]
+position = Vector2(128, -8)
+rotation = 1.5707964
+
+[node name="Enemy_003" parent="Enemy_031/Path2D2/PathFollow2D" unique_id=875060568 instance=ExtResource("2_5128p")]
+position = Vector2(0, -1.9073486e-06)
+rotation = -1.5707964
+wybran_sciezka = "Path2D"

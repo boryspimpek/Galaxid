@@ -11,13 +11,68 @@
 [ext_resource type="PackedScene" uid="uid://dufg46b0vcy53" path="res://scenes/formations/formation_3.tscn" id="6_qv6fn"]
 [ext_resource type="PackedScene" uid="uid://ki0qkfbmgk6g" path="res://scenes/formations/formation_4.tscn" id="7_0qn2w"]
 [ext_resource type="Script" uid="uid://cjwf83wntumr8" path="res://scenes/world/LevelRuler.gd" id="7_ruler"]
-[ext_resource type="PackedScene" uid="uid://dic8h40mdvd5e" path="res://scenes/enemies/Enemy_031.tscn" id="7_yr1n6"]
 [ext_resource type="PackedScene" uid="uid://fvloll18j1im" path="res://scenes/formations/formation_5.tscn" id="8_0qn2w"]
 [ext_resource type="PackedScene" uid="uid://bohu6dfbn78ms" path="res://scenes/enemies/Enemy_006.tscn" id="8_qh0kd"]
+[ext_resource type="PackedScene" uid="uid://cona3urcrup33" path="res://scenes/formations/heli_1.tscn" id="12_fe1rh"]
+[ext_resource type="PackedScene" uid="uid://qohvs0vmg2o0" path="res://scenes/enemies/Enemy_012.tscn" id="e202_012"]
+
+[sub_resource type="Curve2D" id="Curve2D_mmgww"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 32.908825, -42.222645, -32.908825, 42.222645, -34, 150, 15.695285, -50.52075, -15.695285, 50.52075, -98, 240, 0, 0, 0, 0, -133, 320)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_d0ueh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 38.0047, 65.84552, 0, 0, 0, 0, 4.941345, 124.81012, 15.695285, -50.52075, -15.695285, 50.52075, -41.821533, 222.66327, 0, 0, 0, 0, -51.429688, 350.5252)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_i08rc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, -53.11458, 53.252075, 53.11458, -53.252075, 196, -100)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_o0dc1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 166.11758, 119.0376, 0, 0, 0, 0, 130.38835, 187.25354, 29.250008, -28.736849, -29.250008, 28.736849, 74.97415, 256.69604, 40.779415, -16.45216, -40.779415, 16.45216, -29.180237, 324.9593, 0, 0, 0, 0, -125.033966, 350.33777)
+}
+point_count = 6
+
+[sub_resource type="Curve2D" id="Curve2D_jy5j1"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1, -103, 0, 0, 0, 0, 186, -123)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_400s5"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 35.038166, 9.322435, -35.038166, -9.322435, -139, -4, 0, 0, 0, 0, -157, -8)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_0duuj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -1, 29.250008, -28.736849, -29.250008, 28.736849, -121, 92, 0, 0, 0, 0, -186, 189)
+}
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_8xm5o"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -91.435425, -31.722496, 91.435425, 31.722496, 164, 96, -96.863716, 14.90211, 96.863716, -14.90211, 573, 106, 0, 0, 0, 0, 831, 95)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -91.435425, -31.722496, 91.435425, 31.722496, 164, 96, 0, 0, 131.76901, -83.453705, 661, 122)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_fe1rh"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -114.42543, -28.092495, 114.42543, 28.092495, 229, 162, -151.89478, 20.013163, 151.89478, -20.013163, 572, 56, 0, 0, 0, 0, 869, 49)
+}
+point_count = 4
+
+[sub_resource type="Curve2D" id="Curve2D_wryly"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -110.07898, -41.131844, 110.07898, 41.131844, 228, 186, -155.20056, 0.17845345, 155.20056, -0.17845345, 607, 250, 0, 0, 0, 0, 869, 246)
 }
 point_count = 4
 
@@ -25,7 +80,6 @@ point_count = 4
 
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
 script = ExtResource("3_level_manager")
-start_dist = 4800
 
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=1111111111]
 script = ExtResource("7_ruler")
@@ -33,7 +87,6 @@ scroll_speed = 1
 show_in_game = true
 
 [node name="Road2" type="Sprite2D" parent="LevelMap" unique_id=1178242620]
-visible = false
 position = Vector2(725, -1952)
 texture = ExtResource("5_qh0kd")
 
@@ -42,11 +95,188 @@ position = Vector2(725, -7457)
 rotation = -3.1415925
 texture = ExtResource("5_qh0kd")
 
+[node name="Enemy_012_1" parent="LevelMap" unique_id=139073837 instance=ExtResource("e202_012")]
+position = Vector2(786, -556)
+wybran_sciezka = "Path2D"
+
+[node name="Path2D" type="Path2D" parent="LevelMap/Enemy_012_1" unique_id=908988467]
+curve = SubResource("Curve2D_mmgww")
+script = ExtResource("5_0qn2w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Enemy_012_1/Path2D" unique_id=1156318689]
+position = Vector2(0, -1)
+rotation = 1.5808272
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="LevelMap/Enemy_012_1/Path2D/PathFollow2D" unique_id=1918379511]
+rotation = -1.5707964
+scale = Vector2(0.25, 0.25)
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="LevelMap/Enemy_012_1/Path2D/PathFollow2D" unique_id=2103815118]
+remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="LevelMap/Enemy_012_1/Path2D/PathFollow2D" unique_id=771902653]
+rotation = -1.5707964
+remote_path = NodePath("../../../VisibleOnScreenNotifier2D")
+
+[node name="Enemy_012_2" parent="LevelMap" unique_id=995693857 instance=ExtResource("e202_012")]
+position = Vector2(1200.9999, -157.99997)
+rotation = 0.5497787
+wybran_sciezka = "Path2D"
+
+[node name="Path2D" type="Path2D" parent="LevelMap/Enemy_012_2" unique_id=1149619663]
+curve = SubResource("Curve2D_d0ueh")
+script = ExtResource("5_0qn2w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Enemy_012_2/Path2D" unique_id=496150184]
+position = Vector2(0, -1)
+rotation = 1.0538266
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="LevelMap/Enemy_012_2/Path2D/PathFollow2D" unique_id=2145406970]
+rotation = -1.5707964
+scale = Vector2(0.25, 0.25)
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="LevelMap/Enemy_012_2/Path2D/PathFollow2D" unique_id=181298420]
+remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="LevelMap/Enemy_012_2/Path2D/PathFollow2D" unique_id=150140824]
+rotation = -1.5707964
+remote_path = NodePath("../../../VisibleOnScreenNotifier2D")
+
+[node name="Enemy_012_3" parent="LevelMap" unique_id=1124552777 instance=ExtResource("e202_012")]
+position = Vector2(299, 390)
+wybran_sciezka = "Path2D"
+
+[node name="Path2D" type="Path2D" parent="LevelMap/Enemy_012_3" unique_id=264079002]
+curve = SubResource("Curve2D_i08rc")
+script = ExtResource("5_0qn2w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Enemy_012_3/Path2D" unique_id=815315351]
+position = Vector2(0, -1)
+rotation = -0.30985904
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="LevelMap/Enemy_012_3/Path2D/PathFollow2D" unique_id=639554466]
+rotation = -1.5707964
+scale = Vector2(0.25, 0.25)
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="LevelMap/Enemy_012_3/Path2D/PathFollow2D" unique_id=721207382]
+remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="LevelMap/Enemy_012_3/Path2D/PathFollow2D" unique_id=858075249]
+rotation = -1.5707964
+remote_path = NodePath("../../../VisibleOnScreenNotifier2D")
+
+[node name="Enemy_012_4" parent="LevelMap" unique_id=157872565 instance=ExtResource("e202_012")]
+position = Vector2(1228, -486.99997)
+rotation = 1.1013027
+wybran_sciezka = "Path2D"
+
+[node name="Path2D" type="Path2D" parent="LevelMap/Enemy_012_4" unique_id=1420392938]
+curve = SubResource("Curve2D_o0dc1")
+script = ExtResource("5_0qn2w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Enemy_012_4/Path2D" unique_id=1499225369]
+position = Vector2(0, -1)
+rotation = 0.62573737
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="LevelMap/Enemy_012_4/Path2D/PathFollow2D" unique_id=1902423547]
+rotation = -1.5707964
+scale = Vector2(0.25, 0.25)
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="LevelMap/Enemy_012_4/Path2D/PathFollow2D" unique_id=1862353290]
+remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="LevelMap/Enemy_012_4/Path2D/PathFollow2D" unique_id=1160728724]
+rotation = -1.5707964
+remote_path = NodePath("../../../VisibleOnScreenNotifier2D")
+
+[node name="Enemy_012_5" parent="LevelMap" unique_id=626758958 instance=ExtResource("e202_012")]
+position = Vector2(297, -1287)
+wybran_sciezka = "Path2D"
+
+[node name="Path2D" type="Path2D" parent="LevelMap/Enemy_012_5" unique_id=1187723711]
+curve = SubResource("Curve2D_jy5j1")
+script = ExtResource("5_0qn2w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Enemy_012_5/Path2D" unique_id=635033012]
+position = Vector2(0, -1)
+rotation = -1.5609927
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="LevelMap/Enemy_012_5/Path2D/PathFollow2D" unique_id=427932731]
+rotation = -1.5707964
+scale = Vector2(0.25, 0.25)
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="LevelMap/Enemy_012_5/Path2D/PathFollow2D" unique_id=1594773896]
+remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="LevelMap/Enemy_012_5/Path2D/PathFollow2D" unique_id=635001151]
+rotation = -1.5707964
+remote_path = NodePath("../../../VisibleOnScreenNotifier2D")
+
+[node name="Enemy_012_6" parent="LevelMap" unique_id=1676380875 instance=ExtResource("e202_012")]
+position = Vector2(1175, -1675)
+wybran_sciezka = "Path2D"
+
+[node name="Path2D" type="Path2D" parent="LevelMap/Enemy_012_6" unique_id=1426374702]
+curve = SubResource("Curve2D_400s5")
+script = ExtResource("5_0qn2w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Enemy_012_6/Path2D" unique_id=336376912]
+position = Vector2(0, -1)
+rotation = 3.0808525
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="LevelMap/Enemy_012_6/Path2D/PathFollow2D" unique_id=1371651873]
+rotation = -1.5707964
+scale = Vector2(0.25, 0.25)
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="LevelMap/Enemy_012_6/Path2D/PathFollow2D" unique_id=1125129116]
+remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="LevelMap/Enemy_012_6/Path2D/PathFollow2D" unique_id=1260779126]
+rotation = -1.5707964
+remote_path = NodePath("../../../VisibleOnScreenNotifier2D")
+
+[node name="Enemy_012_7" parent="LevelMap" unique_id=1836064202 instance=ExtResource("e202_012")]
+position = Vector2(1156, -1447)
+wybran_sciezka = "Path2D"
+
+[node name="Path2D" type="Path2D" parent="LevelMap/Enemy_012_7" unique_id=939906703]
+curve = SubResource("Curve2D_0duuj")
+script = ExtResource("5_0qn2w")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Enemy_012_7/Path2D" unique_id=206250501]
+position = Vector2(0, -1)
+rotation = 2.5305877
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="LevelMap/Enemy_012_7/Path2D/PathFollow2D" unique_id=432394401]
+rotation = -1.5707964
+scale = Vector2(0.25, 0.25)
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="LevelMap/Enemy_012_7/Path2D/PathFollow2D" unique_id=193381281]
+remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="RemoteTransform2D3" type="RemoteTransform2D" parent="LevelMap/Enemy_012_7/Path2D/PathFollow2D" unique_id=2060120709]
+rotation = -1.5707964
+remote_path = NodePath("../../../VisibleOnScreenNotifier2D")
+
 [node name="Formation_1" parent="LevelMap" unique_id=1333379857 instance=ExtResource("4_0qn2w")]
 position = Vector2(437, -345)
 
 [node name="Formation_1_1" parent="LevelMap" unique_id=1395344730 instance=ExtResource("4_0qn2w")]
-position = Vector2(643, -943)
+position = Vector2(681, -941)
 
 [node name="Formation_2" parent="LevelMap" unique_id=1171025841 instance=ExtResource("5_l5iln")]
 position = Vector2(995, -643)
@@ -55,16 +285,16 @@ position = Vector2(995, -643)
 position = Vector2(869, -1244)
 
 [node name="Formation_3" parent="LevelMap" unique_id=1064303126 instance=ExtResource("6_qv6fn")]
-position = Vector2(399, -2124)
+position = Vector2(411, -2469)
 
 [node name="Formation_4" parent="LevelMap" unique_id=1203146526 instance=ExtResource("7_0qn2w")]
-position = Vector2(1034, -2743)
+position = Vector2(1045, -2779)
 
 [node name="Formation_5" parent="LevelMap" unique_id=1781764924 instance=ExtResource("8_0qn2w")]
-position = Vector2(432, -3952)
+position = Vector2(439, -3383)
 
 [node name="Enemy_005" parent="LevelMap" unique_id=1841420694 instance=ExtResource("4_qxiha")]
-position = Vector2(286, -4998)
+position = Vector2(287, -5506)
 tur = [62, 0, 0]
 freq = [20, 0, 0]
 wybran_sciezka = "Path2D"
@@ -72,7 +302,7 @@ wybran_sciezka = "Path2D"
 [node name="Path2D" type="Path2D" parent="LevelMap/Enemy_005" unique_id=1243182891]
 curve = SubResource("Curve2D_8xm5o")
 script = ExtResource("5_0qn2w")
-speed = 6.0
+speed = 10.0
 
 [node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Enemy_005/Path2D" unique_id=451398343]
 rotation = 0.7249127
@@ -83,73 +313,106 @@ rotation = 1.5707964
 scale = Vector2(0.3, 0.3)
 remote_path = NodePath("../../../Visual")
 
+[node name="Enemy_005_6" parent="LevelMap" unique_id=1621440926 instance=ExtResource("4_qxiha")]
+position = Vector2(287, -5610)
+tur = [62, 0, 0]
+freq = [20, 0, 0]
+wybran_sciezka = "Path2D"
+remove_on_path_end = true
+
+[node name="Path2D" type="Path2D" parent="LevelMap/Enemy_005_6" unique_id=1711317413]
+curve = SubResource("Curve2D_fe1rh")
+script = ExtResource("5_0qn2w")
+speed = 10.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Enemy_005_6/Path2D" unique_id=1778448360]
+rotation = 0.8630459
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="LevelMap/Enemy_005_6/Path2D/PathFollow2D" unique_id=1264899062]
+rotation = 1.5707964
+scale = Vector2(0.3, 0.3)
+remote_path = NodePath("../../../Visual")
+
+[node name="Enemy_005_7" parent="LevelMap" unique_id=1562874130 instance=ExtResource("4_qxiha")]
+position = Vector2(288, -5660)
+tur = [62, 0, 0]
+freq = [20, 0, 0]
+wybran_sciezka = "Path2D"
+remove_on_path_end = true
+
+[node name="Path2D" type="Path2D" parent="LevelMap/Enemy_005_7" unique_id=476186435]
+curve = SubResource("Curve2D_wryly")
+script = ExtResource("5_0qn2w")
+speed = 10.0
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Enemy_005_7/Path2D" unique_id=1660768882]
+rotation = 0.88758385
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="LevelMap/Enemy_005_7/Path2D/PathFollow2D" unique_id=1736939286]
+rotation = 1.5707964
+scale = Vector2(0.3, 0.3)
+remote_path = NodePath("../../../Visual")
+
 [node name="Enemy_005_1" parent="LevelMap" unique_id=1116802693 instance=ExtResource("4_qxiha")]
-position = Vector2(416, -4170)
-ymove = 5
+position = Vector2(427, -3339)
+ymove = 7
 
 [node name="Enemy_005_2" parent="LevelMap" unique_id=1349071817 instance=ExtResource("4_qxiha")]
-position = Vector2(1018, -4169)
-ymove = 5
+position = Vector2(1029, -3338)
+ymove = 7
 
 [node name="Enemy_005_3" parent="LevelMap" unique_id=1146365919 instance=ExtResource("4_qxiha")]
-position = Vector2(864, -4140)
-ymove = 5
+position = Vector2(875, -3309)
+ymove = 7
 
 [node name="Enemy_005_4" parent="LevelMap" unique_id=825711051 instance=ExtResource("4_qxiha")]
-position = Vector2(724, -4200)
-ymove = 8
+position = Vector2(735, -3369)
+ymove = 10
 
 [node name="Enemy_005_5" parent="LevelMap" unique_id=1921057289 instance=ExtResource("4_qxiha")]
-position = Vector2(584, -4140)
-ymove = 5
+position = Vector2(595, -3309)
+ymove = 7
 
 [node name="Enemy_006_1" parent="LevelMap" unique_id=177951837 instance=ExtResource("8_qh0kd")]
-position = Vector2(466.00003, -3013)
+position = Vector2(473.00003, -2444)
 rotation = 0.0028542078
 ymove = 5
 tur = [116, 0, 0]
 freq = [20, 0, 0]
 
 [node name="Enemy_006_2" parent="LevelMap" unique_id=908809146 instance=ExtResource("8_qh0kd")]
-position = Vector2(706, -3066)
+position = Vector2(713, -2497)
 ymove = 10
 tur = [116, 0, 0]
 freq = [20, 0, 0]
 
 [node name="Enemy_006_3" parent="LevelMap" unique_id=1414137520 instance=ExtResource("8_qh0kd")]
-position = Vector2(974, -3437)
+position = Vector2(976, -2803)
+armor = 16
 wybran_sciezka = "Path2D"
 
 [node name="Enemy_006_4" parent="LevelMap" unique_id=2139955197 instance=ExtResource("8_qh0kd")]
-position = Vector2(773, -3396)
+position = Vector2(775, -2762)
+armor = 16
 tur = [116, 0, 0]
 freq = [20, 0, 0]
 wybran_sciezka = "Path2D"
 
 [node name="Enemy_006_5" parent="LevelMap" unique_id=977234753 instance=ExtResource("8_qh0kd")]
-position = Vector2(595, -3436)
+position = Vector2(597, -2802)
+armor = 16
 wybran_sciezka = "Path2D"
 
-[node name="Enemy_031_1" parent="LevelMap" unique_id=697424285 instance=ExtResource("7_yr1n6")]
-position = Vector2(876, -4656)
-ymove = 4
+[node name="Heli_1" parent="LevelMap" unique_id=1827970850 instance=ExtResource("12_fe1rh")]
+position = Vector2(736, -3586)
 
-[node name="Enemy_031_2" parent="LevelMap" unique_id=906631826 instance=ExtResource("7_yr1n6")]
-position = Vector2(444, -4551)
-ymove = 3
-wybran_sciezka = "Path2D"
+[node name="Heli_2" parent="LevelMap" unique_id=2084230275 instance=ExtResource("12_fe1rh")]
+position = Vector2(958, -3717)
 
-[node name="Enemy_031_3" parent="LevelMap" unique_id=1201927491 instance=ExtResource("7_yr1n6")]
-position = Vector2(991, -4876)
-ymove = 5
-
-[node name="Enemy_031_4" parent="LevelMap" unique_id=1267138040 instance=ExtResource("7_yr1n6")]
-position = Vector2(720, -4909)
-ymove = 3
-
-[node name="Enemy_031_5" parent="LevelMap" unique_id=779470780 instance=ExtResource("7_yr1n6")]
-position = Vector2(514, -4788)
-ymove = 4
+[node name="Heli_3" parent="LevelMap" unique_id=781144727 instance=ExtResource("12_fe1rh")]
+position = Vector2(516, -3718)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1006581802]
 

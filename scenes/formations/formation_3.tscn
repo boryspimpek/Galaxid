@@ -5,34 +5,35 @@
 
 [sub_resource type="Curve2D" id="Curve2D_5f3wn"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 732, -10.4012375, -57.83161, 10.4012375, 57.83161, 8, 1228, -50, -32.727272, 50, 32.727272, 128, 1380, -33.154953, 0.5266624, 33.154953, -0.5266624, 320, 1428, -51.054543, 33.53636, 51.054543, -33.53636, 512, 1380, -13.636362, 70, 13.636362, -70, 640, 1204, 11, 59, -11, -59, 648, 932, 70.39874, 59.925194, -70.39874, -59.925194, 568, 780, 94.703804, -2.0606084, -94.703804, 2.0606084, 304, 708, 53.595535, -49.584084, -53.595535, 49.584084, 88, 788, 19.090908, -68.181816, -19.090908, 68.181816, 0, 932, -10.382982, -58.14042, 10.382982, 58.14042, 8, 1228, -352.69193, 42.846104, 352.69193, -42.846104, 440, 1548)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -932, 0, 0, 0, 0, 0, 52, 0, 0, 0, 0, 0, 732, -24, -106, 24, 106, 48, 1180, -51.659687, -35.655804, 51.659687, 35.655804, 168, 1380, -70.34503, -1.9526763, 70.34503, 1.9526763, 320, 1428, -51.054543, 33.53636, 51.054543, -33.53636, 512, 1380, -13.636362, 70, 13.636362, -70, 640, 1204, 11, 59, -11, -59, 648, 932, 70.39874, 59.925194, -70.39874, -59.925194, 568, 780, 94.703804, -2.0606084, -94.703804, 2.0606084, 304, 708, 53.595535, -49.584084, -53.595535, 49.584084, 88, 788, 19.090908, -68.181816, -19.090908, 68.181816, 0, 932, -10.382982, -58.14042, 10.382982, 58.14042, 8, 1228, -352.69193, 42.846104, 352.69193, -42.846104, 440, 1548)
 }
-point_count = 14
+point_count = 15
 
 [sub_resource type="Curve" id="Curve_tqm35"]
-_limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0.21637428, 2), 0.0, 0.0, 0, 0, Vector2(0.37426904, 0.9746479), 0.0, 0.0, 0, 0, Vector2(0.63583815, 2), 0.0, 0.0, 0, 0, Vector2(0.7101968, 2), 0.0, 0.0, 0, 0, Vector2(0.9278753, 0.9929577), 0.0, 0.0, 0, 0]
-point_count = 5
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 4), 0.0, 0.0, 0, 0, Vector2(0.4257871, 4), 0.0, 0.0, 0, 0, Vector2(0.45427284, 2.0076087), 0.0, 0.0, 0, 0, Vector2(0.50524735, 1.9793477), 0.0, 0.0, 0, 0, Vector2(0.7101968, 2), 0.0, 0.0, 0, 0, Vector2(0.7991004, 2), 0.0, 0.0, 0, 0, Vector2(0.9278753, 0.9929577), 0.0, 0.0, 0, 0]
+point_count = 7
 
 [node name="Formation_3" type="Node2D" unique_id=1064303126]
 position = Vector2(0, -676)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=831255606]
-rect = Rect2(-35, -44, 70, 720)
+rect = Rect2(-48, -660, 96, 1392)
 
 [node name="Enemy_005" parent="." unique_id=1841420694 instance=ExtResource("1_tqm35")]
+position = Vector2(0, -612.00037)
 
 [node name="Enemy_006" parent="." unique_id=1647355075 instance=ExtResource("1_tqm35")]
-position = Vector2(0, 159.99707)
+position = Vector2(0, -291.99963)
 
 [node name="Enemy_007" parent="." unique_id=801410709 instance=ExtResource("1_tqm35")]
-position = Vector2(0, 319.99948)
+position = Vector2(0, 28.01184)
 
 [node name="Enemy_008" parent="." unique_id=732863736 instance=ExtResource("1_tqm35")]
-position = Vector2(0, 480.0002)
+position = Vector2(0, 347.99954)
 
 [node name="Enemy_009" parent="." unique_id=716640729 instance=ExtResource("1_tqm35")]
-position = Vector2(0, 640.0034)
+position = Vector2(0, 667.9535)
 
 [node name="Path2D" type="Path2D" parent="." unique_id=1019325857]
 curve = SubResource("Curve2D_5f3wn")
@@ -43,7 +44,9 @@ scroll_speed = -2
 auto_advance = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=429889898]
+position = Vector2(0, -612.00037)
 rotation = 1.5707964
+progress = 320.0
 loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=1820053676]
@@ -51,9 +54,9 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_005")
 
 [node name="PathFollow2D2" type="PathFollow2D" parent="Path2D" unique_id=2009948723]
-position = Vector2(0, 159.9971)
+position = Vector2(0, -291.99966)
 rotation = 1.5707964
-progress = 160.0
+progress = 640.0
 loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D2" unique_id=1275767918]
@@ -61,9 +64,9 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_006")
 
 [node name="PathFollow2D3" type="PathFollow2D" parent="Path2D" unique_id=1897474267]
-position = Vector2(0, 319.99948)
+position = Vector2(0, 28.011822)
 rotation = 1.5707964
-progress = 320.0
+progress = 960.0
 loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D3" unique_id=446614166]
@@ -71,9 +74,9 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_007")
 
 [node name="PathFollow2D4" type="PathFollow2D" parent="Path2D" unique_id=1067983553]
-position = Vector2(0, 480.0002)
+position = Vector2(0, 347.99954)
 rotation = 1.5707964
-progress = 480.0
+progress = 1280.0
 loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D4" unique_id=2098537970]
@@ -81,9 +84,9 @@ rotation = -1.5707964
 remote_path = NodePath("../../../Enemy_008")
 
 [node name="PathFollow2D5" type="PathFollow2D" parent="Path2D" unique_id=1828865659]
-position = Vector2(0, 640.0034)
+position = Vector2(0, 667.9535)
 rotation = 1.5707964
-progress = 640.0
+progress = 1600.0
 loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D5" unique_id=1616995501]

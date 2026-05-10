@@ -1,4 +1,4 @@
-extends Area2D
+﻿extends Area2D
 
 # ============================================================================
 # ENEMY — baza wszystkich wrogów.
@@ -32,6 +32,7 @@ signal projectile_spawned(projectile)
 
 # -- Ruch po ścieżce --
 @export var wybran_sciezka: String = ""  # Ścieżka do węzła Path2D (jeśli pusty: swobodny ruch)
+@export var remove_on_path_end: bool = false
 
 #endregion
 
@@ -47,6 +48,7 @@ var projectile_scene: PackedScene
 var _active_follow: PathFollow2D = null
 var _active_path_speed: float = 0.0
 var _active_path_curve: Curve = null
+var _rt_targets: Array = []  # [Node2D, Transform2D] — oryginalne transformy celów RT
 
 # Timery strzelania (per slot broni)
 var eshotwait:    Array = [0.0, 0.0, 0.0]  # Aktualny cooldown
@@ -121,8 +123,12 @@ func _setup_path():
 		var follow = path_node.get_node_or_null("PathFollow2D")
 		if follow:
 			_active_follow = follow
+			_rt_targets.clear()
 			for rt in follow.get_children():
 				if rt is RemoteTransform2D:
+					var target = rt.get_node_or_null(rt.remote_path)
+					if target:
+						_rt_targets.append([target, target.transform])
 					rt.update_position = true
 			_active_path_speed = path_node.speed
 			_active_path_curve = path_node.speed_curve
@@ -156,12 +162,19 @@ func _process(_delta):
 		_active_follow.progress += _active_path_speed * speed_mult
 		_process_shooting(_delta)
 		if _active_follow.progress_ratio >= 1.0:
-			global_position = visual.global_position
+			var end_global = visual.global_position
 			for rt in _active_follow.get_children():
 				if rt is RemoteTransform2D:
 					rt.update_position = false
+					rt.update_rotation = false
+					rt.update_scale = false
+			for pair in _rt_targets:
+				if is_instance_valid(pair[0]):
+					pair[0].position = Vector2.ZERO
+					pair[0].scale = pair[1].get_scale()
+			global_position = end_global
 			_active_follow = null
-			if not $VisibleOnScreenNotifier2D.is_on_screen():
+			if remove_on_path_end or not $VisibleOnScreenNotifier2D.is_on_screen():
 				queue_free()
 				return
 		return
