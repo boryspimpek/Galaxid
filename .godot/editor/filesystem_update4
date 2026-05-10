@@ -15,3 +15,5 @@ res://scenes/projectile/projectile.gd
 res://scenes/enemy_projectile/EnemyProjectile.gd
 res://scenes/formations/formation_5.tscn
 res://scenes/enemies/Enemy_017.tscn
+res://scenes/enemy_projectile/EnemyProjectile.tscn
+res://scenes/enemies/Enemy_031.tscn

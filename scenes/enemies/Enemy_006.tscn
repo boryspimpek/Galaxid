@@ -9,7 +9,7 @@ radius = 71.063354
 
 [sub_resource type="Curve2D" id="Curve2D_lk7ja"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 744, 0, 0, 0, 0, 0, -344)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 744, 0, 0, 0, 0, 116, 722)
 }
 point_count = 3
 
@@ -18,10 +18,9 @@ armor = 12
 esize = 1
 value = 25
 explosiontype = 26
-tur = [0, 0, 78]
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.5, 0.75)
 texture = ExtResource("2_e4ru5")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
@@ -44,7 +43,7 @@ loop = false
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D" index="0" unique_id=1785248941]
 rotation = -1.5707964
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.5, 0.75)
 remote_path = NodePath("../../../Visual")
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Path2D/PathFollow2D" index="1" unique_id=488894029]

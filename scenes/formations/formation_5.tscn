@@ -32,7 +32,7 @@ position = Vector2(0, 640.0034)
 [node name="Path2D" type="Path2D" parent="." unique_id=288859986]
 curve = SubResource("Curve2D_h1orx")
 script = ExtResource("2_if8lv")
-speed = 8.0
+speed = 16.0
 scroll_speed = -2
 auto_advance = true
 

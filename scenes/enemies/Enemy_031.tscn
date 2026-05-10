@@ -14,12 +14,12 @@ explosiontype = 6
 ymove = 1
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-rotation = 3.1415927
+rotation = -3.1415925
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_g0bqj")
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
-position = Vector2(0, 14)
+rotation = -3.1415925
 shape = SubResource("CircleShape2D_031")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=291847561]
