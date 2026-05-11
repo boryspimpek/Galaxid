@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
 [ext_resource type="PackedScene" uid="uid://2v3sf067o17a" path="res://scenes/enemies/Enemy_010.tscn" id="3_qxiha"]
 [ext_resource type="PackedScene" uid="uid://iddg8culgc7q" path="res://UI/Hud.tscn" id="4_gbddb"]
+[ext_resource type="PackedScene" uid="uid://dou2hvvid4mkc" path="res://scenes/enemies/Enemy_013.tscn" id="4_i1jm3"]
 [ext_resource type="Script" uid="uid://bgd3adt6s44d8" path="res://scenes/world/LevelRuler.gd" id="5_levelruler"]
 
 [node name="World" type="Node2D" unique_id=1364436952]
@@ -18,7 +19,10 @@ script = ExtResource("5_levelruler")
 position = Vector2(97, -11)
 tur = [50, 0, 0]
 freq = [10, 0, 0]
-wybran_sciezka = "Turn"
+
+[node name="Enemy_013" parent="LevelMap" unique_id=980532165 instance=ExtResource("4_i1jm3")]
+position = Vector2(117, -899)
+ymove = 3
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(158, 186)

@@ -90,6 +90,8 @@ func _enter_tree() -> void:
 func _ready():
 	if not projectile_scene:
 		projectile_scene = GameConstants.enemy_projectile_scene
+	if get_parent() and get_parent().name == "LevelMap":
+		velocity = Vector2(float(xmove), float(ymove))
 	add_to_group("enemies")
 	# Warstwa 2 = wróg; maska 4 = pociski gracza, maska 1 = ciało gracza
 	collision_layer = 2
