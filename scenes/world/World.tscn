@@ -14,12 +14,12 @@ script = ExtResource("3_level_manager")
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=2100000002]
 script = ExtResource("5_levelruler")
 
+[node name="Enemy_005" parent="LevelMap" unique_id=1841420694 instance=ExtResource("5_qxiha")]
+position = Vector2(27, 1)
+
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(158, 186)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1006581802]
 
 [node name="HUD" parent="CanvasLayer" unique_id=1839674698 instance=ExtResource("4_gbddb")]
-
-[node name="Enemy_005" parent="." unique_id=1841420694 instance=ExtResource("5_qxiha")]
-position = Vector2(27, 1)

@@ -15,7 +15,7 @@ var enemy_slot: int = 0
 # velocity odpowiada exc/eyc z silnika Tyrian
 var velocity: Vector2 = Vector2(0, 0)
 var fixed_move_y: int = 0
-var scroll_y: int = 2
+var scroll_y: int = 0
 # Ruch bazowy (px/klatkę Tyrian) — ustawiany przez scenę wroga
 @export var xmove: int = 0
 @export var ymove: int = 0
