@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://fvloll18j1im" path="res://scenes/formations/formation_5.tscn" id="8_0qn2w"]
 [ext_resource type="PackedScene" uid="uid://bohu6dfbn78ms" path="res://scenes/enemies/Enemy_006.tscn" id="8_qh0kd"]
 [ext_resource type="PackedScene" uid="uid://cona3urcrup33" path="res://scenes/formations/heli_1.tscn" id="12_fe1rh"]
-[ext_resource type="PackedScene" uid="uid://4u7pogo726ls" path="res://scenes/formations/formation_6.tscn" id="106_d3ha6"]
 [ext_resource type="PackedScene" uid="uid://dcdgk806ckkxw" path="res://scenes/formations/formation_7.tscn" id="109_65rc6"]
 [ext_resource type="PackedScene" uid="uid://cwkiaa3a6uwq3" path="res://scenes/enemies/Enemy_003.tscn" id="e200_003"]
 [ext_resource type="PackedScene" uid="uid://dexpsjoqudwr5" path="res://scenes/enemies/Enemy_004.tscn" id="e201_004"]
@@ -169,6 +168,7 @@ point_count = 4
 
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
 script = ExtResource("3_level_manager")
+scroll_speed = 4
 
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=1111111111]
 script = ExtResource("7_ruler")
@@ -375,13 +375,13 @@ position = Vector2(1058, -1005)
 position = Vector2(743, -1799)
 
 [node name="Formation_3" parent="LevelMap" unique_id=1064303126 instance=ExtResource("6_qv6fn")]
-position = Vector2(178, -2921)
+position = Vector2(184, -2921)
 
 [node name="Formation_4" parent="LevelMap" unique_id=1203146526 instance=ExtResource("7_0qn2w")]
-position = Vector2(982, -3320)
+position = Vector2(983, -3322)
 
 [node name="Formation_5" parent="LevelMap" unique_id=1781764924 instance=ExtResource("8_0qn2w")]
-position = Vector2(180, -4923)
+position = Vector2(184, -4927)
 
 [node name="Enemy_005" parent="LevelMap" unique_id=1841420694 instance=ExtResource("4_qxiha")]
 position = Vector2(287, -5506)
@@ -474,12 +474,12 @@ freq = [20, 0, 0]
 wybran_sciezka = "Path2D"
 
 [node name="Enemy_006_3" parent="LevelMap" unique_id=1634789068 instance=ExtResource("8_qh0kd")]
-position = Vector2(1917, -3652)
+position = Vector2(1027, -3741)
 armor = 16
 wybran_sciezka = "Path2D"
 
 [node name="Enemy_006_5" parent="LevelMap" unique_id=977234753 instance=ExtResource("8_qh0kd")]
-position = Vector2(1973, -3904)
+position = Vector2(827, -3711)
 armor = 16
 wybran_sciezka = "Path2D"
 
@@ -613,10 +613,10 @@ position = Vector2(316, -3548)
 position = Vector2(2171, -4459)
 
 [node name="Enemy_006_7" parent="LevelMap" unique_id=564497411 instance=ExtResource("8_qh0kd")]
-position = Vector2(2018, -4198)
+position = Vector2(627, -3742)
 
 [node name="Enemy_005_18" parent="LevelMap" unique_id=825129475 instance=ExtResource("4_qxiha")]
-position = Vector2(180, -4280)
+position = Vector2(182, -4285)
 
 [node name="Enemy_005_19" parent="LevelMap" unique_id=352194321 instance=ExtResource("4_qxiha")]
 position = Vector2(180, -4340)
@@ -1776,11 +1776,16 @@ position = Vector2(556, -21416)
 [node name="Enemy_048_1" parent="LevelMap" unique_id=695799686 instance=ExtResource("e240_048")]
 position = Vector2(652, -21416)
 
-[node name="Formation_6" parent="LevelMap" unique_id=245906038 instance=ExtResource("106_d3ha6")]
-position = Vector2(435, -3418)
-
 [node name="Formation_7" parent="LevelMap" unique_id=1898382203 instance=ExtResource("109_65rc6")]
-position = Vector2(820, -3812)
+position = Vector2(2778, -3737)
+
+[node name="Enemy_006" parent="LevelMap" unique_id=1414137520 instance=ExtResource("8_qh0kd")]
+position = Vector2(243, -3319)
+ymove = 8
+
+[node name="Enemy_006_2" parent="LevelMap" unique_id=2086189375 instance=ExtResource("8_qh0kd")]
+position = Vector2(564, -3516)
+ymove = 8
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1006581802]
 

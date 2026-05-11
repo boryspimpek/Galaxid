@@ -37,9 +37,9 @@ position = Vector2(0, 640.0034)
 [node name="Path2D2" type="Path2D" parent="." unique_id=1867374273]
 curve = SubResource("Curve2D_tqm35")
 script = ExtResource("2_5vu25")
-speed = 12.0
+speed = 18.0
 speed_curve = SubResource("Curve_5vu25")
-scroll_speed = -2
+scroll_speed = -4
 auto_advance = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=1487482003]
