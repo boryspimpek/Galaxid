@@ -5,15 +5,12 @@ const EnemySpawner = preload("res://scripts/managers/EnemySpawner.gd")
 const EnemyController = preload("res://scripts/managers/EnemyController.gd")
 const EventProcessor = preload("res://scripts/managers/EventProcessor.gd")
 
-# Główny plik z eventami - SCENARIUSZ POZIOMU, tu ustawiamy 
+# Główny plik z eventami - SCENARIUSZ POZIOMU, tu ustawiamy
 # w ktory poziom gracz ma grać
 @export var level_name: String = "lvl17"
 
-# Uwaga: enemies.json nie jest już używany w runtime — dane wrogów są osadzone w scenach Enemy_XXX.tscn
-
-
 # Prędkości scrollingu (Tyrian px/klatkę)
-var back_move:  int = 1   # Ground (slot 25, 75)
+var back_move:  int = 1   # Ground (slot 25, 75) — kontroluje też scroll LevelMap
 var back_move2: int = 2   # Sky (slot 0)
 var back_move3: int = 3   # Top (slot 50)
 
@@ -23,8 +20,8 @@ var map_x2: int = 1
 var map_x3: int = 1
 var map_y: int = 0
 
-# SEKCJA: Referencje do danych
-var background: Node2D
+# Węzeł z wrogami i LevelRuler — scrolluje w dół z back_move px/klatkę
+var _level_map: Node2D
 
 # SEKCJA: Menedżery
 var enemy_spawner: EnemySpawner
@@ -38,7 +35,7 @@ var level_distance: float = 0.0
 var enemy_continual_damage: bool = false
 
 func _ready():
-	background = get_node_or_null("Background")
+	_level_map = get_node_or_null("LevelMap")
 
 	# Debug: plugin może narzucić level i start_dist przez ProjectSettings.
 	# level_name trzeba nadpisać PRZED init_managers(), bo tam jest load_data().
@@ -49,18 +46,20 @@ func _ready():
 			level_name = debug_level
 
 	init_managers()
-	if background and background.has_method("setup"):
-		background.setup(level_name, back_move, back_move2, back_move3, map_x, map_x2, map_x3, map_y)
 
 	if start_dist > 0:
 		level_distance = float(start_dist)
-		event_processor.fast_forward_to(start_dist)  # seek_to tła wywołane wewnętrznie
+		if _level_map:
+			_level_map.position.y = float(start_dist)
+		event_processor.fast_forward_to(start_dist)
 
 func _process(_delta):
 	level_distance += float(back_move)
+	if _level_map:
+		_level_map.position.y += float(back_move)
 	event_processor.process_events_for_distance(int(level_distance))
 	enemy_spawner.process_random_spawn(_delta)
-	
+
 	if Engine.get_frames_drawn() % 100 == 0:
 		print("Dist: ", int(level_distance))
 		
@@ -87,7 +86,7 @@ func init_managers():
 
 	enemy_spawner = EnemySpawner.new(self)
 	enemy_controller = EnemyController.new(self)
-	event_processor = EventProcessor.new(self, background, enemy_spawner, enemy_controller)
+	event_processor = EventProcessor.new(self, null, enemy_spawner, enemy_controller)
 
 	event_processor.set_level_events(level_data["events"])
 	event_processor.set_scroll_data(back_move, back_move2, back_move3)
