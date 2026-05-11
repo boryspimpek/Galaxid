@@ -74,6 +74,7 @@ const BOUNDS_BOTTOM = GameConstants.BOUNDS_BOTTOM
 # Referencje do węzłów
 @onready var visual: Sprite2D = $Visual
 @onready var debug_label: Label = $DebugLabel
+@onready var _notifier: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 func _enter_tree() -> void:
 	for child in get_children():
@@ -133,6 +134,16 @@ func _ready():
 
 	if wybran_sciezka != "":
 		_setup_path()
+
+	if get_parent() and get_parent().name == "LevelMap":
+		set_process(false)
+		_notifier.screen_entered.connect(func(): set_process(true))
+		_notifier.screen_exited.connect(_on_screen_exited)
+
+func _on_screen_exited() -> void:
+	if _active_follow:
+		return
+	queue_free()
 
 func _setup_path():
 	for child in get_children():
@@ -290,6 +301,12 @@ func _fire_projectile(direction_index: int):
 
 func _process(_delta):
 	if _active_follow:
+		# Scena-placed enemies są w LevelMap który scrolluje — anuluj scroll żeby
+		# trajektoria ścieżki wyglądała tak samo jak u event-spawnowanych wrogów.
+		if get_parent() and get_parent().name == "LevelMap":
+			var world := get_parent().get_parent()
+			if world and "back_move" in world:
+				position.y -= float(world.back_move)
 		var speed_mult = _active_path_curve.sample(_active_follow.progress_ratio) if _active_path_curve else 1.0
 		_active_follow.progress += _active_path_speed * speed_mult
 		_process_shooting(_delta)
