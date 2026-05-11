@@ -29,12 +29,12 @@ shape = SubResource("CircleShape2D_006")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=291847561]
 position = Vector2(0, 45)
-rect = Rect2(-96, -146, 192, 173)
+rect = Rect2(-99, -153, 198, 185)
 
 [node name="Path2D" type="Path2D" parent="." index="3" unique_id=1701089560]
 curve = SubResource("Curve2D_lk7ja")
 script = ExtResource("3_e4ru5")
-speed = 7.0
+speed = 6.0
 scroll_speed = -2
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" unique_id=652795789]

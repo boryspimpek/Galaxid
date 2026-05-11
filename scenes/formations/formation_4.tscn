@@ -11,8 +11,8 @@ point_count = 14
 
 [sub_resource type="Curve" id="Curve_c5o84"]
 _limits = [0.0, 2.0, 0.0, 1.0]
-_data = [Vector2(0.21637428, 2), 0.0, 0.0, 0, 0, Vector2(0.37426904, 0.9746479), 0.0, 0.0, 0, 0, Vector2(0.63583815, 2), 0.0, 0.0, 0, 0, Vector2(0.7101968, 2), 0.0, 0.0, 0, 0, Vector2(0.9278753, 0.9929577), 0.0, 0.0, 0, 0]
-point_count = 5
+_data = [Vector2(0.50769234, 0.9778873), 0.0, 0.0, 0, 0, Vector2(1, 2), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Formation_3" type="Node2D" unique_id=1064303126]
 position = Vector2(0, -676)
@@ -37,7 +37,7 @@ position = Vector2(0, 640.0034)
 [node name="Path2D2" type="Path2D" parent="." unique_id=355471335]
 curve = SubResource("Curve2D_c5o84")
 script = ExtResource("2_tpr4l")
-speed = 8.0
+speed = 12.0
 speed_curve = SubResource("Curve_c5o84")
 scroll_speed = -2
 auto_advance = true

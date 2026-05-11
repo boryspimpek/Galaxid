@@ -108,7 +108,7 @@ for spawn in spawns:
     dist     = spawn["dist"]
     screen_x = spawn["screen_x"]
     screen_y = spawn["screen_y"]
-    pos_x = screen_x * 4
+    pos_x = screen_x * 4 + 100
     pos_y = -(dist + screen_y) * 4
 
     instance_count[eid] = instance_count.get(eid, 0) + 1

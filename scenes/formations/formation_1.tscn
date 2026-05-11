@@ -21,6 +21,7 @@ position = Vector2(0, -343)
 rect = Rect2(-50, -54, 100, 397)
 
 [node name="Enemy_010" parent="." unique_id=834132465 instance=ExtResource("1_vxo47")]
+external_activation = true
 
 [node name="Enemy_010_2" parent="." unique_id=642863663 instance=ExtResource("1_vxo47")]
 position = Vector2(0, 79.99396)
