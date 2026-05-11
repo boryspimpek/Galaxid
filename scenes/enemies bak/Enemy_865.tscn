@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://dchofuxeotr43"]
+
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_046.tscn" id="1_vc68o"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_047.tscn" id="2_qwd4n"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_048.tscn" id="3_m7kjb"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_049.tscn" id="4_1d08o"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_050.tscn" id="5_xyqik"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_051.tscn" id="6_jo8w7"]
+[ext_resource type="PackedScene" uid="uid://dadbo3vf4msek" path="res://scenes/enemies/Enemy_052.tscn" id="7_sjn8i"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_053.tscn" id="8_jmmsu"]
+[ext_resource type="PackedScene" uid="uid://b1m0wj8yajxf1" path="res://scenes/enemies/Enemy_054.tscn" id="9_jcmyi"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_055.tscn" id="10_o4751"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_056.tscn" id="11_u51db"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_057.tscn" id="12_14jpk"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_058.tscn" id="13_o23g6"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_059.tscn" id="14_1e6j0"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_060.tscn" id="15_54wfq"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_061.tscn" id="16_iy76t"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_062.tscn" id="17_8kwix"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_063.tscn" id="18_v16px"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_064.tscn" id="19_6g15s"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_065.tscn" id="20_s4k2x"]
+
+[node name="Enemy_865" type="Node2D" unique_id=865785455]
+
+[node name="Enemy_046" parent="." unique_id=1171864714 instance=ExtResource("1_vc68o")]
+position = Vector2(-46, -78)
+
+[node name="Enemy_047" parent="." unique_id=894098298 instance=ExtResource("2_qwd4n")]
+position = Vector2(-23, -78)
+
+[node name="Enemy_048" parent="." unique_id=1510691701 instance=ExtResource("3_m7kjb")]
+position = Vector2(0, -78)
+
+[node name="Enemy_049" parent="." unique_id=1663518401 instance=ExtResource("4_1d08o")]
+position = Vector2(23, -78)
+
+[node name="Enemy_050" parent="." unique_id=310835944 instance=ExtResource("5_xyqik")]
+position = Vector2(46, -77)
+
+[node name="Enemy_051" parent="." unique_id=1435975963 instance=ExtResource("6_jo8w7")]
+position = Vector2(-46, -52)
+
+[node name="Enemy_052" parent="." unique_id=799105887 instance=ExtResource("7_sjn8i")]
+position = Vector2(-23, -52)
+
+[node name="Enemy_053" parent="." unique_id=652542391 instance=ExtResource("8_jmmsu")]
+position = Vector2(0, -52)
+
+[node name="Enemy_054" parent="." unique_id=143753670 instance=ExtResource("9_jcmyi")]
+position = Vector2(23, -52)
+
+[node name="Enemy_055" parent="." unique_id=774451081 instance=ExtResource("10_o4751")]
+position = Vector2(46, -51)
+
+[node name="Enemy_056" parent="." unique_id=1114357411 instance=ExtResource("11_u51db")]
+position = Vector2(33, -26)
+
+[node name="Enemy_057" parent="." unique_id=2063313031 instance=ExtResource("12_14jpk")]
+position = Vector2(-23, -26)
+
+[node name="Enemy_058" parent="." unique_id=1868989085 instance=ExtResource("13_o23g6")]
+position = Vector2(0, -26)
+
+[node name="Enemy_059" parent="." unique_id=1430404039 instance=ExtResource("14_1e6j0")]
+position = Vector2(23, -26)
+
+[node name="Enemy_060" parent="." unique_id=2035498924 instance=ExtResource("15_54wfq")]
+position = Vector2(-34, -26)
+
+[node name="Enemy_061" parent="." unique_id=1908186389 instance=ExtResource("16_iy76t")]
+position = Vector2(-48, 0)
+
+[node name="Enemy_062" parent="." unique_id=973828445 instance=ExtResource("17_8kwix")]
+position = Vector2(-25, 0)
+
+[node name="Enemy_063" parent="." unique_id=962412130 instance=ExtResource("18_v16px")]
+
+[node name="Enemy_064" parent="." unique_id=64524787 instance=ExtResource("19_6g15s")]
+position = Vector2(24, 0)
+
+[node name="Enemy_065" parent="." unique_id=1081435104 instance=ExtResource("20_s4k2x")]
+position = Vector2(47, 0)

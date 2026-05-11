@@ -29,7 +29,7 @@ _data = {
 point_count = 7
 
 [node name="Enemy_028" unique_id=827389811 instance=ExtResource("1_base")]
-armor = 8
+armor = 4
 esize = 1
 tur = [125, 0, 0]
 path_speed = 2.5

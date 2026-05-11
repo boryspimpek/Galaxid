@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://l0nkqtw8qkdd"]
+
+[ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://bam6ddx02g0u8" path="res://data/enemy_sprites/enemy_015_bank1_f00.png" id="2_tex"]
+[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="3_end3p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_015"]
+radius = 8.062258
+
+[sub_resource type="Curve2D" id="Curve2D_c8gmu"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 85.92526, 102.1033, 0, 0, 0, 0, 86, 257)
+}
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_end3p"]
+_data = [Vector2(0.44647887, 1), 0.0, 0.0, 0, 0, Vector2(0.45211267, 0.76231587), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_end3p"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 85.92526, 102.1033, 0, 0, 0, 0, 138, 162, 0, 0, 0, 0, 138, 250)
+}
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_nla0v"]
+_data = [Vector2(0.6910112, 1), 0.0, 0.0, 0, 0, Vector2(0.6938202, 0.7531646), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Enemy_015" unique_id=556058861 instance=ExtResource("1_base")]
+armor = 10
+esize = 1
+startx = 130
+starty = -13
+startxc = 125
+tur = [2, 3, 4]
+freq = [30, 0, 0]
+
+[node name="Visual" parent="." index="0" unique_id=1405638014]
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("2_tex")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_015")
+
+[node name="Move1" type="Path2D" parent="." index="3" unique_id=1122388339]
+curve = SubResource("Curve2D_c8gmu")
+script = ExtResource("3_end3p")
+speed = 2.0
+speed_curve = SubResource("Curve_end3p")
+auto_advance = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Move1" index="0" unique_id=9251098]
+rotation = 0.7853982
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Move1/PathFollow2D" index="0" unique_id=590233616]
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Move1/PathFollow2D" index="1" unique_id=1311386934]
+remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="Move2" type="Path2D" parent="." index="4" unique_id=1469125713]
+curve = SubResource("Curve2D_end3p")
+script = ExtResource("3_end3p")
+speed = 2.0
+speed_curve = SubResource("Curve_nla0v")
+auto_advance = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Move2" index="0" unique_id=130967118]
+rotation = 0.7853982
+rotates = false
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Move2/PathFollow2D" index="0" unique_id=2039233326]
+remote_path = NodePath("../../../Visual")
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="Move2/PathFollow2D" index="1" unique_id=1390699232]
+remote_path = NodePath("../../../CollisionShape2D")

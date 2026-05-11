@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dimsyt5lspo3e"]
+
+[ext_resource type="PackedScene" uid="uid://dic8h40mdvd5e" path="res://scenes/enemies/Enemy_031.tscn" id="1_1p3sn"]
+[ext_resource type="PackedScene" uid="uid://dxig3tjotcbfr" path="res://scenes/enemies/Enemy_030.tscn" id="2_nh67v"]
+
+[node name="Enemy_854" type="Node2D" unique_id=872024727]
+
+[node name="Enemy_031" parent="." unique_id=1201927491 instance=ExtResource("1_1p3sn")]
+
+[node name="Enemy_030" parent="." unique_id=1731212102 instance=ExtResource("2_nh67v")]
+position = Vector2(0, -24)
+
+[node name="Enemy_030_1" parent="." unique_id=1447768411 instance=ExtResource("2_nh67v")]
+position = Vector2(0, -48)
+
+[node name="Enemy_030_2" parent="." unique_id=807093178 instance=ExtResource("2_nh67v")]
+position = Vector2(0, -72)

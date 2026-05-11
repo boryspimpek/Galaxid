@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://ybhysbe32ya5"]
+
+[ext_resource type="PackedScene" uid="uid://dyvepuloj5mmd" path="res://scenes/enemies/Enemy_018.tscn" id="1_75hj5"]
+[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="1_yqtln"]
+[ext_resource type="PackedScene" uid="uid://wyosllojps0w" path="res://scenes/enemies/Enemy_019.tscn" id="2_yqtln"]
+[ext_resource type="PackedScene" uid="uid://j8yx8cnlu0ct" path="res://scenes/enemies/Enemy_020.tscn" id="3_sfj6q"]
+
+[sub_resource type="Curve2D" id="Curve2D_sfj6q"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 177, -52, 0, 0, 0, 0, 248, -79)
+}
+point_count = 4
+
+[node name="Enemy_861" type="Node2D" unique_id=1173926840]
+
+[node name="Left" type="Path2D" parent="." unique_id=23567525]
+curve = SubResource("Curve2D_sfj6q")
+script = ExtResource("1_yqtln")
+auto_advance = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Left" unique_id=509057343]
+rotates = false
+loop = false
+
+[node name="Node2D" type="Node2D" parent="Left/PathFollow2D" unique_id=541718951]
+
+[node name="Enemy_018" parent="Left/PathFollow2D/Node2D" unique_id=151138198 instance=ExtResource("1_75hj5")]
+
+[node name="Enemy_019" parent="Left/PathFollow2D/Node2D" unique_id=1123239928 instance=ExtResource("2_yqtln")]
+position = Vector2(23, 0)
+
+[node name="Enemy_019_2" parent="Left/PathFollow2D/Node2D" unique_id=371614948 instance=ExtResource("3_sfj6q")]
+position = Vector2(46, 0)
+
+[node name="Enemy_019_3" parent="Left/PathFollow2D/Node2D" unique_id=501015714 instance=ExtResource("2_yqtln")]
+position = Vector2(69, 0)
+
+[node name="Enemy_019_4" parent="Left/PathFollow2D/Node2D" unique_id=39760642 instance=ExtResource("2_yqtln")]
+position = Vector2(92, 0)
+
+[node name="Enemy_019_5" parent="Left/PathFollow2D/Node2D" unique_id=1699396324 instance=ExtResource("2_yqtln")]
+position = Vector2(115, 0)
+
+[node name="Enemy_024" parent="Left/PathFollow2D/Node2D" unique_id=460874221 instance=ExtResource("2_yqtln")]
+position = Vector2(138, 0)

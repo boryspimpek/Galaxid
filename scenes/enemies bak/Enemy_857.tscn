@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ck5jpf1gb67nb"]
+
+[ext_resource type="PackedScene" uid="uid://cqokramyhm7gr" path="res://scenes/enemies/Enemy_121.tscn" id="1_ahpwe"]
+[ext_resource type="PackedScene" uid="uid://bsfl36kugodkq" path="res://scenes/enemies/Enemy_122.tscn" id="2_m80t1"]
+[ext_resource type="PackedScene" uid="uid://yncyrlfmkfmv" path="res://scenes/enemies/Enemy_123.tscn" id="3_21r6m"]
+[ext_resource type="PackedScene" uid="uid://dwg3fyvtoyirg" path="res://scenes/enemies/Enemy_124.tscn" id="4_eiwvb"]
+
+[node name="Enemy_857" type="Node2D" unique_id=989081510]
+
+[node name="Enemy_121" parent="." unique_id=939071501 instance=ExtResource("1_ahpwe")]
+position = Vector2(-12, 10)
+
+[node name="Enemy_122" parent="." unique_id=1881442134 instance=ExtResource("2_m80t1")]
+position = Vector2(12, 10)
+
+[node name="Enemy_123" parent="." unique_id=1725365853 instance=ExtResource("3_21r6m")]
+position = Vector2(-12, -16)
+
+[node name="Enemy_124" parent="." unique_id=2104365040 instance=ExtResource("4_eiwvb")]
+position = Vector2(12, -16)

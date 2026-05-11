@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cqi01yx81xxit"]
+
+[ext_resource type="PackedScene" uid="uid://cwkiaa3a6uwq3" path="res://scenes/enemies/Enemy_003.tscn" id="1_kpqbk"]
+[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="2_k1lis"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_016.tscn" id="3_pa7gk"]
+
+[sub_resource type="Curve2D" id="Curve2D_k1lis"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -0.04559052, -53.44348, 0.04559052, 53.44348, 0, 89, 0, 0, 0, 0, 248, 137)
+}
+point_count = 3
+
+[node name="Enemy_853" type="Node2D" unique_id=1500145978]
+
+[node name="Enemy_003" parent="." unique_id=398450216 instance=ExtResource("1_kpqbk")]
+path_speed = 0.0
+
+[node name="Enemy_003_1" parent="." unique_id=200795562 instance=ExtResource("1_kpqbk")]
+position = Vector2(-0.016922547, 23.989357)
+path_speed = 0.0
+
+[node name="Enemy_016" parent="." unique_id=1421474503 instance=ExtResource("3_pa7gk")]
+position = Vector2(72, 0)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=992724065]
+curve = SubResource("Curve2D_k1lis")
+script = ExtResource("2_k1lis")
+speed = 5.0
+auto_advance = true
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1136410321]
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D" unique_id=1003901916]
+remote_path = NodePath("../../../Enemy_003")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D" unique_id=413207135]
+position = Vector2(-0.016922547, 23.989357)
+progress = 24.0
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Path2D/PathFollow2D2" unique_id=1512675607]
+remote_path = NodePath("../../../Enemy_003_1")
