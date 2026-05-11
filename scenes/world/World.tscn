@@ -18,13 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://dcdgk806ckkxw" path="res://scenes/formations/formation_7.tscn" id="109_65rc6"]
 [ext_resource type="PackedScene" uid="uid://cwkiaa3a6uwq3" path="res://scenes/enemies/Enemy_003.tscn" id="e200_003"]
 [ext_resource type="PackedScene" uid="uid://dexpsjoqudwr5" path="res://scenes/enemies/Enemy_004.tscn" id="e201_004"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_007.tscn" id="e202_007"]
 [ext_resource type="PackedScene" uid="uid://qohvs0vmg2o0" path="res://scenes/enemies/Enemy_012.tscn" id="e202_012"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_008.tscn" id="e203_008"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_009.tscn" id="e204_009"]
 [ext_resource type="PackedScene" uid="uid://2v3sf067o17a" path="res://scenes/enemies/Enemy_010.tscn" id="e205_010"]
-[ext_resource type="PackedScene" uid="uid://dou2hvvid4mkc" path="res://scenes/enemies/Enemy_013.tscn" id="e206_013"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/Enemy_014.tscn" id="e207_014"]
 [ext_resource type="PackedScene" uid="uid://l0nkqtw8qkdd" path="res://scenes/enemies/Enemy_015.tscn" id="e208_015"]
 [ext_resource type="PackedScene" uid="uid://coodjrnsfubi8" path="res://scenes/enemies/Enemy_017.tscn" id="e209_017"]
 [ext_resource type="PackedScene" uid="uid://dyvepuloj5mmd" path="res://scenes/enemies/Enemy_018.tscn" id="e210_018"]
@@ -174,7 +169,6 @@ point_count = 4
 
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
 script = ExtResource("3_level_manager")
-start_dist = 3000
 
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=1111111111]
 script = ExtResource("7_ruler")
@@ -612,56 +606,14 @@ position = Vector2(980, -2860)
 [node name="Enemy_005_17" parent="LevelMap" unique_id=992167724 instance=ExtResource("4_qxiha")]
 position = Vector2(980, -2920)
 
-[node name="Enemy_008_1" parent="LevelMap" unique_id=828546847 instance=ExtResource("e203_008")]
-position = Vector2(212, -3364)
-
-[node name="Enemy_009_1" parent="LevelMap" unique_id=229571424 instance=ExtResource("e204_009")]
-position = Vector2(308, -3364)
-
 [node name="Enemy_121_6" parent="LevelMap" unique_id=603910552 instance=ExtResource("e272_121")]
 position = Vector2(316, -3548)
-
-[node name="Enemy_008_2" parent="LevelMap" unique_id=428162945 instance=ExtResource("e203_008")]
-position = Vector2(532, -3564)
-
-[node name="Enemy_009_2" parent="LevelMap" unique_id=786737525 instance=ExtResource("e204_009")]
-position = Vector2(628, -3564)
-
-[node name="Enemy_013_3" parent="LevelMap" unique_id=415623735 instance=ExtResource("e206_013")]
-position = Vector2(772, -3700)
-
-[node name="Enemy_014_3" parent="LevelMap" unique_id=613652119 instance=ExtResource("e207_014")]
-position = Vector2(868, -3700)
-
-[node name="Enemy_008_3" parent="LevelMap" unique_id=812603544 instance=ExtResource("e203_008")]
-position = Vector2(772, -3764)
-
-[node name="Enemy_009_3" parent="LevelMap" unique_id=557564756 instance=ExtResource("e204_009")]
-position = Vector2(868, -3764)
-
-[node name="Enemy_007_1" parent="LevelMap" unique_id=897766069 instance=ExtResource("e202_007")]
-position = Vector2(708, -3820)
 
 [node name="Enemy_006_6" parent="LevelMap" unique_id=902767910 instance=ExtResource("8_qh0kd")]
 position = Vector2(2171, -4459)
 
-[node name="Enemy_007_2" parent="LevelMap" unique_id=114102052 instance=ExtResource("e202_007")]
-position = Vector2(1028, -3820)
-
 [node name="Enemy_006_7" parent="LevelMap" unique_id=564497411 instance=ExtResource("8_qh0kd")]
 position = Vector2(2018, -4198)
-
-[node name="Enemy_009_4" parent="LevelMap" unique_id=491591968 instance=ExtResource("e204_009")]
-position = Vector2(1028, -3884)
-
-[node name="Enemy_008_4" parent="LevelMap" unique_id=378096294 instance=ExtResource("e203_008")]
-position = Vector2(612, -3884)
-
-[node name="Enemy_009_5" parent="LevelMap" unique_id=653160806 instance=ExtResource("e204_009")]
-position = Vector2(708, -3884)
-
-[node name="Enemy_008_5" parent="LevelMap" unique_id=144162112 instance=ExtResource("e203_008")]
-position = Vector2(932, -3884)
 
 [node name="Enemy_005_18" parent="LevelMap" unique_id=825129475 instance=ExtResource("4_qxiha")]
 position = Vector2(180, -4280)

@@ -162,6 +162,9 @@ func _process(_delta):
 		_active_follow.progress += _active_path_speed * speed_mult
 		_process_shooting(_delta)
 		if _active_follow.progress_ratio >= 1.0:
+			if not is_instance_valid(visual):
+				queue_free()
+				return
 			var end_global = visual.global_position
 			for rt in _active_follow.get_children():
 				if rt is RemoteTransform2D:
