@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://4u7pogo726ls"]
 
 [ext_resource type="PackedScene" uid="uid://bohu6dfbn78ms" path="res://scenes/enemies/Enemy_006.tscn" id="1_77sb3"]
+[ext_resource type="Script" uid="uid://d22co1um15l0q" path="res://scenes/formations/Formation.gd" id="2_formation"]
 
 [node name="Formation_6" type="Node2D" unique_id=245906038]
+script = ExtResource("2_formation")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1686511860]
 position = Vector2(0, 45)
@@ -11,7 +13,11 @@ rect = Rect2(-295, -250, 527, 387)
 [node name="Enemy_006" parent="." unique_id=1414137520 instance=ExtResource("1_77sb3")]
 position = Vector2(-190, 102)
 ymove = 8
+tur = [116, 0, 0]
+freq = [20, 0, 0]
 
 [node name="Enemy_006_1" parent="." unique_id=1675955047 instance=ExtResource("1_77sb3")]
 position = Vector2(132, -96)
 ymove = 8
+tur = [116, 0, 0]
+freq = [20, 0, 0]

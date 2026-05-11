@@ -611,12 +611,6 @@ position = Vector2(980, -2860)
 [node name="Enemy_005_17" parent="LevelMap" unique_id=992167724 instance=ExtResource("4_qxiha")]
 position = Vector2(980, -2920)
 
-[node name="Enemy_013_1" parent="LevelMap" unique_id=918563216 instance=ExtResource("e206_013")]
-position = Vector2(212, -3300)
-
-[node name="Enemy_014_1" parent="LevelMap" unique_id=159531156 instance=ExtResource("e207_014")]
-position = Vector2(308, -3300)
-
 [node name="Enemy_008_1" parent="LevelMap" unique_id=828546847 instance=ExtResource("e203_008")]
 position = Vector2(212, -3364)
 
@@ -625,12 +619,6 @@ position = Vector2(308, -3364)
 
 [node name="Enemy_121_6" parent="LevelMap" unique_id=603910552 instance=ExtResource("e272_121")]
 position = Vector2(316, -3548)
-
-[node name="Enemy_013_2" parent="LevelMap" unique_id=866539050 instance=ExtResource("e206_013")]
-position = Vector2(532, -3500)
-
-[node name="Enemy_014_2" parent="LevelMap" unique_id=286287987 instance=ExtResource("e207_014")]
-position = Vector2(628, -3500)
 
 [node name="Enemy_008_2" parent="LevelMap" unique_id=428162945 instance=ExtResource("e203_008")]
 position = Vector2(532, -3564)
