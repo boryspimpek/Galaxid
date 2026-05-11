@@ -34,8 +34,9 @@ rect = Rect2(-99, -153, 198, 185)
 [node name="Path2D" type="Path2D" parent="." index="3" unique_id=1701089560]
 curve = SubResource("Curve2D_lk7ja")
 script = ExtResource("3_e4ru5")
-speed = 6.0
+speed = 4.0
 scroll_speed = -2
+auto_advance = true
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" index="0" unique_id=652795789]
 rotation = 1.5707964

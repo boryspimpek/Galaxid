@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://dcdgk806ckkxw"]
 
 [ext_resource type="PackedScene" uid="uid://bohu6dfbn78ms" path="res://scenes/enemies/Enemy_006.tscn" id="2_wceii"]
+[ext_resource type="Script" uid="uid://d22co1um15l0q" path="res://scenes/formations/Formation.gd" id="3_formation"]
 
 [node name="Formation_6" type="Node2D" unique_id=245906038]
+position = Vector2(0, -105)
+script = ExtResource("3_formation")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1686511860]
 position = Vector2(0, 45)
@@ -10,21 +13,18 @@ rect = Rect2(-295, -250, 593, 382)
 
 [node name="Enemy_006" parent="." unique_id=1414137520 instance=ExtResource("2_wceii")]
 position = Vector2(0, 105)
-ymove = 8
 tur = [116, 0, 0]
 freq = [20, 0, 0]
 wybran_sciezka = "Path2D"
 
 [node name="Enemy_006_1" parent="." unique_id=1675955047 instance=ExtResource("2_wceii")]
 position = Vector2(-200, 10)
-ymove = 8
 tur = [116, 0, 0]
 freq = [20, 0, 0]
 wybran_sciezka = "Path2D"
 
 [node name="Enemy_006_2" parent="." unique_id=2145346884 instance=ExtResource("2_wceii")]
 position = Vector2(200, 10)
-ymove = 8
 tur = [116, 0, 0]
 freq = [20, 0, 0]
 wybran_sciezka = "Path2D"
