@@ -2,3 +2,4 @@ res://scenes/world/World.tscn
 res://scenes/enemy/Enemy.gd
 res://scenes/formations/formation_7.tscn
 res://scenes/formations/formation_6.tscn
+res://scenes/formations/Formation.gd
