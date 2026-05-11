@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b6wi3tffwt2d" path="res://assets/Copilot_20260507_195821-removebg-preview.png" id="2_llqvf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_010"]
-radius = 140.0
+radius = 36.0
 
 [node name="Enemy_010" unique_id=834132465 instance=ExtResource("1_base")]
 armor = 3
@@ -19,9 +19,8 @@ texture = ExtResource("2_llqvf")
 [node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
 position = Vector2(0, -13)
 rotation = 1.5707964
-scale = Vector2(0.25, 0.25)
 shape = SubResource("CircleShape2D_010")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=291847561]
 position = Vector2(0, 48)
-rect = Rect2(-35, -102, 70, 77)
+rect = Rect2(-49, -102, 98, 77)

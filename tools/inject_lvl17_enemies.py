@@ -2,8 +2,6 @@
 Reads Tyrian\data\lvl17.json and injects all spawn events into
 Galaxid\scenes\world\World.tscn as Enemy_NNN nodes under LevelMap.
 
-Position formula: Vector2(dist + screen_y, screen_x)
-
 Writes result to World.tscn (backs up original as World.tscn.bak first).
 """
 
@@ -27,7 +25,7 @@ print(f"Spawn events : {len(spawns)}")
 print(f"Unique enemy IDs: {unique_eids}")
 
 # ── 2. Read UID from each enemy scene file ──────────────────────────────────
-enemy_uid = {}   # enemy_id -> "uid://..."
+enemy_uid = {}   # enemy_id -> "uid://..." or None (file exists but no uid)
 missing = []
 for eid in unique_eids:
     path = os.path.join(ENEMIES, f"Enemy_{eid:03d}.tscn")
@@ -37,13 +35,13 @@ for eid in unique_eids:
     with open(path, encoding="utf-8") as f:
         line = f.readline()
     m = re.search(r'uid="(uid://[^"]+)"', line)
-    if m:
-        enemy_uid[eid] = m.group(1)
-    else:
-        missing.append(eid)
+    enemy_uid[eid] = m.group(1) if m else None  # None = no uid, file still usable
 
 if missing:
-    print(f"WARNING – no scene found for enemy IDs: {missing}")
+    print(f"WARNING – no scene file for enemy IDs: {missing}")
+no_uid = [eid for eid, uid in enemy_uid.items() if uid is None]
+if no_uid:
+    print(f"INFO – scene exists but no uid (will use path-only ref): {sorted(no_uid)}")
 
 # ── 3. Read World.tscn ──────────────────────────────────────────────────────
 with open(WORLD, encoding="utf-8") as f:
@@ -67,7 +65,7 @@ res_counter = 200
 
 for eid in unique_eids:
     if eid not in enemy_uid:
-        continue
+        continue  # file not found at all
     enemy_path = f"res://scenes/enemies/Enemy_{eid:03d}.tscn"
     if enemy_path in existing_paths:
         # Already declared – grab its id
@@ -84,8 +82,9 @@ for eid in unique_eids:
     res_id = f"e{res_counter}_{eid:03d}"
     used_res_ids.add(res_id)
     ext_resource_map[eid] = res_id
+    uid_attr = f' uid="{enemy_uid[eid]}"' if enemy_uid[eid] else ""
     new_ext_lines.append(
-        f'[ext_resource type="PackedScene" uid="{enemy_uid[eid]}"'
+        f'[ext_resource type="PackedScene"{uid_attr}'
         f' path="{enemy_path}" id="{res_id}"]'
     )
     res_counter += 1
@@ -124,9 +123,16 @@ for spawn in spawns:
     )
 
 # ── 7. Splice into World.tscn ───────────────────────────────────────────────
-# Insert ext_resources just before the first [node ...] block
+# Godot TSCN order: ext_resource → sub_resource → node
+# Insert new ext_resources before the first [sub_resource] (or [node] if none)
+first_sub_match  = re.search(r'\n\[sub_resource ', content)
 first_node_match = re.search(r'\n\[node ', content)
-insert_ext_at = first_node_match.start() if first_node_match else len(content)
+if first_sub_match:
+    insert_ext_at = first_sub_match.start()
+elif first_node_match:
+    insert_ext_at = first_node_match.start()
+else:
+    insert_ext_at = len(content)
 
 # Insert enemy nodes just before [node name="CanvasLayer"
 canvas_match = re.search(r'\n\[node name="CanvasLayer"', content)
