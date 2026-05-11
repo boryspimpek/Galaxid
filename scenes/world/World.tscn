@@ -14,10 +14,10 @@ script = ExtResource("3_level_manager")
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=2100000002]
 script = ExtResource("5_levelruler")
 
-[node name="Enemy_010" parent="LevelMap" unique_id=834132465 instance=ExtResource("3_qxiha")]
+[node name="Enemy_010" parent="LevelMap" unique_id=123499170 instance=ExtResource("3_qxiha")]
 position = Vector2(97, -11)
-tur = [116, 0, 0]
-freq = [20, 0, 0]
+tur = [50, 0, 0]
+freq = [10, 0, 0]
 wybran_sciezka = "Turn"
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]

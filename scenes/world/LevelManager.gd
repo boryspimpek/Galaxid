@@ -46,6 +46,8 @@ func _ready():
 			level_name = debug_level
 
 	init_managers()
+	if _level_map:
+		_connect_projectile_signals(_level_map)
 
 	if start_dist > 0:
 		level_distance = float(start_dist)
@@ -100,6 +102,12 @@ func init_managers():
 # ========================================
 # SEKCJA: Callbacks
 # ========================================
+func _connect_projectile_signals(node: Node) -> void:
+	for child in node.get_children():
+		if child.has_signal("projectile_spawned") and \
+				not child.projectile_spawned.is_connected(_on_enemy_projectile_spawned):
+			child.projectile_spawned.connect(_on_enemy_projectile_spawned)
+		_connect_projectile_signals(child)
+
 func _on_enemy_projectile_spawned(projectile):
-	# Dodaj pocisk do sceny (jako dziecko LevelManager)
 	add_child(projectile)
