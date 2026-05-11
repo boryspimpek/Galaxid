@@ -204,3 +204,6 @@ remote_path = NodePath("../../../Visual")
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="TopBottomC/PathFollow2D" index="1" unique_id=1488698604]
 remote_path = NodePath("../../../CollisionShape2D")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="10" unique_id=2100000003]
+rect = Rect2(-12, -10, 24, 20)
