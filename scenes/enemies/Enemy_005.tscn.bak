@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bmaluuutr0n8v"]
+
+[ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_base"]
+[ext_resource type="Texture2D" uid="uid://cw3m4p6xxudof" path="res://assets/Copilot_20260510_170613-removebg-preview.png" id="2_nmie7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_005"]
+radius = 45.0
+
+[node name="Enemy_005" unique_id=1841420694 instance=ExtResource("1_base")]
+armor = 6
+esize = 1
+value = 20
+explosiontype = 4
+
+[node name="Visual" parent="." index="0" unique_id=1405638014]
+rotation = -3.1415925
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_nmie7")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=183017983]
+rotation = -3.1415925
+shape = SubResource("CircleShape2D_005")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2" unique_id=291847561]
+rotation = -3.1415925
+rect = Rect2(-46, -59.046738, 91, 103.10664)
