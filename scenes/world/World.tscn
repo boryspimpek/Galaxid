@@ -8,7 +8,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_qxiha"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 216, 218, 0, 0, 0, 0, 217, 851, 0, 0, 0, 0, 632, 793)
+"points": PackedVector2Array(0, 0, 0, 0, 216, 218, 0, 0, 0, 0, 215, 640, 0, 0, 0, 0, 997, 641)
 }
 point_count = 3
 
@@ -26,36 +26,36 @@ script = ExtResource("7_ruler")
 show_in_game = true
 
 [node name="Path2D" type="Path2D" parent="LevelMap" unique_id=1719500132]
-position = Vector2(162, -333)
+position = Vector2(-12, -315)
 curve = SubResource("Curve2D_qxiha")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Path2D" unique_id=508622972]
 position = Vector2(216, 218)
-rotation = 1.5692165
+rotation = 1.573166
 loop = false
 script = ExtResource("3_i1jm3")
 speed = 4.0
 
 [node name="smallAircraft" parent="LevelMap/Path2D/PathFollow2D" unique_id=119960324 instance=ExtResource("6_i1jm3")]
-position = Vector2(-224.21619, 769.6467)
+position = Vector2(3.4570694e-06, -1.9073486e-06)
 rotation = -1.5707964
 tur = [127, 0, 0]
 freq = [20, 0, 0]
 
 [node name="smallAircraft" parent="LevelMap" unique_id=1325041760 instance=ExtResource("6_i1jm3")]
-position = Vector2(583, -59)
+position = Vector2(303, -760)
 ymove = -2
 tur = [153, 0, 0]
 freq = [30, 0, 0]
 
 [node name="smallAircraft2" parent="LevelMap" unique_id=744426317 instance=ExtResource("6_i1jm3")]
-position = Vector2(-436, 44)
+position = Vector2(776, -1114)
 ymove = -1
 tur = [59, 0, 0]
 freq = [30, 0, 0]
 
 [node name="smallAircraft3" parent="LevelMap" unique_id=1183608556 instance=ExtResource("6_i1jm3")]
-position = Vector2(1492, 13)
+position = Vector2(800, -286)
 xmove = -1
 ymove = 3
 tur = [62, 0, 0]
