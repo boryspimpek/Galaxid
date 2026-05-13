@@ -49,23 +49,10 @@ func _physics_process(_delta):
 
 	# KROK 2: Homing (tylko jeśli tx != 0 lub ty != 0)
 	if (tx != 0 or ty != 0) and is_instance_valid(_player):
-		# Homing X
 		if tx != 0:
-			if global_position.x > _player.global_position.x:
-				if velocity.x > -float(tx):
-					velocity.x -= 1.0
-			else:
-				if velocity.x < float(tx):
-					velocity.x += 1.0
-
-		# Homing Y
+			velocity.x = move_toward(velocity.x, sign(_player.global_position.x - global_position.x) * float(tx), 1.0)
 		if ty != 0:
-			if global_position.y > _player.global_position.y:
-				if velocity.y > -float(ty):
-					velocity.y -= 1.0
-			else:
-				if velocity.y < float(ty):
-					velocity.y += 1.0
+			velocity.y = move_toward(velocity.y, sign(_player.global_position.y - global_position.y) * float(ty), 1.0)
 
 	position += velocity * 4
 

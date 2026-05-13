@@ -166,11 +166,10 @@ func _calc_aim_velocity(aim: int, sx: int, sy: int) -> Vector2:
 		_player = get_tree().get_first_node_in_group("player")
 	if not is_instance_valid(_player):
 		return Vector2(float(sx), float(sy))
-	var diff = _player.global_position - global_position
-	var mag  = max(abs(diff.x), abs(diff.y))
-	if mag == 0:
+	var dir = global_position.direction_to(_player.global_position)
+	if dir == Vector2.ZERO:
 		return Vector2(float(sx), float(sy))
-	return Vector2(round(diff.x / mag * aim), round(diff.y / mag * aim))
+	return dir * float(aim)
 
 func _calc_dir_velocity(direction_index: int, sx: int, sy: int) -> Vector2:
 	match direction_index:
