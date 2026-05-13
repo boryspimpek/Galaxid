@@ -44,7 +44,7 @@ func _physics_process(delta: float):
 		if tx != 0:
 			velocity.x = move_toward(velocity.x, sign(_player.global_position.x - global_position.x) * float(tx), homing_step)
 		if ty != 0:
-			velocity.y = move_toward(velocity.y, sign(_player.global_position.y - global_position.y) * float(ty)/2, homing_step)
+			velocity.y = move_toward(velocity.y, sign(_player.global_position.y - global_position.y) * float(ty), homing_step)
 
 	position.x += velocity.x * 4.0 * delta
 	position.y += velocity.y * 9.6 * delta
