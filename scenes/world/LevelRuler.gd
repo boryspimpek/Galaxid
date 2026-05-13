@@ -3,7 +3,7 @@ extends Node2D
 
 ## Wizualna linijka poziomu — widoczna w edytorze Godota (@tool).
 ## Pokazuje znaczniki czasowe w przestrzeni LevelMap.
-## Konwencja: scroll_speed=2, 30fps → 60px = 1 sekunda.
+## Konwencja: scroll_speed=4, 30fps → 120px = 1 sekunda.
 ## Wrogowie na Y=-N pojawiają się po N/60 sekundach od startu.
 
 @export var scroll_speed: int = 2

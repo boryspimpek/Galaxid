@@ -21,11 +21,6 @@ signal projectile_spawned(projectile)
 @export var xmove: int = 0
 @export var ymove: int = 0
 
-# -- Pozycja startowa dla random spawn --
-@export var startx: int = 0
-@export var starty: int = 0
-@export var startxc: int = 0
-
 # -- System strzelania --
 @export var tur: Array  = [0, 0, 0]   # ID broni [down, right, left]
 @export var freq: Array = [0, 0, 0]   # Częstotliwość strzałów [down, right, left]
@@ -33,9 +28,6 @@ signal projectile_spawned(projectile)
 #endregion
 
 #region Stan wewnętrzny
-
-var enemy_id: int = 0
-var link_num: int = 0
 
 var velocity: Vector2 = Vector2.ZERO
 var projectile_scene: PackedScene
@@ -46,8 +38,6 @@ var eshotmultipos: Array = [0, 0, 0]
 
 var _player: Node2D
 var _weapon_cache: Array = [null, null, null]
-
-@onready var visual: Sprite2D = $Visual
 
 #endregion
 
@@ -118,12 +108,12 @@ func _process_shooting(_delta: float):
 
 func _fire_projectile(direction_index: int):
 	if not projectile_scene:
-		push_error("Enemy: projectile_scene pusty (enemy_id=%d)" % enemy_id)
+		push_error("Enemy: projectile_scene pusty")
 		return
 
 	var weapon_data: Dictionary = _weapon_cache[direction_index] if _weapon_cache[direction_index] != null else {}
 	if weapon_data.is_empty():
-		push_error("Enemy: nie znaleziono broni o ID=%d (enemy_id=%d)" % [int(tur[direction_index]), enemy_id])
+		push_error("Enemy: nie znaleziono broni o ID=%d" % int(tur[direction_index]))
 		return
 
 	var patterns = weapon_data.get("patterns", [])
