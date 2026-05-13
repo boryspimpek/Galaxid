@@ -9,7 +9,7 @@ var tx: int = 0                       # homing X (maksymalna korekta na klatkę)
 var ty: int = 0                       # homing Y (maksymalna korekta na klatkę)
 var acceleration: int = 0             # przyspieszenie Y
 var accelerationx: int = 0            # przyspieszenie X
-var duration: float = 255.0           # czas życia w klatkach Tyrian (255 = nieskończony)
+var duration: float = 0.0             # czas życia w sekundach (0 = nieskończony)
 
 var _player: Node2D  # Cache — ustawiany raz w _ready(), nie szukamy w drzewie co klatka
 
@@ -32,23 +32,24 @@ func _apply_shot_graphic():
 	if texture:
 		visual.texture = texture
 
-func _physics_process(_delta):
-	# KROK 1: Dodaj akcelerację do velocity (rzadko używane)
-	velocity.x += float(accelerationx)
-	velocity.y += float(acceleration)
+func _physics_process(delta: float):
+	# KROK 1: Dodaj akcelerację do velocity (acc już w px/s² z DataManagera)
+	velocity.x += float(accelerationx) * delta
+	velocity.y += float(acceleration) * delta
 
-	# KROK 2: Homing (tylko jeśli tx != 0 lub ty != 0)
+	# KROK 2: Homing — step = 30²*delta (velocity i tx/ty w px/s; oryginał miał 1 Tyrian px/frame per frame)
 	if (tx != 0 or ty != 0) and is_instance_valid(_player):
+		var homing_step := 900.0 * delta
 		if tx != 0:
-			velocity.x = move_toward(velocity.x, sign(_player.global_position.x - global_position.x) * float(tx), 1.0)
+			velocity.x = move_toward(velocity.x, sign(_player.global_position.x - global_position.x) * float(tx), homing_step)
 		if ty != 0:
-			velocity.y = move_toward(velocity.y, sign(_player.global_position.y - global_position.y) * float(ty), 1.0)
+			velocity.y = move_toward(velocity.y, sign(_player.global_position.y - global_position.y) * float(ty), homing_step)
 
-	position += velocity * 4
+	position += velocity * 10 * delta
 
-	# KROK 3: Sprawdź czy pocisk żyje (duration)
-	if duration != 255.0:
-		duration -= 1
+	# KROK 3: Sprawdź czy pocisk żyje (duration już w sekundach z DataManagera; 0 = brak limitu)
+	if duration > 0.0:
+		duration -= delta
 		if duration <= 0.0:
 			queue_free()
 			return

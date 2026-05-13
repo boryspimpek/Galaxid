@@ -26,7 +26,7 @@ script = ExtResource("7_ruler")
 show_in_game = true
 
 [node name="Path2D" type="Path2D" parent="LevelMap" unique_id=1719500132]
-position = Vector2(-931, -1260)
+position = Vector2(162, -333)
 curve = SubResource("Curve2D_qxiha")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Path2D" unique_id=508622972]
@@ -53,6 +53,7 @@ freq = [30, 0, 0]
 
 [node name="smallAircraft3" parent="LevelMap" unique_id=1183608556 instance=ExtResource("6_i1jm3")]
 position = Vector2(795, 39)
-ymove = -1
-tur = [153, 0, 0]
+xmove = -1
+ymove = 3
+tur = [62, 0, 0]
 freq = [30, 0, 0]

@@ -4,7 +4,7 @@ extends Area2D
 @export var velocity: Vector2 = Vector2.ZERO
 @export var acceleration: Vector2 = Vector2.ZERO  # Przyspieszenie po wystrzeleniu
 @export var damage: int = 3
-@export var lifetime: int = 0  # Czas życia (del z patterns)
+@export var lifetime: float = 0.0  # Czas życia w sekundach (0 = brak limitu)
 @export var shot_graphic: int = 0  # ID grafiki (sg z patterns)
 @export var circlesize: int = 0  # Rozmiar okręgu (circleSize z weapon)
 
@@ -19,6 +19,8 @@ var circle_center: Vector2 = Vector2.ZERO  # Środek orbity (pozycja startowa)
 
 # --- Wewnętrzne ---
 var lifetime_timer: float = 0.0
+const _CIRCLE_STEP: float = 1.0 / 30.0  # circlesize taktuje z prędkością Tyriana (30fps)
+var _circle_timer: float = 0.0
 
 func _ready():
 	# Warstwa 4 = pocisk gracza; maska 2 = wykrywa wrogów (warstwa 2)
@@ -72,32 +74,29 @@ func _init_circlesize():
 	# Zapamiętaj środek orbity (pozycja startowa)
 	circle_center = position
 
-func _physics_process(_delta):
-	# Krok 2: Przyspieszenie → prędkość
-	velocity += acceleration
-	
+func _physics_process(delta: float):
+	# Krok 2: Przyspieszenie → prędkość (acc już w px/s² z DataManagera)
+	velocity += acceleration * delta
+
 	# Krok 3: Prędkość → pozycja
-	var move_x = velocity.x * 4 # skalowanie prędkości 288x200 -> 1080x1920
-	var move_y = velocity.y * 9.6
-	position += Vector2(move_x, move_y)
-	
-	# Krok 5: Ruch okrężny (circlesize) - DODAWANE PO normalnym ruchu
+	position += Vector2(velocity.x * 4.0, velocity.y * 9.6) * delta
+
+	# Krok 5: Ruch okrężny (circlesize) - aktualizowany co ~1/30s żeby zachować oryginalną prędkość
 	if circlesize > 0:
-		# Oś X
-		circle_dev_x += circle_dir_x
-		position.x += circle_dev_x
-		if abs(circle_dev_x) == circle_size_x:
-			circle_dir_x = -circle_dir_x
-		
-		# Oś Y
-		circle_dev_y += circle_dir_y
-		position.y += circle_dev_y
-		if abs(circle_dev_y) == circle_size_y:
-			circle_dir_y = -circle_dir_y
-	
-	# Obsługa czasu życia (jeśli lifetime > 0)
-	if lifetime > 0:
-		lifetime_timer += 1
+		_circle_timer += delta
+		while _circle_timer >= _CIRCLE_STEP:
+			_circle_timer -= _CIRCLE_STEP
+			circle_dev_x += circle_dir_x
+			if abs(circle_dev_x) == circle_size_x:
+				circle_dir_x = -circle_dir_x
+			circle_dev_y += circle_dir_y
+			if abs(circle_dev_y) == circle_size_y:
+				circle_dir_y = -circle_dir_y
+		position += Vector2(float(circle_dev_x), float(circle_dev_y))
+
+	# Obsługa czasu życia (lifetime już w sekundach z DataManagera; 0 = brak limitu)
+	if lifetime > 0.0:
+		lifetime_timer += delta
 		if lifetime_timer >= lifetime:
 			queue_free()
 			return

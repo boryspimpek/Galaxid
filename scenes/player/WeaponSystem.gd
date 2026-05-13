@@ -14,7 +14,7 @@ var current_weapon_index: int = 1
 var power_level: int = 1
 
 # --- Konfiguracja strzelania ---
-var fire_timer: int = 0
+var fire_timer: float = 0.0
 var is_firing: bool = false
 
 # --- Stan strzelania (dla patterns) ---
@@ -28,13 +28,9 @@ func _ready():
 	# Załaduj konfigurację broni
 	load_weapon_config()
 
-func _physics_process(_delta):
-	# Cooldown (system klatkowy, nie delta)
-	if fire_timer > 0:
-		fire_timer -= 1
-	
-	# Strzelanie jeśli wciśnięty przycisk
-	if is_firing and fire_timer <= 0:
+func _physics_process(delta: float):
+	fire_timer = max(0.0, fire_timer - delta)
+	if is_firing and fire_timer <= 0.0:
 		shoot()
 
 func load_weapon_config():
@@ -111,8 +107,7 @@ func shoot():
 	
 	SoundManager.play_weapon_sound(weapon_data.get("sound", 0))
 
-	var repeat = weapon_data.get("shotRepeat", 0)
-	fire_timer = repeat
+	fire_timer = float(weapon_data.get("shotRepeat", 0.0))
 
 func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, del: int = 0, sg: int = 0, acceleration: int = 0, accelerationx: int = 0, circlesize: int = 0):
 	var projectile_scene = GameConstants.player_projectile_scene

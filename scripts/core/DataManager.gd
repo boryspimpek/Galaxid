@@ -100,10 +100,33 @@ func get_weapons() -> Array:
 	if not _weapons_loaded:
 		var data = load_json("res://data/weapon.json")
 		if data:
-			weapons_cache = data.get("TyrianHDT", {}).get("weapon", [])
+			var raw: Array = data.get("TyrianHDT", {}).get("weapon", [])
+			for w in raw:
+				_normalize_weapon(w)
+			weapons_cache = raw
 			_weapons_loaded = true
 			print("DataManager: Załadowano ", weapons_cache.size(), " broni")
 	return weapons_cache
+
+func _normalize_weapon(w: Dictionary) -> void:
+	const FPS: float = 30.0
+	for pattern in w.get("patterns", []):
+		pattern["sx"] = float(pattern.get("sx", 0)) * FPS
+		pattern["sy"] = float(pattern.get("sy", 0)) * FPS
+		var del = pattern.get("del", 0)
+		pattern["del"] = 0.0 if del == 0 or del == 255 else float(del) / FPS
+	if w.has("acceleration"):
+		w["acceleration"]  = float(w["acceleration"])  * FPS
+	if w.has("accelerationx"):
+		w["accelerationx"] = float(w["accelerationx"]) * FPS
+	if w.has("aim"):
+		w["aim"] = float(w["aim"]) * FPS
+	if w.has("tx"):
+		w["tx"] = float(w["tx"]) * FPS
+	if w.has("ty"):
+		w["ty"] = float(w["ty"]) * FPS
+	if w.has("shotRepeat"):
+		w["shotRepeat"] = float(w["shotRepeat"]) / FPS
 
 func get_weapon_by_id(id: int) -> Dictionary:
 	for weapon in get_weapons():
@@ -237,9 +260,9 @@ func get_generator_by_id(id: int) -> GeneratorData:
 	push_error("DataManager: Nie znaleziono generatora o ID=", id)
 	return null
 
-func get_generator_power(generator_id: int) -> int:
+func get_generator_power(generator_id: int) -> float:
 	var generator = get_generator_by_id(generator_id)
-	return generator.power if generator else 0
+	return float(generator.power) * 30.0 if generator else 0.0
 
 # ============================================================================
 # POZIOMY (lvl*.json)

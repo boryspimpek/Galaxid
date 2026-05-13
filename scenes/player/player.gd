@@ -59,8 +59,8 @@ func reload_power_regeneration():
 # 2. RUCH
 # ============================================================================
 
-func _physics_process(_delta):
-	power = min(power_max, power + power_add)
+func _physics_process(delta: float):
+	power = min(power_max, power + power_add * delta)
 	position = get_global_mouse_position()
 	_clamp_to_screen()
 	weapon_system.set_firing(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))

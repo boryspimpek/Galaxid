@@ -9,8 +9,8 @@ func _ready():
 func activate():
 	set_process(true)
 
-func _process(_delta):
-	progress += speed
+func _process(delta: float):
+	progress += speed * 30.0 * delta
 	if progress_ratio >= 1.0:
 		if remove_at_end:
 			queue_free()

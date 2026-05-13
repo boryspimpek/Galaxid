@@ -51,7 +51,7 @@ func _ready():
 	collision_mask  = 5
 	body_entered.connect(_on_body_entered)
 
-	velocity = Vector2(float(xmove), float(ymove))
+	velocity = Vector2(float(xmove), float(ymove)) * 30.0
 	projectile_scene = GameConstants.enemy_projectile_scene
 
 	_init_shooting_timers()
@@ -64,11 +64,11 @@ func _ready():
 
 func _init_shooting_timers():
 	for i in range(3):
-		eshotwaitmax[i] = float(freq[i])
+		eshotwaitmax[i] = float(freq[i]) / 30.0
 		match tur[i]:
-			252: eshotwait[i] = 1.0
-			0:   eshotwait[i] = 255.0
-			_:   eshotwait[i] = 20.0
+			252: eshotwait[i] = 252.0 / 30.0
+			0:   eshotwait[i] = 9999.0
+			_:   eshotwait[i] = 20.0 / 30.0
 
 func _on_screen_entered():
 	set_process(true)
@@ -88,20 +88,20 @@ func refresh_weapon_cache():
 # PĘTLA GŁÓWNA
 # ============================================================================
 
-func _process(_delta):
+func _process(delta: float):
 	if not (get_parent() is PathFollow2D):
-		position += velocity
-	_process_shooting(_delta)
+		position += velocity * delta
+	_process_shooting(delta)
 
 # ============================================================================
 # SYSTEM STRZELANIA
 # ============================================================================
 
-func _process_shooting(_delta: float):
+func _process_shooting(delta: float):
 	for i in range(3):
 		if tur[i] == 0 or freq[i] == 0:
 			continue
-		eshotwait[i] -= 1
+		eshotwait[i] -= delta
 		if eshotwait[i] <= 0.0:
 			_fire_projectile(i)
 			eshotwait[i] += eshotwaitmax[i]
@@ -144,7 +144,7 @@ func _fire_projectile(direction_index: int):
 		projectile.ty            = int(weapon_data.get("ty", 0))
 		projectile.acceleration  = int(weapon_data.get("acceleration", 0))
 		projectile.accelerationx = int(weapon_data.get("accelerationx", 0))
-		projectile.duration      = float(pattern.get("del", 255))
+		projectile.duration      = float(pattern.get("del", 0.0))
 		projectile.global_position = global_position + Vector2(float(pattern.get("bx", 0)), float(pattern.get("by", 0)))
 
 		projectile_spawned.emit(projectile)

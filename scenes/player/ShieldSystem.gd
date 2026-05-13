@@ -1,6 +1,6 @@
 extends Node
 
-const SHIELD_WAIT = 15.0
+const SHIELD_WAIT = 0.5  # 15 klatek / 30 fps
 
 var player: CharacterBody2D
 
@@ -23,17 +23,15 @@ func load_shield_config():
 	else:
 		push_warning("ShieldSystem: brak danych tarczy (shield_id=%d)" % PlayerSetup.shield_id)
 
-func _physics_process(_delta): # Delta ignorowana
-	# 1. Odliczanie klatkowe
-	if _wait_timer > 0:
-		_wait_timer -= 1 # Odejmujemy po prostu 1 klatkę
-		
-	# 2. Regeneracja
-	if shield < shield_max and _wait_timer <= 0:
+func _physics_process(delta: float):
+	if _wait_timer > 0.0:
+		_wait_timer -= delta
+
+	if shield < shield_max and _wait_timer <= 0.0:
 		if player.power >= shield_t:
 			player.power -= shield_t
 			shield += 1.0
-			_wait_timer = SHIELD_WAIT # Resetujemy na 15 klatek
+			_wait_timer = SHIELD_WAIT
 
 func reload():
 	load_shield_config()

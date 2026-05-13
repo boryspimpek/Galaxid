@@ -8,8 +8,8 @@ func _ready():
 	if OS.is_debug_build() and start_dist > 0:
 		position.y = start_dist
 
-func _process(_delta):
-	position.y += scroll_speed
+func _process(delta: float):
+	position.y += float(scroll_speed) * 30.0 * delta
 
 func _connect_signals(node: Node):
 	for child in node.get_children():
