@@ -37,15 +37,17 @@ func _physics_process(delta: float):
 	velocity.x += float(accelerationx) * delta
 	velocity.y += float(acceleration) * delta
 
-	# KROK 2: Homing — step = 30²*delta (velocity i tx/ty w px/s; oryginał miał 1 Tyrian px/frame per frame)
+	# KROK 2: Homing — 900*delta = 1 Tyrian px/frame per frame, fps-niezależnie
+	# float(ty)/2 wynika ze zrównoważenia przeliczenia skali szybkości strzelania
 	if (tx != 0 or ty != 0) and is_instance_valid(_player):
-		var homing_step := 900.0 * delta
+		var homing_step := 900 * delta
 		if tx != 0:
 			velocity.x = move_toward(velocity.x, sign(_player.global_position.x - global_position.x) * float(tx), homing_step)
 		if ty != 0:
-			velocity.y = move_toward(velocity.y, sign(_player.global_position.y - global_position.y) * float(ty), homing_step)
+			velocity.y = move_toward(velocity.y, sign(_player.global_position.y - global_position.y) * float(ty)/2, homing_step)
 
-	position += velocity * 10 * delta
+	position.x += velocity.x * 4.0 * delta
+	position.y += velocity.y * 9.6 * delta
 
 	# KROK 3: Sprawdź czy pocisk żyje (duration już w sekundach z DataManagera; 0 = brak limitu)
 	if duration > 0.0:

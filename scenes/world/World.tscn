@@ -37,22 +37,25 @@ script = ExtResource("3_i1jm3")
 speed = 4.0
 
 [node name="smallAircraft" parent="LevelMap/Path2D/PathFollow2D" unique_id=119960324 instance=ExtResource("6_i1jm3")]
+position = Vector2(-224.21619, 769.6467)
 rotation = -1.5707964
+tur = [127, 0, 0]
+freq = [20, 0, 0]
 
 [node name="smallAircraft" parent="LevelMap" unique_id=1325041760 instance=ExtResource("6_i1jm3")]
-position = Vector2(512, 97)
-ymove = -1
+position = Vector2(583, -59)
+ymove = -2
 tur = [153, 0, 0]
 freq = [30, 0, 0]
 
 [node name="smallAircraft2" parent="LevelMap" unique_id=744426317 instance=ExtResource("6_i1jm3")]
-position = Vector2(263, -7)
+position = Vector2(-436, 44)
 ymove = -1
-tur = [153, 0, 0]
+tur = [59, 0, 0]
 freq = [30, 0, 0]
 
 [node name="smallAircraft3" parent="LevelMap" unique_id=1183608556 instance=ExtResource("6_i1jm3")]
-position = Vector2(795, 39)
+position = Vector2(1492, 13)
 xmove = -1
 ymove = 3
 tur = [62, 0, 0]
