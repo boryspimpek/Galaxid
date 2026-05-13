@@ -82,7 +82,7 @@ func _on_screen_exited():
 
 func refresh_weapon_cache():
 	for i in range(3):
-		_weapon_cache[i] = DataManager.get_weapon_by_id(tur[i]) if tur[i] != 0 else null
+		_weapon_cache[i] = DataManager.get_weapon_by_id(tur[i]) if tur[i] != 0 else {}
 
 # ============================================================================
 # PĘTLA GŁÓWNA

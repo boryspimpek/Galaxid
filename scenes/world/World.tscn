@@ -8,9 +8,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_qxiha"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 216, 218, 0, 0, 0, 0, 214, 796, 0, 0, 0, 0, 880, 541, 0, 0, 0, 0, 876, -204, 0, 0, 0, 0, -249, -200)
+"points": PackedVector2Array(0, 0, 0, 0, 216, 218, 0, 0, 0, 0, 215, 393, -335.25897, 0.5190053, 335.25897, -0.5190053, 554, 736, 0, 0, 0, 0, 908, 393, 0, 0, 0, 0, 906, 44, 68.003586, 77.539505, -68.003586, -77.539505, 822, -121, 0, 0, 0, 0, 602.80994, -204.51448, 0, 0, 0, 0, -249, -200)
 }
-point_count = 5
+point_count = 8
 
 [node name="World" type="Node2D" unique_id=1364436952]
 
@@ -31,10 +31,10 @@ curve = SubResource("Curve2D_qxiha")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Path2D" unique_id=508622972]
 position = Vector2(216, 218)
-rotation = 1.5742565
+rotation = 1.5765105
 loop = false
 script = ExtResource("3_i1jm3")
-speed = 4.0
+speed = 8.0
 
 [node name="smallAircraft" parent="LevelMap/Path2D/PathFollow2D" unique_id=119960324 instance=ExtResource("6_i1jm3")]
 position = Vector2(3.4570694e-06, -1.9073486e-06)
