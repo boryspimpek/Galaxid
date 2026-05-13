@@ -15,12 +15,10 @@ func _ready():
 
 func load_shield_config():
 	var shield_data = DataManager.get_shield_by_id(PlayerSetup.shield_id)
-	if not shield_data.is_empty():
-		var mpwr   = shield_data.get("protection", 0)        # mpwr: shield capacity
-		var tpwr   = shield_data.get("generator_needed", 0)  # tpwr: generator power needed
-		shield_t   = tpwr * 20
-		shield     = float(mpwr)
-		shield_max = float(mpwr * 2)
+	if shield_data:
+		shield_t   = shield_data.generator_needed * 20
+		shield     = float(shield_data.protection)
+		shield_max = float(shield_data.protection * 2)
 		print("ShieldSystem: shield=", shield, "/", shield_max, " shield_t=", shield_t, " (power/pkt)")
 	else:
 		push_warning("ShieldSystem: brak danych tarczy (shield_id=%d)" % PlayerSetup.shield_id)

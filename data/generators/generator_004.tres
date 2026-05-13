@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/GeneratorData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+generator_index = 4
+generator_name = "Standard MicroFusion"
+item_graphic = 245
+power = 25
+speed = 1
+cost = 10000

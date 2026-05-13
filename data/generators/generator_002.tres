@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/GeneratorData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+generator_index = 2
+generator_name = "Advanced MR-12"
+item_graphic = 243
+power = 14
+speed = 0
+cost = 2000

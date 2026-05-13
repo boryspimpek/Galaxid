@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/ShipData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+ship_index = 7
+ship_name = "Prototype Stalker-C"
+ship_graphic = 195
+item_graphic = 275
+ani = 2
+speed = 0
+armor = 28
+cost = 50000
+big_ship_graphic = 33

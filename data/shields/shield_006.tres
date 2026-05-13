@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/ShieldData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+shield_index = 6
+shield_name = "MicroCorp LXS Class B"
+generator_needed = 6
+protection = 7
+cost = 4000

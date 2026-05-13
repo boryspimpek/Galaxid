@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/ShipData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+ship_index = 3
+ship_name = "Gencore Phoenix"
+ship_graphic = 157
+item_graphic = 273
+ani = 2
+speed = -1
+armor = 17
+cost = 12000
+big_ship_graphic = 28

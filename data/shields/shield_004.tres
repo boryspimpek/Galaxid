@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/ShieldData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+shield_index = 4
+shield_name = "Gencore High Energy Shield"
+generator_needed = 6
+protection = 5
+cost = 1000

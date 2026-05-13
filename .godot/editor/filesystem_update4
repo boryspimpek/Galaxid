@@ -1,3 +1,6 @@
 res://scripts/managers/SoundManager.gd
 res://scenes/world/World.tscn
 res://default_bus_layout.tres
+res://scenes/player/player.gd
+res://scripts/core/DataManager.gd
+res://scenes/player/ShieldSystem.gd

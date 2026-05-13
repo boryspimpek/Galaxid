@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/ShipData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+ship_index = 9
+ship_name = "USP Fang Light Fighter"
+ship_graphic = 233
+item_graphic = 277
+ani = 2
+speed = 0
+armor = 14
+cost = 8000
+big_ship_graphic = 32

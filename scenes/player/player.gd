@@ -9,7 +9,7 @@ var power: float = 900.0
 var power_max: float = 900.0
 var power_add: float = 0.0
 
-var ship_data: Dictionary = {}
+var ship_data: ShipData = null
 
 # --- Systemy (child nodes) ---
 @onready var weapon_system: Node = $WeaponSystem
@@ -31,17 +31,14 @@ func _ready():
 	
 func load_ship_data():
 	var s_id = PlayerSetup.ship_id
-	var data = DataManager.get_ship_by_id(s_id)
-	
-	if data:
-		ship_data = data
-		print("Player: Statek załadowany: ", data.get("name", "Nieznany"))
+	ship_data = DataManager.get_ship_by_id(s_id)
+	if ship_data:
+		print("Player: Statek załadowany: ", ship_data.ship_name)
 	else:
 		push_error("Player: BŁĄD: Nie znaleziono danych dla statku o ID: " + str(s_id))
 
 func apply_ship_stats():
-	var stats = ship_data.get("stats", {})
-	armor = stats.get("armor", 10)
+	armor = ship_data.armor if ship_data else 10
 	max_armor = armor
 	print("Player: Ship → armor=", armor)
 

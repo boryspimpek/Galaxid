@@ -49,9 +49,9 @@ func _update_labels():
 	_lbl_weapon.text = _shorten(wp.get("name", "?"))
 	_lbl_level.text = str(PlayerSetup.front_power_level)
 	var gen = DataManager.get_generator_by_id(PlayerSetup.generator_id)
-	_lbl_gen.text = _shorten(gen.get("name", "?"))
+	_lbl_gen.text = _shorten(gen.generator_name if gen else "?")
 	var sh = DataManager.get_shield_by_id(PlayerSetup.shield_id)
-	_lbl_shield.text = _shorten(sh.get("name", "?"))
+	_lbl_shield.text = _shorten(sh.shield_name if sh else "?")
 
 func _reload_systems():
 	if _weapon_system:

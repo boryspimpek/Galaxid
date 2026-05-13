@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/resources/ShipData.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+ship_index = 13
+ship_name = "The Stalker 21.126"
+ship_graphic = 195
+item_graphic = 275
+ani = 2
+speed = 0
+armor = 30
+cost = 65535
+big_ship_graphic = 33

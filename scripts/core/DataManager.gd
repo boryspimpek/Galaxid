@@ -13,12 +13,15 @@ var generators_cache: Array = []
 
 # Flaga ładowania
 var _ships_loaded: bool = false
+const SHIPS_DIR = "res://data/ships/"
 var _enemies_loaded: bool = false
 var _weapons_loaded: bool = false
 var _shields_loaded: bool = false
+const SHIELDS_DIR = "res://data/shields/"
 var _weapon_ports_loaded: bool = false
 var _sidekicks_loaded: bool = false
 var _generators_loaded: bool = false
+const GENERATORS_DIR = "res://data/generators/"
 
 # ============================================================================
 # PODSTAWOWA FUNKCJA ŁADOWANIA JSON
@@ -46,19 +49,28 @@ func load_json(file_path: String) -> Variant:
 
 func get_ships() -> Array:
 	if not _ships_loaded:
-		var data = load_json("res://data/ships.json")
-		if data:
-			ships_cache = data
-			_ships_loaded = true
-			print("DataManager: Załadowano ", ships_cache.size(), " statków")
+		var dir = DirAccess.open(SHIPS_DIR)
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			while file_name != "":
+				if file_name.ends_with(".tres"):
+					var res = load(SHIPS_DIR + file_name) as ShipData
+					if res:
+						ships_cache.append(res)
+				file_name = dir.get_next()
+			dir.list_dir_end()
+			ships_cache.sort_custom(func(a, b): return a.ship_index < b.ship_index)
+		_ships_loaded = true
+		print("DataManager: Załadowano ", ships_cache.size(), " statków")
 	return ships_cache
 
-func get_ship_by_id(id: int) -> Dictionary:
+func get_ship_by_id(id: int) -> ShipData:
 	for ship in get_ships():
-		if ship.get("index", 0) == id:
+		if ship.ship_index == id:
 			return ship
 	push_error("DataManager: Nie znaleziono statku o ID=", id)
-	return {}
+	return null
 
 # ============================================================================
 # PRZECIWNICY (enemies.json)
@@ -153,19 +165,28 @@ func get_weapon_power_use(weapon_port_index: int) -> int:
 
 func get_shields() -> Array:
 	if not _shields_loaded:
-		var data = load_json("res://data/shields.json")
-		if data:
-			shields_cache = data
-			_shields_loaded = true
-			print("DataManager: Załadowano ", shields_cache.size(), " tarcz")
+		var dir = DirAccess.open(SHIELDS_DIR)
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			while file_name != "":
+				if file_name.ends_with(".tres"):
+					var res = load(SHIELDS_DIR + file_name) as ShieldData
+					if res:
+						shields_cache.append(res)
+				file_name = dir.get_next()
+			dir.list_dir_end()
+			shields_cache.sort_custom(func(a, b): return a.shield_index < b.shield_index)
+		_shields_loaded = true
+		print("DataManager: Załadowano ", shields_cache.size(), " tarcz")
 	return shields_cache
 
-func get_shield_by_id(id: int) -> Dictionary:
+func get_shield_by_id(id: int) -> ShieldData:
 	for shield in get_shields():
-		if shield.get("index", 0) == id:
+		if shield.shield_index == id:
 			return shield
 	push_error("DataManager: Nie znaleziono tarczy o ID=", id)
-	return {}
+	return null
 
 # ============================================================================
 # SIDEKICKS (sidekicks.json)
@@ -193,26 +214,32 @@ func get_sidekick_by_id(id: int) -> Dictionary:
 
 func get_generators() -> Array:
 	if not _generators_loaded:
-		var data = load_json("res://data/generators.json")
-		if data:
-			generators_cache = data
-			_generators_loaded = true
-			print("DataManager: Załadowano ", generators_cache.size(), " generatorów")
+		var dir = DirAccess.open(GENERATORS_DIR)
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			while file_name != "":
+				if file_name.ends_with(".tres"):
+					var res = load(GENERATORS_DIR + file_name) as GeneratorData
+					if res:
+						generators_cache.append(res)
+				file_name = dir.get_next()
+			dir.list_dir_end()
+			generators_cache.sort_custom(func(a, b): return a.generator_index < b.generator_index)
+		_generators_loaded = true
+		print("DataManager: Załadowano ", generators_cache.size(), " generatorów")
 	return generators_cache
 
-func get_generator_by_id(id: int) -> Dictionary:
+func get_generator_by_id(id: int) -> GeneratorData:
 	for generator in get_generators():
-		if generator.get("index", 0) == id:
+		if generator.generator_index == id:
 			return generator
 	push_error("DataManager: Nie znaleziono generatora o ID=", id)
-	return {}
+	return null
 
 func get_generator_power(generator_id: int) -> int:
 	var generator = get_generator_by_id(generator_id)
-	if generator.is_empty():
-		return 0
-	var stats = generator.get("stats", {})
-	return stats.get("power", 0)
+	return generator.power if generator else 0
 
 # ============================================================================
 # POZIOMY (lvl*.json)
