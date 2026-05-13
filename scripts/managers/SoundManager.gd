@@ -9,8 +9,10 @@ var _path_map: Dictionary = {}   # sound_id -> file path
 
 func _ready():
 	_weapon_player = AudioStreamPlayer.new()
+	_weapon_player.bus = "Weapons"
 	add_child(_weapon_player)
 	_impact_player = AudioStreamPlayer.new()
+	_impact_player.bus = "Explosions"
 	add_child(_impact_player)
 	_scan_sounds()
 

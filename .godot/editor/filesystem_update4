@@ -1,4 +1,3 @@
+res://scripts/managers/SoundManager.gd
 res://scenes/world/World.tscn
-res://scenes/enemy/Enemy.gd
-res://scenes/enemy_projectile/EnemyProjectile.gd
-res://scenes/world/LevelRuler.gd
+res://default_bus_layout.tres
