@@ -11,7 +11,7 @@ extends Node2D
 @export var show_in_game: bool = false         ## czy linijka widoczna w trakcie gry
 
 const FPS        := 30
-const LEVEL_W    := 1152
+const LEVEL_W    := 1080
 const FONT_SIZE  := 24
 
 func _ready() -> void:

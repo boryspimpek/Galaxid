@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b05sp330q141y"]
+
+[ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_q31be"]
+[ext_resource type="Texture2D" uid="uid://b6wi3tffwt2d" path="res://assets/enemies/Copilot_20260507_195821-removebg-preview.png" id="2_m5u08"]
+
+[node name="smallAircraft" unique_id=119960324 instance=ExtResource("1_q31be")]
+
+[node name="Visual" parent="." index="0" unique_id=1405638014]
+position = Vector2(0, -3)
+texture = ExtResource("2_m5u08")
+offset = Vector2(0.5, 0)
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1" unique_id=291847561]
+rect = Rect2(-198, -217, 397, 308)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2" unique_id=660404984]
+polygon = PackedVector2Array(200, -20, 182.27652, -44.3322, 30, -73, 16, -155, 71, -165, 81, -182, 71, -195, 0, -216, -70, -195, -81, -182, -70, -165, -15, -155, -29, -73, -183, -45, -198, -23, -187, 0, 0, 90, 186, 0)

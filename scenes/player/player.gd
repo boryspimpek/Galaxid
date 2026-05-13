@@ -68,12 +68,12 @@ func _physics_process(_delta):
 	_clamp_to_screen()
 	weapon_system.set_firing(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))
 
+const PLAY_AREA := Vector2(1080, 1920)
+
 func _clamp_to_screen():
-	var screen_size = get_viewport_rect().size
-	var shape = $CollisionShape2D.shape
-	var margin: float = shape.radius
-	position.x = clamp(position.x, margin, screen_size.x - margin)
-	position.y = clamp(position.y, margin, screen_size.y - margin)
+	var margin: float = $CollisionShape2D.shape.radius
+	position.x = clamp(position.x, margin, PLAY_AREA.x - margin)
+	position.y = clamp(position.y, margin, PLAY_AREA.y - margin)
 
 # ============================================================================
 # 3. DEBUG

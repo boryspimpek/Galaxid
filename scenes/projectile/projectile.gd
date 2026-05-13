@@ -77,8 +77,8 @@ func _physics_process(_delta):
 	velocity += acceleration
 	
 	# Krok 3: Prędkość → pozycja
-	var move_x = velocity.x * 4
-	var move_y = velocity.y * 4
+	var move_x = velocity.x * 4 # skalowanie prędkości 288x200 -> 1080x1920
+	var move_y = velocity.y * 9.6
 	position += Vector2(move_x, move_y)
 	
 	# Krok 5: Ruch okrężny (circlesize) - DODAWANE PO normalnym ruchu
