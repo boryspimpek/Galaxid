@@ -1,17 +1,16 @@
 [gd_scene format=3 uid="uid://d3vnnnd2fe8u"]
 
 [ext_resource type="PackedScene" uid="uid://bte7ofi7pgn5b" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
+[ext_resource type="Script" uid="uid://de0wqltyclsk0" path="res://scenes/enemy/EnemyPath.gd" id="3_i1jm3"]
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
-[ext_resource type="PackedScene" uid="uid://iddg8culgc7q" path="res://UI/Hud.tscn" id="4_gbddb"]
-[ext_resource type="Script" uid="uid://dfe57xs3hu6ee" path="res://scenes/enemies/PathConfig.gd" id="5_i1jm3"]
 [ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/small_aircraft.tscn" id="6_i1jm3"]
 [ext_resource type="Script" uid="uid://cjwf83wntumr8" path="res://scenes/world/LevelRuler.gd" id="7_ruler"]
 
 [sub_resource type="Curve2D" id="Curve2D_qxiha"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -3, -4, 0, 0, 0, 0, 676, 400)
+"points": PackedVector2Array(0, 0, 0, 0, 216, 218, 0, 0, 0, 0, 298, 362, 0, 0, 0, 0, 788, 364)
 }
-point_count = 2
+point_count = 3
 
 [node name="World" type="Node2D" unique_id=1364436952]
 
@@ -23,26 +22,16 @@ scroll_speed = 4
 script = ExtResource("7_ruler")
 show_in_game = true
 
+[node name="Path2D" type="Path2D" parent="LevelMap" unique_id=1719500132]
+curve = SubResource("Curve2D_qxiha")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Path2D" unique_id=508622972]
+position = Vector2(216, 218)
+rotation = 1.0531472
+script = ExtResource("3_i1jm3")
+
+[node name="smallAircraft" parent="LevelMap/Path2D/PathFollow2D" unique_id=119960324 instance=ExtResource("6_i1jm3")]
+rotation = -1.5707964
+
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(521, 716)
-
-[node name="smallAircraft" parent="." unique_id=119960324 instance=ExtResource("6_i1jm3")]
-position = Vector2(255, 253)
-ymove = -1
-wybran_sciezka = "Path2D"
-
-[node name="Path2D" type="Path2D" parent="smallAircraft" unique_id=1443952230]
-curve = SubResource("Curve2D_qxiha")
-script = ExtResource("5_i1jm3")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="smallAircraft/Path2D" unique_id=798264543]
-position = Vector2(-3, -4)
-rotation = 0.5367295
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="smallAircraft/Path2D/PathFollow2D" unique_id=36672770]
-remote_path = NodePath("../../..")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1006581802]
-
-[node name="HUD" parent="CanvasLayer" unique_id=1839674698 instance=ExtResource("4_gbddb")]
-visible = false
