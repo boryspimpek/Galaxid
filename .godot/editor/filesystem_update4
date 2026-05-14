@@ -1,14 +1,2 @@
-res://scripts/managers/SoundManager.gd
-res://scenes/world/World.tscn
-res://default_bus_layout.tres
-res://scenes/player/player.gd
-res://scripts/core/DataManager.gd
-res://scenes/player/ShieldSystem.gd
 res://scenes/enemy/Enemy.gd
-res://scenes/enemy/EnemyPath.gd
-res://scenes/enemy_projectile/EnemyProjectile.gd
-res://scenes/projectile/projectile.gd
-res://scenes/world/LevelManager.gd
-res://scripts/core/GameConstants.gd
-res://scripts/core/PlayerSetup.gd
-res://scenes/player/WeaponSystem.gd
+res://scenes/world/World.tscn

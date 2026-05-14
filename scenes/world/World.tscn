@@ -41,4 +41,4 @@ position = Vector2(3.4570694e-06, -1.9073486e-06)
 rotation = -1.5707964
 armor = 50
 tur = [127, 0, 0]
-freq = [30, 0, 0]
+freq = [1, 0, 0]

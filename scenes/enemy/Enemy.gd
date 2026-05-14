@@ -64,11 +64,8 @@ func _ready():
 
 func _init_shooting_timers():
 	for i in range(3):
-		eshotwaitmax[i] = float(freq[i]) / 30.0
-		match tur[i]:
-			252: eshotwait[i] = 252.0 / 30.0
-			0:   eshotwait[i] = 9999.0
-			_:   eshotwait[i] = 20.0 / 30.0
+		eshotwaitmax[i] = freq[i]
+		eshotwait[i] = freq[i]
 
 func _on_screen_entered():
 	set_process(true)

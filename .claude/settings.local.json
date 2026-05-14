@@ -3,7 +3,9 @@
     "allow": [
       "Bash(python -c ' *)",
       "Bash(git -C \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\" log --oneline -15)",
-      "Bash(git -C \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\" show b01699c9 -- project.godot)"
+      "Bash(git -C \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\" show b01699c9 -- project.godot)",
+      "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\" -Recurse -Force)",
+      "Bash(Select-Object FullName)"
     ]
   }
 }

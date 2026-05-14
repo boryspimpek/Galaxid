@@ -1,211 +1,491 @@
-# GALAXID — DOKUMENTACJA PROJEKTU
+# GALAXID — Dokumentacja projektu dla Claude
 
-## Ogólny opis
-Galaxid to remake "Tyrian 2000" (1995) w Godot 4.6. Gra to pionowy shoot-'em-up (viewport 360×200, skalowany do 1440×800, max_fps=30). Logika ruchu, broni i wrogów bazuje na jednostkach Tyrian (px/klatkę).
+## Czym jest projekt
+
+Klasyczny shoot'em up (shmup) w stylu Tyrian (1995). Gra mobilna portrait, silnik Godot 4.6 Forward Plus, GDScript. Gałąź robocza: `GalaxidFree`.
 
 ---
 
-## STRUKTURA KATALOGÓW
+## Konfiguracja projektu
+
+```
+Rozdzielczość : 1080×1920 (portrait)
+FPS           : 60 (logika fizyki: 30 fps)
+Physics engine: Jolt Physics
+Stretch mode  : canvas_items
+Główna scena  : res://scenes/world/World.tscn
+```
+
+**project.godot** — kluczowe sekcje:
+- `physics/common/physics_ticks_per_second = 30`
+- `physics/common/physics_interpolation = true`
+- Autoloads: DataManager, PlayerSetup, GameConstants, SoundManager
+
+---
+
+## Struktura katalogów
 
 ```
 Galaxid/
-├── project.godot                    (Godot 4.6, max_fps=30, viewport 360×200)
-├── UI/
-│   ├── Hud.gd / Hud.tscn           (paski power/shield/armor, wybór broni)
 ├── scenes/
-│   ├── world/
-│   │   ├── World.tscn               (główna scena: Player + LevelMap + HUD)
-│   │   ├── LevelManager.gd          (skrypt LevelMap: scroll + routing pocisków)
-│   │   └── LevelRuler.gd            (@tool wizualna linijka czasowa w edytorze)
-│   ├── player/
-│   │   ├── Player.tscn / player.gd  (CharacterBody2D, SPEED_CAP=4, friction=2)
-│   │   ├── DamageSystem.gd/.tscn    (shield absorbuje pierwszy, potem armor)
-│   │   ├── ShieldSystem.gd/.tscn    (regen co 15 klatek, kosztuje power)
-│   │   └── WeaponSystem.gd/.tscn    (konfiguracja z DataManager, shoot())
-│   ├── enemy/
-│   │   ├── Enemy.tscn               (baza: Area2D + Visual + CollisionShape2D + VisibleOnScreenNotifier2D)
-│   │   └── Enemy.gd                 (fizyka, strzelanie, ścieżki, śmierć)
-│   ├── enemies/
-│   │   ├── Enemy_001.tscn … Enemy_999.tscn  (350+ gotowych wrogów)
-│   │   └── PathConfig.gd            (@tool na Path2D: speed, speed_curve, scroll_speed, auto_advance)
-│   ├── projectile/
-│   │   ├── Projectile.tscn / projectile.gd  (pocisk gracza: velocity, circlesize, lifetime)
-│   ├── enemy_projectile/
-│   │   ├── EnemyProjectile.tscn / EnemyProjectile.gd  (pocisk wroga: homing, acceleration, duration)
-│   ├── explosions/
-│   │   ├── Explosion.tscn / Explosion.gd       (14 typów, 3-12 klatek)
-│   │   └── RepExplosion.tscn / RepExplosion.gd  (wybuchy cykliczne, burst co 3-4 klatki)
-│   └── background/                  (NIEUŻYWANE — zachowane na dysku)
-│       ├── Background.tscn, TileBackground.gd, TileLayer.gd, Starfield.gd
+│   ├── world/          # World.tscn, LevelManager.gd, LevelRuler.gd
+│   ├── player/         # Player.gd, WeaponSystem.gd, DamageSystem.gd, ShieldSystem.gd
+│   ├── enemy/          # Enemy.gd, EnemyPath.gd
+│   ├── enemies/        # Konkretne sceny wrogów (small_aircraft.tscn itp.)
+│   ├── enemy_projectile/ # EnemyProjectile.gd
+│   ├── projectile/     # projectile.gd
+│   └── explosions/     # Explosion.gd, RepExplosion.gd
 ├── scripts/
-│   ├── core/
-│   │   ├── DataManager.gd           (Autoload: ładuje JSON, cache broni/statków/wrogów)
-│   │   ├── GameConstants.gd         (Autoload: preload 4 scen — pociski + eksplozje)
-│   │   └── PlayerSetup.gd           (Autoload: stan ekwipunku gracza)
-│   └── managers/
-│       ├── SoundManager.gd          (Autoload: kanały audio)
-│       ├── EnemySpawner.gd          (NIEUŻYWANY — stary system eventowy)
-│       ├── EnemyController.gd       (NIEUŻYWANY — stary system eventowy)
-│       └── EventProcessor.gd        (NIEUŻYWANY — stary system eventowy)
-├── demo/                            (demo 3D Terrain3D — niezależne od gry)
-├── addons/terrain_3d/
-└── data/
-    ├── ships.json, enemies.json, weapon.json, shields.json, generators.json
-    ├── lvl01.json … lvl99.json      (NIEUŻYWANE — stary system eventowy)
-    ├── enemy_sprites/               (PNG sprite wrogów)
-    ├── weapon_sprites/              (PNG grafiki broni)
-    ├── explosion_sprites/           (PNG animacje eksplozji)
-    ├── extracted_sounds/            (WAV audio)
-    └── extracted_weapon_sprites/    (PNG pociski wrogów)
+│   ├── core/           # DataManager.gd, GameConstants.gd, PlayerSetup.gd
+│   ├── managers/       # SoundManager.gd
+│   └── resources/      # ShipData.gd, ShieldData.gd, GeneratorData.gd
+├── UI/                 # Hud.tscn, Hud.gd
+├── data/
+│   ├── weapon.json          # ~1MB, wszystkie dane broni
+│   ├── weapon_ports.json    # Porty broni i tryby strzelania
+│   ├── ships/               # 13 plików .tres (ShipData)
+│   ├── shields/             # 10 plików .tres (ShieldData)
+│   ├── generators/          # 6 plików .tres (GeneratorData)
+│   ├── weapon_sprites/      # Sprite'y pocisków (z Tyriana)
+│   ├── explosion_sprites/   # Animacje eksplozji
+│   └── extracted_sounds/    # Dźwięki WAV
+├── demo/               # Demo.tscn, CodeGeneratedDemo.tscn, NavigationDemo.tscn
+└── assets/             # Ikony, grafiki
 ```
 
 ---
 
-## ARCHITEKTURA — AKTUALNA (po refaktorze 2026-05-06)
+## Autoloady (singletony)
 
-### Hierarchia sceny World.tscn
-```
-World (Node2D)
-├── Player (CharacterBody2D)          ← stały w przestrzeni świata
-│   ├── WeaponSystem
-│   ├── DamageSystem
-│   └── ShieldSystem
-├── LevelMap (Node2D, LevelManager.gd) ← scrolluje w dół, zawiera wrogów
-│   ├── LevelRuler                    ← wizualna linijka (@tool, opcjonalna)
-│   ├── Enemy_XXX (instancje)         ← przeciągane z scenes/enemies/
-│   └── …
-└── CanvasLayer
-    └── HUD
-```
-
-### LevelManager.gd (scrypt LevelMap)
-- `@export var scroll_speed: int = 2` — px/klatkę w dół
-- `_process`: `position.y += scroll_speed` (przesuwa całą mapę w dół)
-- `_ready`: rekurencyjnie łączy sygnał `projectile_spawned` od wszystkich wrogów
-- `_on_projectile_spawned`: dodaje pocisk do `get_parent()` (World) — nie scrolluje z mapą
-
-### LevelRuler.gd (@tool)
-- Wizualna linijka z markerami co 1s/5s/10s w przestrzeni LevelMap
-- Zielona strefa Y=0..200 = widoczne od startu
-- `@export scroll_speed`, `level_length_seconds`, `show_in_game`
-- **Konwencja:** 1 sekunda = `scroll_speed × 30` px; Y=-600 przy speed=2 ≈ 10 sekund
-
-### Konwencja rozmieszczania wrogów
-| Czas pojawienia | Pozycja Y w LevelMap (speed=2, 30fps) |
-|---|---|
-| od razu | 0 … 200 |
-| 5 sekund | −300 |
-| 10 sekund | −600 |
-| 30 sekund | −1800 |
-| 1 minuta | −3600 |
+| Singleton | Plik | Rola |
+|-----------|------|------|
+| `DataManager` | `scripts/core/DataManager.gd` | Cache i ładowanie danych JSON/.tres |
+| `PlayerSetup` | `scripts/core/PlayerSetup.gd` | Rejestr wybranego ekwipunku gracza |
+| `GameConstants` | `scripts/core/GameConstants.gd` | Preload scen |
+| `SoundManager` | `scripts/managers/SoundManager.gd` | Obsługa dźwięku z cache |
 
 ---
 
-## SKRYPTY — TABELA PLIKÓW
+## Warstwy fizyki (Collision Layers)
 
-| Plik | Linie | Cel | Kluczowe metody |
-|------|-------|-----|-----------------|
-| **Core (Autoload)** | | | |
-| DataManager.gd | 336 | Cache JSON (statki, wrogowie, bronie) | load_json, get_*_by_id |
-| GameConstants.gd | 28 | Preload 4 PackedScenes | enemy_projectile_scene, explosion_scene |
-| PlayerSetup.gd | 37 | Stan ekwipunku gracza | (właściwości) |
-| SoundManager.gd | 55 | Kanały audio | play_weapon_sound, play_sound |
-| **Świat** | | | |
-| LevelManager.gd | ~20 | Scroll LevelMap + routing pocisków | _process, _connect_signals, _on_projectile_spawned |
-| LevelRuler.gd | ~80 | @tool linijka edytora | _draw |
-| **Gracz & UI** | | | |
-| player.gd | 165 | Fizyka gracza, strzały | _physics_process, load_ship_data |
-| DamageSystem.gd | 31 | Podział obrażeń (shield→armor) | take_damage |
-| ShieldSystem.gd | 45 | Regeneracja tarczy | load_shield_config, take_shield_damage |
-| WeaponSystem.gd | 150 | Logika strzelania | load_weapon_config, shoot, create_projectile |
-| Hud.gd | 119 | Paski UI, zmiana broni | _update_labels |
-| **Wrogowie** | | | |
-| Enemy.gd | ~290 | Baza wrogów (AI, strzelanie, ścieżki, śmierć) | _process, _process_shooting, take_damage, die |
-| PathConfig.gd | 27 | @tool konfiguracja Path2D | _process (scroll_speed, auto_advance) |
-| **Pociski** | | | |
-| projectile.gd | 116 | Pocisk gracza | _physics_process, _init_circlesize |
-| EnemyProjectile.gd | 94 | Pocisk wroga | _physics_process, homing, acceleration |
-| **Eksplozje** | | | |
-| Explosion.gd | 57 | Jedna eksplozja | setup, _process |
-| RepExplosion.gd | 63 | Eksplozje cykliczne | setup, _fire_burst |
+| Bit | Nazwa | Kto używa |
+|-----|-------|-----------|
+| 1 | Player | Gracz (CharacterBody2D) |
+| 2 | Enemies | Wrogowie (Area2D) |
+| 4 | PlayerProjectile | Pociski gracza (Area2D) |
+| 8 | EnemyProjectile | Pociski wrogów (Area2D) |
+
+**Collision masks:**
+- Gracz: `layer=1, mask=0` — gracz nie wykrywa nic, to wrogowie go wykrywają
+- Wróg: `layer=2, mask=5` (1+4) — wykrywa gracza i pociski gracza
+- Pocisk gracza: `layer=4, mask=2` — wykrywa wrogów
+- Pocisk wroga: `layer=8, mask=1` — wykrywa gracza
 
 ---
 
-## ENEMY.GD — SZCZEGÓŁY
+## Główne komponenty
 
-### Inicjalizacja (_ready)
-- `velocity = Vector2(float(xmove), float(ymove))` — pobiera z inspektora sceny
-- `projectile_scene = GameConstants.enemy_projectile_scene` — auto-ustawiane
-- `set_process(false)` — wróg nieaktywny dopóki nie wejdzie na ekran
-- `screen_entered` → `set_process(true)` — aktywacja po wejściu w viewport
-- `screen_exited` → `_on_screen_exited()` — usuwa tylko gdy NIE jest na ścieżce
+### Player (`scenes/player/Player.gd`)
+`extends CharacterBody2D`
 
-### _on_screen_exited — ważna zasada
+Kluczowe zmienne:
+- `armor: int` — pancerz
+- `power: float` — energia (regeneruje się)
+- `power_max: float` — max energia
+- `power_add: float` — szybkość regeneracji (obliczona z generatora × 30)
+- `ship_data: ShipData`
+
+Węzły-dzieci: `WeaponSystem`, `DamageSystem`, `ShieldSystem`
+
+Ruch: śledzenie pozycji myszy w `_physics_process`.
+
+---
+
+### WeaponSystem (`scenes/player/WeaponSystem.gd`)
+`extends Node`
+
+Kluczowe zmienne:
+- `current_weapon_index: int` — indeks portu z weapon_ports.json
+- `power_level: int` — poziom mocy (1–11)
+- `weapon_data: Dictionary` — pełne dane broni z weapon.json
+- `pattern_index: int` — tracker dla multi-shot
+
+Przepływ strzelania:
+```
+shoot()
+  → sprawdź power_use (PlayerSetup → DataManager)
+  → player.power -= power_use
+  → dla każdego pattern w multi:
+      create_projectile(attack, sx, sy, bx, by, sg, del, aim, ...)
+```
+
+Ładowanie broni: `load_weapon_config()` → `DataManager.get_weapon_firing_index(port_id, mode, power)` → `DataManager.get_weapon_by_id(firing_id)`
+
+---
+
+### Enemy (`scenes/enemy/Enemy.gd`)
+`extends Area2D`
+
+Eksportowane właściwości:
+- `armor: int` — życie
+- `esize: int` — 0=mały, 1=duży
+- `value: int` — punkty
+- `explosiontype: int` — bit 0: naziemny/powietrzny; bity 1+: liczba wybuchów
+- `xmove, ymove: int` — prędkość (w Tyrian px/frame, skalowana × 30)
+- `tur[3]: Array` — ID broni [dół, prawo, lewo]
+- `freq[3]: Array` — częstotliwość strzelania
+
+Strzelanie: `eshotwait[i] -= delta` → gdy ≤ 0 → `_fire_projectile(i)`
+
+Sygnał: `projectile_spawned(projectile)` — odbierany przez LevelManager
+
+Śmierć: `die()` → `_spawn_death_explosion()` → `queue_free()`
+- Mały wróg: 1 eksplozja
+- Duży wróg: 4 eksplozje w rogach
+
+---
+
+### Projectile (`scenes/projectile/projectile.gd`)
+`extends Area2D`
+
+Parametry:
+- `velocity: Vector2` — prędkość px/s
+- `acceleration: Vector2` — przyspieszenie px/s²
+- `damage: int`
+- `lifetime: float` — 0 = nieskończony
+- `shot_graphic: int` — ID sprite'a
+- `circlesize: int` — ruch okrężny/eliptyczny
+
+**Circlesize encoding:**
+- 1–19: okrąg (radius_x = radius_y = circlesize)
+- ≥ 20: elipsa (radius_x = circlesize % 20, radius_y = circlesize / 20)
+
+Kolizja: `_on_area_entered(enemy)` → `enemy.take_damage(damage)` → `queue_free()`
+
+---
+
+### EnemyProjectile (`scenes/enemy_projectile/EnemyProjectile.gd`)
+`extends Area2D`
+
+Parametry:
+- `velocity: Vector2`
+- `damage: int`
+- `sprite_id: int`
+- `tx, ty: int` — prędkość homingu (px/frame)
+- `acceleration, accelerationx: int`
+- `duration: float` — czas życia
+
+Homing:
 ```gdscript
-func _on_screen_exited():
-    if _active_follow:
-        return   # ścieżka trwa — ignoruj (visual może wychodzić poza ekran)
-    queue_free()
+homing_step = 900 * delta
+velocity.x = move_toward(velocity.x, sign(player_dir_x) * tx, homing_step)
+velocity.y = move_toward(velocity.y, sign(player_dir_y) * ty, homing_step)
 ```
-**Dlaczego:** Godot śledzi granice canvas całego drzewa (łącznie z Visual przesuwanym przez RemoteTransform2D). Wróg lecący w górę → visual wychodzi przez górę ekranu → `screen_exited` → bez tej ochrony byłby usuwany w środku ścieżki.
 
-### Zakończenie ścieżki
+---
+
+### DamageSystem (`scenes/player/DamageSystem.gd`)
+`extends Node`
+
+`take_damage(amount)` → tarcza absorbuje część → `player.armor -= reszta` → jeśli ≤ 0: `_on_player_death()`
+
+**Uwaga:** `_on_player_death()` jest jeszcze niezaimplementowane (TODO).
+
+---
+
+### ShieldSystem (`scenes/player/ShieldSystem.gd`)
+`extends Node`
+
+- `shield: float` — aktualna tarcza
+- `shield_max: float` — max (= protection × 2)
+- `shield_t: int` — koszt energii za punkt regeneracji (= generator_needed × 20)
+
+Regeneracja co 0.5s, koszt `shield_t` energii, zysk +1.0 tarczy.
+
+---
+
+### Explosion (`scenes/explosions/Explosion.gd`)
+
+Typy (0–13):
+- 0: hit_flash, 1: small_enemy
+- 2–5: large_ground (rogi), 6: white_smoke
+- 7–10: large_air (rogi), 11: flash_short, 12: medium, 13: brief
+
+Cache sprite'ów per typ; animacja klatka po klatce w `_process`; `queue_free()` po ostatniej klatce.
+
+### RepExplosion (`scenes/explosions/RepExplosion.gd`)
+
+Seria eksplozji co 3–4 klatki z jitterem. `_bursts_left` kontroluje liczbę serii.
+
+---
+
+### LevelManager (`scenes/world/LevelManager.gd`)
+`extends Node2D`
+
+- `scroll_speed: int = 2` — prędkość scrollu tła w Tyrian px/frame (domyślna eksportowana wartość)
+- Ruch: `position.y += float(scroll_speed) * 30.0 * delta`
+- `start_dist: int = 0` — debug offset startowy mapy
+- Rekursywnie podłącza sygnał `projectile_spawned` od wszystkich Enemy w scenie
+- `_on_projectile_spawned(projectile)` → `add_child(projectile)`
+
+---
+
+### HUD (`UI/Hud.gd`)
+`extends CanvasLayer`
+
+Paski: Power, Shield, Armor. Przyciski prev/next dla broni, tarczy, generatora.
+
+`_reload_systems()` — po zmianie ekwipunku w UI: przeładowuje WeaponSystem, ShieldSystem, PowerRegeneration.
+
+---
+
+## DataManager — API
+
+### Statki
 ```gdscript
-if _active_follow.progress_ratio >= 1.0:
-    _active_follow = null   # przejście na swobodny ruch (velocity)
-    # screen_exited wyczyści wroga gdy opuści ekran
+DataManager.get_ships() → Array[ShipData]
+DataManager.get_ship_by_id(id: int) → ShipData
 ```
+Źródło: `res://data/ships/*.tres`
 
-### Tryby ruchu
-1. **Swobodny** (`wybran_sciezka == ""`): `position += velocity` każdą klatkę
-2. **Ścieżka** (`wybran_sciezka != ""`): PathFollow2D via RemoteTransform2D przesuwa Visual i CollisionShape2D; po zakończeniu → tryb swobodny
+### Bronie
+```gdscript
+DataManager.get_weapons() → Array
+DataManager.get_weapon_by_id(id: int) → Dictionary
+DataManager.get_weapon_firing_index(port_id, mode, power) → int
+DataManager.get_weapon_power_use(port_id) → int
+```
+Źródło: `res://data/weapon.json` + `weapon_ports.json`
 
-### PathConfig.gd (na Path2D)
-- `speed`: px/klatkę wzdłuż krzywej
-- `speed_curve`: Curve modulująca prędkość (0..1 → mnożnik)
-- `scroll_speed`: `position.y += scroll_speed` per klatka — używane do kontrowania scrollu LevelMap (ustaw na `-LevelManager.scroll_speed` żeby ścieżka była nieruchoma w świecie)
-- `auto_advance = true`: tylko dla formacji — PathConfig sam przesuwa PathFollow2D
+**Uwaga:** `_normalize_weapon()` skaluje sx/sy/del z 30fps Tyriana na delta-time.
+
+### Tarcze
+```gdscript
+DataManager.get_shields() → Array[ShieldData]
+DataManager.get_shield_by_id(id: int) → ShieldData
+```
+Źródło: `res://data/shields/*.tres`
+
+### Generatory
+```gdscript
+DataManager.get_generators() → Array[GeneratorData]
+DataManager.get_generator_by_id(id: int) → GeneratorData
+DataManager.get_generator_power(generator_id) → float  # moc × 30.0
+```
+Źródło: `res://data/generators/*.tres`
+
+### Sprite'y pocisków
+```gdscript
+DataManager.get_shot_texture(sg: int) → Texture2D
+DataManager.get_shot_texture_frames(sg, anim_count) → Array[Texture2D]
+```
 
 ---
 
-## KLUCZOWE WZORCE ARCHITEKTONICZNE
+## Struktury danych JSON
 
-### 1. Autołady (project.godot)
-- **DataManager** — JSON cache
-- **PlayerSetup** — ekwipunek gracza
-- **GameConstants** — preload scen
-- **SoundManager** — audio
+### weapon_ports.json
+```json
+{
+  "weapon_ports": [{
+    "index": 1,
+    "name": "Pulse-Cannon",
+    "stats": {
+      "power_use": 30,
+      "modes_count": 1
+    },
+    "firing_modes": {
+      "mode_1": [155, 156, 157, 158, 159, 160, 161, 162, 163, 164, 165]
+    }
+  }]
+}
+```
+`firing_modes.mode_X[i]` = ID broni dla power level (i+1), i ∈ 0..10.
 
-### 2. Hierarchia gracza
+### weapon.json
+```json
+{
+  "TyrianHDT": {
+    "weapon": [{
+      "index": 155,
+      "multi": 1,
+      "max": 1,
+      "shotRepeat": 0.1,
+      "aim": 0,
+      "acceleration": 0,
+      "accelerationx": 0,
+      "tx": 0, "ty": 0,
+      "patterns": [{
+        "attack": 5,
+        "sx": 0, "sy": -4,
+        "bx": 0, "by": 0,
+        "sg": 0,
+        "del": 0
+      }]
+    }]
+  }
+}
 ```
-Player (CharacterBody2D)
-├── WeaponSystem  (instancjuje pociski)
-├── DamageSystem  (przyjmuje obrażenia)
-├── ShieldSystem  (regeneruje tarczę)
-└── CollisionShape2D
+- `sx/sy` — prędkość (Tyrian px/frame, skalowane × 30)
+- `del` — czas życia (klatki/30 → sekundy; 0 = nieskończony)
+- `aim` — homing (>0)
+- `tx/ty` — homing speed dla wrogów
+
+### ShipData (.tres)
+```
+index: int, name: String, armor: int, speed: int, cost: int
 ```
 
-### 3. Pociski wrogów — przepływ
+### ShieldData (.tres)
 ```
-Enemy._fire_projectile()
-  → emit projectile_spawned(projectile)
-    → LevelMap._on_projectile_spawned()
-      → World.add_child(projectile)   ← nie scrolluje z mapą
+index: int, name: String, generator_needed: int, protection: int, cost: int
 ```
 
-### 4. Sceny wrogów (Enemy_NNN.tscn)
-- Dziedziczą z `Enemy.tscn` (instancja z nadpisanymi właściwościami)
-- Eksportowane właściwości: `armor`, `esize`, `value`, `explosiontype`, `xmove`, `ymove`, `tur[3]`, `freq[3]`, `wybran_sciezka`
-- Mogą zawierać wiele Path2D (różne trasy); aktywna wskazana przez `wybran_sciezka`
-- Można nadpisywać właściwości per-instancja bezpośrednio w World.tscn
+### GeneratorData (.tres)
+```
+index: int, name: String, power: int, speed: int, cost: int
+```
 
 ---
 
-## NIEUŻYWANE PLIKI (zachowane na dysku)
-| Plik | Powód zachowania |
-|------|-----------------|
-| scripts/managers/EnemySpawner.gd | Stary system eventowy — może być przydatny jako referencja |
-| scripts/managers/EnemyController.gd | j.w. |
-| scripts/managers/EventProcessor.gd | j.w. |
-| scenes/background/*.gd / *.tscn | Potencjalne użycie w przyszłości |
-| data/lvl*.json | Dane źródłowe poziomów Tyrian |
+## PlayerSetup — rejestr ekwipunku
+
+```gdscript
+ship_id: int = 1
+front_weapon_index: int = 1    # indeks portu broni
+front_weapon_mode: int = 1     # tryb strzału (1 lub 2)
+front_power_level: int = 1     # 1–11
+rear_weapon_index: int = 1
+rear_weapon_mode: int = 1
+rear_power_level: int = 1
+generator_id: int = 1
+shield_id: int = 1
+credits: int = 1000
+score: int = 0
+lives: int = 3
+```
+
+---
+
+## Kluczowe przepływy
+
+### Gracz strzela
+```
+Player._physics_process()
+→ weapon_system.set_firing(mouse_pressed)
+→ WeaponSystem: fire_timer -= delta → shoot()
+→ player.power -= power_use
+→ create_projectile() → add_child(World)
+```
+
+### Wróg strzela
+```
+Enemy._process() → _process_shooting(delta)
+→ eshotwait[i] -= delta → _fire_projectile(i)
+→ instantiate EnemyProjectile
+→ emit projectile_spawned
+→ LevelManager.add_child(projectile)
+```
+
+### Pocisk gracza trafia wroga
+```
+Projectile._on_area_entered(enemy)
+→ enemy.take_damage(damage)
+→ armor <= 0 → die() → _spawn_death_explosion() → queue_free()
+→ projectile.queue_free()
+```
+
+### Zmiana ekwipunku w UI
+```
+Hud._on_weapon_next()
+→ PlayerSetup.front_weapon_index = next
+→ _reload_systems()
+→ weapon_system.load_weapon_config()
+→ shield_system.reload()
+→ player.reload_power_regeneration()
+```
+
+---
+
+## System delta-time — konwencja przeliczania jednostek
+
+Projekt używa **delta-time wszędzie**. Dane z Tyriana są w `px/frame @ 30fps` — przeliczenie na delta-time odbywa się przez mnożenie × 30.0.
+
+### Łańcuch przeliczenia — pociski gracza i wroga
+```
+weapon.json: sx = Tyrian px/frame
+DataManager._normalize_weapon(): velocity.x = sx * 30.0   → Tyrian px/s
+projectile.gd:  position.x += velocity.x * 4.0 * delta    → Godot px
+                position.y += velocity.y * 9.6 * delta
+```
+Mnożniki przestrzeni: **X = 4.0**, **Y = 9.6** — wynikają z przejścia rozdzielczości 360×200 → 1080×1920.
+- Y = 1920 / 200 = **9.6** (dokładna skala)
+- X = 1080 / 360 = 3.0 matematycznie, ale używamy **4.0** — celowo wyższy, żeby pociski poziome czuły się lepiej.
+
+### Łańcuch przeliczenia — ruch wroga
+```
+Enemy.gd: xmove/ymove w Tyrian px/frame
+_ready(): velocity = Vector2(xmove, ymove) * 30.0           → px/s w przestrzeni Godot (BEZ mnożnika 4/9.6)
+_process(): position += velocity * delta
+```
+**Uwaga:** wrogowie NIE mają mnożnika 4.0/9.6. Ich prędkość `× 30` trafia bezpośrednio do Godot px/s.
+
+### Łańcuch przeliczenia — scroll tła
+```
+LevelManager: scroll_speed = 2  (Tyrian px/frame)
+_process(): position.y += float(scroll_speed) * 30.0 * delta
+```
+
+### Inne przeliczenia
+| Wartość | JSON/eksport | Przeliczenie | Użycie |
+|---------|-------------|--------------|--------|
+| `freq[i]` (Enemy) | klatki Tyriana | `/ 30.0` → sekundy | `eshotwaitmax[i]` |
+| `del` (weapon pattern) | klatki Tyriana | `/ 30.0` → sekundy | `lifetime` pocisku |
+| `shotRepeat` (weapon) | sekundy | bez zmian | `fire_timer` |
+| `generator.power` | wartość surowa | `* 30.0` | `power_add` gracza |
+| homing step | — | `900 * delta` | `move_toward` w EnemyProjectile |
+
+### Circlesize — wyjątek: własny 30fps timer
+Ruch okrężny pocisków taktuje **niezależnym timerem co 1/30s** (nie po delta):
+```gdscript
+const _CIRCLE_STEP: float = 1.0 / 30.0
+_circle_timer += delta
+while _circle_timer >= _CIRCLE_STEP:
+    _circle_timer -= _CIRCLE_STEP
+    circle_dev_x += circle_dir_x  # integer step
+```
+
+### Czego NIE robić
+- Nie skaluj ponownie wartości z DataManagera — `sx/sy` są już w Tyrian px/s po `_normalize_weapon()`.
+- Nie dodawaj mnożnika 4.0/9.6 do prędkości wroga — Enemy używa innego łańcucha niż pociski.
+
+---
+
+## Ważne konwencje i pułapki
+
+- **Gracz CharacterBody2D, wrogowie/pociski Area2D**: Gracz używa `move_and_slide()`, reszta tylko Area.
+- **Gracz mask=0**: Gracz celowo nie wykrywa kolizji — pociski wroga same go wykrywają.
+- **Circlesize ≥ 20 = elipsa**: `radius_x = val % 20`, `radius_y = val / 20`.
+- **Eksplozje dużych wrogów**: 4 osobne Explosion w rogach + opcjonalny RepExplosion.
+- **VisibleOnScreenNotifier2D**: Wrogowie i pociski mają go podłączonego do `queue_free()` — nie usuwaj.
+- **EnemyPath / PathFollow2D**: jeśli parent wroga to PathFollow2D, to `_on_screen_exited` nie usuwa wroga (EnemyPath zarządza cyklem życia), a ruch przez `position +=` jest pominięty.
+
+---
+
+## Co jest niezaimplementowane (TODO)
+
+- `_on_player_death()` w DamageSystem — logika śmierci gracza
+- Rear weapon (broń tylna)
+- Sidekicks (pomocnicy lewy/prawy)
+- Menu główne
+- Pause/Resume
+- Power-upy / drop items
+- Boss fights
+- Wiele poziomów (LevelManager ma zaczątki loadera lvl*.json)
+
+---
+
+## Audio (SoundManager)
+
+Dwa kanały AudioStreamPlayer: `Weapons` i `Explosions`. Lazy load + cache.
+Dźwięki z `res://data/extracted_sounds/`. Kluczowe ID: 3=hit, 8=small explosion, 9=large explosion.
