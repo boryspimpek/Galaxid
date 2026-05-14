@@ -42,3 +42,10 @@ rotation = -1.5707964
 armor = 50
 tur = [127, 0, 0]
 freq = [1, 0, 0]
+
+[node name="smallAircraft2" parent="LevelMap" unique_id=744585539 instance=ExtResource("6_i1jm3")]
+position = Vector2(652.00006, 82)
+rotation = 0.005714178
+armor = 50
+tur = [127, 0, 0]
+freq = [1, 0, 0]

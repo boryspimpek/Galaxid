@@ -51,7 +51,7 @@ func _ready():
 	collision_mask  = 5
 	body_entered.connect(_on_body_entered)
 
-	velocity = Vector2(float(xmove), float(ymove)) * 30.0
+	velocity = Vector2(float(xmove), float(ymove))
 	projectile_scene = GameConstants.enemy_projectile_scene
 
 	_init_shooting_timers()
