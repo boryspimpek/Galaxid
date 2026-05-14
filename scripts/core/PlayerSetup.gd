@@ -5,32 +5,32 @@ extends Node
 # ============================================================================
 
 # --- KADŁUB (SHIP) ---
-var ship_id: int = 1           # ID z ships.json (np. USP Talon)
+@export var ship_id: int = 1
 
 # --- BROŃ PRZEDNIA (FRONT WEAPON) ---
-var front_weapon_index: int = 1   # ID z weapon_port.json
-var front_weapon_mode: int = 1    # Tryb strzału (1 lub 2)
-var front_power_level: int = 1   # Poziom mocy 1-11 (Tyrian miał 11 stopni!)
+@export var front_weapon_index: int = 1
+@export var front_weapon_mode: int = 1
+@export var front_power_level: int = 1
 
 # --- BROŃ TYLNA (REAR WEAPON) ---
-var rear_weapon_index: int = 1    # Indeks z weapon_port.json
-var rear_weapon_mode: int = 1  # Tryb strzału (1-2)
-var rear_power_level: int = 1
+@export var rear_weapon_index: int = 1
+@export var rear_weapon_mode: int = 1
+@export var rear_power_level: int = 1
 
 # --- POMOCNICY (SIDEKICKS) ---
-var left_sidekick_id: int = 0
-var right_sidekick_id: int = 0
-var sidekick_level: int = 1    # Poziom ulepszenia pomocników
+@export var left_sidekick_id: int = 0
+@export var right_sidekick_id: int = 0
+@export var sidekick_level: int = 1
 
 # --- SYSTEMY ENERGII ---
-var generator_id: int = 1      # Odpowiada za tempo ładowania Power
-var shield_id: int = 1         # Odpowiada za max pojemność tarczy
+@export var generator_id: int = 1
+@export var shield_id: int = 1
 
 # --- ZASOBY (RESOURCES) ---
-var credits: int = 1000        # Gotówka na zakupy i upgrade'y
-var score: int = 0             # Wynik punktowy
-var lives: int = 3             # Liczba pozostałych żyć
+@export var credits: int = 1000
+@export var score: int = 0
+@export var lives: int = 3
 
 # --- SPECJALNE / DODATKI ---
-var special_item_id: int = 0   # Np. Repulsor, Flare, itd.
-var color_scheme: int = 1      # Wybrany wariant kolorystyczny statku
+@export var special_item_id: int = 0
+@export var color_scheme: int = 1

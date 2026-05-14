@@ -16,6 +16,8 @@ point_count = 8
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(521, 716)
+front_weapon_index = 2
+front_power_level = 11
 
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
 script = ExtResource("3_level_manager")
@@ -47,5 +49,7 @@ freq = [1, 0, 0]
 position = Vector2(652.00006, 82)
 rotation = 0.005714178
 armor = 50
+esize = 1
+xmove = 60
 tur = [127, 0, 0]
 freq = [1, 0, 0]

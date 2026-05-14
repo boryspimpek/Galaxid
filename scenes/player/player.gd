@@ -1,5 +1,13 @@
 extends CharacterBody2D
 
+# --- Loadout (konfiguracja w inspektorze) ---
+@export var ship_id: int = 1
+@export var front_weapon_index: int = 1
+@export var front_weapon_mode: int = 1
+@export var front_power_level: int = 1
+@export var generator_id: int = 1
+@export var shield_id: int = 1
+
 # --- Zmienne dynamiczne (zmieniają się w locie) ---
 var armor: int = 0
 var max_armor: int = 0
@@ -20,9 +28,16 @@ var ship_data: ShipData = null
 # 1. INICJALIZACJA (Kolejność ma znaczenie!)
 # ============================================================================
 
+func _enter_tree():
+	PlayerSetup.ship_id             = ship_id
+	PlayerSetup.front_weapon_index  = front_weapon_index
+	PlayerSetup.front_weapon_mode   = front_weapon_mode
+	PlayerSetup.front_power_level   = front_power_level
+	PlayerSetup.generator_id        = generator_id
+	PlayerSetup.shield_id           = shield_id
+
 func _ready():
 	add_to_group("player")
-	# Warstwa 1 = gracz; pociski wroga muszą mieć maskę 1 żeby go wykryć
 	collision_layer = 1
 	collision_mask  = 0
 	load_ship_data()
