@@ -96,20 +96,19 @@ func shoot():
 			var sg = pattern.get("sg", 0)
 			var acceleration = weapon_data.get("acceleration", 0)
 			var accelerationx = weapon_data.get("accelerationx", 0)
-			var circlesize = weapon_data.get("circleSize", 0)
-			
+
 			# Ignoruj puste wpisy (attack=0)
 			if attack <= 0:
 				continue
-			
+
 			# Stwórz projectile z pełnymi parametrami
-			create_projectile(attack, sx, sy, bx, by, del, sg, acceleration, accelerationx, circlesize)
+			create_projectile(attack, sx, sy, bx, by, del, sg, acceleration, accelerationx)
 	
 	SoundManager.play_weapon_sound(weapon_data.get("sound", 0))
 
 	fire_timer = float(weapon_data.get("shotRepeat", 0.0))
 
-func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, del: int = 0, sg: int = 0, acceleration: int = 0, accelerationx: int = 0, circlesize: int = 0):
+func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, del: int = 0, sg: int = 0, acceleration: int = 0, accelerationx: int = 0):
 	var projectile_scene = GameConstants.player_projectile_scene
 	if not projectile_scene:
 		return
@@ -134,10 +133,7 @@ func create_projectile(damage: int, sx: int, sy: int, bx: int = 0, by: int = 0, 
 	
 	# Ustaw shot graphic (sg)
 	projectile.shot_graphic = sg
-	
-	# Ustaw circlesize
-	projectile.circlesize = circlesize
-	
+
 	# Dodaj do sceny
 	get_tree().current_scene.add_child(projectile)
 	

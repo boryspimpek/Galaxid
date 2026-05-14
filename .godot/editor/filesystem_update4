@@ -1,2 +1,4 @@
 res://scenes/enemy/Enemy.gd
 res://scenes/world/World.tscn
+res://scenes/player/WeaponSystem.gd
+res://scenes/projectile/projectile.gd

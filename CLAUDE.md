@@ -154,12 +154,6 @@ Parametry:
 - `damage: int`
 - `lifetime: float` — 0 = nieskończony
 - `shot_graphic: int` — ID sprite'a
-- `circlesize: int` — ruch okrężny/eliptyczny
-
-**Circlesize encoding:**
-- 1–19: okrąg (radius_x = radius_y = circlesize)
-- ≥ 20: elipsa (radius_x = circlesize % 20, radius_y = circlesize / 20)
-
 Kolizja: `_on_area_entered(enemy)` → `enemy.take_damage(damage)` → `queue_free()`
 
 ---
@@ -465,7 +459,6 @@ while _circle_timer >= _CIRCLE_STEP:
 
 - **Gracz CharacterBody2D, wrogowie/pociski Area2D**: Gracz używa `move_and_slide()`, reszta tylko Area.
 - **Gracz mask=0**: Gracz celowo nie wykrywa kolizji — pociski wroga same go wykrywają.
-- **Circlesize ≥ 20 = elipsa**: `radius_x = val % 20`, `radius_y = val / 20`.
 - **Eksplozje dużych wrogów**: 4 osobne Explosion w rogach + opcjonalny RepExplosion.
 - **VisibleOnScreenNotifier2D**: Wrogowie i pociski mają go podłączonego do `queue_free()` — nie usuwaj.
 - **EnemyPath / PathFollow2D**: jeśli parent wroga to PathFollow2D, to `_on_screen_exited` nie usuwa wroga (EnemyPath zarządza cyklem życia), a ruch przez `position +=` jest pominięty.
