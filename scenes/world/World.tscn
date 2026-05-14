@@ -34,7 +34,7 @@ position = Vector2(216, 218)
 rotation = 1.5765105
 loop = false
 script = ExtResource("3_i1jm3")
-speed = 8.0
+speed = 120.0
 
 [node name="smallAircraft" parent="LevelMap/Path2D/PathFollow2D" unique_id=119960324 instance=ExtResource("6_i1jm3")]
 position = Vector2(3.4570694e-06, -1.9073486e-06)

@@ -1,6 +1,6 @@
 extends PathFollow2D
 
-@export var speed: float = 2.0
+@export var speed: float = 60.0
 @export var remove_at_end: bool = true
 
 func _ready():
@@ -10,7 +10,7 @@ func activate():
 	set_process(true)
 
 func _process(delta: float):
-	progress += speed * 30.0 * delta
+	progress += speed * delta
 	if progress_ratio >= 1.0:
 		if remove_at_end:
 			queue_free()
