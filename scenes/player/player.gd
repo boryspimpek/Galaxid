@@ -58,15 +58,12 @@ func apply_ship_stats():
 	print("Player: Ship → armor=", armor)
 
 func init_power_regeneration():
-	var generator_id = PlayerSetup.generator_id
-	var generator_power = DataManager.get_generator_power(generator_id)
+	var generator_power = DataManager.get_generator_power(PlayerSetup.generator_id)
 	power_add = generator_power
-	print("Player: Generator ID=", generator_id, " power=", generator_power, " → power_add=", power_add, " (energia/klatkę)")
+	print("Player: Generator ID=", PlayerSetup.generator_id, " power=", generator_power, " → power_add=", power_add, " (energia/klatkę)")
 
 func reload_power_regeneration():
-	# Przelicz power_add na podstawie aktualnego generatora
-	var generator_id = PlayerSetup.generator_id
-	var generator_power = DataManager.get_generator_power(generator_id)
+	var generator_power = DataManager.get_generator_power(PlayerSetup.generator_id)
 	power_add = generator_power
 	print("Player: Przeładowano regenerację energii → power_add=", power_add)
 
