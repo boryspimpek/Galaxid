@@ -5,3 +5,4 @@ res://scenes/projectile/projectile.gd
 res://scenes/enemy/EnemyPath.gd
 res://scripts/core/PlayerSetup.gd
 res://scenes/player/player.gd
+res://scripts/core/DataManager.gd

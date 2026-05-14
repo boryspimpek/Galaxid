@@ -24,6 +24,18 @@ var _generators_loaded: bool = false
 const GENERATORS_DIR = "res://data/generators/"
 
 # ============================================================================
+# PRELOAD — wszystko ładowane przy starcie, żeby uniknąć czkawek w grze
+# ============================================================================
+
+func _ready():
+	get_ships()
+	get_weapons()
+	get_weapon_ports()
+	get_shields()
+	get_generators()
+	_scan_weapon_sprites()
+
+# ============================================================================
 # PODSTAWOWA FUNKCJA ŁADOWANIA JSON
 # ============================================================================
 
