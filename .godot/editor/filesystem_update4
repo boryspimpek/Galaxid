@@ -1,9 +1,1 @@
-res://scenes/enemy/Enemy.gd
 res://scenes/world/World.tscn
-res://scenes/player/WeaponSystem.gd
-res://scenes/projectile/projectile.gd
-res://scenes/enemy/EnemyPath.gd
-res://scripts/core/PlayerSetup.gd
-res://scenes/player/player.gd
-res://scripts/core/DataManager.gd
-res://scenes/world/LevelManager.gd

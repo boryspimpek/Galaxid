@@ -1,22 +1,30 @@
 [gd_scene format=3 uid="uid://bte7ofi7pgn5b"]
 
 [ext_resource type="Script" uid="uid://l355mw8nf63d" path="res://scenes/player/player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://cu47ernld8ka7" path="res://assets/Gemini_Generated_Image___5_-removebg-preview.png" id="2_tpg5x"]
+[ext_resource type="Shader" uid="uid://d27pfw7r621pj" path="res://assets/shaders/outline.gdshader" id="2_c3xxp"]
+[ext_resource type="Texture2D" uid="uid://cu47ernld8ka7" path="res://assets/enemies/Gemini_Generated_Image___5_-removebg-preview.png" id="2_tpg5x"]
 [ext_resource type="PackedScene" path="res://scenes/player/WeaponSystem.tscn" id="2_weapon"]
 [ext_resource type="PackedScene" path="res://scenes/player/DamageSystem.tscn" id="3_damage"]
 [ext_resource type="PackedScene" path="res://scenes/player/ShieldSystem.tscn" id="4_shield"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_npwbq"]
+shader = ExtResource("2_c3xxp")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 2.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
-radius = 29.068884
+radius = 80.00625
 
 [node name="Player" type="CharacterBody2D" unique_id=1834704228]
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1293718296]
-scale = Vector2(0.25, 0.25)
+material = SubResource("ShaderMaterial_npwbq")
+scale = Vector2(0.7, 0.7)
 texture = ExtResource("2_tpg5x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=851705633]
+visible = false
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=236923006]

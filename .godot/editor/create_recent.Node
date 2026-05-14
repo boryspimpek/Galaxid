@@ -1,3 +1,5 @@
+ColorRect
+CanvasLayer
 RemoteTransform2D
 PathFollow2D
 Path2D
@@ -10,5 +12,4 @@ Label
 HBoxContainer
 SpinBox
 VBoxContainer
-CanvasLayer
 ProgressBar

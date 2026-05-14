@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ygmukd8qaego"
-path="res://.godot/imported/Gemini_Generated_Image_u9dzc0u9dzc0u9dz-removebg-preview.png-7bd1ffa216268740f1971f35eabbc6e5.ctex"
+uid="uid://dn1s3nri233he"
+path="res://.godot/imported/Copilot_20260510_170738-removebg-preview.png-674481d2e51b2b4abe677554d757dcd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Gemini_Generated_Image_u9dzc0u9dzc0u9dz-removebg-preview.png"
-dest_files=["res://.godot/imported/Gemini_Generated_Image_u9dzc0u9dzc0u9dz-removebg-preview.png-7bd1ffa216268740f1971f35eabbc6e5.ctex"]
+source_file="res://assets/enemies/Copilot_20260510_170738-removebg-preview.png"
+dest_files=["res://.godot/imported/Copilot_20260510_170738-removebg-preview.png-674481d2e51b2b4abe677554d757dcd0.ctex"]
 
 [params]
 

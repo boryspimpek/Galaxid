@@ -3,25 +3,28 @@
 [ext_resource type="PackedScene" uid="uid://bte7ofi7pgn5b" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
 [ext_resource type="Script" uid="uid://de0wqltyclsk0" path="res://scenes/enemy/EnemyPath.gd" id="3_i1jm3"]
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
+[ext_resource type="Shader" uid="uid://cdg6ehram2qw0" path="res://assets/shaders/toon.gdshader" id="6_252at"]
 [ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/small_aircraft.tscn" id="6_i1jm3"]
 [ext_resource type="Script" uid="uid://cjwf83wntumr8" path="res://scenes/world/LevelRuler.gd" id="7_ruler"]
 
 [sub_resource type="Curve2D" id="Curve2D_qxiha"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 216, 218, 0, 0, 0, 0, 215, 393, -335.25897, 0.5190053, 335.25897, -0.5190053, 554, 736, 0, 0, 0, 0, 908, 393, 0, 0, 0, 0, 906, 44, 68.003586, 77.539505, -68.003586, -77.539505, 822, -121, 0, 0, 0, 0, 602.80994, -204.51448, 0, 0, 0, 0, -249, -200)
+"points": PackedVector2Array(0, 0, 0, 0, 216, 218, 0, 0, 0, 0, 215, 393, -335.25897, 0.5190053, 335.25897, -0.5190053, 554, 736, 0, 0, 0, 0, 908, 393, 0, 0, 0, 0, 906, 44, 68.003586, 77.539505, -68.003586, -77.539505, 822, -121, 0, 0, 0, 0, 602.80994, -204.51448, 93.17001, 94.50101, -93.17001, -94.50101, 440, -284, 0, 0, 0, 0, 346, -453, 0, 0, 0, 0, 334, -2726)
 }
-point_count = 8
+point_count = 10
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qh0kd"]
+shader = ExtResource("6_252at")
+shader_parameter/edge_thickness = 1.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/edge_strength = 0.8
+shader_parameter/color_steps = 4.0
+shader_parameter/color_effect = 0.0
 
 [node name="World" type="Node2D" unique_id=1364436952]
 
-[node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
-position = Vector2(521, 716)
-front_weapon_index = 2
-front_power_level = 6
-
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
 script = ExtResource("3_level_manager")
-scroll_speed = 120
 
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=1111111111]
 script = ExtResource("7_ruler")
@@ -46,10 +49,26 @@ tur = [127, 0, 0]
 freq = [1, 0, 0]
 
 [node name="smallAircraft2" parent="LevelMap" unique_id=744585539 instance=ExtResource("6_i1jm3")]
-position = Vector2(652.00006, 82)
+position = Vector2(652, 242)
 rotation = 0.005714178
 armor = 50
 esize = 1
-xmove = 60
-tur = [127, 0, 0]
-freq = [1, 0, 0]
+ymove = -120
+tur = [60, 60, 60]
+freq = [1, 1, 1]
+
+[node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
+position = Vector2(521, 716)
+front_weapon_index = 2
+front_power_level = 6
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=202375212]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=1815439926]
+material = SubResource("ShaderMaterial_qh0kd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

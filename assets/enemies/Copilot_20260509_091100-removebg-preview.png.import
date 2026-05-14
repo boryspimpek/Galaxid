@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw3m4p6xxudof"
-path="res://.godot/imported/Copilot_20260510_170613-removebg-preview.png-2d1a157d5a3e7b4c8266397060efe450.ctex"
+uid="uid://4nwgn2may0qr"
+path="res://.godot/imported/Copilot_20260509_091100-removebg-preview.png-0519f8ded32337e164a4e359b7f445a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Copilot_20260510_170613-removebg-preview.png"
-dest_files=["res://.godot/imported/Copilot_20260510_170613-removebg-preview.png-2d1a157d5a3e7b4c8266397060efe450.ctex"]
+source_file="res://assets/enemies/Copilot_20260509_091100-removebg-preview.png"
+dest_files=["res://.godot/imported/Copilot_20260509_091100-removebg-preview.png-0519f8ded32337e164a4e359b7f445a3.ctex"]
 
 [params]
 

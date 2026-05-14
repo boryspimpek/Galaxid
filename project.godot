@@ -14,7 +14,7 @@ config/name="GALAXID FREE"
 run/main_scene="res://scenes/world/World.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=60
-config/icon="res://assets/icon.svg"
+config/icon="res://assets/enemies/icon.svg"
 
 [audio]
 

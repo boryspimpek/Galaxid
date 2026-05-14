@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dyb0a8s83pn38"
-path="res://.godot/imported/road2.png-375b010fde79b3ab15d4c43b29c6a485.ctex"
+uid="uid://cco6qy4bntjuf"
+path="res://.godot/imported/Copilot_20260509_093337-removebg-preview.png-84ec58e3eda1a04e675b6937e96fbaae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/road2.png"
-dest_files=["res://.godot/imported/road2.png-375b010fde79b3ab15d4c43b29c6a485.ctex"]
+source_file="res://assets/enemies/Copilot_20260509_093337-removebg-preview.png"
+dest_files=["res://.godot/imported/Copilot_20260509_093337-removebg-preview.png-84ec58e3eda1a04e675b6937e96fbaae.ctex"]
 
 [params]
 
