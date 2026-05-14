@@ -21,7 +21,7 @@ front_power_level = 6
 
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
 script = ExtResource("3_level_manager")
-scroll_speed = 4
+scroll_speed = 120
 
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=1111111111]
 script = ExtResource("7_ruler")

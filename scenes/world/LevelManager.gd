@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var scroll_speed: int = 2
+@export var scroll_speed: int = 120
 @export var start_dist: int = 0
 
 func _ready():
@@ -9,7 +9,7 @@ func _ready():
 		position.y = start_dist
 
 func _process(delta: float):
-	position.y += float(scroll_speed) * 30.0 * delta
+	position.y += float(scroll_speed) * delta
 
 func _connect_signals(node: Node):
 	for child in node.get_children():
