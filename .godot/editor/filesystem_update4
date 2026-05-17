@@ -1,1 +1,5 @@
+res://scenes/planet.tscn
+res://scenes/planet3d.tscn
+res://assets/planet/planet_rotate.gd
 res://scenes/world/World.tscn
+res://scenes/player/Player.tscn

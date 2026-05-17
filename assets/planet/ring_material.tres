@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dlw5nkgiigfh2"]
+
+[ext_resource type="Texture2D" uid="uid://qmfvm2178e7a" path="res://planet/Ring_Albedo.png" id="1_lau03"]
+
+[resource]
+albedo_texture = ExtResource("1_lau03")

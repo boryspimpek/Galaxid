@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://jgvbkuyntum0"]
+
+[ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_nxpf8"]
+[ext_resource type="Texture2D" uid="uid://b2ujm16r68c15" path="res://assets/asteroids/asteroid.png" id="2_xn8ob"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xn8ob"]
+radius = 55.081757
+
+[node name="asteroid" unique_id=119960324 instance=ExtResource("1_nxpf8")]
+
+[node name="Visual" parent="." index="0" unique_id=1405638014]
+scale = Vector2(0.355, 0.355)
+texture = ExtResource("2_xn8ob")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1" unique_id=291847561]
+rect = Rect2(-56, -53, 112, 97)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2" unique_id=1706541983]
+shape = SubResource("CircleShape2D_xn8ob")
