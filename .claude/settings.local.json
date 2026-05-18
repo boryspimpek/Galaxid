@@ -6,7 +6,8 @@
       "Bash(git -C \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\" show b01699c9 -- project.godot)",
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\" -Recurse -Force)",
       "Bash(Select-Object FullName)",
-      "PowerShell(\\(Get-ChildItem \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\\\\data\\\\weapon_sprites\"\\).Count)"
+      "PowerShell(\\(Get-ChildItem \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\\\\data\\\\weapon_sprites\"\\).Count)",
+      "PowerShell(Remove-Item -Path \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\\\\scenes\\\\explosions\" -Recurse -Force -Confirm:$false)"
     ]
   }
 }

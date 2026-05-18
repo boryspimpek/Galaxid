@@ -2,18 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bte7ofi7pgn5b" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
 [ext_resource type="Texture2D" uid="uid://sq7og2j5fp4c" path="res://assets/background/space-stars-wallpaper-3840x2400_9.jpg" id="2_252at"]
-[ext_resource type="Script" uid="uid://de0wqltyclsk0" path="res://scenes/enemy/EnemyPath.gd" id="3_i1jm3"]
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
 [ext_resource type="PackedScene" uid="uid://jgvbkuyntum0" path="res://scenes/asteroids/asteroid.tscn" id="5_i1jm3"]
 [ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/small_aircraft.tscn" id="6_i1jm3"]
 [ext_resource type="PackedScene" uid="uid://cfjg774vk85x4" path="res://scenes/planet3d.tscn" id="7_qh0kd"]
 [ext_resource type="Script" uid="uid://cjwf83wntumr8" path="res://scenes/world/LevelRuler.gd" id="7_ruler"]
-
-[sub_resource type="Curve2D" id="Curve2D_qxiha"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 216, 218, 0, 0, 0, 0, 215, 393, -335.25897, 0.5190053, 335.25897, -0.5190053, 554, 736, 0, 0, 0, 0, 908, 393, 0, 0, 0, 0, 906, 44, 68.003586, 77.539505, -68.003586, -77.539505, 822, -121, 0, 0, 0, 0, 602.80994, -204.51448, 93.17001, 94.50101, -93.17001, -94.50101, 440, -284, 0, 0, 0, 0, 346, -453, 0, 0, 0, 0, 334, -2726)
-}
-point_count = 10
 
 [node name="World" type="Node2D" unique_id=1364436952]
 
@@ -23,7 +16,7 @@ scroll_speed = 20
 
 [node name="SpaceStarsWallpaper3840x24009" type="Sprite2D" parent="LevelMap" unique_id=375244827]
 z_index = -11
-position = Vector2(1168, 0)
+position = Vector2(1080, 0)
 rotation = -1.5707964
 texture = ExtResource("2_252at")
 
@@ -36,27 +29,7 @@ visible = false
 script = ExtResource("7_ruler")
 show_in_game = true
 
-[node name="Path2D" type="Path2D" parent="LevelMap" unique_id=1719500132]
-visible = false
-position = Vector2(-12, -315)
-curve = SubResource("Curve2D_qxiha")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="LevelMap/Path2D" unique_id=508622972]
-position = Vector2(216, 218)
-rotation = 1.5765105
-loop = false
-script = ExtResource("3_i1jm3")
-speed = 120.0
-
-[node name="smallAircraft" parent="LevelMap/Path2D/PathFollow2D" unique_id=119960324 instance=ExtResource("6_i1jm3")]
-position = Vector2(3.4570694e-06, -1.9073486e-06)
-rotation = -1.5707964
-armor = 50
-tur = [127, 0, 0]
-freq = [1, 0, 0]
-
 [node name="smallAircraft2" parent="LevelMap" unique_id=744585539 instance=ExtResource("6_i1jm3")]
-visible = false
 position = Vector2(663, -157)
 rotation = 0.005714178
 armor = 50

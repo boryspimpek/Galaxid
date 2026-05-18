@@ -13,9 +13,8 @@ signal projectile_spawned(projectile)
 
 # -- Statystyki --
 @export var armor: int = 1
-@export var esize: int = 0          # 0 = mały, 1 = duży (wpływa na typ eksplozji)
+@export var esize: int = 0
 @export var value: int = 0
-@export var explosiontype: int = 0  # bit 0: naziemny/powietrzny; bity 1+: liczba wybuchów
 
 # -- Ruch bazowy (px/klatkę Tyrian) --
 @export var xmove: int = 0
@@ -175,12 +174,11 @@ func take_damage(amount: int):
 		SoundManager.play_sound(3)
 
 func die():
-	var explosion_parent := _get_level_parent()
-	if explosion_parent:
-		var enemyground := (explosiontype & 1) == 0
-		var explonum    := explosiontype >> 1
-		_spawn_death_explosion(explosion_parent, enemyground, explonum, global_position)
-
+	var parent := _get_level_parent()
+	if parent:
+		var explosion: Node2D = GameConstants.explosion_scene.instantiate()
+		parent.add_child(explosion)
+		explosion.global_position = global_position
 	SoundManager.play_sound(9 if esize == 1 else 8)
 	queue_free()
 
@@ -189,30 +187,6 @@ func _get_level_parent() -> Node:
 	while p and (p is PathFollow2D or p is Path2D):
 		p = p.get_parent()
 	return p
-
-func _spawn_death_explosion(parent: Node, enemyground: bool, explonum: int, origin: Vector2) -> void:
-	if esize == 0:
-		var explosion: Node2D = GameConstants.explosion_scene.instantiate()
-		parent.add_child(explosion)
-		explosion.global_position = origin
-		explosion.setup(1)
-		return
-
-	var corner_types: Array = [2, 4, 3, 5] if enemyground else [7, 9, 8, 10]
-	var offsets := [Vector2(-6, -14), Vector2(6, -14), Vector2(-6, -2), Vector2(6, -2)]
-	for i in range(4):
-		var explosion: Node2D = GameConstants.explosion_scene.instantiate()
-		parent.add_child(explosion)
-		explosion.global_position = origin + offsets[i]
-		explosion.setup(corner_types[i])
-
-	if explonum > 0:
-		var big   := explonum > 10
-		var burst := explonum - 10 if big else explonum
-		var rep: Node2D = GameConstants.rep_explosion_scene.instantiate()
-		parent.add_child(rep)
-		rep.global_position = origin
-		rep.setup(burst, big)
 
 func _on_body_entered(body: Node2D):
 	if body.is_in_group("player"):
