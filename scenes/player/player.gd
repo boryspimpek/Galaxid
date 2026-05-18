@@ -18,6 +18,7 @@ var power_max: float = 900.0
 var power_add: float = 0.0
 
 var ship_data: ShipData = null
+var _clamp_margin := Vector4.ZERO  # left, top, right, bottom
 
 # --- Systemy (child nodes) ---
 @onready var weapon_system: Node = $WeaponSystem
@@ -40,6 +41,7 @@ func _ready():
 	add_to_group("player")
 	collision_layer = 1
 	collision_mask  = 0
+	_compute_clamp_margins()
 	load_ship_data()
 	apply_ship_stats()
 	init_power_regeneration()
@@ -79,10 +81,18 @@ func _physics_process(delta: float):
 
 const PLAY_AREA := Vector2(1080, 1920)
 
+func _compute_clamp_margins():
+	var points: PackedVector2Array = $CollisionPolygon2D.polygon
+	var min_x := points[0].x; var max_x := points[0].x
+	var min_y := points[0].y; var max_y := points[0].y
+	for p in points:
+		min_x = min(min_x, p.x); max_x = max(max_x, p.x)
+		min_y = min(min_y, p.y); max_y = max(max_y, p.y)
+	_clamp_margin = Vector4(-min_x, -min_y, max_x, max_y)
+
 func _clamp_to_screen():
-	var margin: float = $CollisionShape2D.shape.radius
-	position.x = clamp(position.x, margin, PLAY_AREA.x - margin)
-	position.y = clamp(position.y, margin, PLAY_AREA.y - margin)
+	position.x = clamp(position.x, _clamp_margin.x, PLAY_AREA.x - _clamp_margin.z)
+	position.y = clamp(position.y, _clamp_margin.y, PLAY_AREA.y - _clamp_margin.w)
 
 # ============================================================================
 # 3. DEBUG

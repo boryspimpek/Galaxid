@@ -6,29 +6,32 @@
 [ext_resource type="Texture2D" uid="uid://cxvx70kqnal2k" path="res://assets/player/player.png" id="3_c3xxp"]
 [ext_resource type="PackedScene" path="res://scenes/player/DamageSystem.tscn" id="3_damage"]
 [ext_resource type="PackedScene" path="res://scenes/player/ShieldSystem.tscn" id="4_shield"]
+[ext_resource type="PackedScene" uid="uid://bo2v2o3n3f1c2" path="res://scenes/engines/engine.tscn" id="7_npwbq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_npwbq"]
 shader = ExtResource("2_c3xxp")
 shader_parameter/outline_color = Color(0, 0, 0, 1)
 shader_parameter/outline_width = 0.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
-radius = 80.00625
-
-[node name="Player" type="CharacterBody2D" unique_id=1834704228]
+[node name="player" type="CharacterBody2D" unique_id=1834704228]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1293718296]
 material = SubResource("ShaderMaterial_npwbq")
-scale = Vector2(0.7, 0.7)
 texture = ExtResource("3_c3xxp")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=851705633]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=121213366]
 visible = false
-shape = SubResource("CircleShape2D_onrkg")
+polygon = PackedVector2Array(0, -216, -28, -207, -55, -156, -74, -151, -89, -142, -103, -119, -110, -88, -110, -31, -90, 93, -84, 131, -29, 169, 29, 169, 84, 132, 109, -31, 111, -88, 104, -118, 91, -142, 71, -152, 54, -155, 28, -206)
+
+[node name="engine" parent="." unique_id=393269920 instance=ExtResource("7_npwbq")]
+position = Vector2(0, 265)
+rotation = 1.5707964
+scale = Vector2(3.03, 3.03)
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=236923006]
-position = Vector2(0, -145)
+position = Vector2(0, -190)
 
 [node name="WeaponSystem" parent="." unique_id=2092281166 instance=ExtResource("2_weapon")]
 

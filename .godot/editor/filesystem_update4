@@ -1,5 +1,8 @@
+res://scenes/enemies/small_aircraft.tscn
 res://scenes/world/World.tscn
-res://scenes/enemy/Enemy.gd
-res://scripts/core/GameConstants.gd
-res://scenes/explosions/Explode.gd
-res://scenes/explosions/explode.tscn
+res://scenes/player/Player.tscn
+res://scenes/enemies/big_aircraft.tscn
+res://scenes/enemies/blue_enemy.tscn
+res://scenes/engines/engine.tscn
+res://scenes/engines/engine.gd
+res://scenes/player/player.gd

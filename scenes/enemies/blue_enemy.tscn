@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b05sp330q141y"]
+
+[ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_q31be"]
+[ext_resource type="Shader" uid="uid://d27pfw7r621pj" path="res://assets/shaders/outline.gdshader" id="2_wkfg0"]
+[ext_resource type="Texture2D" uid="uid://i4yeed2br2vw" path="res://assets/enemies/blue_enemy.png" id="3_1gvac"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jt7b8"]
+shader = ExtResource("2_wkfg0")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_width = 2.0
+
+[node name="blue_enemy" unique_id=119960324 instance=ExtResource("1_q31be")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Visual" parent="." index="0" unique_id=1405638014]
+material = SubResource("ShaderMaterial_jt7b8")
+texture = ExtResource("3_1gvac")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="1" unique_id=291847561]
+rect = Rect2(-205, -197, 409, 396)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2" unique_id=185173466]
+polygon = PackedVector2Array(0, 200, 40, 161, 78, 139, 93, 122, 105, 94, 110, 57, 121, 52, 130, 26, 154, 24, 159, -20, 196, -61, 203, -111, 135, -111, 112, -166, 55, -166, 45, -146, 27, -197, -27, -197, -44, -145, -54, -166, -115, -166, -134, -111, -204, -111, -196, -59, -159, -20, -153, 24, -130, 26, -120, 53, -110, 57, -105, 93, -93, 122, -78, 138, -41, 160)
