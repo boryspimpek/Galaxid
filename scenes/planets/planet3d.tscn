@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cfjg774vk85x4"]
 
 [ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_2befm"]
-[ext_resource type="PackedScene" uid="uid://dr47jbakf074q" path="res://scenes/planet.tscn" id="2_8qbwx"]
+[ext_resource type="PackedScene" uid="uid://dr47jbakf074q" path="res://scenes/planets/planet.tscn" id="2_8qbwx"]
 
-[node name="planet3d" unique_id=119960324 instance=ExtResource("1_2befm")]
+[node name="planet3d" unique_id=119960325 instance=ExtResource("1_2befm")]
 z_index = -10
 ymove = 120
 
@@ -30,7 +30,7 @@ render_target_update_mode = 4
 transform = Transform3D(0.8660253, -0.49999997, 0, 0.49999997, 0.8660253, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" index="1" unique_id=1753683567]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.071465, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.2209964, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" index="2" unique_id=129981671]
 transform = Transform3D(0.3681247, -0.5621421, -0.7405947, 0, -0.7965298, 0.6045992, -0.92977643, -0.22256789, -0.2932223, 0, 0, 0)

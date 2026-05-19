@@ -1,38 +1,45 @@
 [gd_scene format=3 uid="uid://d3vnnnd2fe8u"]
 
 [ext_resource type="PackedScene" uid="uid://bte7ofi7pgn5b" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
-[ext_resource type="Texture2D" uid="uid://feenl88838vb" path="res://assets/background/starfield.png" id="2_252at"]
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
-[ext_resource type="Shader" uid="uid://do4kwx72nrhw6" path="res://scenes/world/starfild_glow.gdshader" id="3_qh0kd"]
 [ext_resource type="PackedScene" uid="uid://jgvbkuyntum0" path="res://scenes/asteroids/asteroid.tscn" id="5_i1jm3"]
 [ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="6_252at"]
-[ext_resource type="PackedScene" uid="uid://cfjg774vk85x4" path="res://scenes/planet3d.tscn" id="7_qh0kd"]
+[ext_resource type="PackedScene" uid="uid://cfjg774vk85x4" path="res://scenes/planets/planet3d.tscn" id="7_qh0kd"]
+[ext_resource type="Script" uid="uid://cd6vtrajndq0f" path="res://scenes/world/StarTwinkle.gd" id="8_twinkle"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yr1n6"]
-shader = ExtResource("3_qh0kd")
-shader_parameter/czestotliwosc_mrugania = 2.00000009174012
-shader_parameter/minimalna_jasnosc = 0.2
-shader_parameter/maksymalna_jasnosc = 4.6690001742775
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_252at"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -5, 0)
+emission_shape = 3
+emission_box_extents = Vector3(540, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 5.0
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i1jm3"]
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, -5, 0)
+emission_shape = 3
+emission_box_extents = Vector3(540, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 8.0
 
 [node name="World" type="Node2D" unique_id=1364436952]
 
-[node name="Starfield" type="Sprite2D" parent="." unique_id=200776406]
-z_index = -10
-material = SubResource("ShaderMaterial_yr1n6")
-position = Vector2(538, 934)
-rotation = 1.5707964
-scale = Vector2(1.42, 1.42)
-texture = ExtResource("2_252at")
-
-[node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
-script = ExtResource("3_level_manager")
-scroll_speed = 20
-
-[node name="CanvasLayer" type="CanvasLayer" parent="LevelMap" unique_id=704000935]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1139871068]
 layer = -1
 
-[node name="TextureRect" type="ColorRect" parent="LevelMap/CanvasLayer" unique_id=164181718]
-visible = false
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=378036916]
+z_index = -100
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -40,59 +47,63 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
+script = ExtResource("3_level_manager")
+scroll_speed = 20
+
 [node name="planet3d" parent="LevelMap" unique_id=1490643938 instance=ExtResource("7_qh0kd")]
-position = Vector2(401, 280)
+position = Vector2(442, 533)
 ymove = -5
 
 [node name="asteroid" parent="LevelMap" unique_id=950937570 instance=ExtResource("5_i1jm3")]
 z_index = -10
 position = Vector2(505, -88)
-ymove = 120
+ymove = 180
 
-[node name="asteroid2" parent="LevelMap" unique_id=119960324 instance=ExtResource("5_i1jm3")]
+[node name="asteroid2" parent="LevelMap" unique_id=500985317 instance=ExtResource("5_i1jm3")]
 z_index = -10
 position = Vector2(134, -362)
-ymove = 120
+ymove = 180
 
 [node name="asteroid3" parent="LevelMap" unique_id=536965775 instance=ExtResource("5_i1jm3")]
 z_index = -10
 position = Vector2(757, -255)
-ymove = 120
+ymove = 180
 
 [node name="asteroid4" parent="LevelMap" unique_id=1555302405 instance=ExtResource("5_i1jm3")]
 z_index = -10
 position = Vector2(850, -216)
-ymove = 120
+ymove = 180
 
 [node name="asteroid5" parent="LevelMap" unique_id=830730748 instance=ExtResource("5_i1jm3")]
 z_index = -10
 position = Vector2(402, -349)
-ymove = 120
+ymove = 180
 
 [node name="asteroid6" parent="LevelMap" unique_id=2031439998 instance=ExtResource("5_i1jm3")]
 z_index = -10
 position = Vector2(262, -162)
-ymove = 120
+ymove = 180
 
 [node name="asteroid7" parent="LevelMap" unique_id=1468850203 instance=ExtResource("5_i1jm3")]
 z_index = -10
 position = Vector2(1019, -124)
-ymove = 120
+ymove = 180
 
 [node name="asteroid8" parent="LevelMap" unique_id=396939674 instance=ExtResource("5_i1jm3")]
 z_index = -10
 position = Vector2(639, -284)
-ymove = 120
+ymove = 180
 
 [node name="asteroid9" parent="LevelMap" unique_id=200381873 instance=ExtResource("5_i1jm3")]
 z_index = -10
 position = Vector2(748, 311)
-ymove = 120
+ymove = 180
 
 [node name="asteroid10" parent="LevelMap" unique_id=259982708 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(73, -34)
-ymove = 120
+position = Vector2(180, -243)
+ymove = 180
 
 [node name="blue_enemy" parent="LevelMap" unique_id=1346047155 instance=ExtResource("6_252at")]
 position = Vector2(540, -657)
@@ -137,4 +148,23 @@ tur = [59, 0, 0]
 freq = [2, 0, 0]
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
-position = Vector2(535, 1271)
+position = Vector2(562, 1657)
+
+[node name="FarStars" type="GPUParticles2D" parent="." unique_id=245978833]
+position = Vector2(540, 0)
+amount = 100
+lifetime = 192.0
+preprocess = 192.0
+trail_lifetime = 0.1
+trail_sections = 4
+trail_section_subdivisions = 1
+process_material = SubResource("ParticleProcessMaterial_252at")
+script = ExtResource("8_twinkle")
+
+[node name="MiddleStars" type="GPUParticles2D" parent="." unique_id=1488518254]
+position = Vector2(540, 0)
+amount = 100
+lifetime = 96.0
+preprocess = 96.0
+process_material = SubResource("ParticleProcessMaterial_i1jm3")
+script = ExtResource("8_twinkle")
