@@ -7,7 +7,8 @@
       "Bash(Get-ChildItem -Path \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\" -Recurse -Force)",
       "Bash(Select-Object FullName)",
       "PowerShell(\\(Get-ChildItem \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\\\\data\\\\weapon_sprites\"\\).Count)",
-      "PowerShell(Remove-Item -Path \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\\\\scenes\\\\explosions\" -Recurse -Force -Confirm:$false)"
+      "PowerShell(Remove-Item -Path \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\\\\scenes\\\\explosions\" -Recurse -Force -Confirm:$false)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }

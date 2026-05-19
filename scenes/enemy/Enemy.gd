@@ -177,8 +177,8 @@ func die():
 	var parent := _get_level_parent()
 	if parent:
 		var explosion: Node2D = GameConstants.explosion_scene.instantiate()
+		explosion.position = (parent as Node2D).to_local(global_position)
 		parent.add_child(explosion)
-		explosion.global_position = global_position
 	SoundManager.play_sound(9 if esize == 1 else 8)
 	queue_free()
 

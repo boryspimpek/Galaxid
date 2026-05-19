@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d3vnnnd2fe8u"]
 
-[ext_resource type="PackedScene" uid="uid://bte7ofi7pgn5b" path="res://scenes/player/player.tscn" id="1_c6gwx"]
+[ext_resource type="PackedScene" uid="uid://bte7ofi7pgn5b" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
 [ext_resource type="PackedScene" uid="uid://jgvbkuyntum0" path="res://scenes/asteroids/asteroid.tscn" id="5_i1jm3"]
 [ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="6_252at"]
@@ -16,6 +16,7 @@ scroll_speed = 20
 
 [node name="CanvasLayer" type="CanvasLayer" parent="LevelMap" unique_id=704000935]
 layer = -1
+visible = false
 
 [node name="TextureRect" type="ColorRect" parent="LevelMap/CanvasLayer" unique_id=164181718]
 visible = false
@@ -33,7 +34,6 @@ scale = Vector2(1.25, 1.25)
 texture = ExtResource("6_qh0kd")
 
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=1111111111]
-visible = false
 script = ExtResource("7_ruler")
 show_in_game = true
 
@@ -43,58 +43,93 @@ ymove = 0
 
 [node name="asteroid" parent="LevelMap" unique_id=950937570 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(618, -236)
+position = Vector2(801, -82)
 ymove = 120
 
 [node name="asteroid2" parent="LevelMap" unique_id=119960324 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(818, -126)
+position = Vector2(709, -322)
 ymove = 120
 
 [node name="asteroid3" parent="LevelMap" unique_id=536965775 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(648, -320)
+position = Vector2(807, -258)
 ymove = 120
 
 [node name="asteroid4" parent="LevelMap" unique_id=1555302405 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(460, -176)
+position = Vector2(850, -216)
 ymove = 120
 
 [node name="asteroid5" parent="LevelMap" unique_id=830730748 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(122, -78)
+position = Vector2(685, -357)
 ymove = 120
 
 [node name="asteroid6" parent="LevelMap" unique_id=2031439998 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(354, -270)
+position = Vector2(897, -178)
 ymove = 120
 
 [node name="asteroid7" parent="LevelMap" unique_id=1468850203 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(915, -271)
+position = Vector2(855, -124)
 ymove = 120
 
 [node name="asteroid8" parent="LevelMap" unique_id=396939674 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(870, -118)
+position = Vector2(753, -294)
 ymove = 120
 
 [node name="asteroid9" parent="LevelMap" unique_id=200381873 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(569, -92)
+position = Vector2(748, 311)
 ymove = 120
 
 [node name="asteroid10" parent="LevelMap" unique_id=259982708 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(231, -216)
+position = Vector2(743, -32)
 ymove = 120
 
 [node name="blue_enemy" parent="LevelMap" unique_id=1346047155 instance=ExtResource("6_252at")]
-position = Vector2(753, -100)
+position = Vector2(876, -55)
 armor = 4
-ymove = 180
+ymove = 120
+tur = [59, 0, 0]
+freq = [2, 0, 0]
+
+[node name="blue_enemy2" parent="LevelMap" unique_id=1354578034 instance=ExtResource("6_252at")]
+position = Vector2(347, -56)
+armor = 4
+ymove = 120
+tur = [59, 0, 0]
+freq = [2, 0, 0]
+
+[node name="blue_enemy3" parent="LevelMap" unique_id=1184308120 instance=ExtResource("6_252at")]
+position = Vector2(694, -52)
+armor = 4
+ymove = 120
+tur = [59, 0, 0]
+freq = [2, 0, 0]
+
+[node name="blue_enemy4" parent="LevelMap" unique_id=286880685 instance=ExtResource("6_252at")]
+position = Vector2(977, -23)
+armor = 4
+ymove = 120
+tur = [59, 0, 0]
+freq = [2, 0, 0]
+
+[node name="blue_enemy5" parent="LevelMap" unique_id=2014692944 instance=ExtResource("6_252at")]
+position = Vector2(531, -62)
+armor = 4
+ymove = 120
+tur = [59, 0, 0]
+freq = [2, 0, 0]
+
+[node name="blue_enemy6" parent="LevelMap" unique_id=1650768608 instance=ExtResource("6_252at")]
+position = Vector2(121, -58)
+armor = 4
+ymove = 120
 tur = [59, 0, 0]
 freq = [2, 0, 0]
 
