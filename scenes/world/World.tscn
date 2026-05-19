@@ -1,14 +1,28 @@
 [gd_scene format=3 uid="uid://d3vnnnd2fe8u"]
 
 [ext_resource type="PackedScene" uid="uid://bte7ofi7pgn5b" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
+[ext_resource type="Texture2D" uid="uid://feenl88838vb" path="res://assets/background/starfield.png" id="2_252at"]
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
+[ext_resource type="Shader" uid="uid://do4kwx72nrhw6" path="res://scenes/world/starfild_glow.gdshader" id="3_qh0kd"]
 [ext_resource type="PackedScene" uid="uid://jgvbkuyntum0" path="res://scenes/asteroids/asteroid.tscn" id="5_i1jm3"]
 [ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="6_252at"]
-[ext_resource type="Texture2D" uid="uid://1lqbyse0uyge" path="res://assets/background/Copilot_20260518_123407.png" id="6_qh0kd"]
 [ext_resource type="PackedScene" uid="uid://cfjg774vk85x4" path="res://scenes/planet3d.tscn" id="7_qh0kd"]
-[ext_resource type="Script" uid="uid://cjwf83wntumr8" path="res://scenes/world/LevelRuler.gd" id="7_ruler"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yr1n6"]
+shader = ExtResource("3_qh0kd")
+shader_parameter/czestotliwosc_mrugania = 2.00000009174012
+shader_parameter/minimalna_jasnosc = 0.2
+shader_parameter/maksymalna_jasnosc = 4.6690001742775
 
 [node name="World" type="Node2D" unique_id=1364436952]
+
+[node name="Starfield" type="Sprite2D" parent="." unique_id=200776406]
+z_index = -10
+material = SubResource("ShaderMaterial_yr1n6")
+position = Vector2(538, 934)
+rotation = 1.5707964
+scale = Vector2(1.42, 1.42)
+texture = ExtResource("2_252at")
 
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
 script = ExtResource("3_level_manager")
@@ -16,7 +30,6 @@ scroll_speed = 20
 
 [node name="CanvasLayer" type="CanvasLayer" parent="LevelMap" unique_id=704000935]
 layer = -1
-visible = false
 
 [node name="TextureRect" type="ColorRect" parent="LevelMap/CanvasLayer" unique_id=164181718]
 visible = false
@@ -27,33 +40,23 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Copilot20260518123407" type="Sprite2D" parent="LevelMap/CanvasLayer" unique_id=1742768767]
-position = Vector2(517, 950)
-rotation = 1.5707964
-scale = Vector2(1.25, 1.25)
-texture = ExtResource("6_qh0kd")
-
-[node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=1111111111]
-script = ExtResource("7_ruler")
-show_in_game = true
-
 [node name="planet3d" parent="LevelMap" unique_id=1490643938 instance=ExtResource("7_qh0kd")]
-position = Vector2(547, 285)
-ymove = 0
+position = Vector2(401, 280)
+ymove = -5
 
 [node name="asteroid" parent="LevelMap" unique_id=950937570 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(801, -82)
+position = Vector2(505, -88)
 ymove = 120
 
 [node name="asteroid2" parent="LevelMap" unique_id=119960324 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(709, -322)
+position = Vector2(134, -362)
 ymove = 120
 
 [node name="asteroid3" parent="LevelMap" unique_id=536965775 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(807, -258)
+position = Vector2(757, -255)
 ymove = 120
 
 [node name="asteroid4" parent="LevelMap" unique_id=1555302405 instance=ExtResource("5_i1jm3")]
@@ -63,22 +66,22 @@ ymove = 120
 
 [node name="asteroid5" parent="LevelMap" unique_id=830730748 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(685, -357)
+position = Vector2(402, -349)
 ymove = 120
 
 [node name="asteroid6" parent="LevelMap" unique_id=2031439998 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(897, -178)
+position = Vector2(262, -162)
 ymove = 120
 
 [node name="asteroid7" parent="LevelMap" unique_id=1468850203 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(855, -124)
+position = Vector2(1019, -124)
 ymove = 120
 
 [node name="asteroid8" parent="LevelMap" unique_id=396939674 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(753, -294)
+position = Vector2(639, -284)
 ymove = 120
 
 [node name="asteroid9" parent="LevelMap" unique_id=200381873 instance=ExtResource("5_i1jm3")]
@@ -88,46 +91,46 @@ ymove = 120
 
 [node name="asteroid10" parent="LevelMap" unique_id=259982708 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(743, -32)
+position = Vector2(73, -34)
 ymove = 120
 
 [node name="blue_enemy" parent="LevelMap" unique_id=1346047155 instance=ExtResource("6_252at")]
-position = Vector2(876, -55)
+position = Vector2(540, -657)
 armor = 4
 ymove = 120
 tur = [59, 0, 0]
 freq = [2, 0, 0]
 
 [node name="blue_enemy2" parent="LevelMap" unique_id=1354578034 instance=ExtResource("6_252at")]
-position = Vector2(347, -56)
+position = Vector2(229, -501)
 armor = 4
 ymove = 120
 tur = [59, 0, 0]
 freq = [2, 0, 0]
 
 [node name="blue_enemy3" parent="LevelMap" unique_id=1184308120 instance=ExtResource("6_252at")]
-position = Vector2(694, -52)
+position = Vector2(722, -608)
 armor = 4
 ymove = 120
 tur = [59, 0, 0]
 freq = [2, 0, 0]
 
 [node name="blue_enemy4" parent="LevelMap" unique_id=286880685 instance=ExtResource("6_252at")]
-position = Vector2(977, -23)
+position = Vector2(830, -859)
 armor = 4
 ymove = 120
 tur = [59, 0, 0]
 freq = [2, 0, 0]
 
 [node name="blue_enemy5" parent="LevelMap" unique_id=2014692944 instance=ExtResource("6_252at")]
-position = Vector2(531, -62)
+position = Vector2(406, -529)
 armor = 4
 ymove = 120
 tur = [59, 0, 0]
 freq = [2, 0, 0]
 
 [node name="blue_enemy6" parent="LevelMap" unique_id=1650768608 instance=ExtResource("6_252at")]
-position = Vector2(121, -58)
+position = Vector2(961, -730)
 armor = 4
 ymove = 120
 tur = [59, 0, 0]

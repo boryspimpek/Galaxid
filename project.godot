@@ -32,7 +32,7 @@ SoundManager="*res://scripts/managers/SoundManager.gd"
 window/size/viewport_width=1080
 window/size/viewport_height=1920
 window/size/window_width_override=800
-window/size/window_height_override=1080
+window/size/window_height_override=800
 window/stretch/mode="canvas_items"
 
 [physics]

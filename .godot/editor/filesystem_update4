@@ -1,3 +1,2 @@
 res://scenes/world/World.tscn
-res://scenes/enemy/Enemy.gd
-res://scenes/explosions/Explode.gd
+res://scenes/world/starfild_glow.gdshader
