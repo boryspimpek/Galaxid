@@ -5,7 +5,6 @@
 
 [node name="planet3d" unique_id=119960325 instance=ExtResource("1_2befm")]
 z_index = -10
-ymove = 120
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="1" unique_id=291847561]
 rect = Rect2(-138, -221, 398, 441)
@@ -22,12 +21,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" index="0" unique_id=1200546304]
+own_world_3d = true
 transparent_bg = true
 handle_input_locally = false
 render_target_update_mode = 4
 
 [node name="planet" parent="SubViewportContainer/SubViewport" index="0" unique_id=507642405 instance=ExtResource("2_8qbwx")]
-transform = Transform3D(0.8660253, -0.49999997, 0, 0.49999997, 0.8660253, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(0.8660254, -0.5, 0, 0.356013, 0.6166326, 0.7021531, -0.35107654, -0.6080824, 0.712026, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" index="1" unique_id=1753683567]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.2209964, 0)

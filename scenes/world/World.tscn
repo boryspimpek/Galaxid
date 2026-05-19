@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://d3vnnnd2fe8u"]
 
 [ext_resource type="PackedScene" uid="uid://bte7ofi7pgn5b" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
+[ext_resource type="PackedScene" uid="uid://cfkmx7wjhb3ii" path="res://scenes/planets/earth_3d.tscn" id="3_252at"]
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
+[ext_resource type="PackedScene" uid="uid://chm3e2lkmftrj" path="res://scenes/planets/saturn_3d.tscn" id="4_qh0kd"]
 [ext_resource type="PackedScene" uid="uid://jgvbkuyntum0" path="res://scenes/asteroids/asteroid.tscn" id="5_i1jm3"]
 [ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="6_252at"]
 [ext_resource type="PackedScene" uid="uid://cfjg774vk85x4" path="res://scenes/planets/planet3d.tscn" id="7_qh0kd"]
@@ -52,8 +54,17 @@ script = ExtResource("3_level_manager")
 scroll_speed = 20
 
 [node name="planet3d" parent="LevelMap" unique_id=1490643938 instance=ExtResource("7_qh0kd")]
-position = Vector2(442, 533)
-ymove = -5
+position = Vector2(234, 157)
+ymove = 20
+
+[node name="earth3d" parent="LevelMap" unique_id=119960324 instance=ExtResource("3_252at")]
+position = Vector2(1140, 374)
+xmove = -35
+ymove = 40
+
+[node name="saturn3d" parent="LevelMap" unique_id=550043277 instance=ExtResource("4_qh0kd")]
+position = Vector2(709, -309)
+ymove = 20
 
 [node name="asteroid" parent="LevelMap" unique_id=950937570 instance=ExtResource("5_i1jm3")]
 z_index = -10
@@ -97,7 +108,7 @@ ymove = 180
 
 [node name="asteroid9" parent="LevelMap" unique_id=200381873 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(748, 311)
+position = Vector2(729, -62)
 ymove = 180
 
 [node name="asteroid10" parent="LevelMap" unique_id=259982708 instance=ExtResource("5_i1jm3")]
@@ -148,9 +159,10 @@ tur = [59, 0, 0]
 freq = [2, 0, 0]
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
-position = Vector2(562, 1657)
+position = Vector2(759, 778)
 
 [node name="FarStars" type="GPUParticles2D" parent="." unique_id=245978833]
+z_index = -100
 position = Vector2(540, 0)
 amount = 100
 lifetime = 192.0
@@ -162,6 +174,7 @@ process_material = SubResource("ParticleProcessMaterial_252at")
 script = ExtResource("8_twinkle")
 
 [node name="MiddleStars" type="GPUParticles2D" parent="." unique_id=1488518254]
+z_index = -100
 position = Vector2(540, 0)
 amount = 100
 lifetime = 96.0

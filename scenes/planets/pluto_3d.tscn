@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://s84aqru21ktw"]
+
+[ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_ueejx"]
+[ext_resource type="PackedScene" uid="uid://cscgfiolbqbyn" path="res://scenes/planets/pluto.tscn" id="2_o41s1"]
+[ext_resource type="Script" uid="uid://dqfm1fllu6cek" path="res://assets/planet/planet_rotate.gd" id="3_o41s1"]
+
+[node name="pluto3d" unique_id=119960324 instance=ExtResource("1_ueejx")]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." index="2" unique_id=1661267535]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" index="0" unique_id=480128876]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="pluto" parent="SubViewportContainer/SubViewport" index="0" unique_id=240961878 instance=ExtResource("2_o41s1")]
+transform = Transform3D(0.77608687, 0.29349554, -0.5581663, -0.03149977, 0.9020355, 0.43051112, 0.62983894, -0.3165319, 0.70930284, 0, 0, 0)
+script = ExtResource("3_o41s1")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" index="1" unique_id=288674321]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.662, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" index="2" unique_id=64105899]
+transform = Transform3D(0.9937679, -0.04956301, 0.09984404, 0, 0.8957118, 0.44463518, -0.11146893, -0.4418642, 0.8901296, 0, 2.8405957, 0)

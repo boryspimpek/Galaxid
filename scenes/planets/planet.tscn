@@ -15,7 +15,7 @@ shader_parameter/line_color = Color(0, 0, 0, 1)
 shader_parameter/metallic = 0.6510000309225
 shader_parameter/roughness = 0.46800002223
 shader_parameter/specular = 0.5
-shader_parameter/shadow_threshold = 0.2470000117325
+shader_parameter/shadow_threshold = 0.10800000512999999
 shader_parameter/shadow_softness = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dfcq"]
@@ -28,4 +28,5 @@ script = ExtResource("5_rotate")
 surface_material_override/0 = SubResource("ShaderMaterial_m5dqw")
 
 [node name="Ring" parent="." index="1" unique_id=1582818810]
+transform = Transform3D(0.84, 0, 0, 0, 0.84, 0, 0, 0, 0.84, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_8dfcq")

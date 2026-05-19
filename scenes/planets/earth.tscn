@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://c1pq466qvcqtm"]
+
+[ext_resource type="PackedScene" uid="uid://sfn63rq46ed6" path="res://assets/earth/Meshy_AI_Cartoon_anime_style__0519154112_texture.glb" id="1_b5q5o"]
+[ext_resource type="Shader" uid="uid://d2n2rvjcvwag1" path="res://assets/planet/toon.gdshader" id="2_cwnmv"]
+[ext_resource type="Texture2D" uid="uid://c0ywmsrno3o0n" path="res://assets/earth/Meshy_AI_Cartoon_anime_style__0519154112_texture_0.jpg" id="3_pa0cx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbhfj"]
+cull_mode = 1
+albedo_color = Color(0, 0, 0, 1)
+grow = true
+grow_amount = 0.02
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fnp8i"]
+render_priority = 0
+next_pass = SubResource("StandardMaterial3D_xbhfj")
+shader = ExtResource("2_cwnmv")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_pa0cx")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/metallic = 0.6510000309225
+shader_parameter/roughness = 0.48800002318
+shader_parameter/specular = 0.5
+shader_parameter/shadow_threshold = 0.2470000117325
+shader_parameter/shadow_softness = 0.0
+
+[node name="earth" unique_id=1181176861 instance=ExtResource("1_b5q5o")]
+
+[node name="Mesh" parent="." index="0" unique_id=822757266]
+surface_material_override/0 = SubResource("ShaderMaterial_fnp8i")

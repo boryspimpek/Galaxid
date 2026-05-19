@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://j80ht8jwquwo"]
+
+[ext_resource type="PackedScene" uid="uid://cmct7ubpvywy8" path="res://assets/saturn/Meshy_AI_Sunset_Saturn_0519154148_texture.glb" id="1_mlpop"]
+[ext_resource type="Shader" uid="uid://d2n2rvjcvwag1" path="res://assets/planet/toon.gdshader" id="2_dvlhj"]
+[ext_resource type="Texture2D" uid="uid://dheieu2kl0klf" path="res://assets/saturn/Meshy_AI_Sunset_Saturn_0519154148_texture_0.jpg" id="3_cyfv8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l17rv"]
+render_priority = 0
+shader = ExtResource("2_dvlhj")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_cyfv8")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/metallic = 0.7470000354825
+shader_parameter/roughness = 0.5
+shader_parameter/specular = 0.5
+shader_parameter/shadow_threshold = 0.114000005415
+shader_parameter/shadow_softness = 0.0
+
+[node name="saturn" unique_id=946586731 instance=ExtResource("1_mlpop")]
+
+[node name="Mesh" parent="." index="0" unique_id=1988501695]
+surface_material_override/0 = SubResource("ShaderMaterial_l17rv")

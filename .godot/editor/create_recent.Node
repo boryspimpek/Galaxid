@@ -1,7 +1,8 @@
-SubViewport
-SubViewportContainer
 DirectionalLight3D
 Camera3D
+SubViewport
+SubViewportContainer
+DirectionalLight2D
 MeshInstance3D
 GPUParticles2D
 ColorRect
@@ -11,4 +12,3 @@ Node2D
 CollisionPolygon2D
 TextureRect
 CollisionShape2D
-AnimationPlayer
