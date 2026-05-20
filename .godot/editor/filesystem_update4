@@ -6,3 +6,4 @@ res://scenes/planets/GreenPlanet3D.tscn
 res://scenes/planets/SilverPlanet.tscn
 res://scenes/world/World.tscn
 res://scenes/enemies/formation_standart.tscn
+res://scenes/enemy/EnemyPath.gd

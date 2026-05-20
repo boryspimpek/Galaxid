@@ -57,13 +57,13 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("3_level_manager")
 scroll_speed = 20
 
+[node name="FormationStandart" parent="LevelMap" unique_id=1965159637 instance=ExtResource("5_fe1rh")]
+position = Vector2(142, -712)
+
 [node name="asteroid" parent="LevelMap" unique_id=950937570 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(1272, 108)
+position = Vector2(968, -419)
 ymove = 180
-
-[node name="FormationStandart" parent="." unique_id=1965159637 instance=ExtResource("5_fe1rh")]
-position = Vector2(176, -381)
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(553, 1775)
