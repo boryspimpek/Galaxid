@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bmae4objnx4d2"]
+
+[ext_resource type="PackedScene" uid="uid://b0cs68hdjm0xl" path="res://assets/planets/crimson planet/Meshy_AI_Crimson_Ringed_Planet_0520072115_texture.glb" id="1_0siem"]
+[ext_resource type="Texture2D" uid="uid://c2s2y4m3eowo2" path="res://assets/planets/crimson planet/Meshy_AI_Crimson_Ringed_Planet_0520072115_texture_Image_0.jpg" id="3_aabes"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_55buo"]
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+albedo_texture = ExtResource("3_aabes")
+roughness = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 1.0
+
+[node name="CrimsonPlanet" unique_id=96161081 instance=ExtResource("1_0siem")]
+
+[node name="Mesh_0" parent="." index="0" unique_id=2010922940]
+surface_material_override/0 = SubResource("StandardMaterial3D_55buo")

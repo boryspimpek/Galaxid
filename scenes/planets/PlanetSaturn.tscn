@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://fwqmrlgnphgo"]
+
+[ext_resource type="PackedScene" uid="uid://cmct7ubpvywy8" path="res://assets/planets/saturn/Meshy_AI_Sunset_Saturn_0519154148_texture.glb" id="1_ql7ai"]
+[ext_resource type="Texture2D" uid="uid://dheieu2kl0klf" path="res://assets/planets/saturn/Meshy_AI_Sunset_Saturn_0519154148_texture_0.jpg" id="3_610dv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2w7er"]
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = ExtResource("3_610dv")
+roughness = 0.0
+clearcoat_enabled = true
+
+[node name="PlanetSaturn" unique_id=449738654 instance=ExtResource("1_ql7ai")]
+
+[node name="Mesh" parent="." index="0" unique_id=1507072334]
+surface_material_override/0 = SubResource("StandardMaterial3D_2w7er")

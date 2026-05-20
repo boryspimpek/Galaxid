@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bmia4g1af7aje"]
+
+[ext_resource type="PackedScene" uid="uid://dq0kfnc7p8fww" path="res://scenes/planets/Planet3D.tscn" id="1_cyrni"]
+[ext_resource type="PackedScene" uid="uid://bmn4143pefnhy" path="res://scenes/planets/PlanetStrips.tscn" id="2_x6c31"]
+
+[node name="PlanetStrips3D" unique_id=1670874551 instance=ExtResource("1_cyrni")]
+
+[node name="SubViewport" parent="SubViewportContainer" parent_id_path=PackedInt32Array(348967335) index="0" unique_id=1942997505]
+own_world_3d = false
+
+[node name="Planet" parent="SubViewportContainer/SubViewport" index="0" unique_id=1560299125 instance=ExtResource("2_x6c31")]
+
+[node name="DirectionalLight3D" parent="SubViewportContainer/SubViewport" index="2" unique_id=1786769825]
+transform = Transform3D(-4.371139e-08, 0.25881898, -0.96592563, 0, 0.96592563, 0.25881898, 1, 1.1313338e-08, -4.2221952e-08, 0, 5, 0)
+light_energy = 3.0

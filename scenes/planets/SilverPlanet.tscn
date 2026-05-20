@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://coiijk3t2luyn"]
+
+[ext_resource type="PackedScene" uid="uid://darvruja07adk" path="res://assets/planets/silver planet/Meshy_AI_Silvery_Ringed_Planet_0520072027_texture.glb" id="1_wk7gq"]
+[ext_resource type="Texture2D" uid="uid://chwekvm6kc1un" path="res://assets/planets/silver planet/Meshy_AI_Silvery_Ringed_Planet_0520072027_texture_Image_0.jpg" id="3_b8oxt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7ae3"]
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+albedo_texture = ExtResource("3_b8oxt")
+roughness = 0.16
+clearcoat_enabled = true
+clearcoat_roughness = 0.0
+
+[node name="SilverPlanet" unique_id=1858073298 instance=ExtResource("1_wk7gq")]
+
+[node name="Mesh_0" parent="." index="0" unique_id=344178637]
+surface_material_override/0 = SubResource("StandardMaterial3D_k7ae3")

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cmgg2l8ympyhg"]
+
+[ext_resource type="PackedScene" uid="uid://dq0kfnc7p8fww" path="res://scenes/planets/Planet3D.tscn" id="1_jijy5"]
+[ext_resource type="PackedScene" uid="uid://b3116sqmxjbqe" path="res://scenes/planets/EarthPlanet.tscn" id="2_wvoq3"]
+
+[node name="EarthPlanet3D" unique_id=1843616213 instance=ExtResource("1_jijy5")]
+
+[node name="SubViewport" parent="SubViewportContainer" index="0"]
+own_world_3d = true
+
+[node name="EarthPlanet" parent="SubViewportContainer/SubViewport" index="0" unique_id=975989011 instance=ExtResource("2_wvoq3")]

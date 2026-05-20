@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://n8lbwuxnh2n5"]
+
+[ext_resource type="PackedScene" uid="uid://dw0r6minxltib" path="res://assets/planets/emerald planet/Meshy_AI_Emerald_Saturn_0520072056_texture.glb" id="1_wwo1t"]
+[ext_resource type="Texture2D" uid="uid://d2u4lacemsum2" path="res://assets/planets/emerald planet/Meshy_AI_Emerald_Saturn_0520072056_texture_Image_0.jpg" id="3_p60ge"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c0fdk"]
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = ExtResource("3_p60ge")
+roughness = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.65
+
+[node name="EmeraldPlanet" unique_id=1674817379 instance=ExtResource("1_wwo1t")]
+
+[node name="Mesh_0" parent="." index="0" unique_id=592737264]
+surface_material_override/0 = SubResource("StandardMaterial3D_c0fdk")

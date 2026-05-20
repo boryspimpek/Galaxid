@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cjka77acuu8be"]
+
+[ext_resource type="PackedScene" uid="uid://dq0kfnc7p8fww" path="res://scenes/planets/Planet3D.tscn" id="1_t0jv5"]
+[ext_resource type="PackedScene" uid="uid://n8lbwuxnh2n5" path="res://scenes/planets/EmeraldPlanet.tscn" id="2_y42ji"]
+
+[node name="EmeraldPlanet3D" unique_id=287911735 instance=ExtResource("1_t0jv5")]
+
+[node name="SubViewport" parent="SubViewportContainer" index="0"]
+own_world_3d = true
+
+[node name="EmeraldPlanet" parent="SubViewportContainer/SubViewport" index="0" unique_id=1674817379 instance=ExtResource("2_y42ji")]

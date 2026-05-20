@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ddgkwmbuulgl7"]
+
+[ext_resource type="PackedScene" uid="uid://bhc4pehckdx1" path="res://assets/planets/green planet/Meshy_AI_Emerald_Saturn_0520072043_texture.glb" id="1_qs5jh"]
+[ext_resource type="Texture2D" uid="uid://d07b58dyq8fjo" path="res://assets/planets/green planet/Meshy_AI_Emerald_Saturn_0520072043_texture_Image_0.jpg" id="3_4srdf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8jc20"]
+diffuse_mode = 3
+specular_mode = 1
+disable_ambient_light = true
+albedo_texture = ExtResource("3_4srdf")
+roughness = 0.0
+clearcoat_enabled = true
+
+[node name="GreenPlanet" unique_id=1463199738 instance=ExtResource("1_qs5jh")]
+
+[node name="Mesh_0" parent="." index="0" unique_id=414590168]
+surface_material_override/0 = SubResource("StandardMaterial3D_8jc20")

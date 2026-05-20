@@ -3,9 +3,16 @@
 [ext_resource type="PackedScene" uid="uid://bte7ofi7pgn5b" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
 [ext_resource type="PackedScene" uid="uid://r35ab1oen7q4" path="res://scenes/planets/AzurePlanet3D.tscn" id="2_i1jm3"]
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
+[ext_resource type="PackedScene" uid="uid://btwasr8xpu0be" path="res://scenes/planets/CrimsonPlanet3D.tscn" id="5_252at"]
 [ext_resource type="PackedScene" uid="uid://jgvbkuyntum0" path="res://scenes/asteroids/asteroid.tscn" id="5_i1jm3"]
 [ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="6_252at"]
+[ext_resource type="PackedScene" uid="uid://cmgg2l8ympyhg" path="res://scenes/planets/EarthPlanet3D.tscn" id="8_qh0kd"]
 [ext_resource type="Script" uid="uid://cd6vtrajndq0f" path="res://scenes/world/StarTwinkle.gd" id="8_twinkle"]
+[ext_resource type="PackedScene" uid="uid://cjka77acuu8be" path="res://scenes/planets/EmeraldPlanet3D.tscn" id="9_yr1n6"]
+[ext_resource type="PackedScene" uid="uid://b4vfx5xjylnut" path="res://scenes/planets/GreenPlanet3D.tscn" id="10_l5ull"]
+[ext_resource type="PackedScene" uid="uid://bn31xdjeslyos" path="res://scenes/planets/PlanetSaturn3D.tscn" id="11_16fjv"]
+[ext_resource type="PackedScene" uid="uid://bmia4g1af7aje" path="res://scenes/planets/PlanetStrips3D.tscn" id="12_ckp8c"]
+[ext_resource type="PackedScene" uid="uid://cxvlgnysglo5x" path="res://scenes/planets/SilverPlanet3D.tscn" id="13_8xm5o"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_252at"]
 particle_flag_disable_z = true
@@ -39,7 +46,7 @@ scale_max = 8.0
 layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=378036916]
-z_index = -100
+z_index = -200
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -51,23 +58,20 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("3_level_manager")
 scroll_speed = 20
 
-[node name="azure_planet" parent="LevelMap" unique_id=239971457 instance=ExtResource("2_i1jm3")]
-position = Vector2(266, 818)
-
 [node name="asteroid" parent="LevelMap" unique_id=950937570 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(848, 331)
+position = Vector2(962, 376)
 ymove = 180
 
 [node name="blue_enemy" parent="LevelMap" unique_id=1346047155 instance=ExtResource("6_252at")]
-position = Vector2(499, 619)
+position = Vector2(926, 595)
 armor = 4
 ymove = 120
 tur = [59, 0, 0]
 freq = [2, 0, 0]
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
-position = Vector2(759, 778)
+position = Vector2(1036, 1288)
 
 [node name="FarStars" type="GPUParticles2D" parent="." unique_id=245978833]
 z_index = -100
@@ -89,3 +93,34 @@ lifetime = 96.0
 preprocess = 96.0
 process_material = SubResource("ParticleProcessMaterial_i1jm3")
 script = ExtResource("8_twinkle")
+
+[node name="PlanetStrips3D" parent="." unique_id=1670874551 instance=ExtResource("12_ckp8c")]
+position = Vector2(539, 242)
+
+[node name="CrimsonPlanet3d" parent="." unique_id=944956452 instance=ExtResource("5_252at")]
+position = Vector2(216, -95)
+move_speed = 40.0
+
+[node name="EarthPlanet3D" parent="." unique_id=1843616213 instance=ExtResource("8_qh0kd")]
+position = Vector2(386, -776)
+move_speed = 40.0
+
+[node name="EmeraldPlanet3D" parent="." unique_id=287911735 instance=ExtResource("9_yr1n6")]
+position = Vector2(814, -391)
+move_speed = 40.0
+
+[node name="GreenPlanet3D" parent="." unique_id=1430243515 instance=ExtResource("10_l5ull")]
+position = Vector2(671, -1561)
+move_speed = 40.0
+
+[node name="PlanetSaturn3D" parent="." unique_id=2055306021 instance=ExtResource("11_16fjv")]
+position = Vector2(242, -1183)
+move_speed = 40.0
+
+[node name="SilverPlanet3D" parent="." unique_id=1166699980 instance=ExtResource("13_8xm5o")]
+position = Vector2(276, 1405)
+move_speed = 40.0
+
+[node name="azure_planet" parent="." unique_id=239971457 instance=ExtResource("2_i1jm3")]
+position = Vector2(795, -800)
+move_speed = 40.0

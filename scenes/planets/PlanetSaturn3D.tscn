@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bn31xdjeslyos"]
+
+[ext_resource type="PackedScene" uid="uid://dq0kfnc7p8fww" path="res://scenes/planets/Planet3D.tscn" id="1_df5n4"]
+[ext_resource type="PackedScene" uid="uid://fwqmrlgnphgo" path="res://scenes/planets/PlanetSaturn.tscn" id="2_3umnh"]
+
+[node name="PlanetSaturn3D" unique_id=2055306021 instance=ExtResource("1_df5n4")]
+
+[node name="SubViewport" parent="SubViewportContainer" index="0"]
+own_world_3d = true
+
+[node name="PlanetSaturn" parent="SubViewportContainer/SubViewport" index="0" unique_id=449738654 instance=ExtResource("2_3umnh")]
