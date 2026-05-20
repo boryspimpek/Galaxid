@@ -7,3 +7,4 @@ res://scenes/planets/SilverPlanet.tscn
 res://scenes/world/World.tscn
 res://scenes/enemies/formation_standart.tscn
 res://scenes/enemy/EnemyPath.gd
+res://scenes/enemies/Formation.gd

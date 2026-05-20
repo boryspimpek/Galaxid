@@ -3,16 +3,16 @@ extends Node2D
 
 ## Wizualna linijka poziomu — widoczna w edytorze Godota (@tool).
 ## Pokazuje znaczniki czasowe w przestrzeni LevelMap.
-## Konwencja: scroll_speed=4, 30fps → 120px = 1 sekunda.
-## Wrogowie na Y=-N pojawiają się po N/60 sekundach od startu.
+## scroll_speed musi zgadzać się z wartością w LevelManager (px/s, delta-time).
+## Wrogowie na Y=-N pojawiają się po N/scroll_speed sekundach od startu.
 
-@export var scroll_speed: int = 2
+@export var scroll_speed: int = 20            ## musi być równy scroll_speed w LevelManager
 @export var level_length_seconds: int = 180   ## całkowita długość poziomu w sekundach
 @export var show_in_game: bool = false         ## czy linijka widoczna w trakcie gry
 
-const FPS        := 30
-const LEVEL_W    := 1080
-const FONT_SIZE  := 24
+const LEVEL_W   := 1080
+const LEVEL_H   := 1920
+const FONT_SIZE := 24
 
 func _ready() -> void:
 	queue_redraw()
@@ -21,7 +21,7 @@ func _draw() -> void:
 	if not Engine.is_editor_hint() and not show_in_game:
 		return
 
-	var px_per_sec: float = scroll_speed * FPS   # 60 px/s
+	var px_per_sec: float = float(scroll_speed)
 	var total_px: float   = level_length_seconds * px_per_sec
 
 	_draw_background(total_px)
@@ -36,8 +36,8 @@ func _draw_background(total_px: float) -> void:
 
 # ── Zielona strefa "widoczna od startu" (Y 0..200 = pierwszy ekran) ─────────
 func _draw_start_zone() -> void:
-	draw_rect(Rect2(0, 0, LEVEL_W, 800), Color(0.2, 0.9, 0.2, 0.12), true)
-	draw_rect(Rect2(0, 0, LEVEL_W, 800), Color(0.2, 0.9, 0.2, 0.5), false, 1.0)
+	draw_rect(Rect2(0, 0, LEVEL_W, LEVEL_H), Color(0.2, 0.9, 0.2, 0.12), true)
+	draw_rect(Rect2(0, 0, LEVEL_W, LEVEL_H), Color(0.2, 0.9, 0.2, 0.5), false, 1.0)
 	var font := ThemeDB.fallback_font
 	draw_string(font, Vector2(4, 12), "START (widoczne od razu)",
 				HORIZONTAL_ALIGNMENT_LEFT, -1, FONT_SIZE, Color(0.2, 0.9, 0.2, 0.9))
@@ -84,7 +84,7 @@ func _draw_borders(total_px: float) -> void:
 	draw_line(Vector2(LEVEL_W, -total_px), Vector2(LEVEL_W, 800), Color(0.4, 0.4, 0.9, 0.4), 1.0)
 
 	# Dolna krawędź startu (Y=200)
-	draw_line(Vector2(0, 800), Vector2(LEVEL_W, 800), Color(0.2, 0.9, 0.2, 0.7), 1.5)
+	draw_line(Vector2(0, LEVEL_H), Vector2(LEVEL_W, LEVEL_H), Color(0.2, 0.9, 0.2, 0.7), 1.5)
 
 	# Górna krawędź końca poziomu
 	draw_line(Vector2(0, -total_px), Vector2(LEVEL_W, -total_px),

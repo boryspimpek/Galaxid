@@ -2,22 +2,25 @@
 
 [ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="1_4lftv"]
 [ext_resource type="Script" uid="uid://de0wqltyclsk0" path="res://scenes/enemy/EnemyPath.gd" id="1_6g4dv"]
+[ext_resource type="Script" uid="uid://cdgxcmbb1wg81" path="res://scenes/enemies/Formation.gd" id="3_formation"]
 
 [sub_resource type="Curve2D" id="Curve2D_6g4dv"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1, -3, 0, 0, 0, 0, 0, 836, 0, 0, 0, 0, -1, 2334, 0, 0, 0, 0, 1587, 2334)
+"points": PackedVector2Array(0, 0, 0, 0, 1, -3, 0, 0, 0, 0, 3, 2509, 0, 0, 0, 0, 1086, 1340)
 }
-point_count = 4
+point_count = 3
 
 [node name="FormationStandart" type="Node2D" unique_id=1965159637]
-position = Vector2(186, -873)
+position = Vector2(-1, -595)
+script = ExtResource("3_formation")
+activation_scroll_y = -200.0
 
 [node name="Path2D" type="Path2D" parent="." unique_id=931507495]
 curve = SubResource("Curve2D_6g4dv")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=827345017]
 position = Vector2(1, -3)
-rotation = 1.5719882
+rotation = 1.5700002
 loop = false
 script = ExtResource("1_6g4dv")
 speed = 400.0
@@ -26,8 +29,8 @@ speed = 400.0
 rotation = -1.5707964
 
 [node name="PathFollow2D2" type="PathFollow2D" parent="Path2D" unique_id=1279152812]
-position = Vector2(0.76162434, 196.99718)
-rotation = 1.5719882
+position = Vector2(1.1592325, 196.99594)
+rotation = 1.5700002
 progress = 200.0
 loop = false
 script = ExtResource("1_6g4dv")
@@ -37,8 +40,8 @@ speed = 400.0
 rotation = -1.5707964
 
 [node name="PathFollow2D3" type="PathFollow2D" parent="Path2D" unique_id=1737462725]
-position = Vector2(0.52324206, 396.9999)
-rotation = 1.5719882
+position = Vector2(1.3184707, 396.9992)
+rotation = 1.5700002
 progress = 400.0
 loop = false
 script = ExtResource("1_6g4dv")
@@ -48,8 +51,8 @@ speed = 400.0
 rotation = -1.5707964
 
 [node name="PathFollow2D4" type="PathFollow2D" parent="Path2D" unique_id=458113520]
-position = Vector2(0.28486103, 597.0016)
-rotation = 1.5719882
+position = Vector2(1.4777064, 596.9993)
+rotation = 1.5700002
 progress = 600.0
 loop = false
 script = ExtResource("1_6g4dv")
