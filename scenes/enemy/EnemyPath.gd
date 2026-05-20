@@ -13,8 +13,14 @@ func activate():
 		return
 	_activated = true
 	set_process(true)
-	if get_parent():
-		for sibling in get_parent().get_children():
+	var path2d = get_parent()
+	if not path2d:
+		return
+	var formation = path2d.get_parent()
+	if formation and formation.has_method("activate_formation"):
+		formation.activate_formation()
+	else:
+		for sibling in path2d.get_children():
 			if sibling.has_method("activate"):
 				sibling.activate()
 

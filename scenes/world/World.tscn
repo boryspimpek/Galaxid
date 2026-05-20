@@ -66,6 +66,9 @@ z_index = -10
 position = Vector2(620, -64)
 ymove = 180
 
+[node name="FormationStandart" parent="LevelMap" unique_id=1965159637 instance=ExtResource("5_fe1rh")]
+position = Vector2(166, -715)
+
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(553, 1775)
 
@@ -98,7 +101,7 @@ position = Vector2(243, 1322)
 move_speed = 40.0
 
 [node name="EarthPlanet3D" parent="." unique_id=1843616213 instance=ExtResource("8_qh0kd")]
-position = Vector2(426.00006, 337)
+position = Vector2(523, 354)
 move_speed = 20.0
 
 [node name="EmeraldPlanet3D" parent="." unique_id=287911735 instance=ExtResource("9_yr1n6")]
@@ -116,6 +119,3 @@ move_speed = 40.0
 [node name="SilverPlanet3D" parent="." unique_id=1166699980 instance=ExtResource("13_8xm5o")]
 position = Vector2(545, -3197)
 move_speed = 40.0
-
-[node name="FormationStandart" parent="." unique_id=1965159637 instance=ExtResource("5_fe1rh")]
-position = Vector2(109, -1700)
