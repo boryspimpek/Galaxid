@@ -1,6 +1,6 @@
-VisibleOnScreenNotifier2D
 PathFollow2D
 Path2D
+VisibleOnScreenNotifier2D
 WorldEnvironment
 DirectionalLight3D
 Camera3D

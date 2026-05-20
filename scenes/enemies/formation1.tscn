@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://1hx6ajpqjoci"]
+
+[ext_resource type="Script" uid="uid://de0wqltyclsk0" path="res://scenes/enemy/EnemyPath.gd" id="1_03xqc"]
+[ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="2_4be3g"]
+
+[sub_resource type="Curve2D" id="Curve2D_r7pj7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1016, 0, 0, 0, 0, 0, 256, 960)
+}
+point_count = 3
+
+[node name="formation" type="Node2D" unique_id=574820768]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1587485370]
+curve = SubResource("Curve2D_r7pj7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1120093881]
+loop = false
+script = ExtResource("1_03xqc")
+speed = 600.0
+
+[node name="blue_enemy" parent="Path2D/PathFollow2D" unique_id=119960324 instance=ExtResource("2_4be3g")]
+rotation = -1.5707964
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D" unique_id=1436828625]
+position = Vector2(199.99742, 0)
+progress = 200.0
+loop = false
+script = ExtResource("1_03xqc")
+speed = 600.0
+
+[node name="blue_enemy" parent="Path2D/PathFollow2D2" unique_id=1855633961 instance=ExtResource("2_4be3g")]
+rotation = -1.5707964
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="Path2D" unique_id=1637018520]
+position = Vector2(399.9996, 0)
+progress = 400.0
+loop = false
+script = ExtResource("1_03xqc")
+speed = 600.0
+
+[node name="blue_enemy" parent="Path2D/PathFollow2D3" unique_id=270997424 instance=ExtResource("2_4be3g")]
+rotation = -1.5707964
