@@ -4,19 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://r35ab1oen7q4" path="res://scenes/planets/AzurePlanet3D.tscn" id="2_i1jm3"]
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
 [ext_resource type="PackedScene" uid="uid://btwasr8xpu0be" path="res://scenes/planets/CrimsonPlanet3D.tscn" id="5_252at"]
+[ext_resource type="PackedScene" uid="uid://dfqvxhif0v41s" path="res://scenes/enemies/formation_standart.tscn" id="5_fe1rh"]
 [ext_resource type="PackedScene" uid="uid://jgvbkuyntum0" path="res://scenes/asteroids/asteroid.tscn" id="5_i1jm3"]
-[ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="6_252at"]
 [ext_resource type="PackedScene" uid="uid://cmgg2l8ympyhg" path="res://scenes/planets/EarthPlanet3D.tscn" id="8_qh0kd"]
 [ext_resource type="Script" uid="uid://cd6vtrajndq0f" path="res://scenes/world/StarTwinkle.gd" id="8_twinkle"]
 [ext_resource type="PackedScene" uid="uid://cjka77acuu8be" path="res://scenes/planets/EmeraldPlanet3D.tscn" id="9_yr1n6"]
 [ext_resource type="PackedScene" uid="uid://b4vfx5xjylnut" path="res://scenes/planets/GreenPlanet3D.tscn" id="10_l5ull"]
 [ext_resource type="PackedScene" uid="uid://bn31xdjeslyos" path="res://scenes/planets/PlanetSaturn3D.tscn" id="11_16fjv"]
 [ext_resource type="PackedScene" uid="uid://cxvlgnysglo5x" path="res://scenes/planets/SilverPlanet3D.tscn" id="13_8xm5o"]
-
-[sub_resource type="Environment" id="Environment_8xm5o"]
-ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 16.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_252at"]
 particle_flag_disable_z = true
@@ -46,9 +41,6 @@ scale_max = 8.0
 
 [node name="World" type="Node2D" unique_id=1364436952]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=265380336]
-environment = SubResource("Environment_8xm5o")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1139871068]
 layer = -1
 
@@ -67,18 +59,14 @@ scroll_speed = 20
 
 [node name="asteroid" parent="LevelMap" unique_id=950937570 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(962, 376)
+position = Vector2(1272, 108)
 ymove = 180
 
-[node name="blue_enemy" parent="LevelMap" unique_id=1346047155 instance=ExtResource("6_252at")]
-position = Vector2(926, 595)
-armor = 4
-ymove = 120
-tur = [59, 0, 0]
-freq = [2, 0, 0]
+[node name="FormationStandart" parent="." unique_id=1965159637 instance=ExtResource("5_fe1rh")]
+position = Vector2(176, -381)
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
-position = Vector2(1036, 1288)
+position = Vector2(553, 1775)
 
 [node name="FarStars" type="GPUParticles2D" parent="." unique_id=245978833]
 z_index = -100
@@ -102,28 +90,28 @@ process_material = SubResource("ParticleProcessMaterial_i1jm3")
 script = ExtResource("8_twinkle")
 
 [node name="AzurePlanet3D" parent="." unique_id=1161141368 instance=ExtResource("2_i1jm3")]
-position = Vector2(610, 539)
+position = Vector2(243, -1100)
 
 [node name="CrimsonPlanet3d" parent="." unique_id=944956452 instance=ExtResource("5_252at")]
-position = Vector2(449, 713)
+position = Vector2(243, 1322)
 move_speed = 40.0
 
 [node name="EarthPlanet3D" parent="." unique_id=1843616213 instance=ExtResource("8_qh0kd")]
-position = Vector2(198, 637)
-move_speed = 40.0
+position = Vector2(426.00006, 337)
+move_speed = 20.0
 
 [node name="EmeraldPlanet3D" parent="." unique_id=287911735 instance=ExtResource("9_yr1n6")]
-position = Vector2(366, 475)
+position = Vector2(832.99994, -77.99994)
 move_speed = 40.0
 
 [node name="GreenPlanet3D" parent="." unique_id=1430243515 instance=ExtResource("10_l5ull")]
-position = Vector2(146, 381)
+position = Vector2(692, -2097)
 move_speed = 40.0
 
 [node name="PlanetSaturn3D" parent="." unique_id=2055306021 instance=ExtResource("11_16fjv")]
-position = Vector2(486, 938)
+position = Vector2(322, -3351.0005)
 move_speed = 40.0
 
 [node name="SilverPlanet3D" parent="." unique_id=1166699980 instance=ExtResource("13_8xm5o")]
-position = Vector2(220, 878)
+position = Vector2(545, -3197)
 move_speed = 40.0

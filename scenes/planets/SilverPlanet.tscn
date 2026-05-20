@@ -15,4 +15,5 @@ clearcoat_roughness = 0.0
 [node name="SilverPlanet" unique_id=1858073298 instance=ExtResource("1_wk7gq")]
 
 [node name="Mesh_0" parent="." index="0" unique_id=344178637]
+transform = Transform3D(2.2216294, 0.5952838, 0, -0.5952838, 2.2216294, 0, 0, 0, 2.3, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_k7ae3")

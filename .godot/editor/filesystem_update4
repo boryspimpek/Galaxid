@@ -1,5 +1,8 @@
-res://scenes/planets/Planet3D.tscn
-res://scenes/planets/SilverPlanet3D.tscn
-res://scenes/planets/PlanetSaturn.tscn
-res://scenes/planets/AzurePlanet3D.tscn
+res://scenes/planets/CrimsonPlanet.tscn
+res://scenes/planets/EmeraldPlanet.tscn
+res://scenes/planets/AzurePlanet.tscn
+res://scenes/planets/GreenPlanet.tscn
+res://scenes/planets/GreenPlanet3D.tscn
+res://scenes/planets/SilverPlanet.tscn
 res://scenes/world/World.tscn
+res://scenes/enemies/formation_standart.tscn

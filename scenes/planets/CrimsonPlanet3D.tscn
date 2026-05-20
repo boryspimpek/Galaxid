@@ -2,7 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://dq0kfnc7p8fww" path="res://scenes/planets/Planet3D.tscn" id="1_odxjw"]
 [ext_resource type="PackedScene" uid="uid://bmae4objnx4d2" path="res://scenes/planets/CrimsonPlanet.tscn" id="2_a66v6"]
+[ext_resource type="Script" uid="uid://dqfm1fllu6cek" path="res://assets/planets/planet/planet_rotate.gd" id="3_a66v6"]
 
 [node name="CrimsonPlanet3d" unique_id=944956452 instance=ExtResource("1_odxjw")]
+scale = Vector2(0.4, 0.4)
+
+[node name="SubViewportContainer" parent="." index="0" unique_id=348967335]
+clip_contents = true
 
 [node name="CrimsonPlanet" parent="SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1942997505) index="0" unique_id=96161081 instance=ExtResource("2_a66v6")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("3_a66v6")

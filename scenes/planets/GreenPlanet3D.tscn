@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://dq0kfnc7p8fww" path="res://scenes/planets/Planet3D.tscn" id="1_wn0ha"]
 [ext_resource type="PackedScene" uid="uid://ddgkwmbuulgl7" path="res://scenes/planets/GreenPlanet.tscn" id="2_2223c"]
+[ext_resource type="Script" uid="uid://dqfm1fllu6cek" path="res://assets/planets/planet/planet_rotate.gd" id="3_uw3yh"]
 
 [node name="GreenPlanet3D" unique_id=1430243515 instance=ExtResource("1_wn0ha")]
+scale = Vector2(0.4, 0.4)
 
-[node name="SubViewport" parent="SubViewportContainer" index="0"]
-own_world_3d = true
-
-[node name="GreenPlanet" parent="SubViewportContainer/SubViewport" index="0" unique_id=1463199738 instance=ExtResource("2_2223c")]
+[node name="GreenPlanet" parent="SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1942997505) index="0" unique_id=1463199738 instance=ExtResource("2_2223c")]
+script = ExtResource("3_uw3yh")

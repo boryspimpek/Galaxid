@@ -2,7 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://dq0kfnc7p8fww" path="res://scenes/planets/Planet3D.tscn" id="1_jijy5"]
 [ext_resource type="PackedScene" uid="uid://b3116sqmxjbqe" path="res://scenes/planets/EarthPlanet.tscn" id="2_wvoq3"]
+[ext_resource type="Script" uid="uid://dqfm1fllu6cek" path="res://assets/planets/planet/planet_rotate.gd" id="3_8l54d"]
 
 [node name="EarthPlanet3D" unique_id=1843616213 instance=ExtResource("1_jijy5")]
+scale = Vector2(0.45, 0.45)
 
 [node name="EarthPlanet" parent="SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1942997505) index="0" unique_id=975989011 instance=ExtResource("2_wvoq3")]
+transform = Transform3D(0.9659258, -0.25881904, 0, 0.25881904, 0.9659258, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("3_8l54d")

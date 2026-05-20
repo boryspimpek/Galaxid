@@ -14,4 +14,5 @@ clearcoat_enabled = true
 [node name="GreenPlanet" unique_id=1463199738 instance=ExtResource("1_qs5jh")]
 
 [node name="Mesh_0" parent="." index="0" unique_id=414590168]
+transform = Transform3D(2.3, 0, 0, 0, 2.2216294, 0.5952838, 0, -0.5952838, 2.2216294, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_8jc20")

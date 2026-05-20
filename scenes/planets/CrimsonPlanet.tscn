@@ -15,4 +15,5 @@ clearcoat_roughness = 1.0
 [node name="CrimsonPlanet" unique_id=96161081 instance=ExtResource("1_0siem")]
 
 [node name="Mesh_0" parent="." index="0" unique_id=2010922940]
+transform = Transform3D(2.2216294, 0.5952838, 0, -0.5952838, 2.2216294, 0, 0, 0, 2.3, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_55buo")

@@ -15,4 +15,5 @@ clearcoat_roughness = 0.64
 [node name="EarthPlanet" unique_id=975989011 instance=ExtResource("1_qacok")]
 
 [node name="Mesh" parent="." index="0" unique_id=112025578]
+transform = Transform3D(2.2, 0, 0, 0, 2.2, 0, 0, 0, 2.2, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_8oblw")
