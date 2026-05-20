@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b4vfx5xjylnut" path="res://scenes/planets/GreenPlanet3D.tscn" id="10_l5ull"]
 [ext_resource type="PackedScene" uid="uid://bn31xdjeslyos" path="res://scenes/planets/PlanetSaturn3D.tscn" id="11_16fjv"]
 [ext_resource type="PackedScene" uid="uid://cxvlgnysglo5x" path="res://scenes/planets/SilverPlanet3D.tscn" id="13_8xm5o"]
+[ext_resource type="Script" uid="uid://cdgxcmbb1wg81" path="res://scenes/enemies/Formation.gd" id="13_fe1rh"]
 [ext_resource type="Script" uid="uid://cjwf83wntumr8" path="res://scenes/world/LevelRuler.gd" id="14_ruler"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_252at"]
@@ -67,7 +68,8 @@ position = Vector2(620, -64)
 ymove = 180
 
 [node name="FormationStandart" parent="LevelMap" unique_id=1965159637 instance=ExtResource("5_fe1rh")]
-position = Vector2(166, -715)
+position = Vector2(102, -797)
+script = ExtResource("13_fe1rh")
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(553, 1775)
