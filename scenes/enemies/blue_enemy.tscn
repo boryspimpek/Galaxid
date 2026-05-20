@@ -1,19 +1,12 @@
 [gd_scene format=3 uid="uid://b05sp330q141y"]
 
 [ext_resource type="PackedScene" uid="uid://b72pvnswg7eaa" path="res://scenes/enemy/Enemy.tscn" id="1_q31be"]
-[ext_resource type="Shader" uid="uid://d27pfw7r621pj" path="res://assets/shaders/outline.gdshader" id="2_wkfg0"]
 [ext_resource type="Texture2D" uid="uid://i4yeed2br2vw" path="res://assets/enemies/blue_enemy.png" id="3_1gvac"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jt7b8"]
-shader = ExtResource("2_wkfg0")
-shader_parameter/outline_color = Color(0, 0, 0, 1)
-shader_parameter/outline_width = 2.0
 
 [node name="blue_enemy" unique_id=119960324 instance=ExtResource("1_q31be")]
 scale = Vector2(0.5, 0.5)
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
-material = SubResource("ShaderMaterial_jt7b8")
 texture = ExtResource("3_1gvac")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="1" unique_id=291847561]

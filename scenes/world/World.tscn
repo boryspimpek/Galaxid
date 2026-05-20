@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://d3vnnnd2fe8u"]
 
 [ext_resource type="PackedScene" uid="uid://bte7ofi7pgn5b" path="res://scenes/player/Player.tscn" id="1_c6gwx"]
-[ext_resource type="PackedScene" uid="uid://cfkmx7wjhb3ii" path="res://scenes/planets/earth_3d.tscn" id="3_252at"]
+[ext_resource type="PackedScene" uid="uid://r35ab1oen7q4" path="res://scenes/planets/AzurePlanet3D.tscn" id="2_i1jm3"]
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
-[ext_resource type="PackedScene" uid="uid://chm3e2lkmftrj" path="res://scenes/planets/saturn_3d.tscn" id="4_qh0kd"]
 [ext_resource type="PackedScene" uid="uid://jgvbkuyntum0" path="res://scenes/asteroids/asteroid.tscn" id="5_i1jm3"]
 [ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="6_252at"]
-[ext_resource type="PackedScene" uid="uid://cfjg774vk85x4" path="res://scenes/planets/planet3d.tscn" id="7_qh0kd"]
 [ext_resource type="Script" uid="uid://cd6vtrajndq0f" path="res://scenes/world/StarTwinkle.gd" id="8_twinkle"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_252at"]
@@ -53,106 +51,16 @@ color = Color(0, 0, 0, 1)
 script = ExtResource("3_level_manager")
 scroll_speed = 20
 
-[node name="planet3d" parent="LevelMap" unique_id=1490643938 instance=ExtResource("7_qh0kd")]
-position = Vector2(234, 157)
-ymove = 20
-
-[node name="earth3d" parent="LevelMap" unique_id=119960324 instance=ExtResource("3_252at")]
-position = Vector2(1140, 374)
-xmove = -35
-ymove = 40
-
-[node name="saturn3d" parent="LevelMap" unique_id=550043277 instance=ExtResource("4_qh0kd")]
-position = Vector2(709, -309)
-ymove = 20
+[node name="azure_planet" parent="LevelMap" unique_id=239971457 instance=ExtResource("2_i1jm3")]
+position = Vector2(266, 818)
 
 [node name="asteroid" parent="LevelMap" unique_id=950937570 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(505, -88)
-ymove = 180
-
-[node name="asteroid2" parent="LevelMap" unique_id=500985317 instance=ExtResource("5_i1jm3")]
-z_index = -10
-position = Vector2(134, -362)
-ymove = 180
-
-[node name="asteroid3" parent="LevelMap" unique_id=536965775 instance=ExtResource("5_i1jm3")]
-z_index = -10
-position = Vector2(757, -255)
-ymove = 180
-
-[node name="asteroid4" parent="LevelMap" unique_id=1555302405 instance=ExtResource("5_i1jm3")]
-z_index = -10
-position = Vector2(850, -216)
-ymove = 180
-
-[node name="asteroid5" parent="LevelMap" unique_id=830730748 instance=ExtResource("5_i1jm3")]
-z_index = -10
-position = Vector2(402, -349)
-ymove = 180
-
-[node name="asteroid6" parent="LevelMap" unique_id=2031439998 instance=ExtResource("5_i1jm3")]
-z_index = -10
-position = Vector2(262, -162)
-ymove = 180
-
-[node name="asteroid7" parent="LevelMap" unique_id=1468850203 instance=ExtResource("5_i1jm3")]
-z_index = -10
-position = Vector2(1019, -124)
-ymove = 180
-
-[node name="asteroid8" parent="LevelMap" unique_id=396939674 instance=ExtResource("5_i1jm3")]
-z_index = -10
-position = Vector2(639, -284)
-ymove = 180
-
-[node name="asteroid9" parent="LevelMap" unique_id=200381873 instance=ExtResource("5_i1jm3")]
-z_index = -10
-position = Vector2(729, -62)
-ymove = 180
-
-[node name="asteroid10" parent="LevelMap" unique_id=259982708 instance=ExtResource("5_i1jm3")]
-z_index = -10
-position = Vector2(180, -243)
+position = Vector2(848, 331)
 ymove = 180
 
 [node name="blue_enemy" parent="LevelMap" unique_id=1346047155 instance=ExtResource("6_252at")]
-position = Vector2(540, -657)
-armor = 4
-ymove = 120
-tur = [59, 0, 0]
-freq = [2, 0, 0]
-
-[node name="blue_enemy2" parent="LevelMap" unique_id=1354578034 instance=ExtResource("6_252at")]
-position = Vector2(229, -501)
-armor = 4
-ymove = 120
-tur = [59, 0, 0]
-freq = [2, 0, 0]
-
-[node name="blue_enemy3" parent="LevelMap" unique_id=1184308120 instance=ExtResource("6_252at")]
-position = Vector2(722, -608)
-armor = 4
-ymove = 120
-tur = [59, 0, 0]
-freq = [2, 0, 0]
-
-[node name="blue_enemy4" parent="LevelMap" unique_id=286880685 instance=ExtResource("6_252at")]
-position = Vector2(830, -859)
-armor = 4
-ymove = 120
-tur = [59, 0, 0]
-freq = [2, 0, 0]
-
-[node name="blue_enemy5" parent="LevelMap" unique_id=2014692944 instance=ExtResource("6_252at")]
-position = Vector2(406, -529)
-armor = 4
-ymove = 120
-tur = [59, 0, 0]
-freq = [2, 0, 0]
-
-[node name="blue_enemy6" parent="LevelMap" unique_id=1650768608 instance=ExtResource("6_252at")]
-position = Vector2(961, -730)
+position = Vector2(499, 619)
 armor = 4
 ymove = 120
 tur = [59, 0, 0]

@@ -2,6 +2,8 @@ DirectionalLight3D
 Camera3D
 SubViewport
 SubViewportContainer
+XRCamera3D
+Camera2D
 DirectionalLight2D
 MeshInstance3D
 GPUParticles2D
@@ -10,5 +12,3 @@ CanvasLayer
 CPUParticles2D
 Node2D
 CollisionPolygon2D
-TextureRect
-CollisionShape2D

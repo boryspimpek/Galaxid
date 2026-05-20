@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bahnjjjpr7ru0"]
+
+[ext_resource type="PackedScene" uid="uid://dm8c61dfq511q" path="res://assets/planets/azure planet/Meshy_AI_Azure_Ringed_World_0520072106_texture.glb" id="1_xoqjd"]
+[ext_resource type="Shader" uid="uid://d2n2rvjcvwag1" path="res://assets/shaders/toon.gdshader" id="2_iqa7x"]
+[ext_resource type="Texture2D" uid="uid://cyijj37qo8kqv" path="res://assets/planets/azure planet/Meshy_AI_Azure_Ringed_World_0520072106_texture_Image_0.jpg" id="3_caomk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u04dl"]
+render_priority = 0
+shader = ExtResource("2_iqa7x")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/albedo_texture = ExtResource("3_caomk")
+shader_parameter/line_color = Color(0, 0, 0, 1)
+shader_parameter/metallic = 0.7290000346275
+shader_parameter/roughness = 0.50000002375
+shader_parameter/specular = 0.50000002375
+shader_parameter/shadow_threshold = 0.30000001425
+shader_parameter/shadow_softness = 0.0
+
+[node name="azure" unique_id=991034481 instance=ExtResource("1_xoqjd")]
+
+[node name="Mesh_0" parent="." index="0" unique_id=2105334228]
+surface_material_override/0 = SubResource("ShaderMaterial_u04dl")

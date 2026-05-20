@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cyijj37qo8kqv"
+path.s3tc="res://.godot/imported/Meshy_AI_Azure_Ringed_World_0520072106_texture_Image_0.jpg-ad52699d556bb18d117acbd740852025.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "1c6bd3d28ad7ef2f97b8fe767ca6e6f0"
+}
+
+[deps]
+
+source_file="res://assets/planets/azure planet/Meshy_AI_Azure_Ringed_World_0520072106_texture_Image_0.jpg"
+dest_files=["res://.godot/imported/Meshy_AI_Azure_Ringed_World_0520072106_texture_Image_0.jpg-ad52699d556bb18d117acbd740852025.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

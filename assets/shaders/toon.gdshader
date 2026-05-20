@@ -1,52 +1,49 @@
-shader_type canvas_item;
+shader_type spatial;
 
-// --- Krawędzie ---
-uniform float edge_thickness : hint_range(0.0, 5.0) = 1.0;
-uniform vec4 edge_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
-uniform float edge_strength : hint_range(0.0, 1.0) = 0.8;
+// --- TWOJE TEKSTURY I KOLORY ---
+uniform vec4 albedo_color : source_color = vec4(1.0, 1.0, 1.0, 1.0); // DODANE: Jednolity kolor
+uniform sampler2D albedo_texture : source_color, hint_default_white; // MODYFIKACJA: Dodany hint_default_white
+uniform vec4 line_color : source_color = vec4(0.0, 0.0, 0.0, 1.0);
 
-// --- Spłaszczenie kolorów (toon) ---
-uniform float color_steps : hint_range(1.0, 16.0) = 4.0;
-uniform float color_effect : hint_range(0.0, 1.0) = 0.0;
+// --- PRZYWRÓCONE OPCJE ---
+uniform float metallic : hint_range(0.0, 1.0) = 0.0;
+uniform float roughness : hint_range(0.0, 1.0) = 0.5;
+uniform float specular : hint_range(0.0, 1.0) = 0.5;
 
-uniform sampler2D screen_texture : hint_screen_texture, repeat_disable, filter_nearest;
+// --- TOON SETTINGS ---
+uniform float shadow_threshold : hint_range(0.0, 1.0) = 0.5;
+uniform float shadow_softness : hint_range(0.0, 1.0) = 0.02;
 
 void fragment() {
-	vec2 pixel = SCREEN_PIXEL_SIZE * edge_thickness;
+	vec4 tex = texture(albedo_texture, UV);
+	
+	// MODYFIKACJA: Mnożenie jednolitego koloru przez teksturę
+	ALBEDO = albedo_color.rgb * tex.rgb;
+	
+	// Przypisujemy wartości do silnika Godota
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	SPECULAR = specular;
+}
 
-	// Pobierz sąsiednie piksele (Sobel 3x3)
-	vec4 c  = texture(screen_texture, SCREEN_UV);
-	vec4 tl = texture(screen_texture, SCREEN_UV + vec2(-pixel.x,  pixel.y));
-	vec4 tc = texture(screen_texture, SCREEN_UV + vec2( 0.0,      pixel.y));
-	vec4 tr = texture(screen_texture, SCREEN_UV + vec2( pixel.x,  pixel.y));
-	vec4 ml = texture(screen_texture, SCREEN_UV + vec2(-pixel.x,  0.0));
-	vec4 mr = texture(screen_texture, SCREEN_UV + vec2( pixel.x,  0.0));
-	vec4 bl = texture(screen_texture, SCREEN_UV + vec2(-pixel.x, -pixel.y));
-	vec4 bc = texture(screen_texture, SCREEN_UV + vec2( 0.0,     -pixel.y));
-	vec4 br = texture(screen_texture, SCREEN_UV + vec2( pixel.x, -pixel.y));
-
-	// Sobel — wykrywanie krawędzi po luminancji
-	float lum_tl = dot(tl.rgb, vec3(0.299, 0.587, 0.114));
-	float lum_tc = dot(tc.rgb, vec3(0.299, 0.587, 0.114));
-	float lum_tr = dot(tr.rgb, vec3(0.299, 0.587, 0.114));
-	float lum_ml = dot(ml.rgb, vec3(0.299, 0.587, 0.114));
-	float lum_mr = dot(mr.rgb, vec3(0.299, 0.587, 0.114));
-	float lum_bl = dot(bl.rgb, vec3(0.299, 0.587, 0.114));
-	float lum_bc = dot(bc.rgb, vec3(0.299, 0.587, 0.114));
-	float lum_br = dot(br.rgb, vec3(0.299, 0.587, 0.114));
-
-	float gx = -lum_tl - 2.0*lum_ml - lum_bl + lum_tr + 2.0*lum_mr + lum_br;
-	float gy = -lum_tl - 2.0*lum_tc - lum_tr + lum_bl + 2.0*lum_bc + lum_br;
-	float edge = clamp(sqrt(gx*gx + gy*gy), 0.0, 1.0);
-
-	// Spłaszczenie kolorów
-	vec4 toon_color = c;
-	if (color_effect > 0.0) {
-		vec3 quantized = floor(c.rgb * color_steps + 0.5) / color_steps;
-		toon_color.rgb = mix(c.rgb, quantized, color_effect);
-	}
-
-	// Nałóż krawędzie
-	float edge_alpha = edge * edge_strength * edge_color.a;
-	COLOR = mix(toon_color, vec4(edge_color.rgb, toon_color.a), edge_alpha);
+void light() {
+	// --- 1. OSTRY CIEŃ (TOON DIFFUSE) ---
+	float diffuse = dot(NORMAL, LIGHT);
+	float toon_diffuse = smoothstep(shadow_threshold - shadow_softness, shadow_threshold + shadow_softness, diffuse);
+	vec3 diffuse_color = mix(line_color.rgb, LIGHT_COLOR, toon_diffuse);
+	
+	// --- 2. OSTRY ODBLASK (TOON SPECULAR) ---
+	// Obliczamy wektor odbicia światła
+	vec3 half_vector = normalize(VIEW + LIGHT);
+	float spec_dot = dot(NORMAL, half_vector);
+	
+	// Tworzymy ostry blik słońca zależny od Roughness
+	// Im mniejszy Roughness, tym mniejsza i ostrzejsza plamka
+	float spec_intensity = pow(spec_dot, 1.0 / max(roughness, 0.01) * 100.0);
+	float toon_specular = smoothstep(0.5 - shadow_softness, 0.5 + shadow_softness, spec_intensity);
+	
+	// --- 3. FINALNE ŁĄCZENIE ---
+	// Dodajemy kolor rozproszony (planeta) i blik (słońce)
+	DIFFUSE_LIGHT += diffuse_color * ATTENUATION;
+	SPECULAR_LIGHT += toon_specular * specular * LIGHT_COLOR * ATTENUATION;
 }
