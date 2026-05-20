@@ -10,3 +10,5 @@ res://scenes/enemy/EnemyPath.gd
 res://scenes/enemies/Formation.gd
 res://scenes/enemies/formation.tscn
 res://scenes/enemies/formation1.tscn
+res://scenes/world/LevelManager.gd
+res://scenes/planets/CrimsonPlanet3D.tscn

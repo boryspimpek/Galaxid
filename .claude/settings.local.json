@@ -10,7 +10,9 @@
       "PowerShell(Remove-Item -Path \"C:\\\\Users\\\\borys\\\\projekty\\\\Galaxid\\\\scenes\\\\explosions\" -Recurse -Force -Confirm:$false)",
       "Bash(python3 -c ' *)",
       "Bash(dir /s /b \"c:\\\\Users\\\\Lor\\\\Desktop\\\\Galaxid\\\\assets\")",
-      "Bash(findstr -i saturn)"
+      "Bash(findstr -i saturn)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\Lor\\\\Desktop\\\\Galaxid\\\\scenes\\\\world\\\\SideTrigger.gd\" -ErrorAction SilentlyContinue)",
+      "Bash(Remove-Item \"c:\\\\Users\\\\Lor\\\\Desktop\\\\Galaxid\\\\scenes\\\\enemies\\\\SideFormation.gd\" -ErrorAction SilentlyContinue)"
     ]
   }
 }

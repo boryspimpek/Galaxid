@@ -68,10 +68,10 @@ position = Vector2(625, -405)
 ymove = 180
 
 [node name="formation" parent="LevelMap" unique_id=574820768 instance=ExtResource("4_8xm5o")]
-position = Vector2(147, -602)
+position = Vector2(-975, -59)
 
-[node name="formation2" parent="LevelMap" unique_id=318348246 instance=ExtResource("5_fe1rh")]
-position = Vector2(-550, -195)
+[node name="formation2" parent="LevelMap" unique_id=507811653 instance=ExtResource("5_fe1rh")]
+position = Vector2(1833, 482)
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(553, 1775)
