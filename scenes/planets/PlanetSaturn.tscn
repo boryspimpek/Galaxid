@@ -14,4 +14,5 @@ clearcoat_enabled = true
 [node name="PlanetSaturn" unique_id=449738654 instance=ExtResource("1_ql7ai")]
 
 [node name="Mesh" parent="." index="0" unique_id=1507072334]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_2w7er")

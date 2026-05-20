@@ -27,8 +27,6 @@ render_target_update_mode = 4
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.5, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=1786769825]
-transform = Transform3D(-4.371139e-08, 0.5735764, -0.819152, 0, 0.819152, 0.5735764, 1, 2.5071822e-08, -3.580627e-08, 0, 5, 0)
+transform = Transform3D(-4.371139e-08, 0.42261824, -0.9063077, 0, 0.9063077, 0.42261824, 1, 1.847323e-08, -3.9615966e-08, 0, 5, 0)
 shadow_enabled = true
-shadow_bias = 0.0
-shadow_normal_bias = 0.0
-shadow_opacity = 0.85
+shadow_opacity = 0.8

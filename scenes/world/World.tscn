@@ -11,8 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://cjka77acuu8be" path="res://scenes/planets/EmeraldPlanet3D.tscn" id="9_yr1n6"]
 [ext_resource type="PackedScene" uid="uid://b4vfx5xjylnut" path="res://scenes/planets/GreenPlanet3D.tscn" id="10_l5ull"]
 [ext_resource type="PackedScene" uid="uid://bn31xdjeslyos" path="res://scenes/planets/PlanetSaturn3D.tscn" id="11_16fjv"]
-[ext_resource type="PackedScene" uid="uid://bmia4g1af7aje" path="res://scenes/planets/PlanetStrips3D.tscn" id="12_ckp8c"]
 [ext_resource type="PackedScene" uid="uid://cxvlgnysglo5x" path="res://scenes/planets/SilverPlanet3D.tscn" id="13_8xm5o"]
+
+[sub_resource type="Environment" id="Environment_8xm5o"]
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 16.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_252at"]
 particle_flag_disable_z = true
@@ -41,6 +45,9 @@ scale_min = 5.0
 scale_max = 8.0
 
 [node name="World" type="Node2D" unique_id=1364436952]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=265380336]
+environment = SubResource("Environment_8xm5o")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1139871068]
 layer = -1
@@ -94,33 +101,29 @@ preprocess = 96.0
 process_material = SubResource("ParticleProcessMaterial_i1jm3")
 script = ExtResource("8_twinkle")
 
-[node name="PlanetStrips3D" parent="." unique_id=1670874551 instance=ExtResource("12_ckp8c")]
-position = Vector2(539, 242)
+[node name="AzurePlanet3D" parent="." unique_id=1161141368 instance=ExtResource("2_i1jm3")]
+position = Vector2(610, 539)
 
 [node name="CrimsonPlanet3d" parent="." unique_id=944956452 instance=ExtResource("5_252at")]
-position = Vector2(216, -95)
+position = Vector2(449, 713)
 move_speed = 40.0
 
 [node name="EarthPlanet3D" parent="." unique_id=1843616213 instance=ExtResource("8_qh0kd")]
-position = Vector2(386, -776)
+position = Vector2(198, 637)
 move_speed = 40.0
 
 [node name="EmeraldPlanet3D" parent="." unique_id=287911735 instance=ExtResource("9_yr1n6")]
-position = Vector2(814, -391)
+position = Vector2(366, 475)
 move_speed = 40.0
 
 [node name="GreenPlanet3D" parent="." unique_id=1430243515 instance=ExtResource("10_l5ull")]
-position = Vector2(671, -1561)
+position = Vector2(146, 381)
 move_speed = 40.0
 
 [node name="PlanetSaturn3D" parent="." unique_id=2055306021 instance=ExtResource("11_16fjv")]
-position = Vector2(242, -1183)
+position = Vector2(486, 938)
 move_speed = 40.0
 
 [node name="SilverPlanet3D" parent="." unique_id=1166699980 instance=ExtResource("13_8xm5o")]
-position = Vector2(276, 1405)
-move_speed = 40.0
-
-[node name="azure_planet" parent="." unique_id=239971457 instance=ExtResource("2_i1jm3")]
-position = Vector2(795, -800)
+position = Vector2(220, 878)
 move_speed = 40.0

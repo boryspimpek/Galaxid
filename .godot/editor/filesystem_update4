@@ -1,3 +1,5 @@
-res://scenes/world/World.tscn
 res://scenes/planets/Planet3D.tscn
-res://scenes/planets/PlanetStrips3D.tscn
+res://scenes/planets/SilverPlanet3D.tscn
+res://scenes/planets/PlanetSaturn.tscn
+res://scenes/planets/AzurePlanet3D.tscn
+res://scenes/world/World.tscn

@@ -5,7 +5,4 @@
 
 [node name="EarthPlanet3D" unique_id=1843616213 instance=ExtResource("1_jijy5")]
 
-[node name="SubViewport" parent="SubViewportContainer" index="0"]
-own_world_3d = true
-
-[node name="EarthPlanet" parent="SubViewportContainer/SubViewport" index="0" unique_id=975989011 instance=ExtResource("2_wvoq3")]
+[node name="EarthPlanet" parent="SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1942997505) index="0" unique_id=975989011 instance=ExtResource("2_wvoq3")]

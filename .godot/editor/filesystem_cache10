@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1779276880
+::res://::1779278568
 CLAUDE.md::TextFile::-1::1779131092::0::1::::<><><>0<>0<><>::
 default_bus_layout.tres::AudioBusLayout::2099548917964122130::1779131093::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1779131093::0::1::::<><><>0<>0<><>::
@@ -1298,22 +1298,22 @@ engine.tscn::PackedScene::3426126746478426575::1779131093::0::1::::<><><>0<>0<><
 ::res://scenes/explosions/::1779134304
 Explode.gd::GDScript::1665927852935783370::1779134304::0::1::::<>Node2D<><>0<>0<><>::
 explode.tscn::PackedScene::7603591559635084427::1779131093::0::1::::<><><>0<>0<><>::uid://eurm1kga3iy2::::res://assets/explode/boom.png<>uid://xy8uaehufuuk::::res://scenes/explosions/Explode.gd
-::res://scenes/planets/::1779276869
+::res://scenes/planets/::1779278509
 AzurePlanet3D.tscn::PackedScene::1252834522073472933::1779266708::0::1::::<><><>0<>0<><>::uid://dq0kfnc7p8fww::::res://scenes/planets/Planet3D.tscn<>uid://bahnjjjpr7ru0::::res://scenes/planets/AzurePlanet.tscn
 AzurePlanet.tscn::PackedScene::2401677208341545781::1779275924::0::1::::<><><>0<>0<><>::uid://dm8c61dfq511q::::res://assets/planets/azure planet/Meshy_AI_Azure_Ringed_World_0520072106_texture.glb<>uid://cyijj37qo8kqv::::res://assets/planets/azure planet/Meshy_AI_Azure_Ringed_World_0520072106_texture_Image_0.jpg
-CrimsonPlanet3D.tscn::PackedScene::3765458112636692538::1779265180::0::1::::<><><>0<>0<><>::res://scenes/planets/Planet3D.tscn<>uid://bmae4objnx4d2::::res://scenes/planets/CrimsonPlanet.tscn
-CrimsonPlanet.tscn::PackedScene::3228982200642732765::1779275861::0::1::::<><><>0<>0<><>::uid://b0cs68hdjm0xl::::res://assets/planets/crimson planet/Meshy_AI_Crimson_Ringed_Planet_0520072115_texture.glb<>uid://c2s2y4m3eowo2::::res://assets/planets/crimson planet/Meshy_AI_Crimson_Ringed_Planet_0520072115_texture_Image_0.jpg
-EarthPlanet3D.tscn::PackedScene::5627906905801481420::1779265395::0::1::::<><><>0<>0<><>::uid://dq0kfnc7p8fww::::res://scenes/planets/Planet3D.tscn<>uid://b3116sqmxjbqe::::res://scenes/planets/EarthPlanet.tscn
+CrimsonPlanet3D.tscn::PackedScene::3765458112636692538::1779278509::0::1::::<><><>0<>0<><>::uid://dq0kfnc7p8fww::::res://scenes/planets/Planet3D.tscn<>uid://bmae4objnx4d2::::res://scenes/planets/CrimsonPlanet.tscn
+CrimsonPlanet.tscn::PackedScene::3228982200642732765::1779278097::0::1::::<><><>0<>0<><>::uid://b0cs68hdjm0xl::::res://assets/planets/crimson planet/Meshy_AI_Crimson_Ringed_Planet_0520072115_texture.glb<>uid://c2s2y4m3eowo2::::res://assets/planets/crimson planet/Meshy_AI_Crimson_Ringed_Planet_0520072115_texture_Image_0.jpg
+EarthPlanet3D.tscn::PackedScene::5627906905801481420::1779278248::0::1::::<><><>0<>0<><>::uid://dq0kfnc7p8fww::::res://scenes/planets/Planet3D.tscn<>uid://b3116sqmxjbqe::::res://scenes/planets/EarthPlanet.tscn
 EarthPlanet.tscn::PackedScene::4407017099300031328::1779276082::0::1::::<><><>0<>0<><>::uid://sfn63rq46ed6::::res://assets/planets/earth/Meshy_AI_Cartoon_anime_style__0519154112_texture.glb<>uid://c0ywmsrno3o0n::::res://assets/planets/earth/Meshy_AI_Cartoon_anime_style__0519154112_texture_0.jpg
 EmeraldPlanet3D.tscn::PackedScene::5425243563939674442::1779265893::0::1::::<><><>0<>0<><>::uid://dq0kfnc7p8fww::::res://scenes/planets/Planet3D.tscn<>uid://n8lbwuxnh2n5::::res://scenes/planets/EmeraldPlanet.tscn
 EmeraldPlanet.tscn::PackedScene::981250293365215020::1779276152::0::1::::<><><>0<>0<><>::uid://dw0r6minxltib::::res://assets/planets/emerald planet/Meshy_AI_Emerald_Saturn_0520072056_texture.glb<>uid://d2u4lacemsum2::::res://assets/planets/emerald planet/Meshy_AI_Emerald_Saturn_0520072056_texture_Image_0.jpg
 GreenPlanet3D.tscn::PackedScene::4465595351927385255::1779265992::0::1::::<><><>0<>0<><>::uid://dq0kfnc7p8fww::::res://scenes/planets/Planet3D.tscn<>uid://ddgkwmbuulgl7::::res://scenes/planets/GreenPlanet.tscn
 GreenPlanet.tscn::PackedScene::7382861938672212358::1779276196::0::1::::<><><>0<>0<><>::uid://bhc4pehckdx1::::res://assets/planets/green planet/Meshy_AI_Emerald_Saturn_0520072043_texture.glb<>uid://d07b58dyq8fjo::::res://assets/planets/green planet/Meshy_AI_Emerald_Saturn_0520072043_texture_Image_0.jpg
 Planet3D.gd::GDScript::3166058536791452350::1779264829::0::1::::<>Node2D<><>0<>0<><>::
-Planet3D.tscn::PackedScene::8334509779404947726::1779276869::0::1::::<><><>0<>0<><>::uid://bldwry5mxb4vi::::res://scenes/planets/Planet3D.gd
+Planet3D.tscn::PackedScene::8334509779404947726::1779277485::0::1::::<><><>0<>0<><>::uid://bldwry5mxb4vi::::res://scenes/planets/Planet3D.gd
 PlanetSaturn3D.tscn::PackedScene::3358298114852482950::1779266011::0::1::::<><><>0<>0<><>::uid://dq0kfnc7p8fww::::res://scenes/planets/Planet3D.tscn<>uid://fwqmrlgnphgo::::res://scenes/planets/PlanetSaturn.tscn
 PlanetSaturn.tscn::PackedScene::397354340370982974::1779276236::0::1::::<><><>0<>0<><>::uid://cmct7ubpvywy8::::res://assets/planets/saturn/Meshy_AI_Sunset_Saturn_0519154148_texture.glb<>uid://dheieu2kl0klf::::res://assets/planets/saturn/Meshy_AI_Sunset_Saturn_0519154148_texture_0.jpg
-PlanetStrips3D.tscn::PackedScene::3245253972718165254::1779276769::0::1::::<><><>0<>0<><>::uid://dq0kfnc7p8fww::::res://scenes/planets/Planet3D.tscn<>uid://bmn4143pefnhy::::res://scenes/planets/PlanetStrips.tscn
+PlanetStrips3D.tscn::PackedScene::3245253972718165254::1779277672::0::1::::<><><>0<>0<><>::uid://dq0kfnc7p8fww::::res://scenes/planets/Planet3D.tscn<>uid://bmn4143pefnhy::::res://scenes/planets/PlanetStrips.tscn
 PlanetStrips.tscn::PackedScene::3257332508702787842::1779276369::0::1::::<><><>0<>0<><>::uid://cl415h8hnl0au::::res://assets/planets/planet/planet.glb<>uid://b2qpkppa4h00y::::res://assets/planets/planet/Planet_Albedo.png<>uid://duongrf48wp14::::res://assets/planets/planet/Ring_Albedo.png
 SilverPlanet3D.tscn::PackedScene::6431216026285225795::1779276489::0::1::::<><><>0<>0<><>::uid://dq0kfnc7p8fww::::res://scenes/planets/Planet3D.tscn<>uid://coiijk3t2luyn::::res://scenes/planets/SilverPlanet.tscn
 SilverPlanet.tscn::PackedScene::5772502577826244981::1779276262::0::1::::<><><>0<>0<><>::uid://darvruja07adk::::res://assets/planets/silver planet/Meshy_AI_Silvery_Ringed_Planet_0520072027_texture.glb<>uid://chwekvm6kc1un::::res://assets/planets/silver planet/Meshy_AI_Silvery_Ringed_Planet_0520072027_texture_Image_0.jpg
@@ -1329,12 +1329,12 @@ WeaponSystem.tscn::PackedScene::-1::1779131093::0::1::::<><><>0<>0<><>::res://sc
 ::res://scenes/projectile/::1779196669
 projectile.gd::GDScript::6425248782272021058::1779131093::0::1::::<>Area2D<><>0<>0<><>::
 Projectile.tscn::PackedScene::4061135435519992803::1779196669::0::1::::<><><>0<>0<><>::uid://cxso55pxdnnn3::::res://scenes/projectile/projectile.gd
-::res://scenes/world/::1779276401
+::res://scenes/world/::1779278217
 LevelManager.gd::GDScript::7303798033325442::1779131093::0::1::::<>Node2D<><>0<>0<><>::
 LevelRuler.gd::GDScript::5450321292136855171::1779131093::0::1::::<>Node2D<><>0<>1<><>::
 starfild_glow.gdshader::Shader::8202420532988662879::1779261243::0::1::::<><><>0<>0<><>::
 StarTwinkle.gd::GDScript::5048713488931821983::1779204595::0::1::::<>GPUParticles2D<><>0<>0<><>::
-World.tscn::PackedScene::269668083255229182::1779276401::0::1::::<><><>0<>0<><>::uid://bte7ofi7pgn5b::::res://scenes/player/Player.tscn<>uid://r35ab1oen7q4::::res://scenes/planets/AzurePlanet3D.tscn<>uid://dsj7d5ivh3g::::res://scenes/world/LevelManager.gd<>uid://btwasr8xpu0be::::res://scenes/planets/CrimsonPlanet3D.tscn<>uid://jgvbkuyntum0::::res://scenes/asteroids/asteroid.tscn<>uid://b05sp330q141y::::res://scenes/enemies/blue_enemy.tscn<>uid://cmgg2l8ympyhg::::res://scenes/planets/EarthPlanet3D.tscn<>uid://cd6vtrajndq0f::::res://scenes/world/StarTwinkle.gd<>uid://cjka77acuu8be::::res://scenes/planets/EmeraldPlanet3D.tscn<>uid://b4vfx5xjylnut::::res://scenes/planets/GreenPlanet3D.tscn<>uid://bn31xdjeslyos::::res://scenes/planets/PlanetSaturn3D.tscn<>uid://bmia4g1af7aje::::res://scenes/planets/PlanetStrips3D.tscn<>uid://cxvlgnysglo5x::::res://scenes/planets/SilverPlanet3D.tscn
+World.tscn::PackedScene::269668083255229182::1779278217::0::1::::<><><>0<>0<><>::uid://bte7ofi7pgn5b::::res://scenes/player/Player.tscn<>uid://r35ab1oen7q4::::res://scenes/planets/AzurePlanet3D.tscn<>uid://dsj7d5ivh3g::::res://scenes/world/LevelManager.gd<>uid://btwasr8xpu0be::::res://scenes/planets/CrimsonPlanet3D.tscn<>uid://jgvbkuyntum0::::res://scenes/asteroids/asteroid.tscn<>uid://b05sp330q141y::::res://scenes/enemies/blue_enemy.tscn<>uid://cmgg2l8ympyhg::::res://scenes/planets/EarthPlanet3D.tscn<>uid://cd6vtrajndq0f::::res://scenes/world/StarTwinkle.gd<>uid://cjka77acuu8be::::res://scenes/planets/EmeraldPlanet3D.tscn<>uid://b4vfx5xjylnut::::res://scenes/planets/GreenPlanet3D.tscn<>uid://bn31xdjeslyos::::res://scenes/planets/PlanetSaturn3D.tscn<>uid://cxvlgnysglo5x::::res://scenes/planets/SilverPlanet3D.tscn
 ::res://scripts/::1779131093
 ::res://scripts/core/::1779131093
 DataManager.gd::GDScript::1970122233642260559::1779131093::0::1::::<>Node<><>0<>0<><>::

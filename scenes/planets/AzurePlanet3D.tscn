@@ -3,6 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://dq0kfnc7p8fww" path="res://scenes/planets/Planet3D.tscn" id="1_base"]
 [ext_resource type="PackedScene" uid="uid://bahnjjjpr7ru0" path="res://scenes/planets/AzurePlanet.tscn" id="2_azure"]
 
-[node name="azure_planet" instance=ExtResource("1_base")]
+[node name="AzurePlanet3D" unique_id=1161141368 instance=ExtResource("1_base")]
 
-[node name="azure" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_azure")]
+[node name="azure" parent="SubViewportContainer/SubViewport" parent_id_path=PackedInt32Array(1942997505) index="2" unique_id=692830170 instance=ExtResource("2_azure")]
