@@ -12,7 +12,9 @@
       "Bash(dir /s /b \"c:\\\\Users\\\\Lor\\\\Desktop\\\\Galaxid\\\\assets\")",
       "Bash(findstr -i saturn)",
       "Bash(Remove-Item \"c:\\\\Users\\\\Lor\\\\Desktop\\\\Galaxid\\\\scenes\\\\world\\\\SideTrigger.gd\" -ErrorAction SilentlyContinue)",
-      "Bash(Remove-Item \"c:\\\\Users\\\\Lor\\\\Desktop\\\\Galaxid\\\\scenes\\\\enemies\\\\SideFormation.gd\" -ErrorAction SilentlyContinue)"
+      "Bash(Remove-Item \"c:\\\\Users\\\\Lor\\\\Desktop\\\\Galaxid\\\\scenes\\\\enemies\\\\SideFormation.gd\" -ErrorAction SilentlyContinue)",
+      "Bash(cat \"C:/Users/Lor/AppData/Roaming/Code/User/settings.json\")",
+      "Read(//c/Users/Lor/AppData/Roaming/Code/User/**)"
     ]
   }
 }

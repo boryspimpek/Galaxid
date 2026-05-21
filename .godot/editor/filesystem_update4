@@ -3,3 +3,5 @@ res://scenes/world/World.tscn
 res://scenes/world/PlanetSpawner.gd
 res://scenes/enemy/Enemy.gd
 res://scenes/enemies/blue_enemy.tscn
+res://scenes/player/DamageSystem.gd
+res://scenes/world/AsteroidSpawner.gd
