@@ -9,3 +9,4 @@ res://scenes/enemies/formation.tscn
 res://scenes/enemies/formation2.tscn
 res://scenes/enemies/formation3.tscn
 res://scenes/enemy/EnemyPath.gd
+res://scenes/player/PlayerModel.tscn

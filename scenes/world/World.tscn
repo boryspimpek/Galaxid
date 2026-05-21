@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://1nnanxfyqt2s" path="res://scenes/enemies/Formation.gd" id="5_wryly"]
 [ext_resource type="PackedScene" uid="uid://b4kkmjte8klff" path="res://scenes/enemies/formation2.tscn" id="6_wryly"]
 [ext_resource type="PackedScene" uid="uid://dd21l172sp65r" path="res://scenes/enemies/formation3.tscn" id="7_400s5"]
-[ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="8_d0ueh"]
 [ext_resource type="PackedScene" uid="uid://cmgg2l8ympyhg" path="res://scenes/planets/EarthPlanet3D.tscn" id="8_qh0kd"]
 [ext_resource type="Script" uid="uid://cd6vtrajndq0f" path="res://scenes/world/StarTwinkle.gd" id="8_twinkle"]
 [ext_resource type="PackedScene" uid="uid://cjka77acuu8be" path="res://scenes/planets/EmeraldPlanet3D.tscn" id="9_yr1n6"]
@@ -79,11 +78,6 @@ script = ExtResource("5_wryly")
 position = Vector2(0, -311)
 script = ExtResource("5_wryly")
 
-[node name="blue_enemy" parent="LevelMap" unique_id=119960324 instance=ExtResource("8_d0ueh")]
-position = Vector2(533, 894)
-tur = [60, 0, 0]
-freq = [1, 0, 0]
-
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(553, 1775)
 
@@ -121,7 +115,6 @@ position = Vector2(243, 1322)
 move_speed = 40.0
 
 [node name="EarthPlanet3D" parent="BackgroundLayer" unique_id=1843616213 instance=ExtResource("8_qh0kd")]
-visible = false
 position = Vector2(523, 354)
 move_speed = 20.0
 
@@ -147,7 +140,7 @@ move_speed = 40.0
 
 [node name="PlanetSpawner" type="Node2D" parent="BackgroundLayer" unique_id=1401204115]
 script = ExtResource("17_0duuj")
-spawn_interval = 10.0
+spawn_interval = 15.0
 speed_min = 40.0
 speed_max = 50.0
 preprocess_time = 30.0

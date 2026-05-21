@@ -3,7 +3,6 @@ extends Node2D
 const PLANET_SCENES = [
 	"res://scenes/planets/AzurePlanet3D.tscn",
 	"res://scenes/planets/CrimsonPlanet3D.tscn",
-	"res://scenes/planets/EarthPlanet3D.tscn",
 	"res://scenes/planets/EmeraldPlanet3D.tscn",
 	"res://scenes/planets/GreenPlanet3D.tscn",
 	"res://scenes/planets/PlanetSaturn3D.tscn",
