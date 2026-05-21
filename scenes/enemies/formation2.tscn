@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://b4kkmjte8klff"]
+
+[ext_resource type="Script" uid="uid://de0wqltyclsk0" path="res://scenes/enemy/EnemyPath.gd" id="1_ku4e0"]
+[ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="2_knp4y"]
+
+[sub_resource type="Curve2D" id="Curve2D_r7pj7"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 512, 0, 0, 0, 0, -560, 1832, 331.3, 2.379, -331.3, -2.379, -984, 1960, -1.782, 260.18, 1.782, -260.18, -1400, 1384, -245.95532, 0.48489988, 245.95532, -0.48489988, -984, 912, -24.124, -272.615, 24.124, 272.615, -568, 1384, -102.488, -242.208, 102.453, 242.208, -448, 2144, 0, 0, 0, 0, -200, 2496)
+}
+point_count = 8
+
+[node name="formation" type="Node2D" unique_id=574820768]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1587485370]
+position = Vector2(1528, -912)
+curve = SubResource("Curve2D_r7pj7")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1120093881]
+position = Vector2(0, 512)
+rotation = 1.9720252
+loop = false
+script = ExtResource("1_ku4e0")
+speed = 1000.0
+
+[node name="blue_enemy" parent="Path2D/PathFollow2D" unique_id=119960324 instance=ExtResource("2_knp4y")]
+rotation = -1.5707964
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D" unique_id=1436828625]
+position = Vector2(-78.1094, 696.1151)
+rotation = 1.9720252
+progress = 200.0
+loop = false
+script = ExtResource("1_ku4e0")
+speed = 1000.0
+
+[node name="blue_enemy" parent="Path2D/PathFollow2D2" unique_id=1855633961 instance=ExtResource("2_knp4y")]
+position = Vector2(-0.0026245117, 0)
+rotation = -1.5707964
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="Path2D" unique_id=1637018520]
+position = Vector2(-156.2197, 880.2321)
+rotation = 1.9720252
+progress = 400.0
+loop = false
+script = ExtResource("1_ku4e0")
+speed = 1000.0
+
+[node name="blue_enemy" parent="Path2D/PathFollow2D3" unique_id=270997424 instance=ExtResource("2_knp4y")]
+position = Vector2(0.008605957, -0.00012207031)
+rotation = -1.5707964
+
+[node name="PathFollow2D4" type="PathFollow2D" parent="Path2D" unique_id=170943088]
+position = Vector2(-234.32993, 1064.349)
+rotation = 1.9720252
+progress = 600.0
+loop = false
+script = ExtResource("1_ku4e0")
+speed = 1000.0
+
+[node name="blue_enemy" parent="Path2D/PathFollow2D4" unique_id=1233658268 instance=ExtResource("2_knp4y")]
+position = Vector2(0.008605957, -0.00012207031)
+rotation = -1.5707964
+
+[node name="PathFollow2D5" type="PathFollow2D" parent="Path2D" unique_id=367532960]
+position = Vector2(-312.4399, 1248.4653)
+rotation = 1.9720252
+progress = 800.0
+loop = false
+script = ExtResource("1_ku4e0")
+speed = 1000.0
+
+[node name="blue_enemy" parent="Path2D/PathFollow2D5" unique_id=2029358638 instance=ExtResource("2_knp4y")]
+position = Vector2(0.008605957, -0.00012207031)
+rotation = -1.5707964

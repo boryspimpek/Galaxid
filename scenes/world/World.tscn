@@ -5,8 +5,10 @@
 [ext_resource type="Script" uid="uid://dsj7d5ivh3g" path="res://scenes/world/LevelManager.gd" id="3_level_manager"]
 [ext_resource type="PackedScene" uid="uid://c6bq1qkhotmeh" path="res://scenes/enemies/formation.tscn" id="4_8xm5o"]
 [ext_resource type="PackedScene" uid="uid://btwasr8xpu0be" path="res://scenes/planets/CrimsonPlanet3D.tscn" id="5_252at"]
-[ext_resource type="PackedScene" uid="uid://1hx6ajpqjoci" path="res://scenes/enemies/formation1.tscn" id="5_fe1rh"]
 [ext_resource type="PackedScene" uid="uid://jgvbkuyntum0" path="res://scenes/asteroids/asteroid.tscn" id="5_i1jm3"]
+[ext_resource type="Script" uid="uid://1nnanxfyqt2s" path="res://scenes/enemies/Formation.gd" id="5_wryly"]
+[ext_resource type="PackedScene" uid="uid://b4kkmjte8klff" path="res://scenes/enemies/formation2.tscn" id="6_wryly"]
+[ext_resource type="PackedScene" uid="uid://dd21l172sp65r" path="res://scenes/enemies/formation3.tscn" id="7_400s5"]
 [ext_resource type="PackedScene" uid="uid://cmgg2l8ympyhg" path="res://scenes/planets/EarthPlanet3D.tscn" id="8_qh0kd"]
 [ext_resource type="Script" uid="uid://cd6vtrajndq0f" path="res://scenes/world/StarTwinkle.gd" id="8_twinkle"]
 [ext_resource type="PackedScene" uid="uid://cjka77acuu8be" path="res://scenes/planets/EmeraldPlanet3D.tscn" id="9_yr1n6"]
@@ -64,14 +66,20 @@ script = ExtResource("14_ruler")
 
 [node name="asteroid" parent="LevelMap" unique_id=950937570 instance=ExtResource("5_i1jm3")]
 z_index = -10
-position = Vector2(625, -405)
+position = Vector2(562, 869)
 ymove = 180
 
 [node name="formation" parent="LevelMap" unique_id=574820768 instance=ExtResource("4_8xm5o")]
-position = Vector2(-975, -59)
+position = Vector2(-5, -100)
+script = ExtResource("5_wryly")
 
-[node name="formation2" parent="LevelMap" unique_id=507811653 instance=ExtResource("5_fe1rh")]
-position = Vector2(1833, 482)
+[node name="formation2" parent="LevelMap" unique_id=1918233626 instance=ExtResource("6_wryly")]
+position = Vector2(-5, -200)
+script = ExtResource("5_wryly")
+
+[node name="formation3" parent="LevelMap" unique_id=1504857099 instance=ExtResource("7_400s5")]
+position = Vector2(0, -311)
+script = ExtResource("5_wryly")
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(553, 1775)

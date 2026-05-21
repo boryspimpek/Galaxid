@@ -42,10 +42,12 @@ _data = {
 }
 
 [node name="explode" type="Node2D" unique_id=1275561222]
+z_index = 110
 position = Vector2(0, -1)
 script = ExtResource("2_explode")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1311172428]
+z_index = 110
 texture = ExtResource("1_juf7q")
 hframes = 6
 

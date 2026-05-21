@@ -13,6 +13,7 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1293718296]
+z_index = 100
 texture = ExtResource("3_c3xxp")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=121213366]

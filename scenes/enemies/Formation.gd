@@ -7,7 +7,7 @@ extends Node2D
 func _ready():
 	var notifier := VisibleOnScreenNotifier2D.new()
 	# Szeroki pasek – odpala się niezależnie od pozycji X roota formacji
-	notifier.rect = Rect2(-540, -10, 2160, 20)
+	notifier.rect = Rect2(-2000, -10, 10000, 20)
 	add_child(notifier)
 	notifier.screen_entered.connect(activate_formation)
 
