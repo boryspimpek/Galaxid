@@ -24,6 +24,7 @@ var _clamp_margin := Vector4.ZERO  # left, top, right, bottom
 @onready var weapon_system: Node = $WeaponSystem
 @onready var damage_system: Node = $DamageSystem
 @onready var shield_system: Node = $ShieldSystem
+@onready var ship_model: Node3D = $SubViewport/PlayerModel
 
 # ============================================================================
 # 1. INICJALIZACJA (Kolejność ma znaczenie!)
@@ -75,9 +76,15 @@ func reload_power_regeneration():
 
 func _physics_process(delta: float):
 	power = min(power_max, power + power_add * delta)
+	var prev_x: float = position.x
 	position = get_global_mouse_position()
 	_clamp_to_screen()
 	weapon_system.set_firing(Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT))
+	_update_tilt(position.x - prev_x, delta)
+
+func _update_tilt(dx: float, delta: float) -> void:
+	var target: float = clampf(-dx * 0.04, -0.6, 0.6)
+	ship_model.rotation.z = lerpf(ship_model.rotation.z, target, delta * 8.0)
 
 const PLAY_AREA := Vector2(1080, 1920)
 

@@ -3,4 +3,3 @@
 [ext_resource type="PackedScene" uid="uid://d0nnbabjye45t" path="res://assets/player3d/Meshy_AI_Crimson_Starfighter_0521184708_texture.glb" id="1_dw6ur"]
 
 [node name="PlayerModel" unique_id=1771298690 instance=ExtResource("1_dw6ur")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)

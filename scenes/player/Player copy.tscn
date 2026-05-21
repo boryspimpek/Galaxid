@@ -1,41 +1,27 @@
-[gd_scene format=3 uid="uid://bte7ofi7pgn5b"]
+[gd_scene format=3 uid="uid://bb6acoljefmq5"]
 
-[ext_resource type="Script" uid="uid://dsg84un7uak4y" path="res://scenes/player/player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://l355mw8nf63d" path="res://scenes/player/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" path="res://scenes/player/WeaponSystem.tscn" id="2_weapon"]
+[ext_resource type="Texture2D" uid="uid://cxvx70kqnal2k" path="res://assets/player/player.png" id="3_c3xxp"]
 [ext_resource type="PackedScene" path="res://scenes/player/DamageSystem.tscn" id="3_damage"]
 [ext_resource type="PackedScene" path="res://scenes/player/ShieldSystem.tscn" id="4_shield"]
 [ext_resource type="PackedScene" uid="uid://bo2v2o3n3f1c2" path="res://scenes/engines/engine.tscn" id="7_npwbq"]
-[ext_resource type="PackedScene" uid="uid://trc42gofne61" path="res://scenes/player/PlayerModel.tscn" id="8_model"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_ship"]
-viewport_path = NodePath("SubViewport")
 
 [node name="player" type="CharacterBody2D" unique_id=1834704228]
 z_index = 100
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_onrkg")
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=1147152387]
-transparent_bg = true
-
-[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1147152388]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
-
-[node name="PlayerModel" parent="SubViewport" unique_id=1147152389 instance=ExtResource("8_model")]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=1032008426]
-transform = Transform3D(-4.371139e-08, 0.6427876, -0.76604444, 0, 0.76604444, 0.6427876, 1, 2.8097137e-08, -3.3484866e-08, 0, 3, 0)
-
-[node name="ShipSprite" type="Sprite2D" parent="." unique_id=1147152390]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1293718296]
 z_index = 100
-texture = SubResource("ViewportTexture_ship")
+texture = ExtResource("3_c3xxp")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=121213366]
 visible = false
 polygon = PackedVector2Array(0, -216, -28, -207, -55, -156, -74, -151, -89, -142, -103, -119, -110, -88, -110, -31, -90, 93, -84, 131, -29, 169, 29, 169, 84, 132, 109, -31, 111, -88, 104, -118, 91, -142, 71, -152, 54, -155, 28, -206)
 
 [node name="engine" parent="." unique_id=393269920 instance=ExtResource("7_npwbq")]
-position = Vector2(0, 187)
+position = Vector2(0, 265)
 rotation = 1.5707964
 scale = Vector2(3.03, 3.03)
 

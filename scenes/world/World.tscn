@@ -79,7 +79,13 @@ position = Vector2(0, -311)
 script = ExtResource("5_wryly")
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
-position = Vector2(553, 1775)
+position = Vector2(559, 1649)
+ship_id = null
+front_weapon_index = null
+front_weapon_mode = null
+front_power_level = null
+generator_id = null
+shield_id = null
 
 [node name="BackgroundLayer" type="Node2D" parent="." unique_id=860926202]
 modulate = Color(0.29201096, 0.52643704, 1, 1)
