@@ -11,3 +11,4 @@ res://scenes/enemies/formation3.tscn
 res://scenes/enemy/EnemyPath.gd
 res://scenes/player/PlayerModel.tscn
 res://scenes/player/Player.gd
+res://default_bus_layout.tres

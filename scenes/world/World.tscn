@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://1nnanxfyqt2s" path="res://scenes/enemies/Formation.gd" id="5_wryly"]
 [ext_resource type="PackedScene" uid="uid://b4kkmjte8klff" path="res://scenes/enemies/formation2.tscn" id="6_wryly"]
 [ext_resource type="PackedScene" uid="uid://dd21l172sp65r" path="res://scenes/enemies/formation3.tscn" id="7_400s5"]
+[ext_resource type="Script" uid="uid://dsg84un7uak4y" path="res://scenes/player/player.gd" id="8_d0ueh"]
 [ext_resource type="PackedScene" uid="uid://cmgg2l8ympyhg" path="res://scenes/planets/EarthPlanet3D.tscn" id="8_qh0kd"]
 [ext_resource type="Script" uid="uid://cd6vtrajndq0f" path="res://scenes/world/StarTwinkle.gd" id="8_twinkle"]
 [ext_resource type="PackedScene" uid="uid://cjka77acuu8be" path="res://scenes/planets/EmeraldPlanet3D.tscn" id="9_yr1n6"]
@@ -80,12 +81,7 @@ script = ExtResource("5_wryly")
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(559, 1649)
-ship_id = null
-front_weapon_index = null
-front_weapon_mode = null
-front_power_level = null
-generator_id = null
-shield_id = null
+script = ExtResource("8_d0ueh")
 
 [node name="BackgroundLayer" type="Node2D" parent="." unique_id=860926202]
 modulate = Color(0.29201096, 0.52643704, 1, 1)

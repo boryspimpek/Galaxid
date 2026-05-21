@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bte7ofi7pgn5b"]
 
-[ext_resource type="Script" uid="uid://dsg84un7uak4y" path="res://scenes/player/player.gd" id="1_onrkg"]
+[ext_resource type="Script" uid="uid://dsg84un7uak4y" path="res://scenes/player/Player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://b18b5anwm2fnd" path="res://scenes/player/PlayerModel.tscn" id="2_c3xxp"]
 [ext_resource type="PackedScene" path="res://scenes/player/WeaponSystem.tscn" id="2_weapon"]
 [ext_resource type="PackedScene" path="res://scenes/player/DamageSystem.tscn" id="3_damage"]
 [ext_resource type="PackedScene" path="res://scenes/player/ShieldSystem.tscn" id="4_shield"]
 [ext_resource type="PackedScene" uid="uid://bo2v2o3n3f1c2" path="res://scenes/engines/engine.tscn" id="7_npwbq"]
-[ext_resource type="PackedScene" uid="uid://trc42gofne61" path="res://scenes/player/PlayerModel.tscn" id="8_model"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ship"]
 viewport_path = NodePath("SubViewport")
@@ -18,29 +18,31 @@ script = ExtResource("1_onrkg")
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1147152387]
 transparent_bg = true
 
+[node name="PlayerModel" parent="SubViewport" unique_id=476255480 instance=ExtResource("2_c3xxp")]
+
 [node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1147152388]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
 
-[node name="PlayerModel" parent="SubViewport" unique_id=1147152389 instance=ExtResource("8_model")]
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=1032008426]
-transform = Transform3D(-4.371139e-08, 0.6427876, -0.76604444, 0, 0.76604444, 0.6427876, 1, 2.8097137e-08, -3.3484866e-08, 0, 3, 0)
+transform = Transform3D(-0.64278764, 0.73373455, -0.22013092, 0, 0.28736052, 0.9578224, 0.76604444, 0.6156764, -0.1847118, 0, 3, 0)
+light_energy = 7.727
+light_specular = 10.545
+shadow_enabled = true
 
 [node name="ShipSprite" type="Sprite2D" parent="." unique_id=1147152390]
 z_index = 100
 texture = SubResource("ViewportTexture_ship")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=121213366]
-visible = false
-polygon = PackedVector2Array(0, -216, -28, -207, -55, -156, -74, -151, -89, -142, -103, -119, -110, -88, -110, -31, -90, 93, -84, 131, -29, 169, 29, 169, 84, 132, 109, -31, 111, -88, 104, -118, 91, -142, 71, -152, 54, -155, 28, -206)
+polygon = PackedVector2Array(0, -88.57143, -17.142857, -79.99999, -17.142857, -57.142853, -39.999996, -57.142853, -51.42857, -34.285713, -51.42857, 0, -45.714283, 57.142853, -17.142857, 74.28571, -11.428571, 91.428566, 11.428571, 91.428566, 17.142857, 74.28571, 45.714283, 57.142853, 51.42857, 0, 51.42857, -34.285713, 34.285713, -57.142853, 17.142857, -58.571426, 15.714285, -79.99999)
 
 [node name="engine" parent="." unique_id=393269920 instance=ExtResource("7_npwbq")]
-position = Vector2(0, 187)
+position = Vector2(3.4238007e-13, 188.57144)
 rotation = 1.5707964
 scale = Vector2(3.03, 3.03)
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=236923006]
-position = Vector2(0, -190)
+position = Vector2(0, -85)
 
 [node name="WeaponSystem" parent="." unique_id=2092281166 instance=ExtResource("2_weapon")]
 

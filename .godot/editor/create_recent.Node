@@ -1,5 +1,5 @@
-DirectionalLight3D
 MeshInstance3D
+DirectionalLight3D
 Node2D
 PathFollow2D
 Path2D
