@@ -29,5 +29,4 @@ func _process(delta: float):
 	if progress_ratio >= 1.0:
 		if remove_at_end:
 			queue_free()
-		else:
-			set_process(false)
+		set_process(false)

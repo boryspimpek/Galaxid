@@ -73,7 +73,8 @@ func _on_screen_entered():
 
 func _on_screen_exited():
 	if get_parent() is PathFollow2D:
-		return  # EnemyPath zarządza cyklem życia
+		if get_parent().remove_at_end:
+			return
 	queue_free()
 
 func refresh_weapon_cache():

@@ -35,6 +35,7 @@ progress = 200.0
 loop = false
 script = ExtResource("2_enemypath")
 speed = 1000.0
+remove_at_end = false
 
 [node name="blue_enemy" parent="Path2D/PathFollow2D2" unique_id=1855633961 instance=ExtResource("1_euy2o")]
 position = Vector2(-0.0026245117, 0)
@@ -47,6 +48,7 @@ progress = 400.0
 loop = false
 script = ExtResource("2_enemypath")
 speed = 1000.0
+remove_at_end = false
 
 [node name="blue_enemy" parent="Path2D/PathFollow2D3" unique_id=270997424 instance=ExtResource("1_euy2o")]
 position = Vector2(0.008605957, -0.00012207031)
@@ -59,6 +61,7 @@ progress = 600.0
 loop = false
 script = ExtResource("2_enemypath")
 speed = 1000.0
+remove_at_end = false
 
 [node name="blue_enemy" parent="Path2D/PathFollow2D4" unique_id=1233658268 instance=ExtResource("1_euy2o")]
 position = Vector2(0.008605957, -0.00012207031)
@@ -71,6 +74,7 @@ progress = 800.0
 loop = false
 script = ExtResource("2_enemypath")
 speed = 1000.0
+remove_at_end = false
 
 [node name="blue_enemy" parent="Path2D/PathFollow2D5" unique_id=2029358638 instance=ExtResource("1_euy2o")]
 position = Vector2(0.008605957, -0.00012207031)
