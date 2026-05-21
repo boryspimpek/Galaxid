@@ -10,7 +10,6 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("3_1gvac")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="1" unique_id=291847561]
-visible = false
 rect = Rect2(-205, -197, 409, 396)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." index="2" unique_id=185173466]

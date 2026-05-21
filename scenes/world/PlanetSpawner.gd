@@ -13,17 +13,27 @@ const PLANET_SCENES = [
 @export var spawn_interval: float = 3.0
 @export var speed_min: float = 50.0
 @export var speed_max: float = 150.0
+@export var preprocess_time: float = 20.0
 
 var spawn_timer: float = 0.0
 
 func _ready() -> void:
 	spawn_timer = spawn_interval
+	_preprocess(preprocess_time)
 
 func _process(delta: float) -> void:
 	spawn_timer -= delta
 	if spawn_timer <= 0:
 		spawn_random_planet()
 		spawn_timer = spawn_interval
+
+func _preprocess(time: float) -> void:
+	var elapsed := 0.0
+	while elapsed < time:
+		elapsed += spawn_interval
+		spawn_random_planet()
+		var last = get_child(get_child_count() - 1)
+		last.position.y += last.move_speed * (time - elapsed)
 
 func spawn_random_planet() -> void:
 	var scene_path = PLANET_SCENES[randi() % PLANET_SCENES.size()]

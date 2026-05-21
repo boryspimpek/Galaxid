@@ -5,3 +5,6 @@ res://scenes/enemy/Enemy.gd
 res://scenes/enemies/blue_enemy.tscn
 res://scenes/player/DamageSystem.gd
 res://scenes/world/AsteroidSpawner.gd
+res://scenes/enemies/formation.tscn
+res://scenes/enemies/formation2.tscn
+res://scenes/enemies/formation3.tscn

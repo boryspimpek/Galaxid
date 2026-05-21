@@ -21,9 +21,12 @@ rotation = 1.1695676
 loop = false
 script = ExtResource("2_enemypath")
 speed = 1000.0
+remove_at_end = false
 
 [node name="blue_enemy" parent="Path2D/PathFollow2D" unique_id=119960324 instance=ExtResource("1_euy2o")]
 rotation = -1.5707964
+tur = [59, 0, 0]
+freq = [1, 0, 0]
 
 [node name="PathFollow2D2" type="PathFollow2D" parent="Path2D" unique_id=1436828625]
 position = Vector2(78.1094, 696.1151)
