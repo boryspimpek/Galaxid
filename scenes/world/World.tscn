@@ -59,7 +59,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
-visible = false
 script = ExtResource("3_level_manager")
 scroll_speed = 20
 
@@ -87,7 +86,10 @@ script = ExtResource("5_wryly")
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(553, 1775)
 
-[node name="FarStars" type="GPUParticles2D" parent="." unique_id=245978833]
+[node name="BackgroundLayer" type="Node2D" parent="." unique_id=860926202]
+modulate = Color(0.29201096, 0.52643704, 1, 1)
+
+[node name="FarStars" type="GPUParticles2D" parent="BackgroundLayer" unique_id=245978833]
 z_index = -100
 position = Vector2(540, 0)
 amount = 100
@@ -99,7 +101,7 @@ trail_section_subdivisions = 1
 process_material = SubResource("ParticleProcessMaterial_252at")
 script = ExtResource("8_twinkle")
 
-[node name="MiddleStars" type="GPUParticles2D" parent="." unique_id=1488518254]
+[node name="MiddleStars" type="GPUParticles2D" parent="BackgroundLayer" unique_id=1488518254]
 z_index = -100
 position = Vector2(540, 0)
 amount = 100
@@ -108,34 +110,34 @@ preprocess = 96.0
 process_material = SubResource("ParticleProcessMaterial_i1jm3")
 script = ExtResource("8_twinkle")
 
-[node name="AzurePlanet3D" parent="." unique_id=1161141368 instance=ExtResource("2_i1jm3")]
+[node name="AzurePlanet3D" parent="BackgroundLayer" unique_id=1161141368 instance=ExtResource("2_i1jm3")]
 position = Vector2(237, -889)
 
-[node name="CrimsonPlanet3d" parent="." unique_id=944956452 instance=ExtResource("5_252at")]
+[node name="CrimsonPlanet3d" parent="BackgroundLayer" unique_id=944956452 instance=ExtResource("5_252at")]
 position = Vector2(243, 1322)
 move_speed = 40.0
 
-[node name="EarthPlanet3D" parent="." unique_id=1843616213 instance=ExtResource("8_qh0kd")]
+[node name="EarthPlanet3D" parent="BackgroundLayer" unique_id=1843616213 instance=ExtResource("8_qh0kd")]
 position = Vector2(523, 354)
 move_speed = 20.0
 
-[node name="EmeraldPlanet3D" parent="." unique_id=287911735 instance=ExtResource("9_yr1n6")]
+[node name="EmeraldPlanet3D" parent="BackgroundLayer" unique_id=287911735 instance=ExtResource("9_yr1n6")]
 position = Vector2(827.00006, 128.99998)
 move_speed = 40.0
 
-[node name="GreenPlanet3D" parent="." unique_id=1430243515 instance=ExtResource("10_l5ull")]
+[node name="GreenPlanet3D" parent="BackgroundLayer" unique_id=1430243515 instance=ExtResource("10_l5ull")]
 position = Vector2(702, -1821)
 move_speed = 40.0
 
-[node name="PlanetSaturn3D" parent="." unique_id=2055306021 instance=ExtResource("11_16fjv")]
+[node name="PlanetSaturn3D" parent="BackgroundLayer" unique_id=2055306021 instance=ExtResource("11_16fjv")]
 position = Vector2(273, -3114.9998)
 move_speed = 40.0
 
-[node name="SilverPlanet3D" parent="." unique_id=1166699980 instance=ExtResource("13_8xm5o")]
+[node name="SilverPlanet3D" parent="BackgroundLayer" unique_id=1166699980 instance=ExtResource("13_8xm5o")]
 position = Vector2(545, -2961)
 move_speed = 40.0
 
-[node name="PlanetSpawner" type="Node2D" parent="." unique_id=1401204115]
+[node name="PlanetSpawner" type="Node2D" parent="BackgroundLayer" unique_id=1401204115]
 visible = false
 script = ExtResource("17_0duuj")
 spawn_interval = 5.0
