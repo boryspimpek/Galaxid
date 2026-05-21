@@ -1,8 +1,3 @@
-res://scenes/enemies/blue_enemy.tscn
-res://scenes/enemies/formation.tscn
-res://scenes/world/World.tscn
 res://scenes/player/Player.tscn
-res://scenes/asteroids/asteroid.tscn
-res://scenes/explosions/explode.tscn
-res://scenes/enemies/formation2.tscn
-res://scenes/enemies/formation3.tscn
+res://scenes/world/World.tscn
+res://scenes/world/PlanetSpawner.gd

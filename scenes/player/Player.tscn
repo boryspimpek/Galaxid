@@ -9,7 +9,7 @@
 
 [node name="player" type="CharacterBody2D" unique_id=1834704228]
 z_index = 100
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_onrkg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1293718296]

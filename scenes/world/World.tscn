@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bn31xdjeslyos" path="res://scenes/planets/PlanetSaturn3D.tscn" id="11_16fjv"]
 [ext_resource type="PackedScene" uid="uid://cxvlgnysglo5x" path="res://scenes/planets/SilverPlanet3D.tscn" id="13_8xm5o"]
 [ext_resource type="Script" uid="uid://cjwf83wntumr8" path="res://scenes/world/LevelRuler.gd" id="14_ruler"]
+[ext_resource type="Script" uid="uid://cmxovjxejqgik" path="res://scenes/world/PlanetSpawner.gd" id="17_0duuj"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_252at"]
 particle_flag_disable_z = true
@@ -58,10 +59,12 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="LevelMap" type="Node2D" parent="." unique_id=2089491049]
+visible = false
 script = ExtResource("3_level_manager")
 scroll_speed = 20
 
 [node name="LevelRuler" type="Node2D" parent="LevelMap" unique_id=111111111]
+visible = false
 script = ExtResource("14_ruler")
 
 [node name="asteroid" parent="LevelMap" unique_id=950937570 instance=ExtResource("5_i1jm3")]
@@ -106,7 +109,7 @@ process_material = SubResource("ParticleProcessMaterial_i1jm3")
 script = ExtResource("8_twinkle")
 
 [node name="AzurePlanet3D" parent="." unique_id=1161141368 instance=ExtResource("2_i1jm3")]
-position = Vector2(243, -1100)
+position = Vector2(237, -889)
 
 [node name="CrimsonPlanet3d" parent="." unique_id=944956452 instance=ExtResource("5_252at")]
 position = Vector2(243, 1322)
@@ -117,17 +120,24 @@ position = Vector2(523, 354)
 move_speed = 20.0
 
 [node name="EmeraldPlanet3D" parent="." unique_id=287911735 instance=ExtResource("9_yr1n6")]
-position = Vector2(832.99994, -77.99994)
+position = Vector2(827.00006, 128.99998)
 move_speed = 40.0
 
 [node name="GreenPlanet3D" parent="." unique_id=1430243515 instance=ExtResource("10_l5ull")]
-position = Vector2(692, -2097)
+position = Vector2(702, -1821)
 move_speed = 40.0
 
 [node name="PlanetSaturn3D" parent="." unique_id=2055306021 instance=ExtResource("11_16fjv")]
-position = Vector2(322, -3351.0005)
+position = Vector2(273, -3114.9998)
 move_speed = 40.0
 
 [node name="SilverPlanet3D" parent="." unique_id=1166699980 instance=ExtResource("13_8xm5o")]
-position = Vector2(545, -3197)
+position = Vector2(545, -2961)
 move_speed = 40.0
+
+[node name="PlanetSpawner" type="Node2D" parent="." unique_id=1401204115]
+visible = false
+script = ExtResource("17_0duuj")
+spawn_interval = 5.0
+speed_min = 40.0
+speed_max = 340.0

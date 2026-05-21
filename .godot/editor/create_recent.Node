@@ -12,4 +12,3 @@ Camera2D
 DirectionalLight2D
 MeshInstance3D
 GPUParticles2D
-ColorRect
