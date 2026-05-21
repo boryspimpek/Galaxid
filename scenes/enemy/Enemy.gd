@@ -172,6 +172,12 @@ func take_damage(amount: int):
 		die()
 	else:
 		SoundManager.play_sound(3)
+		_flash_hit()
+
+func _flash_hit():
+	modulate = Color(50, 50, 50, 1)
+	var tween = create_tween()
+	tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 0.12)
 
 func die():
 	var parent := _get_level_parent()

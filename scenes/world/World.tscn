@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://1nnanxfyqt2s" path="res://scenes/enemies/Formation.gd" id="5_wryly"]
 [ext_resource type="PackedScene" uid="uid://b4kkmjte8klff" path="res://scenes/enemies/formation2.tscn" id="6_wryly"]
 [ext_resource type="PackedScene" uid="uid://dd21l172sp65r" path="res://scenes/enemies/formation3.tscn" id="7_400s5"]
+[ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="8_d0ueh"]
 [ext_resource type="PackedScene" uid="uid://cmgg2l8ympyhg" path="res://scenes/planets/EarthPlanet3D.tscn" id="8_qh0kd"]
 [ext_resource type="Script" uid="uid://cd6vtrajndq0f" path="res://scenes/world/StarTwinkle.gd" id="8_twinkle"]
 [ext_resource type="PackedScene" uid="uid://cjka77acuu8be" path="res://scenes/planets/EmeraldPlanet3D.tscn" id="9_yr1n6"]
@@ -82,6 +83,10 @@ script = ExtResource("5_wryly")
 [node name="formation3" parent="LevelMap" unique_id=1504857099 instance=ExtResource("7_400s5")]
 position = Vector2(0, -311)
 script = ExtResource("5_wryly")
+
+[node name="blue_enemy" parent="LevelMap" unique_id=119960324 instance=ExtResource("8_d0ueh")]
+position = Vector2(535, 964)
+armor = 500
 
 [node name="Player" parent="." unique_id=1834704228 instance=ExtResource("1_c6gwx")]
 position = Vector2(553, 1775)

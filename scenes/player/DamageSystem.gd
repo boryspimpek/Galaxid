@@ -27,4 +27,5 @@ func take_damage(amount: int):
 			_on_player_death()
 
 func _on_player_death():
-	push_warning("Player: ŚMIERĆ — logika śmierci jeszcze niezaimplementowana")
+	#push_warning("Player: ŚMIERĆ — logika śmierci jeszcze niezaimplementowana")
+	pass
