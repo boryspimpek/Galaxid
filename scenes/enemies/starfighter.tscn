@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ceb36gc6o5uvc"]
+
+[ext_resource type="PackedScene" uid="uid://eyku5nilalp" path="res://assets/enemies/starfighter/Meshy_AI_S_01_Starfighter_0522180707_texture.glb" id="1_ije4n"]
+
+[node name="Starfighter" unique_id=1322169304 instance=ExtResource("1_ije4n")]

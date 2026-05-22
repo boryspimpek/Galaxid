@@ -3,18 +3,12 @@
 [ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_1a0b4"]
 [ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_wt8d4"]
 
-[sub_resource type="Resource" id="Resource_1a0b4"]
+[sub_resource type="Resource" id="Resource_ygisr"]
 script = ExtResource("1_1a0b4")
 attack = 1
 del = 255
 sy = 12
 sg = 67
-
-[sub_resource type="Resource" id="Resource_wt8d4"]
-script = ExtResource("1_1a0b4")
-
-[sub_resource type="Resource" id="Resource_ygisr"]
-script = ExtResource("1_1a0b4")
 
 [sub_resource type="Resource" id="Resource_o5moo"]
 script = ExtResource("1_1a0b4")
@@ -31,11 +25,16 @@ script = ExtResource("1_1a0b4")
 [sub_resource type="Resource" id="Resource_babnp"]
 script = ExtResource("1_1a0b4")
 
+[sub_resource type="Resource" id="Resource_vdkd7"]
+script = ExtResource("1_1a0b4")
+
+[sub_resource type="Resource" id="Resource_cdfv2"]
+script = ExtResource("1_1a0b4")
+
 [resource]
 script = ExtResource("2_wt8d4")
 weapon_name = "Weapon_Index_1"
-shotRepeat = 5.0
 multi = 1
 max_level = 1
-patterns = Array[ExtResource("1_1a0b4")]([SubResource("Resource_1a0b4"), SubResource("Resource_wt8d4"), SubResource("Resource_ygisr"), SubResource("Resource_o5moo"), SubResource("Resource_p4jny"), SubResource("Resource_xuqug"), SubResource("Resource_le324"), SubResource("Resource_babnp")])
+patterns = Array[ExtResource("1_1a0b4")]([SubResource("Resource_ygisr"), SubResource("Resource_o5moo"), SubResource("Resource_p4jny"), SubResource("Resource_xuqug"), SubResource("Resource_le324"), SubResource("Resource_babnp"), SubResource("Resource_vdkd7"), SubResource("Resource_cdfv2")])
 sound = 28

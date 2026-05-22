@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://h7hifq3nw3ug"]
+
+[ext_resource type="PackedScene" uid="uid://d2u3wpina7kws" path="res://assets/enemies/heli crimson/Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture.glb" id="1_m5vnv"]
+
+[node name="HeliCrimson" unique_id=1796668835 instance=ExtResource("1_m5vnv")]

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dbcbb3c240rtw"]
+
+[ext_resource type="PackedScene" uid="uid://byn0rjm2al73x" path="res://assets/enemies/heli gold/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture.glb" id="1_w5nrl"]
+
+[node name="Heli gold" unique_id=569682657 instance=ExtResource("1_w5nrl")]

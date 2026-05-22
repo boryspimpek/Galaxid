@@ -178,7 +178,7 @@ func take_damage(amount: int):
 func _flash_hit():
 	modulate = Color(50, 50, 50, 1)
 	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 0.12)
+	tween.tween_property(self, "modulate", Color(1, 1, 1, 1), 0.06)
 
 func die():
 	var parent := _get_level_parent()
