@@ -4,7 +4,6 @@ extends Resource
 @export var name: String = ""
 @export var cost: int = 0
 @export var power_use: int = 0
-@export var item_graphic: int = 0
 @export var modes_count: int = 1
 
 @export_group("Firing Modes")

@@ -53,20 +53,16 @@ func _convert_weapons(weapons_list: Array) -> void:
 			
 		var stats = WeaponStats.new()
 		stats.weapon_name = "Weapon_Index_" + str(idx)
-		stats.drain = int(w_data.get("drain", 0))
-		stats.shotRepeat = int(w_data.get("shotRepeat", 0))
+		stats.shotRepeat = float(w_data.get("shotRepeat", 0.0))
 		stats.multi = int(w_data.get("multi", 0))
-		stats.weapAni = int(w_data.get("weapAni", 0))
 		stats.max_level = int(w_data.get("max", 0))
 		stats.tx = int(w_data.get("tx", 0))
 		stats.ty = int(w_data.get("ty", 0))
 		stats.aim = int(w_data.get("aim", 0))
 		stats.acceleration = int(w_data.get("acceleration", 0))
 		stats.accelerationx = int(w_data.get("accelerationx", 0))
-		stats.circleSize = int(w_data.get("circleSize", 0))
 		stats.sound = int(w_data.get("sound", 0))
 		stats.trail = int(w_data.get("trail", 255))
-		stats.shipBlastFilter = int(w_data.get("shipBlastFilter", 240))
 		
 		if w_data.has("patterns"):
 			var pattern_array: Array[WeaponPattern] = []
@@ -88,7 +84,11 @@ func _convert_weapons(weapons_list: Array) -> void:
 			print("Błąd zapisu stats_" , idx, ": ", error)
 		else:
 			count += 1
-			created_stats_resources[idx] = stats
+			var saved_res = ResourceLoader.load(save_path)
+			if saved_res:
+				created_stats_resources[int(idx)] = saved_res
+			else:
+				created_stats_resources[int(idx)] = stats
 			
 	print("Zapisano pomyślnie ", count, " plików statystyk (.tres)")
 
@@ -107,7 +107,6 @@ func _convert_ports(ports_list: Array) -> void:
 			var s = p_data["stats"]
 			port.cost = int(s.get("cost", 0))
 			port.power_use = int(s.get("power_use", 0))
-			port.item_graphic = int(s.get("item_graphic", 0))
 			port.modes_count = int(s.get("modes_count", 1))
 			
 		if p_data.has("firing_modes"):
@@ -151,5 +150,6 @@ func _load_json(path: String) -> Variant:
 	return null
 
 func _ensure_dir_exists(path: String) -> void:
-	if not DirAccess.dir_exists_absolute(path):
-		DirAccess.make_dir_recursive_absolute(path)
+	var abs_path = ProjectSettings.globalize_path(path)
+	if not DirAccess.dir_exists_absolute(abs_path):
+		DirAccess.make_dir_recursive_absolute(abs_path)

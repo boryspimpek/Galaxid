@@ -1,2 +1,4 @@
 res://scenes/world/World.tscn
 res://scripts/tools/resource_converter.gd
+res://scripts/resources/WeaponStats.gd
+res://weapons/stats/stats_1.tres
