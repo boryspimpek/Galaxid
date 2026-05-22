@@ -16,6 +16,7 @@ scale = Vector2(0.7, 0.7)
 script = ExtResource("1_onrkg")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=1147152387]
+own_world_3d = true
 transparent_bg = true
 
 [node name="PlayerModel" parent="SubViewport" unique_id=476255480 instance=ExtResource("2_c3xxp")]
@@ -24,7 +25,7 @@ transparent_bg = true
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=1032008426]
-transform = Transform3D(-0.64278764, 0.73373455, -0.22013092, 0, 0.28736052, 0.9578224, 0.76604444, 0.6156764, -0.1847118, 0, 3, 0)
+transform = Transform3D(-0.64278764, 0.739942, -0.19826688, 0, 0.25881904, 0.9659257, 0.76604444, 0.62088513, -0.16636568, 0, 3, 0)
 light_energy = 7.727
 light_specular = 10.545
 shadow_enabled = true
@@ -34,7 +35,7 @@ z_index = 100
 texture = SubResource("ViewportTexture_ship")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=121213366]
-polygon = PackedVector2Array(0, -88.57143, -17.142857, -79.99999, -17.142857, -57.142853, -39.999996, -57.142853, -51.42857, -34.285713, -51.42857, 0, -45.714283, 57.142853, -17.142857, 74.28571, -11.428571, 91.428566, 11.428571, 91.428566, 17.142857, 74.28571, 45.714283, 57.142853, 51.42857, 0, 51.42857, -34.285713, 34.285713, -57.142853, 17.142857, -58.571426, 15.714285, -79.99999)
+polygon = PackedVector2Array(0, -88.57143, -17.142857, -79.99999, -17.142857, -57.142853, -39.999996, -57.142853, -51.42857, -34.285713, -51.42857, 0, -45.714283, 57.142853, -11.428571, 74.28571, -11.428571, 91.428566, 11.428571, 91.428566, 11.428571, 74.28571, 45.714283, 57.142853, 51.42857, 0, 51.42857, -34.285713, 39.999996, -57.142853, 17.142857, -58.571426, 17.142857, -79.99999)
 
 [node name="engine" parent="." unique_id=393269920 instance=ExtResource("7_npwbq")]
 position = Vector2(3.4238007e-13, 188.57144)

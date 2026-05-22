@@ -1,12 +1,13 @@
-MeshInstance3D
+CollisionPolygon2D
 DirectionalLight3D
+Camera3D
+SubViewport
+MeshInstance3D
 Node2D
 PathFollow2D
 Path2D
 VisibleOnScreenNotifier2D
 WorldEnvironment
-Camera3D
-SubViewport
 SubViewportContainer
 XRCamera3D
 Camera2D

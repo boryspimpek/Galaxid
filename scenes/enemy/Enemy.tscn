@@ -2,12 +2,25 @@
 
 [ext_resource type="Script" uid="uid://b6u5jc5l8dstd" path="res://scenes/enemy/Enemy.gd" id="1_enemy"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_sjakr"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Enemy" type="Area2D" unique_id=119960324]
 z_index = 100
 script = ExtResource("1_enemy")
 
+[node name="SubViewport" type="SubViewport" parent="." unique_id=726110426]
+transparent_bg = true
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport" unique_id=1046322141]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.5, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport" unique_id=602039965]
+transform = Transform3D(-0.34202012, 0.664463, -0.664463, 0, 0.70710677, 0.70710677, 0.9396926, 0.24184474, -0.24184474, 0, 4.505, 0)
+
 [node name="Visual" type="Sprite2D" parent="." unique_id=1405638014]
 z_index = 100
 texture_filter = 4
+texture = SubResource("ViewportTexture_sjakr")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=291847561]

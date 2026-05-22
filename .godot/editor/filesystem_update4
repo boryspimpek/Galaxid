@@ -1,17 +1,5 @@
+res://scenes/enemy/Enemy.tscn
+res://scenes/player/Player.tscn
+res://scenes/enemies/starfighter3d.tscn
 res://scenes/world/World.tscn
-res://scripts/tools/resource_converter.gd
-res://scripts/resources/WeaponStats.gd
-res://weapons/stats/stats_1.tres
-res://scripts/resources/WeaponPort.gd
-res://scenes/enemy/Enemy.gd
-res://weapons/ports/port_1_Pulse-Cannon.tres
-res://weapons/ports/port_2_Multi-Cannon.tres
-res://weapons/ports/port_3_Mega Cannon.tres
-res://weapons/ports/port_4_Laser.tres
-res://weapons/ports/port_42_RetroBall.tres
-res://weapons/ports/port_41_Sonic Impulse.tres
-res://weapons/ports/port_40_Widget Beam.tres
-res://weapons/ports/port_39_Atomic RailGun.tres
-res://weapons/ports/port_38_NortShip Spreader B.tres
-res://weapons/ports/port_37_NortShip Spreader.tres
-res://weapons/stats/stats_155.tres
+res://scenes/enemies/starfighter.tscn

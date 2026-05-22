@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1779473575
+::res://::1779479802
 CLAUDE.md::TextFile::-1::1779131092::0::1::::<><><>0<>0<><>::
 default_bus_layout.tres::AudioBusLayout::2099548917964122130::1779399264::0::1::::<><><>0<>0<><>::
 export_presets.cfg::TextFile::-1::1779131093::0::1::::<><><>0<>0<><>::
@@ -25,10 +25,10 @@ icon.svg::CompressedTexture2D::292374000686953482::1779131092::1779131092::1::::
 road2.png::CompressedTexture2D::8847378363579727973::1779131092::1779131092::1::::<><><>0<>0<>833322a9f6111a6929fa3a020baafc80<>res://.godot/imported/road2.png-a5c6a1b9fb3b9d6b32aa03167105eff6.ctex::
 ::res://assets/enemies/falcon/::1779473635
 Meshy_AI_Azure_Falcon_0522180730_texture.glb::PackedScene::5273497035226074464::1779473624::1779473634::1::::<><><>0<>0<>e2a8489abbdc076efbb5f0e03422d5c1<>res://.godot/imported/Meshy_AI_Azure_Falcon_0522180730_texture.glb-2a8d3642ad3aedc43f7b598c275909ce.scn::uid://bsaa00p7gebb6::::res://assets/enemies/falcon/Meshy_AI_Azure_Falcon_0522180730_texture_Image_0.jpg<>uid://c1n7c0ue0ddsh::::res://assets/enemies/falcon/Meshy_AI_Azure_Falcon_0522180730_texture_Image_1.jpg<>uid://bbofbcvm68lnv::::res://assets/enemies/falcon/Meshy_AI_Azure_Falcon_0522180730_texture_Image_3.jpg<>uid://bhykb8sjuo4ts::::res://assets/enemies/falcon/Meshy_AI_Azure_Falcon_0522180730_texture_normal.png
-Meshy_AI_Azure_Falcon_0522180730_texture_Image_3.jpg::CompressedTexture2D::2485816324721262259::1779473625::1779473635::1::::<><><>0<>0<>aa78311090d8adce1480750071e24b30<>res://.godot/imported/Meshy_AI_Azure_Falcon_0522180730_texture_Image_3.jpg-0a1fd7d08a8fb9d826bdbf9cbdd9c720.s3tc.ctex::
-Meshy_AI_Azure_Falcon_0522180730_texture_normal.png::CompressedTexture2D::2927898372491596124::1779473626::1779473635::1::::<><><>0<>0<>a731c3430878267e19b844836eb56b6e<>res://.godot/imported/Meshy_AI_Azure_Falcon_0522180730_texture_normal.png-df9ac1ec8abf94eb60a6f2f7024bffd5.s3tc.ctex::
 Meshy_AI_Azure_Falcon_0522180730_texture_Image_0.jpg::CompressedTexture2D::3649865851743236229::1779473629::1779473635::1::::<><><>0<>0<>b59faa9739935c91a3321e50deec2321<>res://.godot/imported/Meshy_AI_Azure_Falcon_0522180730_texture_Image_0.jpg-bad0b9e68ed714f78954a7e81e986bf8.s3tc.ctex::
 Meshy_AI_Azure_Falcon_0522180730_texture_Image_1.jpg::CompressedTexture2D::6626536072329271839::1779473632::1779473635::1::::<><><>0<>0<>84380d1c201ab43b746a6fbbccc68eb3<>res://.godot/imported/Meshy_AI_Azure_Falcon_0522180730_texture_Image_1.jpg-48c99658c8ed19e85b0d54616e5c2afd.s3tc.ctex::
+Meshy_AI_Azure_Falcon_0522180730_texture_Image_3.jpg::CompressedTexture2D::2485816324721262259::1779473625::1779473635::1::::<><><>0<>0<>aa78311090d8adce1480750071e24b30<>res://.godot/imported/Meshy_AI_Azure_Falcon_0522180730_texture_Image_3.jpg-0a1fd7d08a8fb9d826bdbf9cbdd9c720.s3tc.ctex::
+Meshy_AI_Azure_Falcon_0522180730_texture_normal.png::CompressedTexture2D::2927898372491596124::1779473626::1779473635::1::::<><><>0<>0<>a731c3430878267e19b844836eb56b6e<>res://.godot/imported/Meshy_AI_Azure_Falcon_0522180730_texture_normal.png-df9ac1ec8abf94eb60a6f2f7024bffd5.s3tc.ctex::
 ::res://assets/enemies/heli crimson/::1779473599
 Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture.glb::PackedScene::9097388548451359814::1779473586::1779473597::1::::<><><>0<>0<>b78dbf935b90e7b41f6f5ec0a1eca397<>res://.godot/imported/Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture.glb-53ba5d8dc3cc119b41f072c97c7afa80.scn::uid://c05oiyx1780ki::::res://assets/enemies/heli crimson/Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture_0.jpg<>uid://brhkteiewahe1::::res://assets/enemies/heli crimson/Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture_1.jpg<>uid://dev8mwn12itae::::res://assets/enemies/heli crimson/Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture_3.jpg<>uid://dtfco5ltpe4bc::::res://assets/enemies/heli crimson/Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture_2.jpg
 Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture_0.jpg::CompressedTexture2D::6590359412525089736::1779473587::1779473599::1::::<><><>0<>0<>94abaf227e12d41d1fe9ee8d38c660b8<>res://.godot/imported/Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture_0.jpg-da27357153092534ba245b594884fd2e.s3tc.ctex::
@@ -37,16 +37,16 @@ Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture_2.jpg::CompressedTexture2D::850
 Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture_3.jpg::CompressedTexture2D::7485395625568739136::1779473593::1779473599::1::::<><><>0<>0<>e357ec24178be20ff846609cecbdb5a4<>res://.godot/imported/Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture_3.jpg-d7e7094a23d4117a91e79f013c8addda.s3tc.ctex::
 ::res://assets/enemies/heli gold/::1779473618
 Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture.glb::PackedScene::4099338617599231239::1779473608::1779473618::1::::<><><>0<>0<>d9beb0c992e8932f2e0a2d75e710684b<>res://.godot/imported/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture.glb-0c7a13c4dbdc07d3d1308c268734cf45.scn::uid://brw40cb047q5r::::res://assets/enemies/heli gold/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_Image_0.jpg<>uid://b5rssot4dhi5t::::res://assets/enemies/heli gold/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_Image_1.jpg<>uid://d5r4mlgcai8h::::res://assets/enemies/heli gold/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_Image_3.jpg<>uid://cxmfdrbtrw06u::::res://assets/enemies/heli gold/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_normal.png
-Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_Image_3.jpg::CompressedTexture2D::273582487984508201::1779473609::1779473618::1::::<><><>0<>0<>7aedad5c4540246a11478d67ff03230c<>res://.godot/imported/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_Image_3.jpg-2cb4b651b6518ed1074a5aad062103aa.s3tc.ctex::
-Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_normal.png::CompressedTexture2D::6412267141783853558::1779473611::1779473618::1::::<><><>0<>0<>d1e6a39a63f407caa745ac06744b981e<>res://.godot/imported/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_normal.png-2f04c828b09793a5bd54ec71c369a336.s3tc.ctex::
 Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_Image_0.jpg::CompressedTexture2D::3626852881534237821::1779473613::1779473618::1::::<><><>0<>0<>63df7dd02b415d07da32042e3813d9a7<>res://.godot/imported/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_Image_0.jpg-49344aa065ab07a710b0d0f19b9a4086.s3tc.ctex::
 Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_Image_1.jpg::CompressedTexture2D::4528306230813280887::1779473615::1779473618::1::::<><><>0<>0<>a138a3164e4ce2b5c30f2c6dbbcb9bc0<>res://.godot/imported/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_Image_1.jpg-660ef3c87c15e03c378b5b61fd2b2aff.s3tc.ctex::
-::res://assets/enemies/starfighter/::1779473639
+Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_Image_3.jpg::CompressedTexture2D::273582487984508201::1779473609::1779473618::1::::<><><>0<>0<>7aedad5c4540246a11478d67ff03230c<>res://.godot/imported/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_Image_3.jpg-2cb4b651b6518ed1074a5aad062103aa.s3tc.ctex::
+Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_normal.png::CompressedTexture2D::6412267141783853558::1779473611::1779473618::1::::<><><>0<>0<>d1e6a39a63f407caa745ac06744b981e<>res://.godot/imported/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture_normal.png-2f04c828b09793a5bd54ec71c369a336.s3tc.ctex::
+::res://assets/enemies/starfighter/::1779473650
 Meshy_AI_S_01_Starfighter_0522180707_texture.glb::PackedScene::9733674194602493::1779473639::1779473649::1::::<><><>0<>0<>d4bc553385fdffab0a0357899101c3ea<>res://.godot/imported/Meshy_AI_S_01_Starfighter_0522180707_texture.glb-5bda41d4909bea26051001cf3162f674.scn::uid://ceaafxtu0dkx6::::res://assets/enemies/starfighter/Meshy_AI_S_01_Starfighter_0522180707_texture_Image_0.jpg<>uid://wqia3alopp4g::::res://assets/enemies/starfighter/Meshy_AI_S_01_Starfighter_0522180707_texture_Image_1.jpg<>uid://c42atumljpela::::res://assets/enemies/starfighter/Meshy_AI_S_01_Starfighter_0522180707_texture_Image_3.jpg<>uid://bpc3pmffih74e::::res://assets/enemies/starfighter/Meshy_AI_S_01_Starfighter_0522180707_texture_normal.png
-Meshy_AI_S_01_Starfighter_0522180707_texture_Image_3.jpg::CompressedTexture2D::6864091031850015342::1779473640::1779473650::1::::<><><>0<>0<>108a758ecdf16c11f2ecc19676939628<>res://.godot/imported/Meshy_AI_S_01_Starfighter_0522180707_texture_Image_3.jpg-e5c54b91b9296ada2fc76eafcbbf562a.s3tc.ctex::
-Meshy_AI_S_01_Starfighter_0522180707_texture_normal.png::CompressedTexture2D::3445109594720145526::1779473642::1779473650::1::::<><><>0<>0<>c166eb39335779633d318fe576c490e4<>res://.godot/imported/Meshy_AI_S_01_Starfighter_0522180707_texture_normal.png-7f0d304350ddbc112cebbf7723f1739d.s3tc.ctex::
 Meshy_AI_S_01_Starfighter_0522180707_texture_Image_0.jpg::CompressedTexture2D::5053606909238440509::1779473645::1779473650::1::::<><><>0<>0<>0ab6ec3e2f5f4ed24eadff6e53c39326<>res://.godot/imported/Meshy_AI_S_01_Starfighter_0522180707_texture_Image_0.jpg-0914dbab38834cf312462419951d83c3.s3tc.ctex::
 Meshy_AI_S_01_Starfighter_0522180707_texture_Image_1.jpg::CompressedTexture2D::1577671811216710868::1779473647::1779473650::1::::<><><>0<>0<>095b16d7527a1d2a09efeebb56889ae3<>res://.godot/imported/Meshy_AI_S_01_Starfighter_0522180707_texture_Image_1.jpg-4a351a721d339574a2720683870d06bd.s3tc.ctex::
+Meshy_AI_S_01_Starfighter_0522180707_texture_Image_3.jpg::CompressedTexture2D::6864091031850015342::1779473640::1779473650::1::::<><><>0<>0<>108a758ecdf16c11f2ecc19676939628<>res://.godot/imported/Meshy_AI_S_01_Starfighter_0522180707_texture_Image_3.jpg-e5c54b91b9296ada2fc76eafcbbf562a.s3tc.ctex::
+Meshy_AI_S_01_Starfighter_0522180707_texture_normal.png::CompressedTexture2D::3445109594720145526::1779473642::1779473650::1::::<><><>0<>0<>c166eb39335779633d318fe576c490e4<>res://.godot/imported/Meshy_AI_S_01_Starfighter_0522180707_texture_normal.png-7f0d304350ddbc112cebbf7723f1739d.s3tc.ctex::
 ::res://assets/engines/::1779131092
 engine.png::CompressedTexture2D::5192062115090333350::1779131092::1779131092::1::::<><><>0<>0<>15b6eddf7220c93eba5a5de7520edea8<>res://.godot/imported/engine.png-931e2d2a4090742a53ab534eeb7305ab.ctex::
 ::res://assets/explode/::1779131092
@@ -1320,17 +1320,21 @@ port42_retroball__lvl11__w0777__shots2_0020.png::CompressedTexture2D::2845228246
 ::res://scenes/::1779273912
 ::res://scenes/asteroids/::1779377062
 asteroid.tscn::PackedScene::645363259146833385::1779377062::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://b2ujm16r68c15::::res://assets/asteroids/asteroid.png
-::res://scenes/enemies/::1779460630
+::res://scenes/enemies/::1779479789
 blue_enemy.tscn::PackedScene::4204194315110724720::1779460630::0::1::::<><><>0<>0<><>::uid://b72pvnswg7eaa::::res://scenes/enemy/Enemy.tscn<>uid://i4yeed2br2vw::::res://assets/enemies/blue_enemy.png
+falcon.tscn::PackedScene::7007698310271821899::1779479789::0::1::::<><><>0<>0<><>::uid://cheryw6ar8d1i::::res://assets/enemies/falcon/Meshy_AI_Azure_Falcon_0522180730_texture.glb
 formation2.tscn::PackedScene::4443170028478843259::1779388352::0::1::::<><><>0<>0<><>::uid://de0wqltyclsk0::::res://scenes/enemy/EnemyPath.gd<>uid://b05sp330q141y::::res://scenes/enemies/blue_enemy.tscn
 formation3.tscn::PackedScene::7427166483190178177::1779388398::0::1::::<><><>0<>0<><>::uid://de0wqltyclsk0::::res://scenes/enemy/EnemyPath.gd<>uid://b05sp330q141y::::res://scenes/enemies/blue_enemy.tscn
 formation4.tscn::PackedScene::629757166167019440::1779453924::0::1::::<><><>0<>0<><>::uid://de0wqltyclsk0::::res://scenes/enemy/EnemyPath.gd<>uid://b05sp330q141y::::res://scenes/enemies/blue_enemy.tscn
 formation5.tscn::PackedScene::318215449472909640::1779454479::0::1::::<><><>0<>0<><>::uid://de0wqltyclsk0::::res://scenes/enemy/EnemyPath.gd<>uid://b05sp330q141y::::res://scenes/enemies/blue_enemy.tscn
 Formation.gd::GDScript::1852536884891537492::1779354251::0::1::::<>Node2D<><>0<>0<><>::
 formation.tscn::PackedScene::6951778656604220439::1779388368::0::1::::<><><>0<>0<><>::uid://b05sp330q141y::::res://scenes/enemies/blue_enemy.tscn<>uid://de0wqltyclsk0::::res://scenes/enemy/EnemyPath.gd
-::res://scenes/enemy/::1779459860
+heli_crimson.tscn::PackedScene::557821587520827294::1779479789::0::1::::<><><>0<>0<><>::uid://d2u3wpina7kws::::res://assets/enemies/heli crimson/Meshy_AI_Crimson_Sky_Enforcer_0522180820_texture.glb
+heli_gold.tscn::PackedScene::7233643628022052440::1779479789::0::1::::<><><>0<>0<><>::uid://byn0rjm2al73x::::res://assets/enemies/heli gold/Meshy_AI_Aurora_Sky_Helicopter_0522180831_texture.glb
+starfighter.tscn::PackedScene::5057416874759023692::1779479789::0::1::::<><><>0<>0<><>::uid://eyku5nilalp::::res://assets/enemies/starfighter/Meshy_AI_S_01_Starfighter_0522180707_texture.glb
+::res://scenes/enemy/::1779479789
 Enemy.gd::GDScript::4605400125416299353::1779472927::0::1::::<>Area2D<><>0<>0<><>::
-Enemy.tscn::PackedScene::4689150847652142128::1779131093::0::1::::<><><>0<>0<><>::uid://b6u5jc5l8dstd::::res://scenes/enemy/Enemy.gd
+Enemy.tscn::PackedScene::4689150847652142128::1779479789::0::1::::<><><>0<>0<><>::uid://b6u5jc5l8dstd::::res://scenes/enemy/Enemy.gd
 EnemyPath.gd::GDScript::7492991824227979501::1779388227::0::1::::<>PathFollow2D<><>0<>0<><>::
 ::res://scenes/enemy_projectile/::1779131093
 EnemyProjectile.gd::GDScript::8392561708853174740::1779131093::0::1::::<>Area2D<><>0<>0<><>::
@@ -1374,14 +1378,14 @@ WeaponSystem.tscn::PackedScene::-1::1779131093::0::1::::<><><>0<>0<><>::res://sc
 ::res://scenes/projectile/::1779460114
 projectile.gd::GDScript::6425248782272021058::1779131093::0::1::::<>Area2D<><>0<>0<><>::
 Projectile.tscn::PackedScene::4061135435519992803::1779460114::0::1::::<><><>0<>0<><>::uid://cxso55pxdnnn3::::res://scenes/projectile/projectile.gd
-::res://scenes/world/::1779473086
+::res://scenes/world/::1779479789
 AsteroidSpawner.gd::GDScript::3841811831715519353::1779387175::0::1::::<>Node2D<><>0<>0<><>::
 LevelManager.gd::GDScript::7303798033325442::1779308826::0::1::::<>Node2D<><>0<>0<><>::
 LevelRuler.gd::GDScript::5450321292136855171::1779290464::0::1::::<>Node2D<><>0<>1<><>::
 PlanetSpawner.gd::GDScript::5663476227391756546::1779388474::0::1::::<>Node2D<><>0<>0<><>::
 starfild_glow.gdshader::Shader::8202420532988662879::1779261243::0::1::::<><><>0<>0<><>::
 StarTwinkle.gd::GDScript::5048713488931821983::1779204595::0::1::::<>GPUParticles2D<><>0<>0<><>::
-World.tscn::PackedScene::269668083255229182::1779473086::0::1::::<><><>0<>0<><>::uid://bte7ofi7pgn5b::::res://scenes/player/Player.tscn<>uid://r35ab1oen7q4::::res://scenes/planets/AzurePlanet3D.tscn<>uid://dsj7d5ivh3g::::res://scenes/world/LevelManager.gd<>uid://c6bq1qkhotmeh::::res://scenes/enemies/formation.tscn<>uid://btwasr8xpu0be::::res://scenes/planets/CrimsonPlanet3D.tscn<>uid://1nnanxfyqt2s::::res://scenes/enemies/Formation.gd<>uid://b4kkmjte8klff::::res://scenes/enemies/formation2.tscn<>uid://dd21l172sp65r::::res://scenes/enemies/formation3.tscn<>uid://i8caj32bmnmu::::res://scenes/enemies/formation4.tscn<>uid://ese7ya6ccy37::::res://scenes/enemies/formation5.tscn<>uid://cmgg2l8ympyhg::::res://scenes/planets/EarthPlanet3D.tscn<>uid://cd6vtrajndq0f::::res://scenes/world/StarTwinkle.gd<>uid://b05sp330q141y::::res://scenes/enemies/blue_enemy.tscn<>uid://cjka77acuu8be::::res://scenes/planets/EmeraldPlanet3D.tscn<>uid://b4vfx5xjylnut::::res://scenes/planets/GreenPlanet3D.tscn<>uid://bn31xdjeslyos::::res://scenes/planets/PlanetSaturn3D.tscn<>uid://cxvlgnysglo5x::::res://scenes/planets/SilverPlanet3D.tscn<>uid://cjwf83wntumr8::::res://scenes/world/LevelRuler.gd<>uid://cmxovjxejqgik::::res://scenes/world/PlanetSpawner.gd<>uid://bu0acx8r015fx::::res://scenes/world/AsteroidSpawner.gd
+World.tscn::PackedScene::269668083255229182::1779479789::0::1::::<><><>0<>0<><>::uid://bte7ofi7pgn5b::::res://scenes/player/Player.tscn<>uid://r35ab1oen7q4::::res://scenes/planets/AzurePlanet3D.tscn<>uid://dsj7d5ivh3g::::res://scenes/world/LevelManager.gd<>uid://c6bq1qkhotmeh::::res://scenes/enemies/formation.tscn<>uid://btwasr8xpu0be::::res://scenes/planets/CrimsonPlanet3D.tscn<>uid://1nnanxfyqt2s::::res://scenes/enemies/Formation.gd<>uid://b4kkmjte8klff::::res://scenes/enemies/formation2.tscn<>uid://dd21l172sp65r::::res://scenes/enemies/formation3.tscn<>uid://i8caj32bmnmu::::res://scenes/enemies/formation4.tscn<>uid://ese7ya6ccy37::::res://scenes/enemies/formation5.tscn<>uid://cmgg2l8ympyhg::::res://scenes/planets/EarthPlanet3D.tscn<>uid://cd6vtrajndq0f::::res://scenes/world/StarTwinkle.gd<>uid://b05sp330q141y::::res://scenes/enemies/blue_enemy.tscn<>uid://cjka77acuu8be::::res://scenes/planets/EmeraldPlanet3D.tscn<>uid://b4vfx5xjylnut::::res://scenes/planets/GreenPlanet3D.tscn<>uid://bn31xdjeslyos::::res://scenes/planets/PlanetSaturn3D.tscn<>uid://cxvlgnysglo5x::::res://scenes/planets/SilverPlanet3D.tscn<>uid://cjwf83wntumr8::::res://scenes/world/LevelRuler.gd<>uid://cmxovjxejqgik::::res://scenes/world/PlanetSpawner.gd<>uid://bu0acx8r015fx::::res://scenes/world/AsteroidSpawner.gd
 ::res://scripts/::1779459700
 ::res://scripts/core/::1779459860
 DataManager.gd::GDScript::1970122233642260559::1779459860::0::1::::<>Node<><>0<>0<><>::
@@ -1399,8 +1403,8 @@ WeaponStats.gd::GDScript::1976171084994919448::1779468592::0::1::::WeaponStats<>
 ::res://scripts/tools/::1779466380
 resource_converter.gd::GDScript::3789957715201937006::1779468592::0::1::::<>EditorScript<><>0<>1<><>::
 ::res://weapons/::1779465761
-::res://weapons/ports/::1779473087
-port_1_Pulse-Cannon.tres::Resource/WeaponPort::6517862336920214273::1779473086::0::1::::<><><>0<>0<><>::uid://3fjip5tl6atk::::res://scripts/resources/WeaponStats.gd<>uid://bacjtk2m6rsp8::::res://scripts/resources/WeaponPattern.gd<>uid://r5f8xtpjlfg6::::res://scripts/resources/WeaponPort.gd
+::res://weapons/ports/::1779473707
+port_1_Pulse-Cannon.tres::Resource/WeaponPort::6517862336920214273::1779473707::0::1::::<><><>0<>0<><>::uid://3fjip5tl6atk::::res://scripts/resources/WeaponStats.gd<>uid://bacjtk2m6rsp8::::res://scripts/resources/WeaponPattern.gd<>uid://r5f8xtpjlfg6::::res://scripts/resources/WeaponPort.gd
 port_2_Multi-Cannon.tres::Resource/WeaponPort::1200567665015555289::1779473086::0::1::::<><><>0<>0<><>::uid://3fjip5tl6atk::::res://scripts/resources/WeaponStats.gd<>uid://bacjtk2m6rsp8::::res://scripts/resources/WeaponPattern.gd<>uid://r5f8xtpjlfg6::::res://scripts/resources/WeaponPort.gd
 port_3_Mega Cannon.tres::Resource/WeaponPort::172527617985956282::1779473086::0::1::::<><><>0<>0<><>::uid://3fjip5tl6atk::::res://scripts/resources/WeaponStats.gd<>uid://bacjtk2m6rsp8::::res://scripts/resources/WeaponPattern.gd<>uid://r5f8xtpjlfg6::::res://scripts/resources/WeaponPort.gd
 port_4_Laser.tres::Resource/WeaponPort::3916286835967366438::1779473086::0::1::::<><><>0<>0<><>::uid://3fjip5tl6atk::::res://scripts/resources/WeaponStats.gd<>uid://bacjtk2m6rsp8::::res://scripts/resources/WeaponPattern.gd<>uid://r5f8xtpjlfg6::::res://scripts/resources/WeaponPort.gd

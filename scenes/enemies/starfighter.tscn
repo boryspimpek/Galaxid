@@ -3,3 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://eyku5nilalp" path="res://assets/enemies/starfighter/Meshy_AI_S_01_Starfighter_0522180707_texture.glb" id="1_ije4n"]
 
 [node name="Starfighter" unique_id=1322169304 instance=ExtResource("1_ije4n")]
+
+[node name="Mesh_0" parent="." index="0" unique_id=196635194]
+transform = Transform3D(-2.8412401e-08, 0, 0.65, 0, 0.65, 0, -0.65, 0, -2.8412401e-08, 0, 0, 0)

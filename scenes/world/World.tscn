@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://b05sp330q141y" path="res://scenes/enemies/blue_enemy.tscn" id="9_o0dc1"]
 [ext_resource type="PackedScene" uid="uid://cjka77acuu8be" path="res://scenes/planets/EmeraldPlanet3D.tscn" id="9_yr1n6"]
 [ext_resource type="PackedScene" uid="uid://b4vfx5xjylnut" path="res://scenes/planets/GreenPlanet3D.tscn" id="10_l5ull"]
+[ext_resource type="PackedScene" uid="uid://caxyybvgp4xx7" path="res://scenes/enemies/starfighter3d.tscn" id="10_mmgww"]
 [ext_resource type="PackedScene" uid="uid://bn31xdjeslyos" path="res://scenes/planets/PlanetSaturn3D.tscn" id="11_16fjv"]
 [ext_resource type="PackedScene" uid="uid://cxvlgnysglo5x" path="res://scenes/planets/SilverPlanet3D.tscn" id="13_8xm5o"]
 [ext_resource type="Script" uid="uid://cjwf83wntumr8" path="res://scenes/world/LevelRuler.gd" id="14_ruler"]
@@ -88,7 +89,7 @@ script = ExtResource("5_wryly")
 position = Vector2(69, -3076)
 
 [node name="blue_enemy" parent="LevelMap" unique_id=119960324 instance=ExtResource("9_o0dc1")]
-position = Vector2(305, 306)
+position = Vector2(99.00003, 1363)
 armor = 500
 ymove = -160
 
@@ -107,6 +108,12 @@ script = ExtResource("5_wryly")
 [node name="formation9" parent="LevelMap" unique_id=169058401 instance=ExtResource("7_d0ueh")]
 position = Vector2(108, -5908)
 script = ExtResource("5_wryly")
+
+[node name="Starfighter3d" parent="LevelMap" unique_id=522135699 instance=ExtResource("10_mmgww")]
+position = Vector2(91, 1211)
+armor = 500
+xmove = 160
+ymove = -160
 
 [node name="formation10" parent="LevelMap" unique_id=682450381 instance=ExtResource("8_i08rc")]
 position = Vector2(39, -6584)
