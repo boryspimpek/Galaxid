@@ -69,11 +69,11 @@ scroll_speed = 150
 script = ExtResource("14_ruler")
 
 [node name="formation" parent="LevelMap" unique_id=574820768 instance=ExtResource("4_8xm5o")]
-position = Vector2(-5, -100)
+position = Vector2(12, -94)
 script = ExtResource("5_wryly")
 
 [node name="formation2" parent="LevelMap" unique_id=1918233626 instance=ExtResource("6_wryly")]
-position = Vector2(-67, -1044)
+position = Vector2(-48, -1040)
 script = ExtResource("5_wryly")
 
 [node name="formation3" parent="LevelMap" unique_id=1504857099 instance=ExtResource("7_400s5")]
@@ -81,14 +81,38 @@ position = Vector2(-31, -1803)
 script = ExtResource("5_wryly")
 
 [node name="formation4" parent="LevelMap" unique_id=816281116 instance=ExtResource("7_d0ueh")]
-position = Vector2(18, -2418)
+position = Vector2(44, -2414)
 script = ExtResource("5_wryly")
 
 [node name="formation5" parent="LevelMap" unique_id=2309080 instance=ExtResource("8_i08rc")]
-position = Vector2(102, -2966)
+position = Vector2(69, -3076)
 
 [node name="blue_enemy" parent="LevelMap" unique_id=119960324 instance=ExtResource("9_o0dc1")]
-position = Vector2(549, 1226)
+position = Vector2(305, 306)
+armor = 500
+ymove = -160
+
+[node name="formation6" parent="LevelMap" unique_id=795204191 instance=ExtResource("4_8xm5o")]
+position = Vector2(29, -4007)
+script = ExtResource("5_wryly")
+
+[node name="formation7" parent="LevelMap" unique_id=1838357782 instance=ExtResource("6_wryly")]
+position = Vector2(19, -4624)
+script = ExtResource("5_wryly")
+
+[node name="formation8" parent="LevelMap" unique_id=105939847 instance=ExtResource("7_400s5")]
+position = Vector2(0, -5276)
+script = ExtResource("5_wryly")
+
+[node name="formation9" parent="LevelMap" unique_id=169058401 instance=ExtResource("7_d0ueh")]
+position = Vector2(108, -5908)
+script = ExtResource("5_wryly")
+
+[node name="formation10" parent="LevelMap" unique_id=682450381 instance=ExtResource("8_i08rc")]
+position = Vector2(39, -6584)
+
+[node name="blue_enemy2" parent="LevelMap" unique_id=1961247659 instance=ExtResource("9_o0dc1")]
+position = Vector2(167, -3464)
 armor = 500
 ymove = -160
 

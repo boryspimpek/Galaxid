@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cxso55pxdnnn3" path="res://scenes/projectile/projectile.gd" id="1_qxf0c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sxmqc"]
-radius = 8.0
+radius = 12.0
 
 [node name="Projectile" type="Area2D" unique_id=146876834]
 script = ExtResource("1_qxf0c")
@@ -14,6 +14,7 @@ script = ExtResource("1_qxf0c")
 shape = SubResource("CircleShape2D_sxmqc")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=382951472]
+rect = Rect2(-12, -12, 24, 24)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

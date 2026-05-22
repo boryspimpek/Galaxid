@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://i4yeed2br2vw" path="res://assets/enemies/blue_enemy.png" id="3_1gvac"]
 
 [node name="blue_enemy" unique_id=119960324 instance=ExtResource("1_q31be")]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.3, 0.3)
 
 [node name="Visual" parent="." index="0" unique_id=1405638014]
 texture = ExtResource("3_1gvac")
