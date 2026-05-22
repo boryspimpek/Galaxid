@@ -1,0 +1,944 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://cburmccw417yi"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_b04dn"]
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="2_nd2wj"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_oyed8"]
+
+[sub_resource type="Resource" id="Resource_jgtdt"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sy = 10
+sg = 58
+
+[sub_resource type="Resource" id="Resource_d4xh8"]
+script = ExtResource("2_nd2wj")
+attack = 85
+del = 68
+sx = 65
+sy = 89
+bx = 80
+by = 46
+sg = 11138
+
+[sub_resource type="Resource" id="Resource_n2mri"]
+script = ExtResource("2_nd2wj")
+attack = 66
+del = 65
+sx = 78
+sy = 82
+bx = 10
+by = 72
+sg = 447
+
+[sub_resource type="Resource" id="Resource_rmd28"]
+script = ExtResource("2_nd2wj")
+attack = 69
+del = 84
+sx = 46
+sy = 73
+bx = 84
+by = 68
+sg = 50792
+
+[sub_resource type="Resource" id="Resource_fs5pc"]
+script = ExtResource("2_nd2wj")
+attack = 84
+del = 10
+sx = 72
+sy = 65
+bx = 89
+by = 84
+sg = 39437
+
+[sub_resource type="Resource" id="Resource_i3vkt"]
+script = ExtResource("2_nd2wj")
+attack = 88
+del = 84
+sx = 84
+sy = 78
+bx = 82
+by = -56
+sg = 835
+
+[sub_resource type="Resource" id="Resource_ftv6a"]
+script = ExtResource("2_nd2wj")
+attack = 84
+del = 89
+sx = 88
+sy = 46
+bx = 73
+sg = 479
+
+[sub_resource type="Resource" id="Resource_jy0u7"]
+script = ExtResource("2_nd2wj")
+attack = 50
+del = 82
+sx = 10
+sy = 84
+bx = 65
+by = 89
+sg = 51363
+
+[sub_resource type="Resource" id="Resource_v4kgn"]
+script = ExtResource("1_b04dn")
+weapon_name = "Weapon_Index_565"
+shotRepeat = 2
+multi = 1
+max_level = 1
+patterns = Array[ExtResource("2_nd2wj")]([SubResource("Resource_jgtdt"), SubResource("Resource_d4xh8"), SubResource("Resource_n2mri"), SubResource("Resource_rmd28"), SubResource("Resource_fs5pc"), SubResource("Resource_i3vkt"), SubResource("Resource_ftv6a"), SubResource("Resource_jy0u7")])
+sound = 25
+shipBlastFilter = 208
+
+[sub_resource type="Resource" id="Resource_bod1j"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = -1
+sy = 9
+bx = -4
+sg = 58
+
+[sub_resource type="Resource" id="Resource_x01lq"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = 1
+sy = 9
+bx = 4
+sg = 58
+
+[sub_resource type="Resource" id="Resource_s33id"]
+script = ExtResource("2_nd2wj")
+attack = 206
+del = 1
+sx = -65
+sy = 14
+bx = 86
+by = 87
+sg = 48983
+
+[sub_resource type="Resource" id="Resource_qilvr"]
+script = ExtResource("2_nd2wj")
+attack = 4
+del = 163
+sx = 86
+sy = 87
+bx = -72
+by = -102
+sg = 914
+
+[sub_resource type="Resource" id="Resource_tmuvv"]
+script = ExtResource("2_nd2wj")
+attack = 106
+del = 220
+sx = -70
+sy = -102
+bx = 30
+by = -112
+sg = 22286
+
+[sub_resource type="Resource" id="Resource_cvty3"]
+script = ExtResource("2_nd2wj")
+attack = 247
+del = 4
+sx = 30
+sy = -78
+bx = 87
+by = 5
+sg = 106
+
+[sub_resource type="Resource" id="Resource_og1q2"]
+script = ExtResource("2_nd2wj")
+attack = 154
+del = 137
+sx = 87
+sy = 10
+bx = -65
+by = -33
+sg = 43930
+
+[sub_resource type="Resource" id="Resource_j8me6"]
+script = ExtResource("2_nd2wj")
+attack = 67
+del = 22
+sx = -65
+sy = -33
+bx = -121
+by = 1
+sg = 57097
+
+[sub_resource type="Resource" id="Resource_smwmq"]
+script = ExtResource("1_b04dn")
+weapon_name = "Weapon_Index_566"
+shotRepeat = 3
+multi = 2
+max_level = 2
+patterns = Array[ExtResource("2_nd2wj")]([SubResource("Resource_bod1j"), SubResource("Resource_x01lq"), SubResource("Resource_s33id"), SubResource("Resource_qilvr"), SubResource("Resource_tmuvv"), SubResource("Resource_cvty3"), SubResource("Resource_og1q2"), SubResource("Resource_j8me6")])
+sound = 25
+shipBlastFilter = 208
+
+[sub_resource type="Resource" id="Resource_8g8hj"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = -1
+sy = 9
+bx = -4
+sg = 58
+
+[sub_resource type="Resource" id="Resource_k083u"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = 1
+sy = 9
+bx = 4
+sg = 58
+
+[sub_resource type="Resource" id="Resource_wusln"]
+script = ExtResource("2_nd2wj")
+attack = 154
+del = 16
+sx = 1
+sy = -72
+bx = 104
+by = -65
+sg = 479
+
+[sub_resource type="Resource" id="Resource_6bonm"]
+script = ExtResource("2_nd2wj")
+attack = 171
+del = 244
+sx = -102
+sy = 30
+bx = 64
+by = 86
+sg = 22207
+
+[sub_resource type="Resource" id="Resource_8p5ai"]
+script = ExtResource("2_nd2wj")
+attack = 9
+del = 106
+sx = -121
+sy = 87
+bx = -100
+by = -70
+sg = 7864
+
+[sub_resource type="Resource" id="Resource_rooxu"]
+script = ExtResource("2_nd2wj")
+attack = 223
+sx = 8
+sy = -65
+bx = -102
+by = 30
+sg = 39511
+
+[sub_resource type="Resource" id="Resource_51cjh"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 154
+sx = -33
+sy = -12
+bx = -29
+by = 87
+sg = 1550
+
+[sub_resource type="Resource" id="Resource_d3f4w"]
+script = ExtResource("2_nd2wj")
+attack = 106
+del = 51
+sx = 1
+sy = 27
+bx = 5
+by = 106
+sg = 479
+
+[sub_resource type="Resource" id="Resource_y5drt"]
+script = ExtResource("1_b04dn")
+weapon_name = "Weapon_Index_567"
+shotRepeat = 2
+multi = 2
+max_level = 2
+patterns = Array[ExtResource("2_nd2wj")]([SubResource("Resource_8g8hj"), SubResource("Resource_k083u"), SubResource("Resource_wusln"), SubResource("Resource_6bonm"), SubResource("Resource_8p5ai"), SubResource("Resource_rooxu"), SubResource("Resource_51cjh"), SubResource("Resource_d3f4w")])
+sound = 25
+shipBlastFilter = 208
+
+[sub_resource type="Resource" id="Resource_jjmdl"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = -1
+sy = 9
+bx = -4
+sg = 58
+
+[sub_resource type="Resource" id="Resource_4d6lm"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = 1
+sy = 9
+bx = 4
+sg = 58
+
+[sub_resource type="Resource" id="Resource_iq3ew"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sy = 10
+sg = 58
+
+[sub_resource type="Resource" id="Resource_o4qko"]
+script = ExtResource("2_nd2wj")
+attack = 192
+del = 199
+sx = -70
+sy = 106
+bx = 11
+sg = 618
+
+[sub_resource type="Resource" id="Resource_0xp67"]
+script = ExtResource("2_nd2wj")
+attack = 80
+del = 6
+sx = 30
+sy = 2
+bx = -33
+by = -65
+sg = 49201
+
+[sub_resource type="Resource" id="Resource_vrl8o"]
+script = ExtResource("2_nd2wj")
+attack = 80
+del = 64
+sx = 87
+sy = 49
+bx = 1
+by = 86
+sg = 20560
+
+[sub_resource type="Resource" id="Resource_o1hen"]
+script = ExtResource("2_nd2wj")
+attack = 154
+del = 184
+sx = -65
+sy = -64
+bx = -57
+by = -70
+sg = 57242
+
+[sub_resource type="Resource" id="Resource_rm655"]
+script = ExtResource("2_nd2wj")
+attack = 223
+del = 42
+sx = 64
+sy = 80
+bx = 6
+by = 30
+sg = 57099
+
+[sub_resource type="Resource" id="Resource_2vjwn"]
+script = ExtResource("1_b04dn")
+weapon_name = "Weapon_Index_568"
+shotRepeat = 3
+multi = 3
+max_level = 3
+patterns = Array[ExtResource("2_nd2wj")]([SubResource("Resource_jjmdl"), SubResource("Resource_4d6lm"), SubResource("Resource_iq3ew"), SubResource("Resource_o4qko"), SubResource("Resource_0xp67"), SubResource("Resource_vrl8o"), SubResource("Resource_o1hen"), SubResource("Resource_rm655")])
+sound = 25
+shipBlastFilter = 208
+
+[sub_resource type="Resource" id="Resource_y416h"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = -1
+sy = 9
+bx = -4
+sg = 58
+
+[sub_resource type="Resource" id="Resource_1i58f"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = 1
+sy = 9
+bx = 4
+sg = 58
+
+[sub_resource type="Resource" id="Resource_phs5j"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sy = 10
+sg = 58
+
+[sub_resource type="Resource" id="Resource_k32h8"]
+script = ExtResource("2_nd2wj")
+attack = 49
+del = 1
+sx = 86
+sy = 87
+bx = -33
+by = 10
+sg = 27223
+
+[sub_resource type="Resource" id="Resource_t6u4n"]
+script = ExtResource("2_nd2wj")
+attack = 192
+del = 199
+sx = -70
+sy = 106
+bx = 11
+sg = 12546
+
+[sub_resource type="Resource" id="Resource_atsv0"]
+script = ExtResource("2_nd2wj")
+attack = 80
+del = 6
+sx = 30
+sy = 2
+bx = -33
+by = -65
+sg = 20672
+
+[sub_resource type="Resource" id="Resource_nbrj2"]
+script = ExtResource("2_nd2wj")
+attack = 80
+del = 64
+sx = 87
+sy = 49
+bx = 1
+by = 86
+sg = 39504
+
+[sub_resource type="Resource" id="Resource_xxmsv"]
+script = ExtResource("2_nd2wj")
+attack = 154
+del = 184
+sx = -65
+sy = -64
+bx = -57
+by = -70
+sg = 3039
+
+[sub_resource type="Resource" id="Resource_qhj1v"]
+script = ExtResource("1_b04dn")
+weapon_name = "Weapon_Index_569"
+shotRepeat = 2
+multi = 3
+max_level = 3
+patterns = Array[ExtResource("2_nd2wj")]([SubResource("Resource_y416h"), SubResource("Resource_1i58f"), SubResource("Resource_phs5j"), SubResource("Resource_k32h8"), SubResource("Resource_t6u4n"), SubResource("Resource_atsv0"), SubResource("Resource_nbrj2"), SubResource("Resource_xxmsv")])
+sound = 25
+shipBlastFilter = 208
+
+[sub_resource type="Resource" id="Resource_uck0x"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = -1
+sy = 9
+bx = -4
+sg = 58
+
+[sub_resource type="Resource" id="Resource_o4sc8"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = 1
+sy = 9
+bx = 4
+sg = 58
+
+[sub_resource type="Resource" id="Resource_4xsp7"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sy = 10
+sg = 59
+
+[sub_resource type="Resource" id="Resource_p8h2y"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 223
+sx = 71
+sy = 87
+bx = -72
+by = 49
+sg = 1643
+
+[sub_resource type="Resource" id="Resource_uvo82"]
+script = ExtResource("2_nd2wj")
+attack = 49
+del = 1
+sx = 8
+sy = -102
+bx = 30
+by = -64
+sg = 47170
+
+[sub_resource type="Resource" id="Resource_ro3y4"]
+script = ExtResource("2_nd2wj")
+attack = 192
+del = 191
+sx = -33
+sy = 71
+bx = 87
+by = -93
+sg = 50256
+
+[sub_resource type="Resource" id="Resource_cbfth"]
+script = ExtResource("2_nd2wj")
+attack = 80
+del = 86
+sx = 1
+sy = 8
+bx = -102
+by = 66
+sg = 52286
+
+[sub_resource type="Resource" id="Resource_ja2ff"]
+script = ExtResource("2_nd2wj")
+attack = 80
+del = 184
+sx = -65
+sy = -33
+bx = 71
+by = -72
+sg = 772
+
+[sub_resource type="Resource" id="Resource_th5bc"]
+script = ExtResource("1_b04dn")
+weapon_name = "Weapon_Index_570"
+shotRepeat = 2
+multi = 3
+max_level = 3
+patterns = Array[ExtResource("2_nd2wj")]([SubResource("Resource_uck0x"), SubResource("Resource_o4sc8"), SubResource("Resource_4xsp7"), SubResource("Resource_p8h2y"), SubResource("Resource_uvo82"), SubResource("Resource_ro3y4"), SubResource("Resource_cbfth"), SubResource("Resource_ja2ff")])
+sound = 25
+shipBlastFilter = 208
+
+[sub_resource type="Resource" id="Resource_8qmwr"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sx = -1
+sy = 9
+bx = -4
+sg = 59
+
+[sub_resource type="Resource" id="Resource_mnq0l"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sx = 1
+sy = 9
+bx = 4
+sg = 59
+
+[sub_resource type="Resource" id="Resource_vv4t0"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sy = 10
+sg = 58
+
+[sub_resource type="Resource" id="Resource_c1ovg"]
+script = ExtResource("2_nd2wj")
+attack = 68
+del = 223
+sx = -88
+sy = 50
+bx = -102
+by = -87
+sg = 64702
+
+[sub_resource type="Resource" id="Resource_sthud"]
+script = ExtResource("2_nd2wj")
+attack = 184
+del = 8
+sx = 8
+sy = 117
+bx = -41
+by = 38
+sg = 9897
+
+[sub_resource type="Resource" id="Resource_13jep"]
+script = ExtResource("2_nd2wj")
+attack = 191
+del = 223
+sx = -33
+sy = -29
+bx = 9
+by = -120
+sg = 17800
+
+[sub_resource type="Resource" id="Resource_qrxj3"]
+script = ExtResource("2_nd2wj")
+attack = 86
+del = 1
+sx = 1
+sy = -65
+bx = -33
+by = 69
+sg = 39501
+
+[sub_resource type="Resource" id="Resource_orxeq"]
+script = ExtResource("2_nd2wj")
+attack = 184
+del = 162
+sx = -125
+sy = 86
+bx = 1
+by = 79
+sg = 2519
+
+[sub_resource type="Resource" id="Resource_jptu7"]
+script = ExtResource("1_b04dn")
+weapon_name = "Weapon_Index_571"
+shotRepeat = 3
+multi = 3
+max_level = 3
+patterns = Array[ExtResource("2_nd2wj")]([SubResource("Resource_8qmwr"), SubResource("Resource_mnq0l"), SubResource("Resource_vv4t0"), SubResource("Resource_c1ovg"), SubResource("Resource_sthud"), SubResource("Resource_13jep"), SubResource("Resource_qrxj3"), SubResource("Resource_orxeq")])
+sound = 25
+shipBlastFilter = 208
+
+[sub_resource type="Resource" id="Resource_5bmil"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sx = -1
+sy = 9
+bx = -4
+sg = 59
+
+[sub_resource type="Resource" id="Resource_hu4o2"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sx = 1
+sy = 9
+bx = 4
+sg = 59
+
+[sub_resource type="Resource" id="Resource_c5nxt"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sy = 10
+sg = 59
+
+[sub_resource type="Resource" id="Resource_lsb6r"]
+script = ExtResource("2_nd2wj")
+attack = 38
+del = 1
+sx = -102
+sy = -87
+bx = -33
+by = 69
+sg = 35110
+
+[sub_resource type="Resource" id="Resource_b86bw"]
+script = ExtResource("2_nd2wj")
+attack = 136
+del = 196
+sx = -41
+sy = 38
+bx = 1
+by = 3
+sg = 1093
+
+[sub_resource type="Resource" id="Resource_dxsc3"]
+script = ExtResource("2_nd2wj")
+attack = 69
+del = 190
+sx = 9
+sy = -120
+bx = -60
+by = -102
+sg = 55194
+
+[sub_resource type="Resource" id="Resource_pbpau"]
+script = ExtResource("2_nd2wj")
+attack = 76
+del = 252
+sx = -33
+sy = 69
+bx = -66
+by = -41
+sg = 57097
+
+[sub_resource type="Resource" id="Resource_v6prl"]
+script = ExtResource("2_nd2wj")
+attack = 154
+del = 169
+sx = 1
+sy = 2
+bx = -4
+by = 9
+sg = 50177
+
+[sub_resource type="Resource" id="Resource_t7j0y"]
+script = ExtResource("1_b04dn")
+weapon_name = "Weapon_Index_572"
+shotRepeat = 3
+multi = 3
+max_level = 3
+patterns = Array[ExtResource("2_nd2wj")]([SubResource("Resource_5bmil"), SubResource("Resource_hu4o2"), SubResource("Resource_c5nxt"), SubResource("Resource_lsb6r"), SubResource("Resource_b86bw"), SubResource("Resource_dxsc3"), SubResource("Resource_pbpau"), SubResource("Resource_v6prl")])
+sound = 25
+shipBlastFilter = 208
+
+[sub_resource type="Resource" id="Resource_jndxg"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sx = -2
+sy = 8
+bx = -8
+sg = 279
+
+[sub_resource type="Resource" id="Resource_72y1l"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sx = 2
+sy = 8
+bx = 8
+sg = 280
+
+[sub_resource type="Resource" id="Resource_jq08l"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sy = 10
+sg = 59
+
+[sub_resource type="Resource" id="Resource_0lqx7"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = -1
+sy = 9
+bx = -2
+sg = 58
+
+[sub_resource type="Resource" id="Resource_wjaq8"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = 1
+sy = 9
+bx = 2
+sg = 58
+
+[sub_resource type="Resource" id="Resource_tt5tx"]
+script = ExtResource("2_nd2wj")
+attack = 52
+del = 190
+sx = -41
+sy = 38
+bx = 1
+by = 7
+sg = 39432
+
+[sub_resource type="Resource" id="Resource_q06xs"]
+script = ExtResource("2_nd2wj")
+attack = 184
+del = 252
+sx = 9
+sy = -120
+bx = -60
+by = -102
+sg = 2519
+
+[sub_resource type="Resource" id="Resource_1wbbl"]
+script = ExtResource("2_nd2wj")
+attack = 154
+del = 169
+sx = -33
+sy = 69
+bx = -66
+by = -41
+sg = 479
+
+[sub_resource type="Resource" id="Resource_siitn"]
+script = ExtResource("1_b04dn")
+weapon_name = "Weapon_Index_573"
+shotRepeat = 4
+multi = 5
+max_level = 5
+patterns = Array[ExtResource("2_nd2wj")]([SubResource("Resource_jndxg"), SubResource("Resource_72y1l"), SubResource("Resource_jq08l"), SubResource("Resource_0lqx7"), SubResource("Resource_wjaq8"), SubResource("Resource_tt5tx"), SubResource("Resource_q06xs"), SubResource("Resource_1wbbl")])
+sound = 25
+shipBlastFilter = 208
+
+[sub_resource type="Resource" id="Resource_wjp01"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sx = -2
+sy = 8
+bx = -8
+sg = 279
+
+[sub_resource type="Resource" id="Resource_8rqai"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sx = 2
+sy = 8
+bx = 8
+sg = 280
+
+[sub_resource type="Resource" id="Resource_w0kmh"]
+script = ExtResource("2_nd2wj")
+attack = 3
+del = 255
+sy = 10
+sg = 60
+
+[sub_resource type="Resource" id="Resource_h847x"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = -1
+sy = 9
+bx = -2
+sg = 58
+
+[sub_resource type="Resource" id="Resource_dnbyy"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = 1
+sy = 9
+bx = 2
+sg = 58
+
+[sub_resource type="Resource" id="Resource_qnrrj"]
+script = ExtResource("2_nd2wj")
+attack = 48
+del = 69
+sx = 7
+sy = -60
+bx = 99
+by = -60
+sg = 17802
+
+[sub_resource type="Resource" id="Resource_p216i"]
+script = ExtResource("2_nd2wj")
+attack = 228
+del = 79
+sx = 38
+sy = -66
+bx = 117
+by = -66
+sg = 12291
+
+[sub_resource type="Resource" id="Resource_0o2cq"]
+script = ExtResource("2_nd2wj")
+attack = 72
+del = 38
+sx = -58
+sy = -4
+bx = 5
+by = -4
+sg = 35812
+
+[sub_resource type="Resource" id="Resource_vhiko"]
+script = ExtResource("1_b04dn")
+weapon_name = "Weapon_Index_574"
+shotRepeat = 4
+multi = 5
+max_level = 5
+patterns = Array[ExtResource("2_nd2wj")]([SubResource("Resource_wjp01"), SubResource("Resource_8rqai"), SubResource("Resource_w0kmh"), SubResource("Resource_h847x"), SubResource("Resource_dnbyy"), SubResource("Resource_qnrrj"), SubResource("Resource_p216i"), SubResource("Resource_0o2cq")])
+sound = 25
+shipBlastFilter = 208
+
+[sub_resource type="Resource" id="Resource_5inwm"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sx = -2
+sy = 8
+bx = -8
+sg = 279
+
+[sub_resource type="Resource" id="Resource_ypq06"]
+script = ExtResource("2_nd2wj")
+attack = 2
+del = 255
+sx = 2
+sy = 8
+bx = 8
+sg = 280
+
+[sub_resource type="Resource" id="Resource_hipuy"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sy = 10
+sg = 58
+
+[sub_resource type="Resource" id="Resource_3ekdi"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = -1
+sy = 9
+bx = -1
+sg = 58
+
+[sub_resource type="Resource" id="Resource_qvxgc"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = 1
+sy = 9
+bx = 1
+sg = 58
+
+[sub_resource type="Resource" id="Resource_bcsxh"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = -1
+sy = 9
+bx = -7
+sg = 58
+
+[sub_resource type="Resource" id="Resource_ti3fu"]
+script = ExtResource("2_nd2wj")
+attack = 1
+del = 255
+sx = 1
+sy = 9
+bx = 7
+sg = 58
+
+[sub_resource type="Resource" id="Resource_whvc3"]
+script = ExtResource("2_nd2wj")
+attack = 169
+del = 184
+sx = 86
+sy = 1
+bx = -60
+by = 85
+sg = 64702
+
+[sub_resource type="Resource" id="Resource_0la3c"]
+script = ExtResource("1_b04dn")
+weapon_name = "Weapon_Index_575"
+shotRepeat = 3
+multi = 7
+max_level = 7
+patterns = Array[ExtResource("2_nd2wj")]([SubResource("Resource_5inwm"), SubResource("Resource_ypq06"), SubResource("Resource_hipuy"), SubResource("Resource_3ekdi"), SubResource("Resource_qvxgc"), SubResource("Resource_bcsxh"), SubResource("Resource_ti3fu"), SubResource("Resource_whvc3")])
+sound = 25
+shipBlastFilter = 208
+
+[resource]
+script = ExtResource("3_oyed8")
+name = "Hyper Pulse"
+cost = 1050
+power_use = 50
+item_graphic = 7
+firing_mode_1 = Array[ExtResource("1_b04dn")]([SubResource("Resource_v4kgn"), SubResource("Resource_smwmq"), SubResource("Resource_y5drt"), SubResource("Resource_2vjwn"), SubResource("Resource_qhj1v"), SubResource("Resource_th5bc"), SubResource("Resource_jptu7"), SubResource("Resource_t7j0y"), SubResource("Resource_siitn"), SubResource("Resource_vhiko"), SubResource("Resource_0la3c")])

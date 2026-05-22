@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cxyn0e537n16v"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_8wlyr"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_r8f43"]
+
+[sub_resource type="Resource" id="Resource_4elf5"]
+script = ExtResource("1_8wlyr")
+attack = 2
+del = 255
+sy = 8
+sg = 157
+
+[sub_resource type="Resource" id="Resource_c4s0w"]
+script = ExtResource("1_8wlyr")
+attack = 32
+del = 24
+sx = 32
+sy = 116
+bx = 46
+by = 50
+sg = 19525
+
+[sub_resource type="Resource" id="Resource_cky87"]
+script = ExtResource("1_8wlyr")
+attack = 83
+del = 79
+sx = 108
+sy = 101
+bx = 11
+by = 46
+sg = 11826
+
+[sub_resource type="Resource" id="Resource_87h5b"]
+script = ExtResource("1_8wlyr")
+attack = 107
+del = 112
+sx = 118
+sy = 114
+bx = 116
+by = 76
+sg = 16708
+
+[sub_resource type="Resource" id="Resource_8pg3i"]
+script = ExtResource("1_8wlyr")
+attack = 105
+del = 101
+sx = 108
+sy = 32
+bx = 121
+by = 86
+sg = 2900
+
+[sub_resource type="Resource" id="Resource_ko4s6"]
+script = ExtResource("1_8wlyr")
+attack = 112
+del = 110
+sx = 32
+sy = 102
+bx = 114
+by = 76
+sg = 17740
+
+[sub_resource type="Resource" id="Resource_jcemd"]
+script = ExtResource("1_8wlyr")
+attack = 112
+del = 105
+sx = 77
+sy = 105
+bx = 105
+by = 10
+sg = 17750
+
+[sub_resource type="Resource" id="Resource_7scmn"]
+script = ExtResource("1_8wlyr")
+attack = 101
+del = 110
+sx = 97
+sy = 108
+bx = 97
+by = 76
+sg = 21324
+
+[resource]
+script = ExtResource("2_r8f43")
+weapon_name = "Weapon_Index_564"
+shotRepeat = 3
+multi = 1
+weapAni = 1
+max_level = 1
+patterns = Array[ExtResource("1_8wlyr")]([SubResource("Resource_4elf5"), SubResource("Resource_c4s0w"), SubResource("Resource_cky87"), SubResource("Resource_87h5b"), SubResource("Resource_8pg3i"), SubResource("Resource_ko4s6"), SubResource("Resource_jcemd"), SubResource("Resource_7scmn")])
+sound = 5
+shipBlastFilter = 96

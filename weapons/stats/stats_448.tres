@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cy3o6xfqc7mlm"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_pvyr4"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_6eec2"]
+
+[sub_resource type="Resource" id="Resource_cqrdv"]
+script = ExtResource("1_pvyr4")
+attack = 2
+del = 255
+sy = 10
+sg = 126
+
+[sub_resource type="Resource" id="Resource_qoaaw"]
+script = ExtResource("1_pvyr4")
+attack = 157
+del = 244
+sx = -22
+sy = -89
+bx = -89
+by = 59
+sg = 16003
+
+[sub_resource type="Resource" id="Resource_f5cwc"]
+script = ExtResource("1_pvyr4")
+attack = 117
+del = 167
+sx = -68
+sy = 38
+bx = 38
+by = -122
+sg = 47170
+
+[sub_resource type="Resource" id="Resource_ihrkj"]
+script = ExtResource("1_pvyr4")
+attack = 18
+del = 38
+sx = 1
+sy = -118
+bx = -120
+by = -4
+sg = 29710
+
+[sub_resource type="Resource" id="Resource_8ov5k"]
+script = ExtResource("1_pvyr4")
+attack = 160
+del = 136
+sx = -21
+sy = 69
+bx = 69
+by = -89
+sg = 59651
+
+[sub_resource type="Resource" id="Resource_pwtp8"]
+script = ExtResource("1_pvyr4")
+attack = 236
+del = 69
+sx = 16
+sy = 8
+bx = 10
+by = 116
+sg = 65090
+
+[sub_resource type="Resource" id="Resource_fcluv"]
+script = ExtResource("1_pvyr4")
+attack = 188
+del = 10
+sx = -60
+sy = -60
+bx = -95
+by = 3
+sg = 17569
+
+[sub_resource type="Resource" id="Resource_8riks"]
+script = ExtResource("1_pvyr4")
+attack = 196
+del = 198
+sx = -66
+sy = -66
+bx = 70
+by = -23
+sg = 15288
+
+[resource]
+script = ExtResource("2_6eec2")
+weapon_name = "Weapon_Index_448"
+shotRepeat = 3
+multi = 1
+max_level = 1
+patterns = Array[ExtResource("1_pvyr4")]([SubResource("Resource_cqrdv"), SubResource("Resource_qoaaw"), SubResource("Resource_f5cwc"), SubResource("Resource_ihrkj"), SubResource("Resource_8ov5k"), SubResource("Resource_pwtp8"), SubResource("Resource_fcluv"), SubResource("Resource_8riks")])
+acceleration = 1
+sound = 16
+shipBlastFilter = 208

@@ -37,7 +37,6 @@ window/stretch/mode="canvas_items"
 
 [physics]
 
-common/physics_ticks_per_second=60
 3d/physics_engine="Jolt Physics"
 common/physics_interpolation=true
 

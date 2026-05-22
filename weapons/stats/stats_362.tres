@@ -1,0 +1,95 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://dyb734aw25hdu"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_2ilbr"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_okuh1"]
+
+[sub_resource type="Resource" id="Resource_uryor"]
+script = ExtResource("1_2ilbr")
+attack = 1
+del = 255
+sx = -6
+sy = 21
+bx = -2
+by = 20
+sg = 132
+
+[sub_resource type="Resource" id="Resource_ye8ks"]
+script = ExtResource("1_2ilbr")
+attack = 1
+del = 255
+sx = 6
+sy = 21
+bx = 2
+by = 20
+sg = 133
+
+[sub_resource type="Resource" id="Resource_odfsm"]
+script = ExtResource("1_2ilbr")
+attack = 1
+del = 255
+sx = -7
+sy = 21
+bx = -4
+by = 20
+sg = 132
+
+[sub_resource type="Resource" id="Resource_uy5l1"]
+script = ExtResource("1_2ilbr")
+attack = 1
+del = 255
+sx = 7
+sy = 21
+bx = 4
+by = 20
+sg = 133
+
+[sub_resource type="Resource" id="Resource_ckkci"]
+script = ExtResource("1_2ilbr")
+attack = 1
+del = 255
+sx = -8
+sy = 21
+bx = -6
+by = 20
+sg = 132
+
+[sub_resource type="Resource" id="Resource_1sy8q"]
+script = ExtResource("1_2ilbr")
+attack = 1
+del = 255
+sx = 8
+sy = 21
+bx = 6
+by = 20
+sg = 133
+
+[sub_resource type="Resource" id="Resource_tluxp"]
+script = ExtResource("1_2ilbr")
+attack = 1
+del = 255
+sx = -5
+sy = 21
+bx = -1
+by = 20
+sg = 132
+
+[sub_resource type="Resource" id="Resource_r54xa"]
+script = ExtResource("1_2ilbr")
+attack = 1
+del = 255
+sx = 5
+sy = 21
+bx = 1
+by = 20
+sg = 133
+
+[resource]
+script = ExtResource("2_okuh1")
+weapon_name = "Weapon_Index_362"
+shotRepeat = 2
+multi = 3
+max_level = 8
+patterns = Array[ExtResource("1_2ilbr")]([SubResource("Resource_uryor"), SubResource("Resource_ye8ks"), SubResource("Resource_odfsm"), SubResource("Resource_uy5l1"), SubResource("Resource_ckkci"), SubResource("Resource_1sy8q"), SubResource("Resource_tluxp"), SubResource("Resource_r54xa")])
+acceleration = -1
+sound = 20
+shipBlastFilter = 208

@@ -1,0 +1,85 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://bjt8msap7d0nl"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_jalmi"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_nvh32"]
+
+[sub_resource type="Resource" id="Resource_8isvv"]
+script = ExtResource("1_jalmi")
+attack = 2
+del = 255
+sy = 9
+bx = 6
+sg = 153
+
+[sub_resource type="Resource" id="Resource_um5mf"]
+script = ExtResource("1_jalmi")
+attack = 2
+del = 255
+sy = 9
+bx = -6
+sg = 153
+
+[sub_resource type="Resource" id="Resource_i8ylp"]
+script = ExtResource("1_jalmi")
+attack = 2
+del = 255
+sx = 1
+sy = 8
+bx = 6
+sg = 153
+
+[sub_resource type="Resource" id="Resource_sxulc"]
+script = ExtResource("1_jalmi")
+attack = 2
+del = 255
+sx = -1
+sy = 8
+bx = -6
+sg = 153
+
+[sub_resource type="Resource" id="Resource_vqbnk"]
+script = ExtResource("1_jalmi")
+attack = 2
+del = 255
+sx = 2
+sy = 7
+bx = 6
+sg = 153
+
+[sub_resource type="Resource" id="Resource_tyckd"]
+script = ExtResource("1_jalmi")
+attack = 2
+del = 255
+sx = -2
+sy = 7
+bx = -6
+sg = 153
+
+[sub_resource type="Resource" id="Resource_2trs1"]
+script = ExtResource("1_jalmi")
+attack = 2
+del = 255
+sx = 3
+sy = 6
+bx = 6
+sg = 153
+
+[sub_resource type="Resource" id="Resource_nb5qj"]
+script = ExtResource("1_jalmi")
+attack = 2
+del = 255
+sx = -3
+sy = 6
+bx = -6
+sg = 153
+
+[resource]
+script = ExtResource("2_nvh32")
+weapon_name = "Weapon_Index_530"
+shotRepeat = 5
+multi = 8
+weapAni = 3
+max_level = 8
+patterns = Array[ExtResource("1_jalmi")]([SubResource("Resource_8isvv"), SubResource("Resource_um5mf"), SubResource("Resource_i8ylp"), SubResource("Resource_sxulc"), SubResource("Resource_vqbnk"), SubResource("Resource_tyckd"), SubResource("Resource_2trs1"), SubResource("Resource_nb5qj")])
+sound = 2
+shipBlastFilter = 0

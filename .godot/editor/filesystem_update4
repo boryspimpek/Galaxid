@@ -1,10 +1,2 @@
-res://scenes/player/PlayerModel.tscn
-res://scenes/enemies/blue_enemy.tscn
-res://scenes/enemies/formation4.tscn
 res://scenes/world/World.tscn
-res://scenes/enemies/formation5.tscn
-res://scenes/player/Player.tscn
-res://scripts/core/DataManager.gd
-res://scenes/enemy/Enemy.gd
-res://scenes/player/WeaponSystem.gd
-res://scenes/projectile/Projectile.tscn
+res://scripts/tools/resource_converter.gd

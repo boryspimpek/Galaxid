@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://bmyb3k8ytjfxh"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_fpgg8"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_j0w1o"]
+
+[sub_resource type="Resource" id="Resource_afd38"]
+script = ExtResource("1_fpgg8")
+attack = 1
+del = 255
+sy = 10
+sg = 20
+
+[sub_resource type="Resource" id="Resource_ja37x"]
+script = ExtResource("1_fpgg8")
+
+[sub_resource type="Resource" id="Resource_veik2"]
+script = ExtResource("1_fpgg8")
+
+[sub_resource type="Resource" id="Resource_5sqbv"]
+script = ExtResource("1_fpgg8")
+
+[sub_resource type="Resource" id="Resource_jl0f8"]
+script = ExtResource("1_fpgg8")
+
+[sub_resource type="Resource" id="Resource_m6ltr"]
+script = ExtResource("1_fpgg8")
+
+[sub_resource type="Resource" id="Resource_qyb2f"]
+script = ExtResource("1_fpgg8")
+
+[sub_resource type="Resource" id="Resource_vpxvk"]
+script = ExtResource("1_fpgg8")
+
+[resource]
+script = ExtResource("2_j0w1o")
+weapon_name = "Weapon_Index_738"
+shotRepeat = 2
+multi = 1
+max_level = 1
+patterns = Array[ExtResource("1_fpgg8")]([SubResource("Resource_afd38"), SubResource("Resource_ja37x"), SubResource("Resource_veik2"), SubResource("Resource_5sqbv"), SubResource("Resource_jl0f8"), SubResource("Resource_m6ltr"), SubResource("Resource_qyb2f"), SubResource("Resource_vpxvk")])
+sound = 13
+shipBlastFilter = 112

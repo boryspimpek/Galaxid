@@ -1,0 +1,92 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://dlv4652hlfmsj"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_ikj6t"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_o3v2j"]
+
+[sub_resource type="Resource" id="Resource_obiyh"]
+script = ExtResource("1_ikj6t")
+attack = 128
+del = 255
+sg = 57
+
+[sub_resource type="Resource" id="Resource_ahnbv"]
+script = ExtResource("1_ikj6t")
+attack = 223
+del = 69
+sx = -66
+sy = -41
+bx = 38
+by = 1
+sg = 65350
+
+[sub_resource type="Resource" id="Resource_bg2wi"]
+script = ExtResource("1_ikj6t")
+attack = 1
+del = 37
+sx = -4
+sy = 9
+bx = -120
+by = -125
+sg = 22207
+
+[sub_resource type="Resource" id="Resource_dox8e"]
+script = ExtResource("1_ikj6t")
+attack = 196
+del = 154
+sx = -87
+sy = -33
+bx = 69
+by = 62
+sg = 7864
+
+[sub_resource type="Resource" id="Resource_r5wwc"]
+script = ExtResource("1_ikj6t")
+attack = 190
+del = 215
+sx = 38
+sy = 1
+bx = 40
+by = 66
+sg = 39511
+
+[sub_resource type="Resource" id="Resource_ihj51"]
+script = ExtResource("1_ikj6t")
+attack = 252
+del = 9
+sx = -119
+sy = -60
+bx = -102
+by = -72
+sg = 2119
+
+[sub_resource type="Resource" id="Resource_p1ti4"]
+script = ExtResource("1_ikj6t")
+attack = 169
+del = 223
+sx = 69
+sy = -66
+bx = 71
+by = 13
+sg = 479
+
+[sub_resource type="Resource" id="Resource_xyag1"]
+script = ExtResource("1_ikj6t")
+attack = 38
+del = 1
+sx = 38
+sy = -4
+bx = 8
+by = 116
+sg = 22207
+
+[resource]
+script = ExtResource("2_o3v2j")
+weapon_name = "Weapon_Index_494"
+shotRepeat = 8
+multi = 1
+max_level = 1
+patterns = Array[ExtResource("1_ikj6t")]([SubResource("Resource_obiyh"), SubResource("Resource_ahnbv"), SubResource("Resource_bg2wi"), SubResource("Resource_dox8e"), SubResource("Resource_r5wwc"), SubResource("Resource_ihj51"), SubResource("Resource_p1ti4"), SubResource("Resource_xyag1")])
+acceleration = 1
+sound = 7
+trail = 6
+shipBlastFilter = 208

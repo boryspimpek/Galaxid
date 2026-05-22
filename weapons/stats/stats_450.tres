@@ -1,0 +1,93 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cmtt5mr0ufm72"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_ws17e"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_wm51m"]
+
+[sub_resource type="Resource" id="Resource_vh0tn"]
+script = ExtResource("1_ws17e")
+attack = 128
+del = 255
+sx = -7
+sy = 20
+sg = 171
+
+[sub_resource type="Resource" id="Resource_8jlm2"]
+script = ExtResource("1_ws17e")
+attack = 154
+del = 30
+sx = -64
+sy = -65
+bx = -33
+by = -9
+sg = 7864
+
+[sub_resource type="Resource" id="Resource_d1yw6"]
+script = ExtResource("1_ws17e")
+attack = 71
+del = 87
+sx = 116
+sy = 86
+bx = 1
+by = -87
+sg = 48983
+
+[sub_resource type="Resource" id="Resource_r2rnh"]
+script = ExtResource("1_ws17e")
+attack = 8
+del = 154
+sx = 3
+sy = -72
+bx = 107
+by = -102
+sg = 47836
+
+[sub_resource type="Resource" id="Resource_2sp0l"]
+script = ExtResource("1_ws17e")
+attack = 223
+del = 118
+sx = -23
+sy = 30
+bx = 126
+by = -88
+sg = 22302
+
+[sub_resource type="Resource" id="Resource_hayo0"]
+script = ExtResource("1_ws17e")
+attack = 1
+del = 10
+sx = 77
+sy = 87
+bx = -2
+by = 8
+sg = 65384
+
+[sub_resource type="Resource" id="Resource_eof3m"]
+script = ExtResource("1_ws17e")
+attack = 191
+del = 223
+sx = 1
+sy = -102
+bx = 11
+by = -33
+sg = 39424
+
+[sub_resource type="Resource" id="Resource_d7mly"]
+script = ExtResource("1_ws17e")
+attack = 86
+del = 1
+sx = -21
+sy = -41
+bx = -120
+by = 1
+sg = 2416
+
+[resource]
+script = ExtResource("2_wm51m")
+weapon_name = "Weapon_Index_450"
+shotRepeat = 8
+multi = 1
+max_level = 1
+patterns = Array[ExtResource("1_ws17e")]([SubResource("Resource_vh0tn"), SubResource("Resource_8jlm2"), SubResource("Resource_d1yw6"), SubResource("Resource_r2rnh"), SubResource("Resource_2sp0l"), SubResource("Resource_hayo0"), SubResource("Resource_eof3m"), SubResource("Resource_d7mly")])
+sound = 7
+trail = 98
+shipBlastFilter = 208
