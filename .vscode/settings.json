@@ -1,0 +1,9 @@
+{
+  "explorer.autoReveal": false,
+  "files.exclude": {
+    "**/*.import": true
+  },
+  "search.exclude": {
+    "**/*.import": true
+  }
+}

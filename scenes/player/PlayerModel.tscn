@@ -1,22 +1,5 @@
 [gd_scene format=3 uid="uid://b18b5anwm2fnd"]
 
 [ext_resource type="PackedScene" uid="uid://b2k1vtajibcoe" path="res://assets/player3d/player.glb" id="1_6cyit"]
-[ext_resource type="Shader" uid="uid://d2n2rvjcvwag1" path="res://assets/shaders/toon.gdshader" id="2_yyoea"]
-[ext_resource type="Texture2D" uid="uid://mx24ijcwjvnn" path="res://assets/player3d/player_Image_0.jpg" id="3_8x4f1"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4oltd"]
-render_priority = 0
-shader = ExtResource("2_yyoea")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/albedo_texture = ExtResource("3_8x4f1")
-shader_parameter/line_color = Color(0, 0, 0, 1)
-shader_parameter/metallic = 0.0
-shader_parameter/roughness = 1.0
-shader_parameter/specular = 0.2830000134425
-shader_parameter/shadow_threshold = 0.6990000332025
-shader_parameter/shadow_softness = 0.48400002299
 
 [node name="player1" unique_id=476255480 instance=ExtResource("1_6cyit")]
-
-[node name="Mesh_0" parent="." index="0" unique_id=1731731293]
-surface_material_override/0 = SubResource("ShaderMaterial_4oltd")
