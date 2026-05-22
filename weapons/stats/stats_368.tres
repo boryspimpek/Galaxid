@@ -1,0 +1,49 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://bmkp1siwqdc8h"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_23ltd"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_meiyi"]
+
+[sub_resource type="Resource" id="Resource_23ltd"]
+script = ExtResource("1_23ltd")
+attack = 112
+del = 255
+sx = 1
+sy = -1
+sg = 31
+
+[sub_resource type="Resource" id="Resource_meiyi"]
+script = ExtResource("1_23ltd")
+attack = 112
+del = 255
+sx = -1
+sy = -1
+sg = 31
+
+[sub_resource type="Resource" id="Resource_g30tx"]
+script = ExtResource("1_23ltd")
+
+[sub_resource type="Resource" id="Resource_ndubm"]
+script = ExtResource("1_23ltd")
+
+[sub_resource type="Resource" id="Resource_csayn"]
+script = ExtResource("1_23ltd")
+
+[sub_resource type="Resource" id="Resource_uy83f"]
+script = ExtResource("1_23ltd")
+
+[sub_resource type="Resource" id="Resource_a84xf"]
+script = ExtResource("1_23ltd")
+
+[sub_resource type="Resource" id="Resource_bk7cw"]
+script = ExtResource("1_23ltd")
+
+[resource]
+script = ExtResource("2_meiyi")
+weapon_name = "Weapon_Index_368"
+shotRepeat = 9.0
+multi = 2
+max_level = 2
+patterns = Array[ExtResource("1_23ltd")]([SubResource("Resource_23ltd"), SubResource("Resource_meiyi"), SubResource("Resource_g30tx"), SubResource("Resource_ndubm"), SubResource("Resource_csayn"), SubResource("Resource_uy83f"), SubResource("Resource_a84xf"), SubResource("Resource_bk7cw")])
+acceleration = 1
+sound = 7
+trail = 6

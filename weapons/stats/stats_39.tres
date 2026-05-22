@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://by4emdqxri3n1"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_ijniw"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_eah1r"]
+
+[sub_resource type="Resource" id="Resource_ijniw"]
+script = ExtResource("1_ijniw")
+
+[sub_resource type="Resource" id="Resource_eah1r"]
+script = ExtResource("1_ijniw")
+
+[sub_resource type="Resource" id="Resource_c8nvh"]
+script = ExtResource("1_ijniw")
+
+[sub_resource type="Resource" id="Resource_r83ci"]
+script = ExtResource("1_ijniw")
+
+[sub_resource type="Resource" id="Resource_p473n"]
+script = ExtResource("1_ijniw")
+
+[sub_resource type="Resource" id="Resource_m2e22"]
+script = ExtResource("1_ijniw")
+
+[sub_resource type="Resource" id="Resource_r12f3"]
+script = ExtResource("1_ijniw")
+
+[sub_resource type="Resource" id="Resource_tg5lw"]
+script = ExtResource("1_ijniw")
+
+[resource]
+script = ExtResource("2_eah1r")
+weapon_name = "Weapon_Index_39"
+patterns = Array[ExtResource("1_ijniw")]([SubResource("Resource_ijniw"), SubResource("Resource_eah1r"), SubResource("Resource_c8nvh"), SubResource("Resource_r83ci"), SubResource("Resource_p473n"), SubResource("Resource_m2e22"), SubResource("Resource_r12f3"), SubResource("Resource_tg5lw")])
+sound = 1

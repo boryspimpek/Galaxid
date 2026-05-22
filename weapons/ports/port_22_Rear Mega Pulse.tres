@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://bii7dfve1p4cl"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_yeq1u"]
+[ext_resource type="Resource" uid="uid://dcj6yiveyp7h4" path="res://weapons/stats/stats_433.tres" id="2_biv6a"]
+[ext_resource type="Resource" uid="uid://ccr2wlp5tktog" path="res://weapons/stats/stats_434.tres" id="3_js3nk"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_psnb6"]
+[ext_resource type="Resource" uid="uid://bac8glaq2bv1c" path="res://weapons/stats/stats_435.tres" id="4_86iwj"]
+[ext_resource type="Resource" uid="uid://c0cnsijg3twuq" path="res://weapons/stats/stats_436.tres" id="5_a7qrb"]
+[ext_resource type="Resource" uid="uid://cf6a4r1xyvyu3" path="res://weapons/stats/stats_437.tres" id="6_0mqgq"]
+[ext_resource type="Resource" uid="uid://dj5tge8kfrcy1" path="res://weapons/stats/stats_438.tres" id="7_dl4iq"]
+[ext_resource type="Resource" uid="uid://d00jg7xdk8036" path="res://weapons/stats/stats_439.tres" id="8_2m1gv"]
+[ext_resource type="Resource" uid="uid://cqkulsu27cm5t" path="res://weapons/stats/stats_440.tres" id="9_2nwjl"]
+[ext_resource type="Resource" uid="uid://ccqa6h357skq1" path="res://weapons/stats/stats_441.tres" id="10_3kon4"]
+[ext_resource type="Resource" uid="uid://b0o55gmfu6vgc" path="res://weapons/stats/stats_442.tres" id="11_fxdmg"]
+[ext_resource type="Resource" uid="uid://dqqhd20mup0cx" path="res://weapons/stats/stats_443.tres" id="12_47f7g"]
+
+[resource]
+script = ExtResource("3_psnb6")
+name = "Rear Mega Pulse"
+cost = 900
+power_use = 90
+firing_mode_1 = Array[ExtResource("1_yeq1u")]([ExtResource("2_biv6a"), ExtResource("3_js3nk"), ExtResource("4_86iwj"), ExtResource("5_a7qrb"), ExtResource("6_0mqgq"), ExtResource("7_dl4iq"), ExtResource("8_2m1gv"), ExtResource("9_2nwjl"), ExtResource("10_3kon4"), ExtResource("11_fxdmg"), ExtResource("12_47f7g")])

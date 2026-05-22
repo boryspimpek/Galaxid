@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://ckkppgli6f1sc"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_b04dn"]
+[ext_resource type="Resource" uid="uid://f51oktyrl02k" path="res://weapons/stats/stats_565.tres" id="2_t7j0y"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_oyed8"]
+[ext_resource type="Resource" uid="uid://xwfay5uun58t" path="res://weapons/stats/stats_566.tres" id="3_siitn"]
+[ext_resource type="Resource" uid="uid://cnn0u2vwsci15" path="res://weapons/stats/stats_567.tres" id="4_vhiko"]
+[ext_resource type="Resource" uid="uid://cp5et5d5uxu46" path="res://weapons/stats/stats_568.tres" id="5_0la3c"]
+[ext_resource type="Resource" uid="uid://5mi86hvia005" path="res://weapons/stats/stats_569.tres" id="6_bfid5"]
+[ext_resource type="Resource" uid="uid://c24bphylvq5jo" path="res://weapons/stats/stats_570.tres" id="7_pv0gv"]
+[ext_resource type="Resource" uid="uid://b63mmnrlhjpyo" path="res://weapons/stats/stats_571.tres" id="8_1wcl1"]
+[ext_resource type="Resource" uid="uid://bcpm7jt487ll2" path="res://weapons/stats/stats_572.tres" id="9_t2c17"]
+[ext_resource type="Resource" uid="uid://cidxwdkmbo32w" path="res://weapons/stats/stats_573.tres" id="10_1hcwx"]
+[ext_resource type="Resource" uid="uid://cxbxpbrcx2225" path="res://weapons/stats/stats_574.tres" id="11_jf5l3"]
+[ext_resource type="Resource" uid="uid://btvg7rbe5wdwn" path="res://weapons/stats/stats_575.tres" id="12_n832u"]
+
+[resource]
+script = ExtResource("3_oyed8")
+name = "Hyper Pulse"
+cost = 1050
+power_use = 50
+firing_mode_1 = Array[ExtResource("1_b04dn")]([ExtResource("2_t7j0y"), ExtResource("3_siitn"), ExtResource("4_vhiko"), ExtResource("5_0la3c"), ExtResource("6_bfid5"), ExtResource("7_pv0gv"), ExtResource("8_1wcl1"), ExtResource("9_t2c17"), ExtResource("10_1hcwx"), ExtResource("11_jf5l3"), ExtResource("12_n832u")])

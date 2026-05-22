@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://dvabrfoo68bpv"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_opdtr"]
+[ext_resource type="Resource" uid="uid://copqmqtfxbdyh" path="res://weapons/stats/stats_673.tres" id="2_n8lih"]
+[ext_resource type="Resource" uid="uid://bh2kjnv0ylr4j" path="res://weapons/stats/stats_674.tres" id="3_htrjf"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_ynh16"]
+[ext_resource type="Resource" uid="uid://2ljs82rm3mvc" path="res://weapons/stats/stats_675.tres" id="4_daloe"]
+[ext_resource type="Resource" uid="uid://cttuukoqfpmv7" path="res://weapons/stats/stats_676.tres" id="5_c2ubk"]
+[ext_resource type="Resource" uid="uid://brfu2doitme3j" path="res://weapons/stats/stats_677.tres" id="6_ba8r4"]
+[ext_resource type="Resource" uid="uid://bnjvnvfnh7hhl" path="res://weapons/stats/stats_678.tres" id="7_y84cm"]
+[ext_resource type="Resource" uid="uid://cr2w1qhyaihjo" path="res://weapons/stats/stats_679.tres" id="8_oayha"]
+[ext_resource type="Resource" uid="uid://bri4f1nydu6sy" path="res://weapons/stats/stats_680.tres" id="9_uun7r"]
+[ext_resource type="Resource" uid="uid://gwk0rtkhgvnw" path="res://weapons/stats/stats_681.tres" id="10_gualy"]
+[ext_resource type="Resource" uid="uid://b6gsxi7l05bn" path="res://weapons/stats/stats_682.tres" id="11_htpux"]
+[ext_resource type="Resource" uid="uid://d0s4nsroc61n7" path="res://weapons/stats/stats_683.tres" id="12_7h20q"]
+
+[resource]
+script = ExtResource("3_ynh16")
+name = "NortShip Super Pulse"
+cost = 1100
+power_use = 40
+firing_mode_1 = Array[ExtResource("1_opdtr")]([ExtResource("2_n8lih"), ExtResource("3_htrjf"), ExtResource("4_daloe"), ExtResource("5_c2ubk"), ExtResource("6_ba8r4"), ExtResource("7_y84cm"), ExtResource("8_oayha"), ExtResource("9_uun7r"), ExtResource("10_gualy"), ExtResource("11_htpux"), ExtResource("12_7h20q")])

@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://cagy6f7xfniou"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_mobr0"]
+[ext_resource type="Resource" uid="uid://bcish48w8kqw0" path="res://weapons/stats/stats_333.tres" id="2_p3g5y"]
+[ext_resource type="Resource" uid="uid://cbog7d451owrb" path="res://weapons/stats/stats_334.tres" id="3_t73vf"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_urglv"]
+[ext_resource type="Resource" uid="uid://bs4ctvdki1tni" path="res://weapons/stats/stats_335.tres" id="4_3o4wc"]
+[ext_resource type="Resource" uid="uid://djeltrhquc3nk" path="res://weapons/stats/stats_336.tres" id="5_nsyi6"]
+[ext_resource type="Resource" uid="uid://b1p3pafqf7utg" path="res://weapons/stats/stats_337.tres" id="6_ldywl"]
+[ext_resource type="Resource" uid="uid://c3q13ff727rf0" path="res://weapons/stats/stats_338.tres" id="7_e477y"]
+[ext_resource type="Resource" uid="uid://bsg5pkh8kyyrg" path="res://weapons/stats/stats_339.tres" id="8_xwn34"]
+[ext_resource type="Resource" uid="uid://bnep41mnchdh" path="res://weapons/stats/stats_340.tres" id="9_j6evq"]
+[ext_resource type="Resource" uid="uid://bxjpjmtgk1v0c" path="res://weapons/stats/stats_341.tres" id="10_2khc2"]
+[ext_resource type="Resource" uid="uid://di31jfn0qxr1p" path="res://weapons/stats/stats_342.tres" id="11_qaqru"]
+[ext_resource type="Resource" uid="uid://myf3hgbm4v2k" path="res://weapons/stats/stats_343.tres" id="12_owmms"]
+[ext_resource type="Resource" uid="uid://bw2nq0fo4755o" path="res://weapons/stats/stats_344.tres" id="13_ijfny"]
+[ext_resource type="Resource" uid="uid://cg5hp0dfuvfmg" path="res://weapons/stats/stats_345.tres" id="14_2k4wh"]
+[ext_resource type="Resource" uid="uid://uesm25t05mm2" path="res://weapons/stats/stats_346.tres" id="15_cnibl"]
+[ext_resource type="Resource" uid="uid://cvex2cr5c3vbv" path="res://weapons/stats/stats_347.tres" id="16_k6ndu"]
+[ext_resource type="Resource" uid="uid://d14ovm7fg8n4g" path="res://weapons/stats/stats_348.tres" id="17_1edbf"]
+[ext_resource type="Resource" uid="uid://4e0c8nhbpjb6" path="res://weapons/stats/stats_349.tres" id="18_qb7mw"]
+[ext_resource type="Resource" uid="uid://cpcixkygpfs7b" path="res://weapons/stats/stats_350.tres" id="19_x2wok"]
+[ext_resource type="Resource" uid="uid://73piwipo7axt" path="res://weapons/stats/stats_351.tres" id="20_3e1sm"]
+[ext_resource type="Resource" uid="uid://b7bhimpkprevk" path="res://weapons/stats/stats_352.tres" id="21_rcymk"]
+[ext_resource type="Resource" uid="uid://dltwo0ppogfxo" path="res://weapons/stats/stats_353.tres" id="22_1x55q"]
+[ext_resource type="Resource" uid="uid://4fe64iy3edc1" path="res://weapons/stats/stats_354.tres" id="23_e0xnc"]
+
+[resource]
+script = ExtResource("3_urglv")
+name = "Wild Ball"
+cost = 800
+power_use = 60
+modes_count = 2
+firing_mode_1 = Array[ExtResource("1_mobr0")]([ExtResource("2_p3g5y"), ExtResource("3_t73vf"), ExtResource("4_3o4wc"), ExtResource("5_nsyi6"), ExtResource("6_ldywl"), ExtResource("7_e477y"), ExtResource("8_xwn34"), ExtResource("9_j6evq"), ExtResource("10_2khc2"), ExtResource("11_qaqru"), ExtResource("12_owmms")])
+firing_mode_2 = Array[ExtResource("1_mobr0")]([ExtResource("13_ijfny"), ExtResource("14_2k4wh"), ExtResource("15_cnibl"), ExtResource("16_k6ndu"), ExtResource("17_1edbf"), ExtResource("18_qb7mw"), ExtResource("19_x2wok"), ExtResource("20_3e1sm"), ExtResource("21_rcymk"), ExtResource("22_1x55q"), ExtResource("23_e0xnc")])

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://bwqrqgdtkrp73"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_kht8y"]
+[ext_resource type="Resource" uid="uid://vxft80k0ch77" path="res://weapons/stats/stats_756.tres" id="2_sytb7"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_8s2eb"]
+[ext_resource type="Resource" uid="uid://bev8x4s85plma" path="res://weapons/stats/stats_757.tres" id="3_65u8d"]
+[ext_resource type="Resource" uid="uid://bqw7hln4nkbdt" path="res://weapons/stats/stats_758.tres" id="4_iqyym"]
+[ext_resource type="Resource" uid="uid://ctuggqqo2q5vd" path="res://weapons/stats/stats_759.tres" id="5_76o1u"]
+[ext_resource type="Resource" uid="uid://cldbun4oqpbod" path="res://weapons/stats/stats_760.tres" id="6_4jr5w"]
+[ext_resource type="Resource" uid="uid://b042ys6qr6vh5" path="res://weapons/stats/stats_761.tres" id="7_vi8ex"]
+[ext_resource type="Resource" uid="uid://4qqbby6p5sqf" path="res://weapons/stats/stats_762.tres" id="8_xpcgx"]
+[ext_resource type="Resource" uid="uid://dchef5lqx6j0t" path="res://weapons/stats/stats_763.tres" id="9_rtnfy"]
+[ext_resource type="Resource" uid="uid://8ohc5gipovjv" path="res://weapons/stats/stats_764.tres" id="10_ijdxn"]
+[ext_resource type="Resource" uid="uid://smbo14ttphnj" path="res://weapons/stats/stats_765.tres" id="11_j8has"]
+[ext_resource type="Resource" uid="uid://c4neb00hfv1oe" path="res://weapons/stats/stats_766.tres" id="12_qdjuy"]
+
+[resource]
+script = ExtResource("3_8s2eb")
+name = "Sonic Impulse"
+cost = 1000
+power_use = 50
+firing_mode_1 = Array[ExtResource("1_kht8y")]([ExtResource("2_sytb7"), ExtResource("3_65u8d"), ExtResource("4_iqyym"), ExtResource("5_76o1u"), ExtResource("6_4jr5w"), ExtResource("7_vi8ex"), ExtResource("8_xpcgx"), ExtResource("9_rtnfy"), ExtResource("10_ijdxn"), ExtResource("11_j8has"), ExtResource("12_qdjuy")])

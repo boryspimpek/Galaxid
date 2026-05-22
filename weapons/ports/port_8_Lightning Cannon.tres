@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://dxceyml5qc8wk"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_i0j2j"]
+[ext_resource type="Resource" uid="uid://c5xqc7cwftmmo" path="res://weapons/stats/stats_232.tres" id="2_1lrpu"]
+[ext_resource type="Resource" uid="uid://cmu30f2m1ndni" path="res://weapons/stats/stats_233.tres" id="3_5vyus"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_57ldu"]
+[ext_resource type="Resource" uid="uid://dtwhyqlo1iero" path="res://weapons/stats/stats_234.tres" id="4_sbs2c"]
+[ext_resource type="Resource" uid="uid://cfhcyf74o05ej" path="res://weapons/stats/stats_235.tres" id="5_i0btl"]
+[ext_resource type="Resource" uid="uid://cdlcv37encd7l" path="res://weapons/stats/stats_236.tres" id="6_2ap4l"]
+[ext_resource type="Resource" uid="uid://cjveutv6814b2" path="res://weapons/stats/stats_237.tres" id="7_affwn"]
+[ext_resource type="Resource" uid="uid://bc6edq0kqgrl7" path="res://weapons/stats/stats_238.tres" id="8_i8qnw"]
+[ext_resource type="Resource" uid="uid://cycpegw30a10f" path="res://weapons/stats/stats_239.tres" id="9_ch8hm"]
+[ext_resource type="Resource" uid="uid://ckfrdoq0eevc2" path="res://weapons/stats/stats_240.tres" id="10_8bcaq"]
+[ext_resource type="Resource" uid="uid://04igrj4x087m" path="res://weapons/stats/stats_241.tres" id="11_nxhjk"]
+[ext_resource type="Resource" uid="uid://itll2g077nnr" path="res://weapons/stats/stats_242.tres" id="12_5dirs"]
+
+[resource]
+script = ExtResource("3_57ldu")
+name = "Lightning Cannon"
+cost = 1000
+power_use = 70
+firing_mode_1 = Array[ExtResource("1_i0j2j")]([ExtResource("2_1lrpu"), ExtResource("3_5vyus"), ExtResource("4_sbs2c"), ExtResource("5_i0btl"), ExtResource("6_2ap4l"), ExtResource("7_affwn"), ExtResource("8_i8qnw"), ExtResource("9_ch8hm"), ExtResource("10_8bcaq"), ExtResource("11_nxhjk"), ExtResource("12_5dirs")])

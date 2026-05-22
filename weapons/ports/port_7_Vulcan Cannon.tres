@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://ddxcc3aevnvj0"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_yn6fs"]
+[ext_resource type="Resource" uid="uid://cfk358x1yj6h4" path="res://weapons/stats/stats_221.tres" id="2_g22i0"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_j1ctj"]
+[ext_resource type="Resource" uid="uid://bh1axvgmfb2rq" path="res://weapons/stats/stats_222.tres" id="3_wdpwj"]
+[ext_resource type="Resource" uid="uid://cec7lhie1fk6p" path="res://weapons/stats/stats_223.tres" id="4_ro1hg"]
+[ext_resource type="Resource" uid="uid://3yjjchakgfwd" path="res://weapons/stats/stats_224.tres" id="5_2ofhw"]
+[ext_resource type="Resource" uid="uid://cyseiy78f1peo" path="res://weapons/stats/stats_225.tres" id="6_58tjr"]
+[ext_resource type="Resource" uid="uid://y6ihi6bboqnx" path="res://weapons/stats/stats_226.tres" id="7_57ed0"]
+[ext_resource type="Resource" uid="uid://358n73y03bo1" path="res://weapons/stats/stats_227.tres" id="8_mmpxo"]
+[ext_resource type="Resource" uid="uid://b5u0kf28kccbw" path="res://weapons/stats/stats_228.tres" id="9_o4yk2"]
+[ext_resource type="Resource" uid="uid://cn1uqba4lv024" path="res://weapons/stats/stats_229.tres" id="10_wx5o8"]
+[ext_resource type="Resource" uid="uid://xh6gdmnjq7ao" path="res://weapons/stats/stats_230.tres" id="11_dgtt4"]
+[ext_resource type="Resource" uid="uid://5ypmggpx2ih1" path="res://weapons/stats/stats_231.tres" id="12_3p3qw"]
+
+[resource]
+script = ExtResource("3_j1ctj")
+name = "Vulcan Cannon"
+cost = 600
+power_use = 20
+firing_mode_1 = Array[ExtResource("1_yn6fs")]([ExtResource("2_g22i0"), ExtResource("3_wdpwj"), ExtResource("4_ro1hg"), ExtResource("5_2ofhw"), ExtResource("6_58tjr"), ExtResource("7_57ed0"), ExtResource("8_mmpxo"), ExtResource("9_o4yk2"), ExtResource("10_wx5o8"), ExtResource("11_dgtt4"), ExtResource("12_3p3qw")])

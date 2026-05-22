@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://dtpwnvg2vj6fg"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_rdf3k"]
+[ext_resource type="Resource" uid="uid://ntfdntmfl8xa" path="res://weapons/stats/stats_536.tres" id="2_fcy4x"]
+[ext_resource type="Resource" uid="uid://ckw8sn3g3teki" path="res://weapons/stats/stats_537.tres" id="3_0xgb7"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_5r8x2"]
+[ext_resource type="Resource" uid="uid://brtpnsf84twf2" path="res://weapons/stats/stats_538.tres" id="4_04siq"]
+[ext_resource type="Resource" uid="uid://ib2yku0741ja" path="res://weapons/stats/stats_539.tres" id="5_nfnnu"]
+[ext_resource type="Resource" uid="uid://cqsammtauo8ov" path="res://weapons/stats/stats_540.tres" id="6_83o4q"]
+[ext_resource type="Resource" uid="uid://dt4e4hkfdmysh" path="res://weapons/stats/stats_541.tres" id="7_s8kp3"]
+[ext_resource type="Resource" uid="uid://4xgbi88v3833" path="res://weapons/stats/stats_542.tres" id="8_ghjx0"]
+[ext_resource type="Resource" uid="uid://sdv68vyn1vyj" path="res://weapons/stats/stats_543.tres" id="9_n0d02"]
+[ext_resource type="Resource" uid="uid://dxqvx21fp7pdu" path="res://weapons/stats/stats_544.tres" id="10_drqgr"]
+[ext_resource type="Resource" uid="uid://cqrf1qxv07iet" path="res://weapons/stats/stats_545.tres" id="11_ugbbv"]
+[ext_resource type="Resource" uid="uid://haiehqhkskqi" path="res://weapons/stats/stats_546.tres" id="12_7ne6d"]
+
+[resource]
+script = ExtResource("3_5r8x2")
+name = "HotDog Front"
+cost = 1100
+power_use = 40
+firing_mode_1 = Array[ExtResource("1_rdf3k")]([ExtResource("2_fcy4x"), ExtResource("3_0xgb7"), ExtResource("4_04siq"), ExtResource("5_nfnnu"), ExtResource("6_83o4q"), ExtResource("7_s8kp3"), ExtResource("8_ghjx0"), ExtResource("9_n0d02"), ExtResource("10_drqgr"), ExtResource("11_ugbbv"), ExtResource("12_7ne6d")])

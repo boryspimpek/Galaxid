@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://ojya8dsabdm3"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_4pspn"]
+[ext_resource type="Resource" uid="uid://6njoptvrv35d" path="res://weapons/stats/stats_576.tres" id="2_ocwti"]
+[ext_resource type="Resource" uid="uid://u5g8m7q3todc" path="res://weapons/stats/stats_577.tres" id="3_i2khd"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_rimnm"]
+[ext_resource type="Resource" uid="uid://cy1dv8oissdf5" path="res://weapons/stats/stats_578.tres" id="4_nx5ts"]
+[ext_resource type="Resource" uid="uid://dpedg8iamjoqr" path="res://weapons/stats/stats_579.tres" id="5_2t68g"]
+[ext_resource type="Resource" uid="uid://bbbf443avywyt" path="res://weapons/stats/stats_580.tres" id="6_7nfn2"]
+[ext_resource type="Resource" uid="uid://dee1u0ukwupu6" path="res://weapons/stats/stats_581.tres" id="7_qtwhv"]
+[ext_resource type="Resource" uid="uid://cv2gcqduisdb3" path="res://weapons/stats/stats_582.tres" id="8_t1n4u"]
+[ext_resource type="Resource" uid="uid://ctyh4teoiyr2n" path="res://weapons/stats/stats_583.tres" id="9_tgsqr"]
+[ext_resource type="Resource" uid="uid://j8k4w4xsokqk" path="res://weapons/stats/stats_584.tres" id="10_rbl7d"]
+[ext_resource type="Resource" uid="uid://lb7nfoadi2tc" path="res://weapons/stats/stats_585.tres" id="11_jtyrf"]
+[ext_resource type="Resource" uid="uid://cc77nxikqxdeg" path="res://weapons/stats/stats_586.tres" id="12_unwrd"]
+
+[resource]
+script = ExtResource("3_rimnm")
+name = "Guided Micro Bombs"
+cost = 1100
+power_use = 60
+firing_mode_1 = Array[ExtResource("1_4pspn")]([ExtResource("2_ocwti"), ExtResource("3_i2khd"), ExtResource("4_nx5ts"), ExtResource("5_2t68g"), ExtResource("6_7nfn2"), ExtResource("7_qtwhv"), ExtResource("8_t1n4u"), ExtResource("9_tgsqr"), ExtResource("10_rbl7d"), ExtResource("11_jtyrf"), ExtResource("12_unwrd")])

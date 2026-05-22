@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://dr1o6tsktqone"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_i0aav"]
+[ext_resource type="Resource" uid="uid://d021etgdeaybw" path="res://weapons/stats/stats_625.tres" id="2_3hwtf"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_6t3sl"]
+[ext_resource type="Resource" uid="uid://bcyg2do5df40" path="res://weapons/stats/stats_626.tres" id="3_op680"]
+[ext_resource type="Resource" uid="uid://b3skaurl241n5" path="res://weapons/stats/stats_627.tres" id="4_w6at2"]
+[ext_resource type="Resource" uid="uid://krhii1rr6ons" path="res://weapons/stats/stats_628.tres" id="5_gx2fl"]
+[ext_resource type="Resource" uid="uid://c6b8motwlts2h" path="res://weapons/stats/stats_629.tres" id="6_cql6y"]
+[ext_resource type="Resource" uid="uid://byccq0nefkf3d" path="res://weapons/stats/stats_630.tres" id="7_w1o4h"]
+[ext_resource type="Resource" uid="uid://dyp0uxc7ogg2w" path="res://weapons/stats/stats_631.tres" id="8_7bmjg"]
+[ext_resource type="Resource" uid="uid://bnrle52pta04k" path="res://weapons/stats/stats_632.tres" id="9_l4gfb"]
+[ext_resource type="Resource" uid="uid://bvtu3vuphvmsb" path="res://weapons/stats/stats_633.tres" id="10_an68g"]
+[ext_resource type="Resource" uid="uid://bm2jd1ev1c30" path="res://weapons/stats/stats_634.tres" id="11_ilamf"]
+[ext_resource type="Resource" uid="uid://cokcf3hh3ttc" path="res://weapons/stats/stats_635.tres" id="12_udn4b"]
+
+[resource]
+script = ExtResource("3_6t3sl")
+name = "Shuruiken Field"
+cost = 850
+power_use = 40
+firing_mode_1 = Array[ExtResource("1_i0aav")]([ExtResource("2_3hwtf"), ExtResource("3_op680"), ExtResource("4_w6at2"), ExtResource("5_gx2fl"), ExtResource("6_cql6y"), ExtResource("7_w1o4h"), ExtResource("8_7bmjg"), ExtResource("9_l4gfb"), ExtResource("10_an68g"), ExtResource("11_ilamf"), ExtResource("12_udn4b")])

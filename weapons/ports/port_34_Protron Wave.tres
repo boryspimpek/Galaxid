@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://c85mprcoulovf"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_o6bb1"]
+[ext_resource type="Resource" uid="uid://8d4fse27caic" path="res://weapons/stats/stats_647.tres" id="2_8nkgh"]
+[ext_resource type="Resource" uid="uid://1llicc7op1m0" path="res://weapons/stats/stats_648.tres" id="3_dkjvg"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_o6jm1"]
+[ext_resource type="Resource" uid="uid://lb4wjou3n1o2" path="res://weapons/stats/stats_649.tres" id="4_i8unj"]
+[ext_resource type="Resource" uid="uid://r82rabiimdlm" path="res://weapons/stats/stats_650.tres" id="5_o4d5s"]
+[ext_resource type="Resource" uid="uid://ct1jdaw0hmdvi" path="res://weapons/stats/stats_651.tres" id="6_n7bmu"]
+[ext_resource type="Resource" uid="uid://dlhfrq0viw618" path="res://weapons/stats/stats_652.tres" id="7_24lr1"]
+[ext_resource type="Resource" uid="uid://ddp8j37c2u7fo" path="res://weapons/stats/stats_653.tres" id="8_chool"]
+[ext_resource type="Resource" uid="uid://b73ldycold3hn" path="res://weapons/stats/stats_654.tres" id="9_typwf"]
+[ext_resource type="Resource" uid="uid://dki2kcnlad5kv" path="res://weapons/stats/stats_655.tres" id="10_4bft6"]
+[ext_resource type="Resource" uid="uid://78wlfnwskyft" path="res://weapons/stats/stats_656.tres" id="11_how03"]
+[ext_resource type="Resource" uid="uid://dhn4jnooayh3w" path="res://weapons/stats/stats_657.tres" id="12_3cesb"]
+
+[resource]
+script = ExtResource("3_o6jm1")
+name = "Protron Wave"
+cost = 750
+power_use = 40
+firing_mode_1 = Array[ExtResource("1_o6bb1")]([ExtResource("2_8nkgh"), ExtResource("3_dkjvg"), ExtResource("4_i8unj"), ExtResource("5_o4d5s"), ExtResource("6_n7bmu"), ExtResource("7_24lr1"), ExtResource("8_chool"), ExtResource("9_typwf"), ExtResource("10_4bft6"), ExtResource("11_how03"), ExtResource("12_3cesb")])

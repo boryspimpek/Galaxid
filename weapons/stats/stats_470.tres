@@ -1,0 +1,91 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://dvrruv2ek0ym6"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_fcoyd"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_krr3h"]
+
+[sub_resource type="Resource" id="Resource_fcoyd"]
+script = ExtResource("1_fcoyd")
+attack = 1
+del = 255
+sy = 21
+sg = 67
+
+[sub_resource type="Resource" id="Resource_krr3h"]
+script = ExtResource("1_fcoyd")
+attack = 191
+del = 14
+sx = 86
+sy = 10
+bx = -65
+by = -33
+sg = 60826
+
+[sub_resource type="Resource" id="Resource_oitws"]
+script = ExtResource("1_fcoyd")
+attack = 86
+del = 87
+sx = -70
+sy = -33
+bx = 65
+by = 1
+sg = 57098
+
+[sub_resource type="Resource" id="Resource_8pg5r"]
+script = ExtResource("1_fcoyd")
+attack = 186
+del = 154
+sx = 30
+sy = 1
+bx = 4
+by = -65
+sg = 48897
+
+[sub_resource type="Resource" id="Resource_q0w5l"]
+script = ExtResource("1_fcoyd")
+attack = 30
+del = 178
+sx = 87
+sy = -65
+bx = 14
+by = -42
+sg = 47574
+
+[sub_resource type="Resource" id="Resource_nofft"]
+script = ExtResource("1_fcoyd")
+attack = 87
+del = 10
+sx = 106
+sy = -42
+bx = 87
+by = -71
+sg = 22302
+
+[sub_resource type="Resource" id="Resource_w770s"]
+script = ExtResource("1_fcoyd")
+attack = 191
+del = 223
+sx = 1
+sy = -71
+bx = -102
+by = 30
+sg = 29338
+
+[sub_resource type="Resource" id="Resource_ji8mo"]
+script = ExtResource("1_fcoyd")
+attack = 76
+del = 1
+sx = -102
+sy = 30
+bx = -78
+by = 87
+sg = 57109
+
+[resource]
+script = ExtResource("2_krr3h")
+weapon_name = "Weapon_Index_470"
+shotRepeat = 4.0
+multi = 1
+max_level = 1
+patterns = Array[ExtResource("1_fcoyd")]([SubResource("Resource_fcoyd"), SubResource("Resource_krr3h"), SubResource("Resource_oitws"), SubResource("Resource_8pg5r"), SubResource("Resource_q0w5l"), SubResource("Resource_nofft"), SubResource("Resource_w770s"), SubResource("Resource_ji8mo")])
+acceleration = -1
+sound = 20

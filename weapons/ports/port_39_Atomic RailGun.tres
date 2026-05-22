@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://cc61a0syi38gx"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_w3qsl"]
+[ext_resource type="Resource" uid="uid://bqxpd3n6rj0sk" path="res://weapons/stats/stats_712.tres" id="2_6a63t"]
+[ext_resource type="Resource" uid="uid://d3krqs00ak8m6" path="res://weapons/stats/stats_713.tres" id="3_5fa2m"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_rkd4v"]
+[ext_resource type="Resource" uid="uid://16fncymxa5d5" path="res://weapons/stats/stats_714.tres" id="4_375em"]
+[ext_resource type="Resource" uid="uid://bugwsgxe67l4j" path="res://weapons/stats/stats_715.tres" id="5_mwwg1"]
+[ext_resource type="Resource" uid="uid://wgt7n2vgufmt" path="res://weapons/stats/stats_731.tres" id="6_4eg1c"]
+[ext_resource type="Resource" uid="uid://3owc3l7b846h" path="res://weapons/stats/stats_716.tres" id="7_pcqp5"]
+[ext_resource type="Resource" uid="uid://put0wk4j3i3k" path="res://weapons/stats/stats_717.tres" id="8_eptss"]
+[ext_resource type="Resource" uid="uid://cuuiqy0ynx54m" path="res://weapons/stats/stats_732.tres" id="9_nv4so"]
+[ext_resource type="Resource" uid="uid://c2bhxd4ebmcly" path="res://weapons/stats/stats_733.tres" id="10_eji6m"]
+[ext_resource type="Resource" uid="uid://le8vmav1fyv6" path="res://weapons/stats/stats_734.tres" id="11_0rocf"]
+[ext_resource type="Resource" uid="uid://bh7dl7jsgduw6" path="res://weapons/stats/stats_735.tres" id="12_802bi"]
+
+[resource]
+script = ExtResource("3_rkd4v")
+name = "Atomic RailGun"
+cost = 1101
+power_use = 30
+firing_mode_1 = Array[ExtResource("1_w3qsl")]([ExtResource("2_6a63t"), ExtResource("3_5fa2m"), ExtResource("4_375em"), ExtResource("5_mwwg1"), ExtResource("6_4eg1c"), ExtResource("7_pcqp5"), ExtResource("8_eptss"), ExtResource("9_nv4so"), ExtResource("10_eji6m"), ExtResource("11_0rocf"), ExtResource("12_802bi")])

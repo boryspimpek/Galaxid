@@ -1,0 +1,90 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cre60de35swij"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_n6sry"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_l16wy"]
+
+[sub_resource type="Resource" id="Resource_n6sry"]
+script = ExtResource("1_n6sry")
+attack = 10
+del = 255
+sy = 11
+sg = 263
+
+[sub_resource type="Resource" id="Resource_l16wy"]
+script = ExtResource("1_n6sry")
+attack = 255
+del = 134
+sx = -122
+sy = -93
+bx = -72
+by = -11
+sg = 43509
+
+[sub_resource type="Resource" id="Resource_bcbha"]
+script = ExtResource("1_n6sry")
+attack = 6
+del = 252
+sx = -4
+sy = 68
+bx = 107
+by = -87
+sg = 10359
+
+[sub_resource type="Resource" id="Resource_q1uad"]
+script = ExtResource("1_n6sry")
+attack = 66
+del = 167
+sx = -89
+sy = -72
+bx = 62
+by = 107
+sg = 15979
+
+[sub_resource type="Resource" id="Resource_2kodg"]
+script = ExtResource("1_n6sry")
+attack = 184
+del = 161
+sx = 118
+sy = -21
+bx = 66
+by = 62
+sg = 47170
+
+[sub_resource type="Resource" id="Resource_fg0te"]
+script = ExtResource("1_n6sry")
+attack = 139
+del = 66
+sx = 3
+sy = 4
+bx = -72
+by = 68
+sg = 35595
+
+[sub_resource type="Resource" id="Resource_apl6w"]
+script = ExtResource("1_n6sry")
+attack = 70
+del = 184
+sx = -23
+sy = -1
+bx = 11
+by = -72
+sg = 62851
+
+[sub_resource type="Resource" id="Resource_ottgj"]
+script = ExtResource("1_n6sry")
+attack = 254
+del = 64
+sx = -100
+sy = 6
+bx = -117
+by = 11
+sg = 27561
+
+[resource]
+script = ExtResource("2_l16wy")
+weapon_name = "Weapon_Index_455"
+shotRepeat = 10.0
+multi = 1
+max_level = 1
+patterns = Array[ExtResource("1_n6sry")]([SubResource("Resource_n6sry"), SubResource("Resource_l16wy"), SubResource("Resource_bcbha"), SubResource("Resource_q1uad"), SubResource("Resource_2kodg"), SubResource("Resource_fg0te"), SubResource("Resource_apl6w"), SubResource("Resource_ottgj")])
+sound = 6

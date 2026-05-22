@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://cyseiy78f1peo"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_im0dm"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_cgrhe"]
+
+[sub_resource type="Resource" id="Resource_im0dm"]
+script = ExtResource("1_im0dm")
+attack = 1
+del = 98
+sx = -2
+sy = 20
+bx = -8
+sg = 67
+
+[sub_resource type="Resource" id="Resource_cgrhe"]
+script = ExtResource("1_im0dm")
+attack = 1
+del = 98
+sx = -1
+sy = 20
+bx = -4
+sg = 67
+
+[sub_resource type="Resource" id="Resource_1360c"]
+script = ExtResource("1_im0dm")
+attack = 1
+del = 98
+sy = 20
+sg = 67
+
+[sub_resource type="Resource" id="Resource_i5tpa"]
+script = ExtResource("1_im0dm")
+attack = 1
+del = 98
+sx = 1
+sy = 20
+bx = 4
+sg = 67
+
+[sub_resource type="Resource" id="Resource_y4378"]
+script = ExtResource("1_im0dm")
+attack = 1
+del = 98
+sx = 2
+sy = 20
+bx = 8
+sg = 67
+
+[sub_resource type="Resource" id="Resource_0ajpl"]
+script = ExtResource("1_im0dm")
+attack = 1
+del = 98
+sx = 1
+sy = 20
+bx = 4
+sg = 67
+
+[sub_resource type="Resource" id="Resource_ov1gq"]
+script = ExtResource("1_im0dm")
+attack = 1
+del = 98
+sy = 20
+sg = 67
+
+[sub_resource type="Resource" id="Resource_h3wj2"]
+script = ExtResource("1_im0dm")
+attack = 1
+del = 98
+sx = -1
+sy = 20
+bx = -4
+sg = 67
+
+[resource]
+script = ExtResource("2_cgrhe")
+weapon_name = "Weapon_Index_225"
+shotRepeat = 1.0
+multi = 1
+max_level = 8
+patterns = Array[ExtResource("1_im0dm")]([SubResource("Resource_im0dm"), SubResource("Resource_cgrhe"), SubResource("Resource_1360c"), SubResource("Resource_i5tpa"), SubResource("Resource_y4378"), SubResource("Resource_0ajpl"), SubResource("Resource_ov1gq"), SubResource("Resource_h3wj2")])
+acceleration = -1
+sound = 20

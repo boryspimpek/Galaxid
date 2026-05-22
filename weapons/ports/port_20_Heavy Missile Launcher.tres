@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://bokrshk8ppyro"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_1frt0"]
+[ext_resource type="Resource" uid="uid://drtnclueinejo" path="res://weapons/stats/stats_411.tres" id="2_limvc"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_2gs22"]
+[ext_resource type="Resource" uid="uid://cmcngkab77gq5" path="res://weapons/stats/stats_412.tres" id="3_3u41b"]
+[ext_resource type="Resource" uid="uid://dxwcilqwp10ql" path="res://weapons/stats/stats_413.tres" id="4_t20le"]
+[ext_resource type="Resource" uid="uid://266bs5r8ym85" path="res://weapons/stats/stats_414.tres" id="5_gjqo3"]
+[ext_resource type="Resource" uid="uid://blpjd7h503g5k" path="res://weapons/stats/stats_415.tres" id="6_4nx7p"]
+[ext_resource type="Resource" uid="uid://buuqu0vua7doc" path="res://weapons/stats/stats_416.tres" id="7_50wka"]
+[ext_resource type="Resource" uid="uid://ditarmtssa70b" path="res://weapons/stats/stats_417.tres" id="8_f18qp"]
+[ext_resource type="Resource" uid="uid://bkiuelxph5n0y" path="res://weapons/stats/stats_418.tres" id="9_k1hu2"]
+[ext_resource type="Resource" uid="uid://d4kygu7kbkkoi" path="res://weapons/stats/stats_419.tres" id="10_gvhrb"]
+[ext_resource type="Resource" uid="uid://bdej2a673ofe2" path="res://weapons/stats/stats_420.tres" id="11_lbodb"]
+[ext_resource type="Resource" uid="uid://xrjmvxv0y374" path="res://weapons/stats/stats_421.tres" id="12_thpb7"]
+
+[resource]
+script = ExtResource("3_2gs22")
+name = "Heavy Missile Launcher"
+cost = 1000
+power_use = 90
+firing_mode_1 = Array[ExtResource("1_1frt0")]([ExtResource("2_limvc"), ExtResource("3_3u41b"), ExtResource("4_t20le"), ExtResource("5_gjqo3"), ExtResource("6_4nx7p"), ExtResource("7_50wka"), ExtResource("8_f18qp"), ExtResource("9_k1hu2"), ExtResource("10_gvhrb"), ExtResource("11_lbodb"), ExtResource("12_thpb7")])

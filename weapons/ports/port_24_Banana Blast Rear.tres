@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://c1f18nt0du5uf"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_vtadv"]
+[ext_resource type="Resource" uid="uid://d1lrdr7wus3gy" path="res://weapons/stats/stats_517.tres" id="2_u4wmi"]
+[ext_resource type="Resource" uid="uid://dg0m3ll2mwott" path="res://weapons/stats/stats_518.tres" id="3_ik5b0"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_qhpbh"]
+[ext_resource type="Resource" uid="uid://b6ri5ffec6jgm" path="res://weapons/stats/stats_519.tres" id="4_t40il"]
+[ext_resource type="Resource" uid="uid://dd6l3f6igmdeo" path="res://weapons/stats/stats_520.tres" id="5_g4ww3"]
+[ext_resource type="Resource" uid="uid://cjpuhopj05abi" path="res://weapons/stats/stats_521.tres" id="6_f4s8i"]
+[ext_resource type="Resource" uid="uid://cconm4fvi0p2o" path="res://weapons/stats/stats_522.tres" id="7_k0k13"]
+[ext_resource type="Resource" uid="uid://clkyborcnkuxl" path="res://weapons/stats/stats_523.tres" id="8_l16sn"]
+[ext_resource type="Resource" uid="uid://c6lajlogubsi4" path="res://weapons/stats/stats_524.tres" id="9_0phg8"]
+[ext_resource type="Resource" uid="uid://bmdyvvrnrp60b" path="res://weapons/stats/stats_525.tres" id="10_wfgt0"]
+[ext_resource type="Resource" uid="uid://d17lneywlrd2b" path="res://weapons/stats/stats_526.tres" id="11_fc8b1"]
+[ext_resource type="Resource" uid="uid://btguveyr5kwn0" path="res://weapons/stats/stats_527.tres" id="12_orkf2"]
+
+[resource]
+script = ExtResource("3_qhpbh")
+name = "Banana Blast Rear"
+cost = 1100
+power_use = 20
+firing_mode_1 = Array[ExtResource("1_vtadv")]([ExtResource("2_u4wmi"), ExtResource("3_ik5b0"), ExtResource("4_t40il"), ExtResource("5_g4ww3"), ExtResource("6_f4s8i"), ExtResource("7_k0k13"), ExtResource("8_l16sn"), ExtResource("9_0phg8"), ExtResource("10_wfgt0"), ExtResource("11_fc8b1"), ExtResource("12_orkf2")])

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://clpt6jvbrtdk2"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_gh1kh"]
+[ext_resource type="Resource" uid="uid://duecsungtvbl8" path="res://weapons/stats/stats_636.tres" id="2_kww3d"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_bvw64"]
+[ext_resource type="Resource" uid="uid://bbs8nqsl6moce" path="res://weapons/stats/stats_637.tres" id="3_k2828"]
+[ext_resource type="Resource" uid="uid://b5mqredkehuf" path="res://weapons/stats/stats_638.tres" id="4_f7qy4"]
+[ext_resource type="Resource" uid="uid://y7c0q4tjcejt" path="res://weapons/stats/stats_639.tres" id="5_1haqh"]
+[ext_resource type="Resource" uid="uid://bwtha40yref7p" path="res://weapons/stats/stats_640.tres" id="6_p3qxk"]
+[ext_resource type="Resource" uid="uid://c8nruckudd1pn" path="res://weapons/stats/stats_641.tres" id="7_ow8c5"]
+[ext_resource type="Resource" uid="uid://e4go5smtk1rw" path="res://weapons/stats/stats_642.tres" id="8_uq1ho"]
+[ext_resource type="Resource" uid="uid://ctd0ju78ou4ca" path="res://weapons/stats/stats_643.tres" id="9_qloqv"]
+[ext_resource type="Resource" uid="uid://d22wtmoa8pt1m" path="res://weapons/stats/stats_644.tres" id="10_qhpkr"]
+[ext_resource type="Resource" uid="uid://diokimgounowh" path="res://weapons/stats/stats_645.tres" id="11_3c7d0"]
+[ext_resource type="Resource" uid="uid://byam1wq31to7a" path="res://weapons/stats/stats_646.tres" id="12_8384i"]
+
+[resource]
+script = ExtResource("3_bvw64")
+name = "Poison Bomb"
+cost = 800
+power_use = 40
+firing_mode_1 = Array[ExtResource("1_gh1kh")]([ExtResource("2_kww3d"), ExtResource("3_k2828"), ExtResource("4_f7qy4"), ExtResource("5_1haqh"), ExtResource("6_p3qxk"), ExtResource("7_ow8c5"), ExtResource("8_uq1ho"), ExtResource("9_qloqv"), ExtResource("10_qhpkr"), ExtResource("11_3c7d0"), ExtResource("12_8384i")])

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://b1w6i7tw5hymj"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_4kb1p"]
+[ext_resource type="Resource" uid="uid://ctvdrqdrm0q35" path="res://weapons/stats/stats_1.tres" id="2_dnlt8"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_kshmf"]
+[ext_resource type="Resource" uid="uid://dw1p25vvterwa" path="res://weapons/stats/stats_5.tres" id="3_n1jau"]
+[ext_resource type="Resource" uid="uid://bte0x28c0m64h" path="res://weapons/stats/stats_66.tres" id="4_byvj4"]
+[ext_resource type="Resource" uid="uid://8cuvsxm7dfi2" path="res://weapons/stats/stats_366.tres" id="5_j4vqn"]
+[ext_resource type="Resource" uid="uid://bwj0eth1jxqm6" path="res://weapons/stats/stats_26.tres" id="6_bi8kg"]
+[ext_resource type="Resource" uid="uid://cwmr3t422a80" path="res://weapons/stats/stats_83.tres" id="7_sks8c"]
+[ext_resource type="Resource" uid="uid://d3n3lw0rgxqgp" path="res://weapons/stats/stats_362.tres" id="8_fijjb"]
+[ext_resource type="Resource" uid="uid://br1rrke7qrp1h" path="res://weapons/stats/stats_363.tres" id="9_qn5du"]
+[ext_resource type="Resource" uid="uid://316uf0n4v7p4" path="res://weapons/stats/stats_364.tres" id="10_ofmin"]
+[ext_resource type="Resource" uid="uid://dgy8i5c6cnlnx" path="res://weapons/stats/stats_365.tres" id="11_ej21t"]
+
+[resource]
+script = ExtResource("3_kshmf")
+name = "Miscellaneous Option Weapons"
+power_use = 10
+firing_mode_1 = Array[ExtResource("1_4kb1p")]([ExtResource("2_dnlt8"), ExtResource("3_n1jau"), ExtResource("4_byvj4"), ExtResource("5_j4vqn"), ExtResource("6_bi8kg"), ExtResource("7_sks8c"), ExtResource("2_dnlt8"), ExtResource("8_fijjb"), ExtResource("9_qn5du"), ExtResource("10_ofmin"), ExtResource("11_ej21t")])

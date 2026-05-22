@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://cofj1yb1k7v67"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_m3wka"]
+[ext_resource type="Resource" uid="uid://buecvrmopl1cb" path="res://weapons/stats/stats_199.tres" id="2_71lx8"]
+[ext_resource type="Resource" uid="uid://d0yn3y2n06gha" path="res://weapons/stats/stats_200.tres" id="3_15t6o"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_fqn7s"]
+[ext_resource type="Resource" uid="uid://wl7tlxomrjse" path="res://weapons/stats/stats_201.tres" id="4_xo4wj"]
+[ext_resource type="Resource" uid="uid://cwbjj4mkja3lh" path="res://weapons/stats/stats_202.tres" id="5_34d3x"]
+[ext_resource type="Resource" uid="uid://clcpg2l08lrdq" path="res://weapons/stats/stats_203.tres" id="6_3abcc"]
+[ext_resource type="Resource" uid="uid://c2abgjdau1j1r" path="res://weapons/stats/stats_204.tres" id="7_dj5pc"]
+[ext_resource type="Resource" uid="uid://duvvj6f1cnotd" path="res://weapons/stats/stats_205.tres" id="8_8puvs"]
+[ext_resource type="Resource" uid="uid://ice5jsw4lpsn" path="res://weapons/stats/stats_206.tres" id="9_e7o75"]
+[ext_resource type="Resource" uid="uid://ta2w5qqgog6w" path="res://weapons/stats/stats_207.tres" id="10_wb637"]
+[ext_resource type="Resource" uid="uid://c437hsboj4yad" path="res://weapons/stats/stats_208.tres" id="11_xfsdo"]
+[ext_resource type="Resource" uid="uid://dqtj3ju3t3ihb" path="res://weapons/stats/stats_209.tres" id="12_45xym"]
+
+[resource]
+script = ExtResource("3_fqn7s")
+name = "Zica Laser"
+cost = 1100
+power_use = 90
+firing_mode_1 = Array[ExtResource("1_m3wka")]([ExtResource("2_71lx8"), ExtResource("3_15t6o"), ExtResource("4_xo4wj"), ExtResource("5_34d3x"), ExtResource("6_3abcc"), ExtResource("7_dj5pc"), ExtResource("8_8puvs"), ExtResource("9_e7o75"), ExtResource("10_wb637"), ExtResource("11_xfsdo"), ExtResource("12_45xym")])

@@ -1,0 +1,77 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://68kbqlym6fd5"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_vopvp"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_mv467"]
+
+[sub_resource type="Resource" id="Resource_vopvp"]
+script = ExtResource("1_vopvp")
+attack = 128
+del = 255
+sx = -1
+sy = 12
+bx = -4
+by = 3
+sg = 19
+
+[sub_resource type="Resource" id="Resource_mv467"]
+script = ExtResource("1_vopvp")
+attack = 128
+del = 255
+sx = 1
+sy = 12
+bx = 4
+by = 3
+sg = 19
+
+[sub_resource type="Resource" id="Resource_vglxf"]
+script = ExtResource("1_vopvp")
+attack = 112
+del = 255
+sx = -3
+bx = -3
+sg = 19
+
+[sub_resource type="Resource" id="Resource_yj7sm"]
+script = ExtResource("1_vopvp")
+attack = 112
+del = 255
+sx = 3
+bx = 3
+sg = 19
+
+[sub_resource type="Resource" id="Resource_uecm2"]
+script = ExtResource("1_vopvp")
+attack = 128
+del = 255
+sx = -2
+sy = -3
+bx = -2
+by = -3
+sg = 19
+
+[sub_resource type="Resource" id="Resource_vvhly"]
+script = ExtResource("1_vopvp")
+attack = 128
+del = 255
+sx = 2
+sy = -3
+bx = 2
+by = -3
+sg = 19
+
+[sub_resource type="Resource" id="Resource_8hmec"]
+script = ExtResource("1_vopvp")
+
+[sub_resource type="Resource" id="Resource_yh3bo"]
+script = ExtResource("1_vopvp")
+
+[resource]
+script = ExtResource("2_mv467")
+weapon_name = "Weapon_Index_618"
+shotRepeat = 15.0
+multi = 6
+max_level = 6
+aim = 7
+patterns = Array[ExtResource("1_vopvp")]([SubResource("Resource_vopvp"), SubResource("Resource_mv467"), SubResource("Resource_vglxf"), SubResource("Resource_yj7sm"), SubResource("Resource_uecm2"), SubResource("Resource_vvhly"), SubResource("Resource_8hmec"), SubResource("Resource_yh3bo")])
+sound = 26
+trail = 98

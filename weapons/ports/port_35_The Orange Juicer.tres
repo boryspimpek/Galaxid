@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://bg0eqm6rr7eqh"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_avsot"]
+[ext_resource type="Resource" uid="uid://ir41hkr5hoag" path="res://weapons/stats/stats_659.tres" id="2_35e1r"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_ib16f"]
+[ext_resource type="Resource" uid="uid://bxk7sj2oohons" path="res://weapons/stats/stats_660.tres" id="3_roeee"]
+[ext_resource type="Resource" uid="uid://ddik20n83k5xb" path="res://weapons/stats/stats_661.tres" id="4_iyi8g"]
+[ext_resource type="Resource" uid="uid://db0yll4ya02tv" path="res://weapons/stats/stats_662.tres" id="5_m6esf"]
+[ext_resource type="Resource" uid="uid://dipyc0wyatsq3" path="res://weapons/stats/stats_663.tres" id="6_hwpi4"]
+[ext_resource type="Resource" uid="uid://biekmgxkflooy" path="res://weapons/stats/stats_664.tres" id="7_y0arg"]
+[ext_resource type="Resource" uid="uid://b84ex5jko24qr" path="res://weapons/stats/stats_665.tres" id="8_2mvtx"]
+[ext_resource type="Resource" uid="uid://bxy15wc6o2rht" path="res://weapons/stats/stats_666.tres" id="9_b2uq5"]
+[ext_resource type="Resource" uid="uid://b2vbkcwaf3iv6" path="res://weapons/stats/stats_667.tres" id="10_ikr6g"]
+[ext_resource type="Resource" uid="uid://knmmkbly0ks1" path="res://weapons/stats/stats_668.tres" id="11_eybex"]
+[ext_resource type="Resource" uid="uid://ddvqon7v7au0y" path="res://weapons/stats/stats_669.tres" id="12_jldru"]
+
+[resource]
+script = ExtResource("3_ib16f")
+name = "The Orange Juicer"
+cost = 900
+power_use = 40
+firing_mode_1 = Array[ExtResource("1_avsot")]([ExtResource("2_35e1r"), ExtResource("3_roeee"), ExtResource("4_iyi8g"), ExtResource("5_m6esf"), ExtResource("6_hwpi4"), ExtResource("7_y0arg"), ExtResource("8_2mvtx"), ExtResource("9_b2uq5"), ExtResource("10_ikr6g"), ExtResource("11_eybex"), ExtResource("12_jldru")])

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://cy4kif6mryuxt"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_re3d8"]
+[ext_resource type="Resource" uid="uid://dkv6pxg0tdmp4" path="res://weapons/stats/stats_155.tres" id="2_hqaql"]
+[ext_resource type="Resource" uid="uid://c4map45lb6r65" path="res://weapons/stats/stats_156.tres" id="3_c3tmh"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_c218r"]
+[ext_resource type="Resource" uid="uid://dck058apsjdd" path="res://weapons/stats/stats_157.tres" id="4_r81e4"]
+[ext_resource type="Resource" uid="uid://dqored1ehk0tn" path="res://weapons/stats/stats_158.tres" id="5_t15vk"]
+[ext_resource type="Resource" uid="uid://crhqsffsgwoe4" path="res://weapons/stats/stats_159.tres" id="6_dk6d1"]
+[ext_resource type="Resource" uid="uid://qa710ec0fg6b" path="res://weapons/stats/stats_160.tres" id="7_1vkb1"]
+[ext_resource type="Resource" uid="uid://cg1nft6oxopkv" path="res://weapons/stats/stats_161.tres" id="8_fwq1l"]
+[ext_resource type="Resource" uid="uid://y11cyckiwu3c" path="res://weapons/stats/stats_162.tres" id="9_d4ygr"]
+[ext_resource type="Resource" uid="uid://wpaaj3edxkmx" path="res://weapons/stats/stats_163.tres" id="10_0empq"]
+[ext_resource type="Resource" uid="uid://dso7l7lhm01ao" path="res://weapons/stats/stats_164.tres" id="11_ff3pf"]
+[ext_resource type="Resource" uid="uid://ddke31qnh6hjb" path="res://weapons/stats/stats_165.tres" id="12_dlr82"]
+
+[resource]
+script = ExtResource("3_c218r")
+name = "Pulse-Cannon"
+cost = 500
+power_use = 30
+firing_mode_1 = Array[ExtResource("1_re3d8")]([ExtResource("2_hqaql"), ExtResource("3_c3tmh"), ExtResource("4_r81e4"), ExtResource("5_t15vk"), ExtResource("6_dk6d1"), ExtResource("7_1vkb1"), ExtResource("8_fwq1l"), ExtResource("9_d4ygr"), ExtResource("10_0empq"), ExtResource("11_ff3pf"), ExtResource("12_dlr82")])

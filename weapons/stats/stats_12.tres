@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="WeaponStats" format=3 uid="uid://ctj6mlqves5u"]
+
+[ext_resource type="Script" uid="uid://bacjtk2m6rsp8" path="res://scripts/resources/WeaponPattern.gd" id="1_lc2pc"]
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="2_iy6np"]
+
+[sub_resource type="Resource" id="Resource_lc2pc"]
+script = ExtResource("1_lc2pc")
+attack = 2
+del = 8
+sy = -1
+sg = 20
+
+[sub_resource type="Resource" id="Resource_iy6np"]
+script = ExtResource("1_lc2pc")
+
+[sub_resource type="Resource" id="Resource_f4ukk"]
+script = ExtResource("1_lc2pc")
+
+[sub_resource type="Resource" id="Resource_lclbv"]
+script = ExtResource("1_lc2pc")
+
+[sub_resource type="Resource" id="Resource_xsamq"]
+script = ExtResource("1_lc2pc")
+
+[sub_resource type="Resource" id="Resource_udpko"]
+script = ExtResource("1_lc2pc")
+
+[sub_resource type="Resource" id="Resource_f5gwo"]
+script = ExtResource("1_lc2pc")
+
+[sub_resource type="Resource" id="Resource_40fh7"]
+script = ExtResource("1_lc2pc")
+
+[resource]
+script = ExtResource("2_iy6np")
+weapon_name = "Weapon_Index_12"
+multi = 1
+max_level = 1
+patterns = Array[ExtResource("1_lc2pc")]([SubResource("Resource_lc2pc"), SubResource("Resource_iy6np"), SubResource("Resource_f4ukk"), SubResource("Resource_lclbv"), SubResource("Resource_xsamq"), SubResource("Resource_udpko"), SubResource("Resource_f5gwo"), SubResource("Resource_40fh7")])
+sound = 9
+trail = 1

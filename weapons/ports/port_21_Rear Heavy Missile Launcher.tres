@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://cf77iwg1lho6h"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_5r1jo"]
+[ext_resource type="Resource" uid="uid://dxu68vrhvjiia" path="res://weapons/stats/stats_422.tres" id="2_mwh5r"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_rrgcp"]
+[ext_resource type="Resource" uid="uid://bs0f7vuetbxc1" path="res://weapons/stats/stats_423.tres" id="3_ry1ih"]
+[ext_resource type="Resource" uid="uid://cnu20yqh3evfj" path="res://weapons/stats/stats_424.tres" id="4_63mtq"]
+[ext_resource type="Resource" uid="uid://cn05fblpfjxwm" path="res://weapons/stats/stats_425.tres" id="5_sh764"]
+[ext_resource type="Resource" uid="uid://dq1s71y86qpxl" path="res://weapons/stats/stats_426.tres" id="6_nptrl"]
+[ext_resource type="Resource" uid="uid://c1bgnpjuugmmy" path="res://weapons/stats/stats_427.tres" id="7_4c32m"]
+[ext_resource type="Resource" uid="uid://bvyrs1hcq01tn" path="res://weapons/stats/stats_428.tres" id="8_uuvon"]
+[ext_resource type="Resource" uid="uid://bxmnp46f5dqp1" path="res://weapons/stats/stats_429.tres" id="9_sy0ba"]
+[ext_resource type="Resource" uid="uid://buao7vw4tyx3i" path="res://weapons/stats/stats_430.tres" id="10_dkj7x"]
+[ext_resource type="Resource" uid="uid://deic7mp7antev" path="res://weapons/stats/stats_431.tres" id="11_b6i7o"]
+[ext_resource type="Resource" uid="uid://bed5uwaqfqpxr" path="res://weapons/stats/stats_432.tres" id="12_1dcti"]
+
+[resource]
+script = ExtResource("3_rrgcp")
+name = "Rear Heavy Missile Launcher"
+cost = 1000
+power_use = 90
+firing_mode_1 = Array[ExtResource("1_5r1jo")]([ExtResource("2_mwh5r"), ExtResource("3_ry1ih"), ExtResource("4_63mtq"), ExtResource("5_sh764"), ExtResource("6_nptrl"), ExtResource("7_4c32m"), ExtResource("8_uuvon"), ExtResource("9_sy0ba"), ExtResource("10_dkj7x"), ExtResource("11_b6i7o"), ExtResource("12_1dcti")])

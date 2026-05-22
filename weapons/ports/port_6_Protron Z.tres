@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://xsb1ql7t7fvm"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_si1vt"]
+[ext_resource type="Resource" uid="uid://cc1oa8ktk2hx4" path="res://weapons/stats/stats_210.tres" id="2_41s0y"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_desuh"]
+[ext_resource type="Resource" uid="uid://j26nrrx6dbpk" path="res://weapons/stats/stats_211.tres" id="3_nqcgt"]
+[ext_resource type="Resource" uid="uid://dm7b4vk13bimh" path="res://weapons/stats/stats_212.tres" id="4_qr7ll"]
+[ext_resource type="Resource" uid="uid://c3bhhbdfw5bij" path="res://weapons/stats/stats_213.tres" id="5_eg0ma"]
+[ext_resource type="Resource" uid="uid://dvdlofwcpvfl" path="res://weapons/stats/stats_214.tres" id="6_vbd3h"]
+[ext_resource type="Resource" uid="uid://b6dbl8efweq48" path="res://weapons/stats/stats_215.tres" id="7_un0yx"]
+[ext_resource type="Resource" uid="uid://cnof0xkwdf2ep" path="res://weapons/stats/stats_216.tres" id="8_btxsy"]
+[ext_resource type="Resource" uid="uid://5btyrvo1lfsp" path="res://weapons/stats/stats_217.tres" id="9_k4j0g"]
+[ext_resource type="Resource" uid="uid://ck2qe46wr3imu" path="res://weapons/stats/stats_218.tres" id="10_oobi6"]
+[ext_resource type="Resource" uid="uid://d2os4m6nknmfk" path="res://weapons/stats/stats_219.tres" id="11_vius5"]
+[ext_resource type="Resource" uid="uid://d2xap2ssi20eb" path="res://weapons/stats/stats_220.tres" id="12_njawm"]
+
+[resource]
+script = ExtResource("3_desuh")
+name = "Protron Z"
+cost = 900
+power_use = 50
+firing_mode_1 = Array[ExtResource("1_si1vt")]([ExtResource("2_41s0y"), ExtResource("3_nqcgt"), ExtResource("4_qr7ll"), ExtResource("5_eg0ma"), ExtResource("6_vbd3h"), ExtResource("7_un0yx"), ExtResource("8_btxsy"), ExtResource("9_k4j0g"), ExtResource("10_oobi6"), ExtResource("11_vius5"), ExtResource("12_njawm")])

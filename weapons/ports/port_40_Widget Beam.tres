@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://c6aqcey1ec770"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_lld5g"]
+[ext_resource type="Resource" uid="uid://e64c3dbwtq4b" path="res://weapons/stats/stats_738.tres" id="2_ruyup"]
+[ext_resource type="Resource" uid="uid://dtqrwtdh1r7nd" path="res://weapons/stats/stats_739.tres" id="3_70wi1"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_q5r2t"]
+[ext_resource type="Resource" uid="uid://3oajp1wi6863" path="res://weapons/stats/stats_740.tres" id="4_hkhff"]
+[ext_resource type="Resource" uid="uid://drat2kg3a0tx3" path="res://weapons/stats/stats_741.tres" id="5_lyjms"]
+[ext_resource type="Resource" uid="uid://dvkq0qbkfmjlp" path="res://weapons/stats/stats_742.tres" id="6_codhm"]
+[ext_resource type="Resource" uid="uid://dvoo34e15o60i" path="res://weapons/stats/stats_743.tres" id="7_7tjrs"]
+[ext_resource type="Resource" uid="uid://c5ihyynl03ypm" path="res://weapons/stats/stats_744.tres" id="8_aexr0"]
+[ext_resource type="Resource" uid="uid://dghftayqovaw3" path="res://weapons/stats/stats_745.tres" id="9_wb3uc"]
+[ext_resource type="Resource" uid="uid://dt70bdwa4nrxx" path="res://weapons/stats/stats_746.tres" id="10_j38fg"]
+[ext_resource type="Resource" uid="uid://dx7wve22ixl6m" path="res://weapons/stats/stats_747.tres" id="11_p4mi0"]
+[ext_resource type="Resource" uid="uid://bpdxpj0dbh54a" path="res://weapons/stats/stats_748.tres" id="12_6776u"]
+
+[resource]
+script = ExtResource("3_q5r2t")
+name = "Widget Beam"
+cost = 950
+power_use = 40
+firing_mode_1 = Array[ExtResource("1_lld5g")]([ExtResource("2_ruyup"), ExtResource("3_70wi1"), ExtResource("4_hkhff"), ExtResource("5_lyjms"), ExtResource("6_codhm"), ExtResource("7_7tjrs"), ExtResource("8_aexr0"), ExtResource("9_wb3uc"), ExtResource("10_j38fg"), ExtResource("11_p4mi0"), ExtResource("12_6776u")])

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://rdtf6gm2tdw0"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_taxl8"]
+[ext_resource type="Resource" uid="uid://c3mkv4xee3mst" path="res://weapons/stats/stats_166.tres" id="2_jd5yy"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_drvgm"]
+[ext_resource type="Resource" uid="uid://kggtw1c1f4vw" path="res://weapons/stats/stats_167.tres" id="3_r78p1"]
+[ext_resource type="Resource" uid="uid://bqofmoatlr6ub" path="res://weapons/stats/stats_168.tres" id="4_g7mt5"]
+[ext_resource type="Resource" uid="uid://8hvw8p84f3hk" path="res://weapons/stats/stats_169.tres" id="5_nrjgo"]
+[ext_resource type="Resource" uid="uid://nusqbacu3ype" path="res://weapons/stats/stats_170.tres" id="6_i4c84"]
+[ext_resource type="Resource" uid="uid://hbrjdtqj5pm7" path="res://weapons/stats/stats_171.tres" id="7_1p8au"]
+[ext_resource type="Resource" uid="uid://di7mu4q16pd47" path="res://weapons/stats/stats_172.tres" id="8_yxiw4"]
+[ext_resource type="Resource" uid="uid://dsq55ie0dnehc" path="res://weapons/stats/stats_173.tres" id="9_rxxui"]
+[ext_resource type="Resource" uid="uid://d2ogoveyilccw" path="res://weapons/stats/stats_174.tres" id="10_7068l"]
+[ext_resource type="Resource" uid="uid://be2jy66qebi5h" path="res://weapons/stats/stats_175.tres" id="11_w6ayw"]
+[ext_resource type="Resource" uid="uid://c36xhii53rc5g" path="res://weapons/stats/stats_176.tres" id="12_k7nri"]
+
+[resource]
+script = ExtResource("3_drvgm")
+name = "Multi-Cannon"
+cost = 750
+power_use = 40
+firing_mode_1 = Array[ExtResource("1_taxl8")]([ExtResource("2_jd5yy"), ExtResource("3_r78p1"), ExtResource("4_g7mt5"), ExtResource("5_nrjgo"), ExtResource("6_i4c84"), ExtResource("7_1p8au"), ExtResource("8_yxiw4"), ExtResource("9_rxxui"), ExtResource("10_7068l"), ExtResource("11_w6ayw"), ExtResource("12_k7nri")])

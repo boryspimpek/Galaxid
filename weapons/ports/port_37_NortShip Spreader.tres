@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://b1ltfqnk0gbtf"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_6h58y"]
+[ext_resource type="Resource" uid="uid://dbp7heyenak0" path="res://weapons/stats/stats_684.tres" id="2_fa7ca"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_1t5te"]
+[ext_resource type="Resource" uid="uid://beck2ga8uyp2o" path="res://weapons/stats/stats_685.tres" id="3_en0p6"]
+[ext_resource type="Resource" uid="uid://48jg6y1bqvs2" path="res://weapons/stats/stats_686.tres" id="4_6kgg6"]
+[ext_resource type="Resource" uid="uid://b6dava051m62p" path="res://weapons/stats/stats_687.tres" id="5_rrhx8"]
+[ext_resource type="Resource" uid="uid://blg7s3080glhr" path="res://weapons/stats/stats_688.tres" id="6_fkxcr"]
+[ext_resource type="Resource" uid="uid://dekpfm4o830ux" path="res://weapons/stats/stats_689.tres" id="7_7s8u3"]
+[ext_resource type="Resource" uid="uid://dbckx3etnlj68" path="res://weapons/stats/stats_690.tres" id="8_rd6p2"]
+[ext_resource type="Resource" uid="uid://cxj3toulgr86x" path="res://weapons/stats/stats_691.tres" id="9_lpmm0"]
+[ext_resource type="Resource" uid="uid://yky8c6hqt2fv" path="res://weapons/stats/stats_692.tres" id="10_b1tu1"]
+[ext_resource type="Resource" uid="uid://b5bi1s4a5nwqr" path="res://weapons/stats/stats_693.tres" id="11_86x6n"]
+[ext_resource type="Resource" uid="uid://couvkkwvql75r" path="res://weapons/stats/stats_694.tres" id="12_ropvc"]
+[ext_resource type="Resource" uid="uid://qkbpr13b8srs" path="res://weapons/stats/stats_695.tres" id="13_0xk40"]
+[ext_resource type="Resource" uid="uid://bq8pj1yktihma" path="res://weapons/stats/stats_696.tres" id="14_281rw"]
+[ext_resource type="Resource" uid="uid://dhdt11bn4vhfc" path="res://weapons/stats/stats_697.tres" id="15_h0x3j"]
+[ext_resource type="Resource" uid="uid://byj3wrw16ltir" path="res://weapons/stats/stats_698.tres" id="16_sft8u"]
+[ext_resource type="Resource" uid="uid://0s3ajr6rehsd" path="res://weapons/stats/stats_699.tres" id="17_71i2b"]
+[ext_resource type="Resource" uid="uid://d3mgr4eqsk38c" path="res://weapons/stats/stats_700.tres" id="18_h6s6o"]
+[ext_resource type="Resource" uid="uid://c0puyhpityqi6" path="res://weapons/stats/stats_701.tres" id="19_5tw4n"]
+[ext_resource type="Resource" uid="uid://dseskjeiw1rwo" path="res://weapons/stats/stats_702.tres" id="20_3fbk5"]
+[ext_resource type="Resource" uid="uid://bhbkc085t5o87" path="res://weapons/stats/stats_703.tres" id="21_tqm7d"]
+[ext_resource type="Resource" uid="uid://bb7lsw7b3bu8b" path="res://weapons/stats/stats_704.tres" id="22_v388n"]
+[ext_resource type="Resource" uid="uid://cnvfwd62cctp1" path="res://weapons/stats/stats_705.tres" id="23_wy00l"]
+
+[resource]
+script = ExtResource("3_1t5te")
+name = "NortShip Spreader"
+cost = 1100
+power_use = 40
+modes_count = 2
+firing_mode_1 = Array[ExtResource("1_6h58y")]([ExtResource("2_fa7ca"), ExtResource("3_en0p6"), ExtResource("4_6kgg6"), ExtResource("5_rrhx8"), ExtResource("6_fkxcr"), ExtResource("7_7s8u3"), ExtResource("8_rd6p2"), ExtResource("9_lpmm0"), ExtResource("10_b1tu1"), ExtResource("11_86x6n"), ExtResource("12_ropvc")])
+firing_mode_2 = Array[ExtResource("1_6h58y")]([ExtResource("13_0xk40"), ExtResource("14_281rw"), ExtResource("15_h0x3j"), ExtResource("16_sft8u"), ExtResource("17_71i2b"), ExtResource("18_h6s6o"), ExtResource("19_5tw4n"), ExtResource("20_3fbk5"), ExtResource("21_tqm7d"), ExtResource("22_v388n"), ExtResource("23_wy00l")])

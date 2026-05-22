@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://cwg0qq1k8m2ud"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_ndxsf"]
+[ext_resource type="Resource" uid="uid://bicjr74umik5q" path="res://weapons/stats/stats_276.tres" id="2_kuuim"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_rrk3q"]
+[ext_resource type="Resource" uid="uid://wkmu62482b3f" path="res://weapons/stats/stats_277.tres" id="3_w4504"]
+[ext_resource type="Resource" uid="uid://dsgu1avgvyhvl" path="res://weapons/stats/stats_278.tres" id="4_orche"]
+[ext_resource type="Resource" uid="uid://bma65os7ptm2i" path="res://weapons/stats/stats_279.tres" id="5_r6ocy"]
+[ext_resource type="Resource" uid="uid://otjpq43ha513" path="res://weapons/stats/stats_280.tres" id="6_fktij"]
+[ext_resource type="Resource" uid="uid://d0ja4kyyr5g7a" path="res://weapons/stats/stats_281.tres" id="7_ndgse"]
+[ext_resource type="Resource" uid="uid://def434gkpcti6" path="res://weapons/stats/stats_282.tres" id="8_acjwi"]
+[ext_resource type="Resource" uid="uid://cgrcvh1wqtrdn" path="res://weapons/stats/stats_283.tres" id="9_j01w0"]
+[ext_resource type="Resource" uid="uid://bbrfgwberyjs7" path="res://weapons/stats/stats_284.tres" id="10_4pwb2"]
+[ext_resource type="Resource" uid="uid://0gah6iiyxtes" path="res://weapons/stats/stats_285.tres" id="11_qpgqn"]
+[ext_resource type="Resource" uid="uid://vq4e0ch7n1lq" path="res://weapons/stats/stats_286.tres" id="12_cw5hw"]
+[ext_resource type="Resource" uid="uid://dh3ms0quvx1jb" path="res://weapons/stats/stats_287.tres" id="13_ww86j"]
+[ext_resource type="Resource" uid="uid://bac1ymi4ii8n3" path="res://weapons/stats/stats_288.tres" id="14_cwuo8"]
+[ext_resource type="Resource" uid="uid://dl5p6cgnsw4vi" path="res://weapons/stats/stats_289.tres" id="15_q8m53"]
+[ext_resource type="Resource" uid="uid://dgeirtxi5c073" path="res://weapons/stats/stats_290.tres" id="16_c6x3h"]
+[ext_resource type="Resource" uid="uid://b5djg8vuaafo5" path="res://weapons/stats/stats_291.tres" id="17_bi1pw"]
+[ext_resource type="Resource" uid="uid://khhbjhjh0yt0" path="res://weapons/stats/stats_292.tres" id="18_3dqg5"]
+[ext_resource type="Resource" uid="uid://h4upl31d342x" path="res://weapons/stats/stats_293.tres" id="19_fq3jg"]
+[ext_resource type="Resource" uid="uid://bofdfxi4wt78b" path="res://weapons/stats/stats_294.tres" id="20_hjq3d"]
+[ext_resource type="Resource" uid="uid://dasp4gt48estn" path="res://weapons/stats/stats_295.tres" id="21_qspe3"]
+[ext_resource type="Resource" uid="uid://btjed5a464yxq" path="res://weapons/stats/stats_296.tres" id="22_mimsm"]
+[ext_resource type="Resource" uid="uid://bnmdcmuy10i7p" path="res://weapons/stats/stats_297.tres" id="23_s2et2"]
+
+[resource]
+script = ExtResource("3_rrk3q")
+name = "Sonic Wave"
+cost = 950
+power_use = 50
+modes_count = 2
+firing_mode_1 = Array[ExtResource("1_ndxsf")]([ExtResource("2_kuuim"), ExtResource("3_w4504"), ExtResource("4_orche"), ExtResource("5_r6ocy"), ExtResource("6_fktij"), ExtResource("7_ndgse"), ExtResource("8_acjwi"), ExtResource("9_j01w0"), ExtResource("10_4pwb2"), ExtResource("11_qpgqn"), ExtResource("12_cw5hw")])
+firing_mode_2 = Array[ExtResource("1_ndxsf")]([ExtResource("13_ww86j"), ExtResource("14_cwuo8"), ExtResource("15_q8m53"), ExtResource("16_c6x3h"), ExtResource("17_bi1pw"), ExtResource("18_3dqg5"), ExtResource("19_fq3jg"), ExtResource("20_hjq3d"), ExtResource("21_qspe3"), ExtResource("22_mimsm"), ExtResource("23_s2et2")])

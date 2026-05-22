@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://sqgb8kyej5mc"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_e103v"]
+[ext_resource type="Resource" uid="uid://cha2mclwotebl" path="res://weapons/stats/stats_609.tres" id="2_2n8dk"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_5uya7"]
+[ext_resource type="Resource" uid="uid://d2twkvrhe6khm" path="res://weapons/stats/stats_610.tres" id="3_jvspd"]
+[ext_resource type="Resource" uid="uid://c37ke6167vnpb" path="res://weapons/stats/stats_611.tres" id="4_pwcj1"]
+[ext_resource type="Resource" uid="uid://dtwhffk0s0fuh" path="res://weapons/stats/stats_612.tres" id="5_pimw1"]
+[ext_resource type="Resource" uid="uid://ugx0lq7n1c1b" path="res://weapons/stats/stats_613.tres" id="6_ufpbc"]
+[ext_resource type="Resource" uid="uid://drdma6lwgtvw" path="res://weapons/stats/stats_614.tres" id="7_hb7of"]
+[ext_resource type="Resource" uid="uid://c3ba2ndvii8e7" path="res://weapons/stats/stats_615.tres" id="8_m5q6x"]
+[ext_resource type="Resource" uid="uid://bg4qw4w78h4d5" path="res://weapons/stats/stats_616.tres" id="9_li7ce"]
+[ext_resource type="Resource" uid="uid://0dfit2ejlv0k" path="res://weapons/stats/stats_617.tres" id="10_2tak0"]
+[ext_resource type="Resource" uid="uid://68kbqlym6fd5" path="res://weapons/stats/stats_618.tres" id="11_rau2h"]
+[ext_resource type="Resource" uid="uid://c5pg2oiih5rio" path="res://weapons/stats/stats_619.tres" id="12_rhj8o"]
+
+[resource]
+script = ExtResource("3_5uya7")
+name = "Guided Bombs"
+cost = 800
+power_use = 40
+firing_mode_1 = Array[ExtResource("1_e103v")]([ExtResource("2_2n8dk"), ExtResource("3_jvspd"), ExtResource("4_pwcj1"), ExtResource("5_pimw1"), ExtResource("6_ufpbc"), ExtResource("7_hb7of"), ExtResource("8_m5q6x"), ExtResource("9_li7ce"), ExtResource("10_2tak0"), ExtResource("11_rau2h"), ExtResource("12_rhj8o")])

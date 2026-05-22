@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://d24hxjxytm6pg"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_y1s75"]
+[ext_resource type="Resource" uid="uid://1oaqduahr5x1" path="res://weapons/stats/stats_243.tres" id="2_4otso"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_anbqp"]
+[ext_resource type="Resource" uid="uid://drhevb0gcq8rd" path="res://weapons/stats/stats_244.tres" id="3_n8ca1"]
+[ext_resource type="Resource" uid="uid://dw272s2wmhosn" path="res://weapons/stats/stats_245.tres" id="4_plo0j"]
+[ext_resource type="Resource" uid="uid://ek5enyghwsnv" path="res://weapons/stats/stats_246.tres" id="5_e5hqp"]
+[ext_resource type="Resource" uid="uid://bixbdpgk1ydpa" path="res://weapons/stats/stats_247.tres" id="6_eqtn0"]
+[ext_resource type="Resource" uid="uid://b2fdasfqo71w6" path="res://weapons/stats/stats_248.tres" id="7_t8wnb"]
+[ext_resource type="Resource" uid="uid://62vmj4g34go2" path="res://weapons/stats/stats_249.tres" id="8_dptmo"]
+[ext_resource type="Resource" uid="uid://c838h8pirkj14" path="res://weapons/stats/stats_250.tres" id="9_iwsb5"]
+[ext_resource type="Resource" uid="uid://b16b5qpcnfr2a" path="res://weapons/stats/stats_251.tres" id="10_qxbag"]
+[ext_resource type="Resource" uid="uid://bwvt8b6ynfcq0" path="res://weapons/stats/stats_252.tres" id="11_mti33"]
+[ext_resource type="Resource" uid="uid://bt6cwcw4kj0dq" path="res://weapons/stats/stats_253.tres" id="12_eqhuq"]
+
+[resource]
+script = ExtResource("3_anbqp")
+name = "Starburst"
+cost = 900
+power_use = 20
+firing_mode_1 = Array[ExtResource("1_y1s75")]([ExtResource("2_4otso"), ExtResource("3_n8ca1"), ExtResource("4_plo0j"), ExtResource("5_e5hqp"), ExtResource("6_eqtn0"), ExtResource("7_t8wnb"), ExtResource("8_dptmo"), ExtResource("9_iwsb5"), ExtResource("10_qxbag"), ExtResource("11_mti33"), ExtResource("12_eqhuq")])

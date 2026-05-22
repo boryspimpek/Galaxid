@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="WeaponPort" format=3 uid="uid://bv2cw330pg6v7"]
+
+[ext_resource type="Script" uid="uid://3fjip5tl6atk" path="res://scripts/resources/WeaponStats.gd" id="1_mg5hh"]
+[ext_resource type="Resource" uid="uid://bd557kcla3hrt" path="res://weapons/stats/stats_188.tres" id="2_32csx"]
+[ext_resource type="Resource" uid="uid://baesaxjvegl8b" path="res://weapons/stats/stats_189.tres" id="3_2q2uq"]
+[ext_resource type="Script" uid="uid://r5f8xtpjlfg6" path="res://scripts/resources/WeaponPort.gd" id="3_nd42i"]
+[ext_resource type="Resource" uid="uid://b1erb8lblh0am" path="res://weapons/stats/stats_190.tres" id="4_7xl41"]
+[ext_resource type="Resource" uid="uid://d4dx3n00pip2u" path="res://weapons/stats/stats_191.tres" id="5_bsc4o"]
+[ext_resource type="Resource" uid="uid://scrhwnxhn8c3" path="res://weapons/stats/stats_192.tres" id="6_ohiti"]
+[ext_resource type="Resource" uid="uid://beeuej0nuniyn" path="res://weapons/stats/stats_193.tres" id="7_wpi2k"]
+[ext_resource type="Resource" uid="uid://c7uynto2vufjx" path="res://weapons/stats/stats_194.tres" id="8_uilgk"]
+[ext_resource type="Resource" uid="uid://du0hqdirfai2q" path="res://weapons/stats/stats_195.tres" id="9_ygqrp"]
+[ext_resource type="Resource" uid="uid://bltm0dpbnd4xj" path="res://weapons/stats/stats_196.tres" id="10_7pjf2"]
+[ext_resource type="Resource" uid="uid://cyax27nd78vyf" path="res://weapons/stats/stats_197.tres" id="11_xkqx7"]
+[ext_resource type="Resource" uid="uid://rciv412f2xvl" path="res://weapons/stats/stats_198.tres" id="12_rvkgv"]
+
+[resource]
+script = ExtResource("3_nd42i")
+name = "Laser"
+cost = 900
+power_use = 20
+firing_mode_1 = Array[ExtResource("1_mg5hh")]([ExtResource("2_32csx"), ExtResource("3_2q2uq"), ExtResource("4_7xl41"), ExtResource("5_bsc4o"), ExtResource("6_ohiti"), ExtResource("7_wpi2k"), ExtResource("8_uilgk"), ExtResource("9_ygqrp"), ExtResource("10_7pjf2"), ExtResource("11_xkqx7"), ExtResource("12_rvkgv")])
